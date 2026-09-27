@@ -64,7 +64,12 @@ def build(el, material, coll_for):
         for k, (y0, y1) in enumerate(spans):
             nm = c["id"] if len(spans) == 1 else f"{c['id']}.{k + 1:02d}"
             o = sweep(nm, prof, y0, y1, slope, coll)
-            _set_mat(o, material(c.get("material", "default")))
+            mat = c.get("material", "default")
+            if el.get("color_by") == "scope":
+                lab = c.get("label", "")
+                mat = ("scope_new" if lab.startswith("NEW") else "scope_req" if lab.startswith("REQ'D") else
+                       "scope_rec" if lab.startswith("REC") else "scope_remain")
+            _set_mat(o, material(mat))
             meta = {k2: c.get(k2) for k2 in ("status", "source", "basis", "trade", "callout")}
             meta.update(id=nm, spec_id=el["id"], component=c["id"])
             for k2 in ("status", "source", "basis", "callout"):
@@ -122,6 +127,12 @@ def annotate(png_path, spec, built, cam):
             d.ellipse([x + M - 5, y - 5, x + M + 5, y + 5], fill=(200, 40, 40))
             d.text((lx, ly - 13), t, fill=(20, 20, 20), font=f)
     d.text((16, H - 70), f"{spec.get('project', '')}", fill=(20, 20, 20), font=fb)
+    if el.get("color_by") == "scope":
+        x0 = 16
+        for col, t in [((237, 107, 26), "NEW (stated scope)"), ((242, 199, 51), "REQUIRED BY the new work"),
+                       ((64, 133, 224), "RECOMMENDED — not in scope"), ((184, 184, 179), "EXISTING TO REMAIN")]:
+            d.rectangle([x0, H - 110, x0 + 26, H - 88], fill=col); d.text((x0 + 34, H - 112), t, fill=(20, 20, 20), font=f)
+            x0 += 34 + int(d.textlength(t, font=f)) + 30
     d.text((16, H - 36), "[P] provisional (measured/not called out)  [A] assumed  — cutaway: layers stepped back at the far end only",
            fill=(90, 90, 90), font=f)
     canvas.save(png_path)

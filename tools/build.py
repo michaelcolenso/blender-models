@@ -32,6 +32,11 @@ MATERIALS = {  # base color RGB, roughness — edit per project
     "rigid": ((0.55, 0.70, 0.85), 0.7),     # color assumed (product not specified)
     "wrb": ((0.93, 0.93, 0.95), 0.6),
     "flashing": ((0.22, 0.20, 0.18), 0.35),  # prefinished color not specified
+    # scope colors (color_by: scope) — presentation of WHO/WHAT, not materials
+    "scope_new": ((0.93, 0.42, 0.10), 0.6),
+    "scope_req": ((0.95, 0.78, 0.20), 0.6),
+    "scope_rec": ((0.25, 0.52, 0.88), 0.6),
+    "scope_remain": ((0.72, 0.72, 0.70), 0.8),
     "default": ((0.8, 0.8, 0.8), 0.7),
     # house palette — colors ASSUMED (AH500: color scheme TBD); patterns visual only
     "siding": ((0.47, 0.50, 0.45), 0.8),
@@ -280,8 +285,12 @@ def verify(spec, built):
         if "between" in c:
             a_, fa, b_, fb = c["between"]
             got = round(comps[b_]["rect"][face(b_, fb)] - comps[a_]["rect"][face(a_, fa)], 4)
-            results.append({"check": f"{a_}.{fa} → {b_}.{fb} (in) {c.get('label', '')}".strip(), "expected": c["expect"],
-                            "actual": got, "ok": abs(got - c["expect"]) <= c.get("tol", tol), "source": c.get("source")})
+            if "min" in c:
+                results.append({"check": f"{a_}.{fa} → {b_}.{fb} (in) {c.get('label', '')}".strip(), "expected": f">= {c['min']}",
+                                "actual": got, "ok": got >= c["min"] - 1e-6, "source": c.get("source")})
+            else:
+                results.append({"check": f"{a_}.{fa} → {b_}.{fb} (in) {c.get('label', '')}".strip(), "expected": c["expect"],
+                                "actual": got, "ok": abs(got - c["expect"]) <= c.get("tol", tol), "source": c.get("source")})
         if "drawn" in c:
             d_ = c["drawn"]; r_ = comps[d_["component"]]["rect"]
             size = (r_[2] - r_[0]) if d_["axis"] == "x" else (r_[3] - r_[1])
@@ -337,7 +346,7 @@ def render_views(name, out, bounds, realistic):
     if detail_mode:  # assembly views: true section, stepped cutaway from outside-below, plan
         views = {
             "section": (Vector((ctr.x, lo.y - span * 2, ctr.z)), "ORTHO"),
-            "cutaway": (Vector((ctr.x, hi.y, ctr.z)) + Vector((-0.9, 0.6, 1.0)).normalized() * span * 0.8, "PERSP"),
+            "cutaway": (Vector((ctr.x, hi.y, ctr.z)) + Vector(getattr(render_views, "cut_dir", (-0.9, 0.6, 1.0))).normalized() * span * 0.62, "PERSP"),
             "plan": views["plan"],
         }
     files = []
@@ -423,6 +432,9 @@ def main():
                             "source": c.get("source")})
     render_views.detail = all(e.get("type") == "detail" for e in spec["elements"])
     if render_views.detail:
+        cd_ = next((e.get("cutaway_dir") for e in spec["elements"] if e.get("cutaway_dir")), None)
+        if cd_:
+            render_views.cut_dir = tuple(cd_)
         import detail as _d
         render_views.annotate_cb = lambda f, cam: _d.annotate(f, spec, built, cam)
     renders = [] if a.no_render else render_views(name, out, bounds, a.realistic)
@@ -453,6 +465,10 @@ def main():
         if e.get("status") == "assumed" and e.get("basis") and (e.get("spec_id"), e["basis"]) not in seen:
             seen.add((e.get("spec_id"), e["basis"])); assumed.append(e)
     prov = [e for e in spec["elements"] if e.get("type") == "house"]
+    if spec.get("field_verify"):
+        md += ["", "## Field-verify (upgrades assumed/provisional items)"] + [f"- [ ] {x}" for x in spec["field_verify"]]
+    if spec.get("flags"):
+        md += ["", "## Flags (not in stated scope — decide)"] + [f"- {x}" for x in spec["flags"]]
     if assumed:
         md += ["", "## Assumed (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed]
     (out / "report.md").write_text("\n".join(md) + "\n")
