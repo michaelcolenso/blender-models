@@ -177,6 +177,16 @@ Use when the source is a **section detail**, not a plan. Spec type `detail` (exa
    `python tools/detail_overlay.py build/<n>/<n>.blend --pdf $PDF --page <p> --clip <clip> --pt-per-ft <measured> --origin-pt <x,y of X=0,Z=0> --out build/<n>/overlay_section.png`
    Judge by eye: the % counts model outline beyond the detail's break lines as misses, so it understates fit.
 
+## SketchUp output (on request, from a Claude chat session)
+
+The Trimble SketchUp connector is available to Claude in chat, **not in CI**, and its plan has a save quota
+(30 saves; check `saves_remaining` in the save result). Use it for the human-facing file, not every build.
+1. `python tools/skp_code.py specs/<x>-existing.yaml specs/<x>-proposed.yaml` → code for `build_model` (clean: true).
+2. Add scenes "1 Existing" / "2 Proposed" (hide the other layer), style, model camera; `save_model`.
+3. Download the .skp from the returned URL (follow the redirect) and deliver it. The file's thumbnail shows all
+   layers; the scene tabs switch Existing/Proposed.
+Limits: solid colors only (no textures), no booleans (openings by construction), 30-min idle session timeout.
+
 ## Verification (definition of done)
 
 - [ ] Local build and CI both PASS.
