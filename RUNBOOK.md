@@ -162,6 +162,21 @@ git add specs/<project>.yaml takeoff/<project>.json && git commit -m "Model <pro
 artifact `models-<sha>` contains the build folder (kept 30 days).
 **If it fails:** open the run → "Build, verify, render" step log → the failing check is printed.
 
+## Detail mode (sections: rake, eave, balcony edge, window head …)
+
+Use when the source is a **section detail**, not a plan. Spec type `detail` (example: `specs/qp-rake-ah700-12.yaml`).
+
+1. **Pick a true section at a stated scale.** Reject NTS / perspective sketches for geometry (AT401/4 rake is NTS — used only for sequence).
+2. **Verify the detail scale** from a dimension string inside the detail:
+   `python tools/calibrate.py scale $PDF --page 8 --text "1-6" --feet 1.5` (AH700/12: 106.5 pt/ft vs 108 nominal — sheet plots 1.4% small; always use the measured value).
+3. **Section frame:** X horizontal from a named face (e.g. fascia outer face = 0), Z plumb from a named plane (e.g. underside of roof sheathing = 0). Write that in the spec header.
+4. **One component per callout**, sized by the callout's **actual** dimensions (5/4x10 = 1 × 9¼; 1x6 = ¾ × 5½), positioned from the drawing. Thicknesses stated elsewhere (wall types, structural notes) cite that sheet. Anything drawn but not called out = provisional with a `basis`; anything not drawn = assumed.
+5. **Checks:** every dimension string in the detail as a `between:` check (hard); measured drawn sizes as `drawn:` checks (warn only — they test the *drawing* against its callouts; a ⚠️ means the drawing and the callout disagree, e.g. fascia drawn 10.1" deep vs 9¼" called out).
+6. `path:` length and `pitch:` (rake follows the roof slope). `peel:` / `cutaway_step_in:` are presentation only — the near end stays a true section.
+7. Build with `--realistic` for the labeled cutaway; then
+   `python tools/detail_overlay.py build/<n>/<n>.blend --pdf $PDF --page <p> --clip <clip> --pt-per-ft <measured> --origin-pt <x,y of X=0,Z=0> --out build/<n>/overlay_section.png`
+   Judge by eye: the % counts model outline beyond the detail's break lines as misses, so it understates fit.
+
 ## Verification (definition of done)
 
 - [ ] Local build and CI both PASS.
@@ -206,4 +221,5 @@ CI artifacts remain downloadable for 30 days. Nothing in this pipeline writes ou
 
 | Date | Run by | Notes |
 |---|---|---|
+| 2026-09-27 | Claude | Rake detail AH700/12 (detail mode): 16 components, 2 documented dims pass, drawing-vs-callout warnings on fascia depth and wall sheathing. |
 | 2026-09-27 | Claude (with Michael) | QP Cottage Duplex A (2017 CD set, AH201/AH202/AH500/SH202). Right unit mirrored; 5 false openings rejected; 3 walls under a revision cloud traced manually; roof plan area 3,935.7 vs 3,935 sf documented; overlays 82% / 87%. |

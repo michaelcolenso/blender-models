@@ -28,6 +28,10 @@ MATERIALS = {  # base color RGB, roughness — edit per project
     "membrane": ((0.15, 0.15, 0.16), 0.6),
     "siding": ((0.80, 0.78, 0.72), 0.7),
     "glass": ((0.60, 0.75, 0.80), 0.05),
+    "osb": ((0.72, 0.58, 0.38), 0.85),
+    "rigid": ((0.55, 0.70, 0.85), 0.7),     # color assumed (product not specified)
+    "wrb": ((0.93, 0.93, 0.95), 0.6),
+    "flashing": ((0.22, 0.20, 0.18), 0.35),  # prefinished color not specified
     "default": ((0.8, 0.8, 0.8), 0.7),
     # house palette — colors ASSUMED (AH500: color scheme TBD); patterns visual only
     "siding": ((0.47, 0.50, 0.45), 0.8),
@@ -65,6 +69,18 @@ def validate(spec):
         if eid in seen:
             fail(f"{eid}: duplicate id", errors)
         seen.add(eid)
+        if e.get("type") == "detail":
+            for c in e.get("components", []):
+                cid = c.get("id", "?")
+                if c.get("status") not in VALID_STATUS:
+                    fail(f"{eid}/{cid}: status must be one of {sorted(VALID_STATUS)}", errors)
+                if c.get("status") in ("confirmed", "provisional") and c.get("source") not in src_ids:
+                    fail(f"{eid}/{cid}: needs a source id from 'sources'", errors)
+                if c.get("status") == "assumed" and not c.get("basis"):
+                    fail(f"{eid}/{cid}: assumed component needs a 'basis'", errors)
+                if "rect" not in c and "polygon" not in c:
+                    fail(f"{eid}/{cid}: needs rect or polygon", errors)
+            continue
         if e.get("type") == "house":
             for k in ("takeoff", "walls_source", "plate_height_in", "roof", "openings"):
                 if k not in e:
@@ -183,6 +199,13 @@ def build(spec, spec_dir=Path(".")):
         return colls[trade]
     extra = {}
     for e in spec["elements"]:
+        if e.get("type") == "detail":
+            sys.path.insert(0, str(Path(__file__).parent))
+            import detail
+            for meta, o in detail.build(e, material, coll_for):
+                o["spec_id"] = e["id"]
+                built.append((meta, o))
+            continue
         if e.get("type") == "house":
             sys.path.insert(0, str(Path(__file__).parent))
             import house
@@ -251,6 +274,22 @@ def verify(spec, built):
         if "ridge" in c:
             got = round(build.extra["ridges"][c["ridge"]], 2)
             results.append({"check": f"ridge {c['ridge']} height above FF (in) — {c.get('label','')}", "expected": c["expect"], "actual": got, "ok": abs(got - c["expect"]) <= c.get("tol", tol), "source": c.get("source")})
+        if "between" in c or "drawn" in c:
+            comps = {k["id"]: k for e_ in spec["elements"] if e_.get("type") == "detail" for k in e_["components"]}
+            face = lambda cid, f: {"x0": 0, "z0": 1, "x1": 2, "z1": 3}[f]
+        if "between" in c:
+            a_, fa, b_, fb = c["between"]
+            got = round(comps[b_]["rect"][face(b_, fb)] - comps[a_]["rect"][face(a_, fa)], 4)
+            results.append({"check": f"{a_}.{fa} → {b_}.{fb} (in) {c.get('label', '')}".strip(), "expected": c["expect"],
+                            "actual": got, "ok": abs(got - c["expect"]) <= c.get("tol", tol), "source": c.get("source")})
+        if "drawn" in c:
+            d_ = c["drawn"]; r_ = comps[d_["component"]]["rect"]
+            size = (r_[2] - r_[0]) if d_["axis"] == "x" else (r_[3] - r_[1])
+            diff = round(d_["drawn_in"] - size, 3)
+            results.append({"check": f"drawing vs callout: {d_['component']} {'thickness' if d_['axis'] == 'x' else 'depth'} (in)",
+                            "expected": round(size, 3), "actual": d_["drawn_in"], "ok": True,
+                            "warn": abs(diff) > c.get("warn_tol", 0.125),
+                            "source": comps[d_["component"]].get("callout") or comps[d_["component"]].get("basis")})
         if "gap" in c:  # clear distance along an axis between two element instances
             a = bpy.data.objects[c["from"]]; b = bpy.data.objects[c["to"]]; ax = "xyz".index(c["axis"])
             amax = max((a.matrix_world @ Vector(v))[ax] for v in a.bound_box) / IN
@@ -279,6 +318,7 @@ def render_views(name, out, bounds, realistic):
     tgt = bpy.data.objects.new("target", None); tgt.location = ctr; sc.collection.objects.link(tgt)
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
     sun.data.energy = 4; sun.rotation_euler = (math.radians(50), 0, math.radians(30)); sc.collection.objects.link(sun)
+    detail_mode = getattr(render_views, "detail", False)
     views = {
         "iso": (ctr + Vector((1, -1.2, 0.8)).normalized() * span * 1.6, "PERSP"),
         "plan": (ctr + Vector((0, 0, span * 2)), "ORTHO"),
@@ -294,6 +334,12 @@ def render_views(name, out, bounds, realistic):
     world.node_tree.nodes["Background"].inputs[0].default_value = (0.9, 0.9, 0.9, 1)
     world.node_tree.nodes["Background"].inputs[1].default_value = 0.35
     originals = {o.name: list(o.data.materials) for o in sc.objects if o.type == "MESH"}
+    if detail_mode:  # assembly views: true section, stepped cutaway from outside-below, plan
+        views = {
+            "section": (Vector((ctr.x, lo.y - span * 2, ctr.z)), "ORTHO"),
+            "cutaway": (Vector((ctr.x, hi.y, ctr.z)) + Vector((-0.9, 0.6, 1.0)).normalized() * span * 0.8, "PERSP"),
+            "plan": views["plan"],
+        }
     files = []
     for mode in ["review"] + (["realistic"] if realistic else []):
         for o in sc.objects:
@@ -306,34 +352,44 @@ def render_views(name, out, bounds, realistic):
                 for m in originals[o.name]:
                     o.data.materials.append(m)
         sc.cycles.samples = 16 if mode == "review" else 96
-        vset = views if mode == "review" else hero_views(ctr, span, lo, hi)
+        vset = views if mode == "review" else ({"cutaway": views["cutaway"]} if detail_mode else hero_views(ctr, span, lo, hi))
         if mode == "realistic":
             sc.cycles.use_denoising = True
             sc.view_settings.view_transform = "AgX"; sc.view_settings.look = "AgX - Base Contrast"
             world.node_tree.nodes["Background"].inputs[0].default_value = (0.62, 0.74, 0.90, 1)
             world.node_tree.nodes["Background"].inputs[1].default_value = 0.6
+            if detail_mode:
+                world.node_tree.nodes["Background"].inputs[0].default_value = (0.95, 0.95, 0.94, 1)
+                world.node_tree.nodes["Background"].inputs[1].default_value = 0.8
             sun.data.energy = 3.0; sun.rotation_euler = (math.radians(50), 0, math.radians(-35))
             g = bpy.data.meshes.new("ground"); gv = 60.0
             g.from_pydata([(-gv, -gv, -0.16), (gv, -gv, -0.16), (gv, gv, -0.16), (-gv, gv, -0.16)], [], [(0, 1, 2, 3)])
-            go = bpy.data.objects.new("ground", g); sc.collection.objects.link(go); g.materials.append(material("grass"))
+            if not detail_mode:
+                go = bpy.data.objects.new("ground", g); sc.collection.objects.link(go); g.materials.append(material("grass"))
         for vname, (loc, ptype) in vset.items():
             cd = bpy.data.cameras.new(f"{mode}_{vname}"); cd.type = ptype
             if ptype == "ORTHO":
                 cd.ortho_scale = span * 1.15
             if vname.startswith("hero"):
                 cd.lens = 35
+            if vname == "cutaway":
+                cd.lens = 40
             cam = bpy.data.objects.new(f"cam_{mode}_{vname}", cd); cam.location = loc
             sc.collection.objects.link(cam)
             # explicit rotation: constraints are not reliably evaluated before headless renders
+            aim = Vector((ctr.x, hi.y - span * 0.22, ctr.z + span * 0.05)) if vname == "cutaway" else ctr
             if vname == "plan":
                 cam.rotation_euler = (0, 0, 0)  # looking straight down, +Y up on sheet
             else:
-                cam.rotation_euler = (ctr - loc).to_track_quat("-Z", "Y").to_euler()
+                cam.rotation_euler = (aim - loc).to_track_quat("-Z", "Y").to_euler()
             sc.camera = cam
             f = out / f"{name}_{mode}_{vname}.png"
             sc.render.filepath = str(f)
             bpy.ops.render.render(write_still=True)
             files.append(f.name)
+            cb = getattr(render_views, "annotate_cb", None)
+            if cb and vname == "cutaway":
+                cb(f, cam)
     return files
 
 
@@ -365,6 +421,10 @@ def main():
             results.append({"check": f"roof plan area (sf) — {c.get('label', '')}", "expected": c["expect"],
                             "actual": got, "ok": abs(got - c["expect"]) <= c["expect"] * c.get("tol_pct", 0.5) / 100,
                             "source": c.get("source")})
+    render_views.detail = all(e.get("type") == "detail" for e in spec["elements"])
+    if render_views.detail:
+        import detail as _d
+        render_views.annotate_cb = lambda f, cam: _d.annotate(f, spec, built, cam)
     renders = [] if a.no_render else render_views(name, out, bounds, a.realistic)
     for r in renders:  # guard against silent blank renders
         blank = image_is_blank(out / r)
@@ -386,7 +446,7 @@ def main():
           f"Elements by provenance: {status_counts}", "",
           f"**{'PASS' if not failed else 'FAIL'}** — {len(results)-len(failed)}/{len(results)} checks", "",
           "| check | expected | actual | ok | source |", "|---|---|---|---|---|"]
-    md += [f"| {r['check']} | {r['expected']} | {r['actual']} | {'✅' if r['ok'] else '❌'} | {r.get('source') or ''} |"
+    md += [f"| {r['check']} | {r['expected']} | {r['actual']} | {'❌' if not r['ok'] else ('⚠️' if r.get('warn') else '✅')} | {r.get('source') or ''} |"
            for r in results if not r["check"].startswith(("dims ", "render ")) or not r["ok"]]
     assumed, seen = [], set()
     for e, _ in built:

@@ -1,0 +1,87 @@
+# AH700 detail 12 — RAKE DETAIL (1 1/2" = 1'-0"), QP Cottage Duplex A.
+# Section frame, inches: X from fascia outer face (0) toward the wall; Z = 0 at underside of roof
+# sheathing (top of lookouts), plumb. Swept 48" along the rake at the side-gable pitch.
+# Sizes are the CALLOUT actual sizes; positions come from the drawing (raster at 16 px/in,
+# scale verified from the 1'-6" string: 106.5 pt/ft vs 108 nominal — sheet plots 1.4% small).
+project: QP Cottage A — rake detail AH700/12
+tolerance_in: 0.125
+
+sources:
+  - {id: AH700, ref: "AH700 detail 12 RAKE DETAIL, 1 1/2\" = 1'-0\"", type: drawing}
+  - {id: AH202, ref: "AH202 roof plan — side gable 6/12, rake eave 40'-6\" vs wall 39'-0\" (1'-6\" overhang)", type: drawing}
+  - {id: SH202, ref: "SH202 roof framing notes — 5/8\" APA roof sheathing; trusses @ 24\" o.c.; 1/2\" APA wall sheathing", type: drawing}
+  - {id: AT300, ref: "AT300 wall types — 1/2\" OSB/APA sheathing, WRB, 3/4\" rigid, furring, fiber cement, 2x6 studs", type: drawing}
+  - {id: SH412, ref: "SH412 — extend wall sheathing to underside of roof sheathing", type: drawing}
+
+elements:
+  - id: rake_ah700_12
+    type: detail
+    path: {length_in: 60, pitch: 6}   # side gable 6/12 (AH202); the same detail serves the 4/12 wing gables
+    cutaway_step_in: 6                # presentation only: layer with peel k stops k*6" short of the FAR end
+    components:
+      # --- roof ---
+      - {id: roof_sheathing, peel: 4, trade: roofing, material: osb, rect: [1.0, 0.0, 34.0, 0.625],
+         status: confirmed, source: SH202, callout: "5/8\" APA rated roof sheathing"}
+      - {id: underlayment, peel: 5, trade: roofing, material: membrane, rect: [0.0, 0.625, 34.0, 0.685],
+         status: confirmed, source: AH700, callout: "ice & water shield at roof edge + 15# felt (thickness visual)"}
+      - {id: rake_edge_flashing, peel: 6, label: "prefinished metal rake edge flashing", peel: 4, trade: roofing, material: flashing, source: AH700, status: provisional,
+         callout: "prefinished metal rake edge flashing over 15# felt",
+         basis: "leg lengths not dimensioned — 2\" deck leg, 2 1/2\" face leg with kick, typical",
+         polygon: [[2.0, 0.725], [-0.04, 0.725], [-0.04, -1.9], [-0.45, -2.2], [-0.42, -2.24], [0.0, -1.94], [0.0, 0.685], [2.0, 0.685]]}
+      - {id: shingles, peel: 6, label: "asphalt shingles", peel: 5, trade: roofing, material: shingles, rect: [-0.375, 0.725, 34.0, 0.975],
+         status: assumed, basis: "asphalt shingles (AH500 'A'); 1/4\" thickness and 3/8\" overhang past flashing are typical, not drawn to scale"}
+      # --- rake framing ---
+      - {id: fascia, peel: 3, trade: trim, material: trim, rect: [0.0, -8.625, 1.0, 0.625],
+         status: confirmed, source: AH700, callout: "5/4x10 fiber cement fascia (1\" x 9 1/4\" actual)"}
+      - {id: rake_board, peel: 2, label: "2x rake board (drawn, not called out)", trade: framing, material: df_lumber, rect: [1.0, -7.25, 2.5, 0.0],
+         status: provisional, source: AH700, basis: "cut member drawn 1.44 x 7.75 in; not called out — modeled as 2x8"}
+      - {id: lookout, label: "2x8 outlookers @ 24\" o.c.", trade: framing, material: df_lumber, rect: [2.5, -7.25, 16.5, 0.0],
+         repeat: {width_in: 1.5, spacing_in: 24, start_in: 0},
+         status: assumed, basis: "outlookers drawn beyond the cut, 2x8 depth; 24 in o.c. assumed to match truss spacing (SH202)"}
+      - {id: wall_blocking, label: "2x blocking at wall line", trade: framing, material: pt_lumber, rect: [16.5, -7.25, 18.0, 0.0],
+         status: provisional, source: AH700, basis: "cut member drawn 1.50 in at the wall line; not called out"}
+      # --- wall below the rake (outside to inside) ---
+      - {id: frieze_trim, peel: 5, trade: trim, material: trim, rect: [15.5, -7.25, 16.5, 0.0],
+         status: confirmed, source: AH700, callout: "5/4x8 fiber cement trim (1\" x 7 1/4\")"}
+      - {id: trim_1x6, peel: 6, trade: trim, material: trim, rect: [15.75, -12.75, 16.5, -7.25],
+         status: confirmed, source: AH700, callout: "1x6 fiber cement trim (3/4\" x 5 1/2\") — see elevations"}
+      - {id: fc_panel, peel: 6, trade: siding, material: gable_panel, rect: [16.1875, -30.0, 16.5, -12.75],
+         status: provisional, source: AH700, callout: "fiber cement panel", basis: "5/16\" panel thickness typical, not stated"}
+      - {id: furring, peel: 5, trade: siding, material: pt_lumber, rect: [16.5, -30.0, 17.25, -7.25],
+         repeat: {width_in: 3.5, spacing_in: 16, start_in: 2},
+         status: provisional, source: AH700, callout: "1x4 PPT wood furring", basis: "16 in spacing assumed"}
+      - {id: rigid_insulation, peel: 4, trade: envelope, material: rigid, rect: [17.25, -30.0, 18.0, -7.25],
+         status: confirmed, source: AT300, callout: "3/4\" rigid insulation"}
+      - {id: wrb, peel: 3, trade: envelope, material: wrb, rect: [17.97, -30.0, 18.0, -7.25],
+         status: confirmed, source: AH700, callout: "water resistive barrier (thickness visual)"}
+      - {id: wall_sheathing, peel: 2, trade: framing, material: osb, rect: [18.0, -30.0, 18.5, 0.0],
+         status: confirmed, source: AT300, callout: "1/2\" APA/OSB sheathing, extended to underside of roof sheathing (SH412)"}
+      - {id: gable_framing, label: "gable-end framing", trade: framing, material: df_lumber, rect: [18.5, -30.0, 20.0, 0.0],
+         status: provisional, source: AH700, basis: "gable-end member drawn 1.56 in; not called out"}
+
+checks:
+  # documented dimension: fascia face to sheathing face = 1'-6" (AH700 string; matches AH202 40'-6" vs 39'-0")
+  - between: [fascia, x0, wall_sheathing, x0]
+    expect: 18.0
+    source: AH700
+  - between: [roof_sheathing, z0, underlayment, z0]
+    label: "roof sheathing thickness 5/8\""
+    expect: 0.625
+    source: SH202
+  # drawing-vs-callout consistency (warn only): does the drawing agree with its own callouts?
+  - drawn: {component: fascia, axis: x, drawn_in: 0.81}
+    warn_tol: 0.25
+  - drawn: {component: fascia, axis: z, drawn_in: 10.1}
+    warn_tol: 0.5
+  - drawn: {component: frieze_trim, axis: x, drawn_in: 1.07}
+    warn_tol: 0.25
+  - drawn: {component: trim_1x6, axis: x, drawn_in: 0.75}
+    warn_tol: 0.25
+  - drawn: {component: trim_1x6, axis: z, drawn_in: 5.5}
+    warn_tol: 0.5
+  - drawn: {component: wall_sheathing, axis: x, drawn_in: 0.62}
+    warn_tol: 0.0625
+  - drawn: {component: roof_sheathing, axis: z, drawn_in: 0.625}
+    warn_tol: 0.0625
+  - drawn: {component: rake_board, axis: z, drawn_in: 7.75}
+    warn_tol: 0.5

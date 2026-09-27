@@ -30,6 +30,13 @@ Operator procedure with exact commands: **RUNBOOK.md**.
 - **Walls are built boolean-free** (rectangle decomposition, openings cut by box splitting). Roof unions use Blender's **Manifold** boolean solver — the Exact solver fails on the coplanar faces that roofs inevitably have.
 - **Overlay check:** `tools/overlay.py` renders the model orthographically at the drawing's scale and overlays it on the elevation; report the edge-agreement % and look at the image.
 
+## Model types
+
+- **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `tools/detail.py`.
+- **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `tools/house.py`, `tools/qto.py`.
+- **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
+All types share: provenance on every element, failing checks, CI rebuild.
+
 ## Accuracy rules
 
 - Never present an assumed or provisional element as documented. Review renders always show provenance colors; realistic renders shared outside the team must carry a note if any assumed elements are visible.
