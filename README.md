@@ -14,7 +14,8 @@ Purpose: build dimensionally accurate, realistic 3D models of Michael's restorat
 4. **Build.** `python tools/build.py specs/<name>.yaml [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
 5. **Verify.** The builder fails (exit 1) on: missing source/basis, count or extent mismatch, gap mismatch, or a blank render. Then look at the review renders myself — plan, front, side, iso — colored by provenance (green confirmed, yellow provisional, orange assumed). Where a drawing elevation exists, compare the ortho render against it at the same scale. "Checks passed" and "looked right" are both required; report which were done.
 6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
-7. **Deliver.** `.blend` (editable), `.glb` (phone/web viewing, carries element metadata), review renders, `report.md`. List every assumed element in the handoff.
+7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (tools/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
+8. **Deliver.** `.blend` (editable), `.glb` (phone/web viewing, carries element metadata), review renders, `report.md`. List every assumed element in the handoff.
 
 ## Plan-set method (proven on QP Cottage A, 2026-09-27)
 

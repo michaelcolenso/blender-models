@@ -352,8 +352,19 @@ def main():
     if errors:
         print("SPEC INVALID:\n  " + "\n  ".join(errors)); sys.exit(1)
 
+    spec["_dir"], spec["_path"] = str(spec_path.parent), str(spec_path)
     built = build(spec, spec_path.parent)
     results, overall, bounds = verify(spec, built)
+    qto_file = None
+    if any(e.get("type") == "house" for e in spec["elements"]):
+        import house, qto
+        qto_file, q = qto.run(spec, built, out, house)
+        chk = spec.get("qto_checks", {})
+        if "plan_area_sf" in chk:
+            c = chk["plan_area_sf"]; got = q["plan_area_sf"]
+            results.append({"check": f"roof plan area (sf) — {c.get('label', '')}", "expected": c["expect"],
+                            "actual": got, "ok": abs(got - c["expect"]) <= c["expect"] * c.get("tol_pct", 0.5) / 100,
+                            "source": c.get("source")})
     renders = [] if a.no_render else render_views(name, out, bounds, a.realistic)
     for r in renders:  # guard against silent blank renders
         blank = image_is_blank(out / r)

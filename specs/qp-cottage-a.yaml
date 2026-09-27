@@ -49,18 +49,18 @@ elements:
     # present on an AH500 elevation. Sizes: window schedule (AH500) = 5'-6" tall casements.
     # Heads/sills scaled from AH500 at 2 px/in (floor-to-bearing check 109.5 vs 109.125 doc).
     openings:
-      - {id: rear_A,  kind: window, axis: x, face: -1, x0: 39.5,  x1: 135.0, y0: -0.5,  y1: 7.0,  sill: 22, head: 88, unit_w: 32, source: AH500}
-      - {id: rear_D1, kind: window, axis: x, face: -1, x0: 292.5, x1: 320.0, y0: 12.5,  y1: 18.0, sill: 22, head: 88, source: AH500}
-      - {id: rear_D2, kind: window, axis: x, face: -1, x0: 388.5, x1: 416.0, y0: 12.5,  y1: 18.0, sill: 22, head: 88, source: AH500}
-      - {id: side_B1, kind: window, axis: y, face: 1,  x0: 429.5, x1: 437.0, y0: 51.5,  y1: 116.5, sill: 22, head: 88, source: AH500}
-      - {id: bay_C1,  kind: window, axis: y, face: 1,  x0: 474.5, x1: 480.0, y0: 219.5, y1: 253.0, sill: 22, head: 88, source: AH500}
-      - {id: bay_C2,  kind: window, axis: y, face: 1,  x0: 473.5, x1: 481.0, y0: 262.0, y1: 298.5, sill: 22, head: 88, source: AH500}
+      - {id: rear_A, mark: A, kind: window, axis: x, face: -1, x0: 39.5,  x1: 135.0, y0: -0.5,  y1: 7.0,  sill: 22, head: 88, unit_w: 32, source: AH500}
+      - {id: rear_D1, mark: D, kind: window, axis: x, face: -1, x0: 292.5, x1: 320.0, y0: 12.5,  y1: 18.0, sill: 22, head: 88, source: AH500}
+      - {id: rear_D2, mark: D, kind: window, axis: x, face: -1, x0: 388.5, x1: 416.0, y0: 12.5,  y1: 18.0, sill: 22, head: 88, source: AH500}
+      - {id: side_B1, mark: B, kind: window, axis: y, face: 1,  x0: 429.5, x1: 437.0, y0: 51.5,  y1: 116.5, sill: 22, head: 88, source: AH500}
+      - {id: bay_C1, mark: C, kind: window, axis: y, face: 1,  x0: 474.5, x1: 480.0, y0: 219.5, y1: 253.0, sill: 22, head: 88, source: AH500}
+      - {id: bay_C2, mark: C, kind: window, axis: y, face: 1,  x0: 473.5, x1: 481.0, y0: 262.0, y1: 298.5, sill: 22, head: 88, source: AH500}
       - {id: patio_door, kind: door, glazed: true, axis: y, face: 1, x0: 427.5, x1: 437.0, y0: 366.5, y1: 469.5, sill: 0, head: 88, unit_w: 36,
          status: provisional, source: AH500, basis: "door head assumed to align with window heads (not dimensioned)"}
-      - {id: side_B2, kind: window, axis: y, face: 1,  x0: 429.5, x1: 437.0, y0: 470.5, y1: 541.5, sill: 22, head: 88, source: AH500}
+      - {id: side_B2, mark: B, kind: window, axis: y, face: 1,  x0: 429.5, x1: 437.0, y0: 470.5, y1: 541.5, sill: 22, head: 88, source: AH500}
       - {id: garage_1, kind: garage, axis: x, face: 1, x0: 23.5,  x1: 116.5, y0: 546.5, y1: 550.0, sill: 0, head: 77.5, source: AH500}
       - {id: garage_2, kind: garage, axis: x, face: 1, x0: 144.0, x1: 232.0, y0: 546.5, y1: 556.0, sill: 0, head: 77.5, source: AH500}
-      - {id: front_A, kind: window, axis: x, face: 1, x0: 285.5, x1: 382.5, y0: 569.5, y1: 577.0, sill: 22, head: 88, unit_w: 32, source: AH500}
+      - {id: front_A, mark: A, kind: window, axis: x, face: 1, x0: 285.5, x1: 382.5, y0: 569.5, y1: 577.0, sill: 22, head: 88, unit_w: 32, source: AH500}
 
 checks:
   - extents_trade: walls
@@ -83,3 +83,10 @@ checks:
     expect: 180.0
     tol: 2.0
     source: AH500
+
+qto_checks:
+  plan_area_sf:
+    label: "AH202 venting calc: 3,935 sf of roof area (documented)"
+    expect: 3935
+    tol_pct: 0.5
+    source: AH202
