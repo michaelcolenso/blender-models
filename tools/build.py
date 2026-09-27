@@ -29,6 +29,20 @@ MATERIALS = {  # base color RGB, roughness — edit per project
     "siding": ((0.80, 0.78, 0.72), 0.7),
     "glass": ((0.60, 0.75, 0.80), 0.05),
     "default": ((0.8, 0.8, 0.8), 0.7),
+    # house palette — colors ASSUMED (AH500: color scheme TBD); patterns visual only
+    "siding": ((0.47, 0.50, 0.45), 0.8),
+    "gable_panel": ((0.55, 0.57, 0.52), 0.8),
+    "trim": ((0.90, 0.89, 0.85), 0.6),
+    "shingles": ((0.16, 0.16, 0.17), 0.9),
+    "door": ((0.30, 0.22, 0.16), 0.5),
+    "garage_door": ((0.88, 0.87, 0.83), 0.5),
+    "grass": ((0.20, 0.30, 0.12), 1.0),
+}
+PATTERN = {  # (axis, period_in, duty, bump_strength): procedural relief for realistic renders
+    "siding": ("z", 7.0, 0.12, 0.6),        # lap siding, ~7 in exposure (visual only)
+    "gable_panel": ("xy", 12.0, 0.10, 0.5), # 1x4 battens on panel (spacing visual only)
+    "shingles": ("z", 1.7, 0.15, 0.4),      # course lines (visual only)
+    "garage_door": ("z", 19.5, 0.03, 0.4),
 }
 STATUS_COLORS = {  # review renders: color by provenance, not by material
     "confirmed": (0.55, 0.72, 0.55, 1),
@@ -51,6 +65,21 @@ def validate(spec):
         if eid in seen:
             fail(f"{eid}: duplicate id", errors)
         seen.add(eid)
+        if e.get("type") == "house":
+            for k in ("takeoff", "walls_source", "plate_height_in", "roof", "openings"):
+                if k not in e:
+                    fail(f"{eid}: missing '{k}'", errors)
+            for o in e.get("openings", []):
+                if o.get("status", "provisional") in ("confirmed", "provisional") and o.get("source", e.get("walls_source")) not in src_ids:
+                    fail(f"{eid}/{o.get('id')}: source not in 'sources'", errors)
+                if o.get("status") == "assumed" and not o.get("basis"):
+                    fail(f"{eid}/{o.get('id')}: assumed opening needs 'basis'", errors)
+            for k in ("walls_source",):
+                if e.get(k) not in src_ids:
+                    fail(f"{eid}: {k} must reference a source id", errors)
+            if e.get("roof", {}).get("source") not in src_ids:
+                fail(f"{eid}: roof.source must reference a source id", errors)
+            continue
         for k in ("size", "at", "status", "trade"):
             if k not in e:
                 fail(f"{eid}: missing '{k}'", errors)
@@ -76,6 +105,30 @@ def material(key):
     b.inputs["Base Color"].default_value = (*rgb, 1)
     b.inputs["Roughness"].default_value = rough
     m.diffuse_color = (*rgb, 1)
+    if key == "glass":
+        b.inputs["Transmission Weight"].default_value = 0.9
+        b.inputs["Roughness"].default_value = 0.02
+        b.inputs["Base Color"].default_value = (0.35, 0.45, 0.5, 1)
+    if key in PATTERN:
+        axis, per, duty, strength = PATTERN[key]
+        nt = m.node_tree; N = nt.nodes
+        tc = N.new("ShaderNodeTexCoord"); sep = N.new("ShaderNodeSeparateXYZ")
+        nt.links.new(tc.outputs["Object"], sep.inputs[0])
+        if axis == "xy":
+            add = N.new("ShaderNodeMath"); add.operation = "ADD"
+            nt.links.new(sep.outputs[0], add.inputs[0]); nt.links.new(sep.outputs[1], add.inputs[1]); src = add.outputs[0]
+        else:
+            src = sep.outputs[2]
+        div = N.new("ShaderNodeMath"); div.operation = "DIVIDE"; div.inputs[1].default_value = per * 0.0254
+        nt.links.new(src, div.inputs[0])
+        fr = N.new("ShaderNodeMath"); fr.operation = "FRACT"; nt.links.new(div.outputs[0], fr.inputs[0])
+        lt = N.new("ShaderNodeMath"); lt.operation = "LESS_THAN"; lt.inputs[1].default_value = duty
+        nt.links.new(fr.outputs[0], lt.inputs[0])
+        bump = N.new("ShaderNodeBump"); bump.inputs["Strength"].default_value = strength
+        bump.inputs["Distance"].default_value = 0.01
+        inv = N.new("ShaderNodeMath"); inv.operation = "SUBTRACT"; inv.inputs[0].default_value = 1.0
+        nt.links.new(lt.outputs[0], inv.inputs[1]); nt.links.new(inv.outputs[0], bump.inputs["Height"])
+        nt.links.new(bump.outputs["Normal"], b.inputs["Normal"])
     return m
 
 
@@ -116,14 +169,32 @@ def box(name, size_in, at_in, rot_z_deg, coll):
     return o
 
 
-def build(spec):
+def build(spec, spec_dir=Path(".")):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     sc = bpy.context.scene
     sc.unit_settings.system = "IMPERIAL"
     sc.unit_settings.length_unit = "INCHES"
     colls = {}
     built = []
+    def coll_for(trade):
+        if trade not in colls:
+            colls[trade] = bpy.data.collections.new(trade)
+            sc.collection.children.link(colls[trade])
+        return colls[trade]
+    extra = {}
     for e in spec["elements"]:
+        if e.get("type") == "house":
+            sys.path.insert(0, str(Path(__file__).parent))
+            import house
+            hb, ridges = house.build(e, spec_dir, material, coll_for)
+            extra["ridges"] = ridges
+            for meta, o in hb:
+                for k in ("status", "source", "trade", "basis"):
+                    if meta.get(k) is not None:
+                        o[k] = str(meta[k])
+                o["spec_id"] = e["id"]
+                built.append((dict(meta, spec_id=e["id"]), o))
+            continue
         trade = e["trade"]
         if trade not in colls:
             colls[trade] = bpy.data.collections.new(trade)
@@ -140,6 +211,7 @@ def build(spec):
             o["spec_id"] = e["id"]
             built.append((e, o))
     bpy.context.view_layer.update()  # refresh matrix_world before any measurement
+    build.extra = extra
     return built
 
 
@@ -147,13 +219,19 @@ def verify(spec, built):
     results = []
     tol = spec.get("tolerance_in", TOL_DEFAULT)
     for e, o in built:  # builder fidelity: built dims == spec dims
+        if "size" not in e:
+            continue
         dims = [round(d / IN, 4) for d in o.dimensions]
         ok = all(abs(a - b) <= tol for a, b in zip(dims, e["size"]))
         results.append({"check": f"dims {o.name}", "expected": e["size"], "actual": dims, "ok": ok})
     counts = {}
     for e, _ in built:
         counts[e["id"]] = counts.get(e["id"], 0) + 1
-    pts = [o.matrix_world @ Vector(c) for _, o in built for c in o.bound_box]
+    def extents(objs):
+        ps = [o.matrix_world @ v.co for o in objs for v in o.data.vertices]
+        lo_ = [min(p[i] for p in ps) / IN for i in range(3)]; hi_ = [max(p[i] for p in ps) / IN for i in range(3)]
+        return [round(h - l, 2) for h, l in zip(hi_, lo_)], lo_, hi_
+    pts = [o.matrix_world @ Vector(c) for _, o in built for c in o.bound_box if o.type == "MESH"]
     lo = [min(p[i] for p in pts) / IN for i in range(3)]
     hi = [max(p[i] for p in pts) / IN for i in range(3)]
     overall = [round(h - l, 4) for h, l in zip(hi, lo)]
@@ -165,6 +243,14 @@ def verify(spec, built):
             exp = c["overall"]
             ok = all(x is None or abs(a - x) <= c.get("tol", tol) for a, x in zip(overall, exp))
             results.append({"check": "overall extents (in)", "expected": exp, "actual": overall, "ok": ok, "source": c.get("source")})
+        if "extents_trade" in c:
+            objs = [o for e_, o in built if e_.get("trade") == c["extents_trade"] and o.type == "MESH"]
+            got, _, _ = extents(objs); exp = c["expect"]
+            ok = all(x is None or abs(a - x) <= c.get("tol", tol) for a, x in zip(got, exp))
+            results.append({"check": f"{c['extents_trade']} extents (in) — {c.get('label','')}", "expected": exp, "actual": got, "ok": ok, "source": c.get("source")})
+        if "ridge" in c:
+            got = round(build.extra["ridges"][c["ridge"]], 2)
+            results.append({"check": f"ridge {c['ridge']} height above FF (in) — {c.get('label','')}", "expected": c["expect"], "actual": got, "ok": abs(got - c["expect"]) <= c.get("tol", tol), "source": c.get("source")})
         if "gap" in c:  # clear distance along an axis between two element instances
             a = bpy.data.objects[c["from"]]; b = bpy.data.objects[c["to"]]; ax = "xyz".index(c["axis"])
             amax = max((a.matrix_world @ Vector(v))[ax] for v in a.bound_box) / IN
@@ -172,6 +258,14 @@ def verify(spec, built):
             got = round(bmin - amax, 4)
             results.append({"check": f"gap {c['from']}→{c['to']} {c['axis']}", "expected": c["gap"], "actual": got, "ok": abs(got - c["gap"]) <= c.get("tol", tol), "source": c.get("source")})
     return results, overall, (lo, hi)
+
+
+def hero_views(ctr, span, lo, hi):
+    """Eye-level 3/4 views (5'-6" eye height) from front-left and rear-right."""
+    eye = 1.68
+    d = span * 0.85
+    return {"hero_front": (Vector((ctr.x - d * 0.55, lo.y - d * 0.75, eye)), "PERSP"),
+            "hero_rear": (Vector((ctr.x + d * 0.55, hi.y + d * 0.75, eye)), "PERSP")}
 
 
 def render_views(name, out, bounds, realistic):
@@ -211,12 +305,23 @@ def render_views(name, out, bounds, realistic):
             else:
                 for m in originals[o.name]:
                     o.data.materials.append(m)
-        sc.cycles.samples = 16 if mode == "review" else 128
-        vset = views if mode == "review" else {"iso": views["iso"]}
+        sc.cycles.samples = 16 if mode == "review" else 96
+        vset = views if mode == "review" else hero_views(ctr, span, lo, hi)
+        if mode == "realistic":
+            sc.cycles.use_denoising = True
+            sc.view_settings.view_transform = "AgX"; sc.view_settings.look = "AgX - Base Contrast"
+            world.node_tree.nodes["Background"].inputs[0].default_value = (0.62, 0.74, 0.90, 1)
+            world.node_tree.nodes["Background"].inputs[1].default_value = 0.6
+            sun.data.energy = 3.0; sun.rotation_euler = (math.radians(50), 0, math.radians(-35))
+            g = bpy.data.meshes.new("ground"); gv = 60.0
+            g.from_pydata([(-gv, -gv, -0.16), (gv, -gv, -0.16), (gv, gv, -0.16), (-gv, gv, -0.16)], [], [(0, 1, 2, 3)])
+            go = bpy.data.objects.new("ground", g); sc.collection.objects.link(go); g.materials.append(material("grass"))
         for vname, (loc, ptype) in vset.items():
             cd = bpy.data.cameras.new(f"{mode}_{vname}"); cd.type = ptype
             if ptype == "ORTHO":
                 cd.ortho_scale = span * 1.15
+            if vname.startswith("hero"):
+                cd.lens = 35
             cam = bpy.data.objects.new(f"cam_{mode}_{vname}", cd); cam.location = loc
             sc.collection.objects.link(cam)
             # explicit rotation: constraints are not reliably evaluated before headless renders
@@ -247,7 +352,7 @@ def main():
     if errors:
         print("SPEC INVALID:\n  " + "\n  ".join(errors)); sys.exit(1)
 
-    built = build(spec)
+    built = build(spec, spec_path.parent)
     results, overall, bounds = verify(spec, built)
     renders = [] if a.no_render else render_views(name, out, bounds, a.realistic)
     for r in renders:  # guard against silent blank renders
@@ -272,9 +377,13 @@ def main():
           "| check | expected | actual | ok | source |", "|---|---|---|---|---|"]
     md += [f"| {r['check']} | {r['expected']} | {r['actual']} | {'✅' if r['ok'] else '❌'} | {r.get('source') or ''} |"
            for r in results if not r["check"].startswith(("dims ", "render ")) or not r["ok"]]
-    assumed = [e for e in spec["elements"] if e["status"] == "assumed"]
+    assumed, seen = [], set()
+    for e, _ in built:
+        if e.get("status") == "assumed" and e.get("basis") and (e.get("spec_id"), e["basis"]) not in seen:
+            seen.add((e.get("spec_id"), e["basis"])); assumed.append(e)
+    prov = [e for e in spec["elements"] if e.get("type") == "house"]
     if assumed:
-        md += ["", "## Assumed elements (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed]
+        md += ["", "## Assumed (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed]
     (out / "report.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
     sys.exit(1 if failed else 0)

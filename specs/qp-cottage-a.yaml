@@ -1,0 +1,85 @@
+# Quail Park of Lynnwood — Cottage Duplex A (4015 164th St SW, Lynnwood WA)
+# Exterior shell model. Units: inches unless a key says _ft.
+# Frame: X from party-wall centerline (+ = right unit as drawn on AH201), Y from rear
+# wall face (center section) toward the front. Right unit extracted; left unit mirrored.
+project: QP Cottage Duplex A — exterior shell
+tolerance_in: 1.0            # extraction raster is 2 px/in; ±1 in is the honest tolerance
+
+sources:
+  - id: AH201
+    ref: "AH201 1/4\" Cottage 'A' Floor Plan (Construction Documents, 2nd review 26 JUN 2017)"
+    type: drawing
+  - id: AH202
+    ref: "AH202 1/4\" Cottage 'A' Roof Plan"
+    type: drawing
+  - id: AH500
+    ref: "AH500 1/8\" Cottage 'A' Exterior Elevations + window schedule"
+    type: drawing
+  - id: SH202
+    ref: "SH202 Roof Framing Plan (truss bearing elev. 109'-1 1/8\")"
+    type: drawing
+
+elements:
+  - id: cottage_a
+    type: house
+    takeoff: ../takeoff/qp-cottage-a.json        # from tools/extract_plan.py on AH201 (18 pt/ft verified vs 39'-0" string)
+    walls_source: AH201
+    plate_height_in: 109.125                      # FF 100'-0" to truss bearing 109'-1 1/8" (AH500, SH202) — documented
+    slab_t_in: 6
+    ext_wall_t_in: 6.5          # assumed exterior wall thickness for infill at openings (2x6 + sheathing)
+    extra_walls:                # wall the extraction lost where AH201 draws the exterior FEC cabinet
+      - {id: garage_pier, x0: 0, x1: 23.5, y0: 545.0, y1: 551.5, mirror: true}
+      # rear jog walls broken up by the AH201 revision cloud (delta 1) — traced from the plan raster
+      - {id: rear_end,  x0: 246.0, x1: 260.5, y0: 0.0,  y1: 6.0,  mirror: true}
+      - {id: jog_side,  x0: 255.0, x1: 260.5, y0: 0.0,  y1: 18.0, mirror: true}
+      - {id: side_rear, x0: 255.0, x1: 292.5, y0: 12.0, y1: 18.0, mirror: true}
+    roof:
+      source: AH202
+      eave_surface_z_in: 118     # provisional: roof edge scaled from AH500 elevation (2 px/in raster)
+      soffit_z_in: 109           # provisional: soffit/fascia bottom ~ truss bearing line on AH500
+      thickness_in: 4            # assumed massing thickness (sheathing + shingles + fascia return)
+      pieces:                    # rects in feet (X0, Y0, X1, Y1) = eave outline from AH202 vector linework
+        - {id: main_hip,   kind: hip,   pitch: 4, rect: [-38.333, -1.0, 38.333, 45.333]}
+        - {id: rear_center, kind: hip,  pitch: 4, rect: [-23.75, -2.0, 23.75, 45.333]}
+        - {id: side_gable, kind: gable, pitch: 6, ridge: x, rect: [20.0, 12.339, 40.5, 33.333], mirror: true}
+        - {id: wing_gable, kind: gable, pitch: 4, ridge: y, rect: [17.333, 20.0, 38.333, 49.5], mirror: true}
+        - {id: entry_gable, kind: gable, pitch: 6, ridge: y, rect: [-14.0, 20.0, 14.0, 47.833]}
+    # Rejected extraction candidates (not on any AH500 elevation): rear X164-191, rear X215-252,
+    # side Y116-174, front X237-296 (2). Openings (right unit; mirrored). Positions from AH201 extraction, each confirmed
+    # present on an AH500 elevation. Sizes: window schedule (AH500) = 5'-6" tall casements.
+    # Heads/sills scaled from AH500 at 2 px/in (floor-to-bearing check 109.5 vs 109.125 doc).
+    openings:
+      - {id: rear_A,  kind: window, axis: x, face: -1, x0: 39.5,  x1: 135.0, y0: -0.5,  y1: 7.0,  sill: 22, head: 88, unit_w: 32, source: AH500}
+      - {id: rear_D1, kind: window, axis: x, face: -1, x0: 292.5, x1: 320.0, y0: 12.5,  y1: 18.0, sill: 22, head: 88, source: AH500}
+      - {id: rear_D2, kind: window, axis: x, face: -1, x0: 388.5, x1: 416.0, y0: 12.5,  y1: 18.0, sill: 22, head: 88, source: AH500}
+      - {id: side_B1, kind: window, axis: y, face: 1,  x0: 429.5, x1: 437.0, y0: 51.5,  y1: 116.5, sill: 22, head: 88, source: AH500}
+      - {id: bay_C1,  kind: window, axis: y, face: 1,  x0: 474.5, x1: 480.0, y0: 219.5, y1: 253.0, sill: 22, head: 88, source: AH500}
+      - {id: bay_C2,  kind: window, axis: y, face: 1,  x0: 473.5, x1: 481.0, y0: 262.0, y1: 298.5, sill: 22, head: 88, source: AH500}
+      - {id: patio_door, kind: door, glazed: true, axis: y, face: 1, x0: 427.5, x1: 437.0, y0: 366.5, y1: 469.5, sill: 0, head: 88, unit_w: 36,
+         status: provisional, source: AH500, basis: "door head assumed to align with window heads (not dimensioned)"}
+      - {id: side_B2, kind: window, axis: y, face: 1,  x0: 429.5, x1: 437.0, y0: 470.5, y1: 541.5, sill: 22, head: 88, source: AH500}
+      - {id: garage_1, kind: garage, axis: x, face: 1, x0: 23.5,  x1: 116.5, y0: 546.5, y1: 550.0, sill: 0, head: 77.5, source: AH500}
+      - {id: garage_2, kind: garage, axis: x, face: 1, x0: 144.0, x1: 232.0, y0: 546.5, y1: 556.0, sill: 0, head: 77.5, source: AH500}
+      - {id: front_A, kind: window, axis: x, face: 1, x0: 285.5, x1: 382.5, y0: 569.5, y1: 577.0, sill: 22, head: 88, unit_w: 32, source: AH500}
+
+checks:
+  - extents_trade: walls
+    label: "80'-0\" bay-to-bay x 48'-0\" (47'-0\" + 1'-0\" rear step) x 9'-1 1/8\" plate"
+    expect: [960, 576, 109.125]
+    tol: 2.0
+    source: AH201
+  - extents_trade: roof
+    label: "eave outline 81'-0\" x 51'-6\" (AH202, scaled at verified 1/4\")"
+    expect: [972, 618, null]
+    tol: 2.0
+    source: AH202
+  - ridge: main_hip
+    label: "main 4/12 ridge, scaled from AH500 front elevation at 2 px/in"
+    expect: 210.5
+    tol: 2.0
+    source: AH500
+  - ridge: side_gable
+    label: "side 6/12 gable ridge, scaled from AH500 front elevation"
+    expect: 180.0
+    tol: 2.0
+    source: AH500

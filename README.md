@@ -16,6 +16,17 @@ Purpose: build dimensionally accurate, realistic 3D models of Michael's restorat
 6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
 7. **Deliver.** `.blend` (editable), `.glb` (phone/web viewing, carries element metadata), review renders, `report.md`. List every assumed element in the handoff.
 
+## Plan-set method (proven on QP Cottage A, 2026-09-27)
+
+- **Calibrate every sheet from its own dimension strings** before measuring anything: find the tick marks of a long dimension and compute pt/ft (AH201: 39'-0" ticks 702 pt apart = 18.0 pt/ft = true 1/4"). Never trust the title-block scale alone.
+- **Rasterize at an exact scale** (2 px/in plans, 1–2 px/in elevations). Walls drawn as hollow outlines are found as thin enclosed white cores (half-width 2.5–7.5 px); window glazing splits the band into strips under 2.3 px half-width.
+- **Every extracted opening must appear on an elevation** or it is rejected (tubs, showers, garage-door lines and revision clouds all produce false openings). Record rejected candidates in the spec.
+- **Revision clouds and tags break linework** — look for missing wall where a cloud crosses, trace it manually, and add it as an `extra_walls` entry with its reason.
+- **Mirror-image units:** extract the cleaner half and mirror, but first measure the match (Cottage A: 94% of walls within 1½").
+- **Roofs:** union of convex hip/gable pieces taken from the eave outline on the roof plan; verify predicted ridge/hip positions against the drawn ones and ridge heights against elevations.
+- **Walls are built boolean-free** (rectangle decomposition, openings cut by box splitting). Roof unions use Blender's **Manifold** boolean solver — the Exact solver fails on the coplanar faces that roofs inevitably have.
+- **Overlay check:** `tools/overlay.py` renders the model orthographically at the drawing's scale and overlays it on the elevation; report the edge-agreement % and look at the image.
+
 ## Accuracy rules
 
 - Never present an assumed or provisional element as documented. Review renders always show provenance colors; realistic renders shared outside the team must carry a note if any assumed elements are visible.
@@ -37,7 +48,7 @@ Resident notices (what's happening at their unit), access and sequencing diagram
 
 ## CI
 
-> Setup: copy `ci/build-models.yml` to `.github/workflows/build-models.yml` in the GitHub web UI (Claude's token can't write workflow files).
+Workflow: `.github/workflows/build-models.yaml` (edit it in the GitHub web UI — Claude's token can't write workflow files).
 
 GitHub Actions (`.github/workflows/build-models.yml`) rebuilds changed specs on every PR and push to main, fails the PR if any check fails, writes each report to the job summary, and uploads `build/` as an artifact. Claude does the takeoff and spec edits; CI makes the geometry reproducible and blocks unsourced or inconsistent changes.
 
