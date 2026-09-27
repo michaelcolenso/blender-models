@@ -126,6 +126,13 @@ def extract(ink, cx, ry, half):
                 active[r] = yy
     fcs, _ = cv2.findContours(fp, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     fring = [to_in(x, y) for x, y in cv2.approxPolyDP(max(fcs, key=cv2.contourArea), 1.0, True).reshape(-1, 2)]
+    dbg = np.full(ink.shape + (3,), 255, np.uint8); dbg[ink > 0] = (205, 205, 205); dbg[wall > 0] = (0, 0, 0)
+    for o, col in [(windows, (0, 140, 255)), (doors, (255, 80, 0))]:
+        for i, b in enumerate(o):
+            p0 = (int(b["x0"] * PX_PER_IN + cx), int(b["y0"] * PX_PER_IN + ry)); p1 = (int(b["x1"] * PX_PER_IN + cx), int(b["y1"] * PX_PER_IN + ry))
+            cv2.rectangle(dbg, p0, p1, col, 3)
+            cv2.putText(dbg, f"{'W' if col[0] == 0 else 'D'}{i} {b['x0']:.0f},{b['y0']:.0f}", (p0[0], p0[1] - 4), 0, 0.45, col, 1)
+    extract.debug = dbg
     return {"wall_rects": rects, "wall_rings": rings, "footprint": fring, "windows": windows, "doors": doors}
 
 
@@ -141,4 +148,5 @@ if __name__ == "__main__":
     res["meta"] = {"pdf": a.pdf.split("/")[-1], "page": a.page, "clip": a.clip, "pt_per_ft": a.pt_per_ft,
                    "px_per_in": PX_PER_IN, "center_px": a.center_px, "rear_px": a.rear_px, "half": a.half}
     json.dump(res, open(a.out, "w"), indent=1)
+    cv2.imwrite(a.out.rsplit(".", 1)[0] + "_review.png", extract.debug)
     print(f"walls rings={len(res['wall_rings'])} windows={len(res['windows'])} doors={len(res['doors'])}")

@@ -2,6 +2,8 @@
 
 Purpose: build dimensionally accurate, realistic 3D models of Michael's restoration and defect-repair projects (occupied multifamily) from construction drawings, details, specs, and site photos, using Blender driven by Python. Accuracy first, realism second. A model is finished only when every dimension traces to a source or is labeled as assumed, the automated checks pass, and the renders have been looked at.
 
+Operator procedure with exact commands: **RUNBOOK.md**.
+
 ## Pipeline (always in this order)
 
 1. **Intake.** Inventory every source: sheet number, detail number, revision/date, scale, photo IDs. Read drawings at full resolution (rasterize PDFs with `pdftoppm -r 200+`; crop into details). Note scale bars and "NTS" details.
