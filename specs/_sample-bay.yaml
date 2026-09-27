@@ -1,0 +1,75 @@
+# SAMPLE FIXTURE — not a real project. Exercises the pipeline in CI.
+# Spec units: inches. 'at' = min corner (x = along wall, y = out from wall, z = up).
+project: SAMPLE balcony framing bay (test fixture)
+tolerance_in: 0.0625
+
+sources:
+  - id: S1
+    ref: "SAMPLE sheet S-501, Detail 4 (fictional)"
+    type: drawing
+  - id: S2
+    ref: "SAMPLE field photo 012 (fictional)"
+    type: photo
+
+elements:
+  - id: ledger
+    trade: framing
+    size: [97.5, 1.5, 9.25]        # 2x10 actual
+    at: [0, 0, 96]
+    material: pt_lumber
+    status: confirmed
+    source: S1
+
+  - id: joist
+    trade: framing
+    size: [1.5, 120, 9.25]         # 2x10 @ 16" o.c.
+    at: [0, 1.5, 96]
+    array: {count: 7, step: [16, 0, 0]}
+    material: pt_lumber
+    status: confirmed
+    source: S1
+
+  - id: rim
+    trade: framing
+    size: [97.5, 1.5, 9.25]
+    at: [0, 121.5, 96]
+    material: pt_lumber
+    status: provisional            # visible in photo, size scaled from joist depth
+    source: S2
+
+  - id: beam
+    trade: framing
+    size: [97.5, 3, 9.25]          # (2) 2x10
+    at: [0, 108, 86.75]
+    material: pt_lumber
+    status: confirmed
+    source: S1
+
+  - id: post
+    trade: framing
+    size: [5.5, 5.5, 86.75]        # 6x6
+    at: [0, 106.75, 0]
+    array: {count: 2, step: [92, 0, 0]}
+    material: pt_lumber
+    status: confirmed
+    source: S1
+
+  - id: decking
+    trade: decking
+    size: [97.5, 123, 1]
+    at: [0, 0, 105.25]
+    material: df_lumber
+    status: assumed
+    basis: "Decking not shown on S1; 5/4 nominal (1 in actual) assumed for massing only"
+
+checks:
+  - element: joist
+    count: 7
+    source: S1
+  - overall: [97.5, 123, 106.25]
+    source: S1
+  - gap: 14.5                      # 16" o.c. minus 1.5" joist
+    from: joist.01
+    to: joist.02
+    axis: x
+    source: S1
