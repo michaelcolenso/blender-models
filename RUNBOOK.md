@@ -196,6 +196,16 @@ shingles + step flashing course by course; `extras` / `initial_show` / `initial_
 Test first with `--test-frames 10,150,236`. Full render ≈ 6 s/frame on 2 CPU cores (Cycles; Workbench/EEVEE
 render blank headless). The sequence is presentation of a recommended order — label it that way when shared.
 
+**Whole buildings (type: house):** add a `sequence:` block to the house spec — steps with `caption`,
+`objects` (glob patterns on built object names: `slab_*`, `walls`, `attic_*`, `roof`, `soffit`, opening ids such as
+`rear_A*`, `garage_*`), `motion` (`drop` / `rise` / `grow`), `seconds`, and `stagger: opening` to install one
+opening (glass, frame, mullions, casing) at a time. Build the model first, then
+`python tools/animate_house.py specs/<name>.yaml --out build/<name>-sequence/<name>-sequence`.
+The script stops if a step matches nothing and warns about objects in no step. The camera does one elevated
+orbit starting front-left. Cottage A: 271 frames, ≈9 s/frame at 960×540 with 8 samples ≈ 40 min, so run it
+with `nohup … &` and poll the log. Both animators share `tools/anim_common.py` for captions, which shrink to fit
+the frame width and keep the step counter in sync with the caption on screen.
+
 ## Verification (definition of done)
 
 - [ ] Local build and CI both PASS.
@@ -240,5 +250,6 @@ CI artifacts remain downloadable for 30 days. Nothing in this pipeline writes ou
 
 | Date | Run by | Notes |
 |---|---|---|
+| 2026-09-30 | Claude | Cottage A build-up animation (tools/animate_house.py): 6 steps, 22.6 s, MP4 + animated USDZ. Walls mesh includes interior partitions traced from AH201 — the caption says so. |
 | 2026-09-27 | Claude | Rake detail AH700/12 (detail mode): 16 components, 2 documented dims pass, drawing-vs-callout warnings on fascia depth and wall sheathing. |
 | 2026-09-27 | Claude (with Michael) | QP Cottage Duplex A (2017 CD set, AH201/AH202/AH500/SH202). Right unit mirrored; 5 false openings rejected; 3 walls under a revision cloud traced manually; roof plan area 3,935.7 vs 3,935 sf documented; overlays 82% / 87%. |

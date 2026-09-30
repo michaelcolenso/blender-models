@@ -10,7 +10,7 @@ Components are built full-length (no cutaway peel). Outputs:
   <out>.mp4   captioned video (Cycles CPU frames + ffmpeg), plays on any phone
   <out>.usdz  same timeline as transform animation (install = drop in + scale up; remove = lift out + scale down)
 """
-import argparse, math, subprocess, sys, json
+import argparse, math, sys, json
 from pathlib import Path
 
 import bpy
@@ -20,6 +20,7 @@ from mathutils import Vector
 sys.path.insert(0, str(Path(__file__).parent))
 import detail  # noqa: E402
 import build as B  # noqa: E402  (material palette + material())
+import anim_common as AC  # noqa: E402
 
 IN = 0.0254
 
@@ -168,11 +169,6 @@ def main():
     timeline.append((f, end, seq.get("closing", "Complete") if isinstance(seq, dict) else "Complete"))
     sc.frame_start, sc.frame_end = 1, end
 
-    # hold every object's last key to the end (so nothing drifts)
-    for lst in objs.values():
-        for o in lst:
-            pass
-
     # --- re-seat for AR: lowest point at Z=0, centred in X/Y (parent everything to one offset empty) ---
     bpy.context.view_layer.update()
     pts0 = [o.matrix_world @ v.co for o in coll.objects for v in o.data.vertices]
@@ -219,31 +215,18 @@ def main():
         return
 
     # --- frames + captions + mp4 ---
-    from PIL import Image, ImageDraw, ImageFont
     fdir = out.parent / (out.name + "_frames"); fdir.mkdir(exist_ok=True)
-    try:
-        fb = ImageFont.truetype("DejaVuSans-Bold.ttf", max(18, ry // 22)); fs = ImageFont.truetype("DejaVuSans.ttf", max(14, ry // 34))
-    except OSError:
-        fb = fs = ImageFont.load_default()
     title = P.get("project", "")
     frames = range(1, end + 1) if not a.test_frames else [int(x) for x in a.test_frames.split(",")]
     for fr in frames:
         sc.frame_set(fr)
         p = fdir / f"f{fr:05d}.png"; sc.render.filepath = str(p)
         bpy.ops.render.render(write_still=True)
-        cap = next((t for (a0, a1, t) in reversed(timeline) if fr >= a0), timeline[0][2])
-        idx = next((i for i, (a0, a1, t) in enumerate(timeline) if a0 <= fr <= a1 + fps), 0)
-        im = Image.open(p).convert("RGB"); d = ImageDraw.Draw(im)
-        d.rectangle([0, ry - ry // 6, rx, ry], fill=(255, 255, 255))
-        d.text((16, ry - ry // 6 + 8), cap, fill=(20, 20, 20), font=fb)
-        d.text((16, ry - ry // 14), f"{title}   ·   step {idx}/{len(timeline) - 1}   ·   model — not to scale where marked [A]",
-               fill=(110, 110, 110), font=fs)
-        im.save(p)
+        AC.caption(p, fr, timeline, title, "model — not to scale where marked [A]")
     if a.test_frames:
         return
     mp4 = out.with_suffix(".mp4")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(fps), "-i", str(fdir / "f%05d.png"),
-                    "-vf", "fps=24,format=yuv420p", "-c:v", "libx264", "-crf", "22", "-movflags", "+faststart", str(mp4)], check=True)
+    AC.encode(fdir, fps, mp4)
     print(f"MP4 {mp4} frames={end} seconds={end / fps:.1f}")
 
 
