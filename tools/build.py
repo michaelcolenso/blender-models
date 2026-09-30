@@ -34,6 +34,7 @@ MATERIALS = {  # base color RGB, roughness — edit per project
     "flashing": ((0.22, 0.20, 0.18), 0.35),  # prefinished color not specified
     # scope colors (color_by: scope) — presentation of WHO/WHAT, not materials
     "scope_new": ((0.93, 0.42, 0.10), 0.6),
+    "scope_new_light": ((0.99, 0.80, 0.62), 0.7),   # new membranes / WRB (thin layers)
     "scope_req": ((0.95, 0.78, 0.20), 0.6),
     "scope_rec": ((0.25, 0.52, 0.88), 0.6),
     "scope_remain": ((0.72, 0.72, 0.70), 0.8),

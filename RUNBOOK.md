@@ -187,6 +187,15 @@ The Trimble SketchUp connector is available to Claude in chat, **not in CI**, an
    layers; the scene tabs switch Existing/Proposed.
 Limits: solid colors only (no textures), no booleans (openings by construction), 30-min idle session timeout.
 
+## Sequence animation (existing → proposed, captioned)
+
+Add a `sequence:` block to the proposed spec (steps with caption / remove / install / seconds; `weave` for
+shingles + step flashing course by course; `extras` / `initial_show` / `initial_hide` for partial tear-off).
+`python tools/animate_sequence.py specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence/<x>`
+→ `<x>.mp4` (captioned, any phone) + `<x>.usdz` (same timeline as transform animation, AR-seated).
+Test first with `--test-frames 10,150,236`. Full render ≈ 6 s/frame on 2 CPU cores (Cycles; Workbench/EEVEE
+render blank headless). The sequence is presentation of a recommended order — label it that way when shared.
+
 ## Verification (definition of done)
 
 - [ ] Local build and CI both PASS.

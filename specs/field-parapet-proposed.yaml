@@ -90,3 +90,22 @@ checks:
     label: "siding top above coping leg bottom (siding must tuck under the drip) "
     min: 0.5
     source: S1
+
+# Construction sequence for tools/animate_sequence.py (presentation; order is the recommended
+# means-and-methods sequence, not a documented requirement).
+sequence:
+  title: "Existing: raked parapet at roof-to-wall — coping to remain"
+  closing: "Complete — coping untouched; new flashing + siding"
+  initial_hide: [shingles, underlayment]          # existing full-width pieces, replaced by field + band below
+  initial_show: [shingles, underlayment]          # proposed field pieces (remain) visible from the start
+  extras:
+    - {id: shingles_band_existing, rect: [0.0, -0.25, 12.0, 0.0], material: shingles}
+    - {id: underlayment_band_existing, rect: [0.0, -0.28, 12.0, -0.25], material: membrane}
+  steps:
+    - {caption: "1. Protect coping; remove roof-side siding/trim and wall-base apron", remove: [siding_roofside, base_apron], seconds: 1.6}
+    - {caption: "2. Roofing trade: remove shingles within 12 in of the wall", remove: [shingles_band_existing], seconds: 1.4}
+    - {caption: "3. Remove WRB + underlayment at wall; inspect sheathing", remove: [wrb_existing, underlayment_band_existing], seconds: 1.4}
+    - {caption: "4. New WRB — lap UNDER the existing membrane at the parapet top", install: [wrb_new], seconds: 1.4}
+    - {caption: "5. Recommended: self-adhered membrane at the wall (not in stated scope)", install: [membrane_deck, membrane_wall], seconds: 1.4}
+    - {caption: "6. Relay shingles and step flashing — one piece per course, woven", weave: {shingles: shingles_relay, flashing: [step_leg_roof, step_leg_wall]}, seconds: 5.0}
+    - {caption: "7. New fiber-cement siding, 2 in clear of roof, tucked under coping leg", install: [siding_new], seconds: 1.6}
