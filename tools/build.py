@@ -6,6 +6,8 @@ Usage:
 Reads a YAML model spec (every element traced to a source or marked assumed),
 builds it with bpy, verifies geometry against the spec, and writes:
     <out>/<name>/<name>.blend, .glb, review renders (PNG), report.md, report.json
+Every render carries an ILLUSTRATIVE label strip (record basis, field-verification status, provenance).
+Specs must state basis_of_record; optional conflicts: and review: blocks are rendered in the report.
 Exits 1 if any check fails, so CI blocks bad specs.
 """
 import argparse, json, math, sys
@@ -60,15 +62,53 @@ STATUS_COLORS = {  # review renders: color by provenance, not by material
     "assumed": (0.95, 0.45, 0.20, 1),
 }
 VALID_STATUS = set(STATUS_COLORS)
+# What record the model reflects. Values avoid bare yes/no: YAML 1.1 reads those as booleans.
+RECORD_KINDS = {"design_intent", "as_built", "field_photo", "field_survey", "mixed", "unknown"}
+FIELD_VERIFIED = {"verified", "partial", "not_verified", "unknown"}
+REVIEW_VERDICTS = {"pass", "fail", "n/a"}
 
 
 def fail(msg, errors):
     errors.append(msg)
 
 
+def validate_record(spec, src_ids, errors):
+    """basis_of_record is required (a model reflects the record, not the building);
+    conflicts and review are optional but must be well-formed when present."""
+    b = spec.get("basis_of_record")
+    if not isinstance(b, dict):
+        fail("basis_of_record: required — state what record this model reflects "
+             "(documents, kind, field_verified)", errors)
+    else:
+        if not str(b.get("documents", "")).strip():
+            fail("basis_of_record.documents: required (the drawings/photos the model is built from)", errors)
+        if b.get("kind") not in RECORD_KINDS:
+            fail(f"basis_of_record.kind must be one of {sorted(RECORD_KINDS)}", errors)
+        if b.get("field_verified") not in FIELD_VERIFIED:
+            fail(f"basis_of_record.field_verified must be one of {sorted(FIELD_VERIFIED)}", errors)
+    for i, a in enumerate(spec.get("assumptions") or []):  # assumed modeling parameters not tied to one element
+        if not a.get("id") or not a.get("basis"):
+            fail(f"assumptions[{i}]: needs 'id' and 'basis'", errors)
+    for i, c in enumerate(spec.get("conflicts") or []):
+        if not c.get("topic") or not c.get("note"):
+            fail(f"conflicts[{i}]: needs 'topic' and 'note'", errors)
+        if c.get("modeled_per") not in src_ids:
+            fail(f"conflicts[{i}]: modeled_per must be a source id from 'sources' (the governing document)", errors)
+    r = spec.get("review")
+    if r is not None:
+        if not isinstance(r, dict) or not r.get("date") or not r.get("by") or not r.get("views"):
+            fail("review: needs 'date', 'by' and a non-empty 'views' list "
+                 "(omit the block until the visual review has actually been done)", errors)
+        else:
+            for i, o in enumerate(r.get("overlays") or []):
+                if not o.get("view") or o.get("verdict") not in REVIEW_VERDICTS:
+                    fail(f"review.overlays[{i}]: needs 'view' and a verdict in {sorted(REVIEW_VERDICTS)}", errors)
+
+
 def validate(spec):
     errors = []
     src_ids = {s["id"] for s in spec.get("sources", [])}
+    validate_record(spec, src_ids, errors)
     seen = set()
     for e in spec.get("elements", []):
         eid = e.get("id", "?")
@@ -309,6 +349,96 @@ def verify(spec, built):
     return results, overall, (lo, hi)
 
 
+def _font(size, bold=False):
+    from PIL import ImageFont
+    try:
+        return ImageFont.truetype("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf", size)
+    except OSError:
+        try:
+            return ImageFont.load_default(size=size)  # scalable built-in font (newer Pillow)
+        except TypeError:
+            return ImageFont.load_default()
+
+
+def _fit(draw, text, size, max_w, bold=False, min_size=11):
+    while size > min_size and draw.textlength(text, font=_font(size, bold)) > max_w:
+        size -= 1
+    return _font(size, bold)
+
+
+def _srgb(c):  # Base Color is linear; the review renders use the Standard view transform
+    return int(round(255 * (c if c <= 0.0031308 else 1.055 * c ** (1 / 2.4) - 0.055)))
+
+
+def stamp_render(path, spec, status_counts, mode):
+    """Append a label strip under a render (never over the geometry): the 'illustrative, not a
+    contract document' label, the record the model reflects, and the provenance legend/counts."""
+    from PIL import Image, ImageDraw
+    b = spec["basis_of_record"]
+    im = Image.open(path).convert("RGB"); W, H = im.size
+    fs = max(14, H // 48)
+    band = fs * 4 + 24
+    canvas = Image.new("RGB", (W, H + band), "white"); canvas.paste(im, (0, 0))
+    d = ImageDraw.Draw(canvas)
+    y = H + 10
+    d.text((16, y), "ILLUSTRATIVE — coordination model, not a contract document",
+           fill=(160, 30, 30), font=_fit(d, "ILLUSTRATIVE — coordination model, not a contract document", fs + 2, W - 32, bold=True))
+    y += fs + 10
+    line = f"{spec.get('project', '')} · record: {b['kind']} · field verification: {b['field_verified']}"
+    d.text((16, y), line, fill=(40, 40, 40), font=_fit(d, line, fs, W - 32))
+    y += fs + 10
+    n = lambda k: status_counts.get(k, 0)
+    if mode == "review":
+        x = 16
+        f = _font(fs)
+        for k in ("confirmed", "provisional", "assumed"):
+            col = tuple(_srgb(c) for c in STATUS_COLORS[k][:3])
+            d.rectangle([x, y + 2, x + fs, y + 2 + fs], fill=col, outline=(80, 80, 80))
+            t = f"{k} {n(k)}"
+            d.text((x + fs + 8, y), t, fill=(40, 40, 40), font=f)
+            x += fs + 8 + int(d.textlength(t, font=f)) + 28
+    else:
+        t = (f"{n('assumed')} elements assumed — colors, finishes and items not shown on documents (see report)"
+             if n("assumed") else "No assumed elements.")
+        d.text((16, y), t, fill=(40, 40, 40), font=_fit(d, t, fs, W - 32))
+    canvas.save(path)
+
+
+def record_md(spec):
+    b = spec["basis_of_record"]
+    md = ["", "## Basis of record", f"- Built from: {b['documents']}",
+          f"- Record kind: `{b['kind']}` · field verification: `{b['field_verified']}`"]
+    if b.get("note"):
+        md.append(f"- Note: {b['note']}")
+    if b["field_verified"] != "verified":
+        md.append("- ⚠️ Geometry reflects the record above, **not** a confirmed built condition.")
+    return md
+
+
+def conflicts_md(spec, results):
+    items = [f"- **{c['topic']}** — modeled per `{c['modeled_per']}`"
+             + (f" (sources: {', '.join(map(str, c['sources']))})" if c.get("sources") else "") + f". {c['note']}"
+             for c in (spec.get("conflicts") or [])]
+    items += [f"- ⚠️ {r['check']}: callout {r['expected']} vs drawn {r['actual']} — {r.get('source') or ''}"
+              for r in results if r.get("warn")]
+    return ["", "## Source conflicts"] + (items or ["None recorded."])
+
+
+def review_md(spec):
+    r = spec.get("review")
+    if not r:
+        return ["", "## Visual review",
+                "**NOT RECORDED** — passing checks is not a visual review. Look at the review renders and "
+                "overlays, then record the result in the spec's `review:` block."]
+    md = ["", "## Visual review", f"- {r['date']} by {r['by']}; views: {', '.join(map(str, r['views']))}"]
+    for o in r.get("overlays") or []:
+        pct = f" {o['edge_pct']}% edge agreement," if o.get("edge_pct") is not None else ""
+        md.append(f"- overlay {o['view']}:{pct} verdict **{o['verdict']}**" + (f" — {o['note']}" if o.get("note") else ""))
+    if r.get("note"):
+        md.append(f"- {r['note']}")
+    return md
+
+
 def hero_views(ctr, span, lo, hi):
     """Eye-level 3/4 views (5'-6" eye height) from front-left and rear-right."""
     eye = 1.68
@@ -450,17 +580,23 @@ def main():
     status_counts = {}
     for e, _ in built:
         status_counts[e["status"]] = status_counts.get(e["status"], 0) + 1
+    for r in renders:  # label every render (after the blank guard, so the strip can't mask a blank frame)
+        stamp_render(out / r, spec, status_counts, "realistic" if "_realistic_" in r else "review")
     failed = [r for r in results if not r["ok"]]
     report = {"spec": str(spec_path), "project": spec.get("project"), "blender": bpy.app.version_string,
+              "basis_of_record": spec["basis_of_record"], "conflicts": spec.get("conflicts") or [],
+              "review": spec.get("review"),
               "overall_in": overall, "status_counts": status_counts, "checks": results,
-              "renders": renders, "passed": not failed}
-    (out / "report.json").write_text(json.dumps(report, indent=2))
-    md = [f"# Model report — {name}", f"Blender {bpy.app.version_string} · overall extents (in): {overall}",
+              "renders": renders, "renders_labeled": True, "passed": not failed}
+    (out / "report.json").write_text(json.dumps(report, indent=2, default=str))  # default=str: YAML dates
+    md = [f"# Model report — {name}"] + record_md(spec) + [
+          "", f"Blender {bpy.app.version_string} · overall extents (in): {overall}",
           f"Elements by provenance: {status_counts}", "",
           f"**{'PASS' if not failed else 'FAIL'}** — {len(results)-len(failed)}/{len(results)} checks", "",
           "| check | expected | actual | ok | source |", "|---|---|---|---|---|"]
     md += [f"| {r['check']} | {r['expected']} | {r['actual']} | {'❌' if not r['ok'] else ('⚠️' if r.get('warn') else '✅')} | {r.get('source') or ''} |"
            for r in results if not r["check"].startswith(("dims ", "render ")) or not r["ok"]]
+    md += conflicts_md(spec, results) + review_md(spec)
     assumed, seen = [], set()
     for e, _ in built:
         if e.get("status") == "assumed" and e.get("basis") and (e.get("spec_id"), e["basis"]) not in seen:
@@ -470,8 +606,10 @@ def main():
         md += ["", "## Field-verify (upgrades assumed/provisional items)"] + [f"- [ ] {x}" for x in spec["field_verify"]]
     if spec.get("flags"):
         md += ["", "## Flags (not in stated scope — decide)"] + [f"- {x}" for x in spec["flags"]]
-    if assumed:
-        md += ["", "## Assumed (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed]
+    params = spec.get("assumptions") or []
+    if assumed or params:
+        md += ["", "## Assumed (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed] \
+              + [f"- `{a['id']}` (parameter) — {a['basis']}" for a in params]
     (out / "report.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
     sys.exit(1 if failed else 0)

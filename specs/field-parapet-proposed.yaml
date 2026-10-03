@@ -6,6 +6,11 @@
 project: Field parapet (photo P1) — PROPOSED roof-to-wall flashing + siding
 tolerance_in: 0.125
 
+basis_of_record:
+  documents: "Same record as field-parapet-existing.yaml (photo P1, scope S1). IRC and MFR are reference-only; MFR is not verified."
+  kind: field_photo
+  field_verified: not_verified     # per the field_verify lists in this and the existing spec
+
 sources:
   - {id: P1, ref: "Site photo P1 (sources/field/parapet-P1.jpg), Michael Colenso, 2026-09-27", type: photo}
   - {id: S1, ref: "Scope statement, M. Colenso 2026-09-27: coping remains; new roof-to-wall flashing and siding at back of parapet", type: scope}

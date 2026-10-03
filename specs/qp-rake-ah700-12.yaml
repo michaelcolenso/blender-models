@@ -6,6 +6,12 @@
 project: QP Cottage A — rake detail AH700/12
 tolerance_in: 0.125
 
+basis_of_record:
+  documents: "AH700 detail 12, AH202, SH202, AT300, SH412. Drawings only; revision/date not recorded in this spec."
+  kind: design_intent
+  field_verified: unknown
+  note: "Section detail from the QP Cottage A drawing set. No field measurement recorded in this spec."
+
 sources:
   - {id: AH700, ref: "AH700 detail 12 RAKE DETAIL, 1 1/2\" = 1'-0\"", type: drawing}
   - {id: AH202, ref: "AH202 roof plan — side gable 6/12, rake eave 40'-6\" vs wall 39'-0\" (1'-6\" overhang)", type: drawing}

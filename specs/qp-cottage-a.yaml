@@ -5,6 +5,17 @@
 project: QP Cottage Duplex A — exterior shell
 tolerance_in: 1.0            # extraction raster is 2 px/in; ±1 in is the honest tolerance
 
+basis_of_record:
+  documents: "Construction Documents, 2nd review 26 JUN 2017 (per AH201 title block): AH201, AH202, AH500, SH202. Drawings only."
+  kind: design_intent
+  field_verified: unknown
+  note: "No as-built or record set in the source list and no field measurement recorded in this spec."
+
+assumptions:   # parameters this spec already marks as assumed; the geometry is built from them but they are not on the drawings
+  - {id: ext_wall_t_in, basis: "6.5 in exterior wall thickness for opening infill (2x6 + sheathing)"}
+  - {id: roof.thickness_in, basis: "4 in massing thickness for the roof solid (sheathing + shingles + fascia return)"}
+  - {id: palette, basis: "siding, trim, shingle and door colors — AH500 color scheme TBD; surface patterns are visual only"}
+
 sources:
   - id: AH201
     ref: "AH201 1/4\" Cottage 'A' Floor Plan (Construction Documents, 2nd review 26 JUN 2017)"

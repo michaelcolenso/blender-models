@@ -1,7 +1,7 @@
 # Runbook: Drawing set → verified Blender model + quantity takeoff
 
 **Owner:** Michael Colenso | **Frequency:** As needed (one run per building / drawing set)
-**Last updated:** 2026-09-27 | **Last run:** 2026-09-27 (QP Cottage Duplex A, `specs/qp-cottage-a.yaml`)
+**Last updated:** 2026-10-02 | **Last run:** 2026-09-30 (Cottage A build-up animation) | **Last full model build:** 2026-09-27 (QP Cottage Duplex A, `specs/qp-cottage-a.yaml`)
 **Scope today:** vector-PDF plan sets (CAD-plotted). Single-story, orthogonal walls, hip/gable roofs.
 **Not yet supported:** scanned/raster drawings, photos or field measurements as geometry sources,
 multi-story, curved or skewed walls. Don't force those through this pipeline — flag them.
@@ -88,7 +88,9 @@ Use `--half right` only for mirror-image units (see Step 6); otherwise `--half a
 ### Step 6 — Review the extraction (do not skip)
 
 - [ ] **Mirror check** (duplexes): confirm the two units are true mirrors before using `--half`. Look at the plan;
-      if in doubt, escalate — Cottage A measured 94% of walls within 1½".
+      if in doubt, escalate — Cottage A measured 94% of walls within 1½". Working default (an assumption from
+      n = 1, see INSTRUCTIONS): below 90% matching within 1½", stop and escalate; otherwise list the non-matching
+      walls in the spec header as documented differences.
 - [ ] **Every opening candidate must appear on an elevation.** For each W#/D#, find it on the matching
       elevation; accept (copy to spec `openings:`) or reject (list in a spec comment with reason).
       Typical false candidates: tubs/showers, garage-door lines, revision clouds, the party-wall FEC cabinet.
@@ -115,7 +117,11 @@ Use `--half right` only for mirror-image units (see Step 6); otherwise `--half a
 
 ### Step 8 — Write the spec and checks
 
-Copy `specs/qp-cottage-a.yaml` → `specs/<project>.yaml` and fill it in. Required checks:
+Copy `specs/qp-cottage-a.yaml` → `specs/<project>.yaml` and fill it in. Replace its `basis_of_record:` with what
+**this** set is (documents, `kind`, `field_verified`) — the build fails without it, and `field_verified` stays `unknown`
+until someone has checked the building against the record. List assumed modeling parameters under `assumptions:` and any
+source disagreement under `conflicts:` (modeled per the governing source). Leave `review:` out until Step 10 is done.
+Required checks:
 - wall extents vs overall dimension strings (documented),
 - plate height (documented),
 - eave outline extents (roof plan),
@@ -130,7 +136,11 @@ python tools/build.py specs/<project>.yaml --out build --realistic  # ~6 min, ad
 ```
 **Expected:** `**PASS** — n/n checks`, exit code 0, and in `build/<project>/`: `.blend`, `.glb`,
 `_review_{iso,plan,front,side}.png`, `_takeoff.xlsx`, `report.md`.
+Every PNG has a label strip under the image (illustrative / not a contract document, record kind, field-verification
+status, provenance legend or assumed count). `report.md` opens with **Basis of record** and ends with **Source
+conflicts** and **Visual review** (which says NOT RECORDED until you add `review:` to the spec).
 **If it fails:** the report names the failing check — fix the spec, never loosen a tolerance to pass.
+`SPEC INVALID: basis_of_record …` means the header block is missing or malformed (see Step 8).
 
 ### Step 10 — Overlay the model on the elevations
 
@@ -141,7 +151,13 @@ python tools/overlay.py build/<project>/<project>.blend --pdf $PDF --page <elev 
   --pt-per-ft <pt/ft> --view front|rear|right --floor-row <row> --center-col <col> --out build/<project>/overlay_<view>.png
 ```
 **Expected:** ≥ 80% edge agreement (Cottage A: front 82%, rear 87%) **and** a visual check that windows, doors,
-eaves, ridges and gables sit on the drawing's lines. The % alone is not proof.
+eaves, ridges and gables sit on the drawing's lines. The % alone is not proof: an opening can be several inches
+off and still score well. When you have looked at the review renders and the overlays, record it in the spec:
+```yaml
+review: {date: <YYYY-MM-DD>, by: <name>, views: [iso, plan, front, side],
+         overlays: [{view: front, edge_pct: <n>, verdict: pass, note: "<what you checked>"}]}
+```
+Re-record it after any spec change that affects geometry.
 **If it fails:** misaligned horizontally → wrong `--center-col` (re-run `calibrate.py elev`); an element off →
 fix that element in the spec; `side` views need the building's Y-centre (not automated yet).
 
@@ -153,13 +169,19 @@ Open `build/<project>/<project>_takeoff.xlsx`:
 - [ ] Set the **roof waste %** (yellow cell) to your standard.
 - [ ] Sanity-check gable panel sf per elevation against a hand estimate (a known past bug counted an interior plane).
 
-### Step 12 — Commit and let CI rebuild
+### Step 12 — Branch, PR, and let CI rebuild
 
 ```bash
-git add specs/<project>.yaml takeoff/<project>.json && git commit -m "Model <project>" && git push
+git switch -c model-<project>
+git add specs/<project>.yaml takeoff/<project>.json && git commit -m "Model <project>"
 ```
-**Expected:** Actions run "Build & verify models" goes green; the job summary shows each `report.md`;
-artifact `models-<sha>` contains the build folder (kept 30 days).
+Push and open the PR only after Michael authorizes it. Merging is his call. A push to a non-main branch does not run
+CI; the PR does.
+```bash
+git push -u origin model-<project>    # then open a PR into main
+```
+**Expected:** the PR's "Build & verify models" run goes green; the job summary shows each `report.md`;
+artifact `models-<sha>` contains the build folder (kept 30 days). Confirm the result; don't assume it.
 **If it fails:** open the run → "Build, verify, render" step log → the failing check is printed.
 
 ## Detail mode (sections: rake, eave, balcony edge, window head …)
@@ -212,6 +234,9 @@ the frame width and keep the step counter in sync with the caption on screen.
 - [ ] Overlays reviewed for every elevation you have (front and rear at minimum).
 - [ ] Every opening in the spec appears on an elevation; rejected candidates are listed.
 - [ ] Every `assumed` item has a `basis`; the report's "Assumed" list read and accepted.
+- [ ] `basis_of_record` describes this set; the handoff says whether it is design intent or as-built and whether it is field-verified.
+- [ ] `review:` recorded in the spec after the renders and overlays were actually looked at (report no longer says NOT RECORDED).
+- [ ] Source conflicts listed in `conflicts:` (or none found); drawing-vs-callout ⚠️ rows read.
 - [ ] Takeoff reconciled to any documented quantity; waste % set.
 - [ ] Handoff states what is not modeled (pergolas, bay roofs, gutters, interior, etc.).
 
@@ -230,7 +255,9 @@ the frame width and keep the step counter in sync with the caption on screen.
 | Overlay shifted sideways | Wrong centre column | `calibrate.py elev`; don't use mirror-symmetry guesses |
 | Gable panel sf far too high | Interior plane counted | Party-wall plane is excluded in `qto.gable_areas`; check for other interior planes |
 | CI can't push workflow changes from Claude | Token lacks `workflow` scope | Edit `.github/workflows/*` in the GitHub web UI |
-| CI doesn't trigger on workflow-only edits | Path filter says `.yml`, file is `.yaml` | Fix the filter in the web UI |
+| CI doesn't trigger on workflow-only edits (**open defect**) | Both `paths:` lists say `build-models.yml`; the file is `build-models.yaml` | In the web UI, change that string to `.github/workflows/build-models.yaml` in the `pull_request` and `push` lists |
+| Pushed a branch, no CI run | CI runs on PRs and on main only | Open a PR (after authorization) |
+| `SPEC INVALID: basis_of_record …` | Header block missing, or `field_verified`/`kind` not one of the allowed values | Fix the spec header (Step 8). Use `not_verified`, not `no`: YAML reads bare `no` as a boolean |
 
 ## Rollback
 
@@ -242,7 +269,7 @@ CI artifacts remain downloadable for 30 days. Nothing in this pipeline writes ou
 | Situation | Contact | Method |
 |---|---|---|
 | Scanned/raster set, photos-only, multi-story, skewed walls | Michael (owner) | Needs a new extraction method — don't hand-build around it |
-| Units not true mirrors | Michael | Decide: extract both halves (needs `--half all`) or accept documented differences |
+| Units not true mirrors (below the 90% working default) | Michael | Decide: extract both halves (needs `--half all`) or accept documented differences |
 | Documented dimensions disagree with each other | Michael → architect of record | Model per governing sheet, record the conflict in the spec |
 | Check fails and the drawing supports the model | Michael | Update the check's source/tolerance only with a written reason |
 
@@ -250,6 +277,7 @@ CI artifacts remain downloadable for 30 days. Nothing in this pipeline writes ou
 
 | Date | Run by | Notes |
 |---|---|---|
+| 2026-10-02 | Claude | Tooling + docs hardening (branch `improve-docs-and-reports`; merge status: see PR): `basis_of_record` required in every spec; report gains Basis of record, Source conflicts, Visual review (NOT RECORDED until a `review:` block exists) and parameter assumptions (Cottage A: wall thickness, roof massing, palette); every `build.py` PNG carries an ILLUSTRATIVE label strip; Step 12 is now branch + PR; README reduced to a pointer. Verified locally with bpy 5.0.1: all 5 specs build with check results, extents and provenance identical to `main`; 8 malformed headers rejected; stamped Cottage A iso, sample-bay front and rake realistic cutaway viewed. Not verified: CI on this change; Cottage A / parapet realistic renders; overlays (no source PDFs here). |
 | 2026-09-30 | Claude | Cottage A build-up animation (tools/animate_house.py): 6 steps, 22.6 s, MP4 + animated USDZ. Walls mesh includes interior partitions traced from AH201 — the caption says so. |
 | 2026-09-27 | Claude | Rake detail AH700/12 (detail mode): 16 components, 2 documented dims pass, drawing-vs-callout warnings on fascia depth and wall sheathing. |
 | 2026-09-27 | Claude (with Michael) | QP Cottage Duplex A (2017 CD set, AH201/AH202/AH500/SH202). Right unit mirrored; 5 false openings rejected; 3 walls under a revision cloud traced manually; roof plan area 3,935.7 vs 3,935 sf documented; overlays 82% / 87%. |

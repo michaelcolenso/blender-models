@@ -7,6 +7,11 @@
 project: Field parapet (photo P1) — EXISTING condition
 tolerance_in: 0.125
 
+basis_of_record:
+  documents: "Site photo P1 (2026-09-27) and scope statement S1. One oblique photo; almost every dimension is assumed."
+  kind: field_photo
+  field_verified: not_verified     # per this spec's own field_verify list, as written 2026-09-27
+
 sources:
   - {id: P1, ref: "Site photo P1 (sources/field/parapet-P1.jpg), Michael Colenso, 2026-09-27", type: photo}
   - {id: S1, ref: "Scope statement, M. Colenso 2026-09-27: coping remains; new roof-to-wall flashing and siding at back of parapet", type: scope}

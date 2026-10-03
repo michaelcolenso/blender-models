@@ -3,6 +3,11 @@
 project: SAMPLE balcony framing bay (test fixture)
 tolerance_in: 0.0625
 
+basis_of_record:
+  documents: "SAMPLE fixture: fictional sheet S-501 and photo 012. Not a real project."
+  kind: unknown
+  field_verified: unknown
+
 sources:
   - id: S1
     ref: "SAMPLE sheet S-501, Detail 4 (fictional)"
