@@ -411,6 +411,11 @@ def main():
     a = ap.parse_args()
     spec_path = Path(a.spec)
     spec = yaml.safe_load(spec_path.read_text())
+    if "items" in spec:      # room spec (photo-derived interior): handled by tools/room.py; CI gets checks + review renders only
+        sys.path.insert(0, str(Path(__file__).parent))
+        import room
+        sys.argv = [sys.argv[0], a.spec, "--out", a.out] + (["--no-render"] if a.no_render else ["--only", "review_plan,review_iso,review_front"])
+        return room.main()
     name = spec_path.stem
     out = Path(a.out) / name; out.mkdir(parents=True, exist_ok=True)
 
