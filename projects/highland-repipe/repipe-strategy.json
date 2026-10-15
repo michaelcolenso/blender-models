@@ -1,0 +1,1858 @@
+{
+  "title": "Highland / Proposed repipe sequence",
+  "status": "assumed",
+  "strategy": "Parallel installation followed by one-unit-at-a-time cutover",
+  "strategy_basis": "User selected parallel new supply routes and one-unit-at-a-time cutover. Detailed staging, isolation feasibility and connection geometry remain assumed.",
+  "scope": "Unit 107 domestic-water illustration with a five-fixture bathroom pilot. Building riser replacement, other units, material selection and final routing are not designed here.",
+  "source": {
+    "spec": "projects/highland-water/highland-water.spec.json",
+    "sha256": "76e3656a5f9a6c95ac209c5276152421ad5b772c5058ba03ac9a7caeeee83cde",
+    "drawings": [
+      "P4.01 Unit A / 107",
+      "A2.03 and A3.11 calibration references"
+    ],
+    "existing_status": "Drawing-based reference; not verified installed conditions"
+  },
+  "display_offset_m": [
+    0,
+    0,
+    -0.25
+  ],
+  "display_offset_basis": "Graphic separation only, not a proposed 250 mm construction offset.",
+  "phases": [
+    {
+      "id": "prepare",
+      "seconds": 4,
+      "title": "01 / Prepare the pilot work area",
+      "action": "Survey access, locate services, protect the work area and coordinate resident access.",
+      "service": "Existing supply intended to remain in service",
+      "gate": "Confirm route, access and isolation boundaries before work.",
+      "view": "bath"
+    },
+    {
+      "id": "mains",
+      "seconds": 5,
+      "title": "02 / Install parallel distribution",
+      "action": "New supply and circulation paths appear alongside the reference network.",
+      "service": "Existing supply retained \u2022 new piping not in service",
+      "gate": "Spacing is graphic only; final routing and materials remain open.",
+      "view": "unit"
+    },
+    {
+      "id": "branches",
+      "seconds": 5,
+      "title": "03 / Run branches to the fixtures",
+      "action": "Prepare new branches; leave final fixture connections isolated for cutover.",
+      "service": "Existing supply retained \u2022 new fixture ties held",
+      "gate": "The nine colored tie points identify the bathroom pilot.",
+      "view": "bath"
+    },
+    {
+      "id": "test",
+      "seconds": 4,
+      "title": "04 / Test the isolated new section",
+      "action": "Complete the specified inspections, testing and water-quality preparation.",
+      "service": "New section held out of service pending acceptance",
+      "gate": "Acceptance gate shown as a proposal\u2014not a recorded test result.",
+      "view": "bath"
+    },
+    {
+      "id": "cutover",
+      "seconds": 6,
+      "title": "05 / Cut over one unit at a time",
+      "action": "Isolate the verified unit boundary and tie in the new supplies. The bathroom shows the switch.",
+      "service": "Planned service interruption \u2022 affected scope to be verified",
+      "gate": "No outage duration or independent unit isolation is assumed.",
+      "view": "close"
+    },
+    {
+      "id": "commission",
+      "seconds": 4,
+      "title": "06 / Verify service at the pilot",
+      "action": "Check leaks, fixture operation, hot-water delivery and circulation before release.",
+      "service": "Restore pilot service only after acceptance",
+      "gate": "Colored pulses indicate the sequence, not simulated water flow.",
+      "view": "bath"
+    },
+    {
+      "id": "restore",
+      "seconds": 4,
+      "title": "07 / Restore this unit, then repeat",
+      "action": "Verify all remaining users, retire redundant piping and restore finishes. Then move to the next unit.",
+      "service": "Pilot handover \u2022 remaining building work still to be planned",
+      "gate": "Verify all remaining users before removing or abandoning old piping.",
+      "view": "unit"
+    }
+  ],
+  "elements": [
+    {
+      "id": "proposed-A-cold-master",
+      "reference_id": "A-cold-master",
+      "system": "CW",
+      "points": [
+        [
+          282.69092,
+          267.27142,
+          102
+        ],
+        [
+          -406.04696,
+          267.27142,
+          102
+        ]
+      ],
+      "nominal_in": 1,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-hot-master",
+      "reference_id": "A-hot-master",
+      "system": "HW",
+      "points": [
+        [
+          282.69092,
+          256.99175,
+          100
+        ],
+        [
+          -406.04696,
+          256.99175,
+          100
+        ]
+      ],
+      "nominal_in": 1,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-cold-lavs",
+      "reference_id": "A-cold-lavs",
+      "system": "CW",
+      "points": [
+        [
+          -377.77787,
+          267.27142,
+          102
+        ],
+        [
+          -377.77787,
+          188.85397,
+          102.0
+        ],
+        [
+          -377.75385,
+          188.61011,
+          102.0
+        ],
+        [
+          -377.68272,
+          188.37562,
+          102.0
+        ],
+        [
+          -377.56721,
+          188.15951,
+          102.0
+        ],
+        [
+          -377.41175,
+          187.97009,
+          102.0
+        ],
+        [
+          -377.22233,
+          187.81463,
+          102.0
+        ],
+        [
+          -377.00622,
+          187.69912,
+          102.0
+        ],
+        [
+          -376.77173,
+          187.62799,
+          102.0
+        ],
+        [
+          -376.52787,
+          187.60397,
+          102.0
+        ],
+        [
+          -256.99175,
+          187.60397,
+          102
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-hot-bath-loop",
+      "reference_id": "A-hot-bath-loop",
+      "system": "HW",
+      "points": [
+        [
+          -377.77787,
+          256.99175,
+          100
+        ],
+        [
+          -377.77787,
+          181.76922,
+          100.0
+        ],
+        [
+          -377.74184,
+          181.40343,
+          100.0
+        ],
+        [
+          -377.63514,
+          181.05169,
+          100.0
+        ],
+        [
+          -377.46188,
+          180.72753,
+          100.0
+        ],
+        [
+          -377.2287,
+          180.44339,
+          100.0
+        ],
+        [
+          -376.94456,
+          180.21021,
+          100.0
+        ],
+        [
+          -376.6204,
+          180.03695,
+          100.0
+        ],
+        [
+          -376.26866,
+          179.93025,
+          100.0
+        ],
+        [
+          -375.90287,
+          179.89422,
+          100.0
+        ],
+        [
+          -42.99368,
+          179.89422,
+          100.0
+        ],
+        [
+          -42.62789,
+          179.93025,
+          100.0
+        ],
+        [
+          -42.27615,
+          180.03695,
+          100.0
+        ],
+        [
+          -41.95199,
+          180.21021,
+          100.0
+        ],
+        [
+          -41.66785,
+          180.44339,
+          100.0
+        ],
+        [
+          -41.43467,
+          180.72753,
+          100.0
+        ],
+        [
+          -41.26141,
+          181.05169,
+          100.0
+        ],
+        [
+          -41.15471,
+          181.40343,
+          100.0
+        ],
+        [
+          -41.11868,
+          181.76922,
+          100.0
+        ],
+        [
+          -41.11868,
+          231.98749,
+          100.0
+        ],
+        [
+          -41.08265,
+          232.35328,
+          100.0
+        ],
+        [
+          -40.97595,
+          232.70502,
+          100.0
+        ],
+        [
+          -40.80269,
+          233.02918,
+          100.0
+        ],
+        [
+          -40.56951,
+          233.31332,
+          100.0
+        ],
+        [
+          -40.28537,
+          233.5465,
+          100.0
+        ],
+        [
+          -39.96121,
+          233.71976,
+          100.0
+        ],
+        [
+          -39.60947,
+          233.82646,
+          100.0
+        ],
+        [
+          -39.24368,
+          233.86249,
+          100.0
+        ],
+        [
+          251.85191,
+          233.86249,
+          100
+        ]
+      ],
+      "nominal_in": 0.75,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-bath-return-link",
+      "reference_id": "A-bath-return-link",
+      "system": "HWC",
+      "points": [
+        [
+          251.85191,
+          233.86249,
+          100
+        ],
+        [
+          251.85191,
+          233.86249,
+          98
+        ],
+        [
+          272.41125,
+          233.86249,
+          98
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-cold-spine",
+      "reference_id": "A-cold-spine",
+      "system": "CW",
+      "points": [
+        [
+          254.42183,
+          267.27142,
+          102
+        ],
+        [
+          254.42183,
+          28.26909,
+          102
+        ],
+        [
+          354.64861,
+          28.26909,
+          102
+        ],
+        [
+          354.64861,
+          -89.94711,
+          102
+        ]
+      ],
+      "nominal_in": 0.75,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-hot-spine",
+      "reference_id": "A-hot-spine",
+      "system": "HW",
+      "points": [
+        [
+          262.13158,
+          256.99175,
+          100
+        ],
+        [
+          262.13158,
+          17.98942,
+          100
+        ],
+        [
+          344.36894,
+          17.98942,
+          100
+        ],
+        [
+          344.36894,
+          -89.94711,
+          100
+        ]
+      ],
+      "nominal_in": 0.75,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-return-spine",
+      "reference_id": "A-return-spine",
+      "system": "HWC",
+      "points": [
+        [
+          272.41125,
+          233.86249,
+          98
+        ],
+        [
+          272.41125,
+          7.70975,
+          98
+        ],
+        [
+          334.08927,
+          7.70975,
+          98
+        ],
+        [
+          334.08927,
+          -89.94711,
+          98
+        ],
+        [
+          344.36894,
+          -89.94711,
+          98
+        ],
+        [
+          344.36894,
+          -89.94711,
+          100
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-lower-lav-cold",
+      "reference_id": "A-lower-lav-cold",
+      "system": "CW",
+      "points": [
+        [
+          354.64861,
+          -89.94711,
+          102
+        ],
+        [
+          313.52993,
+          -89.94711,
+          102
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-lower-lav-hot",
+      "reference_id": "A-lower-lav-hot",
+      "system": "HW",
+      "points": [
+        [
+          344.36894,
+          -89.94711,
+          100
+        ],
+        [
+          321.23968,
+          -89.94711,
+          100
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "mains",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-A-hosebib-trunk",
+      "reference_id": "A-hosebib-trunk",
+      "system": "CW",
+      "points": [
+        [
+          254.42183,
+          28.26909,
+          102
+        ],
+        [
+          254.42183,
+          -35.97884,
+          102
+        ],
+        [
+          79.66744,
+          -35.97884,
+          102
+        ],
+        [
+          79.66744,
+          -292.97059,
+          102
+        ],
+        [
+          79.66744,
+          -292.97059,
+          26
+        ]
+      ],
+      "nominal_in": 0.75,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-shower-master-cw",
+      "reference_id": "shower-master-cw",
+      "system": "CW",
+      "points": [
+        [
+          -382.9177,
+          267.27142,
+          102
+        ],
+        [
+          -382.9177,
+          273.73117,
+          102.0
+        ],
+        [
+          -382.9177,
+          273.97503,
+          101.97598
+        ],
+        [
+          -382.9177,
+          274.20952,
+          101.90485
+        ],
+        [
+          -382.9177,
+          274.42563,
+          101.78934
+        ],
+        [
+          -382.9177,
+          274.61505,
+          101.63388
+        ],
+        [
+          -382.9177,
+          274.77051,
+          101.44446
+        ],
+        [
+          -382.9177,
+          274.88602,
+          101.22835
+        ],
+        [
+          -382.9177,
+          274.95715,
+          100.99386
+        ],
+        [
+          -382.9177,
+          274.98117,
+          100.75
+        ],
+        [
+          -382.9177,
+          274.98117,
+          48
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-shower-master-hw",
+      "reference_id": "shower-master-hw",
+      "system": "HW",
+      "points": [
+        [
+          -372.63803,
+          256.99175,
+          100
+        ],
+        [
+          -372.63803,
+          273.73117,
+          100.0
+        ],
+        [
+          -372.63803,
+          273.97503,
+          99.97598
+        ],
+        [
+          -372.63803,
+          274.20952,
+          99.90485
+        ],
+        [
+          -372.63803,
+          274.42563,
+          99.78934
+        ],
+        [
+          -372.63803,
+          274.61505,
+          99.63388
+        ],
+        [
+          -372.63803,
+          274.77051,
+          99.44446
+        ],
+        [
+          -372.63803,
+          274.88602,
+          99.22835
+        ],
+        [
+          -372.63803,
+          274.95715,
+          98.99386
+        ],
+        [
+          -372.63803,
+          274.98117,
+          98.75
+        ],
+        [
+          -372.63803,
+          274.98117,
+          48
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-bath-cw",
+      "reference_id": "bath-cw",
+      "system": "CW",
+      "points": [
+        [
+          -295.54051,
+          267.27142,
+          102
+        ],
+        [
+          -295.54051,
+          280.81592,
+          102.0
+        ],
+        [
+          -295.54051,
+          281.18171,
+          101.96397
+        ],
+        [
+          -295.54051,
+          281.53345,
+          101.85727
+        ],
+        [
+          -295.54051,
+          281.85761,
+          101.68401
+        ],
+        [
+          -295.54051,
+          282.14175,
+          101.45083
+        ],
+        [
+          -295.54051,
+          282.37493,
+          101.16669
+        ],
+        [
+          -295.54051,
+          282.54819,
+          100.84253
+        ],
+        [
+          -295.54051,
+          282.65489,
+          100.49079
+        ],
+        [
+          -295.54051,
+          282.69092,
+          100.125
+        ],
+        [
+          -295.54051,
+          282.69092,
+          24
+        ]
+      ],
+      "nominal_in": 0.75,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-bath-hw",
+      "reference_id": "bath-hw",
+      "system": "HW",
+      "points": [
+        [
+          -285.26084,
+          256.99175,
+          100
+        ],
+        [
+          -285.26084,
+          280.19092,
+          100.0
+        ],
+        [
+          -285.26084,
+          280.67865,
+          99.95196
+        ],
+        [
+          -285.26084,
+          281.14763,
+          99.8097
+        ],
+        [
+          -285.26084,
+          281.57985,
+          99.57867
+        ],
+        [
+          -285.26084,
+          281.95869,
+          99.26777
+        ],
+        [
+          -285.26084,
+          282.26959,
+          98.88893
+        ],
+        [
+          -285.26084,
+          282.50062,
+          98.45671
+        ],
+        [
+          -285.26084,
+          282.64288,
+          97.98773
+        ],
+        [
+          -285.26084,
+          282.69092,
+          97.5
+        ],
+        [
+          -285.26084,
+          282.69092,
+          24
+        ]
+      ],
+      "nominal_in": 1,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-wc-master-cw",
+      "reference_id": "wc-master-cw",
+      "system": "CW",
+      "points": [
+        [
+          -217.30315,
+          267.27142,
+          102
+        ],
+        [
+          -217.30315,
+          289.16125,
+          102.0
+        ],
+        [
+          -217.30315,
+          289.40511,
+          101.97598
+        ],
+        [
+          -217.30315,
+          289.6396,
+          101.90485
+        ],
+        [
+          -217.30315,
+          289.85571,
+          101.78934
+        ],
+        [
+          -217.30315,
+          290.04513,
+          101.63388
+        ],
+        [
+          -217.30315,
+          290.20059,
+          101.44446
+        ],
+        [
+          -217.30315,
+          290.3161,
+          101.22835
+        ],
+        [
+          -217.30315,
+          290.38723,
+          100.99386
+        ],
+        [
+          -217.30315,
+          290.41125,
+          100.75
+        ],
+        [
+          -217.30315,
+          290.41125,
+          12
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-lav-300-cw",
+      "reference_id": "lav-300-cw",
+      "system": "CW",
+      "points": [
+        [
+          -310.96001,
+          187.60397,
+          102
+        ],
+        [
+          -310.96001,
+          189.66837,
+          102.0
+        ],
+        [
+          -310.96001,
+          189.76906,
+          101.99008
+        ],
+        [
+          -310.96001,
+          189.86587,
+          101.96071
+        ],
+        [
+          -310.96001,
+          189.9551,
+          101.91302
+        ],
+        [
+          -310.96001,
+          190.03331,
+          101.84884
+        ],
+        [
+          -310.96001,
+          190.09749,
+          101.77063
+        ],
+        [
+          -310.96001,
+          190.14518,
+          101.6814
+        ],
+        [
+          -310.96001,
+          190.17455,
+          101.58459
+        ],
+        [
+          -310.96001,
+          190.18447,
+          101.4839
+        ],
+        [
+          -310.96001,
+          190.18447,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-lav-300-hw",
+      "reference_id": "lav-300-hw",
+      "system": "HW",
+      "points": [
+        [
+          -305.82018,
+          179.89422,
+          100
+        ],
+        [
+          -305.82018,
+          188.93447,
+          100.0
+        ],
+        [
+          -305.82018,
+          189.17833,
+          99.97598
+        ],
+        [
+          -305.82018,
+          189.41282,
+          99.90485
+        ],
+        [
+          -305.82018,
+          189.62893,
+          99.78934
+        ],
+        [
+          -305.82018,
+          189.81835,
+          99.63388
+        ],
+        [
+          -305.82018,
+          189.97381,
+          99.44446
+        ],
+        [
+          -305.82018,
+          190.08932,
+          99.22835
+        ],
+        [
+          -305.82018,
+          190.16045,
+          98.99386
+        ],
+        [
+          -305.82018,
+          190.18447,
+          98.75
+        ],
+        [
+          -305.82018,
+          190.18447,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-lav-375-cw",
+      "reference_id": "lav-375-cw",
+      "system": "CW",
+      "points": [
+        [
+          -272.41125,
+          187.60397,
+          102
+        ],
+        [
+          -272.41125,
+          189.66837,
+          102.0
+        ],
+        [
+          -272.41125,
+          189.76906,
+          101.99008
+        ],
+        [
+          -272.41125,
+          189.86587,
+          101.96071
+        ],
+        [
+          -272.41125,
+          189.9551,
+          101.91302
+        ],
+        [
+          -272.41125,
+          190.03331,
+          101.84884
+        ],
+        [
+          -272.41125,
+          190.09749,
+          101.77063
+        ],
+        [
+          -272.41125,
+          190.14518,
+          101.6814
+        ],
+        [
+          -272.41125,
+          190.17455,
+          101.58459
+        ],
+        [
+          -272.41125,
+          190.18447,
+          101.4839
+        ],
+        [
+          -272.41125,
+          190.18447,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-lav-375-hw",
+      "reference_id": "lav-375-hw",
+      "system": "HW",
+      "points": [
+        [
+          -267.27142,
+          179.89422,
+          100
+        ],
+        [
+          -267.27142,
+          188.93447,
+          100.0
+        ],
+        [
+          -267.27142,
+          189.17833,
+          99.97598
+        ],
+        [
+          -267.27142,
+          189.41282,
+          99.90485
+        ],
+        [
+          -267.27142,
+          189.62893,
+          99.78934
+        ],
+        [
+          -267.27142,
+          189.81835,
+          99.63388
+        ],
+        [
+          -267.27142,
+          189.97381,
+          99.44446
+        ],
+        [
+          -267.27142,
+          190.08932,
+          99.22835
+        ],
+        [
+          -267.27142,
+          190.16045,
+          98.99386
+        ],
+        [
+          -267.27142,
+          190.18447,
+          98.75
+        ],
+        [
+          -267.27142,
+          190.18447,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-powder-cw",
+      "reference_id": "powder-cw",
+      "system": "CW",
+      "points": [
+        [
+          143.91538,
+          267.27142,
+          102
+        ],
+        [
+          141.34546,
+          267.27142,
+          102
+        ],
+        [
+          141.34546,
+          223.58282,
+          102
+        ],
+        [
+          141.34546,
+          223.58282,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-powder-hw",
+      "reference_id": "powder-hw",
+      "system": "HW",
+      "points": [
+        [
+          143.91538,
+          256.99175,
+          100
+        ],
+        [
+          146.4853,
+          256.99175,
+          100
+        ],
+        [
+          146.4853,
+          223.58282,
+          100
+        ],
+        [
+          146.4853,
+          223.58282,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-powder-wc-cw",
+      "reference_id": "powder-wc-cw",
+      "system": "CW",
+      "points": [
+        [
+          115.64629,
+          267.27142,
+          102
+        ],
+        [
+          115.64629,
+          267.27142,
+          102
+        ],
+        [
+          115.64629,
+          195.31373,
+          102
+        ],
+        [
+          115.64629,
+          195.31373,
+          12
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-washer-cw",
+      "reference_id": "washer-cw",
+      "system": "CW",
+      "points": [
+        [
+          254.42183,
+          236.43241,
+          102
+        ],
+        [
+          300.68034,
+          236.43241,
+          102
+        ],
+        [
+          300.68034,
+          236.43241,
+          102
+        ],
+        [
+          300.68034,
+          236.43241,
+          42
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-washer-hw",
+      "reference_id": "washer-hw",
+      "system": "HW",
+      "points": [
+        [
+          262.13158,
+          236.43241,
+          100
+        ],
+        [
+          305.82018,
+          236.43241,
+          100
+        ],
+        [
+          305.82018,
+          236.43241,
+          100
+        ],
+        [
+          305.82018,
+          236.43241,
+          42
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-shower-lower-cw",
+      "reference_id": "shower-lower-cw",
+      "system": "CW",
+      "points": [
+        [
+          354.64861,
+          -17.98942,
+          102
+        ],
+        [
+          359.78844,
+          -17.98942,
+          102
+        ],
+        [
+          359.78844,
+          -17.98942,
+          102
+        ],
+        [
+          359.78844,
+          -17.98942,
+          48
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-shower-lower-hw",
+      "reference_id": "shower-lower-hw",
+      "system": "HW",
+      "points": [
+        [
+          344.36894,
+          -17.98942,
+          100
+        ],
+        [
+          349.50877,
+          -17.98942,
+          100
+        ],
+        [
+          349.50877,
+          -17.98942,
+          100
+        ],
+        [
+          349.50877,
+          -17.98942,
+          48
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-lav-lower-cw",
+      "reference_id": "lav-lower-cw",
+      "system": "CW",
+      "points": [
+        [
+          313.52993,
+          -89.94711,
+          102
+        ],
+        [
+          321.23968,
+          -89.94711,
+          102
+        ],
+        [
+          321.23968,
+          -102.7967,
+          102
+        ],
+        [
+          321.23968,
+          -102.7967,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-lav-lower-hw",
+      "reference_id": "lav-lower-hw",
+      "system": "HW",
+      "points": [
+        [
+          321.23968,
+          -89.94711,
+          100
+        ],
+        [
+          326.37952,
+          -89.94711,
+          100
+        ],
+        [
+          326.37952,
+          -102.7967,
+          100
+        ],
+        [
+          326.37952,
+          -102.7967,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-wc-lower-cw",
+      "reference_id": "wc-lower-cw",
+      "system": "CW",
+      "points": [
+        [
+          354.64861,
+          -89.94711,
+          102
+        ],
+        [
+          359.78844,
+          -89.94711,
+          102
+        ],
+        [
+          359.78844,
+          -97.65686,
+          102
+        ],
+        [
+          359.78844,
+          -97.65686,
+          12
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-island-underfloor-CW",
+      "reference_id": "island-underfloor-CW",
+      "system": "CW",
+      "points": [
+        [
+          254.42183,
+          28.26909,
+          102
+        ],
+        [
+          254.42183,
+          28.26909,
+          -6
+        ],
+        [
+          113.07637,
+          28.26909,
+          -6
+        ],
+        [
+          113.07637,
+          5.13983,
+          -6
+        ],
+        [
+          113.07637,
+          5.13983,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-island-underfloor-HW",
+      "reference_id": "island-underfloor-HW",
+      "system": "HW",
+      "points": [
+        [
+          262.13158,
+          28.26909,
+          100
+        ],
+        [
+          262.13158,
+          28.26909,
+          -6
+        ],
+        [
+          120.78612,
+          28.26909,
+          -6
+        ],
+        [
+          120.78612,
+          5.13983,
+          -6
+        ],
+        [
+          120.78612,
+          5.13983,
+          24
+        ]
+      ],
+      "nominal_in": 0.5,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-master-lav-1-cw-connector",
+      "reference_id": "master-lav-1-cw-connector",
+      "system": "CW",
+      "points": [
+        [
+          -310.96001,
+          190.18447,
+          24
+        ],
+        [
+          -310.96001,
+          187.18447,
+          21
+        ],
+        [
+          -310.89009,
+          178.48447,
+          25
+        ],
+        [
+          -310.89009,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-master-lav-1-hw-connector",
+      "reference_id": "master-lav-1-hw-connector",
+      "system": "HW",
+      "points": [
+        [
+          -305.82018,
+          190.18447,
+          24
+        ],
+        [
+          -305.82018,
+          187.18447,
+          21
+        ],
+        [
+          -305.89009,
+          178.48447,
+          25
+        ],
+        [
+          -305.89009,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-master-lav-2-cw-connector",
+      "reference_id": "master-lav-2-cw-connector",
+      "system": "CW",
+      "points": [
+        [
+          -272.41125,
+          190.18447,
+          24
+        ],
+        [
+          -272.41125,
+          187.18447,
+          21
+        ],
+        [
+          -272.34133,
+          178.48447,
+          25
+        ],
+        [
+          -272.34133,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-master-lav-2-hw-connector",
+      "reference_id": "master-lav-2-hw-connector",
+      "system": "HW",
+      "points": [
+        [
+          -267.27142,
+          190.18447,
+          24
+        ],
+        [
+          -267.27142,
+          187.18447,
+          21
+        ],
+        [
+          -267.34133,
+          178.48447,
+          25
+        ],
+        [
+          -267.34133,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    },
+    {
+      "id": "proposed-master-wc-cw-connector",
+      "reference_id": "master-wc-cw-connector",
+      "system": "CW",
+      "points": [
+        [
+          -217.30315,
+          290.41125,
+          12
+        ],
+        [
+          -220.30315,
+          287.41125,
+          10
+        ],
+        [
+          -217.30315,
+          279.81125,
+          14
+        ],
+        [
+          -217.30315,
+          281.81125,
+          18.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "group": "branches",
+      "status": "assumed",
+      "basis": "Concept sequence reuses the drawing-study topology. New-route separation is graphical; final route, size, material and isolation limits are unselected."
+    }
+  ],
+  "pilot_ports": [
+    {
+      "id": "master-lav-1-CW",
+      "fixture": "master-lav-1",
+      "system": "CW",
+      "port": [
+        -310.89009,
+        178.48447,
+        30.0
+      ],
+      "reference_route": "master-lav-1-cw-connector",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-lav-1-HW",
+      "fixture": "master-lav-1",
+      "system": "HW",
+      "port": [
+        -305.89009,
+        178.48447,
+        30.0
+      ],
+      "reference_route": "master-lav-1-hw-connector",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-lav-2-CW",
+      "fixture": "master-lav-2",
+      "system": "CW",
+      "port": [
+        -272.34133,
+        178.48447,
+        30.0
+      ],
+      "reference_route": "master-lav-2-cw-connector",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-lav-2-HW",
+      "fixture": "master-lav-2",
+      "system": "HW",
+      "port": [
+        -267.34133,
+        178.48447,
+        30.0
+      ],
+      "reference_route": "master-lav-2-hw-connector",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-wc-CW",
+      "fixture": "master-wc",
+      "system": "CW",
+      "port": [
+        -217.30315,
+        281.81125,
+        18.0
+      ],
+      "reference_route": "master-wc-cw-connector",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-shower-CW",
+      "fixture": "master-shower",
+      "system": "CW",
+      "port": [
+        -382.9177,
+        274.98117,
+        48
+      ],
+      "reference_route": "shower-master-cw",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-shower-HW",
+      "fixture": "master-shower",
+      "system": "HW",
+      "port": [
+        -372.63803,
+        274.98117,
+        48
+      ],
+      "reference_route": "shower-master-hw",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-bath-CW",
+      "fixture": "master-bath",
+      "system": "CW",
+      "port": [
+        -295.54051,
+        282.69092,
+        24
+      ],
+      "reference_route": "bath-cw",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    },
+    {
+      "id": "master-bath-HW",
+      "fixture": "master-bath",
+      "system": "HW",
+      "port": [
+        -285.26084,
+        282.69092,
+        24
+      ],
+      "reference_route": "bath-hw",
+      "status": "assumed",
+      "basis": "Concept tie point uses the bathroom study port, not a surveyed connection."
+    }
+  ],
+  "fixture_order": [
+    "master-shower",
+    "master-bath",
+    "master-wc",
+    "master-lav-1",
+    "master-lav-2"
+  ],
+  "unit_roots": {
+    "CW": [
+      282.69092,
+      267.27142,
+      102
+    ],
+    "HW": [
+      282.69092,
+      256.99175,
+      100
+    ],
+    "HWC": [
+      272.41125,
+      233.86249,
+      98
+    ]
+  },
+  "work_zone": {
+    "center": [
+      -7.5,
+      0.035,
+      -5.5
+    ],
+    "size": [
+      5.4,
+      0.025,
+      4.3
+    ],
+    "status": "assumed",
+    "basis": "Representative floor-protection graphic at the pilot. Actual access, staging, egress and protection limits require a site plan."
+  },
+  "limitations": [
+    "Proposed sequence only; no contractor-approved repipe plan supplied.",
+    "Reference pipes are not a verified existing-conditions survey.",
+    "The new routes reuse reference topology for explanation; they do not establish new routing or sizes.",
+    "Only nine pilot fixture tie points are explicit; other dwelling connections and building tie-ins are outside the demonstrated cutover.",
+    "Graphic pipe separation does not establish available clearance.",
+    "No material, test pressure, outage duration, valve location or shutdown boundary is specified.",
+    "New network acceptance is a required future step, not a test result.",
+    "Sanitary, vent, gas and fire protection are outside this illustration."
+  ]
+}

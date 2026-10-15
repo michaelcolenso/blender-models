@@ -2,6 +2,7 @@
 
 This is the corrected starting point: modeled domestic-water pipes, fixtures and equipment. Unit 107 plan scale now derives from the architectural structural grid, and floor datums follow A3.11. Start with the updated review PDF, including a bathroom close-up and calibration evidence.
 
+- [Proposed repipe strategy — installation and unit-by-unit cutover](../highland-repipe/)
 - [Animated plumbing view — 24-second MP4](Unit-107-plumbing-animation.mp4) — bathroom orbit, fixture connections, then full-unit context. Use **Download raw file** to play locally if GitHub does not preview it.
 - [Bathroom pilot PDF — two pages](Unit-107-bathroom-pilot.pdf) — the five fixtures and their supply connections.
 - [Model review PDF](Highland-pipe-model-review.pdf)

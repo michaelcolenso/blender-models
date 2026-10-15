@@ -1,0 +1,104 @@
+{
+  "route_count": 37,
+  "pilot_port_count": 9,
+  "phases": 7,
+  "separate_reference_and_proposed": true,
+  "phase_checks": [
+    {
+      "time": 2,
+      "phase": "prepare",
+      "phaseIndex": 0,
+      "connected_pilot_ports": 0,
+      "visible_routes": 0,
+      "reference_mains_retained": true
+    },
+    {
+      "time": 6.5,
+      "phase": "mains",
+      "phaseIndex": 1,
+      "connected_pilot_ports": 0,
+      "visible_routes": 10,
+      "reference_mains_retained": true
+    },
+    {
+      "time": 11.5,
+      "phase": "branches",
+      "phaseIndex": 2,
+      "connected_pilot_ports": 0,
+      "visible_routes": 37,
+      "reference_mains_retained": true
+    },
+    {
+      "time": 16,
+      "phase": "test",
+      "phaseIndex": 3,
+      "connected_pilot_ports": 0,
+      "visible_routes": 37,
+      "reference_mains_retained": true
+    },
+    {
+      "time": 21,
+      "phase": "cutover",
+      "phaseIndex": 4,
+      "connected_pilot_ports": 5,
+      "visible_routes": 37,
+      "reference_mains_retained": true
+    },
+    {
+      "time": 26,
+      "phase": "commission",
+      "phaseIndex": 5,
+      "connected_pilot_ports": 9,
+      "visible_routes": 37,
+      "reference_mains_retained": true
+    },
+    {
+      "time": 30,
+      "phase": "restore",
+      "phaseIndex": 6,
+      "connected_pilot_ports": 9,
+      "visible_routes": 37,
+      "reference_mains_retained": true
+    }
+  ],
+  "before_cutover": {
+    "phase": "test",
+    "phaseIndex": 3,
+    "connected_pilot_ports": 0,
+    "visible_routes": 37,
+    "reference_mains_retained": true
+  },
+  "end_state": {
+    "phase": "restore",
+    "phaseIndex": 6,
+    "connected_pilot_ports": 9,
+    "visible_routes": 37,
+    "reference_mains_retained": true
+  },
+  "browser_errors": [],
+  "mobile_overflow": false,
+  "fps": 24,
+  "frames": 768,
+  "duration_seconds": 32,
+  "resolution": [
+    1280,
+    720
+  ],
+  "full_video_decode": "passed",
+  "encoded_format": "H.264 / yuv420p",
+  "decoded_samples_inspected_seconds": [
+    22,
+    31
+  ],
+  "phase_stills_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "preview_gif_frames": 192,
+  "validation_scope": "Presentation sequence and source-port agreement only; no actual isolation, hydraulic or construction validation."
+}
