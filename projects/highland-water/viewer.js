@@ -68,5 +68,14 @@ async function load(){
 }
 load().catch(error=>{$('loading').textContent='The 3D viewer could not start: '+error.message;console.error(error);});
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
+// Fixed-time camera control for reproducible video capture, independent of frame rate.
+window.videoFrame=({target,position,angle=0})=>{
+ controls.autoRotate=false;controls.enableDamping=false;
+ const t=new THREE.Vector3().fromArray(target);
+ const offset=new THREE.Vector3().fromArray(position).sub(t);
+ offset.applyAxisAngle(new THREE.Vector3(0,1,0),angle);
+ controls.target.copy(t);camera.position.copy(t).add(offset);
+ controls.update();renderer.render(scene,camera);
+};
 // Deterministic camera positions for review frames and the owner video.
 window.presentation={show:showModel,frame(name,angle){if(current!==name)showModel(name);const i=info[name],t=new THREE.Vector3().fromArray(i.target);let v=new THREE.Vector3().fromArray(i.position).sub(t);v.applyAxisAngle(new THREE.Vector3(0,1,0),angle);camera.position.copy(t).add(v);controls.target.copy(t);controls.update();renderer.render(scene,camera);},stats(){return Object.fromEntries(Object.entries(models).map(([k,m])=>[k,{objects:m.children.length,meshes:(()=>{let n=0;m.traverse(o=>{if(o.isMesh)n++;});return n;})()}]));}};

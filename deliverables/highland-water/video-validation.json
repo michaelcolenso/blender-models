@@ -1,0 +1,33 @@
+{
+  "fps": 24,
+  "frames": 576,
+  "duration_seconds": 24,
+  "resolution": [
+    1280,
+    720
+  ],
+  "browser_errors": [],
+  "shots": [
+    {
+      "title": "Unit 107 \u00b7 Primary bathroom",
+      "seconds": 10
+    },
+    {
+      "title": "Behind the fixtures",
+      "seconds": 8
+    },
+    {
+      "title": "The bathroom within Unit 107",
+      "seconds": 6
+    }
+  ],
+  "ffmpeg_full_decode": "passed",
+  "decoded_frames": 576,
+  "preview_gif_frames": 100,
+  "inspected_shots": [
+    1,
+    2,
+    3
+  ],
+  "decoded_frame_inspected_seconds": 14
+}

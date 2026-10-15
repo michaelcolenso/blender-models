@@ -60,7 +60,7 @@ Outputs go to `build/highland-water/`. `prepare_spec.py` is the manual takeoff /
 
 The new excerpt supplies enough information for provisional XY calibration and documented floor datums. Next obtain the P1 / Unit 107 architectural and reflected-ceiling plans, clear ceiling heights and actual pipe elevations. Resolve its dishwasher connection and return-loop details. Establish shaft positions before placing the risers spatially. If the objective is the actual installed system, confirm routes and equipment with field records/photos. Extend to other units and sanitary/vent/gas only after the pilot geometry is checked.
 
-The working model and review documents are delivered under `deliverables/highland-water/`. No new owner walkthrough video was made: dimensional review comes first.
+The working model and review documents are delivered under `deliverables/highland-water/`. A 24-second animated model review now shows the bathroom, fixture connections and full-unit context. It retains visible assumption labels throughout.
 
 ## Architectural update
 
@@ -75,3 +75,13 @@ The five-fixture primary bathroom now has an explicit port contract in `bathroom
 The builder checks each drop/connector endpoint against the corresponding fixture or mixer port, ensures the toilet receives cold water only, verifies both mixed outlets, and checks that stops lie on their supply routes. A generated-mesh check measures clearance between the five wall-side vertical supply drops and the actual lavatory/toilet bounds. This is a targeted interference check; it does not establish whole-model clash freedom, hydraulic adequacy, code compliance, temperature performance or installed conditions. Purple indicates mixed water without asserting any temperature setting.
 
 The bathroom domestic-water pilot is ready for visual review. Sanitary/vent systems remain outside this model. The two-page `Unit-107-bathroom-pilot.pdf` shows the bathroom and fixture connections; the full review retains the source overlay and calibration evidence. The Blender file now opens on the bathroom. Use Bathroom or Connections in the standalone viewer to inspect it; Fittings toggles the representative hardware.
+
+## Animated review
+
+`render_video.cjs` captures deterministic Three.js camera sweeps at 1280 × 720, 24 fps, and encodes an H.264 MP4 with FFmpeg. It needs Playwright and Chromium in addition to the viewer dependencies. Serve `build/highland-water/` locally after packaging the viewer, then run:
+
+```bash
+node projects/highland-water/render_video.cjs http://127.0.0.1:8878/Highland-plumbing-3D.html build/highland-water
+```
+
+The 24-second sequence contains a bathroom orbit, an under-fixture connection view and full-unit context. The video uses the same GLB geometry as the viewer; it does not add any pipe routes. `video-validation.json` records frame count, timing and browser errors. Captured frames and decoded video frames were inspected before delivery.
