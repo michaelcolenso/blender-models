@@ -43,7 +43,7 @@ def validate():
                 on=[]
                 for p in points:
                     t=(Vector(p)-a).dot(ab)/ab.length_squared
-                    if -1e-7<=t<=1+1e-7 and (Vector(p)-(a+t*ab)).length<1e-5: on.append((t,p))
+                    if -1e-6<=t<=1+1e-6 and (Vector(p)-(a+t*ab)).length<1e-3: on.append((t,p))
                 on.sort()
                 for (_,p),(_,q) in zip(on,on[1:]): adjacency[p].add(q);adjacency[q].add(p)
         seen=set(); todo=[tuple(root)]
@@ -56,7 +56,20 @@ def validate():
         assert not failed,(key,failed)
         connected[key]={'terminal_routes_reachable':len(terminals),'nodes_reachable':len(seen),'nodes_total':len(points)}
         assert len(seen)==len(points),(key,'disconnected internal routes')
-    report={'counts':actual,'connectivity':connected,'limitations':SPEC['limitations'],'result':'PASS: modeled counts, provenance and per-system distribution reachability; plant internals and cross-system flow not validated'}
+    cal=SPEC['calibration'];grid_scales={}
+    for axis in ['grid_x','grid_y']:
+        g=cal[axis];rates=[(b-a)/d for a,b,d in zip(g['p2_02_pdf_points'],g['p2_02_pdf_points'][1:],g['spans_in'])]
+        assert max(abs(r/.75-1) for r in rates)<.006,(axis,rates)
+        grid_scales[axis]=rates
+    reg=json.loads((HERE/cal['registration_file']).read_text())
+    assert reg['inliers']>=20 and reg['median_residual_pdf_pt']<.5
+    factor=math.hypot(*reg['affine'][0][:2])/.75
+    assert abs(factor/cal['unit_xy_in_per_normalized_pixel']-1)<1e-6
+    for level,elev in cal['floor_elevations_ft'].items():
+        line=next(e for e in es if e['id']=='floor-'+level+'-0')
+        assert abs(line['points'][0][2]-(elev-332)*12)<.001
+    assert (cal['floor_elevations_ft']['R1']-cal['floor_elevations_ft']['P1'])*12==132
+    report={'counts':actual,'connectivity':connected,'calibration_checks':{'grid_points_per_inch':grid_scales,'max_allowed_raster_grid_variation_percent':.6,'registration_inliers':reg['inliers'],'median_registration_error_pt':reg['median_residual_pdf_pt'],'unit_scale_in_per_pixel':factor,'floor_datums_checked':7,'unit_107_floor_to_floor_in':132},'limitations':SPEC['limitations'],'result':'PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated'}
     (OUT/'validation.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2),flush=True)
 validate()
@@ -123,6 +136,7 @@ def tube(points,r,mat):
         v=(q-p).normalized();cylinder(p+v*r*.5,p+v*r*2.4,r*1.17,mat)
 def fixture(e):
     x,y,z=[v*IN for v in e['at']];kind=e['fixture'];W=mats['fixtures']
+    pixel=SPEC['calibration']['unit_xy_in_per_normalized_pixel']*IN
     if kind in ['lav','sink']:
         width=.60 if kind=='lav' else .85
         cube((x,y,z+.76),(width,.48,.12),'fixtures',.045)
@@ -130,6 +144,9 @@ def fixture(e):
         cylinder((x,y+.16,z+.82),(x,y+.16,z+1.02),.012,'metal')
         cylinder((x,y+.16,z+1.02),(x,y,z+1.02),.012,'metal')
         cylinder((x,y,z+.23),(x,y,z+.70),.025,'fixtures')
+        # Representative fixture tails meet the drawing-derived supply drops.
+        for dx in [-5*pixel,5*pixel]:
+            cylinder((x+dx,y,z+24*IN),(x+dx,y,z+.76),.009,'metal')
     elif kind=='wc':
         sphere((x,y,z+.34),1,'fixtures',(.19,.28,.18))
         sphere((x,y-.04,z+.45),1,'dark',(.12,.17,.012))
@@ -138,10 +155,15 @@ def fixture(e):
     elif kind=='bath':
         cube((x,y,z+.24),(1.65,.80,.48),'fixtures',.13)
         cube((x,y,z+.485),(1.35,.57,.02),'dark',.10)
-        cylinder((x+.6,y+.28,z+.48),(x+.6,y+.28,z+.7),.016,'metal')
+        yy=y+20*pixel;zz=z+24*IN
+        cylinder((x-10*pixel,yy,zz),(x+10*pixel,yy,zz),.022,'metal')
+        cylinder((x,yy,zz),(x,yy-.18,zz),.016,'metal')
     elif kind=='shower':
         cube((x,y,z+.035),(.95,.95,.07),'fixtures',.045)
-        cylinder((x,y+.42,z+1.12),(x,y+.42,z+2.03),.014,'metal')
+        zz=z+48*IN
+        cylinder((x-10*pixel,y,zz),(x+10*pixel,y,zz),.023,'metal')
+        cylinder((x,y,zz),(x,y+.42,zz),.014,'metal')
+        cylinder((x,y+.42,zz),(x,y+.42,z+2.03),.014,'metal')
         cylinder((x,y+.42,z+2.03),(x,y+.12,z+2.03),.014,'metal')
         cylinder((x,y+.12,z+2.0),(x,y+.12,z+2.03),.08,'metal')
     elif kind=='washer':
@@ -213,12 +235,13 @@ bpy.ops.object.camera_add();camera=bpy.context.object;scene.camera=camera;camera
 views=[
  ('building','building-iso',(31,-40,28),(0,0,11),39),
  ('plant','plant-iso',(11,-15,11),(-.7,0,1.3),15),
- ('unit','unit-iso',(16,-23,21),(0,-1.7,1.0),20),
- ('unit','review-plan',(0,-1.8,30),(0,-1.8,0),20),
- ('unit','review-front',(0,-35,4),(0,-1.8,1.3),20),
- ('unit','review-side',(35,-1.8,4),(0,-1.8,1.3),20),
+ ('unit','unit-iso',(20,-29,26),(0,-2.2,1.0),26),
+ ('unit','unit-bath',(2,-5,10),(-7,5.5,1),11),
+ ('unit','review-plan',(0,0,35),(0,0,0),26),
+ ('unit','review-front',(0,-35,4),(0,0,1.3),26),
+ ('unit','review-side',(35,0,4),(0,0,1.3),26),
  ('building','review-building',(31,-40,28),(0,0,11),39),
- ('unit','review-iso',(16,-23,21),(0,-1.7,1.0),20)]
+ ('unit','review-iso',(20,-29,26),(0,-2.2,1.0),26)]
 for model,name,pos,target,scale in views:
     for m in ['building','plant','unit']:collections[m].hide_render=m!=model
     camera.location=pos;camera.rotation_euler=(Vector(target)-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=scale

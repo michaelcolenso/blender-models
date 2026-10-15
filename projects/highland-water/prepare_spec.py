@@ -7,6 +7,7 @@ from pathlib import Path
 import json, hashlib
 
 HERE = Path(__file__).parent
+CAL=json.loads((HERE/'calibration.json').read_text())
 elements = []
 def element(id, scene, kind, **kw):
     obj = dict(id=id, scene=scene, kind=kind, status='assumed',
@@ -26,7 +27,8 @@ def tank(id,scene,at,radius,height,source,role):
 S='P3.02 / domestic water riser diagram (PDF page 13)'
 B='P3.02 / detail 1, low temp boiler piping diagram, SCALE NONE (PDF page 13)'
 U='P4.01 / Unit A 107 domestic water plan (PDF page 15)'
-levels=[('P2',0),('P1',126),('R1',252),('R2',378),('R3',504),('R4',630),('R5',756),('ROOF',882)]
+floor_z={k:round((v-332)*12,3) for k,v in CAL['floor_elevations_ft'].items()}
+levels=list(floor_z.items())+[('PLATE',round((CAL['plate_reference_ft']-332)*12,3))]
 systems=['CW','HW','HWC']
 offsets={'CW':-10,'HW':0,'HWC':10}
 roots={}
@@ -35,24 +37,27 @@ for name,z in levels:
     for k,(a,b) in enumerate([((-235,-310),(235,-310)),((235,-310),(235,310)),((235,310),(-235,310)),((-235,310),(-235,-310))]):
         element(f'floor-{name}-{k}','building','pipe',system='context',points=[[a[0],a[1],z],[b[0],b[1],z]],nominal_in=0.5,size_status='assumed',size_basis='Level datum line',source=S)
     label('level-'+name,'building',[250,-310,z+4],name,16)
+    for e in elements[-5:]:
+        e['datum_status']='confirmed';e['datum_elevation_ft']=CAL['plate_reference_ft'] if name=='PLATE' else CAL['floor_elevations_ft'][name]
+        e['datum_source']=CAL['elevation_source']
 stacks=[('01',130,-240,[0,1,2,3,4]),('02',-130,-240,[0,1,2,3,4]),('03',-130,0,[0,1,2,3]),('04',-130,240,[1,2,3,4]),('05',130,240,[0,1,2,3,4])]
-hz=356
+hz=floor_z['R1']+104
 for sys in systems:
     dx=offsets[sys]
-    root=[-340,340+dx,220]
+    root=[-340,340+dx,floor_z['P1']+94]
     roots['building:'+sys]=root
-    pipe('plant-to-building-'+sys,'building',sys,[root,[-270,340+dx,220],[-270,340+dx,hz],[dx,340+dx,hz],[dx,300,hz]],{'CW':4,'HW':3,'HWC':1.5}[sys],S)
+    pipe('plant-to-building-'+sys,'building',sys,[root,[-270,340+dx,root[2]],[-270,340+dx,hz],[dx,340+dx,hz],[dx,300,hz]],{'CW':4,'HW':3,'HWC':1.5}[sys],S)
     # Continuous header; graph validator recognizes tees on straight segments.
     pipe('distribution-main-'+sys,'building',sys,[[dx,300,hz],[dx,-270,hz]],{'CW':3,'HW':3,'HWC':1.25}[sys],S)
     for tag,x,y,branches in stacks:
         sx=x+dx
         pipe(f'{tag}-base-{sys}','building',sys,[[dx,y,hz],[sx,y,hz]],{'CW':2,'HW':2,'HWC':.75}[sys],S)
         last=hz
-        branch_heights=[252+126*i+104 for i in branches]
+        branch_heights=[floor_z['R'+str(i+1)]+104 for i in branches]
         for i,z in enumerate(sorted(set([hz]+branch_heights))):
             if z>last:
                 top=z==branch_heights[-1]
-                d=({'CW':1,'HW':1,'HWC':.5} if top else {'CW':2,'HW':1.5 if z>504 else 2,'HWC':.75})[sys]
+                d=({'CW':1,'HW':1,'HWC':.5} if top else {'CW':2,'HW':1.5 if z>floor_z['R3'] else 2,'HWC':.75})[sys]
                 pipe(f'{tag}-riser-{sys}-{i}','building',sys,[[sx,y,last],[sx,y,z]],d,S)
             last=z
         for level,z in zip(branches,branch_heights):
@@ -61,8 +66,8 @@ for sys in systems:
         if sys=='HW':
             label('stack-'+tag,'building',[x-15,y,branch_heights[-1]+32],"STACK "+tag,14)
     # Separate paired service to Units 106 / 107, not a copied typical riser.
-    pipe('106-107-drop-'+sys,'building',sys,[[dx,-100,hz],[80+dx,-100,hz],[80+dx,-100,230],[80+dx,-155,230]],{'CW':1.5,'HW':1.25,'HWC':.75}[sys],S,terminal=True,role='106 / 107 continuation')
-label('106-107','building',[80,-170,200],'106 / 107',12)
+    pipe('106-107-drop-'+sys,'building',sys,[[dx,-100,hz],[80+dx,-100,hz],[80+dx,-100,floor_z['P1']+104],[80+dx,-155,floor_z['P1']+104]],{'CW':1.5,'HW':1.25,'HWC':.75}[sys],S,terminal=True,role='106 / 107 continuation')
+label('106-107','building',[80,-170,floor_z['P1']+74],'106 / 107',12)
 label('scope','building',[-230,-360,20],'DOMESTIC WATER  /  FIVE STACK GROUPS',14)
 
 # Mechanical plant is shown separately at a readable scale. Deliberately no
@@ -98,9 +103,9 @@ label('return-label','plant',[-200,-20,36],'RETURN',10)
 label('plant-heading','plant',[-170,-180,3],'BOILERS + STORAGE',12)
 
 # Unit A plan trace. XY coordinates reference the displayed P4.01 crop;
-# conversion is an ASSUMED 0.4 in/pixel, never a drawing calibration.
+# conversion is PROVISIONAL, calibrated through the shared structural grid.
 # Pipe heights are assigned 102 in overhead; island route -6 in underfloor.
-def p(x,y,z=102): return [round((x-900)*.4,3),round((700-y)*.4,3),z]
+def p(x,y,z=102): return [round((x-900)*CAL['unit_xy_in_per_normalized_pixel'],5),round((700-y)*CAL['unit_xy_in_per_normalized_pixel'],5),z]
 def route(id,sys,coords,size=.5,terminal=False,assumed=False):
     return pipe(id,'unit',sys,[p(*c) for c in coords],size,U,'assumed' if assumed else 'confirmed',terminal)
 roots['unit:CW']=p(1450,180)
@@ -167,12 +172,21 @@ for i,(a,b) in enumerate(zip(outline,outline[1:])):
 for i,(a,b) in enumerate([((100,420),(650,420)),((650,120),(650,420)),((1080,120),(1080,380)),((1080,380),(1300,380)),((1450,600),(1450,950)),((1450,950),(1660,950))]):
     element('partition-'+str(i),'unit','wall',points=[p(*a,0),p(*b,0)],height=18,thickness=3,system='context',source=U)
 
+for e in elements:
+    if e['scene']=='unit':
+        e['xy_status']='provisional';e['xy_source']=CAL['dimension_source']+' → P2.02 common grid → P4.01 registered crop'
+        e['xy_tolerance']='Scale allowance ±1%; local simplified trace allowance ±6 in; not field accuracy.'
+        e['z_status']='assumed';e['envelope_status']='assumed'
+        e['basis']='XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.'
+
 spec={
  'project':'Highland | domestic water in 3D','units':'inches','workflow':'manual scanned drawing takeoff; separate from house extractor',
- 'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'not calibrated; no geometry measured from stated scale'}],
+ 'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'provisional cross-sheet calibration; see calibration.json'}, {'sheet':'P2.02','page':5,'issue':'2007-10-29','scale':'common structural grid calibrated to A2.03 dimensions'}, {'file':CAL['architectural_file'],'sheet':'A2.03','page':1,'issue':'2007-04-02'}, {'file':CAL['architectural_file'],'sheet':'A3.11','page':9,'issue':'2007-04-02'}],
+ 'calibration':CAL,
  'limitations':[
  'Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.',
- 'Source-backed system diagram in 3D, not an as-built or dimensionally coordinated model. All routing coordinates, floor heights, pipe separation, fittings and fixture/equipment envelopes are assumed.',
+ 'Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.',
+ 'A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height. Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.',
  'Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.',
  'Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.',
  '04 stack has four explicit upper branch groups on P3.02; its R1 dwelling branch is unresolved and is not invented.',
