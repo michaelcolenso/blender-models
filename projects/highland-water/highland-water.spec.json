@@ -112,6 +112,169 @@
     "unit_below_floor_pipe_in": -6,
     "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. The new excerpt lacks the P1 unit plan, unit reflected-ceiling plan and explicit water-pipe elevations."
   },
+  "bathroom_pilot": {
+    "fixtures": [
+      "master-shower",
+      "master-bath",
+      "master-wc",
+      "master-lav-1",
+      "master-lav-2"
+    ],
+    "supply_connections": [
+      {
+        "fixture": "master-lav-1",
+        "system": "CW",
+        "drop": "lav-300-cw",
+        "connector": "master-lav-1-cw-connector",
+        "port": [
+          -310.89009,
+          178.48447,
+          30.0
+        ]
+      },
+      {
+        "fixture": "master-lav-1",
+        "system": "HW",
+        "drop": "lav-300-hw",
+        "connector": "master-lav-1-hw-connector",
+        "port": [
+          -305.89009,
+          178.48447,
+          30.0
+        ]
+      },
+      {
+        "fixture": "master-lav-2",
+        "system": "CW",
+        "drop": "lav-375-cw",
+        "connector": "master-lav-2-cw-connector",
+        "port": [
+          -272.34133,
+          178.48447,
+          30.0
+        ]
+      },
+      {
+        "fixture": "master-lav-2",
+        "system": "HW",
+        "drop": "lav-375-hw",
+        "connector": "master-lav-2-hw-connector",
+        "port": [
+          -267.34133,
+          178.48447,
+          30.0
+        ]
+      },
+      {
+        "fixture": "master-wc",
+        "system": "CW",
+        "drop": "wc-master-cw",
+        "connector": "master-wc-cw-connector",
+        "port": [
+          -217.30315,
+          281.81125,
+          18.0
+        ]
+      },
+      {
+        "fixture": "master-shower",
+        "system": "CW",
+        "drop": "shower-master-cw",
+        "connector": null,
+        "port": [
+          -382.9177,
+          274.98117,
+          48
+        ],
+        "device": "master-shower-mixing-body"
+      },
+      {
+        "fixture": "master-shower",
+        "system": "HW",
+        "drop": "shower-master-hw",
+        "connector": null,
+        "port": [
+          -372.63803,
+          274.98117,
+          48
+        ],
+        "device": "master-shower-mixing-body"
+      },
+      {
+        "fixture": "master-bath",
+        "system": "CW",
+        "drop": "bath-cw",
+        "connector": null,
+        "port": [
+          -295.54051,
+          282.69092,
+          24
+        ],
+        "device": "master-bath-mixing-body"
+      },
+      {
+        "fixture": "master-bath",
+        "system": "HW",
+        "drop": "bath-hw",
+        "connector": null,
+        "port": [
+          -285.26084,
+          282.69092,
+          24
+        ],
+        "device": "master-bath-mixing-body"
+      }
+    ],
+    "mixed_outlets": [
+      {
+        "device": "master-shower-mixing-body",
+        "outlet_route": "master-shower-mixed-outlet",
+        "outlet": [
+          -377.777865,
+          274.98117,
+          50
+        ],
+        "end": [
+          -377.777865,
+          280.98117,
+          80
+        ]
+      },
+      {
+        "device": "master-bath-mixing-body",
+        "outlet_route": "master-bath-mixed-outlet",
+        "outlet": [
+          -290.400675,
+          282.69092,
+          26
+        ],
+        "end": [
+          -290.400675,
+          275.69092,
+          23
+        ]
+      }
+    ],
+    "expected_supply_ports": {
+      "CW": 5,
+      "HW": 4
+    },
+    "expected_stops": 5,
+    "expected_mixers": 2,
+    "scope": "Primary bathroom domestic-water supplies only; drainage and venting are not included.",
+    "hardware_basis": "Elbows, tees, flexible connector dimensions, five stops and two mixer bodies are representative; not a manufacturer schedule or verified installed assembly.",
+    "heights_in": {
+      "CW_overhead": 102,
+      "HW_overhead": 100,
+      "HWC_overhead": 98,
+      "lav_stop": 26,
+      "wc_stop": 14,
+      "shower_mixer": 48,
+      "tub_mixer": 24,
+      "shower_head": 80
+    },
+    "height_status": "assumed"
+  },
   "limitations": [
     "Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.",
     "Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.",
@@ -122,7 +285,9 @@
     "Common-area and garage/irrigation services are omitted from this first model. Unit 106 is a continuation only; Unit 107 is the detailed dwelling.",
     "Plant arrangement and reduced device detail are illustrative. Safety relief/drain piping, flues, detailed controls and balancing bypasses are not fully modeled. WAC2 is a loose spare, not a second installed pump.",
     "Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.",
-    "Annotations in the supplied PDF are treated as review information, not proof of installed conditions."
+    "Annotations in the supplied PDF are treated as review information, not proof of installed conditions.",
+    "Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.",
+    "Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the \u00b16 in source-trace allowance."
   ],
   "display": {
     "building_pipe_multiplier": 2.5,
@@ -163,12 +328,12 @@
     "unit:HW": [
       282.69092,
       256.99175,
-      102
+      100
     ],
     "unit:HWC": [
       272.41125,
       233.86249,
-      102
+      98
     ]
   },
   "elements": [
@@ -6134,6 +6299,19 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": false,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          282.69092,
+          267.27142,
+          102
+        ],
+        [
+          -406.04696,
+          267.27142,
+          102
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6151,12 +6329,12 @@
         [
           282.69092,
           256.99175,
-          102
+          100
         ],
         [
           -406.04696,
           256.99175,
-          102
+          100
         ]
       ],
       "nominal_in": 1,
@@ -6164,6 +6342,19 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": false,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          282.69092,
+          256.99175,
+          100
+        ],
+        [
+          -406.04696,
+          256.99175,
+          100
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6199,6 +6390,64 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": false,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          -377.77787,
+          267.27142,
+          102
+        ],
+        [
+          -377.77787,
+          188.85397,
+          102.0
+        ],
+        [
+          -377.75385,
+          188.61011,
+          102.0
+        ],
+        [
+          -377.68272,
+          188.37562,
+          102.0
+        ],
+        [
+          -377.56721,
+          188.15951,
+          102.0
+        ],
+        [
+          -377.41175,
+          187.97009,
+          102.0
+        ],
+        [
+          -377.22233,
+          187.81463,
+          102.0
+        ],
+        [
+          -377.00622,
+          187.69912,
+          102.0
+        ],
+        [
+          -376.77173,
+          187.62799,
+          102.0
+        ],
+        [
+          -376.52787,
+          187.60397,
+          102.0
+        ],
+        [
+          -256.99175,
+          187.60397,
+          102
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6214,34 +6463,29 @@
       "system": "HW",
       "points": [
         [
-          -406.04696,
-          256.99175,
-          102
-        ],
-        [
           -377.77787,
           256.99175,
-          102
+          100
         ],
         [
           -377.77787,
           179.89422,
-          102
+          100
         ],
         [
           -41.11868,
           179.89422,
-          102
+          100
         ],
         [
           -41.11868,
           233.86249,
-          102
+          100
         ],
         [
           251.85191,
           233.86249,
-          102
+          100
         ]
       ],
       "nominal_in": 0.75,
@@ -6249,6 +6493,154 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": false,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          -377.77787,
+          256.99175,
+          100
+        ],
+        [
+          -377.77787,
+          181.76922,
+          100.0
+        ],
+        [
+          -377.74184,
+          181.40343,
+          100.0
+        ],
+        [
+          -377.63514,
+          181.05169,
+          100.0
+        ],
+        [
+          -377.46188,
+          180.72753,
+          100.0
+        ],
+        [
+          -377.2287,
+          180.44339,
+          100.0
+        ],
+        [
+          -376.94456,
+          180.21021,
+          100.0
+        ],
+        [
+          -376.6204,
+          180.03695,
+          100.0
+        ],
+        [
+          -376.26866,
+          179.93025,
+          100.0
+        ],
+        [
+          -375.90287,
+          179.89422,
+          100.0
+        ],
+        [
+          -42.99368,
+          179.89422,
+          100.0
+        ],
+        [
+          -42.62789,
+          179.93025,
+          100.0
+        ],
+        [
+          -42.27615,
+          180.03695,
+          100.0
+        ],
+        [
+          -41.95199,
+          180.21021,
+          100.0
+        ],
+        [
+          -41.66785,
+          180.44339,
+          100.0
+        ],
+        [
+          -41.43467,
+          180.72753,
+          100.0
+        ],
+        [
+          -41.26141,
+          181.05169,
+          100.0
+        ],
+        [
+          -41.15471,
+          181.40343,
+          100.0
+        ],
+        [
+          -41.11868,
+          181.76922,
+          100.0
+        ],
+        [
+          -41.11868,
+          231.98749,
+          100.0
+        ],
+        [
+          -41.08265,
+          232.35328,
+          100.0
+        ],
+        [
+          -40.97595,
+          232.70502,
+          100.0
+        ],
+        [
+          -40.80269,
+          233.02918,
+          100.0
+        ],
+        [
+          -40.56951,
+          233.31332,
+          100.0
+        ],
+        [
+          -40.28537,
+          233.5465,
+          100.0
+        ],
+        [
+          -39.96121,
+          233.71976,
+          100.0
+        ],
+        [
+          -39.60947,
+          233.82646,
+          100.0
+        ],
+        [
+          -39.24368,
+          233.86249,
+          100.0
+        ],
+        [
+          251.85191,
+          233.86249,
+          100
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6266,12 +6658,17 @@
         [
           251.85191,
           233.86249,
-          102
+          100
+        ],
+        [
+          251.85191,
+          233.86249,
+          98
         ],
         [
           272.41125,
           233.86249,
-          102
+          98
         ]
       ],
       "nominal_in": 0.5,
@@ -6336,22 +6733,22 @@
         [
           262.13158,
           256.99175,
-          102
+          100
         ],
         [
           262.13158,
           17.98942,
-          102
+          100
         ],
         [
           344.36894,
           17.98942,
-          102
+          100
         ],
         [
           344.36894,
           -89.94711,
-          102
+          100
         ]
       ],
       "nominal_in": 0.75,
@@ -6376,27 +6773,32 @@
         [
           272.41125,
           233.86249,
-          102
+          98
         ],
         [
           272.41125,
           7.70975,
-          102
+          98
         ],
         [
           334.08927,
           7.70975,
-          102
+          98
         ],
         [
           334.08927,
           -89.94711,
-          102
+          98
         ],
         [
           344.36894,
           -89.94711,
-          102
+          98
+        ],
+        [
+          344.36894,
+          -89.94711,
+          100
         ]
       ],
       "nominal_in": 0.5,
@@ -6451,12 +6853,12 @@
         [
           344.36894,
           -89.94711,
-          102
+          100
         ],
         [
           321.23968,
           -89.94711,
-          102
+          100
         ]
       ],
       "nominal_in": 0.5,
@@ -6531,6 +6933,25 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "tag": "SH2",
       "count_status": "confirmed",
+      "pilot": true,
+      "pilot_device": "shower",
+      "supply_ports": {
+        "CW": [
+          -382.9177,
+          274.98117,
+          48
+        ],
+        "HW": [
+          -372.63803,
+          274.98117,
+          48
+        ]
+      },
+      "head_port": [
+        -377.777865,
+        280.98117,
+        80
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6573,6 +6994,25 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "tag": "BT1",
       "count_status": "confirmed",
+      "pilot": true,
+      "pilot_device": "tub",
+      "supply_ports": {
+        "CW": [
+          -295.54051,
+          282.69092,
+          24
+        ],
+        "HW": [
+          -285.26084,
+          282.69092,
+          24
+        ]
+      },
+      "spout_port": [
+        -290.400675,
+        275.69092,
+        23
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6615,6 +7055,15 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "tag": "WC1",
       "count_status": "confirmed",
+      "pilot": true,
+      "pilot_device": "toilet",
+      "supply_ports": {
+        "CW": [
+          -217.30315,
+          281.81125,
+          18.0
+        ]
+      },
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6657,6 +7106,20 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "tag": "L1",
       "count_status": "confirmed",
+      "pilot": true,
+      "pilot_device": "lavatory",
+      "supply_ports": {
+        "CW": [
+          -310.89009,
+          178.48447,
+          30.0
+        ],
+        "HW": [
+          -305.89009,
+          178.48447,
+          30.0
+        ]
+      },
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -6699,6 +7162,20 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "tag": "L1",
       "count_status": "confirmed",
+      "pilot": true,
+      "pilot_device": "lavatory",
+      "supply_ports": {
+        "CW": [
+          -272.34133,
+          178.48447,
+          30.0
+        ],
+        "HW": [
+          -267.34133,
+          178.48447,
+          30.0
+        ]
+      },
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -7112,11 +7589,6 @@
       "system": "CW",
       "points": [
         [
-          -377.77787,
-          267.27142,
-          102
-        ],
-        [
           -382.9177,
           267.27142,
           102
@@ -7137,6 +7609,64 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          -382.9177,
+          267.27142,
+          102
+        ],
+        [
+          -382.9177,
+          273.73117,
+          102.0
+        ],
+        [
+          -382.9177,
+          273.97503,
+          101.97598
+        ],
+        [
+          -382.9177,
+          274.20952,
+          101.90485
+        ],
+        [
+          -382.9177,
+          274.42563,
+          101.78934
+        ],
+        [
+          -382.9177,
+          274.61505,
+          101.63388
+        ],
+        [
+          -382.9177,
+          274.77051,
+          101.44446
+        ],
+        [
+          -382.9177,
+          274.88602,
+          101.22835
+        ],
+        [
+          -382.9177,
+          274.95715,
+          100.99386
+        ],
+        [
+          -382.9177,
+          274.98117,
+          100.75
+        ],
+        [
+          -382.9177,
+          274.98117,
+          48
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -7152,19 +7682,14 @@
       "system": "HW",
       "points": [
         [
-          -377.77787,
-          256.99175,
-          102
-        ],
-        [
           -372.63803,
           256.99175,
-          102
+          100
         ],
         [
           -372.63803,
           274.98117,
-          102
+          100
         ],
         [
           -372.63803,
@@ -7177,6 +7702,64 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          -372.63803,
+          256.99175,
+          100
+        ],
+        [
+          -372.63803,
+          273.73117,
+          100.0
+        ],
+        [
+          -372.63803,
+          273.97503,
+          99.97598
+        ],
+        [
+          -372.63803,
+          274.20952,
+          99.90485
+        ],
+        [
+          -372.63803,
+          274.42563,
+          99.78934
+        ],
+        [
+          -372.63803,
+          274.61505,
+          99.63388
+        ],
+        [
+          -372.63803,
+          274.77051,
+          99.44446
+        ],
+        [
+          -372.63803,
+          274.88602,
+          99.22835
+        ],
+        [
+          -372.63803,
+          274.95715,
+          98.99386
+        ],
+        [
+          -372.63803,
+          274.98117,
+          98.75
+        ],
+        [
+          -372.63803,
+          274.98117,
+          48
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -7191,11 +7774,6 @@
       "basis": "XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.",
       "system": "CW",
       "points": [
-        [
-          -290.40067,
-          267.27142,
-          102
-        ],
         [
           -295.54051,
           267.27142,
@@ -7217,6 +7795,64 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          -295.54051,
+          267.27142,
+          102
+        ],
+        [
+          -295.54051,
+          280.81592,
+          102.0
+        ],
+        [
+          -295.54051,
+          281.18171,
+          101.96397
+        ],
+        [
+          -295.54051,
+          281.53345,
+          101.85727
+        ],
+        [
+          -295.54051,
+          281.85761,
+          101.68401
+        ],
+        [
+          -295.54051,
+          282.14175,
+          101.45083
+        ],
+        [
+          -295.54051,
+          282.37493,
+          101.16669
+        ],
+        [
+          -295.54051,
+          282.54819,
+          100.84253
+        ],
+        [
+          -295.54051,
+          282.65489,
+          100.49079
+        ],
+        [
+          -295.54051,
+          282.69092,
+          100.125
+        ],
+        [
+          -295.54051,
+          282.69092,
+          24
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -7232,19 +7868,14 @@
       "system": "HW",
       "points": [
         [
-          -290.40067,
-          256.99175,
-          102
-        ],
-        [
           -285.26084,
           256.99175,
-          102
+          100
         ],
         [
           -285.26084,
           282.69092,
-          102
+          100
         ],
         [
           -285.26084,
@@ -7257,6 +7888,64 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
+      "pilot": true,
+      "render_points": [
+        [
+          -285.26084,
+          256.99175,
+          100
+        ],
+        [
+          -285.26084,
+          280.19092,
+          100.0
+        ],
+        [
+          -285.26084,
+          280.67865,
+          99.95196
+        ],
+        [
+          -285.26084,
+          281.14763,
+          99.8097
+        ],
+        [
+          -285.26084,
+          281.57985,
+          99.57867
+        ],
+        [
+          -285.26084,
+          281.95869,
+          99.26777
+        ],
+        [
+          -285.26084,
+          282.26959,
+          98.88893
+        ],
+        [
+          -285.26084,
+          282.50062,
+          98.45671
+        ],
+        [
+          -285.26084,
+          282.64288,
+          97.98773
+        ],
+        [
+          -285.26084,
+          282.69092,
+          97.5
+        ],
+        [
+          -285.26084,
+          282.69092,
+          24
+        ]
+      ],
       "xy_status": "provisional",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
@@ -7268,27 +7957,22 @@
       "scene": "unit",
       "kind": "pipe",
       "status": "assumed",
-      "basis": "XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.",
+      "basis": "Assumed wall-side toilet drop behind the tank; source nominal supply retained.",
       "system": "CW",
       "points": [
         [
-          -213.30315,
+          -217.30315,
           267.27142,
           102
         ],
         [
-          -213.30315,
-          267.27142,
+          -217.30315,
+          290.41125,
           102
         ],
         [
-          -213.30315,
-          282.69092,
-          102
-        ],
-        [
-          -213.30315,
-          282.69092,
+          -217.30315,
+          290.41125,
           12
         ]
       ],
@@ -7297,7 +7981,66 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
-      "xy_status": "provisional",
+      "pilot": true,
+      "xy_status": "assumed",
+      "local_offset_assumed": true,
+      "render_points": [
+        [
+          -217.30315,
+          267.27142,
+          102
+        ],
+        [
+          -217.30315,
+          289.16125,
+          102.0
+        ],
+        [
+          -217.30315,
+          289.40511,
+          101.97598
+        ],
+        [
+          -217.30315,
+          289.6396,
+          101.90485
+        ],
+        [
+          -217.30315,
+          289.85571,
+          101.78934
+        ],
+        [
+          -217.30315,
+          290.04513,
+          101.63388
+        ],
+        [
+          -217.30315,
+          290.20059,
+          101.44446
+        ],
+        [
+          -217.30315,
+          290.3161,
+          101.22835
+        ],
+        [
+          -217.30315,
+          290.38723,
+          100.99386
+        ],
+        [
+          -217.30315,
+          290.41125,
+          100.75
+        ],
+        [
+          -217.30315,
+          290.41125,
+          12
+        ]
+      ],
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",
@@ -7308,27 +8051,22 @@
       "scene": "unit",
       "kind": "pipe",
       "status": "assumed",
-      "basis": "XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.",
+      "basis": "Assumed wall-side drop 18 in behind fixture center, avoiding the porcelain envelope; source branch and nominal diameter retained.",
       "system": "CW",
       "points": [
         [
-          -308.39009,
-          187.60397,
-          102
-        ],
-        [
           -310.96001,
           187.60397,
           102
         ],
         [
           -310.96001,
-          172.18447,
+          190.18447,
           102
         ],
         [
           -310.96001,
-          172.18447,
+          190.18447,
           24
         ]
       ],
@@ -7337,7 +8075,66 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
-      "xy_status": "provisional",
+      "pilot": true,
+      "xy_status": "assumed",
+      "local_offset_assumed": true,
+      "render_points": [
+        [
+          -310.96001,
+          187.60397,
+          102
+        ],
+        [
+          -310.96001,
+          189.66837,
+          102.0
+        ],
+        [
+          -310.96001,
+          189.76906,
+          101.99008
+        ],
+        [
+          -310.96001,
+          189.86587,
+          101.96071
+        ],
+        [
+          -310.96001,
+          189.9551,
+          101.91302
+        ],
+        [
+          -310.96001,
+          190.03331,
+          101.84884
+        ],
+        [
+          -310.96001,
+          190.09749,
+          101.77063
+        ],
+        [
+          -310.96001,
+          190.14518,
+          101.6814
+        ],
+        [
+          -310.96001,
+          190.17455,
+          101.58459
+        ],
+        [
+          -310.96001,
+          190.18447,
+          101.4839
+        ],
+        [
+          -310.96001,
+          190.18447,
+          24
+        ]
+      ],
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",
@@ -7348,27 +8145,22 @@
       "scene": "unit",
       "kind": "pipe",
       "status": "assumed",
-      "basis": "XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.",
+      "basis": "Assumed wall-side drop 18 in behind fixture center, avoiding the porcelain envelope; source branch and nominal diameter retained.",
       "system": "HW",
       "points": [
         [
-          -308.39009,
-          179.89422,
-          102
-        ],
-        [
           -305.82018,
           179.89422,
-          102
+          100
         ],
         [
           -305.82018,
-          172.18447,
-          102
+          190.18447,
+          100
         ],
         [
           -305.82018,
-          172.18447,
+          190.18447,
           24
         ]
       ],
@@ -7377,7 +8169,66 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
-      "xy_status": "provisional",
+      "pilot": true,
+      "xy_status": "assumed",
+      "local_offset_assumed": true,
+      "render_points": [
+        [
+          -305.82018,
+          179.89422,
+          100
+        ],
+        [
+          -305.82018,
+          188.93447,
+          100.0
+        ],
+        [
+          -305.82018,
+          189.17833,
+          99.97598
+        ],
+        [
+          -305.82018,
+          189.41282,
+          99.90485
+        ],
+        [
+          -305.82018,
+          189.62893,
+          99.78934
+        ],
+        [
+          -305.82018,
+          189.81835,
+          99.63388
+        ],
+        [
+          -305.82018,
+          189.97381,
+          99.44446
+        ],
+        [
+          -305.82018,
+          190.08932,
+          99.22835
+        ],
+        [
+          -305.82018,
+          190.16045,
+          98.99386
+        ],
+        [
+          -305.82018,
+          190.18447,
+          98.75
+        ],
+        [
+          -305.82018,
+          190.18447,
+          24
+        ]
+      ],
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",
@@ -7388,27 +8239,22 @@
       "scene": "unit",
       "kind": "pipe",
       "status": "assumed",
-      "basis": "XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.",
+      "basis": "Assumed wall-side drop 18 in behind fixture center, avoiding the porcelain envelope; source branch and nominal diameter retained.",
       "system": "CW",
       "points": [
         [
-          -269.84133,
-          187.60397,
-          102
-        ],
-        [
           -272.41125,
           187.60397,
           102
         ],
         [
           -272.41125,
-          172.18447,
+          190.18447,
           102
         ],
         [
           -272.41125,
-          172.18447,
+          190.18447,
           24
         ]
       ],
@@ -7417,7 +8263,66 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
-      "xy_status": "provisional",
+      "pilot": true,
+      "xy_status": "assumed",
+      "local_offset_assumed": true,
+      "render_points": [
+        [
+          -272.41125,
+          187.60397,
+          102
+        ],
+        [
+          -272.41125,
+          189.66837,
+          102.0
+        ],
+        [
+          -272.41125,
+          189.76906,
+          101.99008
+        ],
+        [
+          -272.41125,
+          189.86587,
+          101.96071
+        ],
+        [
+          -272.41125,
+          189.9551,
+          101.91302
+        ],
+        [
+          -272.41125,
+          190.03331,
+          101.84884
+        ],
+        [
+          -272.41125,
+          190.09749,
+          101.77063
+        ],
+        [
+          -272.41125,
+          190.14518,
+          101.6814
+        ],
+        [
+          -272.41125,
+          190.17455,
+          101.58459
+        ],
+        [
+          -272.41125,
+          190.18447,
+          101.4839
+        ],
+        [
+          -272.41125,
+          190.18447,
+          24
+        ]
+      ],
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",
@@ -7428,27 +8333,22 @@
       "scene": "unit",
       "kind": "pipe",
       "status": "assumed",
-      "basis": "XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.",
+      "basis": "Assumed wall-side drop 18 in behind fixture center, avoiding the porcelain envelope; source branch and nominal diameter retained.",
       "system": "HW",
       "points": [
         [
-          -269.84133,
-          179.89422,
-          102
-        ],
-        [
           -267.27142,
           179.89422,
-          102
+          100
         ],
         [
           -267.27142,
-          172.18447,
-          102
+          190.18447,
+          100
         ],
         [
           -267.27142,
-          172.18447,
+          190.18447,
           24
         ]
       ],
@@ -7457,7 +8357,66 @@
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "terminal": true,
       "size_basis": "Explicit nominal size callout",
-      "xy_status": "provisional",
+      "pilot": true,
+      "xy_status": "assumed",
+      "local_offset_assumed": true,
+      "render_points": [
+        [
+          -267.27142,
+          179.89422,
+          100
+        ],
+        [
+          -267.27142,
+          188.93447,
+          100.0
+        ],
+        [
+          -267.27142,
+          189.17833,
+          99.97598
+        ],
+        [
+          -267.27142,
+          189.41282,
+          99.90485
+        ],
+        [
+          -267.27142,
+          189.62893,
+          99.78934
+        ],
+        [
+          -267.27142,
+          189.81835,
+          99.63388
+        ],
+        [
+          -267.27142,
+          189.97381,
+          99.44446
+        ],
+        [
+          -267.27142,
+          190.08932,
+          99.22835
+        ],
+        [
+          -267.27142,
+          190.16045,
+          98.99386
+        ],
+        [
+          -267.27142,
+          190.18447,
+          98.75
+        ],
+        [
+          -267.27142,
+          190.18447,
+          24
+        ]
+      ],
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",
@@ -7514,17 +8473,17 @@
         [
           143.91538,
           256.99175,
-          102
+          100
         ],
         [
           146.4853,
           256.99175,
-          102
+          100
         ],
         [
           146.4853,
           223.58282,
-          102
+          100
         ],
         [
           146.4853,
@@ -7634,17 +8593,17 @@
         [
           262.13158,
           236.43241,
-          102
+          100
         ],
         [
           305.82018,
           236.43241,
-          102
+          100
         ],
         [
           305.82018,
           236.43241,
-          102
+          100
         ],
         [
           305.82018,
@@ -7714,17 +8673,17 @@
         [
           344.36894,
           -17.98942,
-          102
+          100
         ],
         [
           349.50877,
           -17.98942,
-          102
+          100
         ],
         [
           349.50877,
           -17.98942,
-          102
+          100
         ],
         [
           349.50877,
@@ -7794,17 +8753,17 @@
         [
           321.23968,
           -89.94711,
-          102
+          100
         ],
         [
           326.37952,
           -89.94711,
-          102
+          100
         ],
         [
           326.37952,
           -102.7967,
-          102
+          100
         ],
         [
           326.37952,
@@ -7919,7 +8878,7 @@
         [
           262.13158,
           28.26909,
-          102
+          100
         ],
         [
           262.13158,
@@ -7981,7 +8940,7 @@
       "at": [
         262.13158,
         256.99175,
-        102
+        100
       ],
       "system": "HW",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
@@ -8000,7 +8959,7 @@
       "at": [
         251.85191,
         233.86249,
-        102
+        98
       ],
       "system": "HWC",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
@@ -8476,6 +9435,2549 @@
       "system": "context",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
       "xy_status": "provisional",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-1-cw-connector",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -310.96001,
+          190.18447,
+          24
+        ],
+        [
+          -310.96001,
+          187.18447,
+          21
+        ],
+        [
+          -310.89009,
+          178.48447,
+          25
+        ],
+        [
+          -310.89009,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "fixture supply connector",
+      "sweep_style": "smooth",
+      "fixture_id": "master-lav-1",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-1-cw-stop",
+      "kind": "stop",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -310.96001,
+        190.18447,
+        26
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "nominal_in": 0.5,
+      "ports": [
+        [
+          -310.96001,
+          190.18447,
+          24
+        ],
+        [
+          -310.96001,
+          190.18447,
+          28
+        ]
+      ],
+      "role": "representative lavatory stop",
+      "route_id": "lav-300-cw",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-1-hw-connector",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -305.82018,
+          190.18447,
+          24
+        ],
+        [
+          -305.82018,
+          187.18447,
+          21
+        ],
+        [
+          -305.89009,
+          178.48447,
+          25
+        ],
+        [
+          -305.89009,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "fixture supply connector",
+      "sweep_style": "smooth",
+      "fixture_id": "master-lav-1",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-1-hw-stop",
+      "kind": "stop",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -305.82018,
+        190.18447,
+        26
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "nominal_in": 0.5,
+      "ports": [
+        [
+          -305.82018,
+          190.18447,
+          24
+        ],
+        [
+          -305.82018,
+          190.18447,
+          28
+        ]
+      ],
+      "role": "representative lavatory stop",
+      "route_id": "lav-300-hw",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-2-cw-connector",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -272.41125,
+          190.18447,
+          24
+        ],
+        [
+          -272.41125,
+          187.18447,
+          21
+        ],
+        [
+          -272.34133,
+          178.48447,
+          25
+        ],
+        [
+          -272.34133,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "fixture supply connector",
+      "sweep_style": "smooth",
+      "fixture_id": "master-lav-2",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-2-cw-stop",
+      "kind": "stop",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -272.41125,
+        190.18447,
+        26
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "nominal_in": 0.5,
+      "ports": [
+        [
+          -272.41125,
+          190.18447,
+          24
+        ],
+        [
+          -272.41125,
+          190.18447,
+          28
+        ]
+      ],
+      "role": "representative lavatory stop",
+      "route_id": "lav-375-cw",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-2-hw-connector",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -267.27142,
+          190.18447,
+          24
+        ],
+        [
+          -267.27142,
+          187.18447,
+          21
+        ],
+        [
+          -267.34133,
+          178.48447,
+          25
+        ],
+        [
+          -267.34133,
+          178.48447,
+          30.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "fixture supply connector",
+      "sweep_style": "smooth",
+      "fixture_id": "master-lav-2",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-lav-2-hw-stop",
+      "kind": "stop",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -267.27142,
+        190.18447,
+        26
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "nominal_in": 0.5,
+      "ports": [
+        [
+          -267.27142,
+          190.18447,
+          24
+        ],
+        [
+          -267.27142,
+          190.18447,
+          28
+        ]
+      ],
+      "role": "representative lavatory stop",
+      "route_id": "lav-375-hw",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-wc-cw-connector",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -217.30315,
+          290.41125,
+          12
+        ],
+        [
+          -220.30315,
+          287.41125,
+          10
+        ],
+        [
+          -217.30315,
+          279.81125,
+          14
+        ],
+        [
+          -217.30315,
+          281.81125,
+          18.0
+        ]
+      ],
+      "nominal_in": 0.375,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "toilet supply connector",
+      "sweep_style": "smooth",
+      "fixture_id": "master-wc",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-wc-stop",
+      "kind": "stop",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -217.30315,
+        290.41125,
+        14
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "nominal_in": 0.5,
+      "ports": [
+        [
+          -217.30315,
+          290.41125,
+          12
+        ],
+        [
+          -217.30315,
+          290.41125,
+          16
+        ]
+      ],
+      "role": "representative toilet stop",
+      "route_id": "wc-master-cw",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-shower-mixing-body",
+      "kind": "mixer",
+      "scene": "unit",
+      "system": "equipment",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -377.777865,
+        274.98117,
+        48.0
+      ],
+      "supply_ports": {
+        "CW": [
+          -382.9177,
+          274.98117,
+          48
+        ],
+        "HW": [
+          -372.63803,
+          274.98117,
+          48
+        ]
+      },
+      "outlet": [
+        -377.777865,
+        274.98117,
+        50
+      ],
+      "nominal_in": 0.5,
+      "inlet_sizes": {
+        "CW": 0.5,
+        "HW": 0.5
+      },
+      "fixture_id": "master-shower",
+      "role": "representative mixing body; control type and internal stops unverified",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-shower-mixed-outlet",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "MW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -377.777865,
+          274.98117,
+          50
+        ],
+        [
+          -377.777865,
+          291.48117,
+          50
+        ],
+        [
+          -377.777865,
+          291.48117,
+          80
+        ],
+        [
+          -377.777865,
+          280.98117,
+          80
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "mixed-water fixture outlet",
+      "fixture_id": "master-shower",
+      "render_points": [
+        [
+          -377.777865,
+          274.98117,
+          50
+        ],
+        [
+          -377.77787,
+          290.23117,
+          50.0
+        ],
+        [
+          -377.77787,
+          290.47503,
+          50.02402
+        ],
+        [
+          -377.77787,
+          290.70952,
+          50.09515
+        ],
+        [
+          -377.77787,
+          290.92563,
+          50.21066
+        ],
+        [
+          -377.77787,
+          291.11505,
+          50.36612
+        ],
+        [
+          -377.77787,
+          291.27051,
+          50.55554
+        ],
+        [
+          -377.77787,
+          291.38602,
+          50.77165
+        ],
+        [
+          -377.77787,
+          291.45715,
+          51.00614
+        ],
+        [
+          -377.77787,
+          291.48117,
+          51.25
+        ],
+        [
+          -377.77787,
+          291.48117,
+          78.75
+        ],
+        [
+          -377.77787,
+          291.45715,
+          78.99386
+        ],
+        [
+          -377.77787,
+          291.38602,
+          79.22835
+        ],
+        [
+          -377.77787,
+          291.27051,
+          79.44446
+        ],
+        [
+          -377.77787,
+          291.11505,
+          79.63388
+        ],
+        [
+          -377.77787,
+          290.92563,
+          79.78934
+        ],
+        [
+          -377.77787,
+          290.70952,
+          79.90485
+        ],
+        [
+          -377.77787,
+          290.47503,
+          79.97598
+        ],
+        [
+          -377.77787,
+          290.23117,
+          80.0
+        ],
+        [
+          -377.777865,
+          280.98117,
+          80
+        ]
+      ],
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-bath-mixing-body",
+      "kind": "mixer",
+      "scene": "unit",
+      "system": "equipment",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -290.400675,
+        282.69092,
+        24.0
+      ],
+      "supply_ports": {
+        "CW": [
+          -295.54051,
+          282.69092,
+          24
+        ],
+        "HW": [
+          -285.26084,
+          282.69092,
+          24
+        ]
+      },
+      "outlet": [
+        -290.400675,
+        282.69092,
+        26
+      ],
+      "nominal_in": 0.75,
+      "inlet_sizes": {
+        "CW": 0.75,
+        "HW": 1
+      },
+      "fixture_id": "master-bath",
+      "role": "representative mixing body; control type and internal stops unverified",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-bath-mixed-outlet",
+      "kind": "pipe",
+      "scene": "unit",
+      "system": "MW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -290.400675,
+          282.69092,
+          26
+        ],
+        [
+          -290.400675,
+          275.69092,
+          26
+        ],
+        [
+          -290.400675,
+          275.69092,
+          23
+        ]
+      ],
+      "nominal_in": 0.75,
+      "size_status": "assumed",
+      "size_basis": "Representative fixture connector or mixed-water outlet; not a documented product selection.",
+      "terminal": true,
+      "role": "mixed-water fixture outlet",
+      "fixture_id": "master-bath",
+      "render_points": [
+        [
+          -290.400675,
+          282.69092,
+          26
+        ],
+        [
+          -290.40067,
+          276.29092,
+          26.0
+        ],
+        [
+          -290.40067,
+          276.17387,
+          25.98847
+        ],
+        [
+          -290.40067,
+          276.06131,
+          25.95433
+        ],
+        [
+          -290.40067,
+          275.95758,
+          25.89888
+        ],
+        [
+          -290.40067,
+          275.86666,
+          25.82426
+        ],
+        [
+          -290.40067,
+          275.79204,
+          25.73334
+        ],
+        [
+          -290.40067,
+          275.73659,
+          25.62961
+        ],
+        [
+          -290.40067,
+          275.70245,
+          25.51705
+        ],
+        [
+          -290.40067,
+          275.69092,
+          25.4
+        ],
+        [
+          -290.400675,
+          275.69092,
+          23
+        ]
+      ],
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "A-cold-lavs-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -377.77787,
+          188.85397,
+          102.0
+        ],
+        [
+          -377.75385,
+          188.61011,
+          102.0
+        ],
+        [
+          -377.68272,
+          188.37562,
+          102.0
+        ],
+        [
+          -377.56721,
+          188.15951,
+          102.0
+        ],
+        [
+          -377.41175,
+          187.97009,
+          102.0
+        ],
+        [
+          -377.22233,
+          187.81463,
+          102.0
+        ],
+        [
+          -377.00622,
+          187.69912,
+          102.0
+        ],
+        [
+          -376.77173,
+          187.62799,
+          102.0
+        ],
+        [
+          -376.52787,
+          187.60397,
+          102.0
+        ]
+      ],
+      "ports": [
+        [
+          -377.77787,
+          188.85397,
+          102.0
+        ],
+        [
+          -376.52787,
+          187.60397,
+          102.0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "A-cold-lavs",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "A-hot-bath-loop-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -377.77787,
+          181.76922,
+          100.0
+        ],
+        [
+          -377.74184,
+          181.40343,
+          100.0
+        ],
+        [
+          -377.63514,
+          181.05169,
+          100.0
+        ],
+        [
+          -377.46188,
+          180.72753,
+          100.0
+        ],
+        [
+          -377.2287,
+          180.44339,
+          100.0
+        ],
+        [
+          -376.94456,
+          180.21021,
+          100.0
+        ],
+        [
+          -376.6204,
+          180.03695,
+          100.0
+        ],
+        [
+          -376.26866,
+          179.93025,
+          100.0
+        ],
+        [
+          -375.90287,
+          179.89422,
+          100.0
+        ]
+      ],
+      "ports": [
+        [
+          -377.77787,
+          181.76922,
+          100.0
+        ],
+        [
+          -375.90287,
+          179.89422,
+          100.0
+        ]
+      ],
+      "nominal_in": 0.75,
+      "bend_radius_in": 1.875,
+      "route_id": "A-hot-bath-loop",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "A-hot-bath-loop-elbow-2",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -42.99368,
+          179.89422,
+          100.0
+        ],
+        [
+          -42.62789,
+          179.93025,
+          100.0
+        ],
+        [
+          -42.27615,
+          180.03695,
+          100.0
+        ],
+        [
+          -41.95199,
+          180.21021,
+          100.0
+        ],
+        [
+          -41.66785,
+          180.44339,
+          100.0
+        ],
+        [
+          -41.43467,
+          180.72753,
+          100.0
+        ],
+        [
+          -41.26141,
+          181.05169,
+          100.0
+        ],
+        [
+          -41.15471,
+          181.40343,
+          100.0
+        ],
+        [
+          -41.11868,
+          181.76922,
+          100.0
+        ]
+      ],
+      "ports": [
+        [
+          -42.99368,
+          179.89422,
+          100.0
+        ],
+        [
+          -41.11868,
+          181.76922,
+          100.0
+        ]
+      ],
+      "nominal_in": 0.75,
+      "bend_radius_in": 1.875,
+      "route_id": "A-hot-bath-loop",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "A-hot-bath-loop-elbow-3",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -41.11868,
+          231.98749,
+          100.0
+        ],
+        [
+          -41.08265,
+          232.35328,
+          100.0
+        ],
+        [
+          -40.97595,
+          232.70502,
+          100.0
+        ],
+        [
+          -40.80269,
+          233.02918,
+          100.0
+        ],
+        [
+          -40.56951,
+          233.31332,
+          100.0
+        ],
+        [
+          -40.28537,
+          233.5465,
+          100.0
+        ],
+        [
+          -39.96121,
+          233.71976,
+          100.0
+        ],
+        [
+          -39.60947,
+          233.82646,
+          100.0
+        ],
+        [
+          -39.24368,
+          233.86249,
+          100.0
+        ]
+      ],
+      "ports": [
+        [
+          -41.11868,
+          231.98749,
+          100.0
+        ],
+        [
+          -39.24368,
+          233.86249,
+          100.0
+        ]
+      ],
+      "nominal_in": 0.75,
+      "bend_radius_in": 1.875,
+      "route_id": "A-hot-bath-loop",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "shower-master-cw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -382.9177,
+          273.73117,
+          102.0
+        ],
+        [
+          -382.9177,
+          273.97503,
+          101.97598
+        ],
+        [
+          -382.9177,
+          274.20952,
+          101.90485
+        ],
+        [
+          -382.9177,
+          274.42563,
+          101.78934
+        ],
+        [
+          -382.9177,
+          274.61505,
+          101.63388
+        ],
+        [
+          -382.9177,
+          274.77051,
+          101.44446
+        ],
+        [
+          -382.9177,
+          274.88602,
+          101.22835
+        ],
+        [
+          -382.9177,
+          274.95715,
+          100.99386
+        ],
+        [
+          -382.9177,
+          274.98117,
+          100.75
+        ]
+      ],
+      "ports": [
+        [
+          -382.9177,
+          273.73117,
+          102.0
+        ],
+        [
+          -382.9177,
+          274.98117,
+          100.75
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "shower-master-cw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "shower-master-hw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -372.63803,
+          273.73117,
+          100.0
+        ],
+        [
+          -372.63803,
+          273.97503,
+          99.97598
+        ],
+        [
+          -372.63803,
+          274.20952,
+          99.90485
+        ],
+        [
+          -372.63803,
+          274.42563,
+          99.78934
+        ],
+        [
+          -372.63803,
+          274.61505,
+          99.63388
+        ],
+        [
+          -372.63803,
+          274.77051,
+          99.44446
+        ],
+        [
+          -372.63803,
+          274.88602,
+          99.22835
+        ],
+        [
+          -372.63803,
+          274.95715,
+          98.99386
+        ],
+        [
+          -372.63803,
+          274.98117,
+          98.75
+        ]
+      ],
+      "ports": [
+        [
+          -372.63803,
+          273.73117,
+          100.0
+        ],
+        [
+          -372.63803,
+          274.98117,
+          98.75
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "shower-master-hw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "bath-cw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -295.54051,
+          280.81592,
+          102.0
+        ],
+        [
+          -295.54051,
+          281.18171,
+          101.96397
+        ],
+        [
+          -295.54051,
+          281.53345,
+          101.85727
+        ],
+        [
+          -295.54051,
+          281.85761,
+          101.68401
+        ],
+        [
+          -295.54051,
+          282.14175,
+          101.45083
+        ],
+        [
+          -295.54051,
+          282.37493,
+          101.16669
+        ],
+        [
+          -295.54051,
+          282.54819,
+          100.84253
+        ],
+        [
+          -295.54051,
+          282.65489,
+          100.49079
+        ],
+        [
+          -295.54051,
+          282.69092,
+          100.125
+        ]
+      ],
+      "ports": [
+        [
+          -295.54051,
+          280.81592,
+          102.0
+        ],
+        [
+          -295.54051,
+          282.69092,
+          100.125
+        ]
+      ],
+      "nominal_in": 0.75,
+      "bend_radius_in": 1.875,
+      "route_id": "bath-cw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "bath-hw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -285.26084,
+          280.19092,
+          100.0
+        ],
+        [
+          -285.26084,
+          280.67865,
+          99.95196
+        ],
+        [
+          -285.26084,
+          281.14763,
+          99.8097
+        ],
+        [
+          -285.26084,
+          281.57985,
+          99.57867
+        ],
+        [
+          -285.26084,
+          281.95869,
+          99.26777
+        ],
+        [
+          -285.26084,
+          282.26959,
+          98.88893
+        ],
+        [
+          -285.26084,
+          282.50062,
+          98.45671
+        ],
+        [
+          -285.26084,
+          282.64288,
+          97.98773
+        ],
+        [
+          -285.26084,
+          282.69092,
+          97.5
+        ]
+      ],
+      "ports": [
+        [
+          -285.26084,
+          280.19092,
+          100.0
+        ],
+        [
+          -285.26084,
+          282.69092,
+          97.5
+        ]
+      ],
+      "nominal_in": 1,
+      "bend_radius_in": 2.5,
+      "route_id": "bath-hw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "wc-master-cw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -217.30315,
+          289.16125,
+          102.0
+        ],
+        [
+          -217.30315,
+          289.40511,
+          101.97598
+        ],
+        [
+          -217.30315,
+          289.6396,
+          101.90485
+        ],
+        [
+          -217.30315,
+          289.85571,
+          101.78934
+        ],
+        [
+          -217.30315,
+          290.04513,
+          101.63388
+        ],
+        [
+          -217.30315,
+          290.20059,
+          101.44446
+        ],
+        [
+          -217.30315,
+          290.3161,
+          101.22835
+        ],
+        [
+          -217.30315,
+          290.38723,
+          100.99386
+        ],
+        [
+          -217.30315,
+          290.41125,
+          100.75
+        ]
+      ],
+      "ports": [
+        [
+          -217.30315,
+          289.16125,
+          102.0
+        ],
+        [
+          -217.30315,
+          290.41125,
+          100.75
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "wc-master-cw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-300-cw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -310.96001,
+          189.66837,
+          102.0
+        ],
+        [
+          -310.96001,
+          189.76906,
+          101.99008
+        ],
+        [
+          -310.96001,
+          189.86587,
+          101.96071
+        ],
+        [
+          -310.96001,
+          189.9551,
+          101.91302
+        ],
+        [
+          -310.96001,
+          190.03331,
+          101.84884
+        ],
+        [
+          -310.96001,
+          190.09749,
+          101.77063
+        ],
+        [
+          -310.96001,
+          190.14518,
+          101.6814
+        ],
+        [
+          -310.96001,
+          190.17455,
+          101.58459
+        ],
+        [
+          -310.96001,
+          190.18447,
+          101.4839
+        ]
+      ],
+      "ports": [
+        [
+          -310.96001,
+          189.66837,
+          102.0
+        ],
+        [
+          -310.96001,
+          190.18447,
+          101.4839
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 0.5161000000000001,
+      "route_id": "lav-300-cw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-300-hw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -305.82018,
+          188.93447,
+          100.0
+        ],
+        [
+          -305.82018,
+          189.17833,
+          99.97598
+        ],
+        [
+          -305.82018,
+          189.41282,
+          99.90485
+        ],
+        [
+          -305.82018,
+          189.62893,
+          99.78934
+        ],
+        [
+          -305.82018,
+          189.81835,
+          99.63388
+        ],
+        [
+          -305.82018,
+          189.97381,
+          99.44446
+        ],
+        [
+          -305.82018,
+          190.08932,
+          99.22835
+        ],
+        [
+          -305.82018,
+          190.16045,
+          98.99386
+        ],
+        [
+          -305.82018,
+          190.18447,
+          98.75
+        ]
+      ],
+      "ports": [
+        [
+          -305.82018,
+          188.93447,
+          100.0
+        ],
+        [
+          -305.82018,
+          190.18447,
+          98.75
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "lav-300-hw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-375-cw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -272.41125,
+          189.66837,
+          102.0
+        ],
+        [
+          -272.41125,
+          189.76906,
+          101.99008
+        ],
+        [
+          -272.41125,
+          189.86587,
+          101.96071
+        ],
+        [
+          -272.41125,
+          189.9551,
+          101.91302
+        ],
+        [
+          -272.41125,
+          190.03331,
+          101.84884
+        ],
+        [
+          -272.41125,
+          190.09749,
+          101.77063
+        ],
+        [
+          -272.41125,
+          190.14518,
+          101.6814
+        ],
+        [
+          -272.41125,
+          190.17455,
+          101.58459
+        ],
+        [
+          -272.41125,
+          190.18447,
+          101.4839
+        ]
+      ],
+      "ports": [
+        [
+          -272.41125,
+          189.66837,
+          102.0
+        ],
+        [
+          -272.41125,
+          190.18447,
+          101.4839
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 0.5161000000000001,
+      "route_id": "lav-375-cw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-375-hw-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -267.27142,
+          188.93447,
+          100.0
+        ],
+        [
+          -267.27142,
+          189.17833,
+          99.97598
+        ],
+        [
+          -267.27142,
+          189.41282,
+          99.90485
+        ],
+        [
+          -267.27142,
+          189.62893,
+          99.78934
+        ],
+        [
+          -267.27142,
+          189.81835,
+          99.63388
+        ],
+        [
+          -267.27142,
+          189.97381,
+          99.44446
+        ],
+        [
+          -267.27142,
+          190.08932,
+          99.22835
+        ],
+        [
+          -267.27142,
+          190.16045,
+          98.99386
+        ],
+        [
+          -267.27142,
+          190.18447,
+          98.75
+        ]
+      ],
+      "ports": [
+        [
+          -267.27142,
+          188.93447,
+          100.0
+        ],
+        [
+          -267.27142,
+          190.18447,
+          98.75
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "lav-375-hw",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-shower-mixed-outlet-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "MW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -377.77787,
+          290.23117,
+          50.0
+        ],
+        [
+          -377.77787,
+          290.47503,
+          50.02402
+        ],
+        [
+          -377.77787,
+          290.70952,
+          50.09515
+        ],
+        [
+          -377.77787,
+          290.92563,
+          50.21066
+        ],
+        [
+          -377.77787,
+          291.11505,
+          50.36612
+        ],
+        [
+          -377.77787,
+          291.27051,
+          50.55554
+        ],
+        [
+          -377.77787,
+          291.38602,
+          50.77165
+        ],
+        [
+          -377.77787,
+          291.45715,
+          51.00614
+        ],
+        [
+          -377.77787,
+          291.48117,
+          51.25
+        ]
+      ],
+      "ports": [
+        [
+          -377.77787,
+          290.23117,
+          50.0
+        ],
+        [
+          -377.77787,
+          291.48117,
+          51.25
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "master-shower-mixed-outlet",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-shower-mixed-outlet-elbow-2",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "MW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -377.77787,
+          291.48117,
+          78.75
+        ],
+        [
+          -377.77787,
+          291.45715,
+          78.99386
+        ],
+        [
+          -377.77787,
+          291.38602,
+          79.22835
+        ],
+        [
+          -377.77787,
+          291.27051,
+          79.44446
+        ],
+        [
+          -377.77787,
+          291.11505,
+          79.63388
+        ],
+        [
+          -377.77787,
+          290.92563,
+          79.78934
+        ],
+        [
+          -377.77787,
+          290.70952,
+          79.90485
+        ],
+        [
+          -377.77787,
+          290.47503,
+          79.97598
+        ],
+        [
+          -377.77787,
+          290.23117,
+          80.0
+        ]
+      ],
+      "ports": [
+        [
+          -377.77787,
+          291.48117,
+          78.75
+        ],
+        [
+          -377.77787,
+          290.23117,
+          80.0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "bend_radius_in": 1.25,
+      "route_id": "master-shower-mixed-outlet",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "master-bath-mixed-outlet-elbow-1",
+      "kind": "elbow",
+      "scene": "unit",
+      "system": "MW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "points": [
+        [
+          -290.40067,
+          276.29092,
+          26.0
+        ],
+        [
+          -290.40067,
+          276.17387,
+          25.98847
+        ],
+        [
+          -290.40067,
+          276.06131,
+          25.95433
+        ],
+        [
+          -290.40067,
+          275.95758,
+          25.89888
+        ],
+        [
+          -290.40067,
+          275.86666,
+          25.82426
+        ],
+        [
+          -290.40067,
+          275.79204,
+          25.73334
+        ],
+        [
+          -290.40067,
+          275.73659,
+          25.62961
+        ],
+        [
+          -290.40067,
+          275.70245,
+          25.51705
+        ],
+        [
+          -290.40067,
+          275.69092,
+          25.4
+        ]
+      ],
+      "ports": [
+        [
+          -290.40067,
+          276.29092,
+          26.0
+        ],
+        [
+          -290.40067,
+          275.69092,
+          25.4
+        ]
+      ],
+      "nominal_in": 0.75,
+      "bend_radius_in": 0.6000000000000001,
+      "route_id": "master-bath-mixed-outlet",
+      "role": "representative 90 degree elbow",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "A-cold-lavs-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -377.77787,
+        267.27142,
+        102
+      ],
+      "ports": [
+        [
+          -375.37787,
+          267.27142,
+          102.0
+        ],
+        [
+          -380.17787,
+          267.27142,
+          102.0
+        ],
+        [
+          -377.77787,
+          264.87142,
+          102.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        0.5
+      ],
+      "nominal_in": 1,
+      "route_id": "A-cold-lavs",
+      "main_route_id": "A-cold-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "A-hot-bath-loop-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -377.77787,
+        256.99175,
+        100
+      ],
+      "ports": [
+        [
+          -375.37787,
+          256.99175,
+          100.0
+        ],
+        [
+          -380.17787,
+          256.99175,
+          100.0
+        ],
+        [
+          -377.77787,
+          254.59175,
+          100.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        0.75
+      ],
+      "nominal_in": 1,
+      "route_id": "A-hot-bath-loop",
+      "main_route_id": "A-hot-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "shower-master-cw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -382.9177,
+        267.27142,
+        102
+      ],
+      "ports": [
+        [
+          -380.5177,
+          267.27142,
+          102.0
+        ],
+        [
+          -385.3177,
+          267.27142,
+          102.0
+        ],
+        [
+          -382.9177,
+          269.67142,
+          102.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        0.5
+      ],
+      "nominal_in": 1,
+      "route_id": "shower-master-cw",
+      "main_route_id": "A-cold-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "shower-master-hw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -372.63803,
+        256.99175,
+        100
+      ],
+      "ports": [
+        [
+          -370.23803,
+          256.99175,
+          100.0
+        ],
+        [
+          -375.03803,
+          256.99175,
+          100.0
+        ],
+        [
+          -372.63803,
+          259.39175,
+          100.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        0.5
+      ],
+      "nominal_in": 1,
+      "route_id": "shower-master-hw",
+      "main_route_id": "A-hot-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "bath-cw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -295.54051,
+        267.27142,
+        102
+      ],
+      "ports": [
+        [
+          -293.14051,
+          267.27142,
+          102.0
+        ],
+        [
+          -297.94051,
+          267.27142,
+          102.0
+        ],
+        [
+          -295.54051,
+          269.67142,
+          102.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        0.75
+      ],
+      "nominal_in": 1,
+      "route_id": "bath-cw",
+      "main_route_id": "A-cold-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "bath-hw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -285.26084,
+        256.99175,
+        100
+      ],
+      "ports": [
+        [
+          -282.86084,
+          256.99175,
+          100.0
+        ],
+        [
+          -287.66084,
+          256.99175,
+          100.0
+        ],
+        [
+          -285.26084,
+          259.39175,
+          100.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        1
+      ],
+      "nominal_in": 1,
+      "route_id": "bath-hw",
+      "main_route_id": "A-hot-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "wc-master-cw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -217.30315,
+        267.27142,
+        102
+      ],
+      "ports": [
+        [
+          -214.90315,
+          267.27142,
+          102.0
+        ],
+        [
+          -219.70315,
+          267.27142,
+          102.0
+        ],
+        [
+          -217.30315,
+          269.67142,
+          102.0
+        ]
+      ],
+      "diameters": [
+        1,
+        1,
+        0.5
+      ],
+      "nominal_in": 1,
+      "route_id": "wc-master-cw",
+      "main_route_id": "A-cold-master",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-300-cw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -310.96001,
+        187.60397,
+        102
+      ],
+      "ports": [
+        [
+          -312.16001,
+          187.60397,
+          102.0
+        ],
+        [
+          -309.76001,
+          187.60397,
+          102.0
+        ],
+        [
+          -310.96001,
+          188.80397,
+          102.0
+        ]
+      ],
+      "diameters": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "nominal_in": 0.5,
+      "route_id": "lav-300-cw",
+      "main_route_id": "A-cold-lavs",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-300-hw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -305.82018,
+        179.89422,
+        100
+      ],
+      "ports": [
+        [
+          -307.62018,
+          179.89422,
+          100.0
+        ],
+        [
+          -304.02018,
+          179.89422,
+          100.0
+        ],
+        [
+          -305.82018,
+          181.69422,
+          100.0
+        ]
+      ],
+      "diameters": [
+        0.75,
+        0.75,
+        0.5
+      ],
+      "nominal_in": 0.75,
+      "route_id": "lav-300-hw",
+      "main_route_id": "A-hot-bath-loop",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-375-cw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "CW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -272.41125,
+        187.60397,
+        102
+      ],
+      "ports": [
+        [
+          -273.61125,
+          187.60397,
+          102.0
+        ],
+        [
+          -271.21125,
+          187.60397,
+          102.0
+        ],
+        [
+          -272.41125,
+          188.80397,
+          102.0
+        ]
+      ],
+      "diameters": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "nominal_in": 0.5,
+      "route_id": "lav-375-cw",
+      "main_route_id": "A-cold-lavs",
+      "role": "representative branch tee",
+      "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
+      "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "lav-375-hw-tee",
+      "kind": "tee",
+      "scene": "unit",
+      "system": "HW",
+      "status": "assumed",
+      "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+      "basis": "Representative bathroom hardware and connection geometry; exact fitting product, access, heights and configuration are not established by the drawings.",
+      "pilot": true,
+      "hardware_status": "assumed",
+      "xy_status": "assumed",
+      "at": [
+        -267.27142,
+        179.89422,
+        100
+      ],
+      "ports": [
+        [
+          -269.07142,
+          179.89422,
+          100.0
+        ],
+        [
+          -265.47142,
+          179.89422,
+          100.0
+        ],
+        [
+          -267.27142,
+          181.69422,
+          100.0
+        ]
+      ],
+      "diameters": [
+        0.75,
+        0.75,
+        0.5
+      ],
+      "nominal_in": 0.75,
+      "route_id": "lav-375-hw",
+      "main_route_id": "A-hot-bath-loop",
+      "role": "representative branch tee",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",

@@ -5,6 +5,7 @@ this scanned, multistory source. No raster coordinates are claimed as measuremen
 """
 from pathlib import Path
 import json, hashlib
+from bathroom import refine
 
 HERE = Path(__file__).parent
 CAL=json.loads((HERE/'calibration.json').read_text())
@@ -172,17 +173,34 @@ for i,(a,b) in enumerate(zip(outline,outline[1:])):
 for i,(a,b) in enumerate([((100,420),(650,420)),((650,120),(650,420)),((1080,120),(1080,380)),((1080,380),(1300,380)),((1450,600),(1450,950)),((1450,950),(1660,950))]):
     element('partition-'+str(i),'unit','wall',points=[p(*a,0),p(*b,0)],height=18,thickness=3,system='context',source=U)
 
+# Assumed vertical separation keeps crossing overhead services distinct.
+for e in elements:
+    if e['scene']=='unit' and e['system'] in ['HW','HWC']:
+        height=100 if e['system']=='HW' else 98
+        if 'points' in e:
+            e['points']=[[x,y,height if z==102 else z] for x,y,z in e['points']]
+        if 'at' in e and e['at'][2]==102:e['at'][2]=height
+for sys,height in [('HW',100),('HWC',98)]:roots['unit:'+sys][2]=height
+# Retain the two schematic hot-to-return loop joins across the assumed height offsets.
+for e in elements:
+    if e['id']=='A-bath-return-link':
+        first=e['points'][0];e['points'].insert(0,[first[0],first[1],100])
+    if e['id']=='A-return-spine':
+        last=e['points'][-1];e['points'].append([last[0],last[1],100])
+bathroom=refine(elements,U)
 for e in elements:
     if e['scene']=='unit':
-        e['xy_status']='provisional';e['xy_source']=CAL['dimension_source']+' → P2.02 common grid → P4.01 registered crop'
+        e.setdefault('xy_status','provisional');e['xy_source']=CAL['dimension_source']+' → P2.02 common grid → P4.01 registered crop'
         e['xy_tolerance']='Scale allowance ±1%; local simplified trace allowance ±6 in; not field accuracy.'
         e['z_status']='assumed';e['envelope_status']='assumed'
-        e['basis']='XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.'
+        if not e.get('hardware_status') and not e.get('local_offset_assumed'):
+            e['basis']='XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.'
 
 spec={
  'project':'Highland | domestic water in 3D','units':'inches','workflow':'manual scanned drawing takeoff; separate from house extractor',
  'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'provisional cross-sheet calibration; see calibration.json'}, {'sheet':'P2.02','page':5,'issue':'2007-10-29','scale':'common structural grid calibrated to A2.03 dimensions'}, {'file':CAL['architectural_file'],'sheet':'A2.03','page':1,'issue':'2007-04-02'}, {'file':CAL['architectural_file'],'sheet':'A3.11','page':9,'issue':'2007-04-02'}],
  'calibration':CAL,
+ 'bathroom_pilot':bathroom,
  'limitations':[
  'Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.',
  'Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.',
@@ -194,6 +212,8 @@ spec={
  'Plant arrangement and reduced device detail are illustrative. Safety relief/drain piping, flues, detailed controls and balancing bypasses are not fully modeled. WAC2 is a loose spare, not a second installed pump.',
  'Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.',
  'Annotations in the supplied PDF are treated as review information, not proof of installed conditions.'
+ ,'Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.'
+ ,'Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the ±6 in source-trace allowance.'
  ],
  'display':{'building_pipe_multiplier':2.5,'plant_pipe_multiplier':1.0,'unit_pipe_multiplier':1.5},
  'checks':{'stack_groups':5,'typical_branch_trios':23,'unit_fixtures':14,'boilers':2,'storage_tanks':2,'expansion_vessels':4,'installed_pumps':3,'source':S+'; '+B+'; '+U},

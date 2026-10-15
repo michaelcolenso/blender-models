@@ -25,19 +25,19 @@
       "nodes_total": 60
     },
     "unit:CW": {
-      "terminal_routes_reachable": 13,
-      "nodes_reachable": 55,
-      "nodes_total": 55
+      "terminal_routes_reachable": 16,
+      "nodes_reachable": 61,
+      "nodes_total": 61
     },
     "unit:HW": {
-      "terminal_routes_reachable": 9,
-      "nodes_reachable": 45,
-      "nodes_total": 45
+      "terminal_routes_reachable": 11,
+      "nodes_reachable": 48,
+      "nodes_total": 48
     },
     "unit:HWC": {
       "terminal_routes_reachable": 0,
-      "nodes_reachable": 6,
-      "nodes_total": 6
+      "nodes_reachable": 8,
+      "nodes_total": 8
     }
   },
   "calibration_checks": {
@@ -71,7 +71,48 @@
     "Common-area and garage/irrigation services are omitted from this first model. Unit 106 is a continuation only; Unit 107 is the detailed dwelling.",
     "Plant arrangement and reduced device detail are illustrative. Safety relief/drain piping, flues, detailed controls and balancing bypasses are not fully modeled. WAC2 is a loose spare, not a second installed pump.",
     "Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.",
-    "Annotations in the supplied PDF are treated as review information, not proof of installed conditions."
+    "Annotations in the supplied PDF are treated as review information, not proof of installed conditions.",
+    "Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.",
+    "Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the \u00b16 in source-trace allowance."
   ],
-  "result": "PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated"
+  "result": "PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated",
+  "element_count": 360,
+  "bathroom_pilot": {
+    "fixtures": 5,
+    "supply_ports": {
+      "CW": 5,
+      "HW": 4
+    },
+    "matching_fixture_endpoints": 9,
+    "mixed_outlets": 2,
+    "hardware_model_counts": {
+      "stop": 5,
+      "mixer": 2,
+      "elbow": 16,
+      "tee": 11
+    },
+    "result": "All nine modeled fixture supplies meet explicit ports; five stops lie on their supply routes; both mixed outlets meet mixer ports. Hardware and heights remain assumed.",
+    "mesh_fixture_clearances": [
+      {
+        "route": "lav-300-cw",
+        "gap_behind_fixture_in": 8.176
+      },
+      {
+        "route": "lav-300-hw",
+        "gap_behind_fixture_in": 8.176
+      },
+      {
+        "route": "lav-375-cw",
+        "gap_behind_fixture_in": 8.176
+      },
+      {
+        "route": "lav-375-hw",
+        "gap_behind_fixture_in": 8.176
+      },
+      {
+        "route": "wc-master-cw",
+        "gap_behind_fixture_in": 4.633
+      }
+    ]
+  }
 }

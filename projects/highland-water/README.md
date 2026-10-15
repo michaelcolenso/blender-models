@@ -31,10 +31,10 @@ Outputs go to `build/highland-water/`. `prepare_spec.py` is the manual takeoff /
 
 ## Assumptions and omissions
 
-**Overall element status remains assumed** wherever full XYZ or envelope is not established. Unit elements additionally carry `xy_status: provisional`, `z_status: assumed` and `envelope_status: assumed`; building level references carry `datum_status: confirmed`. A pipe's `size_status` is separate: confirmed means its nominal size is called out; it does not make its route confirmed.
+**Overall element status remains assumed** wherever full XYZ or envelope is not established. Source-traced unit elements additionally carry `xy_status: provisional` (the new local bathroom service offsets and hardware carry `xy_status: assumed`), `z_status: assumed` and `envelope_status: assumed`; building level references carry `datum_status: confirmed`. A pipe's `size_status` is separate: confirmed means its nominal size is called out; it does not make its route confirmed.
 
 - Unit plan XY uses **0.51398349 inch per normalized pixel**, replacing the arbitrary 0.4. Dimensions between common grids 6–10 on A2.03 total 1,236 inches; P2.02 measures 927 PDF points, giving 0.75 point/inch. Independent E–H spans agree within 0.6%. A similarity registration transfers this scale from P2.02 to the enlarged P4.01 crop (21 inliers; median residual 0.224 PDF point). Working allowances: ±1% scale, ±6 inches local simplified trace; these are conservative allowances, not survey accuracy.
-- Unit pipe elevations remain 102 inches overhead and 6 inches below floor for the island route. A3.11 gives 132 inches floor-to-floor at Unit 107, **not** a clear ceiling height. Fixture drops, body dimensions and connecting hardware are representative.
+- Unit overhead pipe elevations are assumed at 102 inches CW, 100 inches HW and 98 inches HWC with 6 inches below floor for the island route. A3.11 gives 132 inches floor-to-floor at Unit 107, **not** a clear ceiling height. Fixture drops, body dimensions and connecting hardware are representative.
 - Building floor elevations (feet): P2 332.00, P1 342.00, R1 353.00, R2 363.25, R3 373.50, R4 383.75, R5 394.25. Model Z uses P2 as zero. The upper guide is **PLATE 404.42**, not a uniform roof. A3.11 shows other roof/plate elevations too.
 - A3.11 interval notes include (+1/4 inch) additions that do not exactly match the decimal elevation differences. The model follows labeled elevations and preserves this discrepancy for clarification.
 - Branches remain an assumed 104 inches above each served floor. Stack XY, pipe separation, lateral lengths, offsets and reducer positions remain assumed.
@@ -49,7 +49,7 @@ Outputs go to `build/highland-water/`. `prepare_spec.py` is the manual takeoff /
 
 ## Validation performed
 
-- Unique IDs and provenance on 319 elements; positive pipe diameters and explicit nominal-size status.
+- Unique IDs and provenance on model elements; positive pipe diameters and explicit nominal-size status.
 - Counts checked against the takeoff: 5 stack groups, 23 typical branch groups, 14 Unit A fixtures, 2 boilers, 2 storage tanks, 4 expansion vessels, 3 installed pumps.
 - All vertices and terminal routes in the building and unit distribution graphs reach their own system root. Tees on straight segments are recognized. Separate-system reachability does not validate hydraulic sizing, plant internals, cross-system return flow or source interpretation.
 - Cycles CPU renders inspected in plan, front, side and isometric views. Orange provenance renders identify the assumed spatial geometry. Owner-color views identify systems, not provenance. Review PNGs were checked for blank output.
@@ -65,3 +65,13 @@ The working model and review documents are delivered under `deliverables/highlan
 ## Architectural update
 
 The full takeoff and assumptions are in `calibration.json`. The horizontal calibration increases the earlier Unit 107 XY dimensions by 28.5%; pipe diameters, fixture body envelopes and vertical pipe offsets do not scale with that correction. Floor datums are updated independently. The supplied architecture is dated April 2007 and the plumbing October 2007; shared geometry supports registration, but neither set is treated as evidence of installed conditions.
+
+## Bathroom pilot refinement
+
+The five-fixture primary bathroom now has an explicit port contract in `bathroom_pilot`: five cold and four hot supply connections, five representative fixture stops, two mixing bodies, two mixed-water outlets and five flexible fixture connectors. Elbows and tees are separately selectable geometry derived from the pipe routes. Their counts are model counts, not a drawing takeoff or product schedule.
+
+`bathroom.py` adds these details to the expanded specification. Fixture anchors retain their calibrated-plan basis; lavatory and toilet drops move to **assumed wall-side positions** behind the fixture envelopes. These offsets are not covered by the schematic ±6 inch trace allowance. Overhead CW/HW/HWC are separated at assumed heights of 102/100/98 inches; both existing schematic hot-to-return joins remain connected across those offsets.
+
+The builder checks each drop/connector endpoint against the corresponding fixture or mixer port, ensures the toilet receives cold water only, verifies both mixed outlets, and checks that stops lie on their supply routes. A generated-mesh check measures clearance between the five wall-side vertical supply drops and the actual lavatory/toilet bounds. This is a targeted interference check; it does not establish whole-model clash freedom, hydraulic adequacy, code compliance, temperature performance or installed conditions. Purple indicates mixed water without asserting any temperature setting.
+
+The bathroom domestic-water pilot is ready for visual review. Sanitary/vent systems remain outside this model. The two-page `Unit-107-bathroom-pilot.pdf` shows the bathroom and fixture connections; the full review retains the source overlay and calibration evidence. The Blender file now opens on the bathroom. Use Bathroom or Connections in the standalone viewer to inspect it; Fittings toggles the representative hardware.

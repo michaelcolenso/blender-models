@@ -69,7 +69,41 @@ def validate():
         line=next(e for e in es if e['id']=='floor-'+level+'-0')
         assert abs(line['points'][0][2]-(elev-332)*12)<.001
     assert (cal['floor_elevations_ft']['R1']-cal['floor_elevations_ft']['P1'])*12==132
+    pilot=SPEC['bathroom_pilot'];byid={e['id']:e for e in es}
+    def near(a,b):return (Vector(a)-Vector(b)).length<.001
+    port_counts=defaultdict(int)
+    for c in pilot['supply_connections']:
+        f=byid[c['fixture']];drop=byid[c['drop']]
+        assert f['kind']=='fixture' and drop['system']==c['system']
+        assert near(f['supply_ports'][c['system']],c['port'])
+        if c['connector']:
+            hose=byid[c['connector']]
+            assert hose['system']==c['system'] and near(hose['points'][0],drop['points'][-1])
+            assert near(hose['points'][-1],c['port'])
+        else:
+            assert near(drop['points'][-1],c['port'])
+            assert near(byid[c['device']]['supply_ports'][c['system']],c['port'])
+        port_counts[c['system']]+=1
+    assert dict(port_counts)==pilot['expected_supply_ports']
+    assert set(byid['master-wc']['supply_ports'])=={'CW'},'Toilet must not acquire a hot-water connection'
+    for c in pilot['mixed_outlets']:
+        assert near(byid[c['device']]['outlet'],byid[c['outlet_route']]['points'][0])
+        assert near(c['end'],byid[c['outlet_route']]['points'][-1])
+        assert byid[c['outlet_route']]['system']=='MW'
+    hardware={k:len([e for e in es if e.get('pilot') and e['kind']==k]) for k in ['stop','mixer','elbow','tee']}
+    assert hardware['stop']==5 and hardware['mixer']==2
+    for e in es:
+        if e['kind']=='elbow':
+            route=byid[e['route_id']]
+            assert all(any(near(p,q) for q in route['render_points']) for p in e['ports'])
+        if e['kind']=='stop':
+            route=byid[e['route_id']];a,b=map(Vector,route['points'][-2:]);v=b-a
+            for p in e['ports']:
+                t=(Vector(p)-a).dot(v)/v.length_squared
+                assert 0<=t<=1 and (Vector(p)-(a+t*v)).length<.001
+    pilot_checks={'fixtures':len(pilot['fixtures']),'supply_ports':dict(port_counts),'matching_fixture_endpoints':9,'mixed_outlets':2,'hardware_model_counts':hardware,'result':'All nine modeled fixture supplies meet explicit ports; five stops lie on their supply routes; both mixed outlets meet mixer ports. Hardware and heights remain assumed.'}
     report={'counts':actual,'connectivity':connected,'calibration_checks':{'grid_points_per_inch':grid_scales,'max_allowed_raster_grid_variation_percent':.6,'registration_inliers':reg['inliers'],'median_registration_error_pt':reg['median_residual_pdf_pt'],'unit_scale_in_per_pixel':factor,'floor_datums_checked':7,'unit_107_floor_to_floor_in':132},'limitations':SPEC['limitations'],'result':'PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated'}
+    report['element_count']=len(es);report['bathroom_pilot']=pilot_checks
     (OUT/'validation.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2),flush=True)
 validate()
@@ -84,7 +118,7 @@ scene.render.resolution_x=1400;scene.render.resolution_y=1100;scene.render.resol
 scene.world.color=(.19,.19,.19)
 scene.view_settings.view_transform='AgX'
 scene.render.image_settings.file_format='PNG'
-colors={'CW':(.025,.40,.95,1),'HW':(.98,.18,.045,1),'HWC':(.03,.72,.42,1),
+colors={'CW':(.025,.40,.95,1),'HW':(.98,.18,.045,1),'HWC':(.03,.72,.42,1),'MW':(.56,.23,.92,1),
  'equipment':(.45,.56,.64,1),'fixtures':(.80,.85,.88,1),'context':(.14,.22,.29,1),
  'metal':(.48,.38,.15,1),'dark':(.025,.045,.065,1),'text':(.78,.89,.94,1),'assumed':(1,.32,.035,1)}
 mats={}
@@ -93,14 +127,14 @@ for name,c in colors.items():
     bsdf=mat.node_tree.nodes.get('Principled BSDF');bsdf.inputs['Base Color'].default_value=c
     bsdf.inputs['Metallic'].default_value=.45 if name in ['equipment','metal'] else .12
     bsdf.inputs['Roughness'].default_value=.32
-    if name in ['CW','HW','HWC','text']:
+    if name in ['CW','HW','HWC','MW','text']:
         bsdf.inputs['Emission Color'].default_value=c;bsdf.inputs['Emission Strength'].default_value=.15
     mats[name]=mat
 collections={}
 for model in ['building','plant','unit']:
     parent=bpy.data.collections.new(model);scene.collection.children.link(parent)
     collections[model]=parent
-    for trade in ['CW','HW','HWC','equipment','fixtures','context']:
+    for trade in ['CW','HW','HWC','MW','equipment','fixtures','context']:
         col=bpy.data.collections.new(model+' / '+trade);parent.children.link(col);collections[(model,trade)]=col
 
 parts=[]
@@ -134,6 +168,20 @@ def tube(points,r,mat):
     for p in pts[1:-1]:sphere(p,r*1.08,mat)
     for p,q in [(pts[0],pts[1]),(pts[-1],pts[-2])]:
         v=(q-p).normalized();cylinder(p+v*r*.5,p+v*r*2.4,r*1.17,mat)
+def swept(points,r,mat,smooth=False):
+    curve=bpy.data.curves.new('swept pipe','CURVE');curve.dimensions='3D';curve.resolution_u=12
+    curve.bevel_depth=r;curve.bevel_resolution=3;curve.use_fill_caps=True
+    s=curve.splines.new('BEZIER' if smooth else 'POLY')
+    if smooth:
+        s.bezier_points.add(len(points)-1)
+        for p,co in zip(s.bezier_points,points):
+            p.co=co;p.handle_left_type='AUTO';p.handle_right_type='AUTO'
+    else:
+        s.points.add(len(points)-1)
+        for p,co in zip(s.points,points):p.co=(*co,1)
+    o=bpy.data.objects.new('swept pipe',curve);scene.collection.objects.link(o)
+    bpy.ops.object.select_all(action='DESELECT');o.select_set(True);bpy.context.view_layer.objects.active=o;bpy.ops.object.convert(target='MESH')
+    return attach(bpy.context.object,mat)
 def fixture(e):
     x,y,z=[v*IN for v in e['at']];kind=e['fixture'];W=mats['fixtures']
     pixel=SPEC['calibration']['unit_xy_in_per_normalized_pixel']*IN
@@ -143,9 +191,9 @@ def fixture(e):
         cube((x,y,z+.825),(width*.73,.32,.012),'dark',.035)
         cylinder((x,y+.16,z+.82),(x,y+.16,z+1.02),.012,'metal')
         cylinder((x,y+.16,z+1.02),(x,y,z+1.02),.012,'metal')
-        cylinder((x,y,z+.23),(x,y,z+.70),.025,'fixtures')
+        if not e.get('pilot_device'):cylinder((x,y,z+.23),(x,y,z+.70),.025,'fixtures')
         # Representative fixture tails meet the drawing-derived supply drops.
-        for dx in [-5*pixel,5*pixel]:
+        for dx in ([] if e.get('pilot_device') else [-5*pixel,5*pixel]):
             cylinder((x+dx,y,z+24*IN),(x+dx,y,z+.76),.009,'metal')
     elif kind=='wc':
         sphere((x,y,z+.34),1,'fixtures',(.19,.28,.18))
@@ -155,17 +203,21 @@ def fixture(e):
     elif kind=='bath':
         cube((x,y,z+.24),(1.65,.80,.48),'fixtures',.13)
         cube((x,y,z+.485),(1.35,.57,.02),'dark',.10)
-        yy=y+20*pixel;zz=z+24*IN
-        cylinder((x-10*pixel,yy,zz),(x+10*pixel,yy,zz),.022,'metal')
-        cylinder((x,yy,zz),(x,yy-.18,zz),.016,'metal')
+        if not e.get('pilot_device'):
+            yy=y+20*pixel;zz=z+24*IN
+            cylinder((x-10*pixel,yy,zz),(x+10*pixel,yy,zz),.022,'metal')
+            cylinder((x,yy,zz),(x,yy-.18,zz),.016,'metal')
     elif kind=='shower':
         cube((x,y,z+.035),(.95,.95,.07),'fixtures',.045)
-        zz=z+48*IN
-        cylinder((x-10*pixel,y,zz),(x+10*pixel,y,zz),.023,'metal')
-        cylinder((x,y,zz),(x,y+.42,zz),.014,'metal')
-        cylinder((x,y+.42,zz),(x,y+.42,z+2.03),.014,'metal')
-        cylinder((x,y+.42,z+2.03),(x,y+.12,z+2.03),.014,'metal')
-        cylinder((x,y+.12,z+2.0),(x,y+.12,z+2.03),.08,'metal')
+        if e.get('pilot_device'):
+            h=Vector([v*IN for v in e['head_port']]);cylinder(h-Vector((0,0,.018)),h,.08,'metal')
+        else:
+            zz=z+48*IN
+            cylinder((x-10*pixel,y,zz),(x+10*pixel,y,zz),.023,'metal')
+            cylinder((x,y,zz),(x,y+.42,zz),.014,'metal')
+            cylinder((x,y+.42,zz),(x,y+.42,z+2.03),.014,'metal')
+            cylinder((x,y+.42,z+2.03),(x,y+.12,z+2.03),.014,'metal')
+            cylinder((x,y+.12,z+2.0),(x,y+.12,z+2.03),.08,'metal')
     elif kind=='washer':
         cube((x,y,z+.47),(.60,.60,.94),'fixtures',.03)
         cylinder((x,y-.31,z+.45),(x,y-.34,z+.45),.19,'dark')
@@ -181,7 +233,31 @@ for e in SPEC['elements']:
     parts=[];kind=e['kind'];sysname=e['system'];model=e['scene']
     if kind=='pipe':
         mult=SPEC['display'][model+'_pipe_multiplier'] if sysname!='context' else 1
-        tube([[v*IN for v in p] for p in e['points']],e['nominal_in']*IN*.5*mult,sysname)
+        points=[[v*IN for v in p] for p in e.get('render_points',e['points'])]
+        if e.get('pilot'):swept(points,e['nominal_in']*IN*.5*mult,sysname,e.get('sweep_style')=='smooth')
+        else:tube(points,e['nominal_in']*IN*.5*mult,sysname)
+    elif kind=='elbow':
+        swept([[v*IN for v in p] for p in e['points']],e['nominal_in']*IN*.5*SPEC['display']['unit_pipe_multiplier']*1.2,'metal')
+    elif kind=='tee':
+        center=Vector([v*IN for v in e['at']])
+        for port,diam in zip(e['ports'],e['diameters']):
+            q=Vector([v*IN for v in port]);r=diam*IN*.5*SPEC['display']['unit_pipe_multiplier']*1.2
+            cylinder(center,q,r,'metal');cylinder(q+(center-q)*.13,q,r*1.12,'metal')
+    elif kind=='stop':
+        a,b=[Vector([v*IN for v in p]) for p in e['ports']];c=(a+b)*.5;r=e['nominal_in']*IN*1.1
+        cylinder(a,b,r,'metal',12)
+        for q in [a,b]:cylinder(q-Vector((0,0,.008)),q+Vector((0,0,.008)),r*1.3,'metal',6)
+        cylinder(c,c+Vector((0,-.045,0)),.007,'metal')
+        cube(c+Vector((0,-.05,0)),(.055,.012,.018),'dark',.004)
+    elif kind=='mixer':
+        c=Vector([v*IN for v in e['at']]);out=Vector([v*IN for v in e['outlet']])
+        for pipe_system,port in e['supply_ports'].items():
+            q=Vector([v*IN for v in port]);r=e['inlet_sizes'][pipe_system]*IN*.5*SPEC['display']['unit_pipe_multiplier']*1.2
+            cylinder(c,q,r,'metal');cylinder(q+(c-q)*.12,q,r*1.2,'metal',6)
+        cylinder(c,out,e['nominal_in']*IN*.8,'metal')
+        cylinder(c-Vector((0,.03,0)),c+Vector((0,.03,0)),.065,'metal',24)
+        cylinder(c-Vector((0,.05,0)),c-Vector((0,.03,0)),.025,'dark',20)
+        cube(c+Vector((.025,-.058,0)),(.08,.013,.016),'metal',.005)
     elif kind=='box':cube([v*IN for v in e['at']],[v*IN for v in e['dims']],sysname,.025)
     elif kind=='tank':
         x,y,z=[v*IN for v in e['at']];r=e['radius']*IN;h=e['height']*IN
@@ -221,6 +297,22 @@ for e in SPEC['elements']:
         if k not in ['points','at','dims']:obj[k]=v if isinstance(v,(str,int,float,bool)) else json.dumps(v)
     if kind=='pipe':obj['display_diameter_multiplier']=mult
 
+# Check the actual generated fixture bounds against the vertical wall-side drops.
+clearance=[]
+for contract in SPEC['bathroom_pilot']['supply_connections']:
+    if contract['fixture'] not in ['master-lav-1','master-lav-2','master-wc']:continue
+    fixture_object=bpy.data.objects[contract['fixture']]
+    bbox=[fixture_object.matrix_world@Vector(c) for c in fixture_object.bound_box]
+    max_y=max(p.y for p in bbox)
+    route=next(e for e in SPEC['elements'] if e['id']==contract['drop'])
+    y=route['points'][-1][1]*IN
+    radius=route['nominal_in']*IN*.5*SPEC['display']['unit_pipe_multiplier']
+    gap=(y-radius-max_y)/IN
+    assert gap>0,(contract['drop'],'vertical supply intersects fixture envelope')
+    clearance.append({'route':route['id'],'gap_behind_fixture_in':round(gap,3)})
+report=json.loads((OUT/'validation.json').read_text());report['bathroom_pilot']['mesh_fixture_clearances']=clearance
+(OUT/'validation.json').write_text(json.dumps(report,indent=2))
+
 # Separate GLBs avoid loading the building and unit into the same coordinate space.
 for model in ['building','plant','unit']:
     bpy.ops.object.select_all(action='DESELECT')
@@ -237,12 +329,14 @@ views=[
  ('plant','plant-iso',(11,-15,11),(-.7,0,1.3),15),
  ('unit','unit-iso',(20,-29,26),(0,-2.2,1.0),26),
  ('unit','unit-bath',(2,-5,10),(-7,5.5,1),11),
+ ('unit','bath-connections',(-2,0,3.2),(-7.3,4.4,.85),5),
  ('unit','review-plan',(0,0,35),(0,0,0),26),
  ('unit','review-front',(0,-35,4),(0,0,1.3),26),
  ('unit','review-side',(35,0,4),(0,0,1.3),26),
  ('building','review-building',(31,-40,28),(0,0,11),39),
  ('unit','review-iso',(20,-29,26),(0,-2.2,1.0),26)]
 for model,name,pos,target,scale in views:
+    if '--unit-only' in sys.argv and model!='unit':continue
     for m in ['building','plant','unit']:collections[m].hide_render=m!=model
     camera.location=pos;camera.rotation_euler=(Vector(target)-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=scale
     scene.view_layers[0].material_override=mats['assumed'] if name.startswith('review') else None
@@ -250,9 +344,9 @@ for model,name,pos,target,scale in views:
     bpy.ops.render.render(write_still=True)
 scene.view_layers[0].material_override=None
 for m in ['building','plant','unit']:
-    collections[m].hide_render=m!='building'
-    for obj in collections[m].all_objects:obj.hide_set(m!='building')
-camera.location=(31,-40,28);camera.rotation_euler=(Vector((0,0,11))-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=39
-scene['readme']='Highland domestic water. Unhide plant or unit collections individually. Geometry coordinates assumed; source nominal sizes retained in object metadata. See specification and report.'
+    collections[m].hide_render=m!='unit'
+    for obj in collections[m].all_objects:obj.hide_set(m!='unit')
+camera.location=(2,-5,10);camera.rotation_euler=(Vector((-7,5.5,1))-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=11
+scene['readme']='Highland domestic water; opens on Unit 107 bathroom. Unit XY provisional; pipe heights and hardware assumed; floor datums documented. Hide unit and unhide plant or building to explore other studies. See specification and report.'
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'Highland-domestic-water.blend'))
 print('BUILD COMPLETE',flush=True)
