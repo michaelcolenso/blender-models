@@ -1,0 +1,55 @@
+{
+  "counts": {
+    "stack_groups": 5,
+    "typical_branch_trios": 23,
+    "unit_fixtures": 14,
+    "boilers": 2,
+    "storage_tanks": 2,
+    "expansion_vessels": 4,
+    "installed_pumps": 3
+  },
+  "connectivity": {
+    "building:CW": {
+      "terminal_routes_reachable": 24,
+      "nodes_reachable": 60,
+      "nodes_total": 60
+    },
+    "building:HW": {
+      "terminal_routes_reachable": 24,
+      "nodes_reachable": 60,
+      "nodes_total": 60
+    },
+    "building:HWC": {
+      "terminal_routes_reachable": 24,
+      "nodes_reachable": 60,
+      "nodes_total": 60
+    },
+    "unit:CW": {
+      "terminal_routes_reachable": 13,
+      "nodes_reachable": 55,
+      "nodes_total": 55
+    },
+    "unit:HW": {
+      "terminal_routes_reachable": 9,
+      "nodes_reachable": 45,
+      "nodes_total": 45
+    },
+    "unit:HWC": {
+      "terminal_routes_reachable": 0,
+      "nodes_reachable": 6,
+      "nodes_total": 6
+    }
+  },
+  "limitations": [
+    "Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.",
+    "Source-backed system diagram in 3D, not an as-built or dimensionally coordinated model. All routing coordinates, floor heights, pipe separation, fittings and fixture/equipment envelopes are assumed.",
+    "Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.",
+    "Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.",
+    "04 stack has four explicit upper branch groups on P3.02; its R1 dwelling branch is unresolved and is not invented.",
+    "Common-area and garage/irrigation services are omitted from this first model. Unit 106 is a continuation only; Unit 107 is the detailed dwelling.",
+    "Plant arrangement and reduced device detail are illustrative. Safety relief/drain piping, flues, detailed controls and balancing bypasses are not fully modeled. WAC2 is a loose spare, not a second installed pump.",
+    "Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.",
+    "Annotations in the supplied PDF are treated as review information, not proof of installed conditions."
+  ],
+  "result": "PASS: modeled counts, provenance and per-system distribution reachability; plant internals and cross-system flow not validated"
+}

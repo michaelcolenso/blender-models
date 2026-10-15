@@ -1,6 +1,8 @@
 # Highland owner presentation
 
-Three finished deliverables made from the supplied Highland condominium plumbing drawings.
+**Superseded approach:** these files animate drawing sheets; they do not model the plumbing. The user requested actual pipe geometry. Start with the [corrected pipe-model study and drawing review](../highland-water/) instead. The old files remain here for reference.
+
+Three earlier deliverables made from the supplied Highland condominium plumbing drawings.
 
 - [Interactive owner tour](Highland-owner-tour.html): download this HTML file, then open it in a modern browser. Everything is embedded; no ZIP extraction, installation, or Internet connection is needed. GitHub displays HTML as source code, so use **Download raw file** on the file page instead of copying the displayed code.
 - [Five-slide PDF briefing](Highland-owner-presentation.pdf): open in GitHub's PDF viewer or download for a meeting.
