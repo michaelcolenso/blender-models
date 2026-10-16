@@ -1,0 +1,12 @@
+[
+  {
+    "file": "user-photo-01.jpg",
+    "sha256": "131ba8316f6d65c630a56b47fcbf5801f8222568dc99623b7051036de62f1122",
+    "use": "Appearance reference only; perspective photo with no dimensional reference"
+  },
+  {
+    "file": "user-photo-02.jpg",
+    "sha256": "9c9d5a11bfc62207d09f5dd97d3496bcf87eb2312b1f2b51b1bc7b0c26cd8dcb",
+    "use": "Appearance reference only; perspective photo with no dimensional reference"
+  }
+]

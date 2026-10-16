@@ -1,0 +1,99 @@
+{
+  "source_grid_span_in": [
+    1236,
+    1800
+  ],
+  "checked_floor_datums": 6,
+  "openings_built": 165,
+  "source_candidates_omitted": 26,
+  "opening_build_clips": [
+    "east-R2-09",
+    "south-R2-09",
+    "east-R2-01",
+    "west-R2-09",
+    "south-R2-06",
+    "south-R2-03",
+    "east-R3-09",
+    "south-R3-09",
+    "east-R3-01",
+    "west-R3-09",
+    "south-R3-06",
+    "south-R3-03",
+    "east-R4-09",
+    "south-R4-09",
+    "east-R4-01",
+    "west-R4-09",
+    "south-R4-06",
+    "south-R4-03"
+  ],
+  "objects": 1225,
+  "result": "PASS: grid dimensions, floor/tower datums, opening inventory and object provenance. Exterior placement/finishes remain provisional or assumed.",
+  "limitations": [
+    "Exterior drawing study, not verified installed conditions.",
+    "The dimensioned plan grids control footprint scale. Elevation grid spans do not agree uniformly with the plan; facade widths use explicit piecewise registration.",
+    "No single dimensional accuracy tolerance is established for this exterior model. Source picks, simplified wall returns and standardized window heights remain provisional/assumed.",
+    "Facade openings are surface-envelope studies; jamb details, exact opening schedule and recessed balconies are simplified.",
+    "R1/P1 lower enclosure is simplified because the architectural P1 plan was not supplied.",
+    "Roof slopes, drains, equipment, landscaping, sidewalk and street geometry are simplified; surrounding buildings are omitted.",
+    "Finish families follow the user photos; exact colors, reflectance, recess depth and landscape positions remain interpreted.",
+    "Not suitable for quantities, facade access design or construction dimensions."
+  ],
+  "render_checks": {
+    "southeast": {
+      "rgb_stddev": 41.77,
+      "nonblank": true
+    },
+    "east-entry": {
+      "rgb_stddev": 39.62,
+      "nonblank": true
+    },
+    "south-review": {
+      "rgb_stddev": 44.85,
+      "nonblank": true
+    },
+    "east-review": {
+      "rgb_stddev": 45.69,
+      "nonblank": true
+    },
+    "west-review": {
+      "rgb_stddev": 49.38,
+      "nonblank": true
+    },
+    "north-review": {
+      "rgb_stddev": 44.83,
+      "nonblank": true
+    },
+    "plan-review": {
+      "rgb_stddev": 36.55,
+      "nonblank": true
+    },
+    "provenance-south-review": {
+      "rgb_stddev": 51.83,
+      "nonblank": true
+    },
+    "provenance-east-review": {
+      "rgb_stddev": 46.92,
+      "nonblank": true
+    },
+    "provenance-plan-review": {
+      "rgb_stddev": 55.54,
+      "nonblank": true
+    },
+    "provenance-southeast": {
+      "rgb_stddev": 49.7,
+      "nonblank": true
+    }
+  },
+  "glb_checks": {
+    "version": 2,
+    "mesh_nodes": 1225,
+    "provenance_present": true
+  },
+  "artifact_sha256": {
+    "Highland-exterior.glb": "a78dc8373413ec7537769df1ac8083010177d5cedf01793c24ca5db3665976d7",
+    "Highland-exterior-review.pdf": "35413c904a53bc789de1bf0a0185b7ca8ce5441bb8d0bc27bf96c52b690c8bb5",
+    "Highland-exterior.blend": "b813b74e8a16772e4e31963b734174c3e610d6b620172e70c796dca5ecc7fa20",
+    "Highland-exterior-southeast.png": "54958ee5227f223659f7db34ecc158aea833a7d02adbe1cc8f0eaea3caf757c8",
+    "Highland-exterior-east-entry.png": "068964ad47eb6dafdc25a7f603ab380b85741bc99bbc19915a0f3f4d0a7beb41"
+  }
+}
