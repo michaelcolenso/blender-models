@@ -1,0 +1,17 @@
+{
+  "Highland-installation-unit-B": {
+    "stage_visible_counts": [
+      4,
+      19,
+      26,
+      84,
+      84,
+      84
+    ],
+    "packed_source": true,
+    "final_frame": 121
+  },
+  "Highland-installation-shared": {
+    "three_system_risers": 15
+  }
+}

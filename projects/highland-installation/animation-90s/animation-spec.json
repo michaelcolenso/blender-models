@@ -1,0 +1,479 @@
+{
+  "project": "200 W Highland — proposed repipe installation",
+  "duration": 90,
+  "fps": 24,
+  "master_size": [
+    3840,
+    2160
+  ],
+  "render_size": [
+    1600,
+    900
+  ],
+  "render_fps": 6,
+  "render_method": "Cycles CPU, analytical normal-shaded materials, four camera samples, no geometry changes. Six rendered samples/second interpolated to 24 fps before 4K typography/compositing.",
+  "geometry_authority": "../installation/highland-installation-proposed.yaml",
+  "footer": "Proposed installation sequence · Field verification required.",
+  "shots": [
+    {
+      "id": 1,
+      "start": 0,
+      "end": 8,
+      "scene": "shared",
+      "title": "Follow the water",
+      "caption": "One shared system. A coordinated replacement.",
+      "voice": "A successful repipe starts with understanding how the building’s water system connects.",
+      "points": [
+        "Three connected services",
+        "Source-labeled riser groups",
+        "A distinct Unit B / 106 pilot"
+      ],
+      "source": "P3.02 · PDF 13",
+      "camera": [
+        [
+          0,
+          {
+            "azimuth": -59,
+            "elevation": 40,
+            "target": [
+              0,
+              0,
+              2
+            ],
+            "ortho_scale": 25
+          }
+        ],
+        [
+          8,
+          {
+            "azimuth": -53,
+            "elevation": 41,
+            "target": [
+              0,
+              0,
+              2
+            ],
+            "ortho_scale": 24
+          }
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "start": 8,
+      "end": 18,
+      "scene": "unit",
+      "title": "Verify and protect",
+      "caption": "Confirm routes, access, and affected services.",
+      "voice": "Confirm the actual routes, access, and affected services before committing to a shutdown.",
+      "points": [
+        "Trace supply and return",
+        "Prove the isolation boundary",
+        "Agree access and protection"
+      ],
+      "source": "P4.01 · PDF 15",
+      "camera": [
+        [
+          8,
+          {
+            "azimuth": -90,
+            "elevation": 89.9,
+            "target": [
+              0,
+              0,
+              0.1
+            ],
+            "ortho_scale": 24
+          }
+        ],
+        [
+          18,
+          {
+            "azimuth": -65,
+            "elevation": 74,
+            "target": [
+              -0.7,
+              0.8,
+              0.3
+            ],
+            "ortho_scale": 22.5
+          }
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "start": 18,
+      "end": 29,
+      "scene": "unit",
+      "title": "Open and prepare",
+      "caption": "Protect finishes. Open access. Prepare the route.",
+      "voice": "Protect the home, open the necessary areas, and prepare the new route.",
+      "points": [
+        "Service assembly access",
+        "Support and penetration review",
+        "Kitchen low-wall connection"
+      ],
+      "source": "P4.01 · PDF 15",
+      "camera": [
+        [
+          18,
+          {
+            "azimuth": -65,
+            "elevation": 74,
+            "target": [
+              -0.7,
+              0.8,
+              0.3
+            ],
+            "ortho_scale": 22.5
+          }
+        ],
+        [
+          24,
+          {
+            "azimuth": -58,
+            "elevation": 60,
+            "target": [
+              -1,
+              1.4,
+              0.6
+            ],
+            "ortho_scale": 19
+          }
+        ],
+        [
+          29,
+          {
+            "azimuth": -55,
+            "elevation": 54,
+            "target": [
+              -1,
+              2.2,
+              1
+            ],
+            "ortho_scale": 18
+          }
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "start": 29,
+      "end": 45,
+      "scene": "unit",
+      "title": "Install distribution",
+      "caption": "Install the replacement distribution.",
+      "voice": "Build the replacement distribution as an isolated system, coordinating cold water, hot water, and circulation return.",
+      "points": [
+        "Cold-water distribution",
+        "Hot-water distribution",
+        "Circulation-return continuity"
+      ],
+      "source": "P4.01 · PDF 15",
+      "camera": [
+        [
+          29,
+          {
+            "azimuth": -55,
+            "elevation": 54,
+            "target": [
+              -1,
+              2.2,
+              1
+            ],
+            "ortho_scale": 18
+          }
+        ],
+        [
+          45,
+          {
+            "azimuth": -48,
+            "elevation": 55,
+            "target": [
+              -1,
+              2.2,
+              1
+            ],
+            "ortho_scale": 18.5
+          }
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "start": 45,
+      "end": 58,
+      "scene": "unit",
+      "title": "Branch, test, inspect",
+      "caption": "Complete branches. Test. Inspect.",
+      "voice": "Complete the fixture branches, then test and inspect the new piping before service transfer.",
+      "points": [
+        "Complete fixture-group branches",
+        "Keep the new network isolated",
+        "Required test and inspection"
+      ],
+      "source": "P4.01 · PDF 15",
+      "camera": [
+        [
+          45,
+          {
+            "azimuth": -48,
+            "elevation": 55,
+            "target": [
+              -1,
+              2.2,
+              1
+            ],
+            "ortho_scale": 18.5
+          }
+        ],
+        [
+          52,
+          {
+            "azimuth": -51,
+            "elevation": 57,
+            "target": [
+              -0.7,
+              0.5,
+              0.8
+            ],
+            "ortho_scale": 19.5
+          }
+        ],
+        [
+          58,
+          {
+            "azimuth": -55,
+            "elevation": 58,
+            "target": [
+              -0.4,
+              0.3,
+              0.8
+            ],
+            "ortho_scale": 21
+          }
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "start": 58,
+      "end": 73,
+      "scene": "unit",
+      "title": "Transfer and commission",
+      "caption": "Transfer service. Check connections. Balance circulation.",
+      "voice": "Within a verified isolation boundary, transfer service, check the final connections, flush, and balance circulation.",
+      "points": [
+        "Isolate and drain",
+        "Connect and check final tie-ins",
+        "Flush and balance the return"
+      ],
+      "source": "P4.01 / P3.02",
+      "camera": [
+        [
+          58,
+          {
+            "azimuth": -55,
+            "elevation": 52,
+            "target": [
+              -4.05,
+              3.8,
+              1.45
+            ],
+            "ortho_scale": 5.7
+          }
+        ],
+        [
+          63,
+          {
+            "azimuth": -53,
+            "elevation": 53,
+            "target": [
+              -4.05,
+              3.8,
+              1.45
+            ],
+            "ortho_scale": 6.2
+          }
+        ],
+        [
+          67,
+          {
+            "azimuth": -53,
+            "elevation": 55,
+            "target": [
+              -2,
+              2,
+              1
+            ],
+            "ortho_scale": 13
+          }
+        ],
+        [
+          73,
+          {
+            "azimuth": -55,
+            "elevation": 58,
+            "target": [
+              -0.4,
+              0.3,
+              0.8
+            ],
+            "ortho_scale": 21
+          }
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "start": 73,
+      "end": 85,
+      "scene": "unit",
+      "title": "Restore and document",
+      "caption": "Restore finishes. Preserve access. Record the installation.",
+      "voice": "After acceptance, restore penetrations and finishes, preserve service access, and document what is behind the walls.",
+      "points": [
+        "Restore required assemblies",
+        "Retain service access",
+        "Photograph, label, and record"
+      ],
+      "source": "P4.01 · Proposed method",
+      "camera": [
+        [
+          73,
+          {
+            "azimuth": -55,
+            "elevation": 58,
+            "target": [
+              -0.4,
+              0.3,
+              0.8
+            ],
+            "ortho_scale": 21
+          }
+        ],
+        [
+          85,
+          {
+            "azimuth": -52,
+            "elevation": 58,
+            "target": [
+              0,
+              0,
+              0.6
+            ],
+            "ortho_scale": 23
+          }
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "start": 85,
+      "end": 90,
+      "scene": "shared",
+      "title": "A maintainable system",
+      "caption": "A planned sequence. Restored service. A maintainable system.",
+      "voice": "A planned sequence. Restored service. A maintainable system.",
+      "points": [
+        "Coordinated access",
+        "Verified service transfer",
+        "Documented installation"
+      ],
+      "source": "Shared-system concept",
+      "camera": [
+        [
+          85,
+          {
+            "azimuth": -53,
+            "elevation": 41,
+            "target": [
+              0,
+              0,
+              2
+            ],
+            "ortho_scale": 24
+          }
+        ],
+        [
+          90,
+          {
+            "azimuth": -51,
+            "elevation": 41,
+            "target": [
+              0,
+              0,
+              2
+            ],
+            "ortho_scale": 25
+          }
+        ]
+      ]
+    }
+  ],
+  "sources": {
+    "Highland-installation-shared.blend": "6960750eac99449e6f342b887bd8b9a9e4fbae43fa5ef4ac7ed09b3307dc5189",
+    "Highland-installation-unit-B.blend": "426c4fc4a17c42cf05b5d18dadacc95b050a10bd46f62513da682d91de561324",
+    "highland-installation-proposed.yaml": "972f4b68f8be77b3ea05392b00e04007b895d8ae753122ce4bc1562e2ff71f3d"
+  },
+  "assumptions": [
+    "Camera placement, timing, lighting and flow-marker positions are presentation choices.",
+    "All physical geometry retains the source model provenance; no verified shutdown boundary, pipe sizing or test result is added.",
+    "Flow markers illustrate proposed direction after the depicted service transfer; no hydraulic simulation is claimed."
+  ],
+  "reveal": {
+    "CW-01": [
+      29,
+      31
+    ],
+    "CW-02": [
+      31,
+      34
+    ],
+    "CW-03": [
+      34,
+      37
+    ],
+    "HW-01": [
+      30,
+      32
+    ],
+    "HW-02": [
+      32,
+      35
+    ],
+    "HW-03": [
+      35,
+      38
+    ],
+    "HWC-01": [
+      38,
+      42
+    ]
+  },
+  "cutover": {
+    "isolate": [
+      58,
+      61
+    ],
+    "connect": [
+      61,
+      64
+    ],
+    "check_and_flush": [
+      64,
+      67
+    ],
+    "flow_start": 67
+  },
+  "palette": {
+    "paper": "#f5f5ee",
+    "ink": "#123d43",
+    "muted": "#5b6c70",
+    "CW": "#1474b9",
+    "HW": "#d44832",
+    "HWC": "#8443b0",
+    "access": "#df8b24"
+  }
+}
