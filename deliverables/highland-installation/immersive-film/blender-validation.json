@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "source_3D_geometry_unchanged": true,
+  "source_objects_compared": {
+    "3D - Shared distribution": 45,
+    "3D - Unit B installation": 95,
+    "STUDIO - Exterior opening": 0
+  },
+  "master_picture_range": [
+    1,
+    2161
+  ],
+  "master_frame_size": [
+    1920,
+    1080
+  ],
+  "max_vse_channel": 20,
+  "title_text_and_intervals_match_film": true,
+  "layout": "Full-frame movie and unboxed editable title strips; original 3D scenes retained."
+}

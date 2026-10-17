@@ -598,7 +598,7 @@ def isolation_icons(scene):
         tag(handle,'proposed_valve_icon',ring['basis'])
 
 
-def upgrade_scene(scene, shared, hdri):
+def upgrade_scene(scene, shared, hdri, keep_flow_markers=False):
     bpy.context.window.scene = scene
     scene.frame_set(frame(88 if shared else 69))
     original = {o.name: geometry_digest(o) for o in scene.objects if o.get('element_id') and o.type in {'CURVE', 'MESH'}}
@@ -610,6 +610,10 @@ def upgrade_scene(scene, shared, hdri):
     for obj in original_objects:
         if obj.type == 'FONT':
             drive(obj, 'hide_render', 'True')
+            continue
+        if keep_flow_markers and obj.name.startswith(('Flow ', 'Shared flow ')):
+            # The compatibility rig keeps its visible, staged markers so the
+            # original commissioning gates continue to test actual imagery.
             continue
         if obj.name.startswith(('Studio ground', 'Source drawing backing', 'Flow ', 'Shared flow ')):
             drive(obj, 'hide_render', 'True')

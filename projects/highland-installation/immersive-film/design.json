@@ -1,0 +1,40 @@
+{
+  "layout": "full_frame",
+  "frame_inset": 0,
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "duration": 90,
+  "paper": "#F7F6F2",
+  "ink": "#29343A",
+  "muted": "#606A6B",
+  "accent": "#B29362",
+  "footer": "Proposed installation sequence · Field verification required.",
+  "reframe": [
+    [0, 1.0, 0.5, 0.5],
+    [8, 1.0, 0.5, 0.5],
+    [18, 1.03, 0.5, 0.46],
+    [26, 1.0, 0.5, 0.5],
+    [29, 1.05, 0.5, 0.44],
+    [34, 1.22, 0.48, 0.32],
+    [41, 1.0, 0.5, 0.5],
+    [61, 1.0, 0.5, 0.5],
+    [69, 1.04, 0.5, 0.47],
+    [81, 1.04, 0.5, 0.47],
+    [85, 1.0, 0.5, 0.5],
+    [90, 1.0, 0.5, 0.5]
+  ],
+  "cues": [
+    {"id":"arrival","start":0.65,"end":3.7,"text":"200 W\nHighland","detail":"A coordinated repipe","position":[0.055,0.245],"size":64},
+    {"id":"shared","start":4.8,"end":7.9,"text":"One connected\nsystem.","detail":"Cold · hot · circulation return","position":[0.05,0.25],"size":52},
+    {"id":"protect","start":9.7,"end":15.7,"text":"Trace. Protect.\nPrepare.","detail":"Verify routes and affected services","position":[0.59,0.40],"size":52,"anchor":"P01-9.6"},
+    {"id":"open","start":19.0,"end":24.4,"text":"Make room.","detail":"Protect finishes. Prepare the route.","position":[0.60,0.46],"size":56,"anchor":"CW-04-23.4"},
+    {"id":"kitchen","start":24.7,"end":28.4,"text":"Kitchen low-wall connection","position":[0.58,0.62],"size":22,"sans":true,"anchor":"CW-04-23.4"},
+    {"id":"install","start":30.0,"end":36.8,"text":"Build the\nreplacement.","detail":"New piping remains isolated","position":[0.59,0.40],"size":56,"anchor":"CW-01-29.8"},
+    {"id":"test","start":49.7,"end":57.8,"text":"Test before\ntransfer.","detail":"Required test + inspection","position":[0.60,0.24],"size":54,"anchor":"TEST-GAUGE-54.2"},
+    {"id":"transfer","start":58.8,"end":64.3,"text":"Reconnect,\nwith care.","detail":"Proposed isolation · verify on site","position":[0.62,0.26],"size":54,"anchor":"SVC-CW-58"},
+    {"id":"balance","start":67.4,"end":72.8,"text":"Bring the loop\nto life.","detail":"Flush. Check. Balance the return.","position":[0.65,0.45],"size":50,"anchor":"HWC-01-67"},
+    {"id":"restore","start":74.4,"end":81.8,"text":"Close with\ncare.","detail":"Restore finishes. Keep service access.","position":[0.68,0.56],"size":54,"anchor":"A01-RESTORE-74.6"},
+    {"id":"resolve","start":85.6,"end":89.85,"text":"A maintainable\nsystem.","detail":"A planned sequence. Restored service.","position":[0.055,0.59],"size":54}
+  ]
+}

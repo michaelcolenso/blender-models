@@ -1,0 +1,18 @@
+{
+  "clean_cg": {
+    "path": "immersive-film/output/media/model-90s.mp4",
+    "sha256": "5a8e32156648b71eb6babb505098fb511ed5e67a22daa75dd960215695b8b103"
+  },
+  "approved_audio_movie_sha256": "793d7a1b545667954a150c8d0ea6a9979e18efea72816af4e987279a3dd494b5",
+  "design_sha256": "3154d3e15194db0c0bf0ace62513be039274aead4ed6e20cd750f7e830350ccc",
+  "native_cg_profile": {
+    "samples": 4,
+    "width": 960,
+    "height": 540,
+    "native_fps": 2,
+    "preview": true,
+    "device": "CPU",
+    "source_blend_sha256": "acb140a5ddc32cc95c19c9b98762462f9ce1db8e79670808f27d795ceeb85641"
+  },
+  "layout": "Full-frame model imagery, no surrounding inset/border/sidebar. New typography and editorial focus transform; original 3D geometry/sequence unchanged."
+}

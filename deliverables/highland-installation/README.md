@@ -1,6 +1,12 @@
 # Highland — proposed installation animation
 
+**Current cut:** [Watch the full-frame 90-second film](immersive-film/Highland-repipe-immersive-90s-1080p.mp4) · [Editable project](immersive-film/Highland-immersive-editable.zip) · [Storyboard](immersive-film/Highland-immersive-storyboard.png).
+
+The current cut fills the screen with the installation and places brief, unboxed titles beside the work. Earlier framed versions and source reviews remain below.
+
 [Studio revision with an exterior opening, ghost walls, shaded piping and guided camera moves](studio-upgrade/README.md).
+
+[Corrected replacement scripts, a validated editable rig and eight new preview stills](rebuild-review/README.md).
 
 The 90-second film follows shared distribution into the **Unit B / 106 pilot**: verify and protect, open access, install replacement piping, test and inspect, transfer service, then restore and document.
 
