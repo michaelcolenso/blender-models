@@ -1,0 +1,18 @@
+{
+  "source_pdf_sha256": "93c5426cc8604ec33abd0b13ece1f5c6b76fe0417a2efcd9aca84701d294586a",
+  "sheet": "P4.01",
+  "pdf_page": 15,
+  "dpi": 400,
+  "crop_normalized": [
+    0.51,
+    0.21,
+    0.89,
+    0.7
+  ],
+  "dimensions_px": [
+    6384,
+    5880
+  ],
+  "vector_paths_on_source_page": 13409,
+  "processing": "Original PDF crop rendered at 400 dpi; no generative enhancement, no change to drawing content."
+}

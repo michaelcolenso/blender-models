@@ -1,0 +1,42 @@
+{
+  "status": "assumed",
+  "basis": "Presentation treatment only; original source files, pipe centerlines and source provenance remain unchanged.",
+  "background_srgb": "#F7F6F2",
+  "palette": {"CW": "#147ECC", "HW": "#D94736", "HWC": "#E7772C", "access": "#ECAF39", "ink": "#29343A", "accent_ink": "#98621D"},
+  "render": {"engine": "CYCLES", "samples": 48, "width": 1280, "height": 720, "fps": 24, "native_fps": 6, "duration": 90},
+  "color": {"view_transform": "AgX", "look": "AgX - Medium High Contrast", "exposure": 0.0, "gamma": 1.0},
+  "pipe": {"roughness": 0.25, "roughness_variation": 0.025, "coat_weight": 0.5, "coat_roughness": 0.18, "metallic": 0.0, "micro_bump_m": 0.00012, "joint_radius_factor": 1.015},
+  "lighting": {
+    "reference_span_m": 12.0,
+    "hdri_strength": 0.12,
+    "authored_hdri_color_space": "sRGB",
+    "lights": [
+      {"name": "Top softbox", "position": [0, 0, 10], "target": [0, 0, 0], "power_w": 900, "size_m": 7},
+      {"name": "Key softbox", "position": [-4.5, -6, 8], "target": [0, 0, 1], "power_w": 650, "size_m": 5},
+      {"name": "Fill softbox", "position": [6, 1, 5.5], "target": [0, 0, 1], "power_w": 300, "size_m": 5},
+      {"name": "Rim strip", "position": [1, 6, 7.5], "target": [0, 0, 1.5], "power_w": 600, "size_m": 6, "size_y_m": 1.5}
+    ]
+  },
+  "contact": {"ao_distance_m": 0.12, "ao_strength": 0.16, "ao_samples": 2, "receiver_z_m": 0.0},
+  "blueprint": {"interpolation": "Cubic", "ink_black_point": 0.28, "paper_white_point": 0.98, "opacity": 0.25, "ink_srgb": "#746F67", "preserve_colored_annotations": true},
+  "ghost_walls": {
+    "status": "assumed", "source": "P4.01 / PDF page 15, visible architectural linework",
+    "basis": "Manual normalized centerline interpretation for room context. No structural classification, measured thickness, field height or actual opening layout is asserted.",
+    "display_height_in": 42, "surface_opacity": 0.10, "start_s": 8, "end_s": 85,
+    "segments": [
+      [[0.206, 0.261], [0.826, 0.261]],
+      [[0.067, 0.349], [0.067, 0.813]],
+      [[0.129, 0.346], [0.325, 0.346]],
+      [[0.332, 0.354], [0.332, 0.517]],
+      [[0.413, 0.351], [0.413, 0.468]],
+      [[0.414, 0.469], [0.454, 0.469]],
+      [[0.652, 0.353], [0.652, 0.572]],
+      [[0.826, 0.551], [0.826, 0.895]],
+      [[0.068, 0.825], [0.450, 0.825]],
+      [[0.463, 0.902], [0.824, 0.902]]
+    ]
+  },
+  "access": {"display_height_m": 0.38, "wire_radius_m": 0.007, "emission_strength": 0.8, "dash_length_m": 0.11, "fill_opacity": 0.025},
+  "pulse": {"spacing_m": 1.8, "speed_m_s": 0.35, "width_fraction": 0.12, "install_start_s": 29, "install_end_s": 45, "unit_flow_start_s": 67, "unit_flow_end_s": 85, "shared_flow_start_s": 85, "shared_flow_end_s": 90},
+  "opening": {"exterior_start_s": 0, "exterior_end_s": 4, "shared_start_s": 4, "shared_end_s": 8, "transition_s": 0.5, "note": "Exterior overview transitions by dissolve; no specific facade opening is asserted to locate Unit B."}
+}

@@ -1,5 +1,7 @@
 # Highland — proposed installation animation
 
+[Studio revision with an exterior opening, ghost walls, shaded piping and guided camera moves](studio-upgrade/README.md).
+
 The 90-second film follows shared distribution into the **Unit B / 106 pilot**: verify and protect, open access, install replacement piping, test and inspect, transfer service, then restore and document.
 
 - [Watch/download the 1080p film](assets/Highland-repipe-90s-1080p.mp4)

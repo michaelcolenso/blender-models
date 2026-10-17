@@ -40,7 +40,7 @@ Confirm measured routes/elevations, current configuration, water pressure under 
 
 ## Rebuild
 
-The model uses a dedicated spec-driven pipe builder because the existing generic house/detail builder does not support this scanned, multistory plumbing set. The supplied plan was rasterized at 200 dpi for source review; no automatic dimensional extraction is claimed.
+The model uses a dedicated spec-driven pipe builder because the existing generic house/detail builder does not implement this multistory plumbing-method model. P4.01 contains vector linework and was rasterized at 200 dpi for the original source review; the studio revision uses a 400-dpi crop. No automatic dimensional extraction or calibrated physical mapping is claimed.
 
 ```bash
 python prepare_spec.py
