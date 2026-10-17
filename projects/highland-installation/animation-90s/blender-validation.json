@@ -1,0 +1,62 @@
+{
+  "source_geometry": {
+    "unit": {
+      "compared": 94,
+      "unchanged": true
+    },
+    "shared": {
+      "compared": 45,
+      "unchanged": true
+    }
+  },
+  "staging": {
+    "roots_grow_after_29s": true,
+    "mains_complete_before_branches": true,
+    "test_boundary_visible_before_transfer": true,
+    "flow_starts_after_depicted_transfer": true,
+    "return_markers_move": true,
+    "restoration_follows_cutover": true
+  },
+  "movie_timeline": [
+    {
+      "shot": 1,
+      "start": 1,
+      "end_exclusive": 193
+    },
+    {
+      "shot": 2,
+      "start": 193,
+      "end_exclusive": 433
+    },
+    {
+      "shot": 3,
+      "start": 433,
+      "end_exclusive": 697
+    },
+    {
+      "shot": 4,
+      "start": 697,
+      "end_exclusive": 1081
+    },
+    {
+      "shot": 5,
+      "start": 1081,
+      "end_exclusive": 1393
+    },
+    {
+      "shot": 6,
+      "start": 1393,
+      "end_exclusive": 1753
+    },
+    {
+      "shot": 7,
+      "start": 1753,
+      "end_exclusive": 2041
+    },
+    {
+      "shot": 8,
+      "start": 2041,
+      "end_exclusive": 2161
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "samples": 4,
+  "width": 960,
+  "height": 540,
+  "native_fps": 2,
+  "preview": true,
+  "device": "CPU",
+  "source_blend_sha256": "acb140a5ddc32cc95c19c9b98762462f9ce1db8e79670808f27d795ceeb85641"
+}

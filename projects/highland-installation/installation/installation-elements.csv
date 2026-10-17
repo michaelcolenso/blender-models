@@ -1,0 +1,48 @@
+ID,type,system,phase,description,geometry_status,source,basis,quantity_use
+CW-01,pipe,CW,3,Unit service to high distribution junction,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+CW-02,pipe,CW,3,High route to far bathroom group,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+CW-03,pipe,CW,3,High route across west bathroom toward kitchen,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+CW-04,pipe,CW,4,Kitchen low-wall supply; elevation assumed; source low-wall note retained,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+HW-01,pipe,HW,3,Unit service to high distribution junction,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+HW-02,pipe,HW,3,High route to far bathroom group,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+HW-03,pipe,HW,3,High route across west bathroom toward kitchen,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+HW-04,pipe,HW,4,Kitchen low-wall supply; elevation assumed; source low-wall note retained,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+HWC-01,pipe,HWC,3,Proposed far-end circulation return to service assembly; termination/balance unverified,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F01,terminal,,4,Laundry tray,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F01-CW,pipe,CW,4,Laundry tray supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F01-HW,pipe,HW,4,Laundry tray supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F02,terminal,,4,Washer box,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F02-CW,pipe,CW,4,Washer box supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F02-HW,pipe,HW,4,Washer box supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F03,terminal,,4,West bath / lavatory group,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F03-CW,pipe,CW,4,West bath / lavatory group supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F03-HW,pipe,HW,4,West bath / lavatory group supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F04,terminal,,4,West bath / tub,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F04-CW,pipe,CW,4,West bath / tub supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F04-HW,pipe,HW,4,West bath / tub supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F05,terminal,,4,West bath / WC,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F05-CW,pipe,CW,4,West bath / WC supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F06,terminal,,4,Far bath / lavatory group,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F06-CW,pipe,CW,4,Far bath / lavatory group supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F06-HW,pipe,HW,4,Far bath / lavatory group supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F07,terminal,,4,Far bath / shower,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F07-CW,pipe,CW,4,Far bath / shower supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F07-HW,pipe,HW,4,Far bath / shower supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F08,terminal,,4,Far bath / WC group,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F08-CW,pipe,CW,4,Far bath / WC group supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F09,terminal,,4,Kitchen sink + dishwasher,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F10,terminal,,4,Exterior hose bibb,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+F10-CW,pipe,CW,4,Exterior hose bibb supply; final individual fixture rough-ins not modeled,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+A01,access,,2,Service / meter access,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+A02,access,,2,High distribution access,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+A03,access,,2,West wet-wall access,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+A04,access,,2,Kitchen low-wall access,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+A05,access,,2,Exterior branch access,assumed,P4.01,"Proposed installation-method geometry; location, size and elevation require field verification.",NOT FOR TAKEOFF
+P01,protection,,1,Proposed protected work approach,assumed,P4.01,Illustrative work protection footprint only; actual entry and egress not established.,NOT FOR TAKEOFF
+SVC01,assembly,,5,CW / HW / HWC service assembly,assumed,P4.01,"P4.01 identifies unit shutoffs, water meter, circulation return and alarm-linked solenoid. Proposed assembly spacing/order are schematic; verify actual devices.",NOT FOR TAKEOFF
+TEST01,test,,4,Isolated new network test point,assumed,P4.01,"Illustrative gauge and capped test boundary; pressure, duration and medium must be specified by code/manufacturer.",NOT FOR TAKEOFF
+SUP-01,support,,2,,assumed,P4.01,"Support coordination symbol only; count, anchorage and spacing not designed.",NOT FOR TAKEOFF
+SUP-02,support,,2,,assumed,P4.01,"Support coordination symbol only; count, anchorage and spacing not designed.",NOT FOR TAKEOFF
+SUP-03,support,,2,,assumed,P4.01,"Support coordination symbol only; count, anchorage and spacing not designed.",NOT FOR TAKEOFF
+SUP-04,support,,2,,assumed,P4.01,"Support coordination symbol only; count, anchorage and spacing not designed.",NOT FOR TAKEOFF
+SUP-05,support,,2,,assumed,P4.01,"Support coordination symbol only; count, anchorage and spacing not designed.",NOT FOR TAKEOFF

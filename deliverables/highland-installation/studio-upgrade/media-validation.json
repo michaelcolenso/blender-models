@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "method": "Blender 5.0.1 saved-file readback; used bitmap packing asserted and HDR float pixels read back. A 64x64 one-sample World-only render verified the authored EXR encoding.",
+  "used_bitmap_textures_packed": true,
+  "worlds_checked": [
+    "3D - Shared distribution",
+    "3D - Unit B installation",
+    "STUDIO - Exterior opening"
+  ],
+  "authored_hdri": {
+    "packed": true,
+    "size": [
+      1024,
+      512
+    ],
+    "input_color_space": "sRGB",
+    "decoded_scene_linear_peak": 6.09,
+    "probe_mean_rgb_correct_encoding": 26.76123046875,
+    "probe_mean_rgb_if_incorrectly_relabelled_linear": 56.187255859375
+  },
+  "exact_png_paper_reference_rgb": [
+    247,
+    246,
+    242
+  ]
+}

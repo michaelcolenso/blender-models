@@ -1,0 +1,407 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "Three explicit source-derived 3D scenes",
+      "passed": true
+    },
+    {
+      "check": "3D - Unit B installation source geometry unchanged",
+      "passed": true
+    },
+    {
+      "check": "3D - Shared distribution source geometry unchanged",
+      "passed": true
+    },
+    {
+      "check": "3D - Unit B installation Cycles, AgX, transparent",
+      "passed": true
+    },
+    {
+      "check": "3D - Unit B installation true shadow receiver",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled CW-01",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled CW-02",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled CW-03",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HW-01",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HW-02",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HW-03",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HWC-01",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled CW-04",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HW-04",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F01-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F01-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F02-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F02-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F03-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F03-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F04-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F04-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F05-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F06-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F06-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F07-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F07-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F08-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled F10-CW",
+      "passed": true
+    },
+    {
+      "check": "3D - Shared distribution Cycles, AgX, transparent",
+      "passed": true
+    },
+    {
+      "check": "3D - Shared distribution true shadow receiver",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HEADER-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HEADER-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled HEADER-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'01-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'01-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'01-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled RETURN-'01",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'03-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'03-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'03-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled RETURN-'03",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'02-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'02-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'02-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled RETURN-'02",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'04-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'04-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'04-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled RETURN-'04",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'05-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'05-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled STACK-'05-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled RETURN-'05",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-106-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-106-HW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-106-HWC",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-IRR-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-AUX-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-COMMON-CW",
+      "passed": true
+    },
+    {
+      "check": "Coated Principled SH-COMMON-HW",
+      "passed": true
+    },
+    {
+      "check": "Native 400 dpi Cubic source texture",
+      "passed": true
+    },
+    {
+      "check": "Flow gate at 30s",
+      "passed": true
+    },
+    {
+      "check": "Flow gate at 55s",
+      "passed": true
+    },
+    {
+      "check": "Flow gate at 60s",
+      "passed": true
+    },
+    {
+      "check": "Flow gate at 66.9s",
+      "passed": true
+    },
+    {
+      "check": "Flow gate at 67s",
+      "passed": true
+    },
+    {
+      "check": "Flow gate at 69s",
+      "passed": true
+    },
+    {
+      "check": "Gauge shown at required testing hold",
+      "passed": true
+    },
+    {
+      "check": "Proposed closing valve icons",
+      "passed": true
+    },
+    {
+      "check": "Valve-icon interval ends after depicted connection",
+      "passed": true
+    },
+    {
+      "check": "Installation wide retains all distribution control points",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 18s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 22s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 26s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 30s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 47s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 54s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 58s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 61s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 68s",
+      "passed": true
+    },
+    {
+      "check": "Continuous focus move at 73s",
+      "passed": true
+    },
+    {
+      "check": "Ten illustrative ghost walls",
+      "passed": true
+    },
+    {
+      "check": "Ghost height is the specified display height",
+      "passed": true
+    },
+    {
+      "check": "Access envelopes restored after transfer",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction HEADER-HWC",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction STACK-'01-HWC",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction RETURN-'01",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction STACK-'03-HWC",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction RETURN-'03",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction STACK-'02-HWC",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction RETURN-'02",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction STACK-'04-HWC",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction RETURN-'04",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction STACK-'05-HWC",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction RETURN-'05",
+      "passed": true
+    },
+    {
+      "check": "Shared return direction SH-106-HWC",
+      "passed": true
+    },
+    {
+      "check": "Tilted source labels suppressed",
+      "passed": true
+    },
+    {
+      "check": "Actual exterior model starts the film",
+      "passed": true
+    },
+    {
+      "check": "Source animation unchanged",
+      "passed": true
+    }
+  ],
+  "count": 100,
+  "scope": "Presentation/source/staging checks; not field, hydraulic or code acceptance."
+}

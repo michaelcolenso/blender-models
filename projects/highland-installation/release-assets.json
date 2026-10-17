@@ -1,0 +1,33 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "highland-repipe-2026-10-17",
+  "assets": [
+    {
+      "name": "Highland-repipe-90s-4K.mp4",
+      "bytes": 114842965,
+      "sha256": "b7e100c2a9fcd117c0677a0b158218d880779b0c134a74243796555648a9c889"
+    },
+    {
+      "name": "Highland-repipe-90s-1080p.mp4",
+      "bytes": 23299488,
+      "sha256": "74a694c86d1e06fea035826dc21b4cc30d72b36552d5d56ec07a01046a0cee97"
+    },
+    {
+      "name": "Highland-repipe-animation-editable.zip",
+      "bytes": 86383788,
+      "sha256": "bbcb7b581aa8966489445a94de1db68a62e19ee561a1f90b45b764d382da2e37"
+    },
+    {
+      "name": "Highland-repipe-storyboard.pdf",
+      "bytes": 23770476,
+      "sha256": "b33cc0dd98e692315db994ae78033ce2b466c7f57274025dd93313e805af7ce5"
+    },
+    {
+      "name": "Highland-installation-model.zip",
+      "bytes": 54329711,
+      "sha256": "2af8f9ac167823251efd07195513d452d1181c2f612ea90ad51065459d50d810"
+    }
+  ],
+  "storage": "git-lfs",
+  "asset_directory": "deliverables/highland-installation/assets"
+}
