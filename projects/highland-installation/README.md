@@ -4,7 +4,7 @@ The proposed CPVC replacement sequence follows shared distribution into the **Un
 
 [Watch or download the films and editable models](https://github.com/michaelcolenso/blender-models/releases/tag/highland-repipe-2026-10-17) · [Eight-frame preview](../../deliverables/highland-installation/README.md)
 
-The release contains the 90-second 4K and 1080p H.264 movies, eight-page storyboard, editable animation package and original installation-model package. Git contains the governing specifications, scripts, source crops, individual storyboard frames and review evidence. Large generated assets and the original PDF are restored from the release; `release-assets.json` records their sizes and SHA-256 hashes.
+The delivery contains the 90-second 4K and 1080p H.264 movies, eight-page storyboard, editable animation package and original installation-model package. Git contains the governing specifications, scripts, source crops, individual storyboard frames and review evidence. The five large downloads use **Git LFS** in `deliverables/highland-installation/assets/`; the release page links to those files. `release-assets.json` records their sizes and SHA-256 hashes.
 
 ## Source and status
 
@@ -17,18 +17,15 @@ The source title says 200 West Highland; its location block says 202 W Highland.
 
 ## Restore the editable project
 
-Use Python 3.11 and an authenticated GitHub CLI account with access to this private repository. Run these commands from the repository root:
+Use Python 3.11 and Git LFS, with GitHub access to this private repository. Run these commands from the repository root:
 
 ```bash
-gh release download highland-repipe-2026-10-17 \
-  --repo michaelcolenso/blender-models \
-  --pattern '*.zip' \
-  --dir projects/highland-installation/.release-assets
-python3.11 projects/highland-installation/restore_assets.py \
-  projects/highland-installation/.release-assets
+git lfs install
+git lfs pull --include='deliverables/highland-installation/assets/*'
+python3.11 projects/highland-installation/restore_assets.py
 ```
 
-The restoration script verifies both archives before writing, restores the original PDF, Blender/GLB models, PDFs, short installation movie and audio stems, and preserves modified local assets by refusing to overwrite them. It leaves tracked source files intact. The two 90-second movie masters remain separate release downloads.
+The restoration script verifies both archives before writing, restores the original PDF, Blender/GLB models, PDFs, short installation movie and audio stems, and preserves modified local assets by refusing to overwrite them. It leaves tracked source files intact. The two 90-second movie masters remain in the delivery assets folder. To use ZIPs downloaded through GitHub's **Download raw file** button instead, pass their directory as the script's optional argument.
 
 Open `animation-90s/Highland-repipe-90s.blend` at **MASTER - 90 seconds**. Its two source-derived 3D scenes, camera keyframes, construction reveals, native graphics and relative audio/image references remain editable. Keep the folder structure intact. The original installation Blender files remain separate and unchanged.
 

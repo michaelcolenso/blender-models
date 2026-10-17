@@ -1,4 +1,4 @@
-"""Restore large project inputs from the checksum-verified GitHub release ZIPs."""
+"""Restore large project inputs from the checksum-verified delivery ZIPs."""
 
 import argparse
 import hashlib
@@ -20,7 +20,11 @@ def digest(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('asset_directory', type=Path, help='Directory containing both release ZIPs')
+    parser.add_argument(
+        'asset_directory', nargs='?', type=Path,
+        default=ROOT.parent.parent / 'deliverables/highland-installation/assets',
+        help='Directory containing both ZIPs (default: the Git LFS delivery assets)',
+    )
     args = parser.parse_args()
     manifest = json.loads((ROOT / 'release-assets.json').read_text())
     records = {asset['name']: asset for asset in manifest['assets']}

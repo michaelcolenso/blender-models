@@ -27,5 +27,7 @@
       "bytes": 54329711,
       "sha256": "2af8f9ac167823251efd07195513d452d1181c2f612ea90ad51065459d50d810"
     }
-  ]
+  ],
+  "storage": "git-lfs",
+  "asset_directory": "deliverables/highland-installation/assets"
 }
