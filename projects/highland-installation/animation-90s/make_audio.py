@@ -1,15 +1,28 @@
 """Local public-domain-dataset TTS plus an original restrained instrumental bed."""
-import json,wave,math,subprocess
+import json,wave,math,subprocess,sys
 from pathlib import Path
 import numpy as np
 from scipy.signal import resample_poly
 from scipy.io import wavfile
-from piper import PiperVoice,SynthesisConfig
 ROOT=Path(__file__).resolve().parent;A=ROOT/'audio';A.mkdir(exist_ok=True)
 S=json.loads((ROOT/'animation-spec.json').read_text());SR=48000;N=90*SR
-voice=PiperVoice.load(A/'en_US-ljspeech-high.onnx')
 speech=np.zeros(N,dtype=np.float32);activity=np.zeros(N,dtype=np.float32);segments=[]
-for sh in S['shots']:
+reuse='--reuse-narration' in sys.argv
+if reuse:
+ rate,x=wavfile.read(A/'narration.wav')
+ assert rate==SR and x.ndim==1 and len(x)==N,'Expected the existing 90-second mono narration at 48 kHz.'
+ speech=x.astype(np.float32)/32768
+ segments=json.loads((A/'timing.json').read_text())
+ assert len(segments)==8
+ for sh,timing in zip(S['shots'],segments):
+  assert sh['voice']==timing['text'] and sh['start']<=timing['start']<timing['end']<=sh['end'],'Narration cache no longer matches the shot text/timing.'
+  activity[round(timing['start']*SR):round(timing['end']*SR)]=1
+else:
+ from piper import PiperVoice,SynthesisConfig
+ if not (A/'en_US-ljspeech-high.onnx').exists():
+  raise FileNotFoundError('Voice weights are not included. Use --reuse-narration with the supplied WAV/timing files, or supply the documented Piper model.')
+ voice=PiperVoice.load(A/'en_US-ljspeech-high.onnx')
+for sh in ([] if reuse else S['shots']):
  raw=A/f"voice-{sh['id']:02}.wav"
  with wave.open(str(raw),'wb') as w:
   voice.synthesize_wav(sh['voice'],w,SynthesisConfig(length_scale=1.02,noise_scale=.5,noise_w_scale=.65))
@@ -32,7 +45,7 @@ for sh in S['shots']:
  end=min(offset+len(x),N);speech[offset:end]+=x[:end-offset];activity[offset:end]=1
  segments.append({'id':sh['id'],'start':start,'end':end/SR,'text':sh['voice']})
  print('Voice',sh['id'],round(len(x)/SR,2),'s',flush=True)
-wavfile.write(A/'narration.wav',SR,(np.clip(speech,-1,1)*32767).astype(np.int16))
+if not reuse:wavfile.write(A/'narration.wav',SR,(np.clip(speech,-1,1)*32767).astype(np.int16))
 # Compose soft sustained intervals and sparse rounded plucks; no sampled music.
 rng=np.random.default_rng(200);music=np.zeros((N,2),dtype=np.float32)
 chords=[[146.832,220,277.183,369.994],[123.471,185,246.942,293.665],[98,146.832,185,246.942],[110,164.814,220,293.665]]
@@ -60,6 +73,12 @@ for t0 in [8,18,29,45,58,73,85]:
  count=int(.13*SR);t=np.arange(count,dtype=np.float32)/SR
  cue=np.sin(2*np.pi*(880*t+160*t*t))*np.sin(np.pi*np.arange(count)/count)**2*.012
  start=round(t0*SR);music[start:start+count,:]+=cue[:,None]
+ui_ticks=[9.5,11.0,18.5,19.4,20.3,21.2,22.1,29.0,30.0,31.0,32.0,34.0,35.0,38.0,54.0,58.0,61.0,64.0,67.0,74.0]
+for t0 in ui_ticks:
+ count=int(.045*SR);t=np.arange(count,dtype=np.float32)/SR
+ tick=np.sin(2*np.pi*520*t)*np.exp(-t*95)*np.sin(np.pi*np.arange(count)/count)**2*.009
+ start=round(t0*SR)
+ if start+count<=N:music[start:start+count,:]+=tick[:,None]*(1-.65*duck[start:start+count,None])
 fadein=np.minimum(np.arange(N)/(2*SR),1);fadeout=np.minimum((N-np.arange(N))/(3*SR),1);music*=(fadein*fadeout)[:,None]
 wavfile.write(A/'original-score.wav',SR,(np.clip(music,-1,1)*32767).astype(np.int16))
 mix=music+speech[:,None]*.9
@@ -70,5 +89,6 @@ def stamp(t):
 import textwrap
 (ROOT/'Highland-repipe-90s.srt').write_text('\n\n'.join(f"{i+1}\n{stamp(s['start'])} --> {stamp(s['end'])}\n"+'\n'.join(textwrap.wrap(s['text'],46)) for i,s in enumerate(segments))+'\n')
 (A/'timing.json').write_text(json.dumps(segments,indent=2,ensure_ascii=False))
+(A/'ui-cues.json').write_text(json.dumps({'times_seconds':ui_ticks,'status':'presentation sound cues, not actual telemetry or test confirmations','ducked_under_narration':True},indent=2))
 (A/'CREDITS.txt').write_text('Narration: locally synthesized with Piper, en_US-ljspeech-high, LJ Speech public-domain dataset. Source: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/ljspeech/high\nScore and transition cues: original procedural composition generated for this project.\nNo original site audio or actual flow measurements are represented.\n')
 print('AUDIO_COMPLETE: 90-second stereo mix; narration captions aligned to actual synthesized clips.')

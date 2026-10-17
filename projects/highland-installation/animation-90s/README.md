@@ -1,5 +1,7 @@
 # 200 W Highland — 90-second repipe animation
 
+The released files below describe the original delivery. The corrected source rebuild now retains the exterior-first studio treatment and tracked callouts; see [REBUILD-NOTES.md](REBUILD-NOTES.md) for dependencies, verified scope and current commands.
+
 ## Watch and review
 
 - **Highland-repipe-90s-4K.mp4** — 90 seconds, 3840 × 2160, 24 fps, H.264/AAC, with narration, original instrumental music, graphic cues and on-screen editorial captions.

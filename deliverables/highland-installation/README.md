@@ -2,6 +2,8 @@
 
 [Studio revision with an exterior opening, ghost walls, shaded piping and guided camera moves](studio-upgrade/README.md).
 
+[Corrected replacement scripts, a validated editable rig and eight new preview stills](rebuild-review/README.md).
+
 The 90-second film follows shared distribution into the **Unit B / 106 pilot**: verify and protect, open access, install replacement piping, test and inspect, transfer service, then restore and document.
 
 - [Watch/download the 1080p film](assets/Highland-repipe-90s-1080p.mp4)
