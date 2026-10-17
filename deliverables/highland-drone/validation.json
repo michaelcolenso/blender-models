@@ -1,0 +1,176 @@
+{
+  "source_entry": "east-R1-08",
+  "exterior_meshes": 1227,
+  "interior_objects": 151,
+  "checkpoints": [
+    {
+      "t": 0,
+      "xyz_ft": [
+        190,
+        20,
+        48
+      ],
+      "cue": "Approach the east frontage",
+      "exterior_visible": true
+    },
+    {
+      "t": 3.2,
+      "xyz_ft": [
+        165,
+        92,
+        25
+      ],
+      "cue": "Approach the east frontage",
+      "exterior_visible": true
+    },
+    {
+      "t": 5.7,
+      "xyz_ft": [
+        125,
+        111,
+        17
+      ],
+      "cue": "Through the lobby glazing",
+      "exterior_visible": true
+    },
+    {
+      "t": 6.5,
+      "xyz_ft": [
+        119,
+        111,
+        16.3
+      ],
+      "cue": "Through the lobby glazing",
+      "exterior_visible": false
+    },
+    {
+      "t": 8.8,
+      "xyz_ft": [
+        92,
+        111,
+        16.3
+      ],
+      "cue": "Lobby 110",
+      "exterior_visible": false
+    },
+    {
+      "t": 10.5,
+      "xyz_ft": [
+        76.5,
+        112,
+        16.3
+      ],
+      "cue": "Corridor 108 \u00b7 elevator core",
+      "exterior_visible": false
+    },
+    {
+      "t": 12,
+      "xyz_ft": [
+        76.5,
+        126,
+        16.3
+      ],
+      "cue": "Corridor 108 \u00b7 elevator core",
+      "exterior_visible": false
+    },
+    {
+      "t": 13.2,
+      "xyz_ft": [
+        76.5,
+        121,
+        16.3
+      ],
+      "cue": "Entering Elevator M1",
+      "exterior_visible": false
+    },
+    {
+      "t": 14.3,
+      "xyz_ft": [
+        73.5,
+        121,
+        16.3
+      ],
+      "cue": "Entering Elevator M1",
+      "exterior_visible": false
+    },
+    {
+      "t": 15.3,
+      "xyz_ft": [
+        70.8,
+        121,
+        16.3
+      ],
+      "cue": "Up one floor",
+      "exterior_visible": false
+    },
+    {
+      "t": 17.8,
+      "xyz_ft": [
+        70.8,
+        121,
+        26.55
+      ],
+      "cue": "Up one floor",
+      "exterior_visible": false
+    },
+    {
+      "t": 18.5,
+      "xyz_ft": [
+        70.8,
+        121,
+        26.55
+      ],
+      "cue": "Up one floor",
+      "exterior_visible": false
+    },
+    {
+      "t": 19.7,
+      "xyz_ft": [
+        76.5,
+        121,
+        26.55
+      ],
+      "cue": "R2 elevator lobby",
+      "exterior_visible": false
+    },
+    {
+      "t": 22,
+      "xyz_ft": [
+        76.5,
+        100,
+        26.55
+      ],
+      "cue": "Corridor 208 \u00b7 toward the stair",
+      "exterior_visible": false
+    },
+    {
+      "t": 26,
+      "xyz_ft": [
+        76.5,
+        61,
+        26.55
+      ],
+      "cue": "Corridor 208 \u00b7 toward the stair",
+      "exterior_visible": false
+    }
+  ],
+  "mobile_overflow": false,
+  "browser_errors": [],
+  "media_checks": {
+    "codec": "h264",
+    "resolution": [
+      720,
+      1280
+    ],
+    "frames": 624,
+    "duration_seconds": 26,
+    "poster_nonblank": true,
+    "animated_preview_nonblank": true
+  },
+  "artifact_sha256": {
+    "Highland-corridor-drone.mp4": "00a3240080c074bd5c0c60e4ea4713f71173a11e04e0dc776a5c9f2c03d88d4b",
+    "Highland-drone-tour.html": "337c486153e3dd6b67d3056463b4192cde415eef79c217d644c94808988050ec",
+    "Highland-drone-poster.png": "a84ccbf81c49f55e0a93b64fc0a8ecfab76330566b9706415bdfd8a5f560dcbc",
+    "Highland-drone-preview.gif": "b0ed604ede138aacdbd430b8d3c916813d5d7e43d7e5bd23ea5a756876469498"
+  }
+}
