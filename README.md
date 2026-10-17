@@ -36,6 +36,7 @@ Operator procedure with exact commands: **RUNBOOK.md**.
 
 - **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `tools/detail.py`.
 - **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `tools/house.py`, `tools/qto.py`.
+- **room** — interior shell + furniture + lighting from a photo or sketch (`specs/room-*.yaml`, `tools/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `tools/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `python tools/room.py specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
 - **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
 All types share: provenance on every element, failing checks, CI rebuild.
 
