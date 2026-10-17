@@ -1,5 +1,7 @@
 # 200 W Highland — installation models and 90-second animation
 
+**Current presentation:** [Full-frame architectural cut and editable titles](immersive-film/README.md) · [Watch the complete 90-second review](../../deliverables/highland-installation/immersive-film/Highland-repipe-immersive-90s-1080p.mp4).
+
 [Studio revision: exterior opening, depth, cameras and callouts](studio-upgrade/README.md) · [Revised film and upgrade guide](../../deliverables/highland-installation/studio-upgrade/README.md)
 
 The proposed CPVC replacement sequence follows shared distribution into the **Unit B / 106 pilot**, then shows verification, access, new distribution, branches, testing, service transfer and restoration. This is a separate pilot from the earlier Unit A / 107 strategy study in `projects/highland-repipe/`.
