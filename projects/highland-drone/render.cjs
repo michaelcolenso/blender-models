@@ -6,7 +6,7 @@ const http=require('node:http');
 const fs=require('node:fs'),path=require('node:path');
 const out=path.resolve(__dirname,'../../build/highland-drone');fs.mkdirSync(out,{recursive:true});
 const html=path.join(out,'Highland-drone-tour.html');
-const fps=24,duration=26,steps=[0,3.2,5.7,6.5,8.8,10.5,12,13.2,14.3,15.3,17.8,18.5,19.7,22,26];
+const fps=24,duration=26,steps=[0,3.2,5.7,6.5,8.8,10.5,12,12.5,13.2,14.3,15.3,15.7,16.4,17.8,18.5,18.9,19.7,22,25,26];
 const only=process.argv.includes('--review-only');
 (async()=>{
  const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/html; charset=utf-8');res.end(fs.readFileSync(html))});
@@ -30,7 +30,7 @@ const only=process.argv.includes('--review-only');
   if(!(end.xyz_ft[0]>73&&end.xyz_ft[0]<79&&end.xyz_ft[1]>56&&end.xyz_ft[1]<65&&end.xyz_ft[2]>26&&end.xyz_ft[2]<27))throw Error('Camera missed R2 corridor end');
   const lift=checkpoints.find(x=>x.t===17.8);if(!(lift.car_elevation_ft-checkpoints.find(x=>x.t===15.3).car_elevation_ft>10&&lift.cutaway))throw Error('Elevator cutaway did not reach R2');
   if(checkpoints.find(x=>x.t===5.7).entry_open<.7)throw Error('Entry did not open on proximity');
-  if(checkpoints.find(x=>x.t===15.3).xray<.9||checkpoints.find(x=>x.t===22).xray>.1)throw Error('Glass/brass cutaway timing failed');
+  if(checkpoints.find(x=>x.t===16.4).xray<.9||checkpoints.find(x=>x.t===22).xray>.1)throw Error('Glass/brass cutaway timing failed');
   if(checkpoints.find(x=>x.t===14.3).elevator_open<.8)throw Error('Elevator door did not open');
   await page.setViewportSize({width:390,height:844});await page.evaluate(()=>window.drone.frame(10.5));
   await page.screenshot({path:path.join(out,'mobile-review.png')});
