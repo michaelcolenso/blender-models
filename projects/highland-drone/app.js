@@ -139,6 +139,11 @@ box('R2 west wall north',874,879,1474,1540,uFloor,uCeil,M.wall,upper);
 box('R2 east wall',951,956,670,1540,uFloor,uCeil,M.wall,upper);
 box('R2 south end',879,951,665,670,uFloor,uCeil,M.wall,upper);
 box('R2 north end',879,951,1540,1545,uFloor,uCeil,M.wall,upper);
+box('Stair M1 door at corridor end',894,936,670,672,uFloor+4,uFloor+87,M.door,upper);
+box('Stair M1 door frame left',891,894,669,674,uFloor+2,uFloor+91,M.trim,upper);
+box('Stair M1 door frame right',936,939,669,674,uFloor+2,uFloor+91,M.trim,upper);
+box('Stair M1 door frame head',891,939,669,674,uFloor+87,uFloor+91,M.trim,upper);
+box('Stair M1 door pull',929,931,673,675,uFloor+37,uFloor+47,M.brass,upper);
 for(const y of [750,900,1090,1215])panel('R2 east door '+y,949,y,31,M.door,uFloor,upper);
 for(const y of [765,1020,1170])panel('R2 west door '+y,881,y,31,M.door,uFloor,upper);
 for(const x of [886,944])box('R2 recessed linear cove '+x,x-1,x+1,695,1510,uCeil-2,uCeil-1,M.led,upper);
@@ -203,9 +208,21 @@ function floorLabel(textLabel,x,y,z,width=1.8){
  mark.name='in-scene wayfinding '+textLabel;mark.rotation.x=-Math.PI/2;
  mark.position.set(x*I,z*I+.08,-y*I);scene.add(mark);
 }
+function wallSign(textLabel,x,y,z,faceSouth=true){
+ const canvas=document.createElement('canvas');canvas.width=512;canvas.height=128;
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#142c35';ctx.fillRect(0,0,512,128);
+ ctx.strokeStyle='#d6ad68';ctx.lineWidth=6;ctx.strokeRect(4,4,504,120);
+ ctx.fillStyle='#ffe2ad';ctx.font='600 42px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(textLabel,256,66);
+ const tex=new THREE.CanvasTexture(canvas);tex.colorSpace=THREE.SRGBColorSpace;
+ const sign=new THREE.Mesh(new THREE.PlaneGeometry(1.55,.39),new THREE.MeshBasicMaterial({map:tex,side:THREE.DoubleSide}));
+ sign.name='in-scene wall sign '+textLabel;sign.position.set(x*I,z*I,-y*I);
+ if(!faceSouth)sign.rotation.y=Math.PI;scene.add(sign);
+}
 floorLabel('LOBBY 110',1300,1332,floor,2.1);
 floorLabel('CORRIDOR 108',915,1375,floor,1.6);
 floorLabel('CORRIDOR 208',915,1335,uFloor,1.6);
+wallSign('ELEVATOR M1  ←',915,1538,floor+78);
+wallSign('STAIR M1',915,673,uFloor+94,false);
 const brass=new THREE.LineBasicMaterial({color:0xe6bf79,transparent:true,opacity:0,depthWrite:false});
 for(const level of [132,163,194,225,255,286,317,357]){
  const geometry=new THREE.EdgesGeometry(new THREE.BoxGeometry(65*I,.006,50*I));
@@ -285,6 +302,13 @@ function frame(t){
  elapsed=THREE.MathUtils.clamp(t,0,26);camera.position.copy(path(elapsed));
  const look=path(Math.min(26,elapsed+1.5));if(look.distanceTo(camera.position)<.02){
   const prior=path(Math.max(0,elapsed-.3));look.copy(camera.position).add(camera.position.clone().sub(prior).normalize());
+ }
+ // Hold the view down Corridor 108 until the camera reaches the elevator
+ // opening, then look into the cab. An early turn points through its wall.
+ if(elapsed>=10.3&&elapsed<=13.4){
+  const alongHall=new THREE.Vector3(915*I,camera.position.y,-1535*I);
+  const intoCab=new THREE.Vector3(847*I,camera.position.y,-1452*I);
+  look.copy(alongHall.lerp(intoCab,smooth(12.15,13.4,elapsed)));
  }
  if(elapsed<3.5)look.lerp(xyz([122.9,111,16.5]),.35*(1-elapsed/3.5));
  if(elapsed>=14.8&&elapsed<=19.4)look.lerp(camera.position.clone().add(new THREE.Vector3(1,0,0)),Math.min(smooth(14.8,15.2,elapsed),1-smooth(18.8,19.4,elapsed)));

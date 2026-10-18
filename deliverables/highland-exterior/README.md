@@ -5,6 +5,7 @@ First exterior study built from the architectural plans and the owner's photos: 
 ![Southeast exterior](Highland-exterior-southeast.png)
 
 - [Southeast view](Highland-exterior-southeast.png)
+- [Portrait Cycles preview](Highland-exterior-portrait.png)
 - [East entry view](Highland-exterior-east-entry.png)
 - [Review PDF: four elevation comparisons, roof and provenance](Highland-exterior-review.pdf)
 - [Editable Blender model](Highland-exterior.blend)
