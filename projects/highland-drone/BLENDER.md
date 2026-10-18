@@ -47,6 +47,13 @@ stereo AAC. Draft quality uses 360 × 640 / 8 samples; phone quality uses
 540 × 960 / 16 samples. Captions and the small map are added during assembly;
 the architecture, in-scene signs, lighting and animation render inside Blender.
 
+The workflow is registered on the delivery branch and accepts manual runs.
+Leave `existing_run` blank for a complete render. To repair a sequence, supply a
+prior run ID and the inclusive replacement-frame range, using the same quality
+as the prior run. Actions renders that range from the current scene, overlays
+the new frames on the original frame artifacts, and validates and encodes the
+complete film again. Source frame artifacts are retained for seven days.
+
 ## Basis and validation
 
 A2.03/A2.04 locate the public circulation. A3.11 establishes the 123-inch R1-to-R2
