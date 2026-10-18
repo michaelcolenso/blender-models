@@ -18,14 +18,16 @@ def font(size,bold=False):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--frames',type=Path,default=ROOT/'build/highland-blender/frames');p.add_argument('--output',type=Path,default=ROOT/'deliverables/highland-blender');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--frames',type=Path,default=ROOT/'build/highland-blender/frames');p.add_argument('--output',type=Path,default=ROOT/'deliverables/highland-blender');p.add_argument('--review-only',action='store_true',help='Caption the available review frames without encoding a film');a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=True);comps=a.frames.parent/'composited';comps.mkdir(exist_ok=True)
-    files=[a.frames/f'frame_{j:04d}.png' for j in range(1,COUNT+1)]
+    files=sorted(a.frames.glob('frame_*.png')) if a.review_only else [a.frames/f'frame_{j:04d}.png' for j in range(1,COUNT+1)]
+    if not files:raise RuntimeError('No Blender frames found')
     missing=[p.name for p in files if not p.exists()]
     if missing:raise RuntimeError(f'Missing native Blender frames: {missing[:12]}')
     size=Image.open(files[0]).size;w,h=size;scale=w/540
     fonts={key:font(max(9,round(s*scale)),bold) for key,s,bold in [('small',12,False),('tag',15,True),('title',23,True),('sub',17,False)]}
-    for j,src in enumerate(files):
+    for src in files:
+        j=int(src.stem.split('_')[-1])-1
         base=Image.open(src).convert('RGB');assert base.size==size
         if j%72==0:assert max(ImageStat.Stat(base).stddev)>10,src
         t=j/FPS;over=Image.new('RGBA',size,(0,0,0,0));d=ImageDraw.Draw(over)
@@ -57,6 +59,8 @@ def main():
         q=mappt(pos.x/I,pos.y/I);q=(max(mx,min(mx+mw,q[0])),max(my,min(my+mh,q[1])))
         d.ellipse((q[0]-3*scale,q[1]-3*scale,q[0]+3*scale,q[1]+3*scale),fill=(255,221,146,255))
         Image.alpha_composite(base.convert('RGBA'),over).convert('RGB').save(comps/f'frame_{j+1:04d}.png')
+    if a.review_only:
+        print(f'Captioned {len(files)} real Blender review frames in {comps}');return
     audio.BUILD=a.frames.parent;sound=audio.synthesize()
     movie=a.output/'Highland-Blender-walkthrough.mp4'
     subprocess.run(['ffmpeg','-y','-loglevel','error','-framerate',str(FPS),'-start_number','1','-i',str(comps/'frame_%04d.png'),'-i',str(sound),'-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-movflags','+faststart','-shortest',str(movie)],check=True)

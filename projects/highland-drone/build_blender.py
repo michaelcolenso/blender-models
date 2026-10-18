@@ -361,8 +361,10 @@ def build(output):
                 lo=[min(v[j] for v in leaf.bound_box)-.025 for j in range(3)]
                 hi=[max(v[j] for v in leaf.bound_box)+.025 for j in range(3)]
                 if all(lo[j]<local[j]<hi[j] for j in range(3)):failures.append({'frame':f,'door':leaf.name})
-    scene.frame_set(1)
-    report={'blender':bpy.app.version_string,'frames':LAST,'fps':FPS,'objects':len(scene.objects),'native_meshes':sum(o.type=='MESH' for o in col.objects),'native_lights':len(lighting.objects),'camera_constraints':[c.type for c in cam.constraints],'max_camera_path_error_m':round(max_error,5),'wall_collisions':failures,'r1_to_r2_rise_in':123,'source_spec_sha256':scene['source_spec_sha256']}
+    end_z=car.matrix_world.translation.z;scene.frame_set(1);bpy.context.view_layer.update()
+    rise=(end_z-car.matrix_world.translation.z)/I
+    if abs(rise-123)>.001:raise RuntimeError(f'Evaluated elevator rise is {rise} inches')
+    report={'blender':bpy.app.version_string,'frames':LAST,'fps':FPS,'objects':len(scene.objects),'native_meshes':sum(o.type=='MESH' for o in col.objects),'native_lights':len(lighting.objects),'camera_constraints':[c.type for c in cam.constraints],'max_camera_path_error_m':round(max_error,5),'wall_collisions':[v for v in failures if 'wall' in v],'door_collisions':[v for v in failures if 'door' in v],'r1_to_r2_rise_in':round(rise,4),'source_spec_sha256':scene['source_spec_sha256']}
     output.with_suffix('.validation.json').write_text(json.dumps(report,indent=2)+'\n')
     if failures or max_error>.08:raise RuntimeError('Native camera clearance/path validation failed: '+json.dumps(report))
     print('Native Blender scene validated:',json.dumps(report))

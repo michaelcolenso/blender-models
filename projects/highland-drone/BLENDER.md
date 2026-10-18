@@ -30,6 +30,9 @@ python projects/highland-drone/build_blender.py
 python projects/highland-drone/build_blender.py --reuse --frames 1,212,319,397,529
 ```
 
+`assemble_blender.py --review-only` adds the film captions to available review
+frames without requiring the complete animation or encoding a movie.
+
 Render and encode locally (FFmpeg and DejaVu fonts are also required):
 
 ```bash
