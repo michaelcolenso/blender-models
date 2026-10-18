@@ -1,0 +1,21 @@
+{
+  "engine": "Blender 5.0.1 / Cycles CPU",
+  "frames": 624,
+  "fps": 24,
+  "resolution": [
+    360,
+    640
+  ],
+  "duration_seconds": 26,
+  "audio": "stereo AAC",
+  "video_sha256": "afb8c57ecaef5c1627425be22ef2f002f89f6c6201ee4948a35506bf6af8f4ca",
+  "source_frame_count": 624,
+  "base_frame_run": "https://github.com/michaelcolenso/blender-models/actions/runs/39101901784",
+  "corrected_film_run": "https://github.com/michaelcolenso/blender-models/actions/runs/39103362290",
+  "replacement_frames_inclusive": [
+    436,
+    466
+  ],
+  "render_commit": "d04f2cf",
+  "editable_scene_sha256": "6755d60129801535efa97df0cf7b0bda272661b601711e29e118889607ba5f5c"
+}
