@@ -1,6 +1,9 @@
 name: Highland Blender preview
 
 on:
+  push:
+    branches: [deliver/highland-owner-tour]
+    paths: [".github/workflows/highland-blender-preview.yaml"]
   workflow_dispatch:
     inputs:
       samples:
