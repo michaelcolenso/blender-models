@@ -11,7 +11,7 @@
   ],
   "max_camera_path_error_m": 2e-05,
   "wall_collisions": [],
+  "door_collisions": [],
   "r1_to_r2_rise_in": 123.0,
-  "source_spec_sha256": "0d2942cdd1c0be98f4ff376708d41259eef46d0dd305772872aebe33eb19e04f",
-  "door_collisions": []
+  "source_spec_sha256": "0d2942cdd1c0be98f4ff376708d41259eef46d0dd305772872aebe33eb19e04f"
 }

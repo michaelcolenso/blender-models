@@ -42,7 +42,7 @@ def trajectory(t):
     if 10.3 <= t <= 13.4:
         look = Vector((915*I,1535*I,pos.z)).lerp(Vector((847*I,1452*I,pos.z)),smooth(12.15,13.4,t))
     if 14.8 <= t <= 19.4:
-        p = min(smooth(14.8,15.2,t),1-smooth(18.8,19.4,t))
+        p = min(smooth(14.8,15.2,t),1-smooth(18.1,18.65,t))
         look = look.lerp(pos+Vector((1,0,0)),p)
     pull = smooth(15.1,16.1,t)*(1-smooth(18.1,19.15,t))
     pos = pos.lerp(Vector((1090*I,1310*I,260*I)),pull)
@@ -141,7 +141,7 @@ def ghost_material(m):
     mix=n.new('ShaderNodeMixShader');mix.name='Elevator architectural section'
     l.new(b.outputs[0],mix.inputs[1]);l.new(glassmix.outputs[0],mix.inputs[2]);l.new(mix.outputs[0],out.inputs['Surface'])
     for f in range(1,LAST+1):
-        t=(f-1)/FPS;mix.inputs[0].default_value=.95*smooth(15,16,t)*(1-smooth(18.2,19.15,t));mix.inputs[0].keyframe_insert('default_value',frame=f)
+        t=(f-1)/FPS;mix.inputs[0].default_value=.95*smooth(15,16,t)*(1-smooth(18.75,19.2,t));mix.inputs[0].keyframe_insert('default_value',frame=f)
 
 
 def build(output):
@@ -298,9 +298,9 @@ def build(output):
     cutter.hide_render=True;cutter.display_type='WIRE';cutter.hide_set(True)
     for o in SECTION:
         mod=o.modifiers.new('Animated east-side section','BOOLEAN');mod.object=cutter;mod.operation='DIFFERENCE';mod.solver='EXACT'
-        for f,v in [(1,False),(360,False),(361,True),(460,True),(461,False)]:mod.show_render=v;mod.show_viewport=v;mod.keyframe_insert('show_render',frame=f);mod.keyframe_insert('show_viewport',frame=f)
+        for f,v in [(1,False),(360,False),(361,True),(462,True),(463,False)]:mod.show_render=v;mod.show_viewport=v;mod.keyframe_insert('show_render',frame=f);mod.keyframe_insert('show_viewport',frame=f)
     for f in range(1,LAST+1):
-        t=(f-1)/FPS;cutx=1100-205*smooth(15,16,t)+205*smooth(18.2,19.15,t)
+        t=(f-1)/FPS;cutx=1100-205*smooth(15,16,t)+205*smooth(18.75,19.2,t)
         cutter.location.x=(cutx+(4000-1100)/2)*I;cutter.keyframe_insert('location',frame=f)
     # Keep the cab's walnut rear panel and bronze doors solid so the rising car
     # remains the visual anchor while architectural surfaces become glass.
@@ -308,14 +308,14 @@ def build(output):
     edgeMat=material('Section brass edges',(.7,.44,.15),.4,emission=.6)
     shaft=box('Elevator shaft / section reference',(810,885,1424,1480,132,360),edgeMat,rig)
     wire=shaft.modifiers.new('Gold vertical shaft outline','WIREFRAME');wire.thickness=.006
-    for f,v in [(1,True),(371,True),(372,False),(440,False),(441,True)]:shaft.hide_render=v;shaft.hide_viewport=v;shaft.keyframe_insert('hide_render',frame=f);shaft.keyframe_insert('hide_viewport',frame=f)
+    for f,v in [(1,True),(371,True),(372,False),(450,False),(451,True)]:shaft.hide_render=v;shaft.hide_viewport=v;shaft.keyframe_insert('hide_render',frame=f);shaft.keyframe_insert('hide_viewport',frame=f)
     for o in SECTION:
         if o.name.startswith('Cab ') or 'diffuser' in o.name or 'luminaire' in o.name or 'LED' in o.name:continue
         edge=bpy.data.objects.new(o.name+' / section edges',o.data.copy());col.objects.link(edge);edge.matrix_world=o.matrix_world.copy()
         if o.parent:edge.parent=o.parent;edge.matrix_local=o.matrix_local.copy()
         edge.data.materials.clear();edge.data.materials.append(edgeMat)
         wire=edge.modifiers.new('Brass structural edge outline','WIREFRAME');wire.thickness=.002;wire.use_replace=True
-        for f,v in [(1,True),(371,True),(372,False),(440,False),(441,True)]:edge.hide_render=v;edge.hide_viewport=v;edge.keyframe_insert('hide_render',frame=f);edge.keyframe_insert('hide_viewport',frame=f)
+        for f,v in [(1,True),(371,True),(372,False),(450,False),(451,True)]:edge.hide_render=v;edge.hide_viewport=v;edge.keyframe_insert('hide_render',frame=f);edge.keyframe_insert('hide_viewport',frame=f)
     # Exterior illumination and context use blue-hour colors; the corridor
     # receives actual area-light bounce from its own native luminaires.
     scene.world.use_nodes=True;bg=scene.world.node_tree.nodes.get('Background');bg.inputs['Color'].default_value=(.18,.29,.48,1);bg.inputs['Strength'].default_value=.32
@@ -373,6 +373,10 @@ def build(output):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'build/highland-blender/Highland-walkthrough.blend');p.add_argument('--reuse',action='store_true');p.add_argument('--frames',default='');p.add_argument('--start',type=int);p.add_argument('--end',type=int);p.add_argument('--width',type=int,default=540);p.add_argument('--height',type=int,default=960);p.add_argument('--samples',type=int,default=16);p.add_argument('--threads',type=int,default=0);a=p.parse_args()
+    if (a.start is None)!=(a.end is None):p.error('--start and --end must be supplied together')
+    if a.start is not None and not 1<=a.start<=a.end<=LAST:p.error('Frame range must lie within 1–624')
+    if min(a.width,a.height)<64 or a.samples<1 or a.threads<0:p.error('Invalid resolution, samples or thread count')
+    if a.frames and any(not 1<=int(f)<=LAST for f in a.frames.split(',') if f):p.error('Review frames must lie within 1–624')
     scene=None
     if a.reuse:bpy.ops.wm.open_mainfile(filepath=str(a.output));scene=bpy.context.scene
     else:scene=build(a.output)

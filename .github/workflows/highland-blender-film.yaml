@@ -1,9 +1,6 @@
 name: Highland native Blender film
 
 on:
-  push:
-    branches: [deliver/highland-owner-tour]
-    paths: [".github/workflows/highland-blender-film.yaml"]
   workflow_dispatch:
     inputs:
       quality:
@@ -11,14 +8,28 @@ on:
         type: choice
         options: [draft, phone]
         default: draft
+      existing_run:
+        description: "Optional completed frame-run ID to reuse when repairing a short sequence"
+        type: string
+        default: ""
+      repair_start:
+        description: "First replacement frame when reusing a run"
+        type: number
+        default: 436
+      repair_end:
+        description: "Last replacement frame when reusing a run"
+        type: number
+        default: 466
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   render:
+    if: ${{ !inputs.existing_run }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     strategy:
       fail-fast: false
       max-parallel: 8
@@ -63,10 +74,52 @@ jobs:
             build/highland-blender/Highland-walkthrough.validation.json
           retention-days: 14
 
-  assemble:
-    needs: render
+  repair:
+    if: ${{ inputs.existing_run != '' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install native Blender runtime
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
+          python -m pip install --disable-pip-version-check bpy==5.0.1
+      - name: Render replacement frame range from the current scene
+        env:
+          QUALITY: ${{ inputs.quality }}
+          FIRST: ${{ inputs.repair_start }}
+          LAST: ${{ inputs.repair_end }}
+        run: |
+          if [ "$QUALITY" = phone ]; then
+            width=540; height=960; samples=16
+          else
+            width=360; height=640; samples=8
+          fi
+          python projects/highland-drone/build_blender.py \
+            --start "$FIRST" --end "$LAST" \
+            --width "$width" --height "$height" --samples "$samples" --threads 2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-frames-repair
+          path: build/highland-blender/frames/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-editable-scene
+          path: |
+            build/highland-blender/Highland-walkthrough.blend
+            build/highland-blender/Highland-walkthrough.validation.json
+          retention-days: 14
+
+  assemble:
+    needs: [render, repair]
+    if: ${{ always() && (needs.render.result == 'success' || needs.repair.result == 'success') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -78,10 +131,37 @@ jobs:
           sudo apt-get install -y -q ffmpeg fonts-dejavu-core libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
           python -m pip install --disable-pip-version-check bpy==5.0.1 pillow
       - uses: actions/download-artifact@v4
+        if: ${{ !inputs.existing_run }}
         with:
           pattern: native-frames-*
           path: build/highland-blender/frames
           merge-multiple: true
+      - name: Wait for the source frame run
+        if: ${{ inputs.existing_run != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_RUN: ${{ inputs.existing_run }}
+        run: |
+          state=""
+          for attempt in $(seq 1 40); do
+            state="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BASE_RUN" --jq .status || true)"
+            if [ "$state" = completed ]; then break; fi
+            sleep 30
+          done
+          test "$state" = completed
+      - uses: actions/download-artifact@v4
+        if: ${{ inputs.existing_run != '' }}
+        with:
+          run-id: ${{ inputs.existing_run }}
+          github-token: ${{ github.token }}
+          pattern: native-frames-*
+          path: build/highland-blender/frames
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        if: ${{ inputs.existing_run != '' }}
+        with:
+          name: native-frames-repair
+          path: build/highland-blender/frames
       - uses: actions/download-artifact@v4
         with:
           name: native-editable-scene
