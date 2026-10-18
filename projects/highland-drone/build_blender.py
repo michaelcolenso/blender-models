@@ -151,8 +151,9 @@ def build(output):
     for o in list(bpy.data.objects):
         if o.name.startswith('caption') or o.type=='CAMERA':bpy.data.objects.remove(o,do_unlink=True)
     for o in exterior:
-        if 'east-R1-08-glazing' in o.name or 'east-R1-08-frames' in o.name or o.name=='slab-R1':o.hide_render=True;continue
-        for f,value in [(1,False),(146,False),(147,True)]:o.hide_render=value;o.keyframe_insert('hide_render',frame=f)
+        if 'east-R1-08-glazing' in o.name or 'east-R1-08-frames' in o.name or o.name=='slab-R1':o.hide_render=True;o.hide_viewport=True;continue
+        for f,value in [(1,False),(146,False),(147,True)]:
+            o.hide_render=value;o.hide_viewport=value;o.keyframe_insert('hide_render',frame=f);o.keyframe_insert('hide_viewport',frame=f)
     for o in scene.objects:
         if o.type=='LIGHT':
             o.data.energy=1.2 if o.data.type=='SUN' else o.data.energy
@@ -244,7 +245,8 @@ def build(output):
         for z in [132,255]:
             landing=box('Landing '+str(z)+' door '+side,(880,882,y0,y1,z+1,z+91),M['metal'],col,section=True)
             door_leaves.append(landing)
-            for f,v in [(1,False),(364,False),(365,True),(453,True),(454,False)]:landing.hide_render=v;landing.keyframe_insert('hide_render',frame=f)
+            for f,v in [(1,False),(364,False),(365,True),(453,True),(454,False)]:
+                landing.hide_render=v;landing.hide_viewport=v;landing.keyframe_insert('hide_render',frame=f);landing.keyframe_insert('hide_viewport',frame=f)
             doors.append((landing,landing.location.copy(),travel,z))
     # Context is Blender mesh geometry with source IDs, not a backdrop image.
     contextmat=material('Neighborhood massing',(.13,.15,.18),.85)
@@ -274,6 +276,7 @@ def build(output):
         p=sp.bezier_points[j];p.co=pos;p.handle_left_type=p.handle_right_type='VECTOR'
         if j:distances.append(distances[-1]+(pos-poses[j-1][0]).length)
     path=bpy.data.objects.new('Flight route / editable Bezier curve',cu);rig.objects.link(path);path.hide_render=True
+    path.hide_set(True)
     cam=bpy.data.objects.new('Owner drone camera',bpy.data.cameras.new('Portrait 22 mm architectural lens'));rig.objects.link(cam);scene.camera=cam
     cam.data.lens=22;cam.data.sensor_fit='VERTICAL';cam.data.sensor_height=32;cam.data.clip_start=.025;cam.data.clip_end=500
     follow=cam.constraints.new('FOLLOW_PATH');follow.target=path;follow.use_fixed_location=True
@@ -292,7 +295,7 @@ def build(output):
     # A moving Boolean volume removes the east side continuously as the camera
     # pulls back. The remaining walls shift into frosted glass and brass edges.
     cutter=box('Animated architectural section volume',(1100,4000,500,1800,100,410),M['ink'],rig)
-    cutter.hide_render=True;cutter.display_type='WIRE'
+    cutter.hide_render=True;cutter.display_type='WIRE';cutter.hide_set(True)
     for o in SECTION:
         mod=o.modifiers.new('Animated east-side section','BOOLEAN');mod.object=cutter;mod.operation='DIFFERENCE';mod.solver='EXACT'
         for f,v in [(1,False),(360,False),(361,True),(460,True),(461,False)]:mod.show_render=v;mod.show_viewport=v;mod.keyframe_insert('show_render',frame=f);mod.keyframe_insert('show_viewport',frame=f)
