@@ -22,7 +22,7 @@ Headless rendering checks the entrance ID, building/interior mesh counts, camera
 
 ## GitHub Actions Blender preview
 
-The manual **Highland Blender preview** workflow (`.github/workflows/highland-blender-preview.yaml`) opens the existing exterior `.blend` with `bpy==5.0.1`, renders one 540 × 960 portrait PNG using Cycles on the GitHub-hosted CPU, and uploads the image plus a source/version manifest. Run it with **Actions → Highland Blender preview → Run workflow** after the workflow is available on the repository's default branch. The samples input permits a quick 8-sample check or a 32-sample review. The same render can be tested locally with:
+The **Highland Blender preview** workflow (`.github/workflows/highland-blender-preview.yaml`) opens the existing exterior `.blend` with `bpy==5.0.1`, renders one 540 × 960 portrait PNG using Cycles on the GitHub-hosted CPU, and uploads the image plus a source/version manifest. [This branch proof run](https://github.com/michaelcolenso/blender-models/actions/runs/39099315886) succeeded with 16 samples; its artifact was downloaded and checked for dimensions and nonblank content. After the workflow reaches the repository's default branch, run it with **Actions → Highland Blender preview → Run workflow**. The samples input permits a quick 8-sample check or a 32-sample review. The same render can be tested locally with:
 
 ```bash
 python projects/highland-drone/blender_preview.py --samples 8 --width 270 --height 480

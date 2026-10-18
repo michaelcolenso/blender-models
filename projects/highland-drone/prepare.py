@@ -101,8 +101,8 @@ spec={
   'The flight path is a presentation camera path, not a route or accessibility survey.',
   'Bezier camera controls are constrained to the modeled public corridors and elevator opening, not a measured clearance survey.',
   'The elevator car and its door timing are illustrative; no manufacturer or control sequence is documented here.',
-  'No tenant interiors or concealed building systems are depicted.'
-  ,'OSM neighborhood footprints are approximate context; their heights and registration are not surveyed.'
+  'No tenant interiors or concealed building systems are depicted.',
+  'OSM neighborhood footprints are approximate context; their heights and registration are not surveyed.'
  ]
 }
 assert all(flight[i]['t']<flight[i+1]['t'] for i in range(len(flight)-1))
