@@ -1,5 +1,8 @@
 # Highland native Blender walkthrough
 
+The [new archviz still gallery](../highland-archviz/README.md) previews upgraded
+lighting, materials and planting. The film below remains the earlier study pass.
+
 ![Native Blender animation preview](Highland-Blender-preview.gif)
 
 - [Editable animated Blender scene](Highland-walkthrough.blend)
