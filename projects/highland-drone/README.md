@@ -18,7 +18,7 @@ Requirements: Python 3 with NumPy and Pillow, Node, npm, Chromium and FFmpeg. Th
 bash projects/highland-drone/build.sh
 ```
 
-Headless rendering checks the entrance ID, building/interior mesh counts, camera positions at every phase, the one-floor rise, mobile overflow, playback and browser errors. Full rendering encodes 624 frames at 24 fps to a 720 x 1280 H.264 MP4 with `faststart` for phone playback; `audio.py` generates the stereo score and muxes AAC without re-encoding the video. The browser checks verify animation behavior, not the accuracy of undimensioned interior walls. The deliverable viewer embeds the GLB and scripts; it opens as one HTML file after download. A Cycles/OptiX `.blend` render requires a modeled interior Blender scene and compatible GPU, neither of which is part of this tour.
+Headless rendering checks the entrance ID, building/interior mesh counts, camera positions at every phase, the one-floor rise, mobile overflow, playback and browser errors. Full rendering encodes 624 frames at 24 fps to a 720 x 1280 H.264 MP4 with `faststart` for phone playback; `audio.py` generates the stereo score and muxes AAC without re-encoding the video. The browser checks verify animation behavior, not the accuracy of undimensioned interior walls. The deliverable viewer embeds the GLB and scripts; it opens as one HTML file after download. The native Blender reconstruction now includes the interior, camera, doors, elevator and animated section; see [Blender instructions](BLENDER.md). It renders with Cycles CPU or a configured GPU.
 
 ## GitHub Actions Blender preview
 
@@ -28,6 +28,6 @@ The **Highland Blender preview** workflow (`.github/workflows/highland-blender-p
 python projects/highland-drone/blender_preview.py --samples 8 --width 270 --height 480
 ```
 
-Use Python 3.11 with `bpy==5.0.1`; the system Blender 4.3 cannot open this Blender 5 file. This workflow proves exterior rendering only. The lobby/corridor animation currently lives in `app.js` as Three.js geometry, so a full Blender-rendered flight first needs an interior scene exporter or Blender-native rebuild. A standard GitHub-hosted runner provides no OptiX GPU; budget a CPU preview before deciding whether to use a self-hosted GPU runner for a full film.
+Use Python 3.11 with `bpy==5.0.1`; the system Blender 4.3 cannot open this Blender 5 file. This preview workflow renders the exterior only. The complete native interior and animation are built by `build_blender.py`; the separate **Highland native Blender film** workflow renders and assembles the full flight. See [Blender instructions](BLENDER.md). A standard GitHub-hosted runner provides no OptiX GPU; budget a CPU preview before deciding whether to use a self-hosted GPU runner for a full film.
 
 The prior exterior study has unresolved facade/window differences. This flight relies on the R1 east lobby entry and the public-hall labels and does not resolve those exterior differences. The entry and corridor finishes should be replaced with site photos/measurements before the tour is presented as existing conditions.

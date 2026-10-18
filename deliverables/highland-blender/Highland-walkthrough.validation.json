@@ -1,0 +1,16 @@
+{
+  "blender": "5.0.1",
+  "frames": 624,
+  "fps": 24,
+  "objects": 1494,
+  "native_meshes": 182,
+  "native_lights": 18,
+  "camera_constraints": [
+    "FOLLOW_PATH",
+    "TRACK_TO"
+  ],
+  "max_camera_path_error_m": 2e-05,
+  "wall_collisions": [],
+  "r1_to_r2_rise_in": 123,
+  "source_spec_sha256": "0d2942cdd1c0be98f4ff376708d41259eef46d0dd305772872aebe33eb19e04f"
+}

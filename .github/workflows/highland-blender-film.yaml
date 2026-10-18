@@ -1,0 +1,95 @@
+name: Highland native Blender film
+
+on:
+  push:
+    branches: [deliver/highland-owner-tour]
+    paths: [".github/workflows/highland-blender-film.yaml"]
+  workflow_dispatch:
+    inputs:
+      quality:
+        description: "Draft: 360×640 / 8 samples; phone: 540×960 / 16 samples"
+        type: choice
+        options: [draft, phone]
+        default: draft
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        chunk: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install native Blender runtime
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
+          python -m pip install --disable-pip-version-check bpy==5.0.1
+      - name: Build native scene and render frame range
+        env:
+          QUALITY: ${{ inputs.quality || 'draft' }}
+          CHUNK: ${{ matrix.chunk }}
+        run: |
+          if [ "$QUALITY" = phone ]; then
+            width=540; height=960; samples=16
+          else
+            width=360; height=640; samples=8
+          fi
+          first=$((CHUNK * 78 + 1))
+          last=$((first + 77))
+          python projects/highland-drone/build_blender.py \
+            --start "$first" --end "$last" \
+            --width "$width" --height "$height" --samples "$samples" --threads 2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-frames-${{ matrix.chunk }}
+          path: build/highland-blender/frames/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: matrix.chunk == 0
+        with:
+          name: native-editable-scene
+          path: |
+            build/highland-blender/Highland-walkthrough.blend
+            build/highland-blender/Highland-walkthrough.validation.json
+          retention-days: 14
+
+  assemble:
+    needs: render
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install compositor dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg fonts-dejavu-core libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
+          python -m pip install --disable-pip-version-check bpy==5.0.1 pillow
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-frames-*
+          path: build/highland-blender/frames
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: native-editable-scene
+          path: deliverables/highland-blender
+      - name: Caption, score, encode and validate native film
+        run: python projects/highland-drone/assemble_blender.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: highland-blender-native-tour
+          path: deliverables/highland-blender/
+          retention-days: 14
