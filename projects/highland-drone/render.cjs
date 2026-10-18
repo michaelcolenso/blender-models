@@ -17,7 +17,7 @@ const only=process.argv.includes('--review-only');
  try{
   await page.goto(`http://127.0.0.1:${server.address().port}/`);await page.waitForFunction(()=>window.ready,{timeout:120000});
   const stats=await page.evaluate(()=>window.drone.stats());
-  if(stats.entry!=='east-R1-08'||stats.exterior_meshes<1100||stats.interior_objects<50)throw Error('Incomplete building/corridor scene: '+JSON.stringify(stats));
+  if(stats.entry!=='east-R1-08'||stats.exterior_meshes<1100||stats.interior_objects<50||stats.area_lights<10||stats.ribbons!==2||stats.foliage<30)throw Error('Incomplete building/corridor scene: '+JSON.stringify(stats));
   const checkpoints=[];
   for(const t of steps){
    const state=await page.evaluate(t=>window.drone.frame(t),t);checkpoints.push(state);
@@ -28,7 +28,10 @@ const only=process.argv.includes('--review-only');
   const portal=checkpoints.find(x=>x.t===6.5),end=checkpoints.at(-1);
   if(!(portal.xyz_ft[0]<123&&portal.xyz_ft[0]>115&&Math.abs(portal.xyz_ft[1]-111)<1))throw Error('Camera missed lobby glazing');
   if(!(end.xyz_ft[0]>73&&end.xyz_ft[0]<79&&end.xyz_ft[1]>56&&end.xyz_ft[1]<65&&end.xyz_ft[2]>26&&end.xyz_ft[2]<27))throw Error('Camera missed R2 corridor end');
-  const lift=checkpoints.find(x=>x.t===17.8);if(!(lift.xyz_ft[2]-checkpoints.find(x=>x.t===15.3).xyz_ft[2]>10))throw Error('Elevator did not reach R2');
+  const lift=checkpoints.find(x=>x.t===17.8);if(!(lift.car_elevation_ft-checkpoints.find(x=>x.t===15.3).car_elevation_ft>10&&lift.cutaway))throw Error('Elevator cutaway did not reach R2');
+  if(checkpoints.find(x=>x.t===5.7).entry_open<.7)throw Error('Entry did not open on proximity');
+  if(checkpoints.find(x=>x.t===15.3).xray<.9||checkpoints.find(x=>x.t===22).xray>.1)throw Error('Glass/brass cutaway timing failed');
+  if(checkpoints.find(x=>x.t===14.3).elevator_open<.8)throw Error('Elevator door did not open');
   await page.setViewportSize({width:390,height:844});await page.evaluate(()=>window.drone.frame(10.5));
   await page.screenshot({path:path.join(out,'mobile-review.png')});
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
@@ -40,7 +43,7 @@ const only=process.argv.includes('--review-only');
   if(!only){
    // The video is recorded deterministically from the same mobile viewer.
    await page.addStyleTag({content:'#play,#scrub,#time{display:none}.controls{height:2px}.top h1{font-size:30px}.bottom{padding-bottom:54px}'});
-   const dest=path.join(out,'Highland-corridor-drone.mp4');
+   const dest=path.join(out,'Highland-corridor-drone-silent.mp4');
    const ff=spawn('ffmpeg',['-y','-loglevel','error','-f','image2pipe','-framerate',String(fps),'-vcodec','mjpeg','-i','pipe:0','-an','-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p','-movflags','+faststart',dest],{stdio:['pipe','inherit','inherit']});
    const complete=once(ff,'close');
    for(let f=0;f<duration*fps;f++){

@@ -1,7 +1,7 @@
 {
   "source_entry": "east-R1-08",
   "exterior_meshes": 1227,
-  "interior_objects": 151,
+  "interior_objects": 154,
   "checkpoints": [
     {
       "t": 0,
@@ -10,8 +10,13 @@
         20,
         48
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Approach the east frontage",
-      "exterior_visible": true
+      "exterior_visible": true,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 3.2,
@@ -20,8 +25,13 @@
         92,
         25
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Approach the east frontage",
-      "exterior_visible": true
+      "exterior_visible": true,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 5.7,
@@ -30,8 +40,13 @@
         111,
         17
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Through the lobby glazing",
-      "exterior_visible": true
+      "exterior_visible": true,
+      "entry_open": 1,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 6.5,
@@ -40,8 +55,13 @@
         111,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Through the lobby glazing",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 1,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 8.8,
@@ -50,8 +70,13 @@
         111,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Lobby 110",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 10.5,
@@ -60,8 +85,13 @@
         112,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Corridor 108 \u00b7 elevator core",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 12,
@@ -70,8 +100,13 @@
         126,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Corridor 108 \u00b7 elevator core",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 13.2,
@@ -80,8 +115,13 @@
         121,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Entering Elevator M1",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 14.3,
@@ -90,8 +130,13 @@
         121,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Entering Elevator M1",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 1,
+      "xray": 1
     },
     {
       "t": 15.3,
@@ -100,18 +145,28 @@
         121,
         16.3
       ],
+      "car_elevation_ft": 11,
+      "cutaway": false,
       "cue": "Up one floor",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 1,
+      "xray": 1
     },
     {
       "t": 17.8,
       "xyz_ft": [
-        70.8,
-        121,
-        26.55
+        87.5,
+        111.25,
+        20
       ],
+      "car_elevation_ft": 21.25,
+      "cutaway": true,
       "cue": "Up one floor",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 1
     },
     {
       "t": 18.5,
@@ -120,8 +175,13 @@
         121,
         26.55
       ],
+      "car_elevation_ft": 21.25,
+      "cutaway": false,
       "cue": "Up one floor",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 1,
+      "xray": 1
     },
     {
       "t": 19.7,
@@ -130,8 +190,13 @@
         121,
         26.55
       ],
+      "car_elevation_ft": 21.25,
+      "cutaway": false,
       "cue": "R2 elevator lobby",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 1,
+      "xray": 0
     },
     {
       "t": 22,
@@ -140,8 +205,13 @@
         100,
         26.55
       ],
+      "car_elevation_ft": 21.25,
+      "cutaway": false,
       "cue": "Corridor 208 \u00b7 toward the stair",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     },
     {
       "t": 26,
@@ -150,14 +220,29 @@
         61,
         26.55
       ],
+      "car_elevation_ft": 21.25,
+      "cutaway": false,
       "cue": "Corridor 208 \u00b7 toward the stair",
-      "exterior_visible": false
+      "exterior_visible": false,
+      "entry_open": 0,
+      "elevator_open": 0,
+      "xray": 0
     }
   ],
   "mobile_overflow": false,
   "browser_errors": [],
+  "fps": 24,
+  "frames": 624,
+  "duration_seconds": 26,
+  "resolution": [
+    720,
+    1280
+  ],
+  "video_bytes": 4161840,
   "media_checks": {
     "codec": "h264",
+    "audio_codec": "aac",
+    "audio_channels": 2,
     "resolution": [
       720,
       1280
@@ -165,12 +250,14 @@
     "frames": 624,
     "duration_seconds": 26,
     "poster_nonblank": true,
-    "animated_preview_nonblank": true
+    "animated_preview_nonblank": true,
+    "xray_preview_nonblank": true
   },
   "artifact_sha256": {
-    "Highland-corridor-drone.mp4": "00a3240080c074bd5c0c60e4ea4713f71173a11e04e0dc776a5c9f2c03d88d4b",
-    "Highland-drone-tour.html": "337c486153e3dd6b67d3056463b4192cde415eef79c217d644c94808988050ec",
-    "Highland-drone-poster.png": "a84ccbf81c49f55e0a93b64fc0a8ecfab76330566b9706415bdfd8a5f560dcbc",
-    "Highland-drone-preview.gif": "b0ed604ede138aacdbd430b8d3c916813d5d7e43d7e5bd23ea5a756876469498"
+    "Highland-corridor-drone.mp4": "d7116333a59697826bf7a0c8a18e7f2fce4c0843c8a8e4d0fd4c53141645cd7c",
+    "Highland-drone-tour.html": "2213511064451757167c41a2ef7cbaf1e2f64f8b50ce83cfd1f9103fbd14f8f6",
+    "Highland-drone-poster.png": "2fbfa14268dd151f5e9bd0dcc42bdb464def4f744e3f83de21f7f62e4682c763",
+    "Highland-drone-preview.gif": "12890a0229db68f55af9ebfb4bd6c3ffcb419dc9e7fb787819bf7cb61a4fe1de",
+    "Highland-xray-preview.gif": "df1dd0713bc5a9a176ed796a7a0bb9821d12c1a5e8e94a6607f11cd81c155163"
   }
 }
