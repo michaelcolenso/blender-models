@@ -168,6 +168,12 @@ jobs:
           path: deliverables/highland-blender
       - name: Caption, score, encode and validate native film
         run: python projects/highland-drone/assemble_blender.py
+      - name: Verify complete phone playback and create visual review sheet
+        if: inputs.quality == 'phone'
+        run: |
+          python projects/highland-drone/verify_blender_film.py \
+            deliverables/highland-blender/Highland-Blender-walkthrough.mp4 \
+            --output deliverables/highland-blender
       - uses: actions/upload-artifact@v4
         with:
           name: highland-blender-native-tour

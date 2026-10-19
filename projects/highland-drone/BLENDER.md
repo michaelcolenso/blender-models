@@ -30,7 +30,9 @@ abstract art. Walnut uses fine vertically stretched grain; carpet has a fine
 cross-weave and tile variation; stone has shallow grout and variable roughness.
 Door accents use soft spot beams, not manufacturer IES photometry. The floor
 trail is thinner and gently pulses. Camera look-ahead is smoothed, with a subtle 4 mm vertical drift inside the
-corridors. Dense Bezier controls retain the checked route around corners.
+corridors. Dense Bezier controls retain the checked route around corners. The
+cab's wood feature stays in view until the section pullback starts, avoiding
+a turn toward a blank wall inside the cab.
 The camera clearance checks still run against every film frame, including the
 added lobby console and planter boxes.
 
@@ -80,6 +82,12 @@ prior run ID and the inclusive replacement-frame range, using the same quality
 as the prior run. Actions renders that range from the current scene, overlays
 the new frames on the original frame artifacts, and validates and encodes the
 complete film again. Source frame artifacts are retained for seven days.
+
+Phone-quality film assembly also runs `verify_blender_film.py`: it decodes every
+frame, checks the 540 × 960 H.264/AAC profile and progressive-playback metadata,
+looks for black camera views and frozen sections, measures soundtrack levels,
+and makes a timestamped visual review sheet. Camera turns and chunk joins still
+need visual inspection; a decoded-video check does not establish spatial accuracy.
 
 The **Highland archviz still review** workflow renders four upgraded views and
 four matching views from the previously published study, then packages phone

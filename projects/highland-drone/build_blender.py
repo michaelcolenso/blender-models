@@ -41,7 +41,11 @@ def base_trajectory(t):
         look = pos + (pos-point(max(0,t-.4))).normalized()
     if 10.3 <= t <= 13.4:
         look = Vector((915*I,1535*I,pos.z)).lerp(Vector((847*I,1452*I,pos.z)),smooth(12.15,13.4,t))
-    if 14.8 <= t <= 19.4:
+    # Keep the cab's feature wall in view until the cutaway pullback. Turning
+    # toward the exit while still inside the small cab reveals a blank side wall.
+    if 14.3 <= t <= 16.1:
+        look=Vector((816*I,1452*I,pos.z))
+    if 16.1 < t <= 19.4:
         p = min(smooth(14.8,15.2,t),1-smooth(18.1,18.65,t))
         look = look.lerp(pos+Vector((1,0,0)),p)
     pull = smooth(15.1,16.1,t)*(1-smooth(18.1,19.15,t))
