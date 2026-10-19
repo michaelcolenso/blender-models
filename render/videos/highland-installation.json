@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "highland-installation-explainer",
+  "model": "highland-installation-studio",
+  "brief": "Explain the proposed Highland Unit B / 106 installation. Start outside, introduce shared distribution, then use the existing animated unit cutaway to explain preparation, isolated replacement, testing, transfer and restoration. Use warm studio lighting, restrained full-frame titles and projected labels. Preserve source geometry and assumptions.",
+  "audio": {
+    "path": "deliverables/highland-installation/studio-upgrade/Highland-repipe-studio-90s-1080p.mp4",
+    "sha256": "fcf27c4d643d69a5227ad9c7840b7dc3ec579a9b134e2498723fca065da21a01",
+    "description": "Existing narrated studio film soundtrack; trim and retime by source shot times."
+  },
+  "style": {
+    "paper": "#F7F6F2",
+    "ink": "#29343A",
+    "title_position": [0.64, 0.20],
+    "title_size": 82,
+    "serif_font": "projects/highland-installation/immersive-film/assets/fonts/NotoSerifDisplay-Regular.ttf",
+    "sans_font": "projects/highland-installation/immersive-film/assets/fonts/NotoSans-Regular.ttf"
+  },
+  "shots": [
+    {"id": "exterior", "scene": "exterior", "source_in": 0, "source_out": 4, "duration": 4, "posters": [1.5], "title": "200 W\nHighland", "detail": "Exterior context", "title_position": [0.055, 0.17], "title_size": 60},
+    {"id": "shared", "scene": "shared", "source_in": 4, "source_out": 8, "duration": 4, "posters": [5.5], "title": "One connected\nsystem.", "detail": "Cold, hot and circulation return", "title_position": [0.055, 0.68], "title_size": 64},
+    {"id": "verify", "scene": "unit", "source_in": 8, "source_out": 18, "duration": 10, "posters": [12], "title": "Trace. Protect.\nPrepare.", "detail": "Verify routes and affected services"},
+    {"id": "open", "scene": "unit", "source_in": 18, "source_out": 29, "duration": 11, "posters": [23.5], "title": "Make room.", "detail": "Protect finishes. Prepare the route."},
+    {"id": "install", "scene": "unit", "source_in": 29, "source_out": 45, "duration": 16, "posters": [42.5], "title": "Build the\nreplacement.", "detail": "New piping remains isolated"},
+    {"id": "test", "scene": "unit", "source_in": 45, "source_out": 58, "duration": 13, "posters": [54], "title": "Test before\ntransfer.", "detail": "Required test and inspection"},
+    {"id": "transfer", "scene": "unit", "source_in": 58, "source_out": 73, "duration": 15, "posters": [60, 69], "title": "Transfer\nwith care.", "detail": "Proposed isolation - verify on site"},
+    {"id": "restore", "scene": "unit", "source_in": 73, "source_out": 85, "duration": 12, "posters": [80], "title": "Close with\ncare.", "detail": "Restore finishes. Keep service access."},
+    {"id": "resolve", "scene": "shared", "source_in": 85, "source_out": 90, "duration": 5, "posters": [87], "title": "A maintainable\nsystem.", "detail": "A planned sequence. Restored service.", "title_position": [0.055, 0.68], "title_size": 64}
+  ]
+}

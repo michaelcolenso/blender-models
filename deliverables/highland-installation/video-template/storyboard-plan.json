@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "recipe": {
+    "schema_version": 1,
+    "id": "highland-installation-explainer",
+    "model": "highland-installation-studio",
+    "brief": "Explain the proposed Highland Unit B / 106 installation. Start outside, introduce shared distribution, then use the existing animated unit cutaway to explain preparation, isolated replacement, testing, transfer and restoration. Use warm studio lighting, restrained full-frame titles and projected labels. Preserve source geometry and assumptions.",
+    "audio": {
+      "path": "deliverables/highland-installation/studio-upgrade/Highland-repipe-studio-90s-1080p.mp4",
+      "sha256": "fcf27c4d643d69a5227ad9c7840b7dc3ec579a9b134e2498723fca065da21a01",
+      "description": "Existing narrated studio film soundtrack; trim and retime by source shot times."
+    },
+    "style": {
+      "paper": "#F7F6F2",
+      "ink": "#29343A",
+      "title_position": [
+        0.64,
+        0.2
+      ],
+      "title_size": 82,
+      "serif_font": "projects/highland-installation/immersive-film/assets/fonts/NotoSerifDisplay-Regular.ttf",
+      "sans_font": "projects/highland-installation/immersive-film/assets/fonts/NotoSans-Regular.ttf"
+    },
+    "shots": [
+      {
+        "id": "exterior",
+        "scene": "exterior",
+        "source_in": 0,
+        "source_out": 4,
+        "duration": 4,
+        "posters": [
+          1.5
+        ],
+        "title": "200 W\nHighland",
+        "detail": "Exterior context",
+        "title_position": [
+          0.055,
+          0.17
+        ],
+        "title_size": 60
+      },
+      {
+        "id": "shared",
+        "scene": "shared",
+        "source_in": 4,
+        "source_out": 8,
+        "duration": 4,
+        "posters": [
+          5.5
+        ],
+        "title": "One connected\nsystem.",
+        "detail": "Cold, hot and circulation return",
+        "title_position": [
+          0.055,
+          0.68
+        ],
+        "title_size": 64
+      },
+      {
+        "id": "verify",
+        "scene": "unit",
+        "source_in": 8,
+        "source_out": 18,
+        "duration": 10,
+        "posters": [
+          12
+        ],
+        "title": "Trace. Protect.\nPrepare.",
+        "detail": "Verify routes and affected services"
+      },
+      {
+        "id": "open",
+        "scene": "unit",
+        "source_in": 18,
+        "source_out": 29,
+        "duration": 11,
+        "posters": [
+          23.5
+        ],
+        "title": "Make room.",
+        "detail": "Protect finishes. Prepare the route."
+      },
+      {
+        "id": "install",
+        "scene": "unit",
+        "source_in": 29,
+        "source_out": 45,
+        "duration": 16,
+        "posters": [
+          42.5
+        ],
+        "title": "Build the\nreplacement.",
+        "detail": "New piping remains isolated"
+      },
+      {
+        "id": "test",
+        "scene": "unit",
+        "source_in": 45,
+        "source_out": 58,
+        "duration": 13,
+        "posters": [
+          54
+        ],
+        "title": "Test before\ntransfer.",
+        "detail": "Required test and inspection"
+      },
+      {
+        "id": "transfer",
+        "scene": "unit",
+        "source_in": 58,
+        "source_out": 73,
+        "duration": 15,
+        "posters": [
+          60,
+          69
+        ],
+        "title": "Transfer\nwith care.",
+        "detail": "Proposed isolation - verify on site"
+      },
+      {
+        "id": "restore",
+        "scene": "unit",
+        "source_in": 73,
+        "source_out": 85,
+        "duration": 12,
+        "posters": [
+          80
+        ],
+        "title": "Close with\ncare.",
+        "detail": "Restore finishes. Keep service access."
+      },
+      {
+        "id": "resolve",
+        "scene": "shared",
+        "source_in": 85,
+        "source_out": 90,
+        "duration": 5,
+        "posters": [
+          87
+        ],
+        "title": "A maintainable\nsystem.",
+        "detail": "A planned sequence. Restored service.",
+        "title_position": [
+          0.055,
+          0.68
+        ],
+        "title_size": 64
+      }
+    ]
+  },
+  "model": {
+    "label": "Highland proposed installation - Unit B / 106",
+    "blend": "deliverables/highland-installation/studio-upgrade/Highland-studio-upgrade.blend",
+    "sha256": "acb140a5ddc32cc95c19c9b98762462f9ce1db8e79670808f27d795ceeb85641",
+    "source_fps": 24,
+    "source_duration": 90,
+    "scenes": {
+      "exterior": {
+        "name": "STUDIO - Exterior opening",
+        "camera": "Exterior review camera"
+      },
+      "shared": {
+        "name": "3D - Shared distribution",
+        "camera": "Review camera"
+      },
+      "unit": {
+        "name": "3D - Unit B installation",
+        "camera": "Review camera.001"
+      }
+    },
+    "adapter": "highland-studio",
+    "geometry_authority": "projects/highland-installation/installation/highland-installation-proposed.yaml",
+    "geometry_authority_sha256": "972f4b68f8be77b3ea05392b00e04007b895d8ae753122ce4bc1562e2ff71f3d",
+    "validation_evidence": [
+      "projects/highland-installation/installation/validation.json",
+      "deliverables/highland-installation/studio-upgrade/studio-validation.json"
+    ],
+    "notice": "Proposed installation | Assumed geometry | Illustrative coordination model | Field verification required.",
+    "limits": "Unit B / 106 pilot. All physical installation geometry remains assumed. Exterior is context; the transition does not locate the pilot at a specific opening. Separate from the Unit A / 107 water study."
+  },
+  "shots": [
+    {
+      "id": "exterior",
+      "scene": "exterior",
+      "source_in": 0,
+      "source_out": 4,
+      "duration": 4,
+      "posters": [
+        1.5
+      ],
+      "title": "200 W\nHighland",
+      "detail": "Exterior context",
+      "title_position": [
+        0.055,
+        0.17
+      ],
+      "title_size": 60
+    },
+    {
+      "id": "shared",
+      "scene": "shared",
+      "source_in": 4,
+      "source_out": 8,
+      "duration": 4,
+      "posters": [
+        5.5
+      ],
+      "title": "One connected\nsystem.",
+      "detail": "Cold, hot and circulation return",
+      "title_position": [
+        0.055,
+        0.68
+      ],
+      "title_size": 64
+    },
+    {
+      "id": "verify",
+      "scene": "unit",
+      "source_in": 8,
+      "source_out": 18,
+      "duration": 10,
+      "posters": [
+        12
+      ],
+      "title": "Trace. Protect.\nPrepare.",
+      "detail": "Verify routes and affected services"
+    },
+    {
+      "id": "open",
+      "scene": "unit",
+      "source_in": 18,
+      "source_out": 29,
+      "duration": 11,
+      "posters": [
+        23.5
+      ],
+      "title": "Make room.",
+      "detail": "Protect finishes. Prepare the route."
+    },
+    {
+      "id": "install",
+      "scene": "unit",
+      "source_in": 29,
+      "source_out": 45,
+      "duration": 16,
+      "posters": [
+        42.5
+      ],
+      "title": "Build the\nreplacement.",
+      "detail": "New piping remains isolated"
+    },
+    {
+      "id": "test",
+      "scene": "unit",
+      "source_in": 45,
+      "source_out": 58,
+      "duration": 13,
+      "posters": [
+        54
+      ],
+      "title": "Test before\ntransfer.",
+      "detail": "Required test and inspection"
+    },
+    {
+      "id": "transfer",
+      "scene": "unit",
+      "source_in": 58,
+      "source_out": 73,
+      "duration": 15,
+      "posters": [
+        60,
+        69
+      ],
+      "title": "Transfer\nwith care.",
+      "detail": "Proposed isolation - verify on site"
+    },
+    {
+      "id": "restore",
+      "scene": "unit",
+      "source_in": 73,
+      "source_out": 85,
+      "duration": 12,
+      "posters": [
+        80
+      ],
+      "title": "Close with\ncare.",
+      "detail": "Restore finishes. Keep service access."
+    },
+    {
+      "id": "resolve",
+      "scene": "shared",
+      "source_in": 85,
+      "source_out": 90,
+      "duration": 5,
+      "posters": [
+        87
+      ],
+      "title": "A maintainable\nsystem.",
+      "detail": "A planned sequence. Restored service.",
+      "title_position": [
+        0.055,
+        0.68
+      ],
+      "title_size": 64
+    }
+  ],
+  "profile": "storyboard",
+  "settings": {
+    "width": 960,
+    "height": 540,
+    "native_fps": 1,
+    "samples": 16
+  },
+  "delivery_fps": 24,
+  "device": "CPU",
+  "blender_version": "5.0.1",
+  "duration": 90.0,
+  "sample_seconds": null,
+  "frames": [
+    {
+      "index": 0,
+      "shot": "exterior",
+      "scene": "exterior",
+      "source_time": 1.5,
+      "output_time": 1.5
+    },
+    {
+      "index": 1,
+      "shot": "shared",
+      "scene": "shared",
+      "source_time": 5.5,
+      "output_time": 5.5
+    },
+    {
+      "index": 2,
+      "shot": "verify",
+      "scene": "unit",
+      "source_time": 12,
+      "output_time": 12.0
+    },
+    {
+      "index": 3,
+      "shot": "open",
+      "scene": "unit",
+      "source_time": 23.5,
+      "output_time": 23.5
+    },
+    {
+      "index": 4,
+      "shot": "install",
+      "scene": "unit",
+      "source_time": 42.5,
+      "output_time": 42.5
+    },
+    {
+      "index": 5,
+      "shot": "test",
+      "scene": "unit",
+      "source_time": 54,
+      "output_time": 54.0
+    },
+    {
+      "index": 6,
+      "shot": "transfer",
+      "scene": "unit",
+      "source_time": 60,
+      "output_time": 60.0
+    },
+    {
+      "index": 7,
+      "shot": "transfer",
+      "scene": "unit",
+      "source_time": 69,
+      "output_time": 69.0
+    },
+    {
+      "index": 8,
+      "shot": "restore",
+      "scene": "unit",
+      "source_time": 80,
+      "output_time": 80.0
+    },
+    {
+      "index": 9,
+      "shot": "resolve",
+      "scene": "shared",
+      "source_time": 87,
+      "output_time": 87.0
+    }
+  ],
+  "chunks": [
+    {
+      "id": "chunk-0000",
+      "first": 0,
+      "last": 9
+    }
+  ],
+  "dependencies": {
+    "deliverables/highland-installation/studio-upgrade/studio-validation.json": "a14422512ffb311b2258f5d7cb9d1949e6ccea4158ad3b383efdb215ee85d5c2",
+    "projects/highland-installation/animation-90s/animation-spec.json": "c84a8e2389f7b5b19492824f9182d410da7551c55a547232209bacf5f498670c",
+    "projects/highland-installation/immersive-film/assets/fonts/NotoSans-Regular.ttf": "89c3c497f618fdaa0b2d1e98fef93582f28c71debd2c4a8cdf41f190ced2909d",
+    "projects/highland-installation/immersive-film/assets/fonts/NotoSerifDisplay-Regular.ttf": "bcdc596729c24044e28c54815ecbe6004f83b10169a49a51160b22f59116249f",
+    "projects/highland-installation/installation/highland-installation-proposed.yaml": "972f4b68f8be77b3ea05392b00e04007b895d8ae753122ce4bc1562e2ff71f3d",
+    "projects/highland-installation/installation/validation.json": "78a115afb03e74809eb7f6290e0dbd8dbfb20f06da9db9651f5dcad3fa60018e",
+    "projects/highland-installation/studio-upgrade/render_studio.py": "830732b4c9d44e6eaa019fa660dc98e8971504a02079a431bf6b23926f7f2b80",
+    "projects/highland-installation/studio-upgrade/studio-config.json": "ba6086bdeb66e547845d27c1724a423ea2ca195073d6f2457b33f80ee36d700d",
+    "render/models.json": "7f8eec0098c9f7be4d4d4d59fe83f5e945391743a453c37f237408e4d5086692",
+    "render/requirements.txt": "a5b9825fece959a6ac3bcab3607bb580033a030be5f13c4d20ed9609fc19101b",
+    "render/videos/highland-installation.json": "296e858d69af5b49ed721825f7a01d220043f30ad7113417b4d6e51451ec58c5",
+    "tools/assemble_video.py": "8af4a0fa142b3d5c6f6a518ba99b70fc2cd497ab8911662d798088cf3c9ba889",
+    "tools/render_plan.py": "b1e2387cdda63c9e9b04a543ea300fcb36da6bb168f8d56efe839cd634c90154",
+    "tools/render_scene.py": "34656ecef6b07779a5d64d5fced52172f019ff020893397e791ad2394ded01ea",
+    "tools/render_video.py": "16b55d5ffaded56ee465a8f799511dddf846b6ef8f4fde1689a842508877f375",
+    "tools/video_common.py": "11aa0069e7244b589a273154dca1ebf48fbeca09a9b56dc551d9c8ccbcb7604d",
+    "tools/video_graphics.py": "aa17fa3a0598ddd579cea42cbc46e16c6ed993bdbfb42246c59fd7d5765efb6c",
+    "tools/video_plan.py": "606181cd9feeb772d48286de2164944a6e5e64d5d6695da9b1544100cae798b6"
+  },
+  "plate_id": "333458ce930fc19382a754d593587518885140917591a1698b0f8a1328f74509",
+  "plan_id": "b7e48c9d401cd3284b15181f1da191f436f20e63b08a5eec168e6f73d83a851b"
+}

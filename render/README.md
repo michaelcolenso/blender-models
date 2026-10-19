@@ -1,5 +1,7 @@
 # Render saved models with GitHub Actions
 
+For narrated animation, see the [shared video workflow and Highland installation template](VIDEO-WORKFLOW.md).
+
 Commit an editable model, list its scene/camera/frame in `render/scenes.json`, and
 let [Render saved Blender scenes](../.github/workflows/render-scenes.yaml) produce
 reviewable PNGs and reports. This extends the repository's existing spec-to-model

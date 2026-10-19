@@ -7,6 +7,7 @@ Purpose: build dimensionally accurate, realistic 3D models of Michael's restorat
 Operator procedure with exact commands: **RUNBOOK.md**.
 
 Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guide](render/README.md).
+Video direction and production: [Highland installation template and shared video workflow](render/VIDEO-WORKFLOW.md).
 
 ## Pipeline (always in this order)
 

@@ -1,0 +1,64 @@
+{
+  "status": "template_preview_validated",
+  "model": "Highland proposed installation - Unit B / 106",
+  "model_sha256": "acb140a5ddc32cc95c19c9b98762462f9ce1db8e79670808f27d795ceeb85641",
+  "source_geometry_file_unchanged": true,
+  "geometry_authority": "projects/highland-installation/installation/highland-installation-proposed.yaml",
+  "unit_tests_passed": 16,
+  "actionlint_passed": true,
+  "storyboard": {
+    "frames": 10,
+    "render_size": [
+      960,
+      540
+    ],
+    "samples": 16,
+    "plan_id": "b7e48c9d401cd3284b15181f1da191f436f20e63b08a5eec168e6f73d83a851b"
+  },
+  "motion_sample": {
+    "duration_seconds": 2,
+    "native_frames": 12,
+    "native_fps": 6,
+    "delivery_frames": 48,
+    "delivery_fps": 24,
+    "render_size": [
+      640,
+      360
+    ],
+    "samples": 8,
+    "audio": false,
+    "optical_interpolation": false,
+    "plan_id": "69ec12bc5897be98db0e3e9cb38370c422dd15af1cf7f00acb04fd6cee8dbd9d"
+  },
+  "two_segment_narrated_audio_assembly": "passed; separate one-second integration check",
+  "cached_plate_recomposition": "passed; title revisions reused matching native plates",
+  "visual_review": {
+    "storyboard_contact_sheet": "inspected",
+    "decoded_motion_sample_frame": "inspected",
+    "full_production_movie": "not rendered",
+    "GPU_execution": "not tested"
+  },
+  "limits": "Unit B / 106 pilot. All physical installation geometry remains assumed. Exterior is context; the transition does not locate the pilot at a specific opening. Separate from the Unit A / 107 water study.",
+  "files": {
+    "storyboard.png": {
+      "bytes": 1543637,
+      "sha256": "cc9c3012da1dbc226e2ba3010e369e8680a5e045f82c93ac19ff3310f2f9b3ca"
+    },
+    "motion-sample.mp4": {
+      "bytes": 161763,
+      "sha256": "75e71539ae6553e29be7c494fb6ab3d7178646245d731f652a6f2774c55d4263"
+    },
+    "installation-preview.png": {
+      "bytes": 241862,
+      "sha256": "50b7d40537a1cb9b9bed11a3bbeeca2cbaccb8ca3b8f5772ef017bba79248381"
+    },
+    "storyboard-plan.json": {
+      "bytes": 12083,
+      "sha256": "f001e4f84453e0dae7a3a5b9d9d699447bb6ef11dc55b0d24472d577d1b35a94"
+    },
+    "sample-plan.json": {
+      "bytes": 10156,
+      "sha256": "a8fc5fbf52404b26c627d2046d33c1233171ec7917f71ef49a66f88d909dfe40"
+    }
+  }
+}
