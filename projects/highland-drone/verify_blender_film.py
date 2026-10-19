@@ -41,8 +41,9 @@ def verify(movie, output):
     black_frames=(np.flatnonzero(black_fraction>.98)+1).tolist()
     assert not black_frames,f'Black camera views in frames {black_frames}'
     deltas=np.abs(frames[1:].astype(float)-frames[:-1].astype(float)).mean(axis=(1,2,3))
+    camera_deltas=np.abs(center[1:]-center[:-1]).mean(axis=(1,2,3))
     identical=[];start=None
-    for i,delta in enumerate(deltas):
+    for i,delta in enumerate(camera_deltas):
         if delta==0 and start is None:start=i+1
         if delta!=0 and start is not None:
             if i+1-start>=12:identical.append([start,i+1])
@@ -79,6 +80,7 @@ def verify(movie, output):
             'progressive_playback_faststart':True,
             'audio_codec':audio['codec_name'],'audio_channels':audio['channels'],
             'audio_peak':round(peak,5),'audio_rms':round(rms,5),
+            'motion_test_region':'Central half of camera image, excluding HUD',
             'black_camera_frames':black_frames,'frozen_ranges_over_half_second':identical,
             'largest_frame_changes':jumps,'render_chunk_joins':joins}
     (output/'playback-validation.json').write_text(json.dumps(report,indent=2)+'\n')

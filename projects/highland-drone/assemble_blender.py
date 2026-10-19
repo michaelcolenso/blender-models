@@ -36,7 +36,7 @@ def main():
         for y in range(h-round(155*scale),h):
             d.line((0,y,w,y),fill=(5,12,18,int(200*(y-(h-155*scale))/(155*scale))))
         x=round(24*scale)
-        d.text((x,round(22*scale)),'200 W. HIGHLAND / BLENDER',font=fonts['tag'],fill=(222,193,141,255))
+        d.text((x,round(22*scale)),'200 W. HIGHLAND / OWNER TOUR',font=fonts['tag'],fill=(222,193,141,255))
         d.text((x,round(48*scale)),'Lobby → Corridors 108 + 208',font=fonts['title'],fill='white')
         chapter=next(c for c in reversed(CHAPTERS) if t>=c[0])
         d.text((x,h-round(123*scale)),chapter[1],font=fonts['tag'],fill=(233,201,146,255))
@@ -72,6 +72,9 @@ def main():
         subprocess.run(['ffmpeg','-y','-loglevel','error','-ss',str(t),'-i',str(movie),'-frames:v','1',str(a.output/name)],check=True)
     subprocess.run(['ffmpeg','-y','-loglevel','error','-ss','13','-t','7','-i',str(movie),'-vf','fps=8,scale=270:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse','-loop','0',str(a.output/'Highland-Blender-preview.gif')],check=True)
     report={'engine':'Blender 5.0.1 / Cycles CPU','frames':COUNT,'fps':FPS,'resolution':size,'duration_seconds':26,'audio':'stereo AAC','video_sha256':hashlib.sha256(movie.read_bytes()).hexdigest(),'source_frame_count':len(files)}
+    report['assembler_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    provenance=a.frames.parent/'native-frame-provenance.json'
+    if provenance.exists():report['native_frame_provenance_sha256']=hashlib.sha256(provenance.read_bytes()).hexdigest()
     (a.output/'media-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 
 
