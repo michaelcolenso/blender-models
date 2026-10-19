@@ -32,7 +32,7 @@ def point(t):
     return sum((Vector(seg[f'p{j}']) * math.comb(3,j) * (1-u)**(3-j) * u**j for j in range(4)), Vector()) * FT
 
 
-def trajectory(t):
+def base_trajectory(t):
     pos = point(t)
     look = point(min(26, t+1.0))
     if t<3.8:
@@ -49,6 +49,19 @@ def trajectory(t):
     lift = 132+123*smooth(16,17.8,t)
     look = look.lerp(Vector((847*I,1452*I,(lift+48)*I)),pull)
     return pos, look
+
+
+def trajectory(t):
+    pos, look = base_trajectory(t)
+    # Smooth the look-ahead through corners without moving the camera outside
+    # the checked circulation route. A 4 mm gimbal drift is barely perceptible.
+    if 6.5 < t < 14.8 or 19.4 < t < 26:
+        look = sum((base_trajectory(max(0,min(26,t+j*.08)))[1]
+                    for j in range(-3,4)),Vector())/7
+        envelope = smooth(6.5,7,t)*(1-smooth(14.3,14.8,t)) if t<15 else smooth(19.4,20,t)*(1-smooth(25.4,26,t))
+        drift = .004*math.sin(t*math.tau*.8)*envelope
+        pos.z += drift;look.z += drift
+    return pos,look
 
 
 def collection(name):
@@ -91,16 +104,20 @@ def texture(m, kind):
 
 def box(name, bounds, mat, col, parent=None, wall=False, section=False):
     x0,x1,y0,y1,z0,z1 = bounds
-    bpy.ops.mesh.primitive_cube_add(size=1, location=((x0+x1)*I/2,(y0+y1)*I/2,(z0+z1)*I/2))
-    o=bpy.context.object; o.name=name; o.dimensions=((x1-x0)*I,(y1-y0)*I,(z1-z0)*I)
-    bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
-    for c in list(o.users_collection): c.objects.unlink(o)
-    col.objects.link(o); o.data.materials.append(mat)
+    # Direct mesh creation avoids repeated full-scene operator updates when
+    # adding hundreds of curtain folds to an already animated scene.
+    dx,dy,dz=(x1-x0)*I/2,(y1-y0)*I/2,(z1-z0)*I/2
+    vertices=[(-dx,-dy,-dz),(dx,-dy,-dz),(dx,dy,-dz),(-dx,dy,-dz),
+              (-dx,-dy,dz),(dx,-dy,dz),(dx,dy,dz),(-dx,dy,dz)]
+    faces=[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
+    mesh=bpy.data.meshes.new(name);mesh.from_pydata(vertices,[],faces);mesh.update()
+    o=bpy.data.objects.new(name,mesh);col.objects.link(o)
+    o.location=((x0+x1)*I/2,(y0+y1)*I/2,(z0+z1)*I/2);mesh.materials.append(mat)
     if parent: o.parent=parent
     o['basis']='A2.03/A2.04 fitted public circulation; finishes and details illustrative'
     if wall: WALLS.append((o,tuple(v*I for v in bounds)))
     if section: SECTION.append(o)
-    if min(o.dimensions)>.012:
+    if min(dx,dy,dz)*2>.012:
         bev=o.modifiers.new('Soft architectural edges','BEVEL'); bev.width=.002; bev.segments=2
     return o
 
@@ -144,7 +161,7 @@ def ghost_material(m):
         t=(f-1)/FPS;mix.inputs[0].default_value=.95*smooth(15,16,t)*(1-smooth(18.75,19.2,t));mix.inputs[0].keyframe_insert('default_value',frame=f)
 
 
-def build(output):
+def build(output, presentation='archviz'):
     WALLS.clear(); SECTION.clear(); RIG.clear()
     bpy.ops.wm.open_mainfile(filepath=str(SOURCE));scene=bpy.context.scene
     exterior=[o for o in scene.objects if o.type=='MESH' and not o.name.startswith('caption')]
@@ -215,6 +232,7 @@ def build(output):
     hinges=[];door_leaves=[]
     for name,y0,y1,angle in [('south',1277,1332.5,1.32),('north',1332.5,1388,-1.32)]:
         pivot=empty('Entry '+name+' hinge',rig,(1476*I,(y0 if name=='south' else y1)*I,179*I))
+        bpy.context.view_layer.update()  # matrix_world is used for keep-transform parenting
         leaf=box('Entry '+name+' glass',(1475,1477,y0,y1,134,232),M['glass'],col)
         leaf.parent=pivot;leaf.matrix_parent_inverse=pivot.matrix_world.inverted()
         door_leaves.append(leaf)
@@ -304,6 +322,10 @@ def build(output):
         cutter.location.x=(cutx+(4000-1100)/2)*I;cutter.keyframe_insert('location',frame=f)
     # Keep the cab's walnut rear panel and bronze doors solid so the rising car
     # remains the visual anchor while architectural surfaces become glass.
+    # Refine materials before adding the animated section shader wrappers.
+    if presentation=='archviz':
+        from archviz import upgrade
+        upgrade(scene,M,col,lighting,box,area,material)
     for key in ['wall','ceiling','carpet','stone','cabDoor']:ghost_material(M[key])
     edgeMat=material('Section brass edges',(.7,.44,.15),.4,emission=.6)
     shaft=box('Elevator shaft / section reference',(810,885,1424,1480,132,360),edgeMat,rig)
@@ -318,7 +340,8 @@ def build(output):
         for f,v in [(1,True),(371,True),(372,False),(450,False),(451,True)]:edge.hide_render=v;edge.hide_viewport=v;edge.keyframe_insert('hide_render',frame=f);edge.keyframe_insert('hide_viewport',frame=f)
     # Exterior illumination and context use blue-hour colors; the corridor
     # receives actual area-light bounce from its own native luminaires.
-    scene.world.use_nodes=True;bg=scene.world.node_tree.nodes.get('Background');bg.inputs['Color'].default_value=(.18,.29,.48,1);bg.inputs['Strength'].default_value=.32
+    if presentation=='study':
+        scene.world.use_nodes=True;bg=scene.world.node_tree.nodes.get('Background');bg.inputs['Color'].default_value=(.18,.29,.48,1);bg.inputs['Strength'].default_value=.32
     scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=16;scene.cycles.use_denoising=True
     scene.cycles.max_bounces=6;scene.cycles.transmission_bounces=4;scene.cycles.transparent_max_bounces=8
     scene.render.resolution_x=540;scene.render.resolution_y=960;scene.render.resolution_percentage=100
@@ -336,6 +359,7 @@ def build(output):
     scene['scope']='Native editable exterior, lobby, corridors, doors, elevator and camera animation. Interior faces and finishes illustrative.'
     scene['source_sheets']='A2.03/A2.04 circulation; A3.11 R1/R2 datums; exterior source model retains its own provenance.'
     scene['osm_attribution']='© OpenStreetMap contributors / ODbL 1.0'
+    scene['look']=presentation
     import audio
     audio.BUILD=output.parent;audio.BUILD.mkdir(parents=True,exist_ok=True)
     soundtrack=audio.synthesize();editor=scene.sequence_editor_create()
@@ -364,7 +388,7 @@ def build(output):
     end_z=car.matrix_world.translation.z;scene.frame_set(1);bpy.context.view_layer.update()
     rise=(end_z-car.matrix_world.translation.z)/I
     if abs(rise-123)>.001:raise RuntimeError(f'Evaluated elevator rise is {rise} inches')
-    report={'blender':bpy.app.version_string,'frames':LAST,'fps':FPS,'objects':len(scene.objects),'native_meshes':sum(o.type=='MESH' for o in col.objects),'native_lights':len(lighting.objects),'camera_constraints':[c.type for c in cam.constraints],'max_camera_path_error_m':round(max_error,5),'wall_collisions':[v for v in failures if 'wall' in v],'door_collisions':[v for v in failures if 'door' in v],'r1_to_r2_rise_in':round(rise,4),'source_spec_sha256':scene['source_spec_sha256']}
+    report={'blender':bpy.app.version_string,'look':presentation,'frames':LAST,'fps':FPS,'objects':len(scene.objects),'native_meshes':sum(o.type=='MESH' for o in col.objects),'native_lights':len(lighting.objects),'camera_constraints':[c.type for c in cam.constraints],'max_camera_path_error_m':round(max_error,5),'wall_collisions':[v for v in failures if 'wall' in v],'door_collisions':[v for v in failures if 'door' in v],'r1_to_r2_rise_in':round(rise,4),'source_spec_sha256':scene['source_spec_sha256'],'archviz_plant_leaves':scene.get('archviz_plant_leaves',0),'archviz_warm_windows':scene.get('archviz_warm_windows',0)}
     output.with_suffix('.validation.json').write_text(json.dumps(report,indent=2)+'\n')
     if failures or max_error>.08:raise RuntimeError('Native camera clearance/path validation failed: '+json.dumps(report))
     print('Native Blender scene validated:',json.dumps(report))
@@ -372,14 +396,14 @@ def build(output):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'build/highland-blender/Highland-walkthrough.blend');p.add_argument('--reuse',action='store_true');p.add_argument('--frames',default='');p.add_argument('--start',type=int);p.add_argument('--end',type=int);p.add_argument('--width',type=int,default=540);p.add_argument('--height',type=int,default=960);p.add_argument('--samples',type=int,default=16);p.add_argument('--threads',type=int,default=0);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'build/highland-blender/Highland-walkthrough.blend');p.add_argument('--reuse',action='store_true');p.add_argument('--frames',default='');p.add_argument('--start',type=int);p.add_argument('--end',type=int);p.add_argument('--width',type=int,default=540);p.add_argument('--height',type=int,default=960);p.add_argument('--samples',type=int,default=16);p.add_argument('--threads',type=int,default=0);p.add_argument('--look',choices=['study','archviz'],default='archviz');a=p.parse_args()
     if (a.start is None)!=(a.end is None):p.error('--start and --end must be supplied together')
     if a.start is not None and not 1<=a.start<=a.end<=LAST:p.error('Frame range must lie within 1–624')
     if min(a.width,a.height)<64 or a.samples<1 or a.threads<0:p.error('Invalid resolution, samples or thread count')
     if a.frames and any(not 1<=int(f)<=LAST for f in a.frames.split(',') if f):p.error('Review frames must lie within 1–624')
     scene=None
     if a.reuse:bpy.ops.wm.open_mainfile(filepath=str(a.output));scene=bpy.context.scene
-    else:scene=build(a.output)
+    else:scene=build(a.output,a.look)
     scene.render.resolution_x=a.width;scene.render.resolution_y=a.height;scene.cycles.samples=a.samples
     if a.threads:scene.render.threads_mode='FIXED';scene.render.threads=a.threads
     frames=[int(f) for f in a.frames.split(',') if f] if a.frames else list(range(a.start,a.end+1)) if a.start is not None else []

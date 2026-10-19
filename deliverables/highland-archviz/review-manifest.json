@@ -1,0 +1,42 @@
+{
+  "renderer": "Blender 5.0.1 / Cycles CPU / denoised",
+  "dimensions": [
+    540,
+    960
+  ],
+  "samples": 24,
+  "scene_sha256": "4772d5194d6d90b292f7971519e6fff238611573e0ad0789c34bc131e93510bd",
+  "baseline_scene_sha256": "6755d60129801535efa97df0cf7b0bda272661b601711e29e118889607ba5f5c",
+  "views": [
+    {
+      "frame": 1,
+      "time_s": 0.0,
+      "view": "Exterior",
+      "image": "Highland-archviz-exterior.png",
+      "sha256": "4381df50f32b4cca94efa2c9134c04bd6e08b6f8774698b93c93c54d1bf0a56c"
+    },
+    {
+      "frame": 160,
+      "time_s": 6.625,
+      "view": "Lobby",
+      "image": "Highland-archviz-lobby.png",
+      "sha256": "0ab66c17a110325782afe8a2b09a604569bbfa6d0e90d20957fc5f41fff01262"
+    },
+    {
+      "frame": 319,
+      "time_s": 13.25,
+      "view": "Elevator",
+      "image": "Highland-archviz-elevator.png",
+      "sha256": "d4bfd2a4b0e101eb263735caeb2e9bbcace1c95da3d9de38e8573205e238715a"
+    },
+    {
+      "frame": 529,
+      "time_s": 22.0,
+      "view": "Corridor",
+      "image": "Highland-archviz-corridor.png",
+      "sha256": "21d20fff4c23fe3179a5b0ad57a4f7c81e62902b846a5ae9ae36603ce944a05c"
+    }
+  ],
+  "status": "Four native stills; upgraded full animation not rendered",
+  "comparison": "Prior published .blend, matching frame numbers, dimensions and sample count"
+}

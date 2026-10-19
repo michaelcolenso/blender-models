@@ -20,8 +20,23 @@ or browser to animate.
 Use Blender **5.0.1 or newer** for the delivered `.blend`. Play frames 1–624 or
 render the active **Owner drone camera**. The file defaults to Cycles CPU,
 540 × 960, 16 samples with denoising. A GPU can be selected in Blender if one is
-available. All materials are procedural; the sound is packed. No paid add-ons or
-third-party botanical asset libraries are required.
+available. Surface materials are procedural; the sound and CC0 Poly Haven HDRI
+are packed. No paid add-ons or third-party botanical asset libraries are required.
+
+New builds default to the **archviz** look. It adds individual curved leaves in
+place of the original solid canopy meshes, warm apartment back panels and folded
+curtains, stainless entry handrails, canopy accents, planters, a lobby console and
+abstract art. Walnut uses fine vertically stretched grain; carpet has a fine
+cross-weave and tile variation; stone has shallow grout and variable roughness.
+Door accents use soft spot beams, not manufacturer IES photometry. The floor
+trail is thinner and gently pulses. Camera look-ahead is smoothed, with a subtle 4 mm vertical drift inside the
+corridors. Dense Bezier controls retain the checked route around corners.
+The camera clearance checks still run against every film frame, including the
+added lobby console and planter boxes.
+
+The new [archviz review](../../deliverables/highland-archviz/README.md) contains
+rendered stills and a separately named editable scene. The previously published
+film remains the earlier study version until a new complete animation is rendered.
 
 Rebuild with Python 3.11, `bpy==5.0.1`, NumPy and Pillow:
 
@@ -29,6 +44,18 @@ Rebuild with Python 3.11, `bpy==5.0.1`, NumPy and Pillow:
 python projects/highland-drone/build_blender.py
 python projects/highland-drone/build_blender.py --reuse --frames 1,212,319,397,529
 ```
+
+Build the archviz review independently, preserving the previous study deliverable:
+
+```bash
+python projects/highland-drone/build_blender.py \
+  --output build/highland-archviz/Highland-archviz.blend \
+  --frames 1,160,319,529 --samples 24
+```
+
+`--look study` retains the simpler materials and original tree meshes. `--reuse`
+opens an existing scene without rebuilding it; it does not apply a new look.
+The HDRI source, license and checksum are recorded in [assets/sources.json](assets/sources.json).
 
 `assemble_blender.py --review-only` adds the film captions to available review
 frames without requiring the complete animation or encoding a movie.
@@ -53,6 +80,14 @@ prior run ID and the inclusive replacement-frame range, using the same quality
 as the prior run. Actions renders that range from the current scene, overlays
 the new frames on the original frame artifacts, and validates and encodes the
 complete film again. Source frame artifacts are retained for seven days.
+
+The **Highland archviz still review** workflow renders four upgraded views and
+four matching views from the previously published study, then packages phone
+images, comparisons, validation and the editable scene. It runs on CPU without
+a RunPod account or GPU credentials. The new workflow becomes available for
+manual dispatch after merge to the default branch. The existing native film
+workflow can run from the archviz branch and picks up its new default look;
+a complete run is required to replace the previous film.
 
 ## Basis and validation
 
