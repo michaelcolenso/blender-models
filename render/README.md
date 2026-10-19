@@ -45,6 +45,8 @@ two running at a time.
 
 Pack textures and fonts into the `.blend` where possible. Otherwise commit the
 referenced files and use relative paths. Rendering fails on missing dependencies.
+The dependency check follows the selected scene's referenced data. Saved UI brush
+catalogs, asset-browser paths and unrelated unused data do not block rendering.
 This starter handles ordinary external file paths; pack or adapt resolution for
 UDIM patterns, image sequences and simulation caches before adding those scenes.
 Embedded Python auto-execution is disabled. Bake scripted drivers and add-on
