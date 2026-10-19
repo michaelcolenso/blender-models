@@ -9,6 +9,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageStat
 
+from render_assets import validate_scene_assets
 from render_plan import CATALOG, PROFILES, ROOT, load_shots, select_shots
 
 
@@ -96,10 +97,7 @@ def render(args, report):
     if not scene.frame_start <= shot["frame"] <= scene.frame_end:
         raise ValueError(f"Frame {shot['frame']} is outside scene range {scene.frame_start}..{scene.frame_end}")
     # Packed data is covered by the .blend hash; hash ordinary external files too.
-    dependencies = sorted(set(bpy.utils.blend_paths(absolute=True, packed=True)))
-    missing = [path for path in dependencies if not Path(path).is_file()]
-    if missing:
-        raise ValueError(f"Missing external assets (pack or restore them first): {missing}")
+    dependencies = validate_scene_assets(bpy, scene)
     report["dependencies"] = [{"path": path, "sha256": sha256(path)} for path in dependencies]
     bpy.context.window.scene = scene
     scene.camera = camera
