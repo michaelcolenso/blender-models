@@ -1,6 +1,7 @@
 """Failure checks that keep the render matrix and output QA trustworthy."""
 import copy
 import json
+import shutil
 import sys
 import tempfile
 import unittest
@@ -11,6 +12,12 @@ from PIL import Image, ImageDraw
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from render_plan import load_shots, select_shots
 from render_scene import validate_image
+from render_assets import validate_scene_assets
+
+try:
+    import bpy
+except ImportError:
+    bpy = None
 
 
 class RenderWorkflowTests(unittest.TestCase):
@@ -67,6 +74,81 @@ class RenderWorkflowTests(unittest.TestCase):
         ImageDraw.Draw(image).rectangle((16, 16, 48, 48), fill="black")
         image.save(path)
         self.assertTrue(validate_image(path, 64, 64)["nonblank"])
+
+
+@unittest.skipIf(bpy is None, "Blender runtime required for asset dependency regressions")
+class BlenderAssetDependencyTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.folder = Path(self.directory.name)
+        bpy.ops.wm.read_factory_settings(use_empty=True)
+        self.scene = bpy.context.scene
+
+    def image_material(self, filename="texture.png"):
+        path = self.folder / filename
+        Image.new("RGB", (4, 4), "green").save(path)
+        image = bpy.data.images.load(str(path))
+        material = bpy.data.materials.new("Asset test material")
+        material.use_nodes = True
+        material.node_tree.nodes.new("ShaderNodeTexImage").image = image
+        mesh = bpy.data.meshes.new("Asset test mesh")
+        mesh.materials.append(material)
+        obj = bpy.data.objects.new("Asset test object", mesh)
+        self.scene.collection.objects.link(obj)
+        return path, image, material
+
+    def test_relocated_model_ignores_missing_saved_brush_catalog(self):
+        source = Path(__file__).resolve().parents[1] / "deliverables/highland-water/Highland-domestic-water.blend"
+        relocated = self.folder / "relocated.blend"
+        shutil.copy2(source, relocated)
+        bpy.ops.wm.open_mainfile(filepath=str(relocated), load_ui=False, use_scripts=False)
+        missing_ui_paths = [path for path in bpy.utils.blend_paths(absolute=True, packed=True)
+                            if "essentials_brushes-gp_draw.blend" in path and not Path(path).is_file()]
+        self.assertTrue(missing_ui_paths, "Fixture must reproduce the missing brush catalog")
+        self.assertEqual(validate_scene_assets(bpy, bpy.context.scene), [])
+
+    def test_referenced_texture_is_required(self):
+        path, _, _ = self.image_material()
+        self.assertEqual(validate_scene_assets(bpy, self.scene), [str(path)])
+        path.unlink()
+        with self.assertRaisesRegex(ValueError, "texture.png"):
+            validate_scene_assets(bpy, self.scene)
+
+    def test_packed_texture_does_not_require_its_original_file(self):
+        path, image, _ = self.image_material()
+        image.pack()
+        path.unlink()
+        self.assertEqual(validate_scene_assets(bpy, self.scene), [])
+
+    def test_unrelated_missing_image_does_not_block_this_scene(self):
+        path, _, _ = self.image_material()
+        unused = bpy.data.images.new("Unused image", width=1, height=1)
+        unused.source = "FILE"
+        unused.filepath = str(self.folder / "unused-missing.png")
+        unused.use_fake_user = True
+        self.assertEqual(validate_scene_assets(bpy, self.scene), [str(path)])
+
+    def test_linked_library_and_relative_texture_are_required(self):
+        path, image, material = self.image_material()
+        image.filepath = "//texture.png"
+        library_path = self.folder / "materials.blend"
+        bpy.data.libraries.write(str(library_path), {material})
+        bpy.ops.wm.read_factory_settings(use_empty=True)
+        self.scene = bpy.context.scene
+        with bpy.data.libraries.load(str(library_path), link=True) as (source, target):
+            target.materials = source.materials
+        mesh = bpy.data.meshes.new("Linked asset mesh")
+        mesh.materials.append(target.materials[0])
+        obj = bpy.data.objects.new("Linked asset object", mesh)
+        self.scene.collection.objects.link(obj)
+        self.assertEqual(set(validate_scene_assets(bpy, self.scene)), {str(path), str(library_path)})
+        path.unlink()
+        with self.assertRaisesRegex(ValueError, "texture.png"):
+            validate_scene_assets(bpy, self.scene)
+        library_path.unlink()
+        with self.assertRaisesRegex(ValueError, "materials.blend"):
+            validate_scene_assets(bpy, self.scene)
 
 
 if __name__ == "__main__":
