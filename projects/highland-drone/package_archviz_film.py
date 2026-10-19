@@ -45,13 +45,13 @@ def main():
     # A complete low-bandwidth GIF plays in the GitHub gallery on a phone.
     preview=target/'Highland-Blender-preview.gif'
     subprocess.run(['ffmpeg','-y','-v','error','-i',str(target/movie.name),'-vf',
-        'fps=6,scale=234:416:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3',
+        'fps=8,scale=234:416:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3',
         '-loop','0',str(preview)],check=True)
     media.update({'look':'archviz','samples':16,'quality':'phone',
                   'render_commit':args.render_commit,'base_frame_run':args.base_run,
                   'final_run':args.final_run,'replacement_frames':args.replacement_frames or [],
                   'workflow_url':f'https://github.com/michaelcolenso/blender-models/actions/runs/{args.final_run}',
-                  'preview':'Entire 26-second film at 6 fps, silent GIF; MP4 is 24 fps with stereo audio'})
+                  'preview':'Entire 26-second film at 8 fps, silent GIF; MP4 is 24 fps with stereo audio'})
     (target/'media-validation.json').write_text(json.dumps(media,indent=2)+'\n')
     shutil.copyfile(target/movie.name,gallery/'Highland-archviz-walkthrough.mp4')
     shutil.copyfile(preview,gallery/'Highland-archviz-preview.gif')
@@ -62,7 +62,7 @@ def main():
 
 [Watch the full MP4](Highland-Blender-walkthrough.mp4?raw=true) · [Download the matching Blender scene](Highland-walkthrough.blend?raw=true) · [Phone gallery and comparisons](../highland-archviz/README.md)
 
-The complete 26-second walkthrough is rendered in native Blender Cycles at **540 × 960, 24 fps**, with denoising, AgX, subtle bloom, captions, location map and stereo AAC sound. The GIF above previews the entire tour at 6 fps without audio; use the MP4 for full motion and sound.
+The complete 26-second walkthrough is rendered in native Blender Cycles at **540 × 960, 24 fps**, with denoising, AgX, subtle bloom, captions, location map and stereo AAC sound. The GIF above previews the entire tour at 8 fps without audio; use the MP4 for full motion and sound.
 
 The film includes HDRI lighting, individual leaf canopies, warm curtained windows, entrance handrails and planting, lobby furniture and art, tile grout, fine wood grain, woven carpet and wall accent lighting. Opening doors, the moving elevator and the glass-and-brass architectural section remain native animation. The camera keeps the cab feature in view until the section pullback, then returns to Corridor 208.
 
@@ -89,7 +89,7 @@ Sky: [Poly Haven / CC0](../../projects/highland-drone/assets/README.md). Surroun
 
 [Watch the upgraded MP4](Highland-archviz-walkthrough.mp4?raw=true) · [Matching animated Blender scene](../highland-blender/Highland-walkthrough.blend?raw=true)
 
-The entire **26-second** tour now uses the upgraded Cycles lighting, materials and planting. The MP4 is **540 × 960 / 24 fps with stereo audio**; the GIF previews all 26 seconds at 6 fps without sound. Doors open on approach, the elevator rises from R1 to R2, and the glass-and-brass section leads back to Corridor 208. Finishes and unverified details remain illustrative.
+The entire **26-second** tour now uses the upgraded Cycles lighting, materials and planting. The MP4 is **540 × 960 / 24 fps with stereo audio**; the GIF previews all 26 seconds at 8 fps without sound. Doors open on approach, the elevator rises from R1 to R2, and the glass-and-brass section leads back to Corridor 208. Finishes and unverified details remain illustrative.
 
 The stills below compare this visual treatment with the previous study at matching frame numbers. They use 24 samples; the full animation uses 16 samples with denoising.
 

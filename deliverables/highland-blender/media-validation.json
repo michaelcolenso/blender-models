@@ -3,19 +3,36 @@
   "frames": 624,
   "fps": 24,
   "resolution": [
-    360,
-    640
+    540,
+    960
   ],
   "duration_seconds": 26,
   "audio": "stereo AAC",
-  "video_sha256": "afb8c57ecaef5c1627425be22ef2f002f89f6c6201ee4948a35506bf6af8f4ca",
+  "video_sha256": "5b230e8d8f1d5e1f3faf411af541604be44f46afd2e6ffebe163dff2b1ebbff3",
   "source_frame_count": 624,
-  "base_frame_run": "https://github.com/michaelcolenso/blender-models/actions/runs/39101901784",
-  "corrected_film_run": "https://github.com/michaelcolenso/blender-models/actions/runs/39103362290",
-  "replacement_frames_inclusive": [
-    436,
-    466
+  "assembler_sha256": "fe13b9244ac0ff1c0d38e4c4769cae1dba435f193a6bb6d30e35328e74e04812",
+  "native_frame_provenance_sha256": "f26acc7672c8b023420170e5cfb375349e3de01350d27079bc904bb2770aac54",
+  "assembly_commit": "17673c9295bc02a484124cdbc72ea67ed0d5b618",
+  "assembly_origin": "Cloud workspace, encoded once from original native PNG artifacts with owner-facing captions",
+  "prior_repair_runs": [
+    {
+      "run": "39292164301",
+      "frames": [
+        357,
+        388
+      ]
+    }
   ],
-  "render_commit": "d04f2cf",
-  "editable_scene_sha256": "6755d60129801535efa97df0cf7b0bda272661b601711e29e118889607ba5f5c"
+  "look": "archviz",
+  "samples": 16,
+  "quality": "phone",
+  "render_commit": "17673c9295bc02a484124cdbc72ea67ed0d5b618",
+  "base_frame_run": "39290925004",
+  "final_run": "39301661396",
+  "replacement_frames": [
+    428,
+    471
+  ],
+  "workflow_url": "https://github.com/michaelcolenso/blender-models/actions/runs/39301661396",
+  "preview": "Entire 26-second film at 8 fps, silent GIF; MP4 is 24 fps with stereo audio"
 }

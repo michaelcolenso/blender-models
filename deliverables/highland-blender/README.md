@@ -1,34 +1,21 @@
-# Highland native Blender walkthrough
+# Highland / upgraded Blender walkthrough
 
-The [new archviz still gallery](../highland-archviz/README.md) previews upgraded
-lighting, materials and planting. The film below remains the earlier study pass.
+![Full upgraded walkthrough preview](Highland-Blender-preview.gif)
 
-![Native Blender animation preview](Highland-Blender-preview.gif)
+[Watch the full MP4](Highland-Blender-walkthrough.mp4?raw=true) · [Download the matching Blender scene](Highland-walkthrough.blend?raw=true) · [Phone gallery and comparisons](../highland-archviz/README.md)
 
-- [Editable animated Blender scene](Highland-walkthrough.blend)
-- [Watch the native Blender film](Highland-Blender-walkthrough.mp4)
-- [Corridor poster](Highland-Blender-poster.png)
-- [Elevator section view](Highland-Blender-section.png)
-- [Short animation preview](Highland-Blender-preview.gif)
-- [Larger lobby review render](Highland-Blender-lobby-review.png)
-- [Larger corridor review render](Highland-Blender-corridor-review.png)
-- [Larger section review render](Highland-Blender-section-review.png)
-- [Scene and camera checks](Highland-walkthrough.validation.json)
-- [Film checks](media-validation.json)
-- [Rebuild, render and source notes](../../projects/highland-drone/BLENDER.md)
+The complete 26-second walkthrough is rendered in native Blender Cycles at **540 × 960, 24 fps**, with denoising, AgX, subtle bloom, captions, location map and stereo AAC sound. The GIF above previews the entire tour at 8 fps without audio; use the MP4 for full motion and sound.
 
-Open the scene in Blender 5.0.1 or newer and play frames 1–624. The camera,
-entry hinges, elevator doors, moving cab, animated Boolean section, materials,
-lights and wayfinding are editable native Blender objects and keyframes. The
-ambient score is packed into the file.
+The film includes HDRI lighting, individual leaf canopies, warm curtained windows, entrance handrails and planting, lobby furniture and art, tile grout, fine wood grain, woven carpet and wall accent lighting. Opening doors, the moving elevator and the glass-and-brass architectural section remain native animation. The camera keeps the cab feature in view until the section pullback, then returns to Corridor 208.
 
-The film is rendered with Cycles CPU in GitHub Actions. Lobby and corridor
-locations follow the drawing study; exact wall faces, doors, elevator details
-and finishes remain illustrative. See the source notes before presenting this
-as a view of existing conditions.
+Open the scene in **Blender 5.0.1 or newer** and play frames 1–624. HDRI and sound are packed. The floor datums and circulation follow the drawings; finishes, furniture, planting, facade details and nearby massing remain illustrative.
 
-The included film is a 360 × 640 draft at 24 fps. The editable scene defaults to
-540 × 960 / 16 samples, matching the larger review stills. The Actions workflow
-also supports that phone-quality setting for a complete render.
+Sky: [Poly Haven / CC0](../../projects/highland-drone/assets/README.md). Surrounding massing: [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0, with approximate registration and assumed heights.
 
-[The corrected native film run passed in GitHub Actions.](https://github.com/michaelcolenso/blender-models/actions/runs/39103362290)
+- [Poster](Highland-Blender-poster.png)
+- [Elevator section](Highland-Blender-section.png)
+- [Timed full-film review sheet](Highland-Blender-full-review.jpg)
+- [Native camera and door checks](Highland-walkthrough.validation.json)
+- [Decoded video, audio and playback checks](playback-validation.json)
+- [Render provenance](media-validation.json)
+- [Rebuild and Actions instructions](../../projects/highland-drone/BLENDER.md)

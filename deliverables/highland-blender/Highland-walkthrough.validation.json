@@ -1,17 +1,21 @@
 {
   "blender": "5.0.1",
+  "look": "archviz",
   "frames": 624,
   "fps": 24,
-  "objects": 1494,
-  "native_meshes": 182,
-  "native_lights": 18,
+  "objects": 2555,
+  "native_meshes": 209,
+  "native_lights": 29,
   "camera_constraints": [
     "FOLLOW_PATH",
     "TRACK_TO"
   ],
-  "max_camera_path_error_m": 2e-05,
+  "max_camera_path_error_m": 3e-05,
   "wall_collisions": [],
   "door_collisions": [],
   "r1_to_r2_rise_in": 123.0,
-  "source_spec_sha256": "0d2942cdd1c0be98f4ff376708d41259eef46d0dd305772872aebe33eb19e04f"
+  "source_spec_sha256": "0d2942cdd1c0be98f4ff376708d41259eef46d0dd305772872aebe33eb19e04f",
+  "archviz_plant_leaves": 36100,
+  "archviz_warm_windows": 60,
+  "max_return_rotation_step_deg": 5.3981
 }
