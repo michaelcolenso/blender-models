@@ -1,0 +1,110 @@
+name: Render saved Blender scenes
+
+on:
+  pull_request:
+    paths:
+      - "render/**"
+      - "tools/render_*.py"
+      - "tests/test_render_workflow.py"
+      - "deliverables/**"
+      - "projects/**"
+      - ".github/workflows/render-scenes.yaml"
+  push:
+    branches: [main]
+    paths:
+      - "render/**"
+      - "tools/render_*.py"
+      - "tests/test_render_workflow.py"
+      - "deliverables/**"
+      - "projects/**"
+      - ".github/workflows/render-scenes.yaml"
+  workflow_dispatch:
+    inputs:
+      shot:
+        description: "Shot ID from render/scenes.json, or all"
+        type: string
+        default: all
+      profile:
+        description: "Render quality"
+        type: choice
+        options: [preview, final]
+        default: preview
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scene-renders-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      profile: ${{ steps.plan.outputs.profile }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Validate catalog and plan shots
+        id: plan
+        env:
+          SHOT: ${{ inputs.shot || 'all' }}
+          PROFILE: ${{ github.event_name == 'pull_request' && 'preview' || inputs.profile || 'final' }}
+        run: |
+          matrix="$(python3 tools/render_plan.py --shot "$SHOT")"
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "profile=$PROFILE" >> "$GITHUB_OUTPUT"
+
+  render:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      OUTPUT: build/scene-renders/${{ matrix.shot }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          lfs: true
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: render/requirements.txt
+      - name: Install headless Blender runtime
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
+          python -m pip install --disable-pip-version-check -r render/requirements.txt
+      - name: Check render validation rules
+        run: python -m unittest discover -s tests -p test_render_workflow.py
+      - name: Render selected scene and camera
+        env:
+          SHOT: ${{ matrix.shot }}
+          PROFILE: ${{ needs.plan.outputs.profile }}
+        run: |
+          mkdir -p "$OUTPUT"
+          set -o pipefail
+          python -u tools/render_scene.py --shot "$SHOT" --profile "$PROFILE" \
+            --device CPU --output "$OUTPUT" 2>&1 | tee "$OUTPUT/render.log"
+      - name: Add render report to job summary
+        if: always()
+        run: |
+          if [ -f "$OUTPUT/report.md" ]; then
+            cat "$OUTPUT/report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: render-${{ matrix.shot }}-${{ needs.plan.outputs.profile }}-${{ github.run_attempt }}
+          path: ${{ env.OUTPUT }}/
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 14
