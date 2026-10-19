@@ -41,13 +41,29 @@ def base_trajectory(t):
         look = pos + (pos-point(max(0,t-.4))).normalized()
     if 10.3 <= t <= 13.4:
         look = Vector((915*I,1535*I,pos.z)).lerp(Vector((847*I,1452*I,pos.z)),smooth(12.15,13.4,t))
-    if 14.8 <= t <= 19.4:
+    # Keep the cab's feature wall in view until the cutaway pullback. Turning
+    # toward the exit while still inside the small cab reveals a blank side wall.
+    if 14.3 <= t <= 16.1:
+        look=Vector((816*I,1452*I,pos.z))
+    if 16.1 < t <= 19.4:
         p = min(smooth(14.8,15.2,t),1-smooth(18.1,18.65,t))
         look = look.lerp(pos+Vector((1,0,0)),p)
     pull = smooth(15.1,16.1,t)*(1-smooth(18.1,19.15,t))
     pos = pos.lerp(Vector((1090*I,1310*I,260*I)),pull)
     lift = 132+123*smooth(16,17.8,t)
     look = look.lerp(Vector((847*I,1452*I,(lift+48)*I)),pull)
+    if 17.8<=t<=19.3:
+        # A world-space target can pass close to the moving camera during the
+        # return, producing a sudden upward whip. Interpolate an upright bearing
+        # instead, from the section view to the corridor's forward direction.
+        section=Vector((847*I,1452*I,303*I))-Vector((1090*I,1310*I,260*I))
+        forward=point(20.3)-point(19.3)
+        yaw0=math.atan2(section.y,section.x);yaw1=math.atan2(forward.y,forward.x)
+        while yaw1<yaw0:yaw1+=math.tau
+        u=smooth(17.8,19.3,t);yaw=yaw0+(yaw1-yaw0)*u
+        pitch=math.atan2(section.z,math.hypot(section.x,section.y))*(1-u)
+        direction=Vector((math.cos(pitch)*math.cos(yaw),math.cos(pitch)*math.sin(yaw),math.sin(pitch)))
+        look=pos+direction*3
     return pos, look
 
 
@@ -370,10 +386,15 @@ def build(output, presentation='archviz'):
     output.parent.mkdir(parents=True,exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=str(output),compress=True)
     # Validate the evaluated constrained camera, not just the source waypoints.
-    failures=[];max_error=0.
+    failures=[];max_error=0.;return_rotation=0.;previous_rotation=None
     for f in range(1,LAST+1):
         scene.frame_set(f);bpy.context.view_layer.update();pos=cam.matrix_world.translation;t=(f-1)/FPS
         max_error=max(max_error,(pos-poses[f-1][0]).length)
+        rotation=cam.matrix_world.to_quaternion()
+        if previous_rotation is not None and 17.8<t<19.6:
+            angle=math.degrees(previous_rotation.rotation_difference(rotation).angle)
+            return_rotation=max(return_rotation,min(angle,360-angle))
+        previous_rotation=rotation.copy()
         if 6.3<t<15.1 or 19.2<t<=26:
             for wall,b in WALLS:
                 x0,x1,y0,y1,z0,z1=b
@@ -389,7 +410,9 @@ def build(output, presentation='archviz'):
     rise=(end_z-car.matrix_world.translation.z)/I
     if abs(rise-123)>.001:raise RuntimeError(f'Evaluated elevator rise is {rise} inches')
     report={'blender':bpy.app.version_string,'look':presentation,'frames':LAST,'fps':FPS,'objects':len(scene.objects),'native_meshes':sum(o.type=='MESH' for o in col.objects),'native_lights':len(lighting.objects),'camera_constraints':[c.type for c in cam.constraints],'max_camera_path_error_m':round(max_error,5),'wall_collisions':[v for v in failures if 'wall' in v],'door_collisions':[v for v in failures if 'door' in v],'r1_to_r2_rise_in':round(rise,4),'source_spec_sha256':scene['source_spec_sha256'],'archviz_plant_leaves':scene.get('archviz_plant_leaves',0),'archviz_warm_windows':scene.get('archviz_warm_windows',0)}
+    report['max_return_rotation_step_deg']=round(return_rotation,4)
     output.with_suffix('.validation.json').write_text(json.dumps(report,indent=2)+'\n')
+    if return_rotation>10:raise RuntimeError(f'Return camera rotation jumps {return_rotation:.2f} degrees in one frame')
     if failures or max_error>.08:raise RuntimeError('Native camera clearance/path validation failed: '+json.dumps(report))
     print('Native Blender scene validated:',json.dumps(report))
     return scene

@@ -30,13 +30,20 @@ abstract art. Walnut uses fine vertically stretched grain; carpet has a fine
 cross-weave and tile variation; stone has shallow grout and variable roughness.
 Door accents use soft spot beams, not manufacturer IES photometry. The floor
 trail is thinner and gently pulses. Camera look-ahead is smoothed, with a subtle 4 mm vertical drift inside the
-corridors. Dense Bezier controls retain the checked route around corners.
+corridors. Dense Bezier controls retain the checked route around corners. The
+cab's wood feature stays in view until the section pullback starts, avoiding
+a turn toward a blank wall inside the cab.
+The return to Corridor 208 blends an upright bearing and pitch. The native
+validation records its largest rotation step and rejects a jump above 10 degrees
+per frame, preventing a sudden upward whip during re-entry.
 The camera clearance checks still run against every film frame, including the
 added lobby console and planter boxes.
 
-The new [archviz review](../../deliverables/highland-archviz/README.md) contains
-rendered stills and a separately named editable scene. The previously published
-film remains the earlier study version until a new complete animation is rendered.
+The [archviz gallery](../../deliverables/highland-archviz/README.md) contains
+the full upgraded film, phone previews, still comparisons and the matching
+packed editable scene. The earlier study is retained as
+`deliverables/highland-archviz/Highland-study-baseline.blend` so the before/after
+review workflow continues to use the exact original baseline.
 
 Rebuild with Python 3.11, `bpy==5.0.1`, NumPy and Pillow:
 
@@ -68,7 +75,7 @@ python projects/highland-drone/assemble_blender.py
 ```
 
 The **Highland native Blender film** Actions workflow divides the native Cycles
-render into eight nonoverlapping 78-frame ranges, validates all 624 frames,
+render into sixteen nonoverlapping 39-frame ranges, validates all 624 frames,
 adds phone captions and a schematic location marker, then encodes H.264 with
 stereo AAC. Draft quality uses 360 × 640 / 8 samples; phone quality uses
 540 × 960 / 16 samples. Captions and the small map are added during assembly;
@@ -77,17 +84,41 @@ the architecture, in-scene signs, lighting and animation render inside Blender.
 The workflow is registered on the delivery branch and accepts manual runs.
 Leave `existing_run` blank for a complete render. To repair a sequence, supply a
 prior run ID and the inclusive replacement-frame range, using the same quality
-as the prior run. Actions renders that range from the current scene, overlays
-the new frames on the original frame artifacts, and validates and encodes the
-complete film again. Source frame artifacts are retained for seven days.
+as the prior run. `existing_run` must contain the complete 624-frame base. Use
+`prior_repair_run` to retain an earlier set of replacement frames when tuning
+another sequence. Actions distributes the new range across sixteen workers,
+renders from the current scene, overlays the earlier repair and then the current
+replacements on the base, and validates and encodes the complete film. Source
+frame artifacts are retained for seven days.
+
+Phone-quality film assembly also runs `verify_blender_film.py`: it decodes every
+frame, checks the 540 × 960 H.264/AAC profile and progressive-playback metadata,
+looks for black camera views and frozen sections, measures soundtrack levels,
+and makes a timestamped visual review sheet. Camera turns and chunk joins still
+need visual inspection; a decoded-video check does not establish spatial accuracy.
 
 The **Highland archviz still review** workflow renders four upgraded views and
 four matching views from the previously published study, then packages phone
 images, comparisons, validation and the editable scene. It runs on CPU without
-a RunPod account or GPU credentials. The new workflow becomes available for
-manual dispatch after merge to the default branch. The existing native film
-workflow can run from the archviz branch and picks up its new default look;
-a complete run is required to replace the previous film.
+a RunPod account or GPU credentials. It uses the preserved study baseline,
+independently of the upgraded canonical film scene. Both the still and film
+workflows support manual dispatch.
+
+To publish a checked film artifact permanently, extract it and run:
+
+```bash
+python projects/highland-drone/package_archviz_film.py /path/to/artifact \
+  --base-run BASE_RUN_ID --final-run FINAL_RUN_ID --render-commit COMMIT_SHA
+```
+
+When a final run replaces a range from an earlier run, also pass
+`--replacement-frames FIRST_FRAME LAST_FRAME`. For a complete single run,
+use the same ID for both run arguments and omit the replacement range.
+
+The packager checks the video hash, native validation and playback report,
+preserves the original study, updates the film and matching scene, and produces
+a full-length silent GIF preview for the phone gallery. The render provenance
+records any replaced frame range and the source Actions runs.
 
 ## Basis and validation
 

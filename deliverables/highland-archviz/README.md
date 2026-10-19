@@ -1,6 +1,12 @@
-# Highland / archviz review
+# Highland / upgraded full walkthrough
 
-Native Blender **Cycles** previews, formatted for a phone. This is the next visual pass on the existing walkthrough: more realistic finishes and lighting, with the same drawing-based circulation, opening doors, moving elevator and X-ray section.
+![Full animated tour preview](Highland-archviz-preview.gif)
+
+[Watch the upgraded MP4](Highland-archviz-walkthrough.mp4?raw=true) · [Matching animated Blender scene](../highland-blender/Highland-walkthrough.blend?raw=true)
+
+The entire **26-second** tour now uses the upgraded Cycles lighting, materials and planting. The MP4 is **540 × 960 / 24 fps with stereo audio**; the GIF previews all 26 seconds at 8 fps without sound. Doors open on approach, the elevator rises from R1 to R2, and the glass-and-brass section leads back to Corridor 208. Finishes and unverified details remain illustrative.
+
+The stills below compare this visual treatment with the previous study at matching frame numbers. They use 24 samples; the full animation uses 16 samples with denoising.
 
 ## Lobby
 
@@ -26,14 +32,10 @@ Native Blender **Cycles** previews, formatted for a phone. This is the next visu
 
 [Compare carpet, door finishes and wall lighting](Compare-corridor.jpg)
 
-## Editable scene and render status
+## Scene, sources and verification
 
-[Download the Blender scene](Highland-archviz.blend?raw=true) — Blender **5.0.1 or newer**. Play frames 1–624 at 24 fps. The HDRI and ambient soundtrack are packed; no paid add-ons or botanical libraries are needed.
+Use the [matching film scene](../highland-blender/Highland-walkthrough.blend?raw=true) in Blender 5.0.1 or newer. It includes the revised cutaway transition, packed CC0 Poly Haven HDRI and packed soundtrack. The earlier [still-review scene](Highland-archviz.blend?raw=true) remains available for the four preview images.
 
-These four stills are 540 × 960, 24 samples, denoised. Each comparison uses the previous published scene at the same frame, resolution and sample count. The upgraded **full animation has not been rendered**. The [earlier film](../highland-blender/README.md) retains the previous study appearance.
+[Full-film review sheet](../highland-blender/Highland-Blender-full-review.jpg) · [Playback checks](../highland-blender/playback-validation.json) · [Native camera checks](../highland-blender/Highland-walkthrough.validation.json) · [Film provenance](../highland-blender/media-validation.json)
 
-The upgrade adds 36,100 individual procedural exterior leaves, 60 warm window recesses with folded curtains, entrance handrails and planters, a console and original abstract art in the lobby, finer vertically oriented wood grain, brushed metal, tile grout, carpet weave, and soft door accent beams. The sky is a packed [CC0 Poly Haven HDRI](../../projects/highland-drone/assets/README.md). Planting, furniture, apartment back panels, finishes and fixture optics are illustrative; no surveyed unit interiors or manufacturer IES profiles are represented.
-
-[Camera validation](Highland-archviz.validation.json) checks all 624 film frames against modeled walls, furniture boxes and moving door leaves. It reports no intersections during the walkthrough and preserves the 123-inch R1-to-R2 elevator rise. The intentional section pullback is excluded from wall checks. This validates the modeled route, not undimensioned existing conditions.
-
-[Rebuild and render instructions](../../projects/highland-drone/BLENDER.md) · [Image provenance](review-manifest.json)
+The model retains drawing-based circulation and the 123-inch R1-to-R2 rise. Planting, warm window back panels, furniture, finishes, facade details and fixture optics are illustrative. No manufacturer IES profiles or paid botanical libraries are included. Nearby massing uses [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright) / ODbL 1.0, with approximate placement and heights. [HDRI source and license](../../projects/highland-drone/assets/README.md) · [Still-image provenance](review-manifest.json) · [Build and render instructions](../../projects/highland-drone/BLENDER.md)

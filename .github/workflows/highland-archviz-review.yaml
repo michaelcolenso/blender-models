@@ -28,7 +28,7 @@ jobs:
       - name: Render matching frames from the previous published scene
         run: |
           mkdir -p build/highland-archviz-before
-          cp deliverables/highland-blender/Highland-walkthrough.blend build/highland-archviz-before/Highland-study.blend
+          cp deliverables/highland-archviz/Highland-study-baseline.blend build/highland-archviz-before/Highland-study.blend
           python projects/highland-drone/build_blender.py --reuse \
             --output build/highland-archviz-before/Highland-study.blend \
             --frames 1,160,319,529 --width 540 --height 960 --samples 24 --threads 2
