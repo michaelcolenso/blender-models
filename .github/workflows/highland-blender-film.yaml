@@ -32,9 +32,9 @@ jobs:
     timeout-minutes: 120
     strategy:
       fail-fast: false
-      max-parallel: 8
+      max-parallel: 16
       matrix:
-        chunk: [0, 1, 2, 3, 4, 5, 6, 7]
+        chunk: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -55,8 +55,8 @@ jobs:
           else
             width=360; height=640; samples=8
           fi
-          first=$((CHUNK * 78 + 1))
-          last=$((first + 77))
+          first=$((CHUNK * 39 + 1))
+          last=$((first + 38))
           python projects/highland-drone/build_blender.py \
             --start "$first" --end "$last" \
             --width "$width" --height "$height" --samples "$samples" --threads 2

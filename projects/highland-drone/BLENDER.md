@@ -68,7 +68,7 @@ python projects/highland-drone/assemble_blender.py
 ```
 
 The **Highland native Blender film** Actions workflow divides the native Cycles
-render into eight nonoverlapping 78-frame ranges, validates all 624 frames,
+render into sixteen nonoverlapping 39-frame ranges, validates all 624 frames,
 adds phone captions and a schematic location marker, then encodes H.264 with
 stereo AAC. Draft quality uses 360 × 640 / 8 samples; phone quality uses
 540 × 960 / 16 samples. Captions and the small map are added during assembly;
