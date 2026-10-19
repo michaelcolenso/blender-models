@@ -6,6 +6,8 @@ Purpose: build dimensionally accurate, realistic 3D models of Michael's restorat
 
 Operator procedure with exact commands: **RUNBOOK.md**.
 
+Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guide](render/README.md).
+
 ## Pipeline (always in this order)
 
 1. **Intake.** Inventory every source: sheet number, detail number, revision/date, scale, photo IDs. Read drawings at full resolution (rasterize PDFs with `pdftoppm -r 200+`; crop into details). Note scale bars and "NTS" details.

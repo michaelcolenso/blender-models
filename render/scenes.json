@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "shots": [
+    {
+      "id": "highland-water-overview",
+      "blend": "deliverables/highland-water/Highland-domestic-water.blend",
+      "scene": "Scene",
+      "camera": "Camera",
+      "frame": 1,
+      "notice": "Plan XY provisional; pipe heights, stack XY and fixture envelopes assumed."
+    }
+  ]
+}
