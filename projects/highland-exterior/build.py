@@ -1,11 +1,11 @@
 """Build an editable, source-tagged exterior study from the separate exterior spec."""
 from pathlib import Path
-import json,math,sys
+import json,math,sys,os
 import bpy
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
-H=Path(__file__).parent;OUT=H.parent.parent/'build/highland-exterior';OUT.mkdir(parents=True,exist_ok=True)
-S=json.loads((H/'exterior.spec.json').read_text());I=.0254
+H=Path(__file__).parent;OUT=Path(os.environ.get('HIGHLAND_OUT_DIR',str(H.parent.parent/'build/highland-exterior')));OUT.mkdir(parents=True,exist_ok=True)
+S=json.loads(Path(os.environ.get('HIGHLAND_SPEC_PATH',str(H/'exterior.spec.json'))).read_text());I=.0254
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='IMPERIAL';scene.unit_settings.length_unit='INCHES'
 scene.render.engine='CYCLES';scene.cycles.samples=24;scene.cycles.use_denoising=True;scene.render.threads_mode='FIXED';scene.render.threads=4
@@ -49,7 +49,9 @@ def facade_part(a,tangent,normal,u,z,width,height,depth,offset=0):
 
 def rail(name,a,b,z,source,collection='Balconies'):
  v,n,L=segment_data(a,b);parts=[]
- for zz,d in [(z+S['guard_height'],1.7),(z+4,1.2),(z+S['guard_height']*.5,1.0)]:parts.append(facade_part(a,v,n,L/2,zz,L,d,1.5))
+ rows=S.get('guard_infill_rows')
+ rails=[(z+S['guard_height'],1.7)]+[(z+4+k*(S['guard_height']-8)/(rows-1),.55) for k in range(rows)] if rows else [(z+S['guard_height'],1.7),(z+4,1.2),(z+S['guard_height']*.5,1.0)]
+ for zz,d in rails:parts.append(facade_part(a,v,n,L/2,zz,L,d,1.5))
  count=max(1,math.ceil(L/36))
  for k in range(count+1):parts.append(facade_part(a,v,n,L*k/count,z+S['guard_height']/2,.8,S['guard_height'],.8))
  boxes(name,parts,'rail',collection,source)
@@ -82,7 +84,7 @@ for li,level in enumerate(S['levels']):
     parts.setdefault(material,[]).append(facade_part(a,v,n,u,zz,x1-x0,z1-z0,S['wall_thickness']))
   for material,boxes_ in parts.items():boxes(f'wall-{name}-{j}-{material}',boxes_,material,'Envelope','A2.03/.04/.07 outline and A3.01/.02 facade pattern')
   # Floor edge/cap dimensions remain representative.
-  boxes(f'edge-{name}-{j}',[facade_part(a,v,n,L/2,z+1,L,3.5,10,.5)],'concrete','Envelope','A3.01/A3.02 floor and facade bands')
+  if S.get('continuous_floor_bands',True):boxes(f'edge-{name}-{j}',[facade_part(a,v,n,L/2,z+1,L,3.5,10,.5)],'concrete','Envelope','A3.01/A3.02 floor and facade bands')
   for lo,hi,zb,zt,e,center in holes:
    recess=e['kind']=='balcony' and name not in ['P1','R1'];baywidth=hi-lo
    if recess:center=(lo+hi)/2
@@ -97,7 +99,8 @@ for li,level in enumerate(S['levels']):
     for uu in [center-w/4,center,center+w/4]:frame.append(facade_part(a,v,n,uu,cz,1.5,h,3,off))
    else:
     divisions=3 if w>100 else 2 if w>38 else 1
-    for q in range(1,divisions):frame.append(facade_part(a,v,n,center-w/2+w*q/divisions,cz,1.6,h,3,off))
+    splits=[.18,.82] if S.get('wide_window_center_pane') and e['kind']=='wide' and divisions==3 else [q/divisions for q in range(1,divisions)]
+    for ratio in splits:frame.append(facade_part(a,v,n,center-w/2+w*ratio,cz,1.6,h,3,off))
     if h>70:frame.append(facade_part(a,v,n,center,zb+20,w,1.5,3,off))
    boxes(e['id']+'-frames',frame,'frame','Glazing',e['source'])
    boxes(e['id']+'-sill',[facade_part(a,v,n,center,zb-2,w+5,3,12,off-2)],'concrete','Glazing',e['source'])
@@ -227,11 +230,11 @@ def setcam(pos,target,ortho=None):
 views=[('southeast',(195,-130,12),(58,70,34),None),('east-entry',(245,55,27),(75,92,32),None),('south-review',(58,-250,34),(58,75,34),148),('east-review',(360,75,34),(58,75,34),185),('west-review',(-220,75,34),(58,75,34),185),('north-review',(58,350,34),(58,75,34),148),('plan-review',(58,75,300),(58,75,0),275)]
 if '--quick' in sys.argv:views=views[:1];scene.cycles.samples=12;scene.render.resolution_x=1280;scene.render.resolution_y=880
 if '--beauty-only' in sys.argv:views=views[:2]
-for name,pos,target,scale in views:
+for name,pos,target,scale in ([] if '--build-only' in sys.argv else views):
  if '--quick' not in sys.argv:scene.cycles.samples=32 if scale is None else 16
  setcam(pos,target,scale);scene.render.filepath=str(OUT/(name+'.png'));bpy.ops.render.render(write_still=True)
 # Provenance review uses the same geometry and four orthographic/iso directions.
-if '--quick' not in sys.argv and '--beauty-only' not in sys.argv:
+if '--build-only' not in sys.argv and '--quick' not in sys.argv and '--beauty-only' not in sys.argv:
  original={o.name:list(o.data.materials) for o in objects}
  for o in objects:o.data.materials.clear();o.data.materials.append(mats[o['status']])
  scene.cycles.samples=12;scene.render.resolution_x=1000;scene.render.resolution_y=740

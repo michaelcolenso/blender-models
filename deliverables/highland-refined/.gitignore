@@ -1,0 +1,5 @@
+# Complete archives are uploaded as GitHub release assets.
+*.zip
+# Intermediate PDF layout checks; final PDFs are tracked.
+pdf-review/
+handoff-review/

@@ -1,0 +1,33 @@
+{
+  "daylight_and_source_views": true,
+  "all_pdf_pages": true,
+  "film_review_frames": true,
+  "encoded_movie_frames": true,
+  "reviewed_source_views": [
+    "south",
+    "east",
+    "plan",
+    "provenance"
+  ],
+  "reviewed_camera_frames": [
+    1,
+    73,
+    145,
+    217,
+    289,
+    361,
+    432
+  ],
+  "review_notes": [
+    "Inspected the native daylight render, supplied photograph comparison, source drawing/elevation/plan views and conservative orange provenance view.",
+    "Reviewed all four PDF pages for readable labels and page layout; source comparisons are qualitative, not calibrated overlays.",
+    "Reviewed seven rendered camera positions. Corrected the finite background-ground edge exposed by the raised view, then checked the corrected end view.",
+    "The movie has simplified real-time materials, foliage and context. Fine rail infill can alias at full HD; this is an illustrative visualization, not a photographic camera match.",
+    "Reviewed opening, middle and closing frames decoded from the final limited-range BT.709 MP4. Composition, captions and the corrected ground extension remain intact; thin rail infill has visible aliasing at full HD."
+  ],
+  "encoded_frames_reviewed": [
+    1,
+    217,
+    432
+  ]
+}

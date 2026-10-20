@@ -1,0 +1,1441 @@
+{
+  "base_openings": 165,
+  "revised_openings": 175,
+  "restored_candidates": 10,
+  "remaining_unresolved": 16,
+  "geometry_changes": [
+    {
+      "id": "south-R1-05",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R1-05",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "kind": "wide",
+        "source_width_in": 120,
+        "z": 141,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 20,
+        "u": 595.9,
+        "width": 120,
+        "plan_depth_in": 143.133,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R1-06",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R1-06",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 20,
+        "u": 666.564,
+        "width": 39.432,
+        "z": 134,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 143.133,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R1-06",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 18,
+        "u": 755.55,
+        "width": 80.456,
+        "z": 134,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 184.489,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R1-07",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R1-07",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "source_pixels": [
+          1250,
+          1286
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 141,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 16,
+        "u": 898.258,
+        "width": 88,
+        "plan_depth_in": 69.398,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R1-08",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R1-08",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 973.5,
+        "width": 95.0,
+        "z": 141,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 69.398,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R1-08",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 1038.258,
+        "width": 95.0,
+        "z": 141,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 69.398,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R1-09",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R1-09",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 14,
+        "u": 1136.0,
+        "width": 24.608,
+        "z": 134,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 184.489,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R1-09",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 14,
+        "u": 1190.241,
+        "width": 90.0,
+        "z": 134,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 184.489,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R1-10",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R1-10",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 12,
+        "u": 1292.25,
+        "width": 46.928,
+        "z": 141,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 143.133,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R1-10",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 12,
+        "u": 1336.447,
+        "width": 107.5,
+        "z": 141,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 143.133,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R1-11",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R1-11",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "source_pixels": [
+          1503,
+          1515
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 141,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 10,
+        "u": 1429.081,
+        "width": 24,
+        "plan_depth_in": 301.191,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-05",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R2-05",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 510.941,
+        "width": 23.987,
+        "z": 264,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "source_width_in": 123.515,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-05",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 588.762,
+        "width": 123.515,
+        "z": 264,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "source_width_in": 123.515,
+        "plan_depth_in": 150.38,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-06",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R2-06",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 666.564,
+        "width": 24.024,
+        "z": 257,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-06",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 18,
+        "u": 747.427,
+        "width": 80.456,
+        "z": 257,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 193.364,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-07",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R2-07",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "source_pixels": [
+          1250,
+          1286
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 264,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 16,
+        "u": 889.523,
+        "width": 88,
+        "plan_depth_in": 72.911,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-08",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R2-08",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 16,
+        "u": 973.5,
+        "width": 95.0,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 72.911,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-08",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 16,
+        "u": 1029.523,
+        "width": 95.0,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 72.911,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-09",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R2-09",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 14,
+        "u": 1136.0,
+        "width": 42.464,
+        "z": 257,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 193.364,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-09",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 14,
+        "u": 1181.312,
+        "width": 90.0,
+        "z": 257,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 193.364,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-10",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R2-10",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 12,
+        "u": 1292.25,
+        "width": 64.786,
+        "z": 264,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-10",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 12,
+        "u": 1327.518,
+        "width": 107.5,
+        "z": 264,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 150.38,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R2-11",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R2-11",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "source_pixels": [
+          1503,
+          1515
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 264,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 10,
+        "u": 1420.152,
+        "width": 24,
+        "plan_depth_in": 309.182,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-05",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R3-05",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 510.941,
+        "width": 23.987,
+        "z": 387,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "source_width_in": 123.515,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-05",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 588.762,
+        "width": 123.515,
+        "z": 387,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "source_width_in": 123.515,
+        "plan_depth_in": 150.38,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-06",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R3-06",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 666.564,
+        "width": 24.024,
+        "z": 380,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-06",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 18,
+        "u": 747.427,
+        "width": 80.456,
+        "z": 380,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 193.364,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-07",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R3-07",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "source_pixels": [
+          1250,
+          1286
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 387,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 16,
+        "u": 889.523,
+        "width": 88,
+        "plan_depth_in": 72.911,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-08",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R3-08",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 16,
+        "u": 973.5,
+        "width": 95.0,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 72.911,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-08",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 16,
+        "u": 1029.523,
+        "width": 95.0,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 72.911,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-09",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R3-09",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 14,
+        "u": 1136.0,
+        "width": 42.464,
+        "z": 380,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 193.364,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-09",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 14,
+        "u": 1181.312,
+        "width": 90.0,
+        "z": 380,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 193.364,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-10",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R3-10",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 12,
+        "u": 1292.25,
+        "width": 64.786,
+        "z": 387,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-10",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 12,
+        "u": 1327.518,
+        "width": 107.5,
+        "z": 387,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 150.38,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R3-11",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R3-11",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "source_pixels": [
+          1503,
+          1515
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 387,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 10,
+        "u": 1420.152,
+        "width": 24,
+        "plan_depth_in": 309.182,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-05",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R4-05",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 510.941,
+        "width": 23.987,
+        "z": 510,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "source_width_in": 123.515,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-05",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 588.762,
+        "width": 123.515,
+        "z": 510,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1104,
+          1164
+        ],
+        "source_width_in": 123.515,
+        "plan_depth_in": 150.38,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-06",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R4-06",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 20,
+        "u": 666.564,
+        "width": 24.024,
+        "z": 503,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-06",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 18,
+        "u": 747.427,
+        "width": 80.456,
+        "z": 503,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1224
+        ],
+        "source_width_in": 80.456,
+        "plan_depth_in": 193.364,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-07",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R4-07",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "source_pixels": [
+          1250,
+          1286
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 510,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 16,
+        "u": 889.523,
+        "width": 88,
+        "plan_depth_in": 72.911,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-08",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R4-08",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 16,
+        "u": 973.5,
+        "width": 95.0,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 72.911,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-08",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 16,
+        "u": 1029.523,
+        "width": 95.0,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1357
+        ],
+        "source_width_in": 95.0,
+        "plan_depth_in": 72.911,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-09",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R4-09",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 14,
+        "u": 1136.0,
+        "width": 42.464,
+        "z": 503,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 193.364,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-09",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 14,
+        "u": 1181.312,
+        "width": 90.0,
+        "z": 503,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1421
+        ],
+        "source_width_in": 90.0,
+        "plan_depth_in": 193.364,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-10",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-R4-10",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 12,
+        "u": 1292.25,
+        "width": 64.786,
+        "z": 510,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 150.38,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-10",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 12,
+        "u": 1327.518,
+        "width": 107.5,
+        "z": 510,
+        "height": 90,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1487
+        ],
+        "source_width_in": 107.5,
+        "plan_depth_in": 150.38,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-R4-11",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-R4-11",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "source_pixels": [
+          1503,
+          1515
+        ],
+        "kind": "window",
+        "source_width_in": 92,
+        "z": 510,
+        "height": 90,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 10,
+        "u": 1420.152,
+        "width": 24,
+        "plan_depth_in": 309.182,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-P1-04",
+      "action": "restored source candidate",
+      "old": null,
+      "new": {
+        "id": "south-P1-04",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "source_pixels": [
+          1103,
+          1163
+        ],
+        "kind": "wide",
+        "source_width_in": 92,
+        "z": 20,
+        "height": 72,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 20,
+        "u": 595.9,
+        "width": 112,
+        "plan_depth_in": 143.133,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-P1-05",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-P1-05",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 20,
+        "u": 659.859,
+        "width": 52.842,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1218
+        ],
+        "source_width_in": 67.047,
+        "plan_depth_in": 143.133,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-05",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 18,
+        "u": 755.55,
+        "width": 60,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1218
+        ],
+        "source_width_in": 67.047,
+        "plan_depth_in": 184.489,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-P1-06",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-P1-06",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 18,
+        "u": 804.01,
+        "width": 17.62,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1249,
+          1286
+        ],
+        "source_width_in": 82.691,
+        "plan_depth_in": 184.489,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-06",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 898.258,
+        "width": 88,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1249,
+          1286
+        ],
+        "source_width_in": 82.691,
+        "plan_depth_in": 69.398,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-P1-07",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-P1-07",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 966.0,
+        "width": 75.0,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1320,
+          1350
+        ],
+        "source_width_in": 75.0,
+        "plan_depth_in": 69.398,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-07",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 1038.258,
+        "width": 58,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1320,
+          1350
+        ],
+        "source_width_in": 75.0,
+        "plan_depth_in": 69.398,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-P1-08",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-P1-08",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 14,
+        "u": 1134.75,
+        "width": 22.108,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1420
+        ],
+        "source_width_in": 87.5,
+        "plan_depth_in": 184.489,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-08",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 14,
+        "u": 1190.241,
+        "width": 64,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1420
+        ],
+        "source_width_in": 87.5,
+        "plan_depth_in": 184.489,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    },
+    {
+      "id": "south-P1-09",
+      "action": "reassigned/widened within plan bay",
+      "old": {
+        "id": "south-P1-09",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 12,
+        "u": 1291.0,
+        "width": 44.428,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1486
+        ],
+        "source_width_in": 105.0,
+        "plan_depth_in": 143.133,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-09",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 12,
+        "u": 1336.447,
+        "width": 106,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1486
+        ],
+        "source_width_in": 105.0,
+        "plan_depth_in": 143.133,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      }
+    }
+  ],
+  "appearance_changes": [
+    "Remove continuous pale floor bands through brick fields, per photo-02. Window sills and main roof cornices remain.",
+    "Interpret denser horizontal balcony infill from A3.01; sections/spacing assumed.",
+    "Wide windows use a broad central pane with narrow side lights, per A3.01."
+  ],
+  "protected_controls": [
+    "Registered plan polygons",
+    "Dimensioned grid spans",
+    "Floor elevations",
+    "Roof/parapet top datums"
+  ]
+}

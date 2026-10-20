@@ -1,0 +1,29 @@
+{
+  "architectural_pdf_sha256_recorded_by_original_study": "6ef98b6a02b79c1ceb590fcaa626ac70bb4ff06de33ca43026ae0fa04206fb70",
+  "sources": [
+    {
+      "path": "deliverables/highland-exterior/Highland-exterior.blend",
+      "sha256": "b813b74e8a16772e4e31963b734174c3e610d6b620172e70c796dca5ecc7fa20"
+    },
+    {
+      "path": "projects/highland-exterior/exterior.spec.json",
+      "sha256": "8b651ec228ba6e17d6b4e8de7b37918de3507e714367cec929d891bd707316a7"
+    },
+    {
+      "path": "projects/highland-exterior/source-review/user-photo-01.jpg",
+      "sha256": "131ba8316f6d65c630a56b47fcbf5801f8222568dc99623b7051036de62f1122"
+    },
+    {
+      "path": "projects/highland-exterior/source-review/user-photo-02.jpg",
+      "sha256": "9c9d5a11bfc62207d09f5dd97d3496bcf87eb2312b1f2b51b1bc7b0c26cd8dcb"
+    },
+    {
+      "path": "projects/highland-cinematic/assets/kloofendal_48d_partly_cloudy_puresky_4k.hdr",
+      "sha256": "3061c00a16ecae748e84fd6c44c04804f539c118bb66325db858bad87b11bf88"
+    },
+    {
+      "path": "projects/highland-drone/flight.spec.json",
+      "sha256": "0d2942cdd1c0be98f4ff376708d41259eef46d0dd305772872aebe33eb19e04f"
+    }
+  ]
+}

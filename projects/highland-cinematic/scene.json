@@ -1,0 +1,21 @@
+{
+  "project": "200 West Highland / dusk exterior",
+  "base_scene": "deliverables/highland-exterior/Highland-exterior.blend",
+  "base_spec": "projects/highland-exterior/exterior.spec.json",
+  "source_photos": ["projects/highland-exterior/source-review/user-photo-01.jpg", "projects/highland-exterior/source-review/user-photo-02.jpg"],
+  "architectural_geometry": "Preserve existing mesh vertices, transforms, opening inventory, and source properties. All base-model limitations continue to apply.",
+  "presentation_status": "assumed",
+  "presentation_basis": "Owner-authorized exterior visualization. Light, weather, apartment dressing, plants and street furniture interpret the supplied photographs; their positions and dimensions are illustrative.",
+  "seed": 200,
+  "camera": {"location_m": [64, -43, 4.6], "target_m": [22, 22.5, 4.6], "lens_mm": 50, "shift_y": 0.10},
+  "output": {"width": 3840, "height": 2560, "samples": 96, "adaptive_threshold": 0.035},
+  "room_depth_m": [1.6, 2.5],
+  "lit_window_probability": 0.52,
+  "street_trees_m": [[41.4,8.4,5.5],[41.4,23.4,5.4],[41.4,38.4,5.6],[7.6,-2.4,4.9],[27.4,-2.4,5.2]],
+  "background_trees_m": [[-8,20,8],[-9,36,9],[4,53,8],[21,56,10],[42,56,9],[67,40,10],[-19,-6,9]],
+  "hedge_height_m": 0.85,
+  "context_source": "projects/highland-drone/flight.spec.json / osm_context; approximate OSM footprints, assumed heights and appearance",
+  "context_max_distance_m": 110,
+  "parked_cars": [{"center_m": [44.7, 8.0], "angle_rad": 0.0}, {"center_m": [44.7, 29.0], "angle_rad": 0.0}, {"center_m": [12.0, -7.0], "angle_rad": 1.5707963267948966}],
+  "notice": "Drawing-based visualization | Facade details, interiors and site context are approximate."
+}

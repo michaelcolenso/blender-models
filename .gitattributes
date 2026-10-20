@@ -1,0 +1,11 @@
+# Render assets are binary, including PDFs/HDRs that may contain mostly ASCII.
+*.blend binary
+*.glb binary
+*.hdr binary
+*.mp4 binary
+*.png binary
+*.jpg binary
+*.pdf binary
+
+# Preserve the delivered spreadsheet-compatible CSV bytes and checksums.
+deliverables/highland-refined/*.csv -text whitespace=cr-at-eol

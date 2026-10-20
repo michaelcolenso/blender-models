@@ -1,0 +1,28 @@
+{
+  "blender": "5.0.1",
+  "base_architecture_sha256": "7e1118e36fffc404ebbda43035dd9c523a9c36e2587415b09d1b39ad060f912d",
+  "architecture_unchanged": true,
+  "protected_mesh_objects": 1103,
+  "source_openings": 165,
+  "unresolved_source_candidates": 26,
+  "lit_windows": 86,
+  "presentation_objects": 3040,
+  "dimensions": [
+    3840,
+    2560
+  ],
+  "samples": 96,
+  "notice": "Drawing-based visualization | Facade details, interiors and site context are approximate.",
+  "base_limitations": [
+    "Exterior drawing study, not verified installed conditions.",
+    "The dimensioned plan grids control footprint scale. Elevation grid spans do not agree uniformly with the plan; facade widths use explicit piecewise registration.",
+    "No single dimensional accuracy tolerance is established for this exterior model. Source picks, simplified wall returns and standardized window heights remain provisional/assumed.",
+    "Facade openings are surface-envelope studies; jamb details, exact opening schedule and recessed balconies are simplified.",
+    "R1/P1 lower enclosure is simplified because the architectural P1 plan was not supplied.",
+    "Roof slopes, drains, equipment, landscaping, sidewalk and street geometry are simplified; surrounding buildings are omitted.",
+    "Finish families follow the user photos; exact colors, reflectance, recess depth and landscape positions remain interpreted.",
+    "Not suitable for quantities, facade access design or construction dimensions."
+  ],
+  "built_seconds": 1.86,
+  "total_seconds": 1379.95
+}

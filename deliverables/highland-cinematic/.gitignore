@@ -1,0 +1,4 @@
+# Complete archives are uploaded as GitHub release assets when needed.
+*.zip
+Highland-dusk-preview.png
+preview-render.json

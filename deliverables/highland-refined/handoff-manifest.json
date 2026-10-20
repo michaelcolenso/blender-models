@@ -1,0 +1,34 @@
+{
+  "purpose": "Continuation handoff; original render/model files are unchanged.",
+  "base_archive": {
+    "name": "Highland-revised-editable-package.zip",
+    "bytes": 128433707,
+    "sha256": "7b3b25ce5eab905bf2fc5ed529b40ba865004e60bb107fc103f87d5cea630fce"
+  },
+  "new_files": {
+    "START-HERE.md": {
+      "bytes": 12529,
+      "sha256": "5ee4dba80d8715230ab2b7fee6eecd91e929369d17ef33803ae0b3f4718500dc"
+    },
+    "Highland-handoff.pdf": {
+      "bytes": 13836,
+      "sha256": "a14db6c33738229cab3c6c5bfc29e27176787d15342bc6a8c6cc924813008f17"
+    },
+    "unresolved-openings.csv": {
+      "bytes": 1777,
+      "sha256": "3bbbd0549253876f3fb582a43f991872c0b912a1b6f498e47cc936bdf7812d1d"
+    },
+    "archive-validation.json": {
+      "bytes": 198,
+      "sha256": "e8b8eb662f17105941b89f45edd8a2e6b192d0ebebf6d0937d9080e43fca977f"
+    },
+    "reproduction/projects/highland-refined/HANDOFF.md": {
+      "bytes": 12529,
+      "sha256": "5ee4dba80d8715230ab2b7fee6eecd91e929369d17ef33803ae0b3f4718500dc"
+    },
+    "reproduction/projects/highland-refined/create-handoff.py": {
+      "bytes": 6420,
+      "sha256": "5e96cd7991aab79341c30358077c6b58dd6e1da034e31d0a431993735c6caccc"
+    }
+  }
+}

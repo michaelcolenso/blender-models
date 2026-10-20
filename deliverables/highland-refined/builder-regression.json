@@ -1,0 +1,7 @@
+{
+  "original_default_builder_geometry_preserved": true,
+  "architectural_meshes_compared": 1103,
+  "maximum_vertex_delta_m": 0,
+  "comparison_tolerance_m": 1e-06,
+  "scope": "Shared-builder default regression only; this does not certify source-model accuracy."
+}

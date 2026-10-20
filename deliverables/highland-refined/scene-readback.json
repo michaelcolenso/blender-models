@@ -1,0 +1,19 @@
+{
+  "scene_readback": true,
+  "blender": "5.0.1",
+  "scenes": [
+    "Daylight reference comparison",
+    "Dusk exterior film"
+  ],
+  "protected_architectural_meshes": 955,
+  "revised_architecture_sha256": "dd1b73461d3d2ba6a0b7e9e7d0ec2e446bae0e940a435455bd70539dc15ee97e",
+  "revised_architecture_preserved": true,
+  "untagged_architectural_meshes": [],
+  "untagged_geometry": [],
+  "external_images_required": [],
+  "packed_file_images": 1,
+  "native_camera_keyframes": true,
+  "portable_render_paths": true,
+  "scope": "Readback and consistency checks; source accuracy remains limited as documented.",
+  "element_provenance_inventory": "element-provenance.csv"
+}

@@ -1,0 +1,25 @@
+{
+  "scene_readback": true,
+  "render_engine": "CYCLES",
+  "render_dimensions": [
+    3840,
+    2560
+  ],
+  "packed_images": [
+    {
+      "name": "kloofendal_48d_partly_cloudy_puresky_4k.hdr",
+      "size": [
+        4096,
+        2048
+      ]
+    }
+  ],
+  "external_images_required": false,
+  "site_surface_material_slots": [
+    0,
+    1,
+    2
+  ],
+  "glb_mesh_objects_exported": 4056,
+  "area_lighting_and_procedural_materials_simplified_in_glb": true
+}

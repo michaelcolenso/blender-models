@@ -1,0 +1,28 @@
+{
+  "stats": {
+    "sourceMeshes": 6363,
+    "drawCalls": 95,
+    "triangles": 1006926,
+    "leafTriangles": 306636,
+    "frames": 432,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "renderer": "WebKit WebGL"
+  },
+  "errors": [],
+  "frames": 432,
+  "fps": 24,
+  "duration_seconds": 18,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "bytes": 32569877,
+  "capture_seconds": 1747.536,
+  "method": "Continuous native Blender camera, rendered with Three.js PBR building materials, diffuse context/foliage, and static street-light pool decals. Foliage uses a documented animation LOD; architecture is not decimated. The Cycles daylight still is the detailed material reference.",
+  "color_encoding": "BT.709, limited-range YUV 4:2:0",
+  "encoding_note": "The initial JPEG-pipe encode retained full-range BT.601 metadata. This delivered file was converted once to limited-range BT.709 at CRF 16. The capture recipe now performs that conversion before its first encode.",
+  "initial_encode_sha256": "6feda8045f80bebb3be15349793bd177483ea98c7c63140937270a87d3c261eb"
+}

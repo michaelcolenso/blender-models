@@ -1,0 +1,22 @@
+{
+  "project": "200 W Highland / visible-facade and presentation revision",
+  "source": "A2.03/A2.04/A3.01 drawing crops and owner photo-02",
+  "status": "assumed",
+  "basis": "Photographic appearance and registered drawing topology guide the revision. Exact terrace, furnishing, landscape, vehicle and neighboring facade dimensions are not documented.",
+  "south_garden": {"x_range_m": [12.6, 36.8], "front_y_m": -0.1, "back_y_m": 1.3, "wall_height_m": 0.65, "wall_thickness_m": 0.22, "patio_height_m": 0.60},
+  "hedge_height_scale": 1.3,
+  "assumed_context_ground_m": {"x_bounds": [-350, 350], "y_bounds": [-350, 350], "grade_basis": "Continue the inherited clamped, illustrative site grade under the nearby context; not a topographic survey."},
+  "balcony_furniture": {"table_radius_m": 0.27, "seat_height_m": 0.43, "assumed_clearance_m": 0.10},
+  "daylight_camera": {"position_m": [68, -55, 3.8], "target_m": [20, 22.5, 10.5], "lens_mm": 46},
+  "film": {
+    "duration_seconds": 18,
+    "fps": 24,
+    "resolution": [1920, 1080],
+    "keys": [
+      {"frame": 1, "position_m": [76, -66, 6], "target_m": [20, 22, 10], "lens_mm": 45},
+      {"frame": 145, "position_m": [67, -58, 8], "target_m": [20, 22, 10.8], "lens_mm": 46},
+      {"frame": 289, "position_m": [43, -73, 19], "target_m": [20, 22, 11.8], "lens_mm": 46},
+      {"frame": 432, "position_m": [55, -82, 30], "target_m": [20, 22, 12.5], "lens_mm": 45}
+    ]
+  }
+}

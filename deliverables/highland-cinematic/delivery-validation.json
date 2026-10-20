@@ -1,0 +1,77 @@
+{
+  "image_validation": {
+    "size": [
+      3840,
+      2560
+    ],
+    "mean_rgb": [
+      55.64340688069662,
+      60.9423871866862,
+      70.37869222005209
+    ],
+    "stddev_rgb": [
+      38.48556625112873,
+      39.38189089211994,
+      46.44705707490971
+    ]
+  },
+  "architecture_unchanged": true,
+  "geometry_scope": "Existing exterior drawing study; dimensional limitations persist.",
+  "visual_review_required": false,
+  "files": {
+    "Highland-dusk-4K.png": {
+      "bytes": 11135136,
+      "sha256": "a705a8154bed8b1180fd80c7ac48f685e7b390d6b675760a5ad89a314ce090ed"
+    },
+    "Highland-dusk.blend": {
+      "bytes": 20023046,
+      "sha256": "368805fe4d59b564877f2e6efeaf31d1c912eca4224b0b45e1738b5abd9426a1"
+    },
+    "scene-validation.json": {
+      "bytes": 1518,
+      "sha256": "5f42b0f09c7609f28c370e4a8b45156640db19a935d6c50b820d82cb35e3b282"
+    },
+    "final-render.json": {
+      "bytes": 1546,
+      "sha256": "1f6515f0f2f425ed140faabc3ea6aa062faa4317c8b97651cbf6a76ecd498767"
+    },
+    "Highland-dusk.glb": {
+      "bytes": 11011900,
+      "sha256": "54c33753e8ea90e16c37910aa41da983def177cb4dc41aaf38cb419982715a4f"
+    }
+  },
+  "visual_review_completed": true,
+  "visual_review_notes": [
+    "Inspected the full 3840 x 2560 rendered image at original resolution.",
+    "Full building and roof caps remain inside the frame; architectural verticals are upright and the study notice is readable.",
+    "Brick courses, curtain folds, glazing reflections, hedge/leaf detail and pavement reflections resolve in the final image.",
+    "Dark balcony recesses, shallow illustrative interiors, simplified vehicles and neighboring facades remain presentation limitations. Existing facade geometry and unresolved source conflicts are unchanged."
+  ],
+  "scene_readback": {
+    "scene_readback": true,
+    "render_engine": "CYCLES",
+    "render_dimensions": [
+      3840,
+      2560
+    ],
+    "packed_images": [
+      {
+        "name": "kloofendal_48d_partly_cloudy_puresky_4k.hdr",
+        "size": [
+          4096,
+          2048
+        ]
+      }
+    ],
+    "external_images_required": false,
+    "site_surface_material_slots": [
+      0,
+      1,
+      2
+    ],
+    "glb_mesh_objects_exported": 4056,
+    "area_lighting_and_procedural_materials_simplified_in_glb": true
+  },
+  "glb_nodes": 4056,
+  "glb_meshes": 3954
+}

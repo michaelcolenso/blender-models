@@ -1,0 +1,17 @@
+handoff_id,source_ledger_index_zero_based,face,level,ledger_pixel_start,ledger_pixel_end,reason
+OPEN-01,0,south,P1,990,1018,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-02,1,south,R1,996,1026,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-03,2,south,R2,996,1026,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-04,3,north,R2,848,865,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-05,4,north,R2,1406,1423,Projected center outside the corresponding plan outline; not invented.
+OPEN-06,5,south,R3,996,1026,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-07,6,north,R3,848,865,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-08,7,north,R3,1406,1423,Projected center outside the corresponding plan outline; not invented.
+OPEN-09,8,south,R4,996,1026,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-10,9,north,R4,848,865,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-11,10,north,R4,1406,1423,Projected center outside the corresponding plan outline; not invented.
+OPEN-12,11,south,R5,996,1015,Projected center outside the corresponding plan outline; not invented.
+OPEN-13,12,south,R5,1042,1073,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-14,13,south,R5,1473,1491,Opening would overrun the plan facade return; omitted pending reconciliation.
+OPEN-15,14,north,R5,1354,1369,Projected center outside the corresponding plan outline; not invented.
+OPEN-16,15,north,R5,1406,1423,Projected center outside the corresponding plan outline; not invented.

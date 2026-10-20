@@ -1,0 +1,300 @@
+{
+  "source_controls_unchanged": [
+    "polygons",
+    "levels",
+    "grid_dimensions_in",
+    "roof_features"
+  ],
+  "revised_openings": 175,
+  "unresolved_candidates": 16,
+  "native_readback": {
+    "scene_readback": true,
+    "blender": "5.0.1",
+    "scenes": [
+      "Daylight reference comparison",
+      "Dusk exterior film"
+    ],
+    "protected_architectural_meshes": 955,
+    "revised_architecture_sha256": "dd1b73461d3d2ba6a0b7e9e7d0ec2e446bae0e940a435455bd70539dc15ee97e",
+    "revised_architecture_preserved": true,
+    "untagged_architectural_meshes": [],
+    "untagged_geometry": [],
+    "external_images_required": [],
+    "packed_file_images": 1,
+    "native_camera_keyframes": true,
+    "portable_render_paths": true,
+    "scope": "Readback and consistency checks; source accuracy remains limited as documented.",
+    "element_provenance_inventory": "element-provenance.csv"
+  },
+  "image_validation": {
+    "Highland-daylight-revised.png": {
+      "dimensions": [
+        1920,
+        1280
+      ],
+      "mean_rgb": [
+        115.38909993489584,
+        121.68421061197917,
+        119.09201131184896
+      ],
+      "stddev_rgb": [
+        53.9898406558739,
+        58.51423671900031,
+        65.34779987910025
+      ]
+    },
+    "film-review/frame-000.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        52.7194034529321,
+        65.55623649691358,
+        85.09948688271605
+      ],
+      "stddev_rgb": [
+        42.89901786349682,
+        42.54382572733843,
+        69.80966746250772
+      ]
+    },
+    "film-review/frame-072.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        54.757245852623456,
+        66.58530478395062,
+        85.9416623263889
+      ],
+      "stddev_rgb": [
+        43.66575797439815,
+        42.578431864662555,
+        68.55419163941687
+      ]
+    },
+    "film-review/frame-144.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        60.563066647376544,
+        70.51254050925925,
+        91.56170380015432
+      ],
+      "stddev_rgb": [
+        44.595831248741156,
+        42.48101543517807,
+        65.26124552420819
+      ]
+    },
+    "film-review/frame-216.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        65.44937210648148,
+        75.34756462191358,
+        97.45056278935185
+      ],
+      "stddev_rgb": [
+        44.996732011086195,
+        44.00139854844839,
+        66.71360524242519
+      ]
+    },
+    "film-review/frame-288.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        66.66255883487655,
+        77.17568479938272,
+        97.30473042052469
+      ],
+      "stddev_rgb": [
+        44.801357416073174,
+        46.42414293734464,
+        69.19955027383861
+      ]
+    },
+    "film-review/frame-360.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        61.76980999228395,
+        71.51118344907407,
+        86.8953443287037
+      ],
+      "stddev_rgb": [
+        44.23990911899169,
+        46.35818330837274,
+        68.42003161644777
+      ]
+    },
+    "film-review/frame-431.png": {
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "mean_rgb": [
+        57.7247231867284,
+        66.97375,
+        79.34177999614198
+      ],
+      "stddev_rgb": [
+        43.707647964811486,
+        45.52477651134796,
+        67.17383295674092
+      ]
+    }
+  },
+  "film": {
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "fps": 24,
+    "duration_seconds": 18,
+    "decoded_frames": 432,
+    "distinct_decoded_frames": 432,
+    "codec": "H.264 / yuv420p",
+    "render_method": "Continuous native Blender camera, rendered with Three.js PBR building materials, diffuse context/foliage, and static street-light pool decals. Foliage uses a documented animation LOD; architecture is not decimated. The Cycles daylight still is the detailed material reference."
+  },
+  "glb": {
+    "mesh_nodes": 5885,
+    "meshes": 5783,
+    "source_metadata_on_all_mesh_nodes": true
+  },
+  "visual_review_completed": true,
+  "source_accuracy_scope": "Qualitative source comparison; geometry and appearance assumptions remain. Not verified as-built.",
+  "files": {
+    "Highland-daylight-revised.png": {
+      "bytes": 2883663,
+      "sha256": "a099b5fdde15ad469d5abcfbb2fe066c5cb464dae67eacfe99b69fcfbed778e4"
+    },
+    "Highland-photo-and-drawing-comparison.pdf": {
+      "bytes": 6467051,
+      "sha256": "ffbdbc6b99ba27f99cfb5e0796b443dff83fd497419e6ee04ded51adc7fb2e68"
+    },
+    "Highland-dusk-approach-and-rise-18s.mp4": {
+      "bytes": 32569877,
+      "sha256": "f8d8ba8a1ef209fcfda9353aaf461cac79ec8f34336c601bfd922d05e1e2ce7a"
+    },
+    "Highland-revised-daylight-and-film.blend": {
+      "bytes": 20480799,
+      "sha256": "9274f77b6b484c02c29d1451ab9c3ae567e14c48587789f79b4ceac6bd95b6a4"
+    },
+    "Highland-revised-exterior.glb": {
+      "bytes": 15465288,
+      "sha256": "67af0d5dd5fa63413099d9397dd1ea8df6a035efee1b0c977c80a684c2fb2aed"
+    },
+    "README.md": {
+      "bytes": 5925,
+      "sha256": "34ab2c434340db1febfe02ca73da6a6c93d4077137c777bbf5f943889efcb819"
+    },
+    "element-provenance.csv": {
+      "bytes": 1717812,
+      "sha256": "b42c0dae171e9d9cd82237ba17564487f8fd3a204aa8fb8119874ac898f1ee2d"
+    },
+    "revision-ledger.json": {
+      "bytes": 47203,
+      "sha256": "f79c5c7842cdef19579eb2a944f71984cb628b50adbef68c4ec3e1054fb20220"
+    },
+    "exterior-revised.spec.json": {
+      "bytes": 135720,
+      "sha256": "3c1f090fb8f93c557bbad2211180cbb1efdad563c5eb5d8e0767f34be7578d65"
+    },
+    "revision-validation.json": {
+      "bytes": 3002,
+      "sha256": "68b17237bf7eae7b30cf06466cedd686240b2bec9add8214a3b5bb38a3438a46"
+    },
+    "builder-regression.json": {
+      "bytes": 264,
+      "sha256": "eb315c2ee3dead8245b44292d1f9438f083d8107b42d9e53282a864fcd0e20ac"
+    },
+    "scene-readback.json": {
+      "bytes": 665,
+      "sha256": "b16b5ae93d688a9cf2f8ce0a6426f6f569c92ebb662525e2111f7e86a271bf5b"
+    },
+    "presentation-validation.json": {
+      "bytes": 1694,
+      "sha256": "6aab538b23c1974dd31f1a5357e7cac2878157d4392ab2fb7180a1015ba43d5f"
+    },
+    "camera-path.json": {
+      "bytes": 130875,
+      "sha256": "13e86ffd9b9314f3141ff13a54c309c637ed3e53f858632fcbba30f4815b9d51"
+    },
+    "film-validation.json": {
+      "bytes": 1066,
+      "sha256": "95cb170b2bc3a4ecd5538519e48cf4e1ca57db95f82e6589e06abf6419a8e297"
+    },
+    "visual-review.json": {
+      "bytes": 1245,
+      "sha256": "d906e43d32604b570bf8152aea2704cbc8bcf2d84e0643ffcfe02b5390de49ce"
+    },
+    "source-review/east.png": {
+      "bytes": 569150,
+      "sha256": "5ab31275d6ff69b414eef9a541d21c5cbe475db7a5e36b81e02cc793da43b6ef"
+    },
+    "source-review/plan.png": {
+      "bytes": 482533,
+      "sha256": "7b9e056157112525699978918367811bcf3e8fea6b91bfa796908b5aa15d5f83"
+    },
+    "source-review/provenance.png": {
+      "bytes": 569275,
+      "sha256": "060fa62f9c1df92e640da0996b9a3f7b80778c73d06b5fee0cc33d3b99cfb3dd"
+    },
+    "source-review/south.png": {
+      "bytes": 590871,
+      "sha256": "cbfc5a1fed71f82ae9ba3a0a007e097b28c1635d3bcf4aceff9fc1c9bcc2e54a"
+    },
+    "film-review/frame-000.png": {
+      "bytes": 2464166,
+      "sha256": "4fab47be001fce6fc5a0d1358a831da912962ad6a8fc13eea8aa3ad2c1ac7ee2"
+    },
+    "film-review/frame-072.png": {
+      "bytes": 2495009,
+      "sha256": "1dc5523b52081a6de19d46a09310d1103d80d2549bc695b88b6a59dc8d9b2f27"
+    },
+    "film-review/frame-144.png": {
+      "bytes": 2568589,
+      "sha256": "8497ba94b0102b80129b6eb3d353e48bae7c05e019160181d1ac5e79da28c08b"
+    },
+    "film-review/frame-216.png": {
+      "bytes": 2569533,
+      "sha256": "e39c1436911c7564f61262d2b4cda90095eb00358b8b29e359a84e338ac94907"
+    },
+    "film-review/frame-288.png": {
+      "bytes": 2556767,
+      "sha256": "9d6296e77638c1c45a570de18cd545a5b4924966d08c0fae6ecdc8a8bf92fc1f"
+    },
+    "film-review/frame-360.png": {
+      "bytes": 2562240,
+      "sha256": "2974c80931c2291b00879ba190b50e5753572a720324e76e6e03ad52ec18b583"
+    },
+    "film-review/frame-431.png": {
+      "bytes": 2520421,
+      "sha256": "40a98723794b2f073afb5b6a99a5abdf1e6cf96c4c6b5b3ecbcd10e56d481bb6"
+    },
+    "encoded-review/frame-01.png": {
+      "bytes": 1776243,
+      "sha256": "470d1c418a5d6a58cf176388523b7abc8fbe06c79a1eed2cf36e7d6ed68a0436"
+    },
+    "encoded-review/frame-02.png": {
+      "bytes": 2110902,
+      "sha256": "3cbc7176c90312ecbd52ff744214773f98ea63c7233a0b5487652b139ac8427a"
+    },
+    "encoded-review/frame-03.png": {
+      "bytes": 1987716,
+      "sha256": "04eb99a985d5eb1774d161c94e8650b2fbe22bd737622a184d709e8667a594f7"
+    }
+  }
+}
