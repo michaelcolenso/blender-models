@@ -1,0 +1,19 @@
+test_linked_library_and_relative_texture_are_required (test_render_workflow.BlenderAssetDependencyTests.test_linked_library_and_relative_texture_are_required) ... /workspace/blender-models/tests/test_render_workflow.py:93: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material.use_nodes = True
+ok
+test_packed_texture_does_not_require_its_original_file (test_render_workflow.BlenderAssetDependencyTests.test_packed_texture_does_not_require_its_original_file) ... ok
+test_referenced_texture_is_required (test_render_workflow.BlenderAssetDependencyTests.test_referenced_texture_is_required) ... ok
+test_relocated_model_ignores_missing_saved_brush_catalog (test_render_workflow.BlenderAssetDependencyTests.test_relocated_model_ignores_missing_saved_brush_catalog) ... 00:03.918  blend            | Read blend: "/tmp/tmp_2v0b10a/relocated.blend"
+ok
+test_unrelated_missing_image_does_not_block_this_scene (test_render_workflow.BlenderAssetDependencyTests.test_unrelated_missing_image_does_not_block_this_scene) ... ok
+test_blank_transparent_and_wrong_size_images_fail (test_render_workflow.RenderWorkflowTests.test_blank_transparent_and_wrong_size_images_fail) ... ok
+test_catalog_and_selection (test_render_workflow.RenderWorkflowTests.test_catalog_and_selection) ... ok
+test_duplicate_and_unsafe_ids (test_render_workflow.RenderWorkflowTests.test_duplicate_and_unsafe_ids) ... ok
+test_frame_and_notice_required (test_render_workflow.RenderWorkflowTests.test_frame_and_notice_required) ... ok
+test_missing_or_escaping_model (test_render_workflow.RenderWorkflowTests.test_missing_or_escaping_model) ... ok
+test_nonblank_image_passes (test_render_workflow.RenderWorkflowTests.test_nonblank_image_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.876s
+
+OK

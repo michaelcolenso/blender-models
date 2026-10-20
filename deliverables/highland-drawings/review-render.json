@@ -1,0 +1,10 @@
+{
+  "elapsed_seconds": 114.5,
+  "samples": 12,
+  "images": {
+    "geometry-review/north.png": "45ff16d2a90cef7eb92600d4b7afb312b4fa0cf5db919c40fbe8e7f429c73511",
+    "geometry-review/south.png": "fc4103908f51e400e1ada6fdb7780e166f93c072f859b9895278f1aa2b0369d9",
+    "geometry-review/plan.png": "fc74b3797daff4affa79dc758f210651d290cc6c1f68562f5b0ab1d75f4a068f",
+    "geometry-review/iso.png": "d5fb678d0df74a164ed4cfe449530e180f2d1476890fb6589799d6599544b21b"
+  }
+}

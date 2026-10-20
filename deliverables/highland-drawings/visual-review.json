@@ -1,0 +1,48 @@
+{
+  "status": "reviewed",
+  "native_sha256": "7816c369b74ccd8c7afbeea102d44ba6aa0225d5e1b49e2fbdd79821d7f858b5",
+  "reviewed_files": {
+    "source-review/A2.08-roof-top-callouts.png": "22cbe4e738e279a0e1b1edbf3df31954c202dc7a3be13dec95f931a3dd85ccc0",
+    "source-review/A3.01-south.png": "ba334da9538f3d20acb907969d09ee27f027ce48f93d980e84ed8d101e2efe89",
+    "source-review/A3.02-north.png": "51acf1354168780ce056695287b6773812f88a487645a197abac36683a348c5e",
+    "source-review/P1-unresolved.png": "7a93b68d91ce8bdebf25c628bdac3db4793fce08851c6a33106f86574bea115f",
+    "source-review/R1-grid-calibration.png": "c92a1f39e92f6a9d4d4e0d2fb55017974ac8ef97770deb037cc2d7d16b5225e0",
+    "source-review/R1-south-plan-picks.png": "dbe328c5b558dbf87b76fa4ae8d8a3d8c2a08cf9d4d76ba65c1c4d1480e1428e",
+    "source-review/R2-grid-calibration.png": "349a985fcbf5d640d50a5e908f95ba58ada743d72dd6476cf085d2c3901cb293",
+    "source-review/R2-north-plan-picks.png": "5cb0a7079df829453e9a55c6ca922af28020c6740eb98f97cf03e46b21e52ba3",
+    "source-review/R2-south-plan-picks.png": "f89e9fc0a841178c5b7b5461fdd4f204ec6c78056cb5208b6f1c52e59cba4508",
+    "source-review/R3-grid-calibration.png": "78d10ad401cccb7cb276eb37010fcb1ff4ef13edf7f9e4244e61a75ffe378585",
+    "source-review/R3-north-plan-picks.png": "a74040642cfa9880738426bcd3212161287edec43bd8dcbe186ff41e3e44c3e8",
+    "source-review/R3-south-plan-picks.png": "f5aee2042d401e30da307d5495f2fcd05318eb3134721cfae57f88344546e77d",
+    "source-review/R4-grid-calibration.png": "33ec67b674bfac31331ccde2d7dc3e55657d93463f0086198f3010bd292c4d9f",
+    "source-review/R4-north-plan-picks.png": "6639beb8e2cf59501719fdcde27839a37084a1a865e1eab06281906e54ccf83e",
+    "source-review/R4-south-plan-picks.png": "fb95e419e9497d35aff640c98516fa8e2247c5ddaf0a4c4cfc4f9e8e3c85db00",
+    "source-review/R5-SE-unresolved.png": "48e8f070ca06096d80f167ada477d1daeebcb7b99071fc737ace23371c5057ba",
+    "source-review/R5-grid-calibration.png": "fe70e2a47c0376bd3450cd7ab83e4f848b38e0c68c7809e4378e839adefeb0fc",
+    "source-review/R5-north-plan-picks.png": "5dabfaa395569591f6ea56f1a4116332137596025acafbcb045eeee4b0767664",
+    "source-review/R5-south-plan-picks.png": "d6a2b0ea8f1e1c81e2c5dedbb1ef625ff4265d67e3f7d625f01ed96d86779448",
+    "source-review/north-plan-model-overlay.png": "1e4011e53f3528a79a997f7736c889557fb5cf533836645eb8ea994d54e3582f",
+    "geometry-review/iso.png": "d5fb678d0df74a164ed4cfe449530e180f2d1476890fb6589799d6599544b21b",
+    "geometry-review/north.png": "45ff16d2a90cef7eb92600d4b7afb312b4fa0cf5db919c40fbe8e7f429c73511",
+    "geometry-review/plan.png": "fc74b3797daff4affa79dc758f210651d290cc6c1f68562f5b0ab1d75f4a068f",
+    "geometry-review/south.png": "fc4103908f51e400e1ada6fdb7780e166f93c072f859b9895278f1aa2b0369d9",
+    "Highland-daylight-drawing-reconciled.png": "b9d495cfe54ea598569f03f4bd90b5264ee1400d53a73d9207b7ae7d3cd013ca",
+    "Highland-drawing-reconciliation.pdf": "4a758b5b771ceb9adb4cc566373de65a37b49bcf4bb17330b06e30d71792119e"
+  },
+  "observations": [
+    "Four native provenance views show corrected opening patterns, retained roofs/footprints and orange assumed complete components.",
+    "All five plan calibration crops and annotated jamb-pick sheets inspected; source picks remain provisional.",
+    "North source projection overlay visibly disagrees, particularly at the stair/MU pair; no dimensional agreement pass is claimed.",
+    "OPEN-01 and OPEN-14 footprint sources remain explicitly unresolved.",
+    "Final 1995 x 1323 Cycles daylight image inspected: nonblank, no new floating/missing facade parts, caption and limits legible.",
+    "All five final report pages inspected: layout, audit table, blue residual overlay, unresolved source crops and caveats are legible."
+  ],
+  "pdf_pages_reviewed": 5,
+  "pdf_page_raster_sha256": {
+    "page-1": "21da35c43696eb24567a6a8984a395438bfdebb6ef1958d306221e70e6fd0194",
+    "page-2": "eabd4c2f6cd5dbc60212578ee19cd271631acca55ea675e3db23d93c9c422abf",
+    "page-3": "f41e7c1ed474a89d76e6d149e05dfdd59b1b8be8bfeb901004af7b2bb3899648",
+    "page-4": "dbb4326aea3bcb0c3a43e3b11b5d74365895fdf123f8f5e689b3507330f72d6e",
+    "page-5": "ab5e076ab66a9a8bea99a7a4722ed87eb9f8465dfb7301c4fc6c77aad83d5e1a"
+  }
+}

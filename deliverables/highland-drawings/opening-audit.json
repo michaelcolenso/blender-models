@@ -1,0 +1,282 @@
+{
+  "base_openings": 175,
+  "revised_openings": 189,
+  "reviewed_candidates": 16,
+  "accepted_candidates": 13,
+  "rejected_candidates": 1,
+  "remaining_unresolved": 2,
+  "north_row_note": "R2-R5 north rows reconstructed from six actual elevation openings each. Existing column IDs are reassigned; use the change ledger rather than assuming ID continuity means an unchanged window.",
+  "candidates": [
+    {
+      "id": "OPEN-01",
+      "level": "P1",
+      "face": "south",
+      "previous_pixels": [
+        990,
+        1018
+      ],
+      "decision": "unresolved / footprint reconciliation",
+      "reason": "A2.02 now locates the P1 residential door on a different stepped enclosure from the inherited R1-based P1 shell. Correct the complete P1 footprint and recheck all lower-story openings together; adding a door to the inherited return would put it on the wrong wall.",
+      "model_opening": null,
+      "source": "Uploaded A2.02/A2.07/A3.01/A3.02 PDFs",
+      "plan_jamb_pixels": null
+    },
+    {
+      "id": "OPEN-02",
+      "level": "R1",
+      "face": "south",
+      "previous_pixels": [
+        996,
+        1026
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R1-02",
+      "source": "A2.03 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        990,
+        1023
+      ]
+    },
+    {
+      "id": "OPEN-03",
+      "level": "R2",
+      "face": "south",
+      "previous_pixels": [
+        996,
+        1026
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R2-02",
+      "source": "A2.04 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        990,
+        1023
+      ]
+    },
+    {
+      "id": "OPEN-04",
+      "level": "R2",
+      "face": "north",
+      "previous_pixels": [
+        848,
+        865
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R2-01",
+      "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1471,
+        1487
+      ]
+    },
+    {
+      "id": "OPEN-05",
+      "level": "R2",
+      "face": "north",
+      "previous_pixels": [
+        1406,
+        1423
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R2-06",
+      "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        945,
+        959
+      ]
+    },
+    {
+      "id": "OPEN-06",
+      "level": "R3",
+      "face": "south",
+      "previous_pixels": [
+        996,
+        1026
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R3-02",
+      "source": "A2.05 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        990,
+        1023
+      ]
+    },
+    {
+      "id": "OPEN-07",
+      "level": "R3",
+      "face": "north",
+      "previous_pixels": [
+        848,
+        865
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R3-01",
+      "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1471,
+        1487
+      ]
+    },
+    {
+      "id": "OPEN-08",
+      "level": "R3",
+      "face": "north",
+      "previous_pixels": [
+        1406,
+        1423
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R3-06",
+      "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        945,
+        959
+      ]
+    },
+    {
+      "id": "OPEN-09",
+      "level": "R4",
+      "face": "south",
+      "previous_pixels": [
+        996,
+        1026
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R4-02",
+      "source": "A2.06 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        990,
+        1023
+      ]
+    },
+    {
+      "id": "OPEN-10",
+      "level": "R4",
+      "face": "north",
+      "previous_pixels": [
+        848,
+        865
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R4-01",
+      "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1471,
+        1487
+      ]
+    },
+    {
+      "id": "OPEN-11",
+      "level": "R4",
+      "face": "north",
+      "previous_pixels": [
+        1406,
+        1423
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R4-06",
+      "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        945,
+        959
+      ]
+    },
+    {
+      "id": "OPEN-12",
+      "level": "R5",
+      "face": "south",
+      "previous_pixels": [
+        996,
+        1015
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R5-01",
+      "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1004,
+        1026
+      ]
+    },
+    {
+      "id": "OPEN-13",
+      "level": "R5",
+      "face": "south",
+      "previous_pixels": [
+        1042,
+        1073
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R5-02",
+      "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1066,
+        1087
+      ]
+    },
+    {
+      "id": "OPEN-14",
+      "level": "R5",
+      "face": "south",
+      "previous_pixels": [
+        1473,
+        1491
+      ],
+      "decision": "unresolved / footprint reconciliation",
+      "reason": "A2.07 shows the southeast R5 return opening, but its western jamb falls outside the inherited R5 return. The local stepped footprint needs reconciliation with the east elevation before altering the return and its roof/coping above. Do not clip the window to make it fit.",
+      "model_opening": null,
+      "source": "Uploaded A2.02/A2.07/A3.01/A3.02 PDFs",
+      "plan_jamb_pixels": null
+    },
+    {
+      "id": "OPEN-15",
+      "level": "R5",
+      "face": "north",
+      "previous_pixels": [
+        1354,
+        1369
+      ],
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "north-R5-06",
+      "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1005,
+        1018
+      ]
+    },
+    {
+      "id": "OPEN-16",
+      "level": "R5",
+      "face": "north",
+      "previous_pixels": [
+        1406,
+        1423
+      ],
+      "decision": "rejected / absent from this floor",
+      "reason": "The R5 north row has two MK windows at approximately x=1315 and 1363 in the elevation raster. There is no R5 opening at x=1414; that MZ belongs to R1-R4. Replace this repeated lower-floor candidate with the actual six-window R5 row.",
+      "model_opening": null,
+      "source": "Uploaded A2.02/A2.07/A3.01/A3.02 PDFs",
+      "plan_jamb_pixels": null
+    }
+  ],
+  "limits": [
+    "Plan jambs and wall placement are provisional raster measurements, not scheduled opening sizes. Source sheets have local registration differences; no single building accuracy tolerance is asserted.",
+    "The inherited footprint remains unchanged. North stair-window depth stays on the simplified north envelope rather than acquiring an unsupported reconstructed stair recess.",
+    "Sill/head levels and complete frame sections remain assumed. Window marks identify the visible elevation pattern; the window schedule and A4/A5 detail sheets are still absent.",
+    "R1 north openings are outside this bounded correction and retain the prior assumed geometry. The new drawing evidence also calls for a separate R1 north door/entry audit.",
+    "Terrace-band heights stay provisional. A2.08 confirms top-elevation callouts already used, but A4/A5 profiles and exterior guard sections are not supplied. Stair guard details do not establish exterior terrace guards.",
+    "Drawings are dated 04-02-07 and carry handwritten ASI/RFI references without complete response records. They do not establish current installed conditions."
+  ]
+}

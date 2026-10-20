@@ -1,0 +1,202 @@
+{
+  "R1": {
+    "page": 4,
+    "sheet": "A2.03",
+    "expected_x": [
+      864,
+      951,
+      1103,
+      1253,
+      1421
+    ],
+    "grid_x_pixels": [
+      865.272,
+      952.968,
+      1104.384,
+      1254.072,
+      1422.768
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.44972307692307645,
+      0.45470270270270285,
+      0.44951351351351315,
+      0.44985600000000037
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional"
+  },
+  "R2": {
+    "page": 5,
+    "sheet": "A2.04",
+    "expected_x": [
+      866,
+      954,
+      1106,
+      1257,
+      1425
+    ],
+    "grid_x_pixels": [
+      868.296,
+      957.288,
+      1107.84,
+      1258.608,
+      1427.736
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.4563692307692306,
+      0.4521081081081078,
+      0.45275675675675686,
+      0.4510080000000004
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional"
+  },
+  "R3": {
+    "page": 6,
+    "sheet": "A2.05",
+    "expected_x": [
+      866,
+      954,
+      1106,
+      1257,
+      1425
+    ],
+    "grid_x_pixels": [
+      863.328,
+      951.456,
+      1103.304,
+      1252.992,
+      1422.336
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.45193846153846173,
+      0.4560000000000002,
+      0.44951351351351315,
+      0.45158400000000015
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional"
+  },
+  "R4": {
+    "page": 7,
+    "sheet": "A2.06",
+    "expected_x": [
+      866,
+      954,
+      1106,
+      1257,
+      1425
+    ],
+    "grid_x_pixels": [
+      864.192,
+      951.024,
+      1103.52,
+      1253.424,
+      1421.472
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.44529230769230765,
+      0.4579459459459459,
+      0.45016216216216215,
+      0.448128
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional"
+  },
+  "R5": {
+    "page": 8,
+    "sheet": "A2.07",
+    "expected_x": [
+      875,
+      963,
+      1113,
+      1265,
+      1432
+    ],
+    "grid_x_pixels": [
+      878.016,
+      965.928,
+      1117.344,
+      1266.6,
+      1435.08
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.4508307692307694,
+      0.45470270270270285,
+      0.44821621621621577,
+      0.44928000000000007
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional"
+  }
+}

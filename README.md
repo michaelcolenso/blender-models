@@ -1,6 +1,8 @@
 # Blender Project — Instructions
 
-Latest exterior continuation: [roof/terrace revision 03, daylight still, dusk film and source comparison](deliverables/highland-roof/README.md).
+Latest exterior continuation: [uploaded drawing reconciliation 04, editable model, daylight still and source audit](deliverables/highland-drawings/README.md).
+
+Previous roof/terrace revision 03: [daylight still, dusk film and source comparison](deliverables/highland-roof/README.md).
 
 Previous photo-fit study: [daylight revision 02](deliverables/highland-daylight/README.md).
 

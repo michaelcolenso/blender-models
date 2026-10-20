@@ -1,0 +1,1771 @@
+{
+  "revision": "04 / uploaded drawing reconciliation",
+  "opening_changes": [
+    {
+      "id": "south-R1-02",
+      "old": null,
+      "new": {
+        "id": "south-R1-02",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 28,
+        "u": 312.73,
+        "width": 72.575,
+        "z": 141,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.03 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1026
+        ],
+        "plan_depth_in": 878.788,
+        "source_width_in": 72.575,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          990,
+          1023
+        ],
+        "plan_wall_y_pixel": 636,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R2-02",
+      "old": null,
+      "new": {
+        "id": "south-R2-02",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 28,
+        "u": 303.85,
+        "width": 72.991,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1026
+        ],
+        "plan_depth_in": 884.845,
+        "source_width_in": 72.991,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          990,
+          1023
+        ],
+        "plan_wall_y_pixel": 636,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R3-02",
+      "old": null,
+      "new": {
+        "id": "south-R3-02",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 28,
+        "u": 315.711,
+        "width": 72.368,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1026
+        ],
+        "plan_depth_in": 884.845,
+        "source_width_in": 72.368,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          990,
+          1023
+        ],
+        "plan_wall_y_pixel": 636,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R4-02",
+      "old": null,
+      "new": {
+        "id": "south-R4-02",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 28,
+        "u": 316.141,
+        "width": 72.061,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1026
+        ],
+        "plan_depth_in": 884.845,
+        "source_width_in": 72.061,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          990,
+          1023
+        ],
+        "plan_wall_y_pixel": 636,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R5-01",
+      "old": null,
+      "new": {
+        "id": "south-R5-01",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 14,
+        "u": 302.921,
+        "width": 48.383,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1015
+        ],
+        "plan_depth_in": 1217.255,
+        "source_width_in": 48.383,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          1004,
+          1026
+        ],
+        "plan_wall_y_pixel": 483,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R5-02",
+      "old": null,
+      "new": {
+        "id": "south-R5-02",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 8,
+        "u": 438.174,
+        "width": 46.184,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1042,
+          1073
+        ],
+        "plan_depth_in": 430.698,
+        "source_width_in": 46.184,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          1066,
+          1087
+        ],
+        "plan_wall_y_pixel": 841,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R1-03",
+      "old": {
+        "id": "south-R1-03",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 28,
+        "u": 340.811,
+        "width": 33.761,
+        "z": 134,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "source_width_in": 43.349,
+        "plan_depth_in": 878.788,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R1-03",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 26,
+        "u": 435.887,
+        "width": 94.567,
+        "z": 141,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.03 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "plan_depth_in": 426.87,
+        "source_width_in": 94.567,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1041,
+          1084
+        ],
+        "plan_wall_y_pixel": 841,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R1-04",
+      "old": {
+        "id": "south-R1-04",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 26,
+        "u": 403.864,
+        "width": 23.645,
+        "z": 141,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "source_width_in": 23.645,
+        "plan_depth_in": 426.87,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R1-04",
+        "face": "south",
+        "level": "R1",
+        "polygon": "r1",
+        "segment": 24,
+        "u": 474.374,
+        "width": 21.992,
+        "z": 141,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.03 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "plan_depth_in": 366.275,
+        "source_width_in": 21.992,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1075,
+          1085
+        ],
+        "plan_wall_y_pixel": 868,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R2-03",
+      "old": {
+        "id": "south-R2-03",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 28,
+        "u": 340.811,
+        "width": 20.615,
+        "z": 257,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "source_width_in": 43.349,
+        "plan_depth_in": 884.845,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-03",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 26,
+        "u": 427.714,
+        "width": 95.11,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "plan_depth_in": 433.909,
+        "source_width_in": 95.11,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1041,
+          1084
+        ],
+        "plan_wall_y_pixel": 841,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R2-04",
+      "old": {
+        "id": "south-R2-04",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 26,
+        "u": 403.864,
+        "width": 23.645,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "source_width_in": 23.645,
+        "plan_depth_in": 433.909,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R2-04",
+        "face": "south",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 24,
+        "u": 466.422,
+        "width": 22.119,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "plan_depth_in": 373.773,
+        "source_width_in": 22.119,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1075,
+          1085
+        ],
+        "plan_wall_y_pixel": 868,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R3-03",
+      "old": {
+        "id": "south-R3-03",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 28,
+        "u": 340.811,
+        "width": 20.615,
+        "z": 380,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "source_width_in": 43.349,
+        "plan_depth_in": 884.845,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-03",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 26,
+        "u": 438.518,
+        "width": 94.298,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "plan_depth_in": 433.909,
+        "source_width_in": 94.298,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1041,
+          1084
+        ],
+        "plan_wall_y_pixel": 841,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R3-04",
+      "old": {
+        "id": "south-R3-04",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 26,
+        "u": 403.864,
+        "width": 23.645,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "source_width_in": 23.645,
+        "plan_depth_in": 433.909,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R3-04",
+        "face": "south",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 24,
+        "u": 476.895,
+        "width": 21.93,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "plan_depth_in": 373.773,
+        "source_width_in": 21.93,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1075,
+          1085
+        ],
+        "plan_wall_y_pixel": 868,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R4-03",
+      "old": {
+        "id": "south-R4-03",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 28,
+        "u": 340.811,
+        "width": 20.615,
+        "z": 503,
+        "height": 96,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "source_width_in": 43.349,
+        "plan_depth_in": 884.845,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-03",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 26,
+        "u": 438.426,
+        "width": 93.898,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1038,
+          1060
+        ],
+        "plan_depth_in": 433.909,
+        "source_width_in": 93.898,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1041,
+          1084
+        ],
+        "plan_wall_y_pixel": 841,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "south-R4-04",
+      "old": {
+        "id": "south-R4-04",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 26,
+        "u": 403.864,
+        "width": 23.645,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "source_width_in": 23.645,
+        "plan_depth_in": 433.909,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R4-04",
+        "face": "south",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 24,
+        "u": 476.64,
+        "width": 21.837,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1075,
+          1087
+        ],
+        "plan_depth_in": 373.773,
+        "source_width_in": 21.837,
+        "drawing_mark": "return / schedule pending",
+        "plan_jamb_pixels": [
+          1075,
+          1085
+        ],
+        "plan_wall_y_pixel": 868,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R2-01",
+      "old": null,
+      "new": {
+        "id": "north-R2-01",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1349.665,
+        "width": 35.476,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          874,
+          891
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 35.476,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1471,
+          1487
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R2-02",
+      "old": {
+        "id": "north-R2-02",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1124.245,
+        "width": 64.57,
+        "z": 333,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          952,
+          978
+        ],
+        "source_width_in": 64.57,
+        "plan_depth_in": 1760.313,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R2-02",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1156.764,
+        "width": 66.518,
+        "z": 333,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          954,
+          986
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 66.518,
+        "drawing_mark": "MDD",
+        "plan_jamb_pixels": [
+          1377,
+          1407
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R2-03",
+      "old": {
+        "id": "north-R2-03",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 616.212,
+        "width": 74.98,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1165,
+          1199
+        ],
+        "source_width_in": 74.98,
+        "plan_depth_in": 1760.313,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R2-03",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 832.048,
+        "width": 41.965,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1113,
+          1130
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 41.965,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1236,
+          1255
+        ],
+        "plan_wall_y_pixel": 251,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R2-04",
+      "old": {
+        "id": "north-R2-04",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 346.634,
+        "width": 29.732,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1306,
+          1321
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1788.976,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R2-04",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 706.153,
+        "width": 64.052,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1164,
+          1197
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 64.052,
+        "drawing_mark": "MU",
+        "plan_jamb_pixels": [
+          1174,
+          1203
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R2-05",
+      "old": {
+        "id": "north-R2-05",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 251.491,
+        "width": 29.732,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1354,
+          1369
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1788.976,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R2-05",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 403.384,
+        "width": 28.754,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1307,
+          1323
+        ],
+        "plan_depth_in": 1788.976,
+        "source_width_in": 28.754,
+        "drawing_mark": "MZ",
+        "plan_jamb_pixels": [
+          1045,
+          1058
+        ],
+        "plan_wall_y_pixel": 229,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R2-06",
+      "old": null,
+      "new": {
+        "id": "north-R2-06",
+        "face": "north",
+        "level": "R2",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 183.431,
+        "width": 30.712,
+        "z": 264,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.04 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1406,
+          1423
+        ],
+        "plan_depth_in": 1788.976,
+        "source_width_in": 30.712,
+        "drawing_mark": "MZ",
+        "plan_jamb_pixels": [
+          945,
+          959
+        ],
+        "plan_wall_y_pixel": 229,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R3-01",
+      "old": null,
+      "new": {
+        "id": "north-R3-01",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1361.478,
+        "width": 35.431,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          874,
+          891
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 35.431,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1471,
+          1487
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R3-02",
+      "old": {
+        "id": "north-R3-02",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1124.245,
+        "width": 64.57,
+        "z": 456,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          952,
+          978
+        ],
+        "source_width_in": 64.57,
+        "plan_depth_in": 1760.313,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R3-02",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1168.823,
+        "width": 66.433,
+        "z": 456,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          954,
+          986
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 66.433,
+        "drawing_mark": "MDD",
+        "plan_jamb_pixels": [
+          1377,
+          1407
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R3-03",
+      "old": {
+        "id": "north-R3-03",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 616.212,
+        "width": 74.98,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1165,
+          1199
+        ],
+        "source_width_in": 74.98,
+        "plan_depth_in": 1760.313,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R3-03",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 844.323,
+        "width": 42.247,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1113,
+          1130
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 42.247,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1236,
+          1255
+        ],
+        "plan_wall_y_pixel": 251,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R3-04",
+      "old": {
+        "id": "north-R3-04",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 346.634,
+        "width": 29.732,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1306,
+          1321
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1788.976,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R3-04",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 717.529,
+        "width": 64.514,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1164,
+          1197
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 64.514,
+        "drawing_mark": "MU",
+        "plan_jamb_pixels": [
+          1174,
+          1203
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R3-05",
+      "old": {
+        "id": "north-R3-05",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 251.491,
+        "width": 29.732,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1354,
+          1369
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1788.976,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R3-05",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 414.395,
+        "width": 28.509,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1307,
+          1323
+        ],
+        "plan_depth_in": 1788.976,
+        "source_width_in": 28.509,
+        "drawing_mark": "MZ",
+        "plan_jamb_pixels": [
+          1045,
+          1058
+        ],
+        "plan_wall_y_pixel": 229,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R3-06",
+      "old": null,
+      "new": {
+        "id": "north-R3-06",
+        "face": "north",
+        "level": "R3",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 196.129,
+        "width": 30.829,
+        "z": 387,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.05 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1406,
+          1423
+        ],
+        "plan_depth_in": 1788.976,
+        "source_width_in": 30.829,
+        "drawing_mark": "MZ",
+        "plan_jamb_pixels": [
+          945,
+          959
+        ],
+        "plan_wall_y_pixel": 229,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R4-01",
+      "old": null,
+      "new": {
+        "id": "north-R4-01",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1364.374,
+        "width": 35.704,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          874,
+          891
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 35.704,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1471,
+          1487
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R4-02",
+      "old": {
+        "id": "north-R4-02",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1124.245,
+        "width": 64.57,
+        "z": 579,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          952,
+          978
+        ],
+        "source_width_in": 64.57,
+        "plan_depth_in": 1760.313,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R4-02",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 1170.233,
+        "width": 66.945,
+        "z": 579,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          954,
+          986
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 66.945,
+        "drawing_mark": "MDD",
+        "plan_jamb_pixels": [
+          1377,
+          1407
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R4-03",
+      "old": {
+        "id": "north-R4-03",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 616.212,
+        "width": 74.98,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1165,
+          1199
+        ],
+        "source_width_in": 74.98,
+        "plan_depth_in": 1760.313,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R4-03",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 843.405,
+        "width": 42.223,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1113,
+          1130
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 42.223,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1236,
+          1255
+        ],
+        "plan_wall_y_pixel": 251,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R4-04",
+      "old": {
+        "id": "north-R4-04",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 346.634,
+        "width": 29.732,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1306,
+          1321
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1788.976,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R4-04",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 2,
+        "u": 716.776,
+        "width": 64.421,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1164,
+          1197
+        ],
+        "plan_depth_in": 1760.313,
+        "source_width_in": 64.421,
+        "drawing_mark": "MU",
+        "plan_jamb_pixels": [
+          1174,
+          1203
+        ],
+        "plan_wall_y_pixel": 242,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R4-05",
+      "old": {
+        "id": "north-R4-05",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 251.491,
+        "width": 29.732,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1354,
+          1369
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1788.976,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R4-05",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 414.406,
+        "width": 28.388,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1307,
+          1323
+        ],
+        "plan_depth_in": 1788.976,
+        "source_width_in": 28.388,
+        "drawing_mark": "MZ",
+        "plan_jamb_pixels": [
+          1045,
+          1058
+        ],
+        "plan_wall_y_pixel": 229,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R4-06",
+      "old": null,
+      "new": {
+        "id": "north-R4-06",
+        "face": "north",
+        "level": "R4",
+        "polygon": "typical",
+        "segment": 0,
+        "u": 196.944,
+        "width": 30.945,
+        "z": 510,
+        "height": 90,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.06 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1406,
+          1423
+        ],
+        "plan_depth_in": 1788.976,
+        "source_width_in": 30.945,
+        "drawing_mark": "MZ",
+        "plan_jamb_pixels": [
+          945,
+          959
+        ],
+        "plan_wall_y_pixel": 229,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R5-01",
+      "old": {
+        "id": "north-R5-01",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 1393.699,
+        "width": 22.903,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          848,
+          865
+        ],
+        "source_width_in": 42.219,
+        "plan_depth_in": 1764.074,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R5-01",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 1376.046,
+        "width": 26.709,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          874,
+          891
+        ],
+        "plan_depth_in": 1764.074,
+        "source_width_in": 26.709,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1492,
+          1504
+        ],
+        "plan_wall_y_pixel": 239,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R5-02",
+      "old": {
+        "id": "north-R5-02",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 1124.245,
+        "width": 64.57,
+        "z": 705,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          952,
+          978
+        ],
+        "source_width_in": 64.57,
+        "plan_depth_in": 1764.074,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R5-02",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 1156.807,
+        "width": 64.548,
+        "z": 705,
+        "height": 22,
+        "kind": "small",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          954,
+          986
+        ],
+        "plan_depth_in": 1764.074,
+        "source_width_in": 64.548,
+        "drawing_mark": "MDD",
+        "plan_jamb_pixels": [
+          1385,
+          1414
+        ],
+        "plan_wall_y_pixel": 239,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R5-03",
+      "old": {
+        "id": "north-R5-03",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 616.212,
+        "width": 74.98,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1165,
+          1199
+        ],
+        "source_width_in": 74.98,
+        "plan_depth_in": 1764.074,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R5-03",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 820.618,
+        "width": 29.004,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1113,
+          1130
+        ],
+        "plan_depth_in": 1764.074,
+        "source_width_in": 29.004,
+        "drawing_mark": "MX",
+        "plan_jamb_pixels": [
+          1242,
+          1255
+        ],
+        "plan_wall_y_pixel": 251,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R5-04",
+      "old": {
+        "id": "north-R5-04",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 346.634,
+        "width": 29.732,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 01 north elevation",
+        "source_pixels": [
+          1306,
+          1321
+        ],
+        "source_width_in": 29.732,
+        "plan_depth_in": 1764.074,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "north-R5-04",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 688.985,
+        "width": 60.239,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1164,
+          1197
+        ],
+        "plan_depth_in": 1764.074,
+        "source_width_in": 60.239,
+        "drawing_mark": "MU",
+        "plan_jamb_pixels": [
+          1176,
+          1203
+        ],
+        "plan_wall_y_pixel": 239,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R5-05",
+      "old": null,
+      "new": {
+        "id": "north-R5-05",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 408.485,
+        "width": 30.789,
+        "z": 645,
+        "height": 66,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1307,
+          1323
+        ],
+        "plan_depth_in": 1764.074,
+        "source_width_in": 30.789,
+        "drawing_mark": "MK",
+        "plan_jamb_pixels": [
+          1056,
+          1070
+        ],
+        "plan_wall_y_pixel": 239,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    },
+    {
+      "id": "north-R5-06",
+      "old": null,
+      "new": {
+        "id": "north-R5-06",
+        "face": "north",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 0,
+        "u": 295.224,
+        "width": 28.59,
+        "z": 645,
+        "height": 66,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 north elevation; uploaded PDFs",
+        "source_pixels": [
+          1354,
+          1370
+        ],
+        "plan_depth_in": 1764.074,
+        "source_width_in": 28.59,
+        "drawing_mark": "MK",
+        "plan_jamb_pixels": [
+          1005,
+          1018
+        ],
+        "plan_wall_y_pixel": 239,
+        "geometry_revision": "04 / uploaded drawing reconciliation",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      }
+    }
+  ],
+  "coupled_south_correction": "Columns 02 and 03 previously shared one short return, while column 04 occupied the next return. Columns 03/04 are reassigned to their successive plan returns. The unsupported column-03 recess/guard is removed; source openings no longer overlap.",
+  "protected_controls": [
+    "All registered polygons",
+    "All six floor elevations",
+    "Dimensioned grid spans",
+    "Roof plate levels/split",
+    "All roof and terrace geometry from revision 03"
+  ]
+}

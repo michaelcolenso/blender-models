@@ -24,6 +24,14 @@
       "camera": "Photo reference / geometry revision 03",
       "frame": 1,
       "notice": "Illustrative study. Terrace heights and pane proportions provisional; facade/site assumptions and 16 opening conflicts remain."
+    },
+    {
+      "id": "highland-drawing-reconciliation",
+      "blend": "deliverables/highland-drawings/Highland-drawing-reconciled.blend",
+      "scene": "Daylight / drawing reconciliation 04",
+      "camera": "Photo reference / geometry revision 03",
+      "frame": 1,
+      "notice": "Illustrative study. Thirteen candidates provisionally placed; two footprint conflicts and north model/elevation differences remain. Profiles, sill/head dimensions and site assumed."
     }
   ]
 }

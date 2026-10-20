@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "native_sha256": "7816c369b74ccd8c7afbeea102d44ba6aa0225d5e1b49e2fbdd79821d7f858b5",
+  "glb_sha256": "36383a2339cc03dce5f6fda5378a37c3b9f10b439ab81917799039f1d661c3c1",
+  "opening_inventory": 189,
+  "accepted_candidates": 13,
+  "rejected_candidates": 1,
+  "unresolved_candidates": 2,
+  "changed_opening_records": 38,
+  "architecture_meshes": 998,
+  "unchanged_architecture_meshes": 863,
+  "protected_spec_controls": [
+    "polygons",
+    "levels",
+    "grid_dimensions_in",
+    "roof_features",
+    "roof_plate_z",
+    "north_roof_plate_z",
+    "north_roof_split_y"
+  ],
+  "roof_geometry_unchanged": true,
+  "corrected_wall_void_overlaps": 0,
+  "north_R2_to_R5_count_per_floor": 6,
+  "frame_readback_max_error_in": 0.00011795260206781677,
+  "frame_readback_error_note": "Floating-point consistency with the spec; not source accuracy.",
+  "missing_source_tags": [],
+  "external_image_dependencies": 0,
+  "glb_mesh_nodes": 5704,
+  "saved_scenes": [
+    "Daylight / drawing reconciliation 04",
+    "Dusk / drawing reconciliation 04"
+  ],
+  "camera_frames_checked": 432,
+  "minimum_camera_margin": {
+    "Daylight / drawing reconciliation 04": 0.06680989265441895,
+    "Dusk / drawing reconciliation 04": 0.0716819167137146
+  },
+  "source_pdf_sha256": {
+    "site-and-floor-plans.pdf": "06fe5b05c553c66689b69a5d89611673a6aaee5f4a36ace60de50cfa4f3deed4",
+    "stairs-and-rcp.pdf": "66d5064f7efd27d5e943e4879d646a0a64a026b05dfceab1635b60b6bb2e7274",
+    "exterior-elevations-and-sections.pdf": "636cc7cb0d147d5749eb6a9f0898fef61fc67da987ffb895fc91193e354b5df4"
+  }
+}
