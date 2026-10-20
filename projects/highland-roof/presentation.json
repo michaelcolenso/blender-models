@@ -1,0 +1,14 @@
+{
+  "day_scene": "Daylight / roof and terrace revision 03",
+  "night_scene": "Dusk / roof and terrace revision 03",
+  "day_camera": "Photo reference / geometry revision 03",
+  "night_camera": "Dusk approach and rise",
+  "day_resolution": [1995, 1323],
+  "day_samples": 32,
+  "day_adaptive_threshold": 0.04,
+  "film_resolution": [1920, 1080],
+  "film_frames": 432,
+  "film_fps": 24,
+  "film_method": "Continuous 3D camera using the updated native geometry in Three.js; native Cycles benchmark views retain the reference lighting. Real-time lighting and foliage LOD remain approximate.",
+  "notice": "Illustrative exterior study | Provisional terrace heights; facade and site assumptions remain."
+}

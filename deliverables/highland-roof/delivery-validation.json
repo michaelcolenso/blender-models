@@ -1,0 +1,32 @@
+{
+  "native_readback": true,
+  "scene_count": 2,
+  "architecture_meshes": 969,
+  "unchanged_architecture_meshes": 914,
+  "architecture_sha256": "b8bfa5e4d871147b39ad611414fdea964b1353a85ef2e5f41f0a214357eb28c5",
+  "registered_controls_and_opening_records_unchanged": true,
+  "opening_inventory": 175,
+  "remaining_unresolved": 16,
+  "internal_window_bars_changed": 8,
+  "opening_bounds_glass_sills_perimeters_preserved": true,
+  "maximum_parapet_top_error_ft": 2.3829342694625666e-06,
+  "maximum_slab_top_error_in": 1.2735682275888394e-05,
+  "all_432_native_camera_frames_checked": true,
+  "minimum_architectural_frame_margins": {
+    "Daylight / roof and terrace revision 03": 0.06680989265441895,
+    "Dusk / roof and terrace revision 03": 0.0716819167137146
+  },
+  "maximum_fit_projection_error_px": 2.837890742217591e-05,
+  "external_images_required": [],
+  "untagged_geometry": [],
+  "glb_mesh_nodes": 5675,
+  "still_dimensions": [
+    1995,
+    1323
+  ],
+  "pixel_standard_deviation": 0.23642840612501284,
+  "native_sha256": "343e60bf671856fa93f191bafb6120efe6ece6e6414271a4713940fdc2e8a2a1",
+  "still_sha256": "184081d166320d8d5ab65942acaad1aa4abdbcdcee4e86db865eae28eed7c441",
+  "glb_sha256": "9a82db362818f75c7a3873db67da72265b3ed6b5cb4d96cca0f4144667a748c9",
+  "scope": "Source-control and delivery consistency checks. Provisional scan heights/pane ratios and assumed complete components do not establish surveyed accuracy."
+}

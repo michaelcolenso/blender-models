@@ -1,6 +1,8 @@
 # Blender Project — Instructions
 
-Latest exterior continuation: [daylight revision 02, editable model and source comparison](deliverables/highland-daylight/README.md).
+Latest exterior continuation: [roof/terrace revision 03, daylight still, dusk film and source comparison](deliverables/highland-roof/README.md).
+
+Previous photo-fit study: [daylight revision 02](deliverables/highland-daylight/README.md).
 
 Exterior rendering handoff: [start here](projects/highland-refined/HANDOFF.md) · [complete handoff download](https://github.com/michaelcolenso/blender-models/blob/handoff/highland-exterior-2026-10-20/deliverables/highland-refined/Highland-continuation-handoff.zip) (Git LFS).
 

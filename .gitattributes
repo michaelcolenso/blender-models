@@ -9,3 +9,4 @@
 # Preserve the delivered spreadsheet-compatible CSV bytes and checksums.
 deliverables/highland-refined/*.csv -text whitespace=cr-at-eol
 deliverables/highland-refined/Highland-continuation-handoff.zip filter=lfs diff=lfs merge=lfs -text
+deliverables/highland-roof/*.csv -text whitespace=cr-at-eol

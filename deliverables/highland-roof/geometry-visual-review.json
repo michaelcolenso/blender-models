@@ -1,0 +1,23 @@
+{
+  "reviewed_views": [
+    "south",
+    "east",
+    "plan",
+    "iso"
+  ],
+  "before_after_south_reviewed": true,
+  "files": {
+    "after-east.png": "20e31a4d01185b475828d9b81b73b946080324c887d20eff2b8a89ae406703c9",
+    "after-iso.png": "b8305412925743710d7ada1b31cfea510158e27d3661375ca6ab2fef5d7b01d2",
+    "after-plan.png": "e61a289709f2912e388ab66c7b6517d6fa3e6abe2e03014718c956740a5c1e26",
+    "after-south.png": "cfa6cb2696713a63a26601a738a0c444a71201ad265c5a54c98c1f1e4c9c1c10",
+    "before-south.png": "93241b16f308fd59644fd4d03c3c6e0fc79814567f42883970ab03c38d87b3de"
+  },
+  "findings": [
+    "Terrace bands visible on selected south/east returns.",
+    "Main and tower caps join without the former coincident corner-face artifacts.",
+    "Roof-level split and all lower opening patterns retained.",
+    "Complete components remain orange/assumed; source heights and ratios are separately provisional."
+  ],
+  "limits": "No independent alignment or dimensional accuracy measurement; original full architectural PDF is absent."
+}

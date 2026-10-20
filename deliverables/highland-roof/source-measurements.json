@@ -1,0 +1,56 @@
+{
+  "source_crop": "projects/highland-exterior/source-review/south.png",
+  "vertical_registration": {
+    "method": "Manual picks on repeated floor-level ticks in the A3.01 south crop; paired with the inherited floor datums. Approximate scan measurement, not a new documented dimension.",
+    "controls": [
+      {
+        "level": "R5",
+        "pixel_y": 591,
+        "z_in": 627
+      },
+      {
+        "level": "R4",
+        "pixel_y": 853,
+        "z_in": 501
+      }
+    ],
+    "holdout": {
+      "level": "R3",
+      "pixel_y": 1109.5,
+      "z_in": 378
+    },
+    "pick_uncertainty_px": 3,
+    "height_uncertainty_in": 3
+  },
+  "pixels_per_inch": 2.0793650793650795,
+  "holdout_predicted_pixel_y": 1108.7619047619048,
+  "holdout_residual_px": 0.738095238095184,
+  "measurements": [
+    {
+      "id": "central-brick-parapet",
+      "source_pixel_y": 533,
+      "scaled_height_in": 27.893129770992363,
+      "modeled_height_in": 28,
+      "uncertainty_in": 3,
+      "status": "provisional"
+    },
+    {
+      "id": "south-west-cornice",
+      "source_pixel_y": 536.5,
+      "scaled_height_in": 26.209923664122137,
+      "modeled_height_in": 26,
+      "uncertainty_in": 3,
+      "status": "provisional"
+    },
+    {
+      "id": "south-east-corner-cornice",
+      "source_pixel_y": 529.5,
+      "scaled_height_in": 29.576335877862594,
+      "modeled_height_in": 30,
+      "uncertainty_in": 3,
+      "status": "provisional"
+    }
+  ],
+  "confirmed_dimensions_added": 0,
+  "scope": "Repeated-floor scan registration and approximate parapet/cornice heights. No independent dimensional tolerance or as-built claim."
+}

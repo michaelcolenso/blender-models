@@ -16,6 +16,14 @@
       "camera": "Photo reference / fitted pinhole camera",
       "frame": 1,
       "notice": "Manual photo fit; facade details and landscape assumed. All 16 opening conflicts remain unresolved."
+    },
+    {
+      "id": "highland-roof-terrace-revision",
+      "blend": "deliverables/highland-roof/Highland-roof-and-terrace-revised.blend",
+      "scene": "Daylight / roof and terrace revision 03",
+      "camera": "Photo reference / geometry revision 03",
+      "frame": 1,
+      "notice": "Illustrative study. Terrace heights and pane proportions provisional; facade/site assumptions and 16 opening conflicts remain."
     }
   ]
 }
