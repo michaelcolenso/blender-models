@@ -204,9 +204,15 @@ def main():
     picture = sum(s['frames'] for s in SPEC['shots'])/FPS
     total = picture+cinema_score.END_CARD+cinema_score.TAIL
     count = round(total*FPS)
+    stills = [float(s) for s in a.stills.split(',') if s]
+    # The film refuses frames rendered from a different prepared scene than the current one;
+    # stills are previews and may use any frames.
+    marker = build/'frames'/a.profile/'SCENE.json'
+    current = (build/'cinema-source.sha256').read_text().strip() if (build/'cinema-source.sha256').exists() else None
+    if not stills and (not marker.exists() or json.loads(marker.read_text()).get('source') != current):
+        raise SystemExit(f'frames/{a.profile} were not rendered from the current prepared scene; re-render them')
     listing = list(frames(a.profile))
     missing = [str(f) for _, _, f in listing if not f.exists()]
-    stills = [float(s) for s in a.stills.split(',') if s]
     if missing and not stills:
         raise SystemExit(f'{len(missing)} frames missing, first {missing[0]}')
     if not stills:

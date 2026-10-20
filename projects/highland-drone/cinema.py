@@ -45,6 +45,13 @@ def camera_hash():
     return hashlib.sha256(json.dumps(shots, sort_keys=True).encode()).hexdigest()
 
 
+def source_hash():
+    """Everything that shapes the prepared scene: builders, look code, flight spec and cameras."""
+    parts = [camera_hash()]+[hashlib.sha256((HERE/f).read_bytes()).hexdigest()
+                             for f in ('cinema.py', 'build_blender.py', 'archviz.py', 'flight.spec.json')]
+    return hashlib.sha256('|'.join(parts).encode()).hexdigest()
+
+
 def smooth(a, b, t):
     v = max(0., min(1., (t-a)/(b-a)))
     return v*v*(3-2*v)
@@ -323,7 +330,7 @@ def base_validated(base):
     if not base.exists() or not report.exists():
         return False
     r = json.loads(report.read_text())
-    return (not r.get('wall_collisions') and not r.get('door_collisions')
+    return (r.get('look') == 'archviz' and not r.get('wall_collisions') and not r.get('door_collisions')
             and r.get('max_camera_path_error_m', 1) <= .08 and r.get('max_return_rotation_step_deg', 99) <= 10
             and abs(r.get('r1_to_r2_rise_in', 0)-123) <= .001
             and r.get('source_spec_sha256') == hashlib.sha256(B.SPEC_FILE.read_bytes()).hexdigest())
@@ -356,10 +363,12 @@ def prepare(base, output):
     scene.view_settings.look = 'AgX - Base Contrast'
     scene['cinema_spec_sha256'] = hashlib.sha256(SPEC_FILE.read_bytes()).hexdigest()
     scene['cinema_camera_sha256'] = camera_hash()
+    scene['cinema_source_sha256'] = source_hash()
     scene['cinema_scope'] = 'Edit, cameras, dusk exterior, street lights and x-ray section are presentation treatments.'
     scene.camera = cams[SPEC['shots'][0]['id']]
     output.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=str(output), compress=True)
+    output.with_name('cinema-source.sha256').write_text(scene['cinema_source_sha256']+'\n')
     return scene
 
 
@@ -440,7 +449,33 @@ def settings(scene, profile_name, samples=None):
     scene.cycles.adaptive_min_samples = min(32, scene.cycles.samples)
 
 
+def frame_marker(scene):
+    return {'source': scene['cinema_source_sha256'], 'resolution': [scene.render.resolution_x, scene.render.resolution_y],
+            'samples': scene.cycles.samples, 'adaptive_threshold': round(scene.cycles.adaptive_threshold, 4)}
+
+
+def claim_frames(scene, folder):
+    """Bind a frame folder to this prepared scene and its render settings. Frames from any other
+    scene or settings are moved aside, never deleted, so resuming can't mix stale frames."""
+    root = BUILD/'frames'/folder; marker = root/'SCENE.json'; want = frame_marker(scene)
+    have = json.loads(marker.read_text()) if marker.exists() else None
+    if root.exists() and have != want and any(root.rglob('[0-9]*.png')):
+        stale = root.with_name(f'{folder}.stale-{time.strftime("%Y%m%d-%H%M%S")}')
+        root.rename(stale)
+        print(f'Moved frames from a different scene or settings to {stale}', flush=True)
+    root.mkdir(parents=True, exist_ok=True)
+    marker.write_text(json.dumps(want, indent=2)+'\n')
+
+
+def check_claim(scene, folder):
+    marker = BUILD/'frames'/folder/'SCENE.json'
+    if not marker.exists() or json.loads(marker.read_text()) != frame_marker(scene):
+        raise SystemExit(f'frames/{folder} is not bound to this scene and settings; run with --claim-frames first')
+
+
 def render(scene, shots, profile_name, step=1, only=None, worker=(0, 1), folder=None):
+    # One process claims the folder; parallel workers only verify the claim.
+    (claim_frames if worker[1] == 1 else check_claim)(scene, folder or profile_name)
     log = []
     index = -1
     for shot in SPEC['shots']:
@@ -506,12 +541,13 @@ def main():
     p.add_argument('--samples', type=int, help='Override the profile maximum samples')
     p.add_argument('--worker', default='0/1', help='k/n: render every nth frame starting at k, for parallel processes')
     p.add_argument('--bench', action='store_true', help='Time one frame per shot and project the film')
+    p.add_argument('--claim-frames', action='store_true', help='Bind the profile frame folder to this scene before parallel workers start')
     a = p.parse_args()
     if a.reuse:
         bpy.ops.wm.open_mainfile(filepath=str(a.output)); scene = bpy.context.scene
-        if scene.get('cinema_camera_sha256') != camera_hash():
-            raise SystemExit(f'{a.output.name} was prepared from a different cinema.shots.json; '
-                             'run cinema.py without --reuse to rebuild the cameras, and delete frames of changed shots')
+        if scene.get('cinema_camera_sha256') != camera_hash() or scene.get('cinema_source_sha256') != source_hash():
+            raise SystemExit(f'{a.output.name} was prepared from different cameras or scene code; '
+                             'run cinema.py without --reuse to prepare it again')
     else:
         scene = prepare(a.base, a.output)
     if a.threads:
@@ -522,6 +558,8 @@ def main():
     settings(scene, a.profile, a.samples)
     if a.bench:
         bench(scene, a.profile); return
+    if a.claim_frames:
+        claim_frames(scene, a.profile); return
     only = [int(x) for x in a.only.split(',') if x] or None
     k, n = (int(x) for x in a.worker.split('/'))
     render(scene, [s for s in a.shots.split(',') if s], a.profile, a.step, only, (k, n))

@@ -45,6 +45,11 @@ bench() {
 }
 
 render() {
+  # Bind the frame folder to the prepared scene once; stale frames are moved aside.
+  if ! "$BPY" projects/highland-drone/cinema.py --reuse --profile "$PROFILE" --claim-frames > "$LOG/claim-$PROFILE.log" 2>&1; then
+    tail -5 "$LOG/claim-$PROFILE.log"; exit 1
+  fi
+  grep -E "Moved" "$LOG/claim-$PROFILE.log" || true
   pids=()
   for k in $(seq 0 $((WORKERS-1))); do
     "$BPY" projects/highland-drone/cinema.py --reuse --device "$DEVICE" --profile "$PROFILE" --worker "$k/$WORKERS" \
