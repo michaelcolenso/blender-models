@@ -14,7 +14,7 @@ score. The doors, elevator rise and section are the same native keyframes that
 | 04 | Slats | 10.50–12.75 s | 222–275 | 50 mm f/2 | Insert along the walnut feature wall |
 | 05 | Corridor 108 | 12.75–15.75 s | 200–271 | 24 mm | Slider past residence doors toward Elevator M1 |
 | 06 | Elevator | 15.75–18.75 s | 280–351 | 26 mm | Symmetrical landing-door reveal |
-| 07 | Section | 18.75–21.75 s | 372–443 | 35 mm | X-ray R1 to R2 rise with live datum readout |
+| 07 | Section | 18.75–21.75 s | 378–449 | 35 mm | X-ray R1 to R2 rise with live datum readout |
 | 08 | Corridor 208 | 21.75–26.25 s | 470–577 | 20 mm | Push toward Stair M1, fade to the end card |
 
 Every camera is level and lens-shifted, so verticals stay vertical. The
@@ -27,12 +27,19 @@ lengths are whole beats at 80 BPM, and the score's chord changes land on the cut
   coordinate system, plus lens, shift, aperture, focus point, label and exposure trim.
 - `cinema.py`: opens the validated walkthrough scene and adds the following:
   - dusk sky, lit windows and wet pavement;
-  - illustrative street lights and windows on the neighboring massing;
-  - calmer luminaires and the lobby slat wall;
+  - scanned materials and models (below), lever hardware and an elevator call station;
+  - windows on the neighboring massing, calmer luminaires and the lobby slat wall;
   - the x-ray section treatment and one camera per shot.
 
   It saves `Highland-cinema.blend`, renders frames per shot (resumable) and validates
   camera clearance and smoothness at every film frame.
+- `cinema_assets.py` and `assets/polyhaven-cinema.lock.json`: Poly Haven CC0 assets, locked
+  by URL, size and MD5 and downloaded into `build/assets/polyhaven` (about 190 MB, not committed):
+  - walnut veneer (doors, frames, slats, cab), plaster relief (walls, ceilings);
+  - limestone tile (lobby and cab floors), brick (facade), wet asphalt and concrete pavers;
+  - street trees, lobby plants, two lounge chairs and a side table, post-top street lamps, a hydrant.
+
+  Textures are box-projected at their real-world size, so the procedural boxes need no UVs.
 - `cinema_score.py`: original NumPy score and sound design. The chords follow the cuts.
   The door swing, landing chime, cab run and arrival ding come from native scene frames.
 - `cinema_finish.py`: Lanczos upscale (when needed), halation, S-curve, split-tone,
@@ -47,10 +54,10 @@ a separate environment, because `opencv-python-headless` releases after 4.10 pul
 which `bpy` 5.0.1 cannot import.
 
 ```bash
-python3.11 -m venv .venv-bpy && .venv-bpy/bin/pip install bpy==5.0.1
+python3.11 -m venv .venv-bpy && .venv-bpy/bin/pip install bpy==5.0.1 pillow
 python3.11 -m venv .venv-finish && .venv-finish/bin/pip install -r projects/highland-drone/requirements-cinema.txt
 
-.venv-bpy/bin/python projects/highland-drone/build_blender.py          # validated base scene
+.venv-bpy/bin/python projects/highland-drone/cinema_assets.py           # CC0 assets, checksum-verified
 .venv-bpy/bin/python projects/highland-drone/cinema.py --validate --profile proof --step 12   # quick look
 .venv-bpy/bin/python projects/highland-drone/cinema.py --reuse --profile local                # all 630 frames
 .venv-finish/bin/python projects/highland-drone/cinema_finish.py --profile local
@@ -66,10 +73,11 @@ python3.11 -m venv .venv-finish && .venv-finish/bin/pip install -r projects/high
 GPU rendering on RunPod, with a benchmark that projects the run time, is in [RUNPOD.md](RUNPOD.md).
 `--worker k/n` splits frames across parallel processes; `--bench` times one frame per shot.
 
-`--shots`, `--step` and `--only` render subsets, and existing frames are skipped,
-so an interrupted render resumes where it stopped. To change a shot, edit its keys
-in `cinema.shots.json` and delete that shot's frame folder before rendering again.
-The other shots are unaffected.
+`cinema.py` builds and validates the base walkthrough itself when its report is missing,
+failed or stale. `--shots`, `--step` and `--only` render subsets, and existing frames
+are skipped, so an interrupted render resumes where it stopped. Each frame folder is
+bound to the prepared scene and its settings (`SCENE.json`). After any change to the
+scene code, assets or cameras, frames from the old scene are moved aside, not reused.
 
 ## What is illustrative
 
@@ -78,7 +86,8 @@ from the sources listed in `README.md`. Everything else seen in this film is a
 presentation treatment and must not be read as documented:
 
 - the dusk lighting, wet pavement, street lights and lit windows;
-- the walnut slat wall and all other finishes, furnishings and planting;
+- the walnut slat wall and all other finishes, furnishings, hardware and planting;
+- the street trees, street lamps and hydrant, which keep the study's tree positions but not its species;
 - the elevator car, its door timing and the x-ray section;
 - the neighboring massing (OSM, with approximate heights).
 

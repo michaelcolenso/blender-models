@@ -2,9 +2,9 @@
 
 ![Section preview](Highland-cinema-section.gif)
 
-[Watch the 1080p film with sound](Highland-cinema-1080p.mp4?raw=true) · [Shot sheet](Highland-cinema-shots.jpg) · [Editable Blender scene](Highland-cinema.blend?raw=true)
+[Watch the 1080p film with sound](Highland-cinema-1080p.mp4?raw=true) · [4K master](Highland-cinema-4K.mp4?raw=true) · [Shot sheet](Highland-cinema-shots.jpg)
 
-A 30-second film in 2.39:1 scope inside a 16:9 master, rendered natively in Blender Cycles from the validated walkthrough scene. It runs from street to Corridor 208 in eight composed shots:
+A 30-second film in 2.39:1 scope inside a 16:9 master (4K, with a 1080p cut), rendered natively in Blender Cycles from the validated walkthrough scene and dressed with scanned CC0 materials and models. It runs from street to Corridor 208 in eight composed shots:
 
 1. A dusk arrival.
 2. The entry doors opening.
@@ -33,8 +33,9 @@ The original score and sound design follow the cuts and the native door, chime a
 Floor datums (R1 353.00 / R2 363.25 ft) and the circulation layout follow A2.03, A2.04 and A3.11. The following are illustrative presentation treatments, not documented conditions:
 
 - dusk lighting, wet pavement, street lights and lit windows;
-- the walnut slat wall and all other finishes, furnishings and planting;
+- the walnut slat wall and all other finishes, furnishings, hardware and planting;
+- the street trees, street lamps and hydrant;
 - the elevator car, its door timing and the x-ray section;
 - neighboring massing (© OpenStreetMap contributors, ODbL 1.0, approximate heights).
 
-The film says so on screen and on its end card. Sky: Poly Haven, CC0.
+The film says so on screen and on its end card. Textures, models and sky: Poly Haven, CC0. The 4K file uses Git LFS; choose **Download raw file** on GitHub if it doesn't preview. The editable scene is rebuilt by `cinema.py` from the locked assets rather than committed.
