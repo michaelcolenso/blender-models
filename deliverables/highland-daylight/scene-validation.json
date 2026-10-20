@@ -1,0 +1,22 @@
+{
+  "source_blend": "deliverables/highland-refined/Highland-revised-daylight-and-film.blend",
+  "source_blend_sha256": "9274f77b6b484c02c29d1451ab9c3ae567e14c48587789f79b4ceac6bd95b6a4",
+  "architecture_before_sha256": "dd1b73461d3d2ba6a0b7e9e7d0ec2e446bae0e940a435455bd70539dc15ee97e",
+  "architecture_after_sha256": "dd1b73461d3d2ba6a0b7e9e7d0ec2e446bae0e940a435455bd70539dc15ee97e",
+  "architectural_geometry_preserved": true,
+  "protected_architectural_meshes": 955,
+  "untagged_geometry": [],
+  "blender_projection_max_error_px": 5.335624768653767e-05,
+  "opening_count": 175,
+  "unresolved_openings": 16,
+  "added_shrubs": 8,
+  "open_curtain_panels": 232,
+  "resolution": [
+    1995,
+    1323
+  ],
+  "samples": 64,
+  "preview": false,
+  "visual_review": "pending",
+  "elapsed_seconds": 862.01
+}

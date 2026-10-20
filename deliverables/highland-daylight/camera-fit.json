@@ -1,0 +1,249 @@
+{
+  "method": "Robust least-squares pinhole fit; centered principal point; 36 mm horizontal sensor; no lens distortion",
+  "scope": "Manual image picks on the supplied photograph, paired with the existing simplified typical-floor polygon. Roof and floor edges are interpreted correspondences, not surveyed control points. The image may have been cropped or corrected; its lens metadata and distortion are unknown.",
+  "success": true,
+  "source_photo": "projects/highland-exterior/source-review/user-photo-02.jpg",
+  "image_size": [
+    665,
+    441
+  ],
+  "position_m": [
+    51.36306690631873,
+    -18.758993849388027,
+    4.619515629412033
+  ],
+  "yaw_pitch_roll_radians": [
+    0.6931044900085349,
+    0.08604377358339599,
+    -0.019365160352684995
+  ],
+  "lens_mm": 27.956774589112598,
+  "bounds": {
+    "lower": [
+      40,
+      -85,
+      0.6,
+      0.2,
+      -0.1,
+      -0.06,
+      16
+    ],
+    "upper": [
+      100,
+      -5,
+      6,
+      1.4,
+      0.45,
+      0.06,
+      70
+    ]
+  },
+  "active_bounds": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "landmark_rmse_px": 9.779717505915347,
+  "previous_camera_rmse_px": 49.66950115895148,
+  "maximum_landmark_error_px": 16.368670502568953,
+  "landmarks": [
+    {
+      "id": "south-central-west-top",
+      "polygon": "typical",
+      "vertex": 17,
+      "z_in": 627,
+      "pixel": [
+        181,
+        101
+      ],
+      "uncertainty_px": 4,
+      "position_m": [
+        20.5810612,
+        1.8519394,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        180.99863660244603,
+        106.79045701997327
+      ],
+      "error_px": 5.790457180483305
+    },
+    {
+      "id": "south-central-east-top",
+      "polygon": "typical",
+      "vertex": 16,
+      "z_in": 627,
+      "pixel": [
+        253,
+        67
+      ],
+      "uncertainty_px": 4,
+      "position_m": [
+        28.1627072,
+        1.8519394,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        253.16940683845593,
+        80.72401311119742
+      ],
+      "error_px": 13.725058635693852
+    },
+    {
+      "id": "south-corner-west-top",
+      "polygon": "typical",
+      "vertex": 13,
+      "z_in": 627,
+      "pixel": [
+        315,
+        82
+      ],
+      "uncertainty_px": 5,
+      "position_m": [
+        31.8479678,
+        3.8196519999999996,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        319.8071901890205,
+        74.36090083835143
+      ],
+      "error_px": 9.025791572760525
+    },
+    {
+      "id": "south-corner-east-top",
+      "polygon": "typical",
+      "vertex": 12,
+      "z_in": 627,
+      "pixel": [
+        373,
+        61
+      ],
+      "uncertainty_px": 5,
+      "position_m": [
+        35.5899466,
+        3.8196519999999996,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        371.1544074417601,
+        57.304783431847255
+      ],
+      "error_px": 4.130476652467733
+    },
+    {
+      "id": "south-outboard-west-top",
+      "polygon": "typical",
+      "vertex": 21,
+      "z_in": 627,
+      "pixel": [
+        147,
+        144
+      ],
+      "uncertainty_px": 6,
+      "position_m": [
+        12.5208538,
+        3.8196519999999996,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        145.1681353388468,
+        132.3711374715072
+      ],
+      "error_px": 11.772262817460609
+    },
+    {
+      "id": "south-outboard-east-top",
+      "polygon": "typical",
+      "vertex": 20,
+      "z_in": 627,
+      "pixel": [
+        178,
+        130
+      ],
+      "uncertainty_px": 6,
+      "position_m": [
+        17.3882304,
+        3.8196519999999996,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        179.00435880913426,
+        121.13168515101863
+      ],
+      "error_px": 8.925006715860166
+    },
+    {
+      "id": "south-central-east-r2",
+      "polygon": "typical",
+      "vertex": 16,
+      "z_in": 255,
+      "pixel": [
+        252,
+        219
+      ],
+      "uncertainty_px": 6,
+      "position_m": [
+        28.1627072,
+        1.8519394,
+        6.476999999999999
+      ],
+      "projected_pixel": [
+        254.13675044197203,
+        235.22860658129352
+      ],
+      "error_px": 16.368670502568953
+    },
+    {
+      "id": "south-corner-east-r2",
+      "polygon": "typical",
+      "vertex": 12,
+      "z_in": 255,
+      "pixel": [
+        380,
+        232
+      ],
+      "uncertainty_px": 6,
+      "position_m": [
+        35.5899466,
+        3.8196519999999996,
+        6.476999999999999
+      ],
+      "projected_pixel": [
+        375.7181695666593,
+        229.20481251622869
+      ],
+      "error_px": 5.113427903991063
+    },
+    {
+      "id": "east-north-top",
+      "polygon": "typical",
+      "vertex": 3,
+      "z_in": 627,
+      "pixel": [
+        579,
+        157
+      ],
+      "uncertainty_px": 10,
+      "position_m": [
+        35.5899466,
+        44.711950200000004,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        577.4276685135849,
+        162.05557402083588
+      ],
+      "error_px": 5.294436229035441
+    }
+  ],
+  "limitations": [
+    "Residuals describe selected manual correspondences on a simplified model; they are not independent accuracy measurements.",
+    "No surveyed camera, calibrated scale, focal metadata, distortion correction or dimensional tolerance is established.",
+    "Model and photo roof profiles differ; these differences must remain visible in the comparison."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "native_readback": true,
+  "single_daylight_scene": true,
+  "protected_architectural_meshes": 955,
+  "architecture_sha256": "dd1b73461d3d2ba6a0b7e9e7d0ec2e446bae0e940a435455bd70539dc15ee97e",
+  "matches_original_handoff_geometry": true,
+  "original_handoff_file_unchanged": true,
+  "external_images_required": [],
+  "untagged_geometry": [],
+  "maximum_camera_projection_error_px": 5.335624768653767e-05,
+  "opening_inventory": 175,
+  "remaining_unresolved": 16,
+  "image_dimensions": [
+    1995,
+    1323
+  ],
+  "architectural_frame_margin": 0.042356252670288086,
+  "glb_mesh_nodes": 5661,
+  "glb_untagged_mesh_nodes": [],
+  "glb_sha256": "a6464a7a385aa704d44fe172eb81ec2b5b6e7ddb512012304bb6820a674055ba",
+  "pixel_standard_deviation": 0.237469,
+  "visual_review": "See visual-review.json",
+  "still_sha256": "58bb8cdd68fe97e9f2239227526edbc5d434ead1169b8ffd47bea73a49af9e17",
+  "native_sha256": "bf886a5c3191eca90f0b51fcbd5c03efaad3ff2c0ed832807485c4dd1faae51d",
+  "scope": "Portability, image and consistency checks; no new dimensional accuracy claim."
+}

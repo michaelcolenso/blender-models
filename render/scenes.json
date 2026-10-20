@@ -8,6 +8,14 @@
       "camera": "Camera",
       "frame": 1,
       "notice": "Plan XY provisional; pipe heights, stack XY and fixture envelopes assumed."
+    },
+    {
+      "id": "highland-daylight-photo-study",
+      "blend": "deliverables/highland-daylight/Highland-daylight-photo-study.blend",
+      "scene": "Daylight photo study / revision 02",
+      "camera": "Photo reference / fitted pinhole camera",
+      "frame": 1,
+      "notice": "Manual photo fit; facade details and landscape assumed. All 16 opening conflicts remain unresolved."
     }
   ]
 }
