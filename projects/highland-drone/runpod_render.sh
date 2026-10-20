@@ -29,10 +29,13 @@ setup() {
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
   export PATH="$HOME/.local/bin:$PATH"
   # bpy 5.0.1 needs exactly Python 3.11; uv downloads it if the image lacks it.
-  [ -x "$BPY" ] || { uv venv -p 3.11 .venv-bpy && uv pip install -p "$BPY" bpy==5.0.1 pillow; }
+  [ -x "$BPY" ] || uv venv -p 3.11 .venv-bpy
+  [ -x "$FIN" ] || uv venv -p 3.11 .venv-finish
+  # Always reconcile dependencies: a venv left by an older setup may lack newer ones.
+  uv pip install -p "$BPY" bpy==5.0.1 pillow
+  uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt
   # Poly Haven CC0 textures and models, verified against the committed lock (about 190 MB).
   "$BPY" projects/highland-drone/cinema_assets.py
-  [ -x "$FIN" ] || { uv venv -p 3.11 .venv-finish && uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt; }
   # cinema.py rebuilds the base walkthrough unless its own validation report is clean and
   # current, then prepares the cinema scene and checks every film camera; CPU, a few minutes.
   # A failed camera check must stop the pipeline before any GPU time is spent.
