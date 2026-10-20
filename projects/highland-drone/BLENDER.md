@@ -1,5 +1,8 @@
 # Native Highland Blender walkthrough
 
+The graded, multi-shot owner film built on this scene is documented in
+[CINEMA.md](CINEMA.md).
+
 `build_blender.py` reconstructs the public interior directly as Blender meshes,
 materials, lights, curves, text, constraints and animation. It loads the existing
 Blender exterior study, then builds Lobby 110, the connector, Corridors 108/208,

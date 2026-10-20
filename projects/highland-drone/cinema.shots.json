@@ -1,0 +1,139 @@
+{
+  "film": "200 W. Highland / cinematic owner film",
+  "fps": 24,
+  "aspect": "2.39:1 scope inside a 16:9 master",
+  "units": "Positions are plan inches in the exterior study's coordinate system, matching flight.spec.json rooms.",
+  "notes": "Each shot renders a range of the native 624-frame scene timeline through its own camera. Door, elevator and section animation stay native; the edit only chooses where to look. Shot lengths are whole beats at 80 BPM (18 frames).",
+  "shots": [
+    {
+      "id": "01-arrival",
+      "label": null,
+      "exposure": 0.0,
+      "src_start": 1,
+      "frames": 108,
+      "lens": 20,
+      "shift_y": 0.14,
+      "fstop": null,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [2405, 430, 150], "look": [1450, 1120, 150]},
+        {"u": 1, "pos": [2385, 690, 156], "look": [1450, 1290, 156]}
+      ],
+      "focus": [1470, 1250, 300]
+    },
+    {
+      "id": "02-entry",
+      "label": "Entry · Lobby 110 east glazing",
+      "exposure": 0.0,
+      "src_start": 66,
+      "frames": 72,
+      "lens": 28,
+      "shift_y": 0.07,
+      "fstop": 4.0,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [1840, 1300, 150], "look": [1476, 1332, 150]},
+        {"u": 1, "pos": [1740, 1318, 152], "look": [1476, 1332, 152]}
+      ],
+      "focus": [1476, 1332, 180]
+    },
+    {
+      "id": "03-lobby",
+      "label": "Lobby 110",
+      "exposure": -0.1,
+      "src_start": 150,
+      "frames": 72,
+      "lens": 20,
+      "shift_y": 0.04,
+      "fstop": 5.6,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [1412, 1352, 174], "look": [1110, 1294, 174]},
+        {"u": 1, "pos": [1386, 1344, 174], "look": [1090, 1290, 174]}
+      ],
+      "focus": [1250, 1300, 180]
+    },
+    {
+      "id": "04-slats",
+      "label": null,
+      "exposure": 0.0,
+      "src_start": 222,
+      "frames": 54,
+      "lens": 50,
+      "shift_y": 0.08,
+      "fstop": 2.0,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [1430, 1286, 190], "look": [1180, 1214, 190]},
+        {"u": 1, "pos": [1404, 1286, 190], "look": [1154, 1214, 190]}
+      ],
+      "focus": [1360, 1263, 190]
+    },
+    {
+      "id": "05-corridor-108",
+      "label": "Corridor 108",
+      "exposure": -0.1,
+      "src_start": 200,
+      "frames": 72,
+      "lens": 24,
+      "shift_y": 0.03,
+      "fstop": 4.0,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [892, 1010, 168], "look": [951, 1170, 176]},
+        {"u": 1, "pos": [892, 1084, 168], "look": [951, 1244, 176]}
+      ],
+      "focus": [949, 1150, 176]
+    },
+    {
+      "id": "06-elevator",
+      "label": "Elevator M1 · R1 landing",
+      "exposure": -0.05,
+      "src_start": 280,
+      "frames": 72,
+      "lens": 26,
+      "shift_y": 0,
+      "fstop": 4.0,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [948, 1452, 180], "look": [800, 1452, 180]},
+        {"u": 1, "pos": [926, 1452, 180], "look": [800, 1452, 180]}
+      ],
+      "focus": [818, 1452, 180]
+    },
+    {
+      "id": "07-section",
+      "label": "Section · R1 to R2 · 10 ft 3 in rise",
+      "exposure": 0.0,
+      "src_start": 372,
+      "frames": 72,
+      "lens": 35,
+      "shift_y": 0.0,
+      "fstop": null,
+      "pitch": true,
+      "ease": [0.0, 0.0],
+      "keys": [
+        {"u": 0, "pos": [1590, 1010, 338], "look": [848, 1330, 236]},
+        {"u": 1, "pos": [1625, 1290, 372], "look": [848, 1360, 258]}
+      ],
+      "focus": [848, 1452, 245]
+    },
+    {
+      "id": "08-corridor-208",
+      "label": "Corridor 208 · toward Stair M1",
+      "exposure": -0.1,
+      "src_start": 470,
+      "frames": 108,
+      "lens": 20,
+      "shift_y": 0.04,
+      "fstop": 5.6,
+      "ease": [0.0, 0.45],
+      "keys": [
+        {"u": 0, "pos": [915, 1250, 309], "look": [915, 670, 309]},
+        {"u": 1, "pos": [915, 1110, 309], "look": [915, 670, 309]}
+      ],
+      "focus": [915, 672, 330]
+    }
+  ],
+  "tempo_bpm": 80
+}
