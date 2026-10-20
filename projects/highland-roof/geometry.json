@@ -1,0 +1,150 @@
+{
+  "revision": "03 / roof and terrace geometry",
+  "base_blend": "deliverables/highland-daylight/Highland-daylight-photo-study.blend",
+  "base_spec": "projects/highland-refined/exterior-revised.spec.json",
+  "photo_landmarks": "projects/highland-daylight/photo-landmarks.json",
+  "previous_camera_fit": "deliverables/highland-daylight/camera-fit.json",
+  "source_crop": "projects/highland-exterior/source-review/south.png",
+  "vertical_registration": {
+    "method": "Manual picks on repeated floor-level ticks in the A3.01 south crop; paired with the inherited floor datums. Approximate scan measurement, not a new documented dimension.",
+    "controls": [
+      {
+        "level": "R5",
+        "pixel_y": 591,
+        "z_in": 627
+      },
+      {
+        "level": "R4",
+        "pixel_y": 853,
+        "z_in": 501
+      }
+    ],
+    "holdout": {
+      "level": "R3",
+      "pixel_y": 1109.5,
+      "z_in": 378
+    },
+    "pick_uncertainty_px": 3,
+    "height_uncertainty_in": 3
+  },
+  "terrace_bands": [
+    {
+      "id": "central-brick-parapet",
+      "segments": [
+        15,
+        16,
+        17
+      ],
+      "height_in": 28,
+      "cap_height_in": 3,
+      "cap_width_in": 12,
+      "finish": "brick",
+      "source_pick_y": 533,
+      "source_pick_x_span": [
+        1880,
+        2540
+      ],
+      "source": "A3.01 south elevation / central pair of MN windows; south.png",
+      "basis": "Parapet top scaled about 28 inches above the R5 tick. Returns follow the inherited typical polygon. Complete geometry remains assumed; scaled top is provisional with about +/-3 inch pick uncertainty. Coping section is assumed."
+    },
+    {
+      "id": "south-west-cornice",
+      "segments": [
+        19,
+        20,
+        21
+      ],
+      "height_in": 26,
+      "cap_height_in": 4,
+      "cap_width_in": 30,
+      "finish": "concrete",
+      "source_pick_y": 536.5,
+      "source_pick_x_span": [
+        1180,
+        1640
+      ],
+      "source": "A3.01 south elevation / MQ window cornice; photo-02",
+      "basis": "Cornice top scaled about 26 inches above the R5 tick. Profile and return sections interpret the elevation and photograph; no detail sheet establishes their actual section. Height provisional, section assumed."
+    },
+    {
+      "id": "south-east-corner-cornice",
+      "segments": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "height_in": 30,
+      "cap_height_in": 4,
+      "cap_width_in": 30,
+      "finish": "concrete",
+      "source_pick_y": 529.5,
+      "source_pick_x_span": [
+        2790,
+        3120
+      ],
+      "source": "A3.01 south/east elevations / MM window and east projecting bay cornice; photo-02",
+      "basis": "The pale band wraps the southeast window fields in the elevation/photo. Its top scales about 30 inches above the R5 tick. Projection, continuity around short returns and complete section are assumed; top has about +/-3 inch pick uncertainty."
+    }
+  ],
+  "roof_coping": {
+    "source": "A2.08 roof.png / T.O. PARAPET 406.25 and 407.75; inherited tower tops 415.00 and 414.41",
+    "basis": "Use the stated top datum as the complete modeled parapet/coping top. No separate coping-top datum is available. Sections remain assumed. Remove the previous per-segment vertical offsets and miter adjacent caps in plan.",
+    "south_top_ft": 406.25,
+    "north_top_ft": 407.75,
+    "main_width_in": 44,
+    "main_thickness_in": 7,
+    "wall_thickness_in": 8,
+    "tower_cap_thickness_in": 6,
+    "tower_cap_width_in": 30
+  },
+  "preserve": [
+    "registered polygons",
+    "six floor datums",
+    "grid spans",
+    "roof plate levels and split control",
+    "opening coordinates, extents, glass panels, sills and perimeter frames",
+    "all 16 unresolved opening records"
+  ],
+  "limitations": [
+    "Original architectural PDF and opening schedule are absent.",
+    "Terrace-band heights are provisional scan measurements; sections, returns and finish interpretation remain assumed.",
+    "The retained guard layout is not a verified installed guard schedule."
+  ],
+  "window_dividers": {
+    "source": "A3.01 south elevation / repeated mirrored MN pair in south.png",
+    "basis": "Approximate source-pane proportion from visible frame lines. Left window fixed pane is wider on the left; right window is mirrored. Opening extents, glass, sill/head and perimeter frames are retained. Exact frame section and ratio remain assumed/provisional without a window schedule.",
+    "status": "provisional",
+    "ratio_uncertainty": 0.03,
+    "rules": [
+      {
+        "levels": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "column": "07",
+        "divider_fraction_from_world_min_x": 0.65
+      },
+      {
+        "levels": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "column": "08",
+        "divider_fraction_from_world_min_x": 0.35
+      }
+    ],
+    "source_crop_box": [
+      1900,
+      620,
+      2510,
+      860
+    ]
+  }
+}

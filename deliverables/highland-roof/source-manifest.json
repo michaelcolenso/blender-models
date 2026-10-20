@@ -1,0 +1,398 @@
+{
+  "outputs": {
+    "CHANGELOG.md": {
+      "bytes": 1793,
+      "sha256": "68d5f55085a953b152b794c62e9a8a7370c66865cc4da9ca949908794609360b"
+    },
+    "HANDOFF.md": {
+      "bytes": 4447,
+      "sha256": "a0b4b2eb9277f1bdf5dcab43a2d404e71db1caef72adcd6587c1b7bba5498f57"
+    },
+    "Highland-MN-window-source.png": {
+      "bytes": 469185,
+      "sha256": "69f4f2e74e4f26c8231df001fb6541b6b3d36d48f6933b4dbdf9e72f3014d68c"
+    },
+    "Highland-daylight-geometry-revised.png": {
+      "bytes": 3450580,
+      "sha256": "184081d166320d8d5ab65942acaad1aa4abdbcdcee4e86db865eae28eed7c441"
+    },
+    "Highland-dusk-geometry-revised-18s.mp4": {
+      "bytes": 20770187,
+      "sha256": "f79e0afe68b82fbeb219e879a3c1eb4d7142bfb948652acb28228b206d0f759b"
+    },
+    "Highland-geometry-revised.glb": {
+      "bytes": 19680240,
+      "sha256": "9a82db362818f75c7a3873db67da72265b3ed6b5cb4d96cca0f4144667a748c9"
+    },
+    "Highland-rail-AA-comparison.png": {
+      "bytes": 281386,
+      "sha256": "16d54dfb94419c6cfcae3a0be9f0768c42a17a9bc054429cbf7acdf17d598eab"
+    },
+    "Highland-revised-camera-landmarks.png": {
+      "bytes": 1440105,
+      "sha256": "44be7412cd5c915f29cf9f1a907b4c4f82f2c59fecef45ac044e333c1e378b2f"
+    },
+    "Highland-roof-and-terrace-revised.blend": {
+      "bytes": 23953075,
+      "sha256": "343e60bf671856fa93f191bafb6120efe6ece6e6414271a4713940fdc2e8a2a1"
+    },
+    "Highland-roof-terrace-source-comparison.pdf": {
+      "bytes": 7256307,
+      "sha256": "639e8ce95296d4197d0932e252df0a70fab037f110329ca82fbd0e94e9b64431"
+    },
+    "Highland-source-height-detail.png": {
+      "bytes": 1697121,
+      "sha256": "49e0f1a74dc6d29cdab3dfb91a4d304529e6f5fb7b78d2c9b68cfd4d29ed0617"
+    },
+    "Highland-source-height-picks.png": {
+      "bytes": 4190820,
+      "sha256": "8a8070123089446ec93bf972104c6197bbb1cf868a163c2eb5cc6e32522c9095"
+    },
+    "README.md": {
+      "bytes": 6760,
+      "sha256": "7c5af88b8d2bc30eb1a7f967c3a4ee4994106ee8228eb552f3ea6affff01fb07"
+    },
+    "aa-comparison.json": {
+      "bytes": 797,
+      "sha256": "940ac6cc8d6a1817b4a360030176f77856e3c5e03d027c72fb4498845986ecef"
+    },
+    "camera-fit.json": {
+      "bytes": 6233,
+      "sha256": "909bf67c3e97ed5e94e7fe0e5cc39e77eb7a112b36573b2b88c626612c94b733"
+    },
+    "camera-path.json": {
+      "bytes": 130875,
+      "sha256": "13e86ffd9b9314f3141ff13a54c309c637ed3e53f858632fcbba30f4815b9d51"
+    },
+    "ci-validation.json": {
+      "bytes": 745,
+      "sha256": "9f8f44cc385e1f4023a926ed4d292945ee226f752cefb93523d328095d8c34d4"
+    },
+    "color-normalization.json": {
+      "bytes": 631,
+      "sha256": "0aede6a6c5793f1b38b1309ef97d19102f273d2c2ea8e0cf2a52aed00cf4a1de"
+    },
+    "cycles-dusk-benchmark/frame-001.png": {
+      "bytes": 286126,
+      "sha256": "ee6c026773e35338250a42ceda70a65be984961c7f88083f361b462d09e590cd"
+    },
+    "cycles-dusk-benchmark/frame-217.png": {
+      "bytes": 306136,
+      "sha256": "d7105bc719da27caa39b90ab031d7bd5b018d45c86e3043e28df8ac06902cb22"
+    },
+    "cycles-dusk-benchmark/frame-432.png": {
+      "bytes": 289492,
+      "sha256": "4b770f12ffbcd96fcaa558005170fb3656a01f0faa21f93678f67adee8c08c7a"
+    },
+    "decoded-frame-checksums.txt": {
+      "bytes": 34776,
+      "sha256": "9bccc023bcd0037bb59bf9734b6725ba64110bea01fc425cd63c4478f590ef2d"
+    },
+    "delivery-validation.json": {
+      "bytes": 1437,
+      "sha256": "75a3d4f89cdf3e971258731fe4e7c6bc3368da3b17b9864183d35da9f669d472"
+    },
+    "element-provenance.csv": {
+      "bytes": 1643588,
+      "sha256": "5b8ca1a39c7b87c782c11f091a54aeb44255b5e6d5f6e76e1bf267b9a91c6c91"
+    },
+    "encoded-review/frame-01.png": {
+      "bytes": 1353954,
+      "sha256": "dc794d674d717cb90613377101804572396dfaae2e64fffe8d0090b6c756ccf2"
+    },
+    "encoded-review/frame-02.png": {
+      "bytes": 1768413,
+      "sha256": "33519db3d74041fe148e9970c14614285d56ba212bbf0090b9cfe25ff7bae080"
+    },
+    "encoded-review/frame-03.png": {
+      "bytes": 1566487,
+      "sha256": "1564bf68b5b56e81c887dd0637bc108a8b747b65d8c690bcbcc52905bd8e4f07"
+    },
+    "film-capture.json": {
+      "bytes": 1463,
+      "sha256": "b1050a1fc7573cec864f66343a191fb3f0742b5be31f618637ec7039e4f2b32d"
+    },
+    "film-encoding.json": {
+      "bytes": 348,
+      "sha256": "eb6b885279fe2479b85486ad4284c54a7b67cc34f7503d216de657148c69bea5"
+    },
+    "film-review/frame-000.png": {
+      "bytes": 2087356,
+      "sha256": "ded8d6f43cb417809ba47d850b01148c0bc4a5b4a13bfc908e34f2f9a2cf4346"
+    },
+    "film-review/frame-072.png": {
+      "bytes": 2126058,
+      "sha256": "5192cc0c378c4ba1acceea6b80d7663be611f23f4f33c315f4f1dd91030f4c03"
+    },
+    "film-review/frame-144.png": {
+      "bytes": 2238840,
+      "sha256": "e73669178d87ffad08ce519181222209041dd5b02fc401af85bbff6fa2b72d10"
+    },
+    "film-review/frame-216-fxaa-only.png": {
+      "bytes": 2233326,
+      "sha256": "8a0f266af66354e43705a7a586f75e0ccc7908bed431c29b7063cb2ecb34d3c2"
+    },
+    "film-review/frame-216.png": {
+      "bytes": 2272012,
+      "sha256": "f6fd62ff6092835fa187808fb066b970962d0b37a572642df772810ba8a2f733"
+    },
+    "film-review/frame-288.png": {
+      "bytes": 2212439,
+      "sha256": "7d42b89eb763fc035d5bf010b87f27eaa98141061483208af7911a5f385707ce"
+    },
+    "film-review/frame-360.png": {
+      "bytes": 2138808,
+      "sha256": "e742cf56c76094e2f461a47d74b164d44a5c9f0a00293efc629f900f347dd42b"
+    },
+    "film-review/frame-431.png": {
+      "bytes": 2073619,
+      "sha256": "68601c4080c9e806eb73bdbe1f5b2a1ae9b35c78f94f71acc468e7448fd5e936"
+    },
+    "film-review.json": {
+      "bytes": 1459,
+      "sha256": "d85c014704e2791ef44db5f88a7ef63e06db270e7dd248506025da0277630103"
+    },
+    "geometry-review/after-east.png": {
+      "bytes": 373415,
+      "sha256": "20e31a4d01185b475828d9b81b73b946080324c887d20eff2b8a89ae406703c9"
+    },
+    "geometry-review/after-iso.png": {
+      "bytes": 422643,
+      "sha256": "b8305412925743710d7ada1b31cfea510158e27d3661375ca6ab2fef5d7b01d2"
+    },
+    "geometry-review/after-plan.png": {
+      "bytes": 365032,
+      "sha256": "e61a289709f2912e388ab66c7b6517d6fa3e6abe2e03014718c956740a5c1e26"
+    },
+    "geometry-review/after-south.png": {
+      "bytes": 412281,
+      "sha256": "cfa6cb2696713a63a26601a738a0c444a71201ad265c5a54c98c1f1e4c9c1c10"
+    },
+    "geometry-review/before-south.png": {
+      "bytes": 412028,
+      "sha256": "93241b16f308fd59644fd4d03c3c6e0fc79814567f42883970ab03c38d87b3de"
+    },
+    "geometry-review.json": {
+      "bytes": 348,
+      "sha256": "af390dadee22b6c203aa918a1b515c1d6a7b1cd9e2ec7a346e9061be45794cea"
+    },
+    "geometry-validation.json": {
+      "bytes": 182133,
+      "sha256": "6c8623b661c5621a7aa6605d3fd431e7b397b28dce8c2877e85a3499c489682b"
+    },
+    "geometry-visual-review.json": {
+      "bytes": 1040,
+      "sha256": "b79d277406ef5324a482fefa27937002b69c67c165bc3e27c4c2be38a2118bdb"
+    },
+    "media-validation.json": {
+      "bytes": 757,
+      "sha256": "3a4d1e5475faaffe037f45defe9913f647595bd7410237d6d0a2a525529f3b5f"
+    },
+    "native-dusk-benchmark.json": {
+      "bytes": 244,
+      "sha256": "fec8b241b511313f4eb75834294c63647c4fff5d7aa0fa59a405fd4d40a26bb1"
+    },
+    "native-render.json": {
+      "bytes": 188,
+      "sha256": "a2938d23e1b88718166b428a93670b15ffb6b857603b9ceb316382c697fe9a3c"
+    },
+    "opening-audit.csv": {
+      "bytes": 3057,
+      "sha256": "2105e920767ea98ee4a9fe30b6df751c75f81797787f3c093707096bb1d76a7c"
+    },
+    "opening-audit.json": {
+      "bytes": 15811,
+      "sha256": "c6567a3e965cd617c53be2e9c20e505ebc11c02fc60a0b518f2cc57bfe656ce9"
+    },
+    "revision-validation.json": {
+      "bytes": 2931,
+      "sha256": "375949ffadd594639d216c0e239713b76719073a05bdc10c92c9e2fcf63f3135"
+    },
+    "source-measurements.json": {
+      "bytes": 1619,
+      "sha256": "2191e7099f7f24cad915b0dfdef1c8f02f40b96ac9d23a40048d33188c691722"
+    },
+    "visual-review.json": {
+      "bytes": 2746,
+      "sha256": "864a6f70e41aaca82a369f594bc704a9004bca15efe45743949a88cff4317ae3"
+    }
+  },
+  "reproduction_inputs": {
+    "projects/highland-roof/HANDOFF.md": {
+      "bytes": 4447,
+      "sha256": "a0b4b2eb9277f1bdf5dcab43a2d404e71db1caef72adcd6587c1b7bba5498f57"
+    },
+    "projects/highland-roof/README.md": {
+      "bytes": 6437,
+      "sha256": "d5eee2bc00926bb5a50a77ec48df7445303610140a8cfe8ec78221a4c591c07f"
+    },
+    "projects/highland-roof/build.py": {
+      "bytes": 10732,
+      "sha256": "28f885c980ccd4951b3bf472aca20722196b8b64f1695454cb7d82e17aaa4460"
+    },
+    "projects/highland-roof/finish-film.py": {
+      "bytes": 2636,
+      "sha256": "3db9f6ae452dcde1fe305b25b4415dbc5ee08f3131e842832256f79d43240535"
+    },
+    "projects/highland-roof/geometry-revision.spec.json": {
+      "bytes": 141051,
+      "sha256": "ce2f2be7e1baa901dd71e3276bea49e3b7c90be0e5e1ac0afdb42f7d0ec794c4"
+    },
+    "projects/highland-roof/geometry.json": {
+      "bytes": 5004,
+      "sha256": "4e5cdadba4c663e078a33f1e4b23ff777174a6d121e76bd069152686fc7df1ac"
+    },
+    "projects/highland-roof/geometry.py": {
+      "bytes": 12092,
+      "sha256": "55cfb77ea2d9ab21c1efa0780525914f2a13872009cf3ccbd63d6551aa5fd504"
+    },
+    "projects/highland-roof/package-lock.json": {
+      "bytes": 1902,
+      "sha256": "f9ca9fe02e8c5e01877910a58af274eacaff7fcb658fde391c8d2d89d75700ef"
+    },
+    "projects/highland-roof/package.json": {
+      "bytes": 125,
+      "sha256": "fe71c2db204f05ab10fe7aba376e03b1779e4fc5aee0077c3f8de59813cc5cce"
+    },
+    "projects/highland-roof/package.py": {
+      "bytes": 3383,
+      "sha256": "b82c22540969ba52ca1bb2f16b3be0828b7debc8983d50a55c6dc28b78f7d2ae"
+    },
+    "projects/highland-roof/photo-landmarks.json": {
+      "bytes": 3219,
+      "sha256": "fddd83a9085e8860530a7ac33a96172b14ecde70540dbdcab64f16eb66a04d55"
+    },
+    "projects/highland-roof/prepare.py": {
+      "bytes": 6301,
+      "sha256": "d14f60d0bfebe4a29816301a9ff2702e9fb48776fb63f40ee550528e4efac87a"
+    },
+    "projects/highland-roof/presentation.json": {
+      "bytes": 697,
+      "sha256": "23a40970d3048316f390a9abc1fb35b4a0059b0dc9e0bcdbe0803faaadf74f5d"
+    },
+    "projects/highland-roof/render-film.cjs": {
+      "bytes": 6618,
+      "sha256": "2e913ddae4fee8fedae447977ad861325e0629f58080648c6abb7e744fe66192"
+    },
+    "projects/highland-roof/render_still.py": {
+      "bytes": 2791,
+      "sha256": "5c5bfb5ac083f9e8469b51d0f40ff9674d133eb0bace94c6c262100ef2869672"
+    },
+    "projects/highland-roof/report.py": {
+      "bytes": 8857,
+      "sha256": "af4642a6d8b836dbc5e532eb4583314ef1eb893ad3940baf31e1c1400ff18185"
+    },
+    "projects/highland-roof/requirements.txt": {
+      "bytes": 74,
+      "sha256": "0b25337142356c195f2abc13d8e7cdf81bfb1c0107d0e9599c9ac56e83cef2be"
+    },
+    "projects/highland-roof/review_geometry.py": {
+      "bytes": 3589,
+      "sha256": "3c625be25edd413b942dc52e54f69e8d5a872a54e4896aa451d5757196673756"
+    },
+    "projects/highland-roof/validate.py": {
+      "bytes": 8145,
+      "sha256": "2738d6bec0fe36c67053b0ca778ee1bd228703407a86817fcda6efd6fa6e4d3e"
+    },
+    "projects/highland-roof/validate_media.py": {
+      "bytes": 4015,
+      "sha256": "96f138b10d38abff83a0319f157ee83a28db050e69e83b23eb3553c568a6b77c"
+    },
+    "projects/highland-roof/viewer.html": {
+      "bytes": 1035,
+      "sha256": "da955b97ea0fe113abe1b0b43f88567bfc1e2c06a13c163fabc83193ca5d61b9"
+    },
+    "projects/highland-roof/viewer.js": {
+      "bytes": 12493,
+      "sha256": "cb0b7c6e876f874198982383c12674d1a285c4a0eb25f830c37a0de2f2476329"
+    },
+    "deliverables/highland-daylight/Highland-daylight-photo-study.blend": {
+      "bytes": 23946687,
+      "sha256": "bf886a5c3191eca90f0b51fcbd5c03efaad3ff2c0ed832807485c4dd1faae51d"
+    },
+    "deliverables/highland-daylight/camera-fit.json": {
+      "bytes": 5431,
+      "sha256": "4f0bdd0422fa369aa6588508ac2cc62c4bc0614bcf0df5b906f7f5d5d6dc231a"
+    },
+    "projects/highland-daylight/fit_camera.py": {
+      "bytes": 3936,
+      "sha256": "8726de44155c14d3bfd9d5c48a70201bdee61931327ab5f35094535aa7e6794c"
+    },
+    "projects/highland-daylight/photo-landmarks.json": {
+      "bytes": 1567,
+      "sha256": "08ca0d60836166b0ec37d0c4260f7c4f5d45d27dcbb6c0d6536522d3ccb91483"
+    },
+    "projects/highland-refined/exterior-revised.spec.json": {
+      "bytes": 135720,
+      "sha256": "3c1f090fb8f93c557bbad2211180cbb1efdad563c5eb5d8e0767f34be7578d65"
+    },
+    "projects/highland-refined/HANDOFF.md": {
+      "bytes": 12867,
+      "sha256": "5a684a034d57979a58b76ab75201ee5aecc11e5c84cdad4273deae17d23df9fc"
+    },
+    "projects/highland-cinematic/assets/source.json": {
+      "bytes": 488,
+      "sha256": "44d07982168e21ae9aab582de60db1105cd9b59475d6d10443ec8d4c48ab0162"
+    },
+    "projects/highland-cinematic/assets/kloofendal_48d_partly_cloudy_puresky_4k.hdr": {
+      "bytes": 20674857,
+      "sha256": "3061c00a16ecae748e84fd6c44c04804f539c118bb66325db858bad87b11bf88"
+    },
+    "projects/highland-exterior/source-review/east-grid.png": {
+      "bytes": 510889,
+      "sha256": "7361e04e472cf5e63363d2e61853b72cdee0eb921b3729b0b121e2aa82830a80"
+    },
+    "projects/highland-exterior/source-review/east.png": {
+      "bytes": 3701484,
+      "sha256": "6348dc352afd0c3b73765b64f9ea7333a766c69d2769bf02a64518bdfe8a7759"
+    },
+    "projects/highland-exterior/source-review/north.png": {
+      "bytes": 1951462,
+      "sha256": "89b887cd1dd490695b469dcf8428e1950cad4d3d86dc80ddf5a5e940ed864c72"
+    },
+    "projects/highland-exterior/source-review/plan-grid.png": {
+      "bytes": 131549,
+      "sha256": "06389752a16c5a8e0016dcc69f93ca8b59acb3fd6bdd88d523eebc5dc86169b2"
+    },
+    "projects/highland-exterior/source-review/plan-y-dim.png": {
+      "bytes": 435976,
+      "sha256": "d4bf052155d913ee7ed7cc309cf3dd060754bbffa596dacdde6f02d6e04f5efd"
+    },
+    "projects/highland-exterior/source-review/r1-outline.png": {
+      "bytes": 3032386,
+      "sha256": "cb15b1fcb3887b5bcf42809bc1ded0ec0009bcc3b5659096a77e6a328c6674fb"
+    },
+    "projects/highland-exterior/source-review/r5-outline.png": {
+      "bytes": 2187222,
+      "sha256": "bdf38e74cc508f479aa828172c55ffbe3b2c72adcca2df4f3928aad65cb72295"
+    },
+    "projects/highland-exterior/source-review/roof.png": {
+      "bytes": 2033818,
+      "sha256": "5e85464bbd24eb6f3910ebb807df8b5eb3a9c77e68e9418f822cd07a148f3601"
+    },
+    "projects/highland-exterior/source-review/south-front.png": {
+      "bytes": 3514020,
+      "sha256": "6bbadc93b5baa3f308136e31deec8b4bb41d40b1f44c01deee7e8ca6674becd8"
+    },
+    "projects/highland-exterior/source-review/south-grid.png": {
+      "bytes": 308287,
+      "sha256": "918ab98ba48865201dabb7189f1eb9597e8d44dbcfd2fc105a48d8f77d8ed02d"
+    },
+    "projects/highland-exterior/source-review/south.png": {
+      "bytes": 2788368,
+      "sha256": "8eaa21fa7532c4a077f39cf1479001b8c7b3a962beb8bddb62f9e69fe9ccafc5"
+    },
+    "projects/highland-exterior/source-review/west.png": {
+      "bytes": 2868883,
+      "sha256": "0c819fa42271bb926a515e6023a66faa4d148db46c89a3ac44ecc8ef5fa2ee71"
+    },
+    "projects/highland-exterior/source-review/user-photo-01.jpg": {
+      "bytes": 184053,
+      "sha256": "131ba8316f6d65c630a56b47fcbf5801f8222568dc99623b7051036de62f1122"
+    },
+    "projects/highland-exterior/source-review/user-photo-02.jpg": {
+      "bytes": 100259,
+      "sha256": "9c9d5a11bfc62207d09f5dd97d3496bcf87eb2312b1f2b51b1bc7b0c26cd8dcb"
+    }
+  }
+}

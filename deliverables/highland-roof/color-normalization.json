@@ -1,0 +1,13 @@
+{
+  "normalization_applied": true,
+  "original_sha256": "b025acbc491281977e0f28b91227193d922b7ec34326dc73ba0bb6795bd701ab",
+  "movie_sha256": "f79e0afe68b82fbeb219e879a3c1eb4d7142bfb948652acb28228b206d0f759b",
+  "method": "Lossless stream copy with H.264 SPS and MP4 primaries/transfer/matrix/range tags normalized to BT.709 limited range. No video re-encoding.",
+  "verified_tags": {
+    "color_space": "bt709",
+    "color_primaries": "bt709",
+    "color_transfer": "bt709",
+    "color_range": "tv"
+  },
+  "reason": "The PNG-to-libx264 encode can inherit unspecified per-frame primaries/transfer tags despite the output flags."
+}

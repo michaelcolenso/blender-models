@@ -1,0 +1,397 @@
+{
+  "opening_inventory": 175,
+  "reviewed_candidates": 16,
+  "resolved_candidates": 0,
+  "remaining_unresolved": 16,
+  "basis": "Existing source crops visually reviewed; geometry calculations independently recomputed using outward-facing segments. Partial cropped drawings do not establish revised jamb offsets.",
+  "candidates": [
+    {
+      "id": "OPEN-01",
+      "level": "P1",
+      "face": "south",
+      "pixels": [
+        990,
+        1018
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "r1",
+      "projected_center_in": 252.142,
+      "projected_width_in": 55.172,
+      "outward_facing_matches": [
+        {
+          "segment": 28,
+          "extent_in": [
+            251.961,
+            363.691
+          ],
+          "depth_in": 878.788,
+          "fitting_width_in_with_6in_jamb_margin": -11.638
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-02",
+      "level": "R1",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "r1",
+      "projected_center_in": 265.935,
+      "projected_width_in": 59.112,
+      "outward_facing_matches": [
+        {
+          "segment": 28,
+          "extent_in": [
+            251.961,
+            363.691
+          ],
+          "depth_in": 878.788,
+          "fitting_width_in_with_6in_jamb_margin": 15.948
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-03",
+      "level": "R2",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "typical",
+      "projected_center_in": 265.935,
+      "projected_width_in": 59.112,
+      "outward_facing_matches": [
+        {
+          "segment": 28,
+          "extent_in": [
+            260.724,
+            357.118
+          ],
+          "depth_in": 884.845,
+          "fitting_width_in_with_6in_jamb_margin": -1.578
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-04",
+      "level": "R2",
+      "face": "north",
+      "pixels": [
+        848,
+        865
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "typical",
+      "projected_center_in": 1393.699,
+      "projected_width_in": 42.219,
+      "outward_facing_matches": [
+        {
+          "segment": 2,
+          "extent_in": [
+            435.987,
+            1401.179
+          ],
+          "depth_in": 1760.313,
+          "fitting_width_in_with_6in_jamb_margin": 2.961
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-05",
+      "level": "R2",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented.",
+      "polygon": "typical",
+      "projected_center_in": 146.438,
+      "projected_width_in": 33.696,
+      "outward_facing_matches": [],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected center falls outside every outward-facing segment for this elevation and floor.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-06",
+      "level": "R3",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "typical",
+      "projected_center_in": 265.935,
+      "projected_width_in": 59.112,
+      "outward_facing_matches": [
+        {
+          "segment": 28,
+          "extent_in": [
+            260.724,
+            357.118
+          ],
+          "depth_in": 884.845,
+          "fitting_width_in_with_6in_jamb_margin": -1.578
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-07",
+      "level": "R3",
+      "face": "north",
+      "pixels": [
+        848,
+        865
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "typical",
+      "projected_center_in": 1393.699,
+      "projected_width_in": 42.219,
+      "outward_facing_matches": [
+        {
+          "segment": 2,
+          "extent_in": [
+            435.987,
+            1401.179
+          ],
+          "depth_in": 1760.313,
+          "fitting_width_in_with_6in_jamb_margin": 2.961
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-08",
+      "level": "R3",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented.",
+      "polygon": "typical",
+      "projected_center_in": 146.438,
+      "projected_width_in": 33.696,
+      "outward_facing_matches": [],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected center falls outside every outward-facing segment for this elevation and floor.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-09",
+      "level": "R4",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "typical",
+      "projected_center_in": 265.935,
+      "projected_width_in": 59.112,
+      "outward_facing_matches": [
+        {
+          "segment": 28,
+          "extent_in": [
+            260.724,
+            357.118
+          ],
+          "depth_in": 884.845,
+          "fitting_width_in_with_6in_jamb_margin": -1.578
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-10",
+      "level": "R4",
+      "face": "north",
+      "pixels": [
+        848,
+        865
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "typical",
+      "projected_center_in": 1393.699,
+      "projected_width_in": 42.219,
+      "outward_facing_matches": [
+        {
+          "segment": 2,
+          "extent_in": [
+            435.987,
+            1401.179
+          ],
+          "depth_in": 1760.313,
+          "fitting_width_in_with_6in_jamb_margin": 2.961
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-11",
+      "level": "R4",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented.",
+      "polygon": "typical",
+      "projected_center_in": 146.438,
+      "projected_width_in": 33.696,
+      "outward_facing_matches": [],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected center falls outside every outward-facing segment for this elevation and floor.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-12",
+      "level": "R5",
+      "face": "south",
+      "pixels": [
+        996,
+        1015
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented.",
+      "polygon": "r5",
+      "projected_center_in": 255.098,
+      "projected_width_in": 37.438,
+      "outward_facing_matches": [],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected center falls outside every outward-facing segment for this elevation and floor.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-13",
+      "level": "R5",
+      "face": "south",
+      "pixels": [
+        1042,
+        1073
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "r5",
+      "projected_center_in": 357.559,
+      "projected_width_in": 61.083,
+      "outward_facing_matches": [
+        {
+          "segment": 8,
+          "extent_in": [
+            357.06,
+            476.94
+          ],
+          "depth_in": 430.698,
+          "fitting_width_in_with_6in_jamb_margin": -11.002
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-14",
+      "level": "R5",
+      "face": "south",
+      "pixels": [
+        1473,
+        1491
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation.",
+      "polygon": "r5",
+      "projected_center_in": 1333.5,
+      "projected_width_in": 45.0,
+      "outward_facing_matches": [
+        {
+          "segment": 4,
+          "extent_in": [
+            1260.701,
+            1337.048
+          ],
+          "depth_in": 476.25,
+          "fitting_width_in_with_6in_jamb_margin": -4.904
+        }
+      ],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected opening cannot fit the matching outward-facing return with the inherited six-inch jamb allowance.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-15",
+      "level": "R5",
+      "face": "north",
+      "pixels": [
+        1354,
+        1369
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented.",
+      "polygon": "r5",
+      "projected_center_in": 251.491,
+      "projected_width_in": 29.732,
+      "outward_facing_matches": [],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected center falls outside every outward-facing segment for this elevation and floor.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    },
+    {
+      "id": "OPEN-16",
+      "level": "R5",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented.",
+      "polygon": "r5",
+      "projected_center_in": 146.438,
+      "projected_width_in": 33.696,
+      "outward_facing_matches": [],
+      "decision": "retain unresolved; no geometry change",
+      "review_basis": "Projected center falls outside every outward-facing segment for this elevation and floor.",
+      "source_review": "A3.01 south / A3.02 north elevation crops; A2.03 R1 and A2.07 R5 plan crops; inherited A2.04 polygon registration",
+      "needed_to_resolve": "Original plan/elevation sheets or a clearer return photograph to establish the correct wall and jamb locations."
+    }
+  ]
+}

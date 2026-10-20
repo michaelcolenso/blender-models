@@ -1,0 +1,259 @@
+{
+  "method": "Robust pinhole fit, centered principal point, 36 mm horizontal sensor, no distortion",
+  "scope": "Manual image picks on the supplied photograph, paired with the existing simplified typical-floor polygon. Roof and floor edges are interpreted correspondences, not surveyed control points. The image may have been cropped or corrected; its lens metadata and distortion are unknown. Terrace-top correspondences now refer to the revised provisional band tops, rather than the R5 floor plane.",
+  "source_photo": "projects/highland-exterior/source-review/user-photo-02.jpg",
+  "image_size": [
+    665,
+    441
+  ],
+  "position_m": [
+    53.13435283195527,
+    -21.455689705071265,
+    3.95158498327978
+  ],
+  "yaw_pitch_roll_radians": [
+    0.6833367044491476,
+    0.10418693062679076,
+    -0.03442132707513306
+  ],
+  "lens_mm": 29.961361512213465,
+  "success": true,
+  "bounds": {
+    "lower": [
+      40,
+      -85,
+      0.6,
+      0.2,
+      -0.1,
+      -0.06,
+      16
+    ],
+    "upper": [
+      100,
+      -5,
+      6,
+      1.4,
+      0.45,
+      0.06,
+      70
+    ]
+  },
+  "active_bounds": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "landmark_rmse_px": 11.130054616340063,
+  "same_geometry_previous_camera_rmse_px": 13.920366918432165,
+  "maximum_landmark_error_px": 21.2055584890086,
+  "landmarks": [
+    {
+      "id": "south-central-west-top",
+      "polygon": "typical",
+      "vertex": 17,
+      "z_in": 655,
+      "pixel": [
+        181,
+        101
+      ],
+      "uncertainty_px": 4,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        20.5810612,
+        1.8519394,
+        16.637
+      ],
+      "projected_pixel": [
+        181.83448858693438,
+        105.84841497834347
+      ],
+      "error_px": 4.919705174494612
+    },
+    {
+      "id": "south-central-east-top",
+      "polygon": "typical",
+      "vertex": 16,
+      "z_in": 655,
+      "pixel": [
+        253,
+        67
+      ],
+      "uncertainty_px": 4,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        28.1627072,
+        1.8519394,
+        16.637
+      ],
+      "projected_pixel": [
+        254.03126548112976,
+        79.16789094339441
+      ],
+      "error_px": 12.211514177320907
+    },
+    {
+      "id": "south-corner-west-top",
+      "polygon": "typical",
+      "vertex": 13,
+      "z_in": 657,
+      "pixel": [
+        315,
+        82
+      ],
+      "uncertainty_px": 5,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        31.8479678,
+        3.8196519999999996,
+        16.6878
+      ],
+      "projected_pixel": [
+        318.48187467931433,
+        71.44685099743992
+      ],
+      "error_px": 11.112713671857339
+    },
+    {
+      "id": "south-corner-east-top",
+      "polygon": "typical",
+      "vertex": 12,
+      "z_in": 657,
+      "pixel": [
+        373,
+        61
+      ],
+      "uncertainty_px": 5,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        35.5899466,
+        3.8196519999999996,
+        16.6878
+      ],
+      "projected_pixel": [
+        367.7169524259238,
+        54.44000732862435
+      ],
+      "error_px": 8.42283179924986
+    },
+    {
+      "id": "south-outboard-west-top",
+      "polygon": "typical",
+      "vertex": 21,
+      "z_in": 653,
+      "pixel": [
+        147,
+        144
+      ],
+      "uncertainty_px": 6,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        12.5208538,
+        3.8196519999999996,
+        16.586199999999998
+      ],
+      "projected_pixel": [
+        143.7107538123305,
+        133.00264281890537
+      ],
+      "error_px": 11.478719678242516
+    },
+    {
+      "id": "south-outboard-east-top",
+      "polygon": "typical",
+      "vertex": 20,
+      "z_in": 653,
+      "pixel": [
+        178,
+        130
+      ],
+      "uncertainty_px": 6,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        17.3882304,
+        3.8196519999999996,
+        16.586199999999998
+      ],
+      "projected_pixel": [
+        178.49619396887994,
+        121.07082632419085
+      ],
+      "error_px": 8.942949792295378
+    },
+    {
+      "id": "south-central-east-r2",
+      "polygon": "typical",
+      "vertex": 16,
+      "z_in": 255,
+      "pixel": [
+        252,
+        219
+      ],
+      "uncertainty_px": 6,
+      "position_m": [
+        28.1627072,
+        1.8519394,
+        6.476999999999999
+      ],
+      "projected_pixel": [
+        257.26103129806614,
+        239.5425719059599
+      ],
+      "error_px": 21.2055584890086
+    },
+    {
+      "id": "south-corner-east-r2",
+      "polygon": "typical",
+      "vertex": 12,
+      "z_in": 255,
+      "pixel": [
+        380,
+        232
+      ],
+      "uncertainty_px": 6,
+      "position_m": [
+        35.5899466,
+        3.8196519999999996,
+        6.476999999999999
+      ],
+      "projected_pixel": [
+        375.217673650872,
+        231.2423248300328
+      ],
+      "error_px": 4.841974491129526
+    },
+    {
+      "id": "east-north-top",
+      "polygon": "typical",
+      "vertex": 3,
+      "z_in": 627,
+      "pixel": [
+        579,
+        157
+      ],
+      "uncertainty_px": 10,
+      "previous_z_in": 627,
+      "height_basis": "Revised terrace band top; provisional scan height from source-measurements.json.",
+      "position_m": [
+        35.5899466,
+        44.711950200000004,
+        15.925799999999999
+      ],
+      "projected_pixel": [
+        577.058493004837,
+        164.6494921420607
+      ],
+      "error_px": 7.892032656021835
+    }
+  ],
+  "limitation": "Fitting residuals use the same manual observations as the fit. The changed model heights prevent treating this as an independent comparison with the prior revision's metric."
+}

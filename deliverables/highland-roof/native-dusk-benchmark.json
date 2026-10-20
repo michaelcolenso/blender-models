@@ -1,0 +1,16 @@
+{
+  "preview": false,
+  "night_frames": "1,217,432",
+  "elapsed_seconds": 57.81,
+  "samples": 8,
+  "resolution_percentage": 100,
+  "resolution": [
+    640,
+    360
+  ],
+  "frame_seconds": {
+    "1": 18.8,
+    "217": 18.5,
+    "432": 18.2
+  }
+}

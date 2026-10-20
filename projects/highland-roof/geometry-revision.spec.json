@@ -1,0 +1,4847 @@
+{
+  "photo_references": [
+    {
+      "id": "photo-01",
+      "description": "User street-view screenshot labeled September 2025 / 1213 2nd Ave W. Used for brick, panel and roof-cap appearance; not a dimensional reference."
+    },
+    {
+      "id": "photo-02",
+      "description": "User southeast corner photograph. Used for material families, recessed balcony appearance, cornices and planted edges. No scale or capture date established."
+    }
+  ],
+  "project": "200 W. Highland / visible-facade revision",
+  "units": "inches",
+  "source_pdf_sha256": "6ef98b6a02b79c1ceb590fcaa626ac70bb4ff06de33ca43026ae0fa04206fb70",
+  "source_date": "2007-04-02",
+  "sources": [
+    "A2.03 R1 plan",
+    "A2.04 R2 plan",
+    "A2.07 R5 plan",
+    "A2.08 roof plan",
+    "A3.01 south/east elevations",
+    "A3.02 north/west elevations",
+    "A3.11 floor datums"
+  ],
+  "grid_dimensions_in": {
+    "x_6_to_10": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "y_H_to_A": [
+      0,
+      180,
+      474,
+      690,
+      900,
+      1110,
+      1434,
+      1800
+    ]
+  },
+  "grid_pixel_picks": {
+    "r1": [
+      [
+        864,
+        951,
+        1103,
+        1253,
+        1421
+      ],
+      [
+        223,
+        386,
+        532,
+        626,
+        725,
+        820,
+        951,
+        1034
+      ]
+    ],
+    "typical": [
+      [
+        866,
+        954,
+        1106,
+        1257,
+        1425
+      ],
+      [
+        224,
+        390,
+        534,
+        629,
+        726,
+        823,
+        955,
+        1034
+      ]
+    ],
+    "r5": [
+      [
+        875,
+        963,
+        1113,
+        1265,
+        1432
+      ],
+      [
+        223,
+        386,
+        531,
+        626,
+        726,
+        822,
+        951,
+        1034
+      ]
+    ],
+    "roof": [
+      [
+        874,
+        962,
+        1113,
+        1264,
+        1430
+      ],
+      [
+        225,
+        386,
+        531,
+        629,
+        726,
+        822,
+        951,
+        1034
+      ]
+    ]
+  },
+  "facade_registration": {
+    "south": {
+      "pixels": [
+        868,
+        975,
+        1144,
+        1293,
+        1443
+      ],
+      "inches": [
+        0,
+        195,
+        528,
+        861,
+        1236
+      ],
+      "source": "A3.01 / 01 south elevation"
+    },
+    "east": {
+      "pixels": [
+        646,
+        728,
+        861,
+        962,
+        1052,
+        1149,
+        1296,
+        1460
+      ],
+      "inches": [
+        0,
+        180,
+        474,
+        690,
+        900,
+        1110,
+        1434,
+        1800
+      ],
+      "source": "A3.01 / 02 east elevation"
+    },
+    "west": {
+      "pixels": [
+        646,
+        810,
+        958,
+        1048,
+        1148,
+        1246,
+        1374,
+        1457
+      ],
+      "inches": [
+        1800,
+        1434,
+        1110,
+        900,
+        690,
+        474,
+        180,
+        0
+      ],
+      "source": "A3.02 / 02 west elevation"
+    },
+    "north": {
+      "pixels": [
+        920,
+        1071,
+        1222,
+        1390
+      ],
+      "inches": [
+        1236,
+        861,
+        528,
+        195
+      ],
+      "source": "A3.02 / 01 north elevation"
+    }
+  },
+  "polygons": {
+    "r1": [
+      [
+        4.483,
+        1784.282
+      ],
+      [
+        440.368,
+        1784.282
+      ],
+      [
+        440.368,
+        1759.583
+      ],
+      [
+        1410.107,
+        1759.583
+      ],
+      [
+        1410.107,
+        1407.37
+      ],
+      [
+        1474.839,
+        1407.37
+      ],
+      [
+        1474.839,
+        1110.0
+      ],
+      [
+        1410.107,
+        1110.0
+      ],
+      [
+        1410.107,
+        487.642
+      ],
+      [
+        1448.054,
+        487.642
+      ],
+      [
+        1448.054,
+        301.191
+      ],
+      [
+        1410.107,
+        301.191
+      ],
+      [
+        1410.107,
+        143.133
+      ],
+      [
+        1262.786,
+        143.133
+      ],
+      [
+        1262.786,
+        184.489
+      ],
+      [
+        1117.696,
+        184.489
+      ],
+      [
+        1117.696,
+        69.398
+      ],
+      [
+        818.82,
+        69.398
+      ],
+      [
+        818.82,
+        184.489
+      ],
+      [
+        692.28,
+        184.489
+      ],
+      [
+        692.28,
+        143.133
+      ],
+      [
+        499.52,
+        143.133
+      ],
+      [
+        499.52,
+        184.489
+      ],
+      [
+        453.513,
+        184.489
+      ],
+      [
+        453.513,
+        366.275
+      ],
+      [
+        499.52,
+        366.275
+      ],
+      [
+        499.52,
+        426.87
+      ],
+      [
+        363.691,
+        426.87
+      ],
+      [
+        363.691,
+        878.788
+      ],
+      [
+        251.961,
+        878.788
+      ],
+      [
+        251.961,
+        1521.571
+      ],
+      [
+        4.483,
+        1521.571
+      ]
+    ],
+    "typical": [
+      [
+        155.114,
+        1788.976
+      ],
+      [
+        435.987,
+        1788.976
+      ],
+      [
+        435.987,
+        1760.313
+      ],
+      [
+        1401.179,
+        1760.313
+      ],
+      [
+        1401.179,
+        1553.06
+      ],
+      [
+        1439.125,
+        1553.06
+      ],
+      [
+        1439.125,
+        1263.0
+      ],
+      [
+        1401.179,
+        1263.0
+      ],
+      [
+        1401.179,
+        494.041
+      ],
+      [
+        1439.125,
+        494.041
+      ],
+      [
+        1439.125,
+        309.182
+      ],
+      [
+        1401.179,
+        309.182
+      ],
+      [
+        1401.179,
+        150.38
+      ],
+      [
+        1253.857,
+        150.38
+      ],
+      [
+        1253.857,
+        193.364
+      ],
+      [
+        1108.768,
+        193.364
+      ],
+      [
+        1108.768,
+        72.911
+      ],
+      [
+        810.278,
+        72.911
+      ],
+      [
+        810.278,
+        193.364
+      ],
+      [
+        684.576,
+        193.364
+      ],
+      [
+        684.576,
+        150.38
+      ],
+      [
+        492.947,
+        150.38
+      ],
+      [
+        492.947,
+        193.364
+      ],
+      [
+        446.941,
+        193.364
+      ],
+      [
+        446.941,
+        373.773
+      ],
+      [
+        492.947,
+        373.773
+      ],
+      [
+        492.947,
+        433.909
+      ],
+      [
+        357.118,
+        433.909
+      ],
+      [
+        357.118,
+        884.845
+      ],
+      [
+        260.724,
+        884.845
+      ],
+      [
+        260.724,
+        1535.422
+      ],
+      [
+        155.114,
+        1535.422
+      ]
+    ],
+    "r5": [
+      [
+        261.6,
+        1764.074
+      ],
+      [
+        1411.15,
+        1764.074
+      ],
+      [
+        1411.15,
+        1228.428
+      ],
+      [
+        1337.048,
+        1228.428
+      ],
+      [
+        1337.048,
+        476.25
+      ],
+      [
+        1260.701,
+        476.25
+      ],
+      [
+        1260.701,
+        248.372
+      ],
+      [
+        476.94,
+        248.372
+      ],
+      [
+        476.94,
+        430.698
+      ],
+      [
+        357.06,
+        430.698
+      ],
+      [
+        357.06,
+        687.75
+      ],
+      [
+        261.6,
+        687.75
+      ],
+      [
+        261.6,
+        1090.105
+      ],
+      [
+        357.06,
+        1090.105
+      ],
+      [
+        357.06,
+        1217.255
+      ],
+      [
+        261.6,
+        1217.255
+      ]
+    ]
+  },
+  "polygon_status": "provisional",
+  "polygon_basis": "Manual orthogonal simplification registered to the dimensioned grids. Local wall steps and setbacks are provisional; not a surveyed footprint.",
+  "levels": [
+    {
+      "name": "P1",
+      "z": 0,
+      "polygon": "r1"
+    },
+    {
+      "name": "R1",
+      "z": 132,
+      "polygon": "r1"
+    },
+    {
+      "name": "R2",
+      "z": 255,
+      "polygon": "typical"
+    },
+    {
+      "name": "R3",
+      "z": 378,
+      "polygon": "typical"
+    },
+    {
+      "name": "R4",
+      "z": 501,
+      "polygon": "typical"
+    },
+    {
+      "name": "R5",
+      "z": 627,
+      "polygon": "r5"
+    }
+  ],
+  "roof_plate_z": 749.04,
+  "north_roof_plate_z": 773.04,
+  "north_roof_split_y": 1110,
+  "roof_parapet_height": 22,
+  "roof_features": [
+    {
+      "id": "elevator-overrun",
+      "polygon": [
+        [
+          755.146,
+          1506.745
+        ],
+        [
+          874.554,
+          1506.745
+        ],
+        [
+          874.554,
+          1181.503
+        ],
+        [
+          755.146,
+          1181.503
+        ]
+      ],
+      "z": 749.04,
+      "top": 876,
+      "source": "A2.08 elevator roof / TO PARAPET 415.00",
+      "datum_status": "confirmed",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Roof footprint manually simplified from A2.08; top datum documented, roof/wall thickness and equipment envelopes assumed."
+    },
+    {
+      "id": "stair-overrun",
+      "polygon": [
+        [
+          755.146,
+          930.0
+        ],
+        [
+          874.554,
+          930.0
+        ],
+        [
+          874.554,
+          685.5
+        ],
+        [
+          755.146,
+          685.5
+        ]
+      ],
+      "z": 749.04,
+      "top": 868.9200000000003,
+      "source": "A2.08 stair roof / TO PARAPET 414.41",
+      "datum_status": "confirmed",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Roof footprint manually simplified from A2.08; top datum documented, roof/wall thickness and equipment envelopes assumed."
+    },
+    {
+      "id": "south-clerestory",
+      "polygon": [
+        [
+          684.576,
+          444.372
+        ],
+        [
+          1247.295,
+          444.372
+        ],
+        [
+          1247.295,
+          248.372
+        ],
+        [
+          684.576,
+          248.372
+        ]
+      ],
+      "z": 749.04,
+      "top": 789.0,
+      "source": "A2.08 clerestory roof / TO PARAPET 407.75",
+      "datum_status": "confirmed",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Roof footprint manually simplified from A2.08; top datum documented, roof/wall thickness and equipment envelopes assumed."
+    }
+  ],
+  "openings": [
+    {
+      "id": "south-P1-01",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 30,
+      "u": 74.72,
+      "width": 91.121,
+      "z": 20,
+      "height": 72,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        884,
+        934
+      ],
+      "source_width_in": 91.121,
+      "plan_depth_in": 1521.571,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-P1-03",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 28,
+      "u": 347.707,
+      "width": 19.968,
+      "z": 2,
+      "height": 96,
+      "kind": "door",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1040,
+        1065
+      ],
+      "source_width_in": 49.26,
+      "plan_depth_in": 878.788,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-P1-05",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 18,
+      "u": 755.55,
+      "width": 60,
+      "z": 2,
+      "height": 96,
+      "kind": "door",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1188,
+        1218
+      ],
+      "source_width_in": 67.047,
+      "plan_depth_in": 184.489,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-P1-06",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 16,
+      "u": 898.258,
+      "width": 88,
+      "z": 20,
+      "height": 72,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1249,
+        1286
+      ],
+      "source_width_in": 82.691,
+      "plan_depth_in": 69.398,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-P1-07",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 16,
+      "u": 1038.258,
+      "width": 58,
+      "z": 2,
+      "height": 96,
+      "kind": "door",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1320,
+        1350
+      ],
+      "source_width_in": 75.0,
+      "plan_depth_in": 69.398,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-P1-08",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 14,
+      "u": 1190.241,
+      "width": 64,
+      "z": 2,
+      "height": 96,
+      "kind": "door",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1385,
+        1420
+      ],
+      "source_width_in": 87.5,
+      "plan_depth_in": 184.489,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-P1-09",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 12,
+      "u": 1336.447,
+      "width": 106,
+      "z": 20,
+      "height": 72,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1444,
+        1486
+      ],
+      "source_width_in": 105.0,
+      "plan_depth_in": 143.133,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "east-P1-01",
+      "face": "east",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 15,
+      "u": 86.707,
+      "width": 22.619,
+      "z": 20,
+      "height": 72,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        664,
+        707
+      ],
+      "source_width_in": 94.39,
+      "plan_depth_in": 1117.696,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-P1-02",
+      "face": "east",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 11,
+      "u": 224.211,
+      "width": 79.579,
+      "z": 20,
+      "height": 72,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        730,
+        766
+      ],
+      "source_width_in": 79.579,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-P1-03",
+      "face": "east",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 9,
+      "u": 356.842,
+      "width": 75.158,
+      "z": 2,
+      "height": 96,
+      "kind": "door",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        791,
+        825
+      ],
+      "source_width_in": 75.158,
+      "plan_depth_in": 1448.054,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R1-01",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 30,
+      "u": 178.353,
+      "width": 68.762,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        947,
+        984
+      ],
+      "source_width_in": 68.762,
+      "plan_depth_in": 1521.571,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R1-03",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 28,
+      "u": 340.811,
+      "width": 33.761,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1038,
+        1060
+      ],
+      "source_width_in": 43.349,
+      "plan_depth_in": 878.788,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R1-04",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 26,
+      "u": 403.864,
+      "width": 23.645,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1075,
+        1087
+      ],
+      "source_width_in": 23.645,
+      "plan_depth_in": 426.87,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R1-06",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 18,
+      "u": 755.55,
+      "width": 80.456,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1188,
+        1224
+      ],
+      "source_width_in": 80.456,
+      "plan_depth_in": 184.489,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R1-08",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 16,
+      "u": 1038.258,
+      "width": 95.0,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1319,
+        1357
+      ],
+      "source_width_in": 95.0,
+      "plan_depth_in": 69.398,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R1-09",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 14,
+      "u": 1190.241,
+      "width": 90.0,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1385,
+        1421
+      ],
+      "source_width_in": 90.0,
+      "plan_depth_in": 184.489,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R1-10",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 12,
+      "u": 1336.447,
+      "width": 107.5,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1444,
+        1487
+      ],
+      "source_width_in": 107.5,
+      "plan_depth_in": 143.133,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "east-R1-01",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 15,
+      "u": 107.561,
+      "width": 64.326,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        679,
+        711
+      ],
+      "source_width_in": 70.244,
+      "plan_depth_in": 1117.696,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-02",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 11,
+      "u": 224.211,
+      "width": 79.579,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        730,
+        766
+      ],
+      "source_width_in": 79.579,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-03",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 9,
+      "u": 378.947,
+      "width": 114.947,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        792,
+        844
+      ],
+      "source_width_in": 114.947,
+      "plan_depth_in": 1448.054,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-04",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 7,
+      "u": 560.614,
+      "width": 70.574,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        885,
+        918
+      ],
+      "source_width_in": 70.574,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-05",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 7,
+      "u": 835.833,
+      "width": 77.0,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1008,
+        1041
+      ],
+      "source_width_in": 77.0,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-06",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 7,
+      "u": 1019.072,
+      "width": 121.237,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1079,
+        1135
+      ],
+      "source_width_in": 121.237,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-07",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 5,
+      "u": 1178.327,
+      "width": 70.531,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1164,
+        1196
+      ],
+      "source_width_in": 70.531,
+      "plan_depth_in": 1474.839,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-08",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 5,
+      "u": 1332.612,
+      "width": 132.245,
+      "z": 132,
+      "height": 102,
+      "kind": "entry",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1220,
+        1280
+      ],
+      "source_width_in": 132.245,
+      "plan_depth_in": 1474.839,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-09",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 3,
+      "u": 1504.299,
+      "width": 73.646,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1311,
+        1344
+      ],
+      "source_width_in": 73.646,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R1-10",
+      "face": "east",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 3,
+      "u": 1662.75,
+      "width": 118.28,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1372,
+        1425
+      ],
+      "source_width_in": 118.28,
+      "plan_depth_in": 1410.107,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-01",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 31,
+      "u": 1622.579,
+      "width": 140.598,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        694,
+        757
+      ],
+      "source_width_in": 140.598,
+      "plan_depth_in": 4.483,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-02",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 29,
+      "u": 1450.908,
+      "width": 68.843,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        787,
+        818
+      ],
+      "source_width_in": 68.843,
+      "plan_depth_in": 251.961,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-03",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 29,
+      "u": 1297.176,
+      "width": 67.865,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        857,
+        888
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 251.961,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-04",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 29,
+      "u": 1154.878,
+      "width": 67.865,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        922,
+        953
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 251.961,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-05",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 29,
+      "u": 967.9,
+      "width": 144.2,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        988,
+        1050
+      ],
+      "source_width_in": 144.2,
+      "plan_depth_in": 251.961,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-06",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 27,
+      "u": 770.85,
+      "width": 60.9,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1095,
+        1124
+      ],
+      "source_width_in": 60.9,
+      "plan_depth_in": 363.691,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-07",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 27,
+      "u": 523.592,
+      "width": 63.918,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1209,
+        1238
+      ],
+      "source_width_in": 63.918,
+      "plan_depth_in": 363.691,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-08",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 23,
+      "u": 275.32,
+      "width": 144.703,
+      "z": 141,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1301,
+        1364
+      ],
+      "source_width_in": 144.703,
+      "plan_depth_in": 453.513,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R1-09",
+      "face": "west",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 17,
+      "u": 104.096,
+      "width": 47.711,
+      "z": 134,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1398,
+        1420
+      ],
+      "source_width_in": 47.711,
+      "plan_depth_in": 818.82,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R1-01",
+      "face": "north",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 2,
+      "u": 1393.699,
+      "width": 20.817,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        848,
+        865
+      ],
+      "source_width_in": 42.219,
+      "plan_depth_in": 1759.583,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R1-02",
+      "face": "north",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 2,
+      "u": 1124.245,
+      "width": 64.57,
+      "z": 210,
+      "height": 22,
+      "kind": "small",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        952,
+        978
+      ],
+      "source_width_in": 64.57,
+      "plan_depth_in": 1759.583,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R1-03",
+      "face": "north",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 2,
+      "u": 616.212,
+      "width": 74.98,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1165,
+        1199
+      ],
+      "source_width_in": 74.98,
+      "plan_depth_in": 1759.583,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R1-04",
+      "face": "north",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 0,
+      "u": 346.634,
+      "width": 29.732,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1306,
+        1321
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1784.282,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R1-05",
+      "face": "north",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 0,
+      "u": 251.491,
+      "width": 29.732,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1354,
+        1369
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1784.282,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R1-06",
+      "face": "north",
+      "level": "R1",
+      "polygon": "r1",
+      "segment": 0,
+      "u": 146.438,
+      "width": 33.696,
+      "z": 141,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1406,
+        1423
+      ],
+      "source_width_in": 33.696,
+      "plan_depth_in": 1784.282,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R2-01",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 30,
+      "u": 178.353,
+      "width": 34.478,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        947,
+        984
+      ],
+      "source_width_in": 68.762,
+      "plan_depth_in": 1535.422,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R2-03",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 28,
+      "u": 340.811,
+      "width": 20.615,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1038,
+        1060
+      ],
+      "source_width_in": 43.349,
+      "plan_depth_in": 884.845,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R2-04",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 26,
+      "u": 403.864,
+      "width": 23.645,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1075,
+        1087
+      ],
+      "source_width_in": 23.645,
+      "plan_depth_in": 433.909,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R2-05",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 20,
+      "u": 588.762,
+      "width": 123.515,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1104,
+        1164
+      ],
+      "source_width_in": 123.515,
+      "plan_depth_in": 150.38,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R2-06",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 18,
+      "u": 747.427,
+      "width": 80.456,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1188,
+        1224
+      ],
+      "source_width_in": 80.456,
+      "plan_depth_in": 193.364,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R2-08",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 16,
+      "u": 1029.523,
+      "width": 95.0,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1319,
+        1357
+      ],
+      "source_width_in": 95.0,
+      "plan_depth_in": 72.911,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R2-09",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 14,
+      "u": 1181.312,
+      "width": 90.0,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1385,
+        1421
+      ],
+      "source_width_in": 90.0,
+      "plan_depth_in": 193.364,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R2-10",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 12,
+      "u": 1327.518,
+      "width": 107.5,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1444,
+        1487
+      ],
+      "source_width_in": 107.5,
+      "plan_depth_in": 150.38,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "east-R2-01",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 15,
+      "u": 107.561,
+      "width": 57.3,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        679,
+        711
+      ],
+      "source_width_in": 70.244,
+      "plan_depth_in": 1108.768,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-02",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 11,
+      "u": 224.211,
+      "width": 79.579,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        730,
+        766
+      ],
+      "source_width_in": 79.579,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-03",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 9,
+      "u": 378.947,
+      "width": 114.947,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        792,
+        844
+      ],
+      "source_width_in": 114.947,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-04",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 560.614,
+      "width": 70.574,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        885,
+        918
+      ],
+      "source_width_in": 70.574,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-05",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 835.833,
+      "width": 77.0,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1008,
+        1041
+      ],
+      "source_width_in": 77.0,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-06",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 1019.072,
+      "width": 121.237,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1079,
+        1135
+      ],
+      "source_width_in": 121.237,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-07",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 1178.327,
+      "width": 70.531,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1164,
+        1196
+      ],
+      "source_width_in": 70.531,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-08",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 5,
+      "u": 1332.612,
+      "width": 127.224,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1220,
+        1280
+      ],
+      "source_width_in": 132.245,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-09",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 5,
+      "u": 1504.299,
+      "width": 73.646,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1311,
+        1344
+      ],
+      "source_width_in": 73.646,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R2-10",
+      "face": "east",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 3,
+      "u": 1662.75,
+      "width": 118.28,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1372,
+        1425
+      ],
+      "source_width_in": 118.28,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-01",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 31,
+      "u": 1622.579,
+      "width": 140.598,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        694,
+        757
+      ],
+      "source_width_in": 140.598,
+      "plan_depth_in": 155.114,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-02",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1450.908,
+      "width": 68.843,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        787,
+        818
+      ],
+      "source_width_in": 68.843,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-03",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1297.176,
+      "width": 67.865,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        857,
+        888
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-04",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1154.878,
+      "width": 67.865,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        922,
+        953
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-05",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 967.9,
+      "width": 144.2,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        988,
+        1050
+      ],
+      "source_width_in": 144.2,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-06",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 27,
+      "u": 770.85,
+      "width": 60.9,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1095,
+        1124
+      ],
+      "source_width_in": 60.9,
+      "plan_depth_in": 357.118,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-07",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 27,
+      "u": 523.592,
+      "width": 63.918,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1209,
+        1238
+      ],
+      "source_width_in": 63.918,
+      "plan_depth_in": 357.118,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-08",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 23,
+      "u": 275.32,
+      "width": 144.703,
+      "z": 264,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1301,
+        1364
+      ],
+      "source_width_in": 144.703,
+      "plan_depth_in": 446.941,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R2-09",
+      "face": "west",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 17,
+      "u": 104.096,
+      "width": 47.711,
+      "z": 257,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1398,
+        1420
+      ],
+      "source_width_in": 47.711,
+      "plan_depth_in": 810.278,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R2-02",
+      "face": "north",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 2,
+      "u": 1124.245,
+      "width": 64.57,
+      "z": 333,
+      "height": 22,
+      "kind": "small",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        952,
+        978
+      ],
+      "source_width_in": 64.57,
+      "plan_depth_in": 1760.313,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R2-03",
+      "face": "north",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 2,
+      "u": 616.212,
+      "width": 74.98,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1165,
+        1199
+      ],
+      "source_width_in": 74.98,
+      "plan_depth_in": 1760.313,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R2-04",
+      "face": "north",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 0,
+      "u": 346.634,
+      "width": 29.732,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1306,
+        1321
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1788.976,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R2-05",
+      "face": "north",
+      "level": "R2",
+      "polygon": "typical",
+      "segment": 0,
+      "u": 251.491,
+      "width": 29.732,
+      "z": 264,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1354,
+        1369
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1788.976,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R3-01",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 30,
+      "u": 178.353,
+      "width": 34.478,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        947,
+        984
+      ],
+      "source_width_in": 68.762,
+      "plan_depth_in": 1535.422,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R3-03",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 28,
+      "u": 340.811,
+      "width": 20.615,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1038,
+        1060
+      ],
+      "source_width_in": 43.349,
+      "plan_depth_in": 884.845,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R3-04",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 26,
+      "u": 403.864,
+      "width": 23.645,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1075,
+        1087
+      ],
+      "source_width_in": 23.645,
+      "plan_depth_in": 433.909,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R3-05",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 20,
+      "u": 588.762,
+      "width": 123.515,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1104,
+        1164
+      ],
+      "source_width_in": 123.515,
+      "plan_depth_in": 150.38,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R3-06",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 18,
+      "u": 747.427,
+      "width": 80.456,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1188,
+        1224
+      ],
+      "source_width_in": 80.456,
+      "plan_depth_in": 193.364,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R3-08",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 16,
+      "u": 1029.523,
+      "width": 95.0,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1319,
+        1357
+      ],
+      "source_width_in": 95.0,
+      "plan_depth_in": 72.911,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R3-09",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 14,
+      "u": 1181.312,
+      "width": 90.0,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1385,
+        1421
+      ],
+      "source_width_in": 90.0,
+      "plan_depth_in": 193.364,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R3-10",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 12,
+      "u": 1327.518,
+      "width": 107.5,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1444,
+        1487
+      ],
+      "source_width_in": 107.5,
+      "plan_depth_in": 150.38,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "east-R3-01",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 15,
+      "u": 107.561,
+      "width": 57.3,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        679,
+        711
+      ],
+      "source_width_in": 70.244,
+      "plan_depth_in": 1108.768,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-02",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 11,
+      "u": 224.211,
+      "width": 79.579,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        730,
+        766
+      ],
+      "source_width_in": 79.579,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-03",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 9,
+      "u": 378.947,
+      "width": 114.947,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        792,
+        844
+      ],
+      "source_width_in": 114.947,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-04",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 560.614,
+      "width": 70.574,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        885,
+        918
+      ],
+      "source_width_in": 70.574,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-05",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 835.833,
+      "width": 77.0,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1008,
+        1041
+      ],
+      "source_width_in": 77.0,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-06",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 1019.072,
+      "width": 121.237,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1079,
+        1135
+      ],
+      "source_width_in": 121.237,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-07",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 1178.327,
+      "width": 70.531,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1164,
+        1196
+      ],
+      "source_width_in": 70.531,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-08",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 5,
+      "u": 1332.612,
+      "width": 127.224,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1220,
+        1280
+      ],
+      "source_width_in": 132.245,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-09",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 5,
+      "u": 1504.299,
+      "width": 73.646,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1311,
+        1344
+      ],
+      "source_width_in": 73.646,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R3-10",
+      "face": "east",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 3,
+      "u": 1662.75,
+      "width": 118.28,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1372,
+        1425
+      ],
+      "source_width_in": 118.28,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-01",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 31,
+      "u": 1622.579,
+      "width": 140.598,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        694,
+        757
+      ],
+      "source_width_in": 140.598,
+      "plan_depth_in": 155.114,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-02",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1450.908,
+      "width": 68.843,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        787,
+        818
+      ],
+      "source_width_in": 68.843,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-03",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1297.176,
+      "width": 67.865,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        857,
+        888
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-04",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1154.878,
+      "width": 67.865,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        922,
+        953
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-05",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 967.9,
+      "width": 144.2,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        988,
+        1050
+      ],
+      "source_width_in": 144.2,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-06",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 27,
+      "u": 770.85,
+      "width": 60.9,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1095,
+        1124
+      ],
+      "source_width_in": 60.9,
+      "plan_depth_in": 357.118,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-07",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 27,
+      "u": 523.592,
+      "width": 63.918,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1209,
+        1238
+      ],
+      "source_width_in": 63.918,
+      "plan_depth_in": 357.118,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-08",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 23,
+      "u": 275.32,
+      "width": 144.703,
+      "z": 387,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1301,
+        1364
+      ],
+      "source_width_in": 144.703,
+      "plan_depth_in": 446.941,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R3-09",
+      "face": "west",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 17,
+      "u": 104.096,
+      "width": 47.711,
+      "z": 380,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1398,
+        1420
+      ],
+      "source_width_in": 47.711,
+      "plan_depth_in": 810.278,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R3-02",
+      "face": "north",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 2,
+      "u": 1124.245,
+      "width": 64.57,
+      "z": 456,
+      "height": 22,
+      "kind": "small",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        952,
+        978
+      ],
+      "source_width_in": 64.57,
+      "plan_depth_in": 1760.313,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R3-03",
+      "face": "north",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 2,
+      "u": 616.212,
+      "width": 74.98,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1165,
+        1199
+      ],
+      "source_width_in": 74.98,
+      "plan_depth_in": 1760.313,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R3-04",
+      "face": "north",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 0,
+      "u": 346.634,
+      "width": 29.732,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1306,
+        1321
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1788.976,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R3-05",
+      "face": "north",
+      "level": "R3",
+      "polygon": "typical",
+      "segment": 0,
+      "u": 251.491,
+      "width": 29.732,
+      "z": 387,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1354,
+        1369
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1788.976,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R4-01",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 30,
+      "u": 178.353,
+      "width": 34.478,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        947,
+        984
+      ],
+      "source_width_in": 68.762,
+      "plan_depth_in": 1535.422,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R4-03",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 28,
+      "u": 340.811,
+      "width": 20.615,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1038,
+        1060
+      ],
+      "source_width_in": 43.349,
+      "plan_depth_in": 884.845,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R4-04",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 26,
+      "u": 403.864,
+      "width": 23.645,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1075,
+        1087
+      ],
+      "source_width_in": 23.645,
+      "plan_depth_in": 433.909,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R4-05",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 20,
+      "u": 588.762,
+      "width": 123.515,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1104,
+        1164
+      ],
+      "source_width_in": 123.515,
+      "plan_depth_in": 150.38,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R4-06",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 18,
+      "u": 747.427,
+      "width": 80.456,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1188,
+        1224
+      ],
+      "source_width_in": 80.456,
+      "plan_depth_in": 193.364,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R4-08",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 16,
+      "u": 1029.523,
+      "width": 95.0,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1319,
+        1357
+      ],
+      "source_width_in": 95.0,
+      "plan_depth_in": 72.911,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R4-09",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 14,
+      "u": 1181.312,
+      "width": 90.0,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1385,
+        1421
+      ],
+      "source_width_in": 90.0,
+      "plan_depth_in": 193.364,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R4-10",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 12,
+      "u": 1327.518,
+      "width": 107.5,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1444,
+        1487
+      ],
+      "source_width_in": 107.5,
+      "plan_depth_in": 150.38,
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "east-R4-01",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 15,
+      "u": 107.561,
+      "width": 57.3,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        679,
+        711
+      ],
+      "source_width_in": 70.244,
+      "plan_depth_in": 1108.768,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-02",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 11,
+      "u": 224.211,
+      "width": 79.579,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        730,
+        766
+      ],
+      "source_width_in": 79.579,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-03",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 9,
+      "u": 378.947,
+      "width": 114.947,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        792,
+        844
+      ],
+      "source_width_in": 114.947,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-04",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 560.614,
+      "width": 70.574,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        885,
+        918
+      ],
+      "source_width_in": 70.574,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-05",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 835.833,
+      "width": 77.0,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1008,
+        1041
+      ],
+      "source_width_in": 77.0,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-06",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 1019.072,
+      "width": 121.237,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1079,
+        1135
+      ],
+      "source_width_in": 121.237,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-07",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 7,
+      "u": 1178.327,
+      "width": 70.531,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1164,
+        1196
+      ],
+      "source_width_in": 70.531,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-08",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 5,
+      "u": 1332.612,
+      "width": 127.224,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1220,
+        1280
+      ],
+      "source_width_in": 132.245,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-09",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 5,
+      "u": 1504.299,
+      "width": 73.646,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1311,
+        1344
+      ],
+      "source_width_in": 73.646,
+      "plan_depth_in": 1439.125,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R4-10",
+      "face": "east",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 3,
+      "u": 1662.75,
+      "width": 118.28,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1372,
+        1425
+      ],
+      "source_width_in": 118.28,
+      "plan_depth_in": 1401.179,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-01",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 31,
+      "u": 1622.579,
+      "width": 140.598,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        694,
+        757
+      ],
+      "source_width_in": 140.598,
+      "plan_depth_in": 155.114,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-02",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1450.908,
+      "width": 68.843,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        787,
+        818
+      ],
+      "source_width_in": 68.843,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-03",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1297.176,
+      "width": 67.865,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        857,
+        888
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-04",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 1154.878,
+      "width": 67.865,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        922,
+        953
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-05",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 29,
+      "u": 967.9,
+      "width": 144.2,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        988,
+        1050
+      ],
+      "source_width_in": 144.2,
+      "plan_depth_in": 260.724,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-06",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 27,
+      "u": 770.85,
+      "width": 60.9,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1095,
+        1124
+      ],
+      "source_width_in": 60.9,
+      "plan_depth_in": 357.118,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-07",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 27,
+      "u": 523.592,
+      "width": 63.918,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1209,
+        1238
+      ],
+      "source_width_in": 63.918,
+      "plan_depth_in": 357.118,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-08",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 23,
+      "u": 275.32,
+      "width": 144.703,
+      "z": 510,
+      "height": 90,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1301,
+        1364
+      ],
+      "source_width_in": 144.703,
+      "plan_depth_in": 446.941,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R4-09",
+      "face": "west",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 17,
+      "u": 104.096,
+      "width": 47.711,
+      "z": 503,
+      "height": 96,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1398,
+        1420
+      ],
+      "source_width_in": 47.711,
+      "plan_depth_in": 810.278,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R4-02",
+      "face": "north",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 2,
+      "u": 1124.245,
+      "width": 64.57,
+      "z": 579,
+      "height": 22,
+      "kind": "small",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        952,
+        978
+      ],
+      "source_width_in": 64.57,
+      "plan_depth_in": 1760.313,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R4-03",
+      "face": "north",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 2,
+      "u": 616.212,
+      "width": 74.98,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1165,
+        1199
+      ],
+      "source_width_in": 74.98,
+      "plan_depth_in": 1760.313,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R4-04",
+      "face": "north",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 0,
+      "u": 346.634,
+      "width": 29.732,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1306,
+        1321
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1788.976,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R4-05",
+      "face": "north",
+      "level": "R4",
+      "polygon": "typical",
+      "segment": 0,
+      "u": 251.491,
+      "width": 29.732,
+      "z": 510,
+      "height": 90,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1354,
+        1369
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1788.976,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R5-03",
+      "face": "south",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 6,
+      "u": 516.263,
+      "width": 66.647,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1106,
+        1167
+      ],
+      "source_width_in": 126.278,
+      "plan_depth_in": 248.372,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R5-04",
+      "face": "south",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 6,
+      "u": 667.681,
+      "width": 69.282,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1191,
+        1222
+      ],
+      "source_width_in": 69.282,
+      "plan_depth_in": 248.372,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R5-05",
+      "face": "south",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 6,
+      "u": 804.01,
+      "width": 78.221,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1250,
+        1285
+      ],
+      "source_width_in": 78.221,
+      "plan_depth_in": 248.372,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R5-06",
+      "face": "south",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 6,
+      "u": 969.75,
+      "width": 87.5,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1319,
+        1354
+      ],
+      "source_width_in": 87.5,
+      "plan_depth_in": 248.372,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R5-07",
+      "face": "south",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 6,
+      "u": 1128.5,
+      "width": 75.0,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1385,
+        1415
+      ],
+      "source_width_in": 75.0,
+      "plan_depth_in": 248.372,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "south-R5-08",
+      "face": "south",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 6,
+      "u": 1222.25,
+      "width": 52.5,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 01 south elevation",
+      "source_pixels": [
+        1427,
+        1448
+      ],
+      "source_width_in": 52.5,
+      "plan_depth_in": 248.372,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-01",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 5,
+      "u": 306.0,
+      "width": 103.256,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        759,
+        811
+      ],
+      "source_width_in": 114.947,
+      "plan_depth_in": 1260.701,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-02",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 5,
+      "u": 414.316,
+      "width": 35.368,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        826,
+        842
+      ],
+      "source_width_in": 35.368,
+      "plan_depth_in": 1260.701,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-03",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 3,
+      "u": 564.891,
+      "width": 62.02,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        889,
+        918
+      ],
+      "source_width_in": 62.02,
+      "plan_depth_in": 1337.048,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-04",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 3,
+      "u": 689.904,
+      "width": 46.858,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        951,
+        972
+      ],
+      "source_width_in": 46.858,
+      "plan_depth_in": 1337.048,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-05",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 3,
+      "u": 835.833,
+      "width": 72.333,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1009,
+        1040
+      ],
+      "source_width_in": 72.333,
+      "plan_depth_in": 1337.048,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-06",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 3,
+      "u": 1009.33,
+      "width": 62.784,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1088,
+        1117
+      ],
+      "source_width_in": 62.784,
+      "plan_depth_in": 1337.048,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-07",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 3,
+      "u": 1183.837,
+      "width": 68.327,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1167,
+        1198
+      ],
+      "source_width_in": 68.327,
+      "plan_depth_in": 1337.048,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-08",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 1,
+      "u": 1332.612,
+      "width": 132.245,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1220,
+        1280
+      ],
+      "source_width_in": 132.245,
+      "plan_depth_in": 1411.15,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-09",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 1,
+      "u": 1504.299,
+      "width": 73.646,
+      "z": 645,
+      "height": 84,
+      "kind": "balcony",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1311,
+        1344
+      ],
+      "source_width_in": 73.646,
+      "plan_depth_in": 1411.15,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-R5-10",
+      "face": "east",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 1,
+      "u": 1662.75,
+      "width": 118.28,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 / 02 east elevation",
+      "source_pixels": [
+        1372,
+        1425
+      ],
+      "source_width_in": 118.28,
+      "plan_depth_in": 1411.15,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-01",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 15,
+      "u": 1622.579,
+      "width": 140.598,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        694,
+        757
+      ],
+      "source_width_in": 140.598,
+      "plan_depth_in": 261.6,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-02",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 15,
+      "u": 1450.908,
+      "width": 68.843,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        787,
+        818
+      ],
+      "source_width_in": 68.843,
+      "plan_depth_in": 261.6,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-03",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 15,
+      "u": 1297.176,
+      "width": 67.865,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        857,
+        888
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 261.6,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-04",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 13,
+      "u": 1154.878,
+      "width": 67.865,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        922,
+        953
+      ],
+      "source_width_in": 67.865,
+      "plan_depth_in": 357.06,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-05",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 11,
+      "u": 967.9,
+      "width": 144.2,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        988,
+        1050
+      ],
+      "source_width_in": 144.2,
+      "plan_depth_in": 261.6,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-06",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 11,
+      "u": 770.85,
+      "width": 60.9,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1095,
+        1124
+      ],
+      "source_width_in": 60.9,
+      "plan_depth_in": 261.6,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-07",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 9,
+      "u": 524.369,
+      "width": 132.894,
+      "z": 645,
+      "height": 84,
+      "kind": "wide",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1193,
+        1253
+      ],
+      "source_width_in": 132.894,
+      "plan_depth_in": 357.06,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-08",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 7,
+      "u": 356.859,
+      "width": 78.094,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1280,
+        1314
+      ],
+      "source_width_in": 78.094,
+      "plan_depth_in": 476.94,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "west-R5-09",
+      "face": "west",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 7,
+      "u": 284.508,
+      "width": 39.047,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 02 west elevation",
+      "source_pixels": [
+        1320,
+        1337
+      ],
+      "source_width_in": 39.047,
+      "plan_depth_in": 476.94,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R5-01",
+      "face": "north",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 0,
+      "u": 1393.699,
+      "width": 22.903,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        848,
+        865
+      ],
+      "source_width_in": 42.219,
+      "plan_depth_in": 1764.074,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R5-02",
+      "face": "north",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 0,
+      "u": 1124.245,
+      "width": 64.57,
+      "z": 705,
+      "height": 22,
+      "kind": "small",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        952,
+        978
+      ],
+      "source_width_in": 64.57,
+      "plan_depth_in": 1764.074,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R5-03",
+      "face": "north",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 0,
+      "u": 616.212,
+      "width": 74.98,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1165,
+        1199
+      ],
+      "source_width_in": 74.98,
+      "plan_depth_in": 1764.074,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "north-R5-04",
+      "face": "north",
+      "level": "R5",
+      "polygon": "r5",
+      "segment": 0,
+      "u": 346.634,
+      "width": 29.732,
+      "z": 645,
+      "height": 84,
+      "kind": "window",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.02 / 01 north elevation",
+      "source_pixels": [
+        1306,
+        1321
+      ],
+      "source_width_in": 29.732,
+      "plan_depth_in": 1764.074,
+      "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+    },
+    {
+      "id": "east-P1-garage",
+      "face": "east",
+      "level": "P1",
+      "polygon": "r1",
+      "segment": 7,
+      "u": 634.3960396039604,
+      "width": 240,
+      "z": 28,
+      "height": 94,
+      "kind": "garage",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A3.01 east elevation / sectional overhead aluminum gate",
+      "basis": "Gate position scaled from the elevation; dimensions and grade clearance simplified.",
+      "plan_depth_in": 1410.107
+    },
+    {
+      "id": "south-R1-05",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "source_pixels": [
+        1104,
+        1164
+      ],
+      "kind": "wide",
+      "source_width_in": 120,
+      "z": 141,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 20,
+      "u": 595.9,
+      "width": 120,
+      "plan_depth_in": 143.133,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R1-07",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "source_pixels": [
+        1250,
+        1286
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 141,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 16,
+      "u": 898.258,
+      "width": 88,
+      "plan_depth_in": 69.398,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R1-11",
+      "face": "south",
+      "level": "R1",
+      "polygon": "r1",
+      "source_pixels": [
+        1503,
+        1515
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 141,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 10,
+      "u": 1429.081,
+      "width": 24,
+      "plan_depth_in": 301.191,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R2-07",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "source_pixels": [
+        1250,
+        1286
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 264,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 16,
+      "u": 889.523,
+      "width": 88,
+      "plan_depth_in": 72.911,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R2-11",
+      "face": "south",
+      "level": "R2",
+      "polygon": "typical",
+      "source_pixels": [
+        1503,
+        1515
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 264,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 10,
+      "u": 1420.152,
+      "width": 24,
+      "plan_depth_in": 309.182,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R3-07",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "source_pixels": [
+        1250,
+        1286
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 387,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 16,
+      "u": 889.523,
+      "width": 88,
+      "plan_depth_in": 72.911,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R3-11",
+      "face": "south",
+      "level": "R3",
+      "polygon": "typical",
+      "source_pixels": [
+        1503,
+        1515
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 387,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 10,
+      "u": 1420.152,
+      "width": 24,
+      "plan_depth_in": 309.182,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R4-07",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "source_pixels": [
+        1250,
+        1286
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 510,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 16,
+      "u": 889.523,
+      "width": 88,
+      "plan_depth_in": 72.911,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-R4-11",
+      "face": "south",
+      "level": "R4",
+      "polygon": "typical",
+      "source_pixels": [
+        1503,
+        1515
+      ],
+      "kind": "window",
+      "source_width_in": 92,
+      "z": 510,
+      "height": 90,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 10,
+      "u": 1420.152,
+      "width": 24,
+      "plan_depth_in": 309.182,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    },
+    {
+      "id": "south-P1-04",
+      "face": "south",
+      "level": "P1",
+      "polygon": "r1",
+      "source_pixels": [
+        1103,
+        1163
+      ],
+      "kind": "wide",
+      "source_width_in": 92,
+      "z": 20,
+      "height": 72,
+      "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+      "segment": 20,
+      "u": 595.9,
+      "width": 112,
+      "plan_depth_in": 143.133,
+      "status": "assumed",
+      "xy_status": "provisional",
+      "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "level": "P1",
+      "face": "south",
+      "pixels": [
+        990,
+        1018
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R1",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R2",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R2",
+      "face": "north",
+      "pixels": [
+        848,
+        865
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R2",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented."
+    },
+    {
+      "level": "R3",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R3",
+      "face": "north",
+      "pixels": [
+        848,
+        865
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R3",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented."
+    },
+    {
+      "level": "R4",
+      "face": "south",
+      "pixels": [
+        996,
+        1026
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R4",
+      "face": "north",
+      "pixels": [
+        848,
+        865
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R4",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented."
+    },
+    {
+      "level": "R5",
+      "face": "south",
+      "pixels": [
+        996,
+        1015
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented."
+    },
+    {
+      "level": "R5",
+      "face": "south",
+      "pixels": [
+        1042,
+        1073
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R5",
+      "face": "south",
+      "pixels": [
+        1473,
+        1491
+      ],
+      "reason": "Opening would overrun the plan facade return; omitted pending reconciliation."
+    },
+    {
+      "level": "R5",
+      "face": "north",
+      "pixels": [
+        1354,
+        1369
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented."
+    },
+    {
+      "level": "R5",
+      "face": "north",
+      "pixels": [
+        1406,
+        1423
+      ],
+      "reason": "Projected center outside the corresponding plan outline; not invented."
+    }
+  ],
+  "wall_thickness": 8,
+  "frame_width": 2,
+  "balcony_depth": 60,
+  "guard_height": 42,
+  "facade_dimensions_status": "assumed",
+  "palette_status": "provisional",
+  "palette_basis": "User-supplied street photos show red-brown brick, pale projecting cornices, dark frames, recessed balconies and planted edges. Color matching is approximate because of daylight, perspective and image processing; exact products and recess depths remain assumed.",
+  "site": {
+    "status": "assumed",
+    "grade_corners_ft": {
+      "SE": 0,
+      "SW": 0,
+      "NE": 12,
+      "NW": 19
+    },
+    "basis": "Bilinear grade approximation from the sloping elevation lines; sidewalks, street strips and landscape props are presentation context, not a site survey."
+  },
+  "checks": {
+    "grid_x_span_in": 1236,
+    "grid_y_span_in": 1800,
+    "floor_elevations_ft": [
+      342,
+      353,
+      363.25,
+      373.5,
+      383.75,
+      394.25
+    ],
+    "elevator_top_ft": 415,
+    "stair_top_ft": 414.41
+  },
+  "limitations": [
+    "Exterior drawing study, not verified installed conditions.",
+    "The dimensioned plan grids control footprint scale. Elevation grid spans do not agree uniformly with the plan; facade widths use explicit piecewise registration.",
+    "No single dimensional accuracy tolerance is established for this exterior model. Source picks, simplified wall returns and standardized window heights remain provisional/assumed.",
+    "Facade openings are surface-envelope studies; jamb details, exact opening schedule and recessed balconies are simplified.",
+    "R1/P1 lower enclosure is simplified because the architectural P1 plan was not supplied.",
+    "Roof slopes, drains, equipment, landscaping, sidewalk and street geometry are simplified; surrounding buildings are omitted.",
+    "Finish families follow the user photos; exact colors, reflectance, recess depth and landscape positions remain interpreted.",
+    "Not suitable for quantities, facade access design or construction dimensions.",
+    "Visible front bays have been reassigned within the registered plan topology; their exact opening offsets remain assumed. Rear/north omitted candidates remain unresolved."
+  ],
+  "continuous_floor_bands": false,
+  "guard_infill_rows": 10,
+  "wide_window_center_pane": true,
+  "revision_basis": {
+    "source": "Owner photo-02; A2.03/A2.04 registered outlines; A3.01 south/east elevation crops",
+    "scope": "Front south bays, continuous floor-edge appearance, wide-window divisions and balcony infill character.",
+    "limits": "Exact opening offsets remain assumed. Ten rail rows and section sizes interpret the drawing character; they are not a verified guard schedule. Building grid, story heights, roof/parapet datums and footprint are unchanged."
+  },
+  "roof_geometry_revision": {
+    "revision": "03 / roof and terrace geometry",
+    "base_blend": "deliverables/highland-daylight/Highland-daylight-photo-study.blend",
+    "base_spec": "projects/highland-refined/exterior-revised.spec.json",
+    "photo_landmarks": "projects/highland-daylight/photo-landmarks.json",
+    "previous_camera_fit": "deliverables/highland-daylight/camera-fit.json",
+    "source_crop": "projects/highland-exterior/source-review/south.png",
+    "vertical_registration": {
+      "method": "Manual picks on repeated floor-level ticks in the A3.01 south crop; paired with the inherited floor datums. Approximate scan measurement, not a new documented dimension.",
+      "controls": [
+        {
+          "level": "R5",
+          "pixel_y": 591,
+          "z_in": 627
+        },
+        {
+          "level": "R4",
+          "pixel_y": 853,
+          "z_in": 501
+        }
+      ],
+      "holdout": {
+        "level": "R3",
+        "pixel_y": 1109.5,
+        "z_in": 378
+      },
+      "pick_uncertainty_px": 3,
+      "height_uncertainty_in": 3
+    },
+    "terrace_bands": [
+      {
+        "id": "central-brick-parapet",
+        "segments": [
+          15,
+          16,
+          17
+        ],
+        "height_in": 28,
+        "cap_height_in": 3,
+        "cap_width_in": 12,
+        "finish": "brick",
+        "source_pick_y": 533,
+        "source_pick_x_span": [
+          1880,
+          2540
+        ],
+        "source": "A3.01 south elevation / central pair of MN windows; south.png",
+        "basis": "Parapet top scaled about 28 inches above the R5 tick. Returns follow the inherited typical polygon. Complete geometry remains assumed; scaled top is provisional with about +/-3 inch pick uncertainty. Coping section is assumed."
+      },
+      {
+        "id": "south-west-cornice",
+        "segments": [
+          19,
+          20,
+          21
+        ],
+        "height_in": 26,
+        "cap_height_in": 4,
+        "cap_width_in": 30,
+        "finish": "concrete",
+        "source_pick_y": 536.5,
+        "source_pick_x_span": [
+          1180,
+          1640
+        ],
+        "source": "A3.01 south elevation / MQ window cornice; photo-02",
+        "basis": "Cornice top scaled about 26 inches above the R5 tick. Profile and return sections interpret the elevation and photograph; no detail sheet establishes their actual section. Height provisional, section assumed."
+      },
+      {
+        "id": "south-east-corner-cornice",
+        "segments": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "height_in": 30,
+        "cap_height_in": 4,
+        "cap_width_in": 30,
+        "finish": "concrete",
+        "source_pick_y": 529.5,
+        "source_pick_x_span": [
+          2790,
+          3120
+        ],
+        "source": "A3.01 south/east elevations / MM window and east projecting bay cornice; photo-02",
+        "basis": "The pale band wraps the southeast window fields in the elevation/photo. Its top scales about 30 inches above the R5 tick. Projection, continuity around short returns and complete section are assumed; top has about +/-3 inch pick uncertainty."
+      }
+    ],
+    "roof_coping": {
+      "source": "A2.08 roof.png / T.O. PARAPET 406.25 and 407.75; inherited tower tops 415.00 and 414.41",
+      "basis": "Use the stated top datum as the complete modeled parapet/coping top. No separate coping-top datum is available. Sections remain assumed. Remove the previous per-segment vertical offsets and miter adjacent caps in plan.",
+      "south_top_ft": 406.25,
+      "north_top_ft": 407.75,
+      "main_width_in": 44,
+      "main_thickness_in": 7,
+      "wall_thickness_in": 8,
+      "tower_cap_thickness_in": 6,
+      "tower_cap_width_in": 30
+    },
+    "preserve": [
+      "registered polygons",
+      "six floor datums",
+      "grid spans",
+      "roof plate levels and split control",
+      "opening coordinates, extents, glass panels, sills and perimeter frames",
+      "all 16 unresolved opening records"
+    ],
+    "limitations": [
+      "Original architectural PDF and opening schedule are absent.",
+      "Terrace-band heights are provisional scan measurements; sections, returns and finish interpretation remain assumed.",
+      "The retained guard layout is not a verified installed guard schedule."
+    ],
+    "window_dividers": {
+      "source": "A3.01 south elevation / repeated mirrored MN pair in south.png",
+      "basis": "Approximate source-pane proportion from visible frame lines. Left window fixed pane is wider on the left; right window is mirrored. Opening extents, glass, sill/head and perimeter frames are retained. Exact frame section and ratio remain assumed/provisional without a window schedule.",
+      "status": "provisional",
+      "ratio_uncertainty": 0.03,
+      "rules": [
+        {
+          "levels": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "column": "07",
+          "divider_fraction_from_world_min_x": 0.65
+        },
+        {
+          "levels": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "column": "08",
+          "divider_fraction_from_world_min_x": 0.35
+        }
+      ],
+      "source_crop_box": [
+        1900,
+        620,
+        2510,
+        860
+      ]
+    }
+  }
+}

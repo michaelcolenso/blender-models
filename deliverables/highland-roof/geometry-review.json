@@ -1,0 +1,11 @@
+{
+  "views": [
+    "south",
+    "east",
+    "plan",
+    "iso"
+  ],
+  "before_after_camera_identical": true,
+  "provenance": "Complete components assumed / orange. Some separate datum properties are confirmed; provisional band heights do not confirm complete sections.",
+  "visual_review": "See visual-review.json for the exact reviewed outputs."
+}

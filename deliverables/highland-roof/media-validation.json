@@ -1,0 +1,23 @@
+{
+  "movie_sha256": "f79e0afe68b82fbeb219e879a3c1eb4d7142bfb948652acb28228b206d0f759b",
+  "decoded_frames": 432,
+  "distinct_decoded_frames": 432,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "duration_seconds": 18.0,
+  "fps": 24,
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "color_space": "BT.709 limited range",
+  "faststart": true,
+  "lossless_capture_frames": 432,
+  "signature": "b4c1e6ee9fe51675335dbc7805bdd9021b400f4be0d9764c86ec6a28c4d3ac81",
+  "aa_samples": 4,
+  "fxaa": true,
+  "review_frame_minimum_pixel_stddev": 0.17472898495278116,
+  "browser_errors": [],
+  "aa_baseline_and_revised_images_differ": true,
+  "scope": "Full decode, distinct frames, capture completeness and encoding checks. See visual-review.json for visual judgement."
+}
