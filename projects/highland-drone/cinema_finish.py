@@ -101,8 +101,8 @@ def build_titles():
     small = font('NotoSans-Regular.ttf', 17)
     for j, line in enumerate((
             'Presentation study. Floor datums and circulation follow sheets A2.03, A2.04 and A3.11.',
-            'Finishes, furnishings, lighting, planting, the slat wall and neighboring massing are illustrative; field verification required.',
-            'Neighborhood footprints © OpenStreetMap contributors, ODbL 1.0  ·  Sky: Poly Haven, CC0  ·  Rendered natively in Blender Cycles')):
+            'Finishes, furnishings, hardware, lighting, planting, street furniture and neighboring massing are illustrative; field verification required.',
+            'Neighborhood footprints © OpenStreetMap contributors, ODbL 1.0  ·  Textures, models and sky: Poly Haven, CC0  ·  Rendered in Blender Cycles')):
         w = d.textlength(line, font=small)
         d.text(((W-w)/2, z(672+j*30)), line, font=small, fill=(165, 165, 160, 255))
     t['credits'] = im
@@ -266,14 +266,18 @@ def main():
     enc.stdin.close()
     if enc.wait():
         raise SystemExit('ffmpeg failed')
-    # Two-pass H.264 High: phone-safe 8-bit 4:2:0, BT.709.
-    rate = 10 if K == 1 else 32  # Mbit/s: about 38 MB at 1080p, about 120 MB at 4K
-    video = ['-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-b:v', f'{rate}M', '-maxrate', f'{rate*1.6:.0f}M', '-bufsize', f'{rate*2}M',
-             '-pix_fmt', 'yuv420p', '-vf', 'scale=out_color_matrix=bt709:out_range=tv', '-color_primaries', 'bt709', '-color_trc', 'bt709',
-             '-colorspace', 'bt709', '-x264-params', 'keyint=48:min-keyint=24', '-passlogfile', str(build/'x264-2pass')]
-    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', str(lossless), *video, '-pass', '1', '-an', '-f', 'null', '-'], check=True)
-    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', str(lossless), '-i', str(mastered), '-map', '0:v', '-map', '1:a', *video, '-pass', '2',
-                    '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-movflags', '+faststart', '-t', f'{count/FPS:.4f}', str(movie)], check=True)
+    movies = [(movie, W, H)]
+    if K == 2:  # a 1080p web version cut from the same 4K master
+        movies.append((a.output/'Highland-cinema-1080p.mp4', 1920, 1080))
+    for out, w, h in movies:
+        # Two-pass H.264 High: phone-safe 8-bit 4:2:0, BT.709. About 38 MB at 1080p, 120 MB at 4K.
+        rate = 10 if w == 1920 else 32
+        video = ['-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-b:v', f'{rate}M', '-maxrate', f'{rate*1.6:.0f}M', '-bufsize', f'{rate*2}M',
+                 '-pix_fmt', 'yuv420p', '-vf', f'scale={w}:{h}:flags=lanczos:out_color_matrix=bt709:out_range=tv', '-color_primaries', 'bt709',
+                 '-color_trc', 'bt709', '-colorspace', 'bt709', '-x264-params', 'keyint=48:min-keyint=24', '-passlogfile', str(build/'x264-2pass')]
+        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', str(lossless), *video, '-pass', '1', '-an', '-f', 'null', '-'], check=True)
+        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', str(lossless), '-i', str(mastered), '-map', '0:v', '-map', '1:a', *video, '-pass', '2',
+                        '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-movflags', '+faststart', '-t', f'{count/FPS:.4f}', str(out)], check=True)
     # Stills, a timed shot sheet and a silent phone-gallery preview of the section.
     stills_dir = a.output/'stills'; stills_dir.mkdir(exist_ok=True)
     for name, at in (('01-title', 3.0), ('02-entry', 6.4), ('03-lobby', 9.0), ('04-slats', 11.6), ('06-elevator', 17.6), ('07-section', 20.3), ('08-corridor-208', 23.6)):
@@ -293,33 +297,39 @@ def main():
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{sec:.3f}', '-t', '3', '-i', str(lossless), '-vf',
                     f'crop={PW}:{PH}:0:{TOP},fps=12,scale=640:-2:flags=lanczos,split[a][b];[a]palettegen=stats_mode=diff[p];[b][p]paletteuse=dither=sierra2_4a',
                     '-loop', '0', str(a.output/'Highland-cinema-section.gif')], check=True)
-    probe = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_streams', '-show_format', '-count_frames', '-of', 'json', str(movie)]))
-    video = next(s for s in probe['streams'] if s['codec_type'] == 'video'); audio = next(s for s in probe['streams'] if s['codec_type'] == 'audio')
-    meter = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(movie), '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
-    summary = meter[meter.rindex('Summary:'):]
-    lufs = float(summary.split('I:')[1].split('LUFS')[0]); peak = float(summary.split('Peak:')[1].split('dBFS')[0])
-    checks = {
-        'frames': int(video['nb_read_frames']) == count, 'size': (video['width'], video['height']) == (W, H),
-        'codec': video['codec_name'] == 'h264' and video['pix_fmt'] == 'yuv420p', 'fps': video['r_frame_rate'] == f'{FPS}/1',
-        'audio': audio['codec_name'] == 'aac' and audio['channels'] == 2 and audio['sample_rate'] == '48000',
-        'duration': abs(float(probe['format']['duration'])-count/FPS) < .05,
-        'loudness': abs(lufs+16) < 1.0, 'true_peak': peak <= -1.0,
-        'no_blank_shots': min(stats) > .02,
-    }
+    files, checks = [], {}
+    for out, w, h in movies:
+        probe = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_streams', '-show_format', '-count_frames', '-of', 'json', str(out)]))
+        video = next(s for s in probe['streams'] if s['codec_type'] == 'video'); audio = next(s for s in probe['streams'] if s['codec_type'] == 'audio')
+        meter = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(out), '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
+        summary = meter[meter.rindex('Summary:'):]
+        lufs = float(summary.split('I:')[1].split('LUFS')[0]); peak = float(summary.split('Peak:')[1].split('dBFS')[0])
+        c = {
+            'frames': int(video['nb_read_frames']) == count, 'size': (video['width'], video['height']) == (w, h),
+            'codec': video['codec_name'] == 'h264' and video['pix_fmt'] == 'yuv420p', 'fps': video['r_frame_rate'] == f'{FPS}/1',
+            'audio': audio['codec_name'] == 'aac' and audio['channels'] == 2 and audio['sample_rate'] == '48000',
+            'duration': abs(float(probe['format']['duration'])-count/FPS) < .05,
+            'loudness': abs(lufs+16) < 1.0, 'true_peak': peak <= -1.0,
+        }
+        checks.update({f'{out.stem}:{k}': v for k, v in c.items()})
+        files.append({'video': out.name, 'size': [w, h], 'bytes': out.stat().st_size, 'sha256': hashlib.sha256(out.read_bytes()).hexdigest(),
+                      'loudness_lufs': lufs, 'true_peak_dbfs': peak})
+    checks['no_blank_shots'] = min(stats) > .02
     report = {
-        'film': SPEC['film'], 'video': movie.name, 'sha256': hashlib.sha256(movie.read_bytes()).hexdigest(),
+        'film': SPEC['film'], 'videos': files,
         'frames': count, 'fps': FPS, 'duration_s': round(count/FPS, 3), 'master': f'{W}x{H}', 'picture': f'{PW}x{PH} (2.39:1)',
         'render_profile': a.profile, 'native_render_size': native, 'upscaled_to_picture': native != (PW, PH),
         'rendered_frames': len(listing), 'shots': [{'id': s['id'], 'film_start_s': round(starts[s['id']], 3), 'frames': s['frames'],
                                                      'native_scene_frames': [s['src_start'], s['src_start']+s['frames']-1]} for s in SPEC['shots']],
-        'loudness_lufs': lufs, 'true_peak_dbfs': peak, 'score': info, 'checks': checks,
+        'score': info, 'checks': checks,
         'shots_spec_sha256': hashlib.sha256((HERE/'cinema.shots.json').read_bytes()).hexdigest(),
         'finish_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     }
     (a.output/'validation.json').write_text(json.dumps(report, indent=2)+'\n')
-    # The editable scene and its camera checks travel with the film.
+    # Camera checks and the benchmark travel with the film. The 76 MB scene is rebuilt by
+    # cinema.py with the locked Poly Haven assets rather than committed.
     import shutil
-    for name in ('Highland-cinema.blend', 'cinema-validation.json', f'bench-{a.profile}.json'):
+    for name in ('cinema-validation.json', f'bench-{a.profile}.json'):
         if (build/name).exists():
             shutil.copy2(build/name, a.output/name)
     print(json.dumps(checks, indent=2))

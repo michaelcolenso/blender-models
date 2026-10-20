@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import math
+import random
 import sys
 import time
 from pathlib import Path
@@ -21,6 +22,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import build_blender as B  # noqa: E402
+import cinema_assets as A  # noqa: E402
 
 SPEC_FILE = HERE / 'cinema.shots.json'
 SPEC = json.loads(SPEC_FILE.read_text())
@@ -48,7 +50,8 @@ def camera_hash():
 def source_hash():
     """Everything that shapes the prepared scene: builders, look code, flight spec and cameras."""
     parts = [camera_hash()]+[hashlib.sha256((HERE/f).read_bytes()).hexdigest()
-                             for f in ('cinema.py', 'build_blender.py', 'archviz.py', 'flight.spec.json')]
+                             for f in ('cinema.py', 'cinema_assets.py', 'build_blender.py', 'archviz.py', 'flight.spec.json',
+                                       'assets/polyhaven-cinema.lock.json')]
     return hashlib.sha256('|'.join(parts).encode()).hexdigest()
 
 
@@ -145,14 +148,14 @@ def dusk(scene):
     rnd = n.new('ShaderNodeTexWhiteNoise'); rnd.noise_dimensions = '3D'; l.new(cells.outputs[0], rnd.inputs['Vector'])
     lit = n.new('ShaderNodeMath'); lit.operation = 'GREATER_THAN'; lit.inputs[1].default_value = .72; l.new(rnd.outputs['Value'], lit.inputs[0])
     on = n.new('ShaderNodeMath'); on.operation = 'MULTIPLY'; l.new(lit.outputs[0], on.inputs[0]); l.new(mask, on.inputs[1])
-    gain = n.new('ShaderNodeMath'); gain.operation = 'MULTIPLY'; gain.inputs[1].default_value = .55; l.new(on.outputs[0], gain.inputs[0])
+    gain = n.new('ShaderNodeMath'); gain.operation = 'MULTIPLY'; gain.inputs[1].default_value = .3; l.new(on.outputs[0], gain.inputs[0])
     hue = n.new('ShaderNodeMix'); hue.data_type = 'RGBA'; hue.inputs['A'].default_value = (1, .55, .24, 1); hue.inputs['B'].default_value = (.75, .85, 1, 1)
     l.new(rnd.outputs['Color'], hue.inputs['Factor'])
     l.new(hue.outputs['Result'], b.inputs['Emission Color']); l.new(gain.outputs[0], b.inputs['Emission Strength'])
     # Wet pavement: low roughness broken up by puddle noise.
     for name in ('road', 'paving', 'Damp pavement', 'ground', 'concrete'):
         mat = bpy.data.materials.get(name)
-        if not mat:
+        if not mat or mat.get('texture'):  # scanned surfaces carry their own puddles
             continue
         n, l = mat.node_tree.nodes, mat.node_tree.links
         b = n.get('Principled BSDF')
@@ -175,24 +178,109 @@ def dusk(scene):
         l.new(dark.outputs['Result'], b.inputs['Base Color'])
 
 
-def street_lights(scene, col, steel):
-    """Illustrative pole lights along the east sidewalk; not a site survey."""
-    head = bpy.data.materials.new('Street lantern'); head.use_nodes = True
-    emission(head, 12, (1, .72, .42))
-    head.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value = (1, .8, .55, 1)
-    lights = []
+def exterior_only(obj):
+    for f, v in [(1, False), (146, False), (147, True)]:
+        obj.hide_render = v; obj.keyframe_insert('hide_render', frame=f)
+    return obj
+
+
+def street_lights(scene, col, lib):
+    """Illustrative post-top lamps along the east sidewalk; not a site survey."""
+    for name, strength in (('street_lamp_01_bulb', 40), ('street_lamp_01_glass', 2.5)):
+        mat = bpy.data.materials.get(name)
+        if mat:
+            emission(mat, strength, (1, .72, .42))
     for y in (380, 980, 1720):
-        x = 1790
-        for name, b, mat in [('pole', (x-2, x+2, y-2, y+2, 97, 250), steel), ('lantern', (x-5, x+5, y-5, y+5, 250, 262), head)]:
-            o = B.box('Street light '+name, b, mat, col)
-            o['basis'] = 'Illustrative presentation lighting; not surveyed site furniture'
-            lights.append(o)
-        d = bpy.data.lights.new('Street light pool', 'POINT'); d.energy = 900; d.color = (1, .7, .4); d.shadow_soft_size = .12
-        o = bpy.data.objects.new(d.name, d); col.objects.link(o); o.location = Vector((x, y, 244))*I
-        lights.append(o)
-    for o in lights:
-        for f, v in [(1, False), (146, False), (147, True)]:
-            o.hide_render = v; o.keyframe_insert('hide_render', frame=f)
+        x = 1790; z = A.ground(scene, x*I, y*I)
+        exterior_only(A.instance(lib, 'street_lamp_01', col, (x*I, y*I, z), yaw=math.pi, name='Street lamp'))
+        d = bpy.data.lights.new('Street light pool', 'POINT'); d.energy = 700; d.color = (1, .7, .4); d.shadow_soft_size = .15
+        o = bpy.data.objects.new(d.name, d); col.objects.link(o); o.location = (x*I, y*I, z+3.45)
+        exterior_only(o)
+
+
+def dress(scene, data):
+    """Scanned CC0 materials and models in place of the procedural stand-ins.
+    Placement and finishes are illustrative presentation choices."""
+    T = lambda name: bpy.data.materials[name]
+    A.pbr(T('Satin walnut doors'), data, 'american_walnut_veneer', tint=(.36, .21, .12), rough=(.22, .42), bump=.12, vertical=True)
+    A.pbr(T('Dark walnut frames'), data, 'american_walnut_veneer', tint=(.17, .1, .065), rough=(.25, .45), bump=.1, vertical=True)
+    A.pbr(T('Gallery plaster'), data, 'white_plaster_02', tint=(.89, .85, .77), rough=(.6, .8), bump=.04, variation=.12)
+    A.pbr(T('Warm plaster ceiling'), data, 'white_plaster_02', tint=(.97, .95, .9), rough=(.75, .9), bump=.02, variation=.08)
+    for name in ('Honed lobby stone', 'Elevator solid stone floor'):
+        A.pbr(T(name), data, 'marble_01', tint=(.92, .9, .86), rough=(.12, .3), bump=.08)
+    for name in ('brick-x', 'brick-y'):
+        A.pbr(T(name), data, 'brick_wall_001', tint=(.9, .82, .78), rough=(.72, .95), bump=.45)
+    A.pbr(T('road'), data, 'clean_asphalt', tint=(.55, .57, .6), rough=(.5, .75), bump=.25, wet=True)
+    A.pbr(T('Damp pavement'), data, 'clean_asphalt', tint=(.5, .52, .56), rough=(.5, .75), bump=.25, wet=True)
+    A.pbr(T('paving'), data, 'concrete_pavement', tint=(.8, .8, .8), rough=(.55, .8), bump=.3, wet=True)
+    lib = A.library(scene, data)
+    col = bpy.data.collections.new('Cinema / illustrative dressing (Poly Haven CC0)'); scene.collection.children.link(col)
+    # The photo-informed street trees keep their positions; scanned trees replace the
+    # procedural trunks, branches and leaf clouds.
+    trunks = [(o.name, o.matrix_world@Vector(o.bound_box[0]), o.matrix_world@Vector(o.bound_box[6]))
+              for o in scene.objects if o.name.startswith('tree-trunk-')]
+    for o in list(scene.objects):
+        if o.name.startswith('tree-') or o.name.startswith('Fine canopy twig') or '-crown-' in o.name:
+            bpy.data.objects.remove(o, do_unlink=True)
+    rng = random.Random(208)
+    for name, lo, hi in trunks:
+        x, y = (lo.x+hi.x)/2, (lo.y+hi.y)/2
+        exterior_only(A.instance(lib, 'tree_small_02', col, (x, y, A.ground(scene, x, y)), yaw=rng.uniform(0, math.tau),
+                                 scale=rng.uniform(.95, 1.12), name='Street tree / '+name))
+    exterior_only(A.instance(lib, 'fire_hydrant', col, (1782*I, 1150*I, A.ground(scene, 1782*I, 1150*I)), yaw=math.pi/2, name='Hydrant'))
+    street_lights(scene, col, lib)
+    # Lobby: scanned planters replace the low-poly ones; a lounge pair faces the slat wall.
+    for o in list(scene.objects):
+        if o.name.startswith(('Indoor plant', 'Lobby stone planter')):
+            bpy.data.objects.remove(o, do_unlink=True)
+    floor = 132*I
+    for x, y in ((1140, 1388), (1330, 1392)):
+        A.instance(lib, 'potted_plant_01', col, (x*I, y*I, floor), yaw=rng.uniform(0, math.tau), name='Lobby plant')
+    for x in (1196, 1272):
+        A.instance(lib, 'mid_century_lounge_chair', col, (x*I, 1291*I, floor), yaw=math.pi, name='Lobby lounge chair')
+    A.instance(lib, 'side_table_01', col, (1234*I, 1278*I, floor), name='Lobby side table')
+    hardware(scene)
+    scene['cinema_assets'] = 'Poly Haven CC0: '+', '.join(sorted(data['assets']))
+
+
+def cylinder(name, radius, depth, loc, rot, mat, col, segments=24):
+    import bmesh
+    mesh = bpy.data.meshes.new(name); bm = bmesh.new()
+    bmesh.ops.create_cone(bm, cap_ends=True, segments=segments, radius1=radius, radius2=radius, depth=depth)
+    for f in bm.faces:
+        f.smooth = True
+    bm.to_mesh(mesh); bm.free(); mesh.materials.append(mat)
+    o = bpy.data.objects.new(name, mesh); col.objects.link(o); o.location = loc; o.rotation_euler = rot
+    o['basis'] = 'Illustrative hardware; no hardware schedule reviewed'
+    return o
+
+
+def hardware(scene):
+    """Lever handles on rosettes replace block pulls; an elevator call station at R1 and R2."""
+    brass = bpy.data.materials['Brushed champagne brass'].node_tree.nodes.get('Principled BSDF')
+    brass.inputs['Base Color'].default_value = (.78, .56, .28, 1); brass.inputs['Metallic'].default_value = 1
+    bronze = bpy.data.materials['Satin elevator bronze'].node_tree.nodes.get('Principled BSDF')
+    bronze.inputs['Base Color'].default_value = (.2, .15, .1, 1)
+    col = bpy.data.collections['Native interior / Lobby 110 and Corridors 108–208']
+    mat = bpy.data.materials['Brushed champagne brass']
+    for o in list(scene.objects):
+        if not o.name.endswith(' pull') or 'residence door' not in o.name:
+            continue
+        lo = o.matrix_world@Vector(o.bound_box[0]); hi = o.matrix_world@Vector(o.bound_box[6])
+        east = lo.x/I > 915  # east-wall doors face west into the corridor
+        face = (lo.x if east else hi.x); out = -1 if east else 1
+        y, z = (lo.y+hi.y)/2, lo.z+3.5*I
+        cylinder(o.name+' rosette', 1.05*I, .35*I, (face+out*.18*I, y, z), (0, math.pi/2, 0), mat, col)
+        cylinder(o.name+' lever neck', .28*I, 1.6*I, (face+out*.9*I, y, z), (0, math.pi/2, 0), mat, col, 12)
+        cylinder(o.name+' lever', .3*I, 4.8*I, (face+out*1.7*I, y+(2.2 if y/I < 1300 else -2.2)*I*(1 if east else -1), z), (math.pi/2, 0, 0), mat, col, 12)
+        bpy.data.objects.remove(o, do_unlink=True)
+    steel = bpy.data.materials['Entrance stainless steel']
+    glow = bpy.data.materials.new('Call button halo'); glow.use_nodes = True
+    emission(glow, 6, (1, .78, .5))
+    for z in (132, 255):
+        B.box(f'R{1 if z == 132 else 2} elevator call plate', (879, 879.4, 1481, 1485, z+36, z+48), steel, col)
+        for dz in (40, 44):
+            cylinder(f'R{1 if z == 132 else 2} call button', .45*I, .25*I, (879.5*I, 1483*I, (z+dz)*I), (0, math.pi/2, 0), glow, col, 20)
 
 
 def interior(scene):
@@ -286,7 +374,7 @@ def xray(scene):
     for o in scene.objects:
         if o.hide_render or o.animation_data:
             continue
-        if o.type in ('MESH', 'FONT', 'CURVE') and o not in B.SECTION and 'section edges' not in o.name:
+        if (o.type in ('MESH', 'FONT', 'CURVE') or o.instance_type == 'COLLECTION') and o not in B.SECTION and 'section edges' not in o.name:
             x = min((o.matrix_world@Vector(v)).x for v in o.bound_box)/I
             if 895 < x < 1700:
                 for f, v in [(1, False), (366, False), (367, True), (458, True), (459, False)]:
@@ -347,11 +435,10 @@ def prepare(base, output):
     # Recover the section list from the saved scene: objects carrying the boolean.
     B.SECTION[:] = [o for o in scene.objects if any(m.name == 'Animated east-side section' for m in o.modifiers)]
     rig = bpy.data.collections['Native animation / camera doors elevator and section']
-    dress = bpy.data.collections.new('Cinema / dusk street lighting'); scene.collection.children.link(dress)
     M = {'wood': bpy.data.materials['Satin walnut doors'], 'trim': bpy.data.materials['Dark walnut frames'], 'led': bpy.data.materials['Warm LED diffuser']}
     slat_wall(scene, bpy.data.collections['Native interior / Lobby 110 and Corridors 108–208'], M)
+    dress(scene, A.fetch())
     dusk(scene); interior(scene); xray(scene)
-    street_lights(scene, dress, bpy.data.materials['Entrance stainless steel'])
     cams = {s['id']: camera(scene, rig, s) for s in SPEC['shots']}
     c = scene.cycles
     c.use_adaptive_sampling = True; c.adaptive_threshold = .02; c.use_denoising = True
@@ -367,7 +454,12 @@ def prepare(base, output):
     scene['cinema_scope'] = 'Edit, cameras, dusk exterior, street lights and x-ray section are presentation treatments.'
     scene.camera = cams[SPEC['shots'][0]['id']]
     output.parent.mkdir(parents=True, exist_ok=True)
-    bpy.ops.wm.save_as_mainfile(filepath=str(output), compress=True)
+    # Asset images resolve from any folder two levels below the repository root.
+    for img in bpy.data.images:
+        path = Path(bpy.path.abspath(img.filepath)) if img.filepath else None
+        if path and A.CACHE in path.parents:
+            img.filepath = '//../../'+path.relative_to(ROOT).as_posix()
+    bpy.ops.wm.save_as_mainfile(filepath=str(output), compress=True, relative_remap=False)
     output.with_name('cinema-source.sha256').write_text(scene['cinema_source_sha256']+'\n')
     return scene
 

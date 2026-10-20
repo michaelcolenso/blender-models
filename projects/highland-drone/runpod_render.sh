@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Render and finish the Highland cinematic film on one NVIDIA GPU (e.g. RTX 4090).
 #
-#   bash projects/highland-drone/runpod_render.sh setup          # Python 3.11, bpy 5.0.1, finishing deps
-#   bash projects/highland-drone/runpod_render.sh bench final     # one frame per shot, projected hours
-#   bash projects/highland-drone/runpod_render.sh render final 2  # all frames, 2 processes sharing the GPU
-#   bash projects/highland-drone/runpod_render.sh finish final    # grade, titles, score, encode, checks
-#   bash projects/highland-drone/runpod_render.sh all final 2     # everything above in order
+#   bash projects/highland-drone/runpod_render.sh setup          # Python 3.11, bpy 5.0.1, assets, scene checks
+#   bash projects/highland-drone/runpod_render.sh bench uhd       # one frame per shot, projected hours
+#   bash projects/highland-drone/runpod_render.sh render uhd 2    # all frames, 2 processes sharing the GPU
+#   bash projects/highland-drone/runpod_render.sh finish uhd      # grade, titles, score, encode 4K + 1080p, checks
+#   bash projects/highland-drone/runpod_render.sh all uhd 2       # everything above in order
 #
-# Profiles: final = native 1920 x 804, 128 samples (1080p master);
-#           uhd   = 3840 x 1608, 96 samples (4K master).
+# Profiles: uhd   = 3840 x 1608, 96 samples: 4K master plus a 1080p cut (default);
+#           final = native 1920 x 804, 128 samples: 1080p master only.
 # Rendering resumes where it stopped; existing frames are skipped.
 # DEVICE=CUDA uses CUDA kernels if OptiX is unavailable on the driver.
 set -euo pipefail
-STAGE=${1:-all}; PROFILE=${2:-final}; WORKERS=${3:-2}; DEVICE=${DEVICE:-OPTIX}
+STAGE=${1:-all}; PROFILE=${2:-uhd}; WORKERS=${3:-2}; DEVICE=${DEVICE:-OPTIX}
 ROOT=$(cd "$(dirname "$0")/../.." && pwd); cd "$ROOT"
 LOG=build/highland-cinema/logs; mkdir -p "$LOG"
 BPY=.venv-bpy/bin/python; FIN=.venv-finish/bin/python
@@ -22,14 +22,20 @@ setup() {
   nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv
   if [ ! -f "$LOG/.apt-done" ]; then
     apt-get update -q
-    apt-get install -y -q ffmpeg libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1 libegl1
+    apt-get install -y -q ffmpeg git-lfs libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1 libegl1
+    git lfs install --skip-smudge
     touch "$LOG/.apt-done"
   fi
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
   export PATH="$HOME/.local/bin:$PATH"
   # bpy 5.0.1 needs exactly Python 3.11; uv downloads it if the image lacks it.
-  [ -x "$BPY" ] || { uv venv -p 3.11 .venv-bpy && uv pip install -p "$BPY" bpy==5.0.1; }
-  [ -x "$FIN" ] || { uv venv -p 3.11 .venv-finish && uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt; }
+  [ -x "$BPY" ] || uv venv -p 3.11 .venv-bpy
+  [ -x "$FIN" ] || uv venv -p 3.11 .venv-finish
+  # Always reconcile dependencies: a venv left by an older setup may lack newer ones.
+  uv pip install -p "$BPY" bpy==5.0.1 pillow
+  uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt
+  # Poly Haven CC0 textures and models, verified against the committed lock (about 190 MB).
+  "$BPY" projects/highland-drone/cinema_assets.py
   # cinema.py rebuilds the base walkthrough unless its own validation report is clean and
   # current, then prepares the cinema scene and checks every film camera; CPU, a few minutes.
   # A failed camera check must stop the pipeline before any GPU time is spent.
