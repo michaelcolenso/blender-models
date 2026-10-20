@@ -1,5 +1,7 @@
 # Blender Project — Instructions
 
+Highland cinematic film: [30-second graded owner film, stills and editable scene](deliverables/highland-cinema/README.md) · [shot list and rebuild](projects/highland-drone/CINEMA.md).
+
 Highland architectural walkthrough: [upgraded full film, phone preview and Blender scene](deliverables/highland-archviz/README.md).
 
 Highland installation: [90-second installation animation and downloads](deliverables/highland-installation/README.md) · [source project and editable-model setup](projects/highland-installation/README.md).
