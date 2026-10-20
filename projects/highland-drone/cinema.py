@@ -316,8 +316,22 @@ def camera(scene, rig, shot):
     return cam
 
 
+def base_validated(base):
+    """The base scene must have passed build_blender.py's own checks for the current flight spec.
+    The builder saves the .blend before validating, so file existence alone proves nothing."""
+    report = base.with_suffix('.validation.json')
+    if not base.exists() or not report.exists():
+        return False
+    r = json.loads(report.read_text())
+    return (not r.get('wall_collisions') and not r.get('door_collisions')
+            and r.get('max_camera_path_error_m', 1) <= .08 and r.get('max_return_rotation_step_deg', 99) <= 10
+            and abs(r.get('r1_to_r2_rise_in', 0)-123) <= .001
+            and r.get('source_spec_sha256') == hashlib.sha256(B.SPEC_FILE.read_bytes()).hexdigest())
+
+
 def prepare(base, output):
-    if not base.exists():
+    if not base_validated(base):
+        print('Building and validating the base walkthrough scene', flush=True)
         B.build(base)
     else:
         B.WALLS.clear(); B.SECTION.clear()

@@ -30,8 +30,8 @@ setup() {
   # bpy 5.0.1 needs exactly Python 3.11; uv downloads it if the image lacks it.
   [ -x "$BPY" ] || { uv venv -p 3.11 .venv-bpy && uv pip install -p "$BPY" bpy==5.0.1; }
   [ -x "$FIN" ] || { uv venv -p 3.11 .venv-finish && uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt; }
-  # Base walkthrough (validated) and the cinema scene with camera checks; CPU, a few minutes.
-  [ -f build/highland-blender/Highland-walkthrough.blend ] || "$BPY" projects/highland-drone/build_blender.py 2>&1 | tail -3
+  # cinema.py rebuilds the base walkthrough unless its own validation report is clean and
+  # current, then prepares the cinema scene and checks every film camera; CPU, a few minutes.
   # A failed camera check must stop the pipeline before any GPU time is spent.
   if ! "$BPY" projects/highland-drone/cinema.py --validate --only 0 > "$LOG/setup-cinema.log" 2>&1; then
     tail -20 "$LOG/setup-cinema.log"; echo "Cinema scene preparation or camera validation failed"; exit 1
