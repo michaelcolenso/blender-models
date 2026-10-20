@@ -1,0 +1,47 @@
+{
+  "signature": "b4c1e6ee9fe51675335dbc7805bdd9021b400f4be0d9764c86ec6a28c4d3ac81",
+  "runtime": {
+    "node": "v24.19.0",
+    "chromium": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "stats": {
+    "sourceMeshes": 6197,
+    "drawCalls": 98,
+    "triangles": 1051465,
+    "leafTriangles": 338704,
+    "frames": 432,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "msaaSamples": 4,
+    "fxaa": true,
+    "aaScope": "rails and window frames",
+    "renderTarget": "RGBA16F base / RGBA8 MSAA fine metal / FXAA",
+    "glError": 0,
+    "renderer": "WebKit WebGL"
+  },
+  "finalStats": {
+    "sourceMeshes": 6197,
+    "drawCalls": 56,
+    "triangles": 541145,
+    "leafTriangles": 338704,
+    "frames": 432,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "msaaSamples": 4,
+    "fxaa": true,
+    "aaScope": "rails and window frames",
+    "renderTarget": "RGBA16F base / RGBA8 MSAA fine metal / FXAA",
+    "glError": 0,
+    "renderer": "WebKit WebGL"
+  },
+  "errors": [],
+  "captured_this_run": 398,
+  "elapsed_seconds": 4061.797,
+  "method": "Native Blender camera sampled for all 432 frames. Three.js PBR exterior, diffuse context/foliage LOD, static shadow map and street-light pool decals; Native 4x MSAA for rails/window frames over the depth-matched base, then full-frame FXAA. Cycles daylight is the detailed native material reference; film lighting is an approximation."
+}

@@ -35,6 +35,7 @@ Inspect the still, source comparison, provenance views and seven movie review fr
 
 ```bash
 node projects/highland-roof/render-film.cjs
+python projects/highland-roof/finish-film.py
 "$HIGHLAND_BLENDER_PY" projects/highland-roof/validate.py
 python projects/highland-roof/validate_media.py
 python projects/highland-roof/report.py
@@ -53,3 +54,7 @@ Obtain original A2.03/A2.04/A2.07 and A3.01/A3.02 sheets, a window schedule and 
 ## Attribution
 
 Sky: [Poly Haven / Kloofendal 48d Partly Cloudy](https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky), CC0. Neighborhood footprints: [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0. Heights and facade appearance are approximate. Owner photographs are supplied project references. Drawing crops retain their original source identifiers; no original architectural PDF is included.
+
+Observed native performance on this CPU: the 1995 x 1323, 32-sample daylight render took 512.65 seconds. Three 640 x 360, 8-sample dusk benchmarks took 18.2-18.8 seconds each. These are diagnostic observations, not production-time guarantees.
+
+`finish-film.py` verifies/normalizes H.264 and MP4 BT.709 color tags by lossless stream copy. It addresses unspecified PNG primaries/transfer tags inherited by libx264; compressed image content is retained. `color-normalization.json` records the exact before/after files.

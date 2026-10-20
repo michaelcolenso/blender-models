@@ -1,0 +1,14 @@
+{
+  "run_id": 39472102038,
+  "url": "https://github.com/michaelcolenso/blender-models/actions/runs/39472102038",
+  "source_commit": "2f978805eb5b069af2a362974303dc5dc23e4260",
+  "conclusion": "success",
+  "shots": {
+    "highland-water-overview": "success",
+    "highland-daylight-photo-study": "success",
+    "highland-roof-terrace-revision": "success"
+  },
+  "native_model_sha256": "343e60bf671856fa93f191bafb6120efe6ece6e6414271a4713940fdc2e8a2a1",
+  "hosted_preview_artifacts_visually_inspected": false,
+  "scope": "Hosted catalog, dependency, renderer and pixel checks passed. The complete local native still, provenance views, source comparison and film review frames were visually inspected; hosted artifact inspection is not claimed."
+}

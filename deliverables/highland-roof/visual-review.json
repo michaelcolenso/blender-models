@@ -23,7 +23,7 @@
     432
   ],
   "aa_comparison_reviewed": true,
-  "decoded_movie_frames_reviewed": false,
+  "decoded_movie_frames_reviewed": true,
   "still_sha256": "184081d166320d8d5ab65942acaad1aa4abdbcdcee4e86db865eae28eed7c441",
   "pdf_sha256": "639e8ce95296d4197d0932e252df0a70fab037f110329ca82fbd0e94e9b64431",
   "review_frame_sha256": {
@@ -47,5 +47,18 @@
     "Terrace heights and pane ratios remain provisional.",
     "Thin rails can still shimmer; real-time glass/lighting, simplified foliage and distant context remain approximate.",
     "The full architectural PDF and opening schedule are absent; sixteen opening conflicts remain unresolved."
-  ]
+  ],
+  "decoded_frame_numbers": [
+    1,
+    217,
+    432
+  ],
+  "movie_sha256": "f79e0afe68b82fbeb219e879a3c1eb4d7142bfb948652acb28228b206d0f759b",
+  "decoded_review_sha256": {
+    "frame-01.png": "dc794d674d717cb90613377101804572396dfaae2e64fffe8d0090b6c756ccf2",
+    "frame-02.png": "33519db3d74041fe148e9970c14614285d56ba212bbf0090b9cfe25ff7bae080",
+    "frame-03.png": "1564bf68b5b56e81c887dd0637bc108a8b747b65d8c690bcbcc52905bd8e4f07"
+  },
+  "native_sha256": "343e60bf671856fa93f191bafb6120efe6ece6e6414271a4713940fdc2e8a2a1",
+  "color_tags_verified_after_lossless_normalization": true
 }

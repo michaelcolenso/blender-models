@@ -16,6 +16,8 @@ def sha(p):
 def main():
     check=json.loads((OUT/'delivery-validation.json').read_text())
     media=json.loads((OUT/'media-validation.json').read_text())
+    if (OUT/'ci-validation.json').exists():
+        assert json.loads((OUT/'ci-validation.json').read_text())['native_model_sha256']==check['native_sha256']
     review=json.loads((OUT/'visual-review.json').read_text())
     assert review['final_still_reviewed'] and review['all_comparison_pages_reviewed'] and review['decoded_movie_frames_reviewed']
     for name,key in [('Highland-daylight-geometry-revised.png','still_sha256'),('Highland-roof-and-terrace-revised.blend','native_sha256'),('Highland-geometry-revised.glb','glb_sha256')]:
