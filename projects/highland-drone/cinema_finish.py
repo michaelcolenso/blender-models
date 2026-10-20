@@ -18,6 +18,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 SPEC = json.loads((HERE/'cinema.shots.json').read_text())
 FPS = SPEC['fps']
+# Layout is designed on a 1920 x 1080 grid; K scales it for a 4K master.
+K = 1
 W, H, PW, PH = 1920, 1080, 1920, 804
 TOP = (H-PH)//2
 FONTS = ROOT/'projects/highland-installation/immersive-film/assets/fonts'
@@ -25,8 +27,19 @@ GOLD = (222, 190, 136)
 NOTE = 'Illustrative study · finishes, furnishings and lighting not surveyed'
 
 
+def master(height):
+    global K, W, H, PW, PH, TOP
+    K = height//1080
+    W, H, PW, PH = 1920*K, 1080*K, 1920*K, 804*K
+    TOP = (H-PH)//2
+
+
+def z(v):
+    return v*K
+
+
 def font(name, size):
-    return ImageFont.truetype(str(FONTS/name), size)
+    return ImageFont.truetype(str(FONTS/name), round(size*K))
 
 
 def tracked(draw, xy, text, fnt, fill, spacing=0., anchor='l'):
@@ -51,7 +64,7 @@ def layer():
 
 def shadowed(im, radius=14, strength=150):
     """Soft dark halo behind light type over picture."""
-    alpha = im.getchannel('A').filter(ImageFilter.GaussianBlur(radius))
+    alpha = im.getchannel('A').filter(ImageFilter.GaussianBlur(radius*K))
     shade = Image.new('RGBA', im.size, (0, 0, 0, 0)); shade.putalpha(alpha.point(lambda v: min(255, v*strength//255)))
     return Image.alpha_composite(shade, im)
 
@@ -59,30 +72,30 @@ def shadowed(im, radius=14, strength=150):
 def build_titles():
     t = {}
     im, d = layer()
-    x, y = 1262, TOP+96
-    tracked(d, (x, y), 'OWNER PRESENTATION', font('NotoSans-Regular.ttf', 17), GOLD+(255,), 5.5)
-    d.text((x-3, y+26), '200 W. Highland', font=font('NotoSerifDisplay-Regular.ttf', 76), fill=(246, 242, 234, 255))
-    d.text((x, y+122), 'From the street to Corridor 208', font=font('NotoSerifDisplay-Italic.ttf', 28), fill=(232, 226, 214, 235))
+    x, y = z(1262), TOP+z(96)
+    tracked(d, (x, y), 'OWNER PRESENTATION', font('NotoSans-Regular.ttf', 17), GOLD+(255,), z(5.5))
+    d.text((x-z(3), y+z(26)), '200 W. Highland', font=font('NotoSerifDisplay-Regular.ttf', 76), fill=(246, 242, 234, 255))
+    d.text((x, y+z(122)), 'From the street to Corridor 208', font=font('NotoSerifDisplay-Italic.ttf', 28), fill=(232, 226, 214, 235))
     t['title'] = shadowed(im)
     for shot in SPEC['shots']:
         if not shot.get('label'):
             continue
         im, d = layer()
         n = [s for s in SPEC['shots'] if s.get('label')].index(shot)+1
-        base = TOP+PH+46
-        tracked(d, (96, base), f'{n:02d}', font('NotoSans-Regular.ttf', 17), GOLD+(255,), 3)
-        d.line((140, base+12, 176, base+12), fill=GOLD+(200,), width=1)
-        tracked(d, (192, base), shot['label'].upper(), font('NotoSans-Regular.ttf', 17), (226, 224, 218, 255), 4.2)
+        base = TOP+PH+z(46)
+        tracked(d, (z(96), base), f'{n:02d}', font('NotoSans-Regular.ttf', 17), GOLD+(255,), z(3))
+        d.line((z(140), base+z(12), z(176), base+z(12)), fill=GOLD+(200,), width=K)
+        tracked(d, (z(192), base), shot['label'].upper(), font('NotoSans-Regular.ttf', 17), (226, 224, 218, 255), z(4.2))
         t[shot['id']] = im
     im, d = layer()
-    tracked(d, (W-96, TOP+PH+48), NOTE.upper(), font('NotoSans-Regular.ttf', 14), (168, 168, 162, 255), 2.4, 'r')
+    tracked(d, (W-z(96), TOP+PH+z(48)), NOTE.upper(), font('NotoSans-Regular.ttf', 14), (168, 168, 162, 255), z(2.4), 'r')
     t['note'] = im
     im, d = layer()
-    tracked(d, (W/2, 392), 'OWNER PRESENTATION', font('NotoSans-Regular.ttf', 17), GOLD+(255,), 5.5, 'c')
+    tracked(d, (W/2, z(392)), 'OWNER PRESENTATION', font('NotoSans-Regular.ttf', 17), GOLD+(255,), z(5.5), 'c')
     f = font('NotoSerifDisplay-Regular.ttf', 92); w = d.textlength('200 W. Highland', font=f)
-    d.text(((W-w)/2, 420), '200 W. Highland', font=f, fill=(246, 242, 234, 255))
+    d.text(((W-w)/2, z(420)), '200 W. Highland', font=f, fill=(246, 242, 234, 255))
     f = font('NotoSerifDisplay-Italic.ttf', 30); line = 'Lobby 110  ·  Corridors 108 & 208  ·  Elevator M1'; w = d.textlength(line, font=f)
-    d.text(((W-w)/2, 548), line, font=f, fill=(220, 214, 202, 255))
+    d.text(((W-w)/2, z(548)), line, font=f, fill=(220, 214, 202, 255))
     t['end'] = im
     im, d = layer()
     small = font('NotoSans-Regular.ttf', 17)
@@ -91,7 +104,7 @@ def build_titles():
             'Finishes, furnishings, lighting, planting, the slat wall and neighboring massing are illustrative; field verification required.',
             'Neighborhood footprints © OpenStreetMap contributors, ODbL 1.0  ·  Sky: Poly Haven, CC0  ·  Rendered natively in Blender Cycles')):
         w = d.textlength(line, font=small)
-        d.text(((W-w)/2, 672+j*30), line, font=small, fill=(165, 165, 160, 255))
+        d.text(((W-w)/2, z(672+j*30)), line, font=small, fill=(165, 165, 160, 255))
     t['credits'] = im
     return {k: np.asarray(v, dtype=np.float32)/255 for k, v in t.items()}
 
@@ -118,7 +131,7 @@ def grade(img, exposure, rng, upscaled):
     glow = cv2.resize(cv2.GaussianBlur(small, (0, 0), 7), (PW, PH), interpolation=cv2.INTER_LINEAR)
     img = img+glow*np.array([1., .58, .36], np.float32)*.12
     if upscaled:
-        img = img+.35*(img-cv2.GaussianBlur(img, (0, 0), 1.1))
+        img = img+.35*(img-cv2.GaussianBlur(img, (0, 0), 1.1*K))
     img = np.clip(img, 0, 1)
     img = img+(img*img*(3-2*img)-img)*.16
     w_shadow = ((1-lum)**2)[..., None]; w_light = (lum**2)[..., None]
@@ -131,7 +144,7 @@ def grade(img, exposure, rng, upscaled):
     yy, xx = np.mgrid[0:PH, 0:PW].astype(np.float32)
     r = np.sqrt(((xx-PW/2)/(PW/2))**2+((yy-PH/2)/(PW/2))**2)/np.sqrt(1+(PH/PW)**2)
     img = img*(1-.24*r**2.4)[..., None]
-    grain = cv2.GaussianBlur(rng.standard_normal((PH, PW)).astype(np.float32), (0, 0), .65)*.022
+    grain = cv2.GaussianBlur(rng.standard_normal((PH, PW)).astype(np.float32), (0, 0), .65*K)*.022
     img = img+(grain*(.55+.45*(1-np.clip(lum, 0, 1))))[..., None]
     return np.clip(img, 0, 1)
 
@@ -149,14 +162,14 @@ def section_gauge(frame, t_local, shot):
     im = Image.fromarray((frame*255).astype(np.uint8))
     d = ImageDraw.Draw(im, 'RGBA')
     alpha = int(255*window(t_local, .5, shot['frames']/FPS, .5, .35))
-    x, y0, y1 = 1724, TOP+250, TOP+560
-    d.line((x, y0, x, y1), fill=GOLD+(alpha*120//255,), width=1)
+    x, y0, y1 = z(1724), TOP+z(250), TOP+z(560)
+    d.line((x, y0, x, y1), fill=GOLD+(alpha*120//255,), width=K)
     for yy, name in ((y1, 'R1  353.00'), (y0, 'R2  363.25')):
-        d.line((x-6, yy, x+6, yy), fill=GOLD+(alpha,), width=1)
-        tracked(d, (x+18, yy-9), name, font('NotoSans-Regular.ttf', 15), (226, 224, 218, alpha), 1.5)
+        d.line((x-z(6), yy, x+z(6), yy), fill=GOLD+(alpha,), width=K)
+        tracked(d, (x+z(18), yy-z(9)), name, font('NotoSans-Regular.ttf', 15), (226, 224, 218, alpha), z(1.5))
     ym = y1+(y0-y1)*u
-    d.ellipse((x-4, ym-4, x+4, ym+4), fill=(255, 226, 170, alpha))
-    tracked(d, (x-18, ym-10), f'EL. {353+10.25*u:6.2f} FT', font('NotoSans-Regular.ttf', 15), (255, 236, 200, alpha), 1.5, 'r')
+    d.ellipse((x-z(4), ym-z(4), x+z(4), ym+z(4)), fill=(255, 226, 170, alpha))
+    tracked(d, (x-z(18), ym-z(10)), f'EL. {353+10.25*u:6.2f} FT', font('NotoSans-Regular.ttf', 15), (255, 236, 200, alpha), z(1.5), 'r')
     return np.asarray(im, dtype=np.float32)/255
 
 
@@ -180,7 +193,9 @@ def main():
     p.add_argument('--profile', default='local')
     p.add_argument('--output', type=Path, default=ROOT/'deliverables/highland-cinema')
     p.add_argument('--stills', default='', help='Only write graded stills for these film seconds, comma-separated')
+    p.add_argument('--master', type=int, choices=[1080, 2160], default=1080, help='Master height; 2160 expects uhd frames')
     a = p.parse_args()
+    master(a.master)
     import sys
     sys.path.insert(0, str(HERE))
     import cinema_score
@@ -197,7 +212,7 @@ def main():
     if not stills:
         score = build/'Highland-cinema-score.wav'; info = cinema_score.synthesize(score)
         mastered = build/'Highland-cinema-score-mastered.wav'; loudnorm(score, mastered)
-        movie = a.output/'Highland-cinema-1080p.mp4'
+        movie = a.output/f'Highland-cinema-{"4K" if K == 2 else "1080p"}.mp4'
         lossless = build/'Highland-cinema-master-rgb.mkv'
         enc = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                                 '-c:v', 'libx264rgb', '-qp', '0', '-preset', 'ultrafast', str(lossless)], stdin=subprocess.PIPE)
@@ -245,8 +260,9 @@ def main():
     enc.stdin.close()
     if enc.wait():
         raise SystemExit('ffmpeg failed')
-    # Two-pass 10 Mbit/s H.264 High: phone-safe 8-bit 4:2:0, BT.709, about 38 MB.
-    video = ['-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-b:v', '10M', '-maxrate', '16M', '-bufsize', '20M',
+    # Two-pass H.264 High: phone-safe 8-bit 4:2:0, BT.709.
+    rate = 10 if K == 1 else 32  # Mbit/s: about 38 MB at 1080p, about 120 MB at 4K
+    video = ['-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-b:v', f'{rate}M', '-maxrate', f'{rate*1.6:.0f}M', '-bufsize', f'{rate*2}M',
              '-pix_fmt', 'yuv420p', '-vf', 'scale=out_color_matrix=bt709:out_range=tv', '-color_primaries', 'bt709', '-color_trc', 'bt709',
              '-colorspace', 'bt709', '-x264-params', 'keyint=48:min-keyint=24', '-passlogfile', str(build/'x264-2pass')]
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', str(lossless), *video, '-pass', '1', '-an', '-f', 'null', '-'], check=True)
@@ -295,6 +311,11 @@ def main():
         'finish_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     }
     (a.output/'validation.json').write_text(json.dumps(report, indent=2)+'\n')
+    # The editable scene and its camera checks travel with the film.
+    import shutil
+    for name in ('Highland-cinema.blend', 'cinema-validation.json', f'bench-{a.profile}.json'):
+        if (build/name).exists():
+            shutil.copy2(build/name, a.output/name)
     print(json.dumps(checks, indent=2))
     if not all(checks.values()):
         raise SystemExit('Film validation failed')

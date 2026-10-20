@@ -27,11 +27,12 @@ SPEC = json.loads(SPEC_FILE.read_text())
 I = .0254
 BUILD = ROOT / 'build/highland-cinema'
 PROFILES = {
-    # Scope 2.39:1. The finish step scales every profile to the 1920 x 804 picture.
-    'proof': (640, 268, 8),
-    'local': (1280, 536, 20),
-    'final': (1920, 804, 48),
-    'uhd': (3840, 1608, 64),
+    # Scope 2.39:1: width, height, max samples, adaptive noise threshold.
+    # cinema_finish.py scales proof/local frames to the master picture size.
+    'proof': (640, 268, 8, .02),
+    'local': (1280, 536, 20, .02),
+    'final': (1920, 804, 128, .01),
+    'uhd': (3840, 1608, 96, .01),
 }
 
 
@@ -248,9 +249,20 @@ def xray(scene):
     for o in hide:
         for f, v in [(1, False), (366, False), (367, True), (458, True), (459, False)]:
             o.hide_render = v; o.keyframe_insert('hide_render', frame=f)
-    bg = next(x for x in scene.world.node_tree.nodes if x.type == 'BACKGROUND')
-    for f, v in [(1, .55), (366, .55), (367, .015), (458, .015), (459, .55)]:
-        bg.inputs['Strength'].default_value = v; bg.inputs['Strength'].keyframe_insert('default_value', frame=f)
+    # A dark backdrop sphere, rather than an animated world, keeps Cycles from
+    # rebuilding the sky importance map on every frame of the film.
+    mesh = bpy.data.meshes.new('Section void backdrop')
+    import bmesh
+    bm = bmesh.new(); bmesh.ops.create_uvsphere(bm, u_segments=32, v_segments=16, radius=300); bm.to_mesh(mesh); bm.free()
+    void = bpy.data.materials.new('Section void'); void.use_nodes = True
+    emission(void, 1., (.0045, .006, .011)); void.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value = (0, 0, 0, 1)
+    void.cycles.emission_sampling = 'NONE'
+    mesh.materials.append(void)
+    backdrop = bpy.data.objects.new('Section void backdrop', mesh)
+    bpy.data.collections['Native animation / camera doors elevator and section'].objects.link(backdrop)
+    backdrop.location = Vector((848, 1452, 250))*I; backdrop.visible_shadow = False
+    for f, v in [(1, True), (366, True), (367, False), (458, False), (459, True)]:
+        backdrop.hide_render = v; backdrop.keyframe_insert('hide_render', frame=f)
     # Furnishings east of the cut would float in the void; brass edges and
     # the cut surfaces themselves stay. Objects already hidden or animated
     # (the exterior study, glazing, doors) keep their own visibility keys.
@@ -376,19 +388,49 @@ def validate(scene, path):
     print('Cinema cameras validated:', json.dumps(report['shots']))
 
 
-def render(scene, shots, profile_name, step=1, only=None):
-    w, h, samples = PROFILES[profile_name]
+def configure_device(scene, backend):
+    """Select CPU, CUDA or OptiX; never fall back silently."""
+    scene.cycles.device = 'CPU'
+    if backend == 'CPU':
+        return []
+    prefs = bpy.context.preferences.addons['cycles'].preferences
+    prefs.compute_device_type = backend
+    prefs.get_devices()
+    used = []
+    for d in prefs.devices:
+        d.use = d.type == backend
+        if d.use:
+            used.append(d.name)
+    if not used:
+        raise SystemExit(f'No {backend} device found; refusing to fall back to CPU')
+    scene.cycles.device = 'GPU'
+    scene.cycles.denoising_use_gpu = True
+    print('Cycles devices:', used, flush=True)
+    return used
+
+
+def settings(scene, profile_name, samples=None):
+    w, h, max_samples, threshold = PROFILES[profile_name]
     scene.render.resolution_x = w; scene.render.resolution_y = h; scene.render.resolution_percentage = 100
-    scene.cycles.samples = samples
+    scene.cycles.samples = samples or max_samples; scene.cycles.adaptive_threshold = threshold
+    scene.cycles.adaptive_min_samples = min(32, scene.cycles.samples)
+
+
+def render(scene, shots, profile_name, step=1, only=None, worker=(0, 1), folder=None):
     log = []
+    index = -1
     for shot in SPEC['shots']:
         if shots and shot['id'] not in shots:
             continue
         cam = bpy.data.objects['Cinema / '+shot['id']]; scene.camera = cam
-        out = BUILD/'frames'/profile_name/shot['id']; out.mkdir(parents=True, exist_ok=True)
+        out = BUILD/'frames'/(folder or profile_name)/shot['id']; out.mkdir(parents=True, exist_ok=True)
         local = only if only else range(1, shot['frames']+1, step)
         for j in local:
             if not 1 <= j <= shot['frames']:
+                continue
+            # Workers interleave frames so each sees every shot's cost.
+            index += 1
+            if index % worker[1] != worker[0]:
                 continue
             path = out/f'{j:04d}.png'
             if path.exists():
@@ -402,7 +444,30 @@ def render(scene, shots, profile_name, step=1, only=None):
     return log
 
 
+def bench(scene, profile_name):
+    """Render one mid-shot frame per shot and project the full film."""
+    folder = 'bench-'+profile_name
+    (BUILD/'frames'/folder/SPEC['shots'][0]['id']/'0001.png').unlink(missing_ok=True)
+    for shot in SPEC['shots']:
+        f = BUILD/'frames'/folder/shot['id']/f'{shot["frames"]//2:04d}.png'
+        f.unlink(missing_ok=True)
+    # The first frame also pays kernel loading; render a warm-up first.
+    render(scene, [SPEC['shots'][0]['id']], profile_name, only=[1], folder=folder)
+    log = []
+    for shot in SPEC['shots']:
+        log += render(scene, [shot['id']], profile_name, only=[shot['frames']//2], folder=folder)
+    per = {sid: t for sid, _, t in log}
+    total = sum(per[s['id']]*s['frames'] for s in SPEC['shots'])
+    report = {'profile': profile_name, 'resolution': PROFILES[profile_name][:2], 'samples': scene.cycles.samples,
+              'device': scene.cycles.device, 'seconds_per_frame': per,
+              'projected_hours_one_worker': round(total/3600, 2), 'frames': sum(s['frames'] for s in SPEC['shots'])}
+    (BUILD/f'bench-{profile_name}.json').write_text(json.dumps(report, indent=2)+'\n')
+    print('BENCH', json.dumps(report), flush=True)
+
+
 def main():
+    if '--' in sys.argv:  # blender -b -P cinema.py -- args
+        sys.argv = [sys.argv[0]]+sys.argv[sys.argv.index('--')+1:]
     p = argparse.ArgumentParser()
     p.add_argument('--base', type=Path, default=ROOT/'build/highland-blender/Highland-walkthrough.blend')
     p.add_argument('--output', type=Path, default=BUILD/'Highland-cinema.blend')
@@ -413,6 +478,10 @@ def main():
     p.add_argument('--only', default='', help='Comma-separated shot-local frame numbers')
     p.add_argument('--threads', type=int, default=0)
     p.add_argument('--validate', action='store_true', help='Check camera clearance and smoothness at every film frame')
+    p.add_argument('--device', choices=['CPU', 'CUDA', 'OPTIX'], default='CPU')
+    p.add_argument('--samples', type=int, help='Override the profile maximum samples')
+    p.add_argument('--worker', default='0/1', help='k/n: render every nth frame starting at k, for parallel processes')
+    p.add_argument('--bench', action='store_true', help='Time one frame per shot and project the film')
     a = p.parse_args()
     if a.reuse:
         bpy.ops.wm.open_mainfile(filepath=str(a.output)); scene = bpy.context.scene
@@ -422,8 +491,13 @@ def main():
         scene.render.threads_mode = 'FIXED'; scene.render.threads = a.threads
     if a.validate:
         validate(scene, a.output.with_name('cinema-validation.json'))
+    configure_device(scene, a.device)
+    settings(scene, a.profile, a.samples)
+    if a.bench:
+        bench(scene, a.profile); return
     only = [int(x) for x in a.only.split(',') if x] or None
-    render(scene, [s for s in a.shots.split(',') if s], a.profile, a.step, only)
+    k, n = (int(x) for x in a.worker.split('/'))
+    render(scene, [s for s in a.shots.split(',') if s], a.profile, a.step, only, (k, n))
 
 
 if __name__ == '__main__':

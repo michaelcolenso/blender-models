@@ -56,12 +56,15 @@ python3.11 -m venv .venv-finish && .venv-finish/bin/pip install -r projects/high
 .venv-finish/bin/python projects/highland-drone/cinema_finish.py --profile local
 ```
 
-| Profile | Render size | Samples | 4-core CPU | Use |
+| Profile | Render size | Max samples | Where | Use |
 |---|---|---|---|---|
-| `proof` | 640 × 268 | 8 | ~8 s/frame | Framing checks |
-| `local` | 1280 × 536 | 20 | ~35–60 s/frame (~8 h) | Delivered film, upscaled 1.5× in finishing |
-| `final` | 1920 × 804 | 48 | ~4–5 min/frame (estimate) | Native 1080p picture; use a GPU or a render farm |
-| `uhd` | 3840 × 1608 | 64 | GPU only | 4K master |
+| `proof` | 640 × 268 | 8 | CPU, ~8 s/frame | Framing checks |
+| `local` | 1280 × 536 | 20 | 4-core CPU, ~35–60 s/frame (~8 h) | CPU fallback, upscaled 1.5× in finishing |
+| `final` | 1920 × 804 | 128 | GPU (`--device OPTIX`) | Native 1080p master |
+| `uhd` | 3840 × 1608 | 96 | GPU | 4K master (`cinema_finish.py --master 2160`) |
+
+GPU rendering on RunPod, with a benchmark that projects the run time, is in [RUNPOD.md](RUNPOD.md).
+`--worker k/n` splits frames across parallel processes; `--bench` times one frame per shot.
 
 `--shots`, `--step` and `--only` render subsets, and existing frames are skipped,
 so an interrupted render resumes where it stopped. To change a shot, edit its keys
