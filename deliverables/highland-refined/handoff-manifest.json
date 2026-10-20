@@ -7,12 +7,12 @@
   },
   "new_files": {
     "START-HERE.md": {
-      "bytes": 12529,
-      "sha256": "5ee4dba80d8715230ab2b7fee6eecd91e929369d17ef33803ae0b3f4718500dc"
+      "bytes": 12867,
+      "sha256": "5a684a034d57979a58b76ab75201ee5aecc11e5c84cdad4273deae17d23df9fc"
     },
     "Highland-handoff.pdf": {
-      "bytes": 13836,
-      "sha256": "a14db6c33738229cab3c6c5bfc29e27176787d15342bc6a8c6cc924813008f17"
+      "bytes": 14027,
+      "sha256": "90cd08479f492b810d78ce093c7fcf06540b8d67c6885bc7caa307d3e0494bf3"
     },
     "unresolved-openings.csv": {
       "bytes": 1777,
@@ -23,8 +23,8 @@
       "sha256": "e8b8eb662f17105941b89f45edd8a2e6b192d0ebebf6d0937d9080e43fca977f"
     },
     "reproduction/projects/highland-refined/HANDOFF.md": {
-      "bytes": 12529,
-      "sha256": "5ee4dba80d8715230ab2b7fee6eecd91e929369d17ef33803ae0b3f4718500dc"
+      "bytes": 12867,
+      "sha256": "5a684a034d57979a58b76ab75201ee5aecc11e5c84cdad4273deae17d23df9fc"
     },
     "reproduction/projects/highland-refined/create-handoff.py": {
       "bytes": 6420,

@@ -126,7 +126,9 @@ Evidence is in `delivery-validation.json`, `scene-readback.json`, `revision-vali
 
 Repository branch: `handoff/highland-exterior-2026-10-20`. The handoff includes the revised shared builder, cinematic/refined generators, documents and individual render/model files. The branch starts from the current repository main; it preserves the separately published owner-tour and plumbing/repipe work. Check `git status` when resuming rather than assuming this chat's earlier uncommitted state still applies.
 
-The complete ZIP is a repository release asset because it exceeds GitHub's per-file Git limit: https://github.com/michaelcolenso/blender-models/releases/tag/highland-exterior-handoff-2026-10-20. The repository is private, so the next person needs access. Keep unrelated projects intact.
+The complete ZIP is stored with Git LFS because it exceeds GitHub's regular per-file Git limit: https://github.com/michaelcolenso/blender-models/blob/handoff/highland-exterior-2026-10-20/deliverables/highland-refined/Highland-continuation-handoff.zip. The repository is private, so the next person needs access. Keep unrelated projects intact.
+
+For a clone that has only the small LFS pointer, install Git LFS and run `git lfs pull --include="deliverables/highland-refined/Highland-continuation-handoff.zip"` from the handoff branch. The unpacked individual model, media, source and document files are also tracked normally.
 
 The ZIP includes the available source crops, photographs, generators, configs and sky asset under `reproduction/`. The earlier architectural PDF is not included. Sky: Poly Haven, Kloofendal 48d Partly Cloudy, CC0. Neighborhood footprints: OpenStreetMap contributors, ODbL 1.0. Heights and façade appearance are approximate. Full attribution links are in `README.md`.
 

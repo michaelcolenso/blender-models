@@ -1,4 +1,5 @@
-# Complete archives are uploaded as GitHub release assets.
+# The continuation ZIP is tracked explicitly with Git LFS; other generated
+# archives remain local to avoid duplicate copies in the repository.
 *.zip
 # Intermediate PDF layout checks; final PDFs are tracked.
 pdf-review/

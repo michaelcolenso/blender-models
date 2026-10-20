@@ -1,6 +1,6 @@
 # Blender Project — Instructions
 
-Exterior rendering handoff: [start here](projects/highland-refined/HANDOFF.md) · [complete handoff download](https://github.com/michaelcolenso/blender-models/releases/tag/highland-exterior-handoff-2026-10-20).
+Exterior rendering handoff: [start here](projects/highland-refined/HANDOFF.md) · [complete handoff download](https://github.com/michaelcolenso/blender-models/blob/handoff/highland-exterior-2026-10-20/deliverables/highland-refined/Highland-continuation-handoff.zip) (Git LFS).
 
 Highland architectural walkthrough: [upgraded full film, phone preview and Blender scene](deliverables/highland-archviz/README.md).
 
