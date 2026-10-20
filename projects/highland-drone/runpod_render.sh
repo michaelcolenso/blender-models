@@ -32,8 +32,11 @@ setup() {
   [ -x "$FIN" ] || { uv venv -p 3.11 .venv-finish && uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt; }
   # Base walkthrough (validated) and the cinema scene with camera checks; CPU, a few minutes.
   [ -f build/highland-blender/Highland-walkthrough.blend ] || "$BPY" projects/highland-drone/build_blender.py 2>&1 | tail -3
-  "$BPY" projects/highland-drone/cinema.py --validate --only 0 2>&1 | grep -E "validated|failed|Error" || true
-  test -f build/highland-cinema/Highland-cinema.blend
+  # A failed camera check must stop the pipeline before any GPU time is spent.
+  if ! "$BPY" projects/highland-drone/cinema.py --validate --only 0 > "$LOG/setup-cinema.log" 2>&1; then
+    tail -20 "$LOG/setup-cinema.log"; echo "Cinema scene preparation or camera validation failed"; exit 1
+  fi
+  grep -E "validated" "$LOG/setup-cinema.log"
 }
 
 bench() {

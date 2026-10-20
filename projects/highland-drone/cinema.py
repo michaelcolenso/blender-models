@@ -36,6 +36,15 @@ PROFILES = {
 }
 
 
+CAMERA_FIELDS = ('id', 'src_start', 'frames', 'lens', 'shift_y', 'fstop', 'pitch', 'ease', 'keys', 'focus')
+
+
+def camera_hash():
+    """Hash of the shot fields baked into the saved cameras; labels and exposure are finish-only."""
+    shots = [{k: s.get(k) for k in CAMERA_FIELDS} for s in SPEC['shots']]
+    return hashlib.sha256(json.dumps(shots, sort_keys=True).encode()).hexdigest()
+
+
 def smooth(a, b, t):
     v = max(0., min(1., (t-a)/(b-a)))
     return v*v*(3-2*v)
@@ -332,6 +341,7 @@ def prepare(base, output):
     scene.render.image_settings.color_depth = '16'
     scene.view_settings.look = 'AgX - Base Contrast'
     scene['cinema_spec_sha256'] = hashlib.sha256(SPEC_FILE.read_bytes()).hexdigest()
+    scene['cinema_camera_sha256'] = camera_hash()
     scene['cinema_scope'] = 'Edit, cameras, dusk exterior, street lights and x-ray section are presentation treatments.'
     scene.camera = cams[SPEC['shots'][0]['id']]
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -485,6 +495,9 @@ def main():
     a = p.parse_args()
     if a.reuse:
         bpy.ops.wm.open_mainfile(filepath=str(a.output)); scene = bpy.context.scene
+        if scene.get('cinema_camera_sha256') != camera_hash():
+            raise SystemExit(f'{a.output.name} was prepared from a different cinema.shots.json; '
+                             'run cinema.py without --reuse to rebuild the cameras, and delete frames of changed shots')
     else:
         scene = prepare(a.base, a.output)
     if a.threads:
