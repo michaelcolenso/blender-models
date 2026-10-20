@@ -65,7 +65,7 @@ committing to the full render. Then run:
 ```bash
 bash projects/highland-drone/runpod_render.sh render uhd 2   # leave running; resumes if restarted
 tail -f build/highland-cinema/logs/render-uhd-*.log | grep SHOT
-bash projects/highland-drone/runpod_render.sh finish uhd      # ≈ 20–30 min on CPU; writes deliverables/highland-cinema/
+bash projects/highland-drone/runpod_render.sh finish uhd      # CPU-bound: 73 min measured on 4 vCPUs; writes deliverables/highland-cinema/
 ```
 
 Use `final` in place of `uhd` for a quicker 1080p-only film. If the GPU sits below about 90%
