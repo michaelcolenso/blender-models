@@ -1,0 +1,400 @@
+{
+  "revision": "05 / P1 enclosure and southeast R5 return",
+  "base_blend": "deliverables/highland-roof/Highland-roof-and-terrace-revised.blend",
+  "base_spec": "projects/highland-roof/geometry-revision.spec.json",
+  "sources": [
+    {
+      "file": "site-and-floor-plans.pdf",
+      "original_name": "Pages from General and Architectrual Plans.pdf",
+      "sheets": [
+        "A1.01",
+        "A2.01",
+        "A2.02",
+        "A2.03",
+        "A2.04",
+        "A2.05",
+        "A2.06",
+        "A2.07",
+        "A2.08"
+      ]
+    },
+    {
+      "file": "stairs-and-rcp.pdf",
+      "original_name": "Pages from General and Architectrual Plans2.pdf",
+      "sheets": [
+        "A6.01",
+        "A6.02",
+        "A6.03",
+        "A6.04",
+        "A7.51"
+      ]
+    },
+    {
+      "file": "exterior-elevations-and-sections.pdf",
+      "original_name": "exteriors Pages from General and Architectrual Plans.pdf",
+      "sheets": [
+        "A3.01",
+        "A3.02",
+        "A3.11",
+        "A3.12",
+        "A3.13"
+      ]
+    }
+  ],
+  "coordinate_convention": "All pixel picks use a 0.6 raster of the 3024 x 2160 PDF-point sheet, as in the inherited model. Details are rendered separately at 200 or 300 dpi. Model coordinates remain inches on the inherited dimensioned grid.",
+  "plan_registration": {
+    "R1": {
+      "page": 4,
+      "sheet": "A2.03",
+      "expected_x": [
+        864,
+        951,
+        1103,
+        1253,
+        1421
+      ]
+    },
+    "R2": {
+      "page": 5,
+      "sheet": "A2.04",
+      "expected_x": [
+        866,
+        954,
+        1106,
+        1257,
+        1425
+      ]
+    },
+    "R3": {
+      "page": 6,
+      "sheet": "A2.05",
+      "expected_x": [
+        866,
+        954,
+        1106,
+        1257,
+        1425
+      ]
+    },
+    "R4": {
+      "page": 7,
+      "sheet": "A2.06",
+      "expected_x": [
+        866,
+        954,
+        1106,
+        1257,
+        1425
+      ]
+    },
+    "R5": {
+      "page": 8,
+      "sheet": "A2.07",
+      "expected_x": [
+        875,
+        963,
+        1113,
+        1265,
+        1432
+      ]
+    },
+    "P1": {
+      "page": 3,
+      "sheet": "A2.02",
+      "expected_x": [
+        865,
+        953,
+        1104,
+        1254,
+        1423
+      ]
+    },
+    "Roof": {
+      "page": 9,
+      "sheet": "A2.08",
+      "expected_x": [
+        874,
+        962,
+        1113,
+        1264,
+        1430
+      ]
+    }
+  },
+  "south_restorations": [
+    {
+      "candidate": "OPEN-02",
+      "level": "R1",
+      "column": 2,
+      "segment": 28,
+      "jamb_pixels": [
+        990,
+        1023
+      ],
+      "wall_y_pixel": 636
+    },
+    {
+      "candidate": "OPEN-03",
+      "level": "R2",
+      "column": 2,
+      "segment": 28,
+      "jamb_pixels": [
+        990,
+        1023
+      ],
+      "wall_y_pixel": 636
+    },
+    {
+      "candidate": "OPEN-06",
+      "level": "R3",
+      "column": 2,
+      "segment": 28,
+      "jamb_pixels": [
+        990,
+        1023
+      ],
+      "wall_y_pixel": 636
+    },
+    {
+      "candidate": "OPEN-09",
+      "level": "R4",
+      "column": 2,
+      "segment": 28,
+      "jamb_pixels": [
+        990,
+        1023
+      ],
+      "wall_y_pixel": 636
+    },
+    {
+      "candidate": "OPEN-12",
+      "level": "R5",
+      "column": 1,
+      "segment": 14,
+      "jamb_pixels": [
+        1004,
+        1026
+      ],
+      "wall_y_pixel": 483
+    },
+    {
+      "candidate": "OPEN-13",
+      "level": "R5",
+      "column": 2,
+      "segment": 8,
+      "jamb_pixels": [
+        1066,
+        1087
+      ],
+      "wall_y_pixel": 841
+    }
+  ],
+  "north_typical": [
+    {
+      "column": 1,
+      "mark": "MX",
+      "segment": 2,
+      "jamb_pixels": [
+        1471,
+        1487
+      ],
+      "wall_y_pixel": 242,
+      "elevation_pixels": [
+        874,
+        891
+      ],
+      "sill_in": 9,
+      "height_in": 90
+    },
+    {
+      "column": 2,
+      "mark": "MDD",
+      "segment": 2,
+      "jamb_pixels": [
+        1377,
+        1407
+      ],
+      "wall_y_pixel": 242,
+      "elevation_pixels": [
+        954,
+        986
+      ],
+      "sill_in": 78,
+      "height_in": 22
+    },
+    {
+      "column": 3,
+      "mark": "MX",
+      "segment": 2,
+      "jamb_pixels": [
+        1236,
+        1255
+      ],
+      "wall_y_pixel": 251,
+      "elevation_pixels": [
+        1113,
+        1130
+      ],
+      "sill_in": 9,
+      "height_in": 90
+    },
+    {
+      "column": 4,
+      "mark": "MU",
+      "segment": 2,
+      "jamb_pixels": [
+        1174,
+        1203
+      ],
+      "wall_y_pixel": 242,
+      "elevation_pixels": [
+        1164,
+        1197
+      ],
+      "sill_in": 9,
+      "height_in": 90
+    },
+    {
+      "column": 5,
+      "mark": "MZ",
+      "segment": 0,
+      "jamb_pixels": [
+        1045,
+        1058
+      ],
+      "wall_y_pixel": 229,
+      "elevation_pixels": [
+        1307,
+        1323
+      ],
+      "sill_in": 9,
+      "height_in": 90
+    },
+    {
+      "column": 6,
+      "mark": "MZ",
+      "segment": 0,
+      "jamb_pixels": [
+        945,
+        959
+      ],
+      "wall_y_pixel": 229,
+      "elevation_pixels": [
+        1406,
+        1423
+      ],
+      "sill_in": 9,
+      "height_in": 90
+    }
+  ],
+  "north_r5": [
+    {
+      "column": 1,
+      "mark": "MX",
+      "segment": 0,
+      "jamb_pixels": [
+        1492,
+        1504
+      ],
+      "wall_y_pixel": 239,
+      "elevation_pixels": [
+        874,
+        891
+      ],
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "column": 2,
+      "mark": "MDD",
+      "segment": 0,
+      "jamb_pixels": [
+        1385,
+        1414
+      ],
+      "wall_y_pixel": 239,
+      "elevation_pixels": [
+        954,
+        986
+      ],
+      "sill_in": 78,
+      "height_in": 22
+    },
+    {
+      "column": 3,
+      "mark": "MX",
+      "segment": 0,
+      "jamb_pixels": [
+        1242,
+        1255
+      ],
+      "wall_y_pixel": 251,
+      "elevation_pixels": [
+        1113,
+        1130
+      ],
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "column": 4,
+      "mark": "MU",
+      "segment": 0,
+      "jamb_pixels": [
+        1176,
+        1203
+      ],
+      "wall_y_pixel": 239,
+      "elevation_pixels": [
+        1164,
+        1197
+      ],
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "column": 5,
+      "mark": "MK",
+      "segment": 0,
+      "jamb_pixels": [
+        1056,
+        1070
+      ],
+      "wall_y_pixel": 239,
+      "elevation_pixels": [
+        1307,
+        1323
+      ],
+      "sill_in": 18,
+      "height_in": 66
+    },
+    {
+      "column": 6,
+      "mark": "MK",
+      "segment": 0,
+      "jamb_pixels": [
+        1005,
+        1018
+      ],
+      "wall_y_pixel": 239,
+      "elevation_pixels": [
+        1354,
+        1370
+      ],
+      "sill_in": 18,
+      "height_in": 66
+    }
+  ],
+  "unresolved": {},
+  "rejected": {
+    "OPEN-16": "The R5 north row has two MK windows at approximately x=1315 and 1363 in the elevation raster. There is no R5 opening at x=1414; that MZ belongs to R1-R4. Replace this repeated lower-floor candidate with the actual six-window R5 row."
+  },
+  "limits": [
+    "Plan jambs and wall placement are provisional raster measurements, not scheduled opening sizes. Source sheets have local registration differences; no single building accuracy tolerance is asserted.",
+    "Sill/head levels and complete frame sections remain assumed. Window marks identify the visible elevation pattern; the window schedule and A4/A5 detail sheets are still absent.",
+    "R1 north openings are outside this bounded correction and retain the prior assumed geometry. The new drawing evidence also calls for a separate R1 north door/entry audit.",
+    "Terrace-band heights stay provisional. A2.08 confirms top-elevation callouts already used, but A4/A5 profiles and exterior guard sections are not supplied. Stair guard details do not establish exterior terrace guards.",
+    "Drawings are dated 04-02-07 and carry handwritten ASI/RFI references without complete response records. They do not establish current installed conditions.",
+    "North simplified stair-window depth is retained; dimensional disagreement remains explicit. See shell-decisions.json for the P1 and southeast R5 continuation."
+  ]
+}

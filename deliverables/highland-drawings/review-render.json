@@ -1,0 +1,13 @@
+{
+  "elapsed_seconds": 151.88,
+  "samples": 12,
+  "images": {
+    "geometry-review/north.png": "25bc5740740cdab81ece2c676623bb875f90f5a5fd70d3a78cfa6c89026cf6b9",
+    "geometry-review/south.png": "37f86a9ff0b3601e17282e5662e9186a66f114a63f237802642cf8188a9b8443",
+    "geometry-review/plan.png": "27ed028e4bc26d66b182211b7a32820070ed845cb25850aa03fd38ebbb684070",
+    "geometry-review/iso.png": "2e794378471c8721ffc116fc7901b1cf64addf784934238a0d13fb0581fc39c2",
+    "geometry-review/p1-plan.png": "136c36cf063d0189bfbcb0a1c5c9dac5efb624654b4f7631d9fd435a57446391",
+    "geometry-review/p1-south.png": "c7073c6b64bb4fc9e9221a8a4a09bf5db74659af0eead0e660ab040647965f72",
+    "geometry-review/r5-return.png": "46827ea5189b2824a0afe4f83a5a7cc72990b469b44626c5639ac2051dc60ce8"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "status": "reviewed",
+  "pending": [],
+  "native_sha256": "e90c1092b04c623a3dc25215a8b3ad712f04a16012ce1af0ac96e4fb7702c97b",
+  "reviewed_files": {
+    "Highland-daylight-drawing-reconciled.png": "5c48b01639f1a034a2623f42f3514bce7e2479b3d71b57c18df9444727e2da0e",
+    "Highland-drawing-reconciliation.pdf": "c850adc7d3c562511dd8015a00eac5ad2f8981ed106f26048626e524b4980729",
+    "geometry-review/iso.png": "2e794378471c8721ffc116fc7901b1cf64addf784934238a0d13fb0581fc39c2",
+    "geometry-review/north.png": "25bc5740740cdab81ece2c676623bb875f90f5a5fd70d3a78cfa6c89026cf6b9",
+    "geometry-review/p1-plan.png": "136c36cf063d0189bfbcb0a1c5c9dac5efb624654b4f7631d9fd435a57446391",
+    "geometry-review/p1-south.png": "c7073c6b64bb4fc9e9221a8a4a09bf5db74659af0eead0e660ab040647965f72",
+    "geometry-review/plan.png": "27ed028e4bc26d66b182211b7a32820070ed845cb25850aa03fd38ebbb684070",
+    "geometry-review/r5-return.png": "46827ea5189b2824a0afe4f83a5a7cc72990b469b44626c5639ac2051dc60ce8",
+    "geometry-review/south.png": "37f86a9ff0b3601e17282e5662e9186a66f114a63f237802642cf8188a9b8443",
+    "source-review/P1-enclosure-reconciled.png": "516073294c4346b2f461598e81b0e06929634213485aab3d1cdde76a92501914",
+    "source-review/P1-south-reconciled.png": "4a32797d3cd00249f3ddd202ff4798843eef3d9fc4e65ee6b9d495473c46ad4f",
+    "source-review/R5-SE-reconciled.png": "9e0d62709a85460a3315a034233327609a8f165499493c4d7ca5865412702380",
+    "source-review/R5-roof-comparison.png": "5e3835f60d3f8ce9540274a017bdbeb9b79239691c0cbdb887f0e922250d2704",
+    "source-review/P1-east-elevation.png": "a84c9476e0fc93535909088483e2133c56f0a96740a5d84b4fb804fbc988865f",
+    "source-review/P1-south-elevation.png": "ded1e6b8d3a13fe8588c6805f33a5b1d63324f83d7cd2ad91de5fab017c8108c",
+    "source-review/R5-east-elevation.png": "2d5884a6cb32153e6360be5b49f73eae9960cddbdfcbc23dc109b82bb02b053a",
+    "source-review/R5-south-elevation.png": "56aa0ecfdcaef32195c757b2a24145820a364eb6eb38c9087218bb6b2344f180",
+    "source-review/north-plan-model-overlay.png": "1e4011e53f3528a79a997f7736c889557fb5cf533836645eb8ea994d54e3582f"
+  },
+  "observations": [
+    "Separate P1 trace, south jambs and P1 east/south elevations inspected; all fourteen modeled P1 opening locations remain provisional.",
+    "Southeast R5 plan and independent roof comparison inspected; full return opening fits without clipping, and retained tie-in offsets remain explicit.",
+    "Seven native provenance views inspected, including isolated P1 plan/south and a southeast R5 close-up. Complete components are colored orange as assumed.",
+    "North projection overlay visibly retains disagreement, especially at the stair/MU pair; the 42.443-pixel diagnostic maximum is unchanged.",
+    "Final 1995 x 1323 native Cycles daylight image inspected: nonblank, readable revision 05 caption and no new missing/floating facade parts.",
+    "All six final report pages inspected for layout, source evidence, candidate table and explicit remaining dimensional/profile limitations.",
+    "North alignment and R1 north entry work are explicitly deferred at the owner's request; the next recommended work is the remaining R5 footprint, followed by terrace/coping/guard arrangement."
+  ],
+  "pdf_pages_reviewed": 6,
+  "pdf_page_raster_sha256": {
+    "page-1": "16c4d58891d185a711cd1104347488395233eca6d1eaee3848c56f416d2c2a4b",
+    "page-2": "e9a09247213e2a2fa7440113b6829a06637a1462115faf2cc2ddd0d0897d8d50",
+    "page-3": "933814373356e4d354a739669284a21390f900def953b20e8bee77116860f52d",
+    "page-4": "63dbf99d36bc712eabe377ebf447c73ee908234ba954a2faa9006c39e18c3640",
+    "page-5": "e7d08c32d16ec2c547e82d7dfeb7a7d38d88cc5ed094369b6ca5c38d83139f16",
+    "page-6": "86c5cd0531d1456ff55d2b55176e20e32ff476d33a3266288d3c302cea3550cd"
+  }
+}

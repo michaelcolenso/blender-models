@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "native_sha256": "e90c1092b04c623a3dc25215a8b3ad712f04a16012ce1af0ac96e4fb7702c97b",
+  "glb_sha256": "c098f906f2f583c5b617a58aa8c7711be0f0f4ba1768d9df4ac9720c481c8ca1",
+  "opening_inventory": 192,
+  "accepted_candidates": 15,
+  "rejected_candidates": 1,
+  "unresolved_candidates": 0,
+  "candidate_disposition_note": "Presence and provisional placement only; dimensional/source issues remain open",
+  "p1_openings_rechecked": 14,
+  "north_meshes_identical_to_revision04": 97,
+  "changed_opening_records": 57,
+  "architecture_meshes": 997,
+  "unchanged_architecture_meshes": 772,
+  "protected_spec_controls": [
+    "grid_dimensions_in",
+    "roof_features",
+    "roof_plate_z",
+    "north_roof_plate_z",
+    "north_roof_split_y"
+  ],
+  "roof_geometry_unchanged": false,
+  "roof_changes_allowlist": [
+    "roof-parapet-3-south",
+    "roof-parapet-4",
+    "roof-parapet-5",
+    "roof-parapet-6",
+    "roof-south"
+  ],
+  "coping_join_max_error_in": 0,
+  "corrected_wall_void_overlaps": 0,
+  "north_R2_to_R5_count_per_floor": 6,
+  "frame_readback_max_error_in": 0.00011795260206781677,
+  "frame_readback_error_note": "Floating-point consistency with the spec; not source accuracy.",
+  "missing_source_tags": [],
+  "external_image_dependencies": 0,
+  "glb_mesh_nodes": 5703,
+  "saved_scenes": [
+    "Daylight / drawing reconciliation 05",
+    "Dusk / drawing reconciliation 05"
+  ],
+  "camera_frames_checked": 432,
+  "minimum_camera_margin": {
+    "Daylight / drawing reconciliation 05": 0.046138349920511246,
+    "Dusk / drawing reconciliation 05": 0.05907024070620537
+  },
+  "source_pdf_sha256": {
+    "site-and-floor-plans.pdf": "06fe5b05c553c66689b69a5d89611673a6aaee5f4a36ace60de50cfa4f3deed4",
+    "stairs-and-rcp.pdf": "66d5064f7efd27d5e943e4879d646a0a64a026b05dfceab1635b60b6bb2e7274",
+    "exterior-elevations-and-sections.pdf": "636cc7cb0d147d5749eb6a9f0898fef61fc67da987ffb895fc91193e354b5df4"
+  }
+}

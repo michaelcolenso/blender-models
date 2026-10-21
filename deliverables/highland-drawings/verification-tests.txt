@@ -1,0 +1,8 @@
+/workspace/blender-models/tests/test_render_workflow.py:93: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material.use_nodes = True
+...00:00.454  blend            | Read blend: "/tmp/tmp0awdhkyk/relocated.blend"
+........
+----------------------------------------------------------------------
+Ran 11 tests in 0.318s
+
+OK

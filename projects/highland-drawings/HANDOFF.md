@@ -1,0 +1,21 @@
+# Continue from revision 05
+
+Branch: `continue/highland-drawing-reconciliation`. Open `deliverables/highland-drawings/Highland-drawing-reconciled.blend` and the source comparison PDF. The three uploaded PDFs remain byte-for-byte under `references/`; `source-inventory.json` maps all nineteen sheets and hashes.
+
+P1 now uses a separate A2.02 enclosure rather than R1. All twelve inherited P1 opening records were rechecked against plan jambs and A3.01; OPEN-01 (`south-P1-02`) and the garage service door (`east-P1-service`) were added. The garage gate follows the recessed A2.02 wall. Fourteen P1 openings are modeled. The north retaining-wall steps and residential south steps are traced; the open ventilation shaft, planters/trellises, parking ramp and structural slab design are excluded. Flat floor, wall thickness, below-grade heights and complete opening sections remain assumed.
+
+OPEN-14 (`south-R5-09`) now fits the southeast R5 return without clipping. The inner corner moved 31.556 in west and the short return moved 3.996 in south. Adjacent east MA/MF openings and the final south MO/MU pair were re-registered. The R5 slab, south roof plate and `roof-parapet-3-south`, `-4`, `-5`, `-6` were rebuilt together; the coping top remains 406.25 ft. A2.08 independently agrees with the local topology, with model-minus-roof-pick residuals of -0.844 in X and +2.400 in Y. Sections remain assumed.
+
+This is a bounded local reconciliation, not a complete R5 footprint verification. The inherited long east line is 7.743 in east of the A2.07 pick; the inherited south baseline is 5.569 in south of its pick. These residuals remain explicit in `shell-reconciliation.json` and the report. The final south MO/MU internal split is provisional. Other R5 steps, particularly the southwest terrace/enclosure boundary, need a separate full-footprint audit.
+
+North stair/MU alignment and R1 north entries are deferred at the owner's request. Their unresolved differences remain documented. North R2-R5 geometry is unchanged from revision 04. Six openings per floor does not establish alignment: `elevation-comparison.json` preserves all 24 signed center residuals, up to **42.443 pixels** on the inherited overview raster. The stair/MU pair, simplified wall depth and drawing registration remain unresolved. R1 north door/entry geometry remains unaudited and deferred. Do not describe all sixteen issues as dimensionally closed or the model as verified as-built.
+
+The current inventory is 192 openings: fifteen original candidates provisionally located, one false R5 repeat rejected, plus the additional P1 service door. `opening-audit.json` distinguishes candidate disposition from dimensional verification. `change-ledger.json` is cumulative from revision 03; `shell-reconciliation.json` isolates this continuation. `shell-decisions.json` records the exact source picks. `revision04-north-baseline.json` protects the prior north mesh hashes.
+
+R1/typical polygons, all six floor datums, grid dimensions, roof plates/split, towers and terrace geometry remain protected. `delivery-validation.json` checks the saved native geometry, frame extents and wall-normal locations, no overlapping corrected voids, P1/R5 slab outlines/areas/levels, changed coping tops, complete GLB architecture, packed images and all 432 dusk camera frames. Review renders include isolated P1 plan/south views and a southeast R5 close-up. Exact inspected images and report pages are bound in `visual-review.json`.
+
+Next priority with north deferred: audit the remaining R5 footprint, especially the southwest terrace/enclosure boundary, southeast tie-in residuals and final south MO/MU split. Then review terrace/coping/guard arrangement while keeping unsupported sections provisional. P1 ramp and below-grade detail development can follow if the parking level becomes part of the modeling scope.
+
+The window schedule, A4/A5 profiles, complete ASI/RFI responses and installed-condition verification remain unavailable. A6 stair guards do not establish exterior terrace guards. The revision 03 dusk film is still its own earlier delivery; it has not been relabeled as revision 05.
+
+PR #15's starting head `183f22c` passed GitHub Actions run `39509101893`: plan plus all four render jobs. See the PR for CI on subsequent commits.

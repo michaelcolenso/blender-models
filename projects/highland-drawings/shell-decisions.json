@@ -1,0 +1,49 @@
+{
+  "revision": "05 / P1 enclosure and southeast R5 return",
+  "coordinate_convention": "Picks are in the inherited 0.6 PDF-point raster convention. Detail inspection at 200-360 dpi. XY is provisional; no source-accuracy pass is claimed.",
+  "p1": {
+    "sheet": "A2.02", "page": 3,
+    "expected_x": [865, 953, 1104, 1254, 1423],
+    "grid_y_pixels": [226.352, 390.944, 536.528, 630.704, 725.096, 822.08, 954.056, 1035.056],
+    "grid_y_inches": [1800, 1434, 1110, 900, 690, 474, 180, 0],
+    "polygon_pixels": [[866,230],[1074,230],[1074,241],[1230,241],[1230,247],[1337,247],[1337,218],[1497,218],[1497,678],[1418,678],[1418,706],[1414,706],[1414,821],[1496,821],[1496,1030],[1368,1030],[1368,1005],[1230,1005],[1230,1030],[1018,1030],[1018,934],[866,934]],
+    "basis": "Separate orthogonal enclosure traced from A2.02, including north retaining-wall steps, the east garage/service recess and residential south steps. Open north ventilation shaft and external planters/trellises are excluded from enclosed floor area. Centerlines, wall thickness, floor flatness and below-grade wall heights remain simplified; the 337-to-342 parking ramp is not modeled.",
+    "openings": [
+      {"id":"south-P1-01","face":"south","segment":20,"jamb_pixels":[883,936],"wall_pixel":934,"kind":"wide","mark":"M06","sill_in":20,"height_in":72},
+      {"id":"south-P1-02","face":"south","segment":20,"jamb_pixels":[969,1015],"wall_pixel":934,"kind":"door","mark":"M05","sill_in":2,"height_in":96,"candidate":"OPEN-01","elevation_pixels":[990,1018]},
+      {"id":"south-P1-03","face":"south","segment":18,"jamb_pixels":[1026,1064],"wall_pixel":1030,"kind":"door","mark":"M03","sill_in":2,"height_in":96},
+      {"id":"south-P1-04","face":"south","segment":18,"jamb_pixels":[1096,1158],"wall_pixel":1030,"kind":"wide","mark":"ME","sill_in":20,"height_in":72},
+      {"id":"south-P1-05","face":"south","segment":18,"jamb_pixels":[1186,1219],"wall_pixel":1030,"kind":"door","mark":"M03","sill_in":2,"height_in":96},
+      {"id":"south-P1-06","face":"south","segment":16,"jamb_pixels":[1237,1281],"wall_pixel":1005,"kind":"wide","mark":"ML","sill_in":20,"height_in":72},
+      {"id":"south-P1-07","face":"south","segment":16,"jamb_pixels":[1315,1352],"wall_pixel":1005,"kind":"door","mark":"M07","sill_in":2,"height_in":96},
+      {"id":"south-P1-08","face":"south","segment":14,"jamb_pixels":[1377,1414],"wall_pixel":1030,"kind":"door","mark":"M03","sill_in":2,"height_in":96},
+      {"id":"south-P1-09","face":"south","segment":14,"jamb_pixels":[1441,1487],"wall_pixel":1030,"kind":"wide","mark":"MB","sill_in":20,"height_in":72},
+      {"id":"east-P1-01","face":"east","segment":13,"jamb_pixels":[972,1025],"wall_pixel":1496,"kind":"wide","mark":"MA","sill_in":20,"height_in":72},
+      {"id":"east-P1-02","face":"east","segment":13,"jamb_pixels":[919,955],"wall_pixel":1496,"kind":"window","mark":"MC","sill_in":20,"height_in":72},
+      {"id":"east-P1-03","face":"east","segment":13,"jamb_pixels":[878,908],"wall_pixel":1496,"kind":"door","mark":"MI","sill_in":2,"height_in":96},
+      {"id":"east-P1-garage","face":"east","segment":11,"jamb_pixels":[710,808],"wall_pixel":1414,"kind":"garage","mark":"sectional overhead gate","sill_in":28,"height_in":94},
+      {"id":"east-P1-service","face":"east","segment":9,"jamb_pixels":[683,703],"wall_pixel":1418,"kind":"door","mark":"A / service door","sill_in":2,"height_in":96,"elevation_pixels":[982,1003]}
+    ]
+  },
+  "r5": {
+    "sheet":"A2.07", "page":8,
+    "grid_y_pixels":[225.704,390.08,535.664,630.056,724.232,821.216,953.192,1034.192],
+    "grid_y_inches":[1800,1434,1110,900,690,474,180,0],
+    "inner_corner_x_pixel":1432,
+    "return_y_pixel":822,
+    "basis":"Move the southeast inner corner to the A2.07 wall centerline; retain the adjoining long east wall and south baseline as inherited tie-ins. Rebuild the return, adjoining east/south walls, R5 slab, south roof plate and four adjoining coping pieces together. A2.08 independently shows the same local return topology; its roof step is a check, not a second wall-position authority.",
+    "openings":[
+      {"id":"south-R5-09","face":"south","segment":4,"jamb_pixels":[1434,1455],"wall_pixel":822,"kind":"window","mark":"return window / schedule pending","sill_in":18,"height_in":84,"candidate":"OPEN-14","elevation_pixels":[1473,1491]},
+      {"id":"east-R5-01","face":"east","segment":5,"jamb_pixels":[854,910],"wall_pixel":1432,"kind":"wide","mark":"MA","sill_in":18,"height_in":84},
+      {"id":"east-R5-02","face":"east","segment":5,"jamb_pixels":[828,845],"wall_pixel":1432,"kind":"window","mark":"MF / plan glazed door","sill_in":18,"height_in":84},
+      {"id":"south-R5-07","face":"south","segment":6,"jamb_pixels":[1377,1398],"wall_pixel":920,"kind":"window","mark":"MO","sill_in":18,"height_in":84,"note":"The final south MO/MU pair shares the end-of-row plan glazing band. Assignment of the internal split to the two elevation marks remains provisional."},
+      {"id":"south-R5-08","face":"south","segment":6,"jamb_pixels":[1400,1423],"wall_pixel":920,"kind":"window","mark":"MU","sill_in":18,"height_in":84,"note":"The final south MO/MU pair shares the end-of-row plan glazing band. Assignment of the internal split to the two elevation marks remains provisional."}
+    ]
+  },
+  "limits":[
+    "P1 now has its own A2.02 enclosure and all fourteen modeled P1 openings have plan jamb evidence. The open ventilation shaft, external planters/trellises, parking ramp, structural slab design and below-grade wall sections are not modeled or verified.",
+    "The southeast R5 corner and adjoining openings are provisionally reconciled. The long east line and south baseline retain inherited registration; the final south MO/MU split is provisional. Other R5 local steps, including the southwest terrace/enclosure boundary, still need a separate full-footprint audit.",
+    "North R2-R5 geometry is unchanged from revision 04. The diagnostic maximum horizontal center discrepancy remains 42.443 overview-raster pixels; six windows per floor does not establish dimensional alignment. R1 north entries still need audit.",
+    "P1 and R5 sill/head heights, frame sections and coping profiles remain assumed. A2.08 supplies top datums, not the missing A4/A5 construction profiles. Model consistency is not an as-built or source-accuracy certificate."
+  ]
+}

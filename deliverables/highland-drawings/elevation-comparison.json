@@ -1,0 +1,167 @@
+{
+  "basis": "Diagnostic spec projection onto A3.02, not an independent rendered-edge measurement. Native frame extents were separately read back against the spec. Blue outlines use plan-governed jamb positions and assumed sill/head heights. No accuracy certificate or edge-agreement pass is claimed.",
+  "elevation_grid_pixels": [
+    922,
+    1073,
+    1224,
+    1393
+  ],
+  "elevation_grid_inches": [
+    1236,
+    861,
+    528,
+    195
+  ],
+  "floor_ticks": {
+    "R5": 212,
+    "R4": 269
+  },
+  "max_abs_horizontal_center_delta_px": 42.443,
+  "findings": "Residual model-versus-elevation disagreement remains, especially around the north stair/MU pair. Plan jambs govern provisional placements; simplified walls, raster picks and drawing registration also affect comparison. The 15 accepted candidates establish presence and provisional plan locations, not fully reconciled dimensions. A4 window details, RFI responses and field verification are needed before confirmation.",
+  "opening_comparisons": [
+    {
+      "id": "north-R2-01",
+      "source_elevation_center_px": 882.5,
+      "plan_model_projected_center_px": 876.231,
+      "delta_px": -6.269
+    },
+    {
+      "id": "north-R2-02",
+      "source_elevation_center_px": 970.0,
+      "plan_model_projected_center_px": 953.906,
+      "delta_px": -16.094
+    },
+    {
+      "id": "north-R2-03",
+      "source_elevation_center_px": 1121.5,
+      "plan_model_projected_center_px": 1086.128,
+      "delta_px": -35.372
+    },
+    {
+      "id": "north-R2-04",
+      "source_elevation_center_px": 1180.5,
+      "plan_model_projected_center_px": 1143.216,
+      "delta_px": -37.284
+    },
+    {
+      "id": "north-R2-05",
+      "source_elevation_center_px": 1315.0,
+      "plan_model_projected_center_px": 1287.244,
+      "delta_px": -27.756
+    },
+    {
+      "id": "north-R2-06",
+      "source_elevation_center_px": 1414.5,
+      "plan_model_projected_center_px": 1398.871,
+      "delta_px": -15.629
+    },
+    {
+      "id": "north-R3-01",
+      "source_elevation_center_px": 882.5,
+      "plan_model_projected_center_px": 871.474,
+      "delta_px": -11.026
+    },
+    {
+      "id": "north-R3-02",
+      "source_elevation_center_px": 970.0,
+      "plan_model_projected_center_px": 949.05,
+      "delta_px": -20.95
+    },
+    {
+      "id": "north-R3-03",
+      "source_elevation_center_px": 1121.5,
+      "plan_model_projected_center_px": 1080.562,
+      "delta_px": -40.938
+    },
+    {
+      "id": "north-R3-04",
+      "source_elevation_center_px": 1180.5,
+      "plan_model_projected_center_px": 1138.057,
+      "delta_px": -42.443
+    },
+    {
+      "id": "north-R3-05",
+      "source_elevation_center_px": 1315.0,
+      "plan_model_projected_center_px": 1281.655,
+      "delta_px": -33.345
+    },
+    {
+      "id": "north-R3-06",
+      "source_elevation_center_px": 1414.5,
+      "plan_model_projected_center_px": 1392.427,
+      "delta_px": -22.073
+    },
+    {
+      "id": "north-R4-01",
+      "source_elevation_center_px": 882.5,
+      "plan_model_projected_center_px": 870.308,
+      "delta_px": -12.192
+    },
+    {
+      "id": "north-R4-02",
+      "source_elevation_center_px": 970.0,
+      "plan_model_projected_center_px": 948.482,
+      "delta_px": -21.518
+    },
+    {
+      "id": "north-R4-03",
+      "source_elevation_center_px": 1121.5,
+      "plan_model_projected_center_px": 1080.979,
+      "delta_px": -40.521
+    },
+    {
+      "id": "north-R4-04",
+      "source_elevation_center_px": 1180.5,
+      "plan_model_projected_center_px": 1138.399,
+      "delta_px": -42.101
+    },
+    {
+      "id": "north-R4-05",
+      "source_elevation_center_px": 1315.0,
+      "plan_model_projected_center_px": 1281.65,
+      "delta_px": -33.35
+    },
+    {
+      "id": "north-R4-06",
+      "source_elevation_center_px": 1414.5,
+      "plan_model_projected_center_px": 1392.013,
+      "delta_px": -22.487
+    },
+    {
+      "id": "north-R5-01",
+      "source_elevation_center_px": 882.5,
+      "plan_model_projected_center_px": 865.608,
+      "delta_px": -16.892
+    },
+    {
+      "id": "north-R5-02",
+      "source_elevation_center_px": 970.0,
+      "plan_model_projected_center_px": 953.888,
+      "delta_px": -16.112
+    },
+    {
+      "id": "north-R5-03",
+      "source_elevation_center_px": 1121.5,
+      "plan_model_projected_center_px": 1091.311,
+      "delta_px": -30.189
+    },
+    {
+      "id": "north-R5-04",
+      "source_elevation_center_px": 1180.5,
+      "plan_model_projected_center_px": 1151.001,
+      "delta_px": -29.499
+    },
+    {
+      "id": "north-R5-05",
+      "source_elevation_center_px": 1315.0,
+      "plan_model_projected_center_px": 1284.655,
+      "delta_px": -30.345
+    },
+    {
+      "id": "north-R5-06",
+      "source_elevation_center_px": 1362.0,
+      "plan_model_projected_center_px": 1342.136,
+      "delta_px": -19.864
+    }
+  ]
+}
