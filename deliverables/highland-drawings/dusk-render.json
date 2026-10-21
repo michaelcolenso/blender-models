@@ -1,0 +1,10 @@
+{
+  "native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "scene": "Dusk / drawing reconciliation 06",
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "elapsed_seconds": 188.88,
+  "samples": 32,
+  "images": {
+    "Highland-dusk-drawing-reconciled.png": "5e1833a7d19a830ea2ccdd94e5a24f9fe5584ad506120ca289a7429375cdee04"
+  }
+}

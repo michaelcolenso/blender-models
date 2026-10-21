@@ -1,5 +1,8 @@
 """Inventory uploaded PDFs and reconcile openings and source-bounded shell geometry."""
 from shell import reconcile as reconcile_shell
+from r5 import reconcile as reconcile_r5
+from terraces import reconcile as reconcile_terraces
+import argparse
 import copy
 import csv
 import hashlib
@@ -34,6 +37,7 @@ def raster(page, box, dpi=200):
 
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--stage',choices=('r5','terraces','presentation'),default='presentation');args=parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     review = OUT / 'source-review'
     review.mkdir(exist_ok=True)
@@ -129,6 +133,13 @@ def main():
     assert len(spec['openings']) == 189
     assert len({e['id'] for e in spec['openings']}) == 189
     shell = reconcile_shell(spec, registrations, OUT, plans, raster)
+    completion = reconcile_r5(spec, registrations, OUT, plans, raster)
+    spec['completed_geometry_stage']=1
+    if args.stage in ('terraces','presentation'):
+        reconcile_terraces(spec, registrations, OUT, plans, raster)
+        spec['completed_geometry_stage']=2
+    if args.stage=='presentation':
+        spec['presentation_refresh']=json.loads((HERE/'presentation.json').read_text())
     (OUT / 'plan-registration.json').write_text(json.dumps(registrations, indent=2)+'\n')
     changes = [{'id': e['id'], 'old': next((old for old in before['openings'] if old['id'] == e['id']), None), 'new': e}
                for e in spec['openings'] if e != next((old for old in before['openings'] if old['id'] == e['id']), None)]
@@ -167,11 +178,13 @@ def main():
     assert spec['polygons']['r1'] == before['polygons']['r1']
     assert spec['polygons']['typical'] == before['polygons']['typical']
     assert [(e['name'], e['z']) for e in spec['levels']] == [(e['name'], e['z']) for e in before['levels']]
-    for key in ('grid_dimensions_in','roof_features','roof_plate_z','north_roof_plate_z','north_roof_split_y'):
+    assert spec['roof_features'][:2]==before['roof_features'][:2]
+    assert [e['top'] for e in spec['roof_features']]==[e['top'] for e in before['roof_features']]
+    for key in ('grid_dimensions_in','roof_plate_z','north_roof_plate_z','north_roof_split_y'):
         assert spec[key] == before[key], key
     (HERE / 'reconciled.spec.json').write_text(json.dumps(spec, indent=2)+'\n')
     (OUT / 'reconciled.spec.json').write_text(json.dumps(spec, indent=2)+'\n')
-    (OUT / 'change-ledger.json').write_text(json.dumps({'revision':CFG['revision'], 'opening_changes':changes, 'coupled_south_correction':'Columns 02 and 03 previously shared one short return, while column 04 occupied the next return. Columns 03/04 are reassigned to their successive plan returns. The unsupported column-03 recess/guard is removed; source openings no longer overlap.', 'shell_changes':shell['polygon_changes'], 'protected_controls':['R1 and typical polygons','All six floor elevations','Dimensioned grid spans','Roof plate levels/split','Roof towers and terrace geometry'], 'roof_changes':['south roof plate','roof-parapet-3-south','roof-parapet-4','roof-parapet-5','roof-parapet-6']}, indent=2)+'\n')
+    (OUT / 'change-ledger.json').write_text(json.dumps({'revision':CFG['revision'], 'opening_changes':changes, 'coupled_south_correction':'Columns 02 and 03 previously shared one short return, while column 04 occupied the next return. Columns 03/04 are reassigned to their successive plan returns. The unsupported column-03 recess/guard is removed; source openings no longer overlap.', 'r5_completion':completion, 'shell_changes':shell['polygon_changes'], 'protected_controls':['R1 and typical polygons','All six floor elevations','Dimensioned grid spans','Roof plate levels/split','Elevator/stair towers and established roof top datums'], 'roof_changes':['Both split roof plates','R5 perimeter coping','Roof step closure','Source terrace/guard/band paths','South clerestory footprint']}, indent=2)+'\n')
 
     for level in registrations:
         selected = [e for e in evidence if e['level'] == level]

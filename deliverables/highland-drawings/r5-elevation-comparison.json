@@ -1,0 +1,262 @@
+{
+  "basis": "Diagnostic inverse of the inherited per-elevation grid registration applied to source-governed A2.07 plan positions. Overview-raster residuals are not independent rendered-edge/source-accuracy checks. Sill/head dimensions and complete frame sections remain assumed.",
+  "by_face_max_abs_center_delta_px": {
+    "south": 33.859,
+    "east": 14.744,
+    "west": 14.913
+  },
+  "openings": [
+    {
+      "id": "south-R5-01",
+      "mark": "return / mark obscured",
+      "source_center_px": 1005.5,
+      "plan_model_projected_center_px": 1029.771,
+      "center_delta_px": 24.271,
+      "model_projected_width_px": 24.555,
+      "source_width_px": 19
+    },
+    {
+      "id": "south-R5-02",
+      "mark": "MO",
+      "source_center_px": 1057.5,
+      "plan_model_projected_center_px": 1079.997,
+      "center_delta_px": 22.497,
+      "model_projected_width_px": 37.948,
+      "source_width_px": 31
+    },
+    {
+      "id": "south-R5-03",
+      "mark": "MT",
+      "source_center_px": 1136.5,
+      "plan_model_projected_center_px": 1160.794,
+      "center_delta_px": 24.294,
+      "model_projected_width_px": 82.614,
+      "source_width_px": 61
+    },
+    {
+      "id": "south-R5-04",
+      "mark": "MO",
+      "source_center_px": 1206.5,
+      "plan_model_projected_center_px": 1236.996,
+      "center_delta_px": 30.496,
+      "model_projected_width_px": 38.933,
+      "source_width_px": 31
+    },
+    {
+      "id": "south-R5-05",
+      "mark": "MN",
+      "source_center_px": 1267.5,
+      "plan_model_projected_center_px": 1301.359,
+      "center_delta_px": 33.859,
+      "model_projected_width_px": 34.868,
+      "source_width_px": 35
+    },
+    {
+      "id": "south-R5-06",
+      "mark": "MN",
+      "source_center_px": 1336.5,
+      "plan_model_projected_center_px": 1360.13,
+      "center_delta_px": 23.63,
+      "model_projected_width_px": 37.393,
+      "source_width_px": 35
+    },
+    {
+      "id": "south-R5-07",
+      "mark": "MO",
+      "source_center_px": 1400.0,
+      "plan_model_projected_center_px": 1401.084,
+      "center_delta_px": 1.084,
+      "model_projected_width_px": 19.587,
+      "source_width_px": 30
+    },
+    {
+      "id": "south-R5-08",
+      "mark": "MJ",
+      "source_center_px": 1437.5,
+      "plan_model_projected_center_px": 1421.561,
+      "center_delta_px": -15.939,
+      "model_projected_width_px": 21.368,
+      "source_width_px": 21
+    },
+    {
+      "id": "south-R5-09",
+      "mark": "return / mark obscured",
+      "source_center_px": 1482.0,
+      "plan_model_projected_center_px": 1451.387,
+      "center_delta_px": -30.613,
+      "model_projected_width_px": 18.697,
+      "source_width_px": 18
+    },
+    {
+      "id": "east-R5-01",
+      "mark": "MA",
+      "source_center_px": 785.0,
+      "plan_model_projected_center_px": 799.744,
+      "center_delta_px": 14.744,
+      "model_projected_width_px": 56.435,
+      "source_width_px": 52
+    },
+    {
+      "id": "east-R5-02",
+      "mark": "MF",
+      "source_center_px": 834.0,
+      "plan_model_projected_center_px": 845.597,
+      "center_delta_px": 11.597,
+      "model_projected_width_px": 17.132,
+      "source_width_px": 16
+    },
+    {
+      "id": "east-R5-03",
+      "mark": "MO2",
+      "source_center_px": 903.5,
+      "plan_model_projected_center_px": 901.84,
+      "center_delta_px": -1.66,
+      "model_projected_width_px": 33.325,
+      "source_width_px": 29
+    },
+    {
+      "id": "east-R5-04",
+      "mark": "MX",
+      "source_center_px": 961.5,
+      "plan_model_projected_center_px": 963.182,
+      "center_delta_px": 1.682,
+      "model_projected_width_px": 17.868,
+      "source_width_px": 21
+    },
+    {
+      "id": "east-R5-05",
+      "mark": "MU",
+      "source_center_px": 1024.5,
+      "plan_model_projected_center_px": 1023.384,
+      "center_delta_px": -1.116,
+      "model_projected_width_px": 34.404,
+      "source_width_px": 31
+    },
+    {
+      "id": "east-R5-06",
+      "mark": "MO2",
+      "source_center_px": 1102.5,
+      "plan_model_projected_center_px": 1104.98,
+      "center_delta_px": 2.48,
+      "model_projected_width_px": 33.912,
+      "source_width_px": 29
+    },
+    {
+      "id": "east-R5-07",
+      "mark": "MF",
+      "source_center_px": 1182.5,
+      "plan_model_projected_center_px": 1178.952,
+      "center_delta_px": -3.548,
+      "model_projected_width_px": 36.35,
+      "source_width_px": 31
+    },
+    {
+      "id": "east-R5-08",
+      "mark": "MR",
+      "source_center_px": 1250.0,
+      "plan_model_projected_center_px": 1256.701,
+      "center_delta_px": 6.701,
+      "model_projected_width_px": 60.584,
+      "source_width_px": 60
+    },
+    {
+      "id": "east-R5-09",
+      "mark": "MO2",
+      "source_center_px": 1327.5,
+      "plan_model_projected_center_px": 1327.508,
+      "center_delta_px": 0.008,
+      "model_projected_width_px": 32.925,
+      "source_width_px": 33
+    },
+    {
+      "id": "east-R5-10",
+      "mark": "MR",
+      "source_center_px": 1398.5,
+      "plan_model_projected_center_px": 1398.345,
+      "center_delta_px": -0.155,
+      "model_projected_width_px": 56.869,
+      "source_width_px": 53
+    },
+    {
+      "id": "west-R5-01",
+      "mark": "MO8",
+      "source_center_px": 725.5,
+      "plan_model_projected_center_px": 719.128,
+      "center_delta_px": -6.372,
+      "model_projected_width_px": 59.863,
+      "source_width_px": 63
+    },
+    {
+      "id": "west-R5-02",
+      "mark": "MU",
+      "source_center_px": 802.5,
+      "plan_model_projected_center_px": 797.947,
+      "center_delta_px": -4.553,
+      "model_projected_width_px": 32.001,
+      "source_width_px": 31
+    },
+    {
+      "id": "west-R5-03",
+      "mark": "MU",
+      "source_center_px": 872.5,
+      "plan_model_projected_center_px": 868.881,
+      "center_delta_px": -3.619,
+      "model_projected_width_px": 34.564,
+      "source_width_px": 31
+    },
+    {
+      "id": "west-R5-04",
+      "mark": "MH",
+      "source_center_px": 937.5,
+      "plan_model_projected_center_px": 936.993,
+      "center_delta_px": -0.507,
+      "model_projected_width_px": 32.531,
+      "source_width_px": 31
+    },
+    {
+      "id": "west-R5-05",
+      "mark": "MO8",
+      "source_center_px": 1019.0,
+      "plan_model_projected_center_px": 1004.087,
+      "center_delta_px": -14.913,
+      "model_projected_width_px": 43.86,
+      "source_width_px": 62
+    },
+    {
+      "id": "west-R5-06",
+      "mark": "MH",
+      "source_center_px": 1109.5,
+      "plan_model_projected_center_px": 1106.873,
+      "center_delta_px": -2.627,
+      "model_projected_width_px": 35.041,
+      "source_width_px": 29
+    },
+    {
+      "id": "west-R5-07",
+      "mark": "MO8",
+      "source_center_px": 1223.0,
+      "plan_model_projected_center_px": 1222.542,
+      "center_delta_px": -0.458,
+      "model_projected_width_px": 60.353,
+      "source_width_px": 60
+    },
+    {
+      "id": "west-R5-08",
+      "mark": "MO1",
+      "source_center_px": 1297.0,
+      "plan_model_projected_center_px": 1292.829,
+      "center_delta_px": -4.171,
+      "model_projected_width_px": 33.946,
+      "source_width_px": 34
+    },
+    {
+      "id": "west-R5-09",
+      "mark": "MX",
+      "source_center_px": 1328.5,
+      "plan_model_projected_center_px": 1330.654,
+      "center_delta_px": 2.154,
+      "model_projected_width_px": 16.488,
+      "source_width_px": 17
+    }
+  ]
+}

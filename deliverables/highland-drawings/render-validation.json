@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "images": {
+    "geometry-review/north.png": {
+      "sha256": "0b2357fe1134f8c3085a2e0d37ffcf91180a8d10ca2043ea680e2acf2ad3ecf6",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 60.715
+    },
+    "geometry-review/south.png": {
+      "sha256": "328a876228e3b78b436491c616fbca95b03508323d05b8135af1db6badc4d107",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 52.562
+    },
+    "geometry-review/plan.png": {
+      "sha256": "63081a09aa37d7d7a544e80dc2d82446a59a41d79be0c23cfaf615f0409be0f2",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 48.077
+    },
+    "geometry-review/iso.png": {
+      "sha256": "896148d5505f82fb214ef706b9a0af52c350fdca7030e6a2c61f1d75b15a913c",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 55.216
+    },
+    "geometry-review/r5-return.png": {
+      "sha256": "2339ce87ca3a9cd6440b35f74bed81d7f8d2f4ad9af10735d7eeb6701798ef81",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 77.222
+    },
+    "geometry-review/west.png": {
+      "sha256": "e81a8567e9b86d6f5c8e03bd315757880e507c798e56b26f5b377453d34aaab3",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 50.347
+    },
+    "geometry-review/east.png": {
+      "sha256": "f352b8d3b94c6be7779f7a03f204bd55e9eaa81fa45b9ea827d51305708b879a",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 59.787
+    },
+    "geometry-review/r5-plan.png": {
+      "sha256": "a6d51531b455ec5ef36c42f0b67a0e872ae38a05470a084dcde3dbcdf8a32709",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 37.708
+    },
+    "geometry-review/r5-southwest.png": {
+      "sha256": "273fdb7335028f40e10029226032721df140dd20228d687cb5ee3645ad39a547",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 71.31
+    },
+    "geometry-review/terrace-plan.png": {
+      "sha256": "51b8116606e953f8ae6db35539f693575ab17ccdb989975b815b4e28a5d136e0",
+      "size": [
+        1200,
+        944
+      ],
+      "rgb_standard_deviation": 41.628
+    },
+    "Highland-daylight-drawing-reconciled.png": {
+      "sha256": "32588dbfdbf3d277af134b94ede555973e6c749f6e6c881c4a9703243b34c6ff",
+      "size": [
+        1995,
+        1323
+      ],
+      "rgb_standard_deviation": 57.824
+    },
+    "Highland-dusk-drawing-reconciled.png": {
+      "sha256": "5e1833a7d19a830ea2ccdd94e5a24f9fe5584ad506120ca289a7429375cdee04",
+      "size": [
+        1920,
+        1080
+      ],
+      "rgb_standard_deviation": 39.249
+    },
+    "dusk-review/frame-001.png": {
+      "sha256": "57ebbfea7c9ec07141376007dbbad233382f885d711f7d078def0561599b5865",
+      "size": [
+        960,
+        540
+      ],
+      "rgb_standard_deviation": 35.533
+    },
+    "dusk-review/frame-432.png": {
+      "sha256": "615b3131e6bea05e9c0cc957251b220ccf20555fdb689cd3b325412cb8d29a50",
+      "size": [
+        960,
+        540
+      ],
+      "rgb_standard_deviation": 37.163
+    }
+  },
+  "note": "Nonblank/dimension/hash checks supplement the separately recorded visual inspection."
+}

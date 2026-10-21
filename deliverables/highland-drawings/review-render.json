@@ -1,13 +1,19 @@
 {
-  "elapsed_seconds": 151.88,
+  "native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "scene": "Daylight / drawing reconciliation 06",
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "elapsed_seconds": 218.8,
   "samples": 12,
   "images": {
-    "geometry-review/north.png": "25bc5740740cdab81ece2c676623bb875f90f5a5fd70d3a78cfa6c89026cf6b9",
-    "geometry-review/south.png": "37f86a9ff0b3601e17282e5662e9186a66f114a63f237802642cf8188a9b8443",
-    "geometry-review/plan.png": "27ed028e4bc26d66b182211b7a32820070ed845cb25850aa03fd38ebbb684070",
-    "geometry-review/iso.png": "2e794378471c8721ffc116fc7901b1cf64addf784934238a0d13fb0581fc39c2",
-    "geometry-review/p1-plan.png": "136c36cf063d0189bfbcb0a1c5c9dac5efb624654b4f7631d9fd435a57446391",
-    "geometry-review/p1-south.png": "c7073c6b64bb4fc9e9221a8a4a09bf5db74659af0eead0e660ab040647965f72",
-    "geometry-review/r5-return.png": "46827ea5189b2824a0afe4f83a5a7cc72990b469b44626c5639ac2051dc60ce8"
+    "geometry-review/north.png": "0b2357fe1134f8c3085a2e0d37ffcf91180a8d10ca2043ea680e2acf2ad3ecf6",
+    "geometry-review/south.png": "328a876228e3b78b436491c616fbca95b03508323d05b8135af1db6badc4d107",
+    "geometry-review/plan.png": "63081a09aa37d7d7a544e80dc2d82446a59a41d79be0c23cfaf615f0409be0f2",
+    "geometry-review/iso.png": "896148d5505f82fb214ef706b9a0af52c350fdca7030e6a2c61f1d75b15a913c",
+    "geometry-review/r5-return.png": "2339ce87ca3a9cd6440b35f74bed81d7f8d2f4ad9af10735d7eeb6701798ef81",
+    "geometry-review/west.png": "e81a8567e9b86d6f5c8e03bd315757880e507c798e56b26f5b377453d34aaab3",
+    "geometry-review/east.png": "f352b8d3b94c6be7779f7a03f204bd55e9eaa81fa45b9ea827d51305708b879a",
+    "geometry-review/r5-plan.png": "a6d51531b455ec5ef36c42f0b67a0e872ae38a05470a084dcde3dbcdf8a32709",
+    "geometry-review/r5-southwest.png": "273fdb7335028f40e10029226032721df140dd20228d687cb5ee3645ad39a547",
+    "geometry-review/terrace-plan.png": "51b8116606e953f8ae6db35539f693575ab17ccdb989975b815b4e28a5d136e0"
   }
 }

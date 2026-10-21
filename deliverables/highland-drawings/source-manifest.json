@@ -2,48 +2,73 @@
   "files": [
     {
       "path": "delivery/HANDOFF.md",
-      "bytes": 4294,
-      "sha256": "35557ebae50ee19a1ba084f24a3cb3a53a4f283e85dbbdd52379e90a7124674e"
+      "bytes": 5586,
+      "sha256": "17ac56a3b3eb482e20e04c720f847ecfde8864b216b056526815970a3d90494f"
     },
     {
       "path": "delivery/Highland-daylight-drawing-reconciled.png",
-      "bytes": 3430148,
-      "sha256": "5c48b01639f1a034a2623f42f3514bce7e2479b3d71b57c18df9444727e2da0e"
+      "bytes": 3410912,
+      "sha256": "32588dbfdbf3d277af134b94ede555973e6c749f6e6c881c4a9703243b34c6ff"
     },
     {
       "path": "delivery/Highland-drawing-reconciled.blend",
-      "bytes": 24182998,
-      "sha256": "e90c1092b04c623a3dc25215a8b3ad712f04a16012ce1af0ac96e4fb7702c97b"
+      "bytes": 24240113,
+      "sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976"
     },
     {
       "path": "delivery/Highland-drawing-reconciled.glb",
-      "bytes": 19917000,
-      "sha256": "c098f906f2f583c5b617a58aa8c7711be0f0f4ba1768d9df4ac9720c481c8ca1"
+      "bytes": 19901264,
+      "sha256": "36fc9dd38da549959b45606019f1aefcf2507737e06787e1cc4b9d2ba66a4211"
     },
     {
       "path": "delivery/Highland-drawing-reconciliation.pdf",
-      "bytes": 23080292,
-      "sha256": "c850adc7d3c562511dd8015a00eac5ad2f8981ed106f26048626e524b4980729"
+      "bytes": 33372088,
+      "sha256": "23fa592c6e582e71778079e3e3dfad2327f351f2ad7149bc6d57c047a7ae5a59"
+    },
+    {
+      "path": "delivery/Highland-dusk-drawing-reconciled.png",
+      "bytes": 2498655,
+      "sha256": "5e1833a7d19a830ea2ccdd94e5a24f9fe5584ad506120ca289a7429375cdee04"
     },
     {
       "path": "delivery/README.md",
-      "bytes": 1888,
-      "sha256": "9a997d4a92aac8606bfbfc6ee1002c7f1e7495eaab50c4d4a358e3f789b1c06c"
+      "bytes": 2345,
+      "sha256": "2ccaa3c8c579ced5a9738d1c18e4bbbaec127f39981701cbcbfc61618697d580"
     },
     {
       "path": "delivery/change-ledger.json",
-      "bytes": 95090,
-      "sha256": "3f5eb58b028da585458af0af39907151b4d3313113d2729c554f46d355e93f1e"
+      "bytes": 188845,
+      "sha256": "7d99d303770bae8985d14e283e8b24e48a86956cac53803c4f394d361fa681af"
     },
     {
       "path": "delivery/delivery-validation.json",
-      "bytes": 1928,
-      "sha256": "a6858467d9cd766e3c3afb3cdf78f033fadd9065d8b2017af90bbe8615d32753"
+      "bytes": 2971,
+      "sha256": "bcc72e0dfbe093aecbaace26e52a1f8b677ff10eb49343320251cefaeb3166e0"
+    },
+    {
+      "path": "delivery/dusk-render.json",
+      "bytes": 416,
+      "sha256": "36f9e8305002aec65de8d9af62d9efa1c4cd0e0cb5b70bbfb695c0088ed51335"
+    },
+    {
+      "path": "delivery/dusk-review/frame-001.png",
+      "bytes": 631917,
+      "sha256": "57ebbfea7c9ec07141376007dbbad233382f885d711f7d078def0561599b5865"
+    },
+    {
+      "path": "delivery/dusk-review/frame-432.png",
+      "bytes": 625696,
+      "sha256": "615b3131e6bea05e9c0cc957251b220ccf20555fdb689cd3b325412cb8d29a50"
+    },
+    {
+      "path": "delivery/dusk-review-render.json",
+      "bytes": 505,
+      "sha256": "2fc109a463788a27c1429d22d7743088a0bf4f99faa0b8f5f28173a099dd3770"
     },
     {
       "path": "delivery/element-provenance.csv",
-      "bytes": 1770214,
-      "sha256": "b7c1dd371ba039124d6894fba66e2ce59b281a9bd8a31e6d5608dc39341b3cbe"
+      "bytes": 1813171,
+      "sha256": "fdd713f464d4a9a107e7391fd236eb4221312811911d55410c21ed56b07e35ff"
     },
     {
       "path": "delivery/elevation-comparison.json",
@@ -51,14 +76,24 @@
       "sha256": "3c6cceb277e4503069b00fba3dec5b4e98fd5a22ef21ac9ea53a6f91c411c6fe"
     },
     {
+      "path": "delivery/geometry-review/README.md",
+      "bytes": 741,
+      "sha256": "284b1dcd3d0bcee003eb165b07981b9818c35564da61ac283d2afd622a5ea3a1"
+    },
+    {
+      "path": "delivery/geometry-review/east.png",
+      "bytes": 817805,
+      "sha256": "f352b8d3b94c6be7779f7a03f204bd55e9eaa81fa45b9ea827d51305708b879a"
+    },
+    {
       "path": "delivery/geometry-review/iso.png",
-      "bytes": 890134,
-      "sha256": "2e794378471c8721ffc116fc7901b1cf64addf784934238a0d13fb0581fc39c2"
+      "bytes": 888458,
+      "sha256": "896148d5505f82fb214ef706b9a0af52c350fdca7030e6a2c61f1d75b15a913c"
     },
     {
       "path": "delivery/geometry-review/north.png",
-      "bytes": 783498,
-      "sha256": "25bc5740740cdab81ece2c676623bb875f90f5a5fd70d3a78cfa6c89026cf6b9"
+      "bytes": 783727,
+      "sha256": "0b2357fe1134f8c3085a2e0d37ffcf91180a8d10ca2043ea680e2acf2ad3ecf6"
     },
     {
       "path": "delivery/geometry-review/p1-plan.png",
@@ -72,38 +107,83 @@
     },
     {
       "path": "delivery/geometry-review/plan.png",
-      "bytes": 798312,
-      "sha256": "27ed028e4bc26d66b182211b7a32820070ed845cb25850aa03fd38ebbb684070"
+      "bytes": 803061,
+      "sha256": "63081a09aa37d7d7a544e80dc2d82446a59a41d79be0c23cfaf615f0409be0f2"
+    },
+    {
+      "path": "delivery/geometry-review/r5-plan.png",
+      "bytes": 744108,
+      "sha256": "a6d51531b455ec5ef36c42f0b67a0e872ae38a05470a084dcde3dbcdf8a32709"
     },
     {
       "path": "delivery/geometry-review/r5-return.png",
-      "bytes": 1011465,
-      "sha256": "46827ea5189b2824a0afe4f83a5a7cc72990b469b44626c5639ac2051dc60ce8"
+      "bytes": 1029347,
+      "sha256": "2339ce87ca3a9cd6440b35f74bed81d7f8d2f4ad9af10735d7eeb6701798ef81"
+    },
+    {
+      "path": "delivery/geometry-review/r5-southwest.png",
+      "bytes": 1116790,
+      "sha256": "273fdb7335028f40e10029226032721df140dd20228d687cb5ee3645ad39a547"
     },
     {
       "path": "delivery/geometry-review/south.png",
-      "bytes": 896711,
-      "sha256": "37f86a9ff0b3601e17282e5662e9186a66f114a63f237802642cf8188a9b8443"
+      "bytes": 900515,
+      "sha256": "328a876228e3b78b436491c616fbca95b03508323d05b8135af1db6badc4d107"
+    },
+    {
+      "path": "delivery/geometry-review/stage1/r5-plan.png",
+      "bytes": 744108,
+      "sha256": "a6d51531b455ec5ef36c42f0b67a0e872ae38a05470a084dcde3dbcdf8a32709"
+    },
+    {
+      "path": "delivery/geometry-review/stage1/r5-southwest.png",
+      "bytes": 1093997,
+      "sha256": "1391da07c4eee87aab57d76256cf5c75d946e9b462302598f16688889cdc6d88"
+    },
+    {
+      "path": "delivery/geometry-review/stage1/west.png",
+      "bytes": 855127,
+      "sha256": "c52b5a12173b3a099cd4fc266407e40fd81074dd8c1ab837d64c59fc11b0f711"
+    },
+    {
+      "path": "delivery/geometry-review/stage2/r5-southwest.png",
+      "bytes": 1116053,
+      "sha256": "db3c60934045fe694bca159fb3dc40b4013ca97a9230997bd47349313356d7f7"
+    },
+    {
+      "path": "delivery/geometry-review/stage2/terrace-plan.png",
+      "bytes": 768143,
+      "sha256": "a0f90534ac2b2c75003d4a3e9efa5447f16cea232760bda06f82c355952eeab4"
+    },
+    {
+      "path": "delivery/geometry-review/terrace-plan.png",
+      "bytes": 769102,
+      "sha256": "51b8116606e953f8ae6db35539f693575ab17ccdb989975b815b4e28a5d136e0"
+    },
+    {
+      "path": "delivery/geometry-review/west.png",
+      "bytes": 856993,
+      "sha256": "e81a8567e9b86d6f5c8e03bd315757880e507c798e56b26f5b377453d34aaab3"
     },
     {
       "path": "delivery/geometry-validation.json",
-      "bytes": 195319,
-      "sha256": "cdd3bb05cbf3a89b414a3d203fafcff19eb59286012779ce405b66e43aca708d"
+      "bytes": 204140,
+      "sha256": "3f672bfecc0479e0d155609f44a55ae2348a86f061859ed2867449acc2673597"
     },
     {
       "path": "delivery/native-render.json",
-      "bytes": 183,
-      "sha256": "506540950b7f235a3b1117b68e874c8903848831250531eefa53fe0ad647999e"
+      "bytes": 424,
+      "sha256": "d449c6c8fce91a48ea50c1b13ccc1d8801663df52bb5ac4c776bd5c67a6ad1db"
     },
     {
       "path": "delivery/opening-audit.csv",
       "bytes": 4047,
-      "sha256": "637a866ad6c57f7c991df0c456b18550bfa8b6f52a8e17f2e4685863ffadef1f"
+      "sha256": "39baa5700d46c550b94404990a5d9d7ba99a6c78f7116b65f5f3edeadb98250f"
     },
     {
       "path": "delivery/opening-audit.json",
-      "bytes": 10550,
-      "sha256": "dcbe3d2b1b39c16eaf905d37aea8d9219ee562f25fad7420751bc8428dc30d4c"
+      "bytes": 12374,
+      "sha256": "264b2e7b26db85ae4ef0c16908a6141c298b539a1c8a8ea8ef98e96c97007c05"
     },
     {
       "path": "delivery/plan-registration.json",
@@ -111,19 +191,39 @@
       "sha256": "3a903ff6ab5b7d9b26f15e38e2eea473005881fd825ed1e4f5ea83622200b126"
     },
     {
+      "path": "delivery/presentation-validation.json",
+      "bytes": 425622,
+      "sha256": "f30ba466e5c68497ab6334fbdb6239456c060ccd7b066120effc99f1efa20f40"
+    },
+    {
+      "path": "delivery/r5-completion.json",
+      "bytes": 54264,
+      "sha256": "aec5bd54067c769166fd19800537fd9d99ec78ed4f0882ea087e796aef18c8d5"
+    },
+    {
+      "path": "delivery/r5-elevation-comparison.json",
+      "bytes": 7324,
+      "sha256": "5c3c68b9f0b8f6555f3987836f9a712f1e289a0e02ceb44313acc19e84f51585"
+    },
+    {
       "path": "delivery/reconciled.spec.json",
-      "bytes": 182474,
-      "sha256": "4153c5f81d9af40fdc56338cdce02770b8b32af910065b160fac192bfadd5710"
+      "bytes": 209337,
+      "sha256": "1cf80e055f28065a647d124cf0623a33af5c4cc96067afd93c8c9069d559ae8f"
+    },
+    {
+      "path": "delivery/render-validation.json",
+      "bytes": 3393,
+      "sha256": "0e75396e7b067c2f1b937d54e7dc745b6f2b791c5117ddb648d20cc130bd3a68"
     },
     {
       "path": "delivery/reproduction-validation.json",
-      "bytes": 242,
-      "sha256": "829043fbd0debf9629709f5a0a68c3d49c706360efce834028d4275f4daa5caa"
+      "bytes": 233,
+      "sha256": "97f0607e65b8ab8cc3326346fb9bab301e5e3a1a4845ee2209d151dc1fa90ff6"
     },
     {
       "path": "delivery/review-render.json",
-      "bytes": 780,
-      "sha256": "af062a7e0a86885124b850d25718ffecd45d861295d7e530b3b9560c5fadddaf"
+      "bytes": 1332,
+      "sha256": "9363ea5477fbf23c8750b4de38daf78e8b11d77c4da5af7c46ab1372084be2ea"
     },
     {
       "path": "delivery/shell-reconciliation.json",
@@ -236,6 +336,11 @@
       "sha256": "fb95e419e9497d35aff640c98516fa8e2247c5ddaf0a4c4cfc4f9e8e3c85db00"
     },
     {
+      "path": "delivery/source-review/R5-MO-MJ-completed.png",
+      "bytes": 57005,
+      "sha256": "15917ec7e725fe5d89b6a2922d6c45ee7e99ee15c662da4e826a61795745cddc"
+    },
+    {
       "path": "delivery/source-review/R5-SE-initial-conflict-detail.png",
       "bytes": 56444,
       "sha256": "48e8f070ca06096d80f167ada477d1daeebcb7b99071fc737ace23371c5057ba"
@@ -246,9 +351,24 @@
       "sha256": "9e0d62709a85460a3315a034233327609a8f165499493c4d7ca5865412702380"
     },
     {
+      "path": "delivery/source-review/R5-SW-completed.png",
+      "bytes": 1233248,
+      "sha256": "9082d949efa1d489d3fe543020c84ebbe36edddad91dfae8c7b95579824023e4"
+    },
+    {
+      "path": "delivery/source-review/R5-east-completed.png",
+      "bytes": 674019,
+      "sha256": "b55b011c85ba7c1dc3506fed76145167d4d6086ce93b23195d54a589a58de01f"
+    },
+    {
       "path": "delivery/source-review/R5-east-elevation.png",
       "bytes": 564144,
       "sha256": "2d5884a6cb32153e6360be5b49f73eae9960cddbdfcbc23dc109b82bb02b053a"
+    },
+    {
+      "path": "delivery/source-review/R5-enclosure-completed.png",
+      "bytes": 5094637,
+      "sha256": "e1aec5b54f6191450bae024ab1d7d6ed807873354d1f8d833bb6fb633f5aff9d"
     },
     {
       "path": "delivery/source-review/R5-grid-calibration.png",
@@ -266,6 +386,11 @@
       "sha256": "5e3835f60d3f8ce9540274a017bdbeb9b79239691c0cbdb887f0e922250d2704"
     },
     {
+      "path": "delivery/source-review/R5-roof-completed.png",
+      "bytes": 4393364,
+      "sha256": "4a95787ea8f6ac67ddede8a8a1ff63d9f616c4e24edfb6c188c37d5abf836bb4"
+    },
+    {
       "path": "delivery/source-review/R5-south-elevation.png",
       "bytes": 1268392,
       "sha256": "56aa0ecfdcaef32195c757b2a24145820a364eb6eb38c9087218bb6b2344f180"
@@ -274,6 +399,21 @@
       "path": "delivery/source-review/R5-south-plan-picks.png",
       "bytes": 507879,
       "sha256": "d6a2b0ea8f1e1c81e2c5dedbb1ef625ff4265d67e3f7d625f01ed96d86779448"
+    },
+    {
+      "path": "delivery/source-review/R5-south-terraces.png",
+      "bytes": 1305883,
+      "sha256": "a9158668aecab5b916d153d9200126df908d4c46cc6494a75a22c9eeb2e0f70c"
+    },
+    {
+      "path": "delivery/source-review/R5-terrace-arrangement.png",
+      "bytes": 5267676,
+      "sha256": "a802a189544f1c4e8cb813c4f6eb7a41040ca131a82fb22f1d58ec949abaa2ce"
+    },
+    {
+      "path": "delivery/source-review/README.md",
+      "bytes": 966,
+      "sha256": "cf94802271d0a51f9a56441bf3a8696540cbc17024cb83f2467932f7e13f3608"
     },
     {
       "path": "delivery/source-review/Roof-grid-calibration.png",
@@ -286,39 +426,64 @@
       "sha256": "1e4011e53f3528a79a997f7736c889557fb5cf533836645eb8ea994d54e3582f"
     },
     {
+      "path": "delivery/stage1-validation.json",
+      "bytes": 12500,
+      "sha256": "525e00a8116b3b7170913f65105204d63204eec68be2ba6378f1368943e548f4"
+    },
+    {
+      "path": "delivery/stage2-validation.json",
+      "bytes": 926,
+      "sha256": "d8cc6b5dc139cff91b0a85a079016052e0453c29bc413a633e6dcfc9a715cfdc"
+    },
+    {
+      "path": "delivery/terrace-review.json",
+      "bytes": 14013,
+      "sha256": "de671571d203aba40b8afe35bdb74e0d881a1584b08ad55640c4558b97a1bb0d"
+    },
+    {
       "path": "delivery/verification-tests.txt",
       "bytes": 357,
-      "sha256": "64275749dbbd376f3498e7b6c4efc7d0514c13349381d0c88746ca8b9b96e24d"
+      "sha256": "697bb4c5c8870b4999e7d3781608c04dd5cc7e9d5ed6f61fec5dbd517df9947e"
     },
     {
       "path": "delivery/visual-review.json",
-      "bytes": 3781,
-      "sha256": "89dc0689106846d2f2c7108b9e457c23a8b7e88e98c7e8d05377cad6f8439e44"
+      "bytes": 6984,
+      "sha256": "207b7bae3d8b203ef7cdc6b54d6a4086b4e38ff66892898e003ed58bed610dcf"
     },
     {
       "path": "reproduction/projects/highland-drawings/HANDOFF.md",
-      "bytes": 4294,
-      "sha256": "35557ebae50ee19a1ba084f24a3cb3a53a4f283e85dbbdd52379e90a7124674e"
+      "bytes": 5586,
+      "sha256": "17ac56a3b3eb482e20e04c720f847ecfde8864b216b056526815970a3d90494f"
     },
     {
       "path": "reproduction/projects/highland-drawings/README.md",
-      "bytes": 3665,
-      "sha256": "1a5c9956951388c42c53cb156236b8fedb84abd857e0303416907b7a1d8b3cb5"
+      "bytes": 4071,
+      "sha256": "a81f4764f8f46a64c847a4a179b2cd4dd3012693e702a4aa35581f2a08583846"
     },
     {
       "path": "reproduction/projects/highland-drawings/build.py",
-      "bytes": 9958,
-      "sha256": "b8e18964d5c769ba12f36416da6d8e5963efff270e71374233e8a622dd924d59"
+      "bytes": 11498,
+      "sha256": "b080610e59e636e84cd110f7e06d122382f049dc9ede366a8cba5ca857092f6d"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/check_renders.py",
+      "bytes": 1552,
+      "sha256": "a74fba38a2ab2bf809714d55adfcd670e64a20ba1ca236c443b65ce51b5d44f7"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/check_terraces.py",
+      "bytes": 4453,
+      "sha256": "265721ede661deeca5fe083796eee6eaa8b4c3a2c85bd085ca1fdf55f487e438"
     },
     {
       "path": "reproduction/projects/highland-drawings/compare.py",
-      "bytes": 2883,
-      "sha256": "7c473f02c767e5278451686c100ceb0d2138fe5620128ba0fbc0441acd0f7039"
+      "bytes": 4215,
+      "sha256": "f2a0077be77f90bd47cb3adc2fd9fc82c02d0174748d7a9cba66bcd20e76c314"
     },
     {
       "path": "reproduction/projects/highland-drawings/decisions.json",
-      "bytes": 8209,
-      "sha256": "ebfb0af0cee778ce308db310868174d7182fa3529001be9314d39201153977df"
+      "bytes": 8204,
+      "sha256": "942b1bfb8a560a3de6b4dd8f0002c4f25a18ebb74df5872beb1c284a6a4c6edb"
     },
     {
       "path": "reproduction/projects/highland-drawings/package.py",
@@ -327,13 +492,33 @@
     },
     {
       "path": "reproduction/projects/highland-drawings/prepare.py",
-      "bytes": 13602,
-      "sha256": "5eb47faa7b05a55f4d5d87b5dfe04a17c415f6c38428e6f1c678960f32ec0608"
+      "bytes": 14497,
+      "sha256": "0f122b7ddca126660c1e9050fa4eb048b74ac57ffb48a7cea7ef5393dd7cb708"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/presentation.json",
+      "bytes": 1150,
+      "sha256": "12d5af8b3d941095980c5218829e8e51a907969ae2bf59d79d38bcba78568b0c"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/presentation_sync.py",
+      "bytes": 4017,
+      "sha256": "0f3e8a5e22edcc3e8e803faad6c2ad5685b7bab00f9be0de6e35b92740ac169e"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/r5-decisions.json",
+      "bytes": 9733,
+      "sha256": "07ba97a7ab731de1a7d61d7937823dc8f14c6d9c3ecc40db7b097c0ea2c1e779"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/r5.py",
+      "bytes": 6641,
+      "sha256": "3454ef4e631aff42b59c03e2907abbe8f4d7fbf25ed5c10268de243a9e170547"
     },
     {
       "path": "reproduction/projects/highland-drawings/reconciled.spec.json",
-      "bytes": 182474,
-      "sha256": "4153c5f81d9af40fdc56338cdce02770b8b32af910065b160fac192bfadd5710"
+      "bytes": 209337,
+      "sha256": "1cf80e055f28065a647d124cf0623a33af5c4cc96067afd93c8c9069d559ae8f"
     },
     {
       "path": "reproduction/projects/highland-drawings/references/exterior-elevations-and-sections.pdf",
@@ -352,13 +537,13 @@
     },
     {
       "path": "reproduction/projects/highland-drawings/render.py",
-      "bytes": 3819,
-      "sha256": "b243c0863f16c2e10df55a8e6e5133eacbdf9e93cbf0ede5cdb79c158f7c6f70"
+      "bytes": 5657,
+      "sha256": "967f6a1d09598efa412516163d551bd3d6c2157323667c54fc8272304ce3b248"
     },
     {
       "path": "reproduction/projects/highland-drawings/report.py",
-      "bytes": 13342,
-      "sha256": "cbea5c1b1f9a0085ca6f0f2416599645ac0879e00d38e8e440b08b519e02d959"
+      "bytes": 12474,
+      "sha256": "9193ae1ac638f84d25069ee00b1d5f1908f02821321a67e336cf720f3c54e259"
     },
     {
       "path": "reproduction/projects/highland-drawings/requirements.txt",
@@ -369,6 +554,11 @@
       "path": "reproduction/projects/highland-drawings/revision04-north-baseline.json",
       "bytes": 9170,
       "sha256": "2987d65ba93fc70e134365c86c5202f399de9c71d64ea5ff9ea182ecf3321e4a"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/revision05-controls.json",
+      "bytes": 75983,
+      "sha256": "67963544febce9ca86f2006713c83c859c562d8e4f7f738d1aeabc1164cc2125"
     },
     {
       "path": "reproduction/projects/highland-drawings/shell-decisions.json",
@@ -382,13 +572,33 @@
     },
     {
       "path": "reproduction/projects/highland-drawings/shell_mesh.py",
-      "bytes": 3163,
-      "sha256": "f3cb5341089fc8e20bb982de9b7cdaceb162cc623b62282c76e7cb5561113573"
+      "bytes": 3810,
+      "sha256": "b68ad91a4dfb6f79698dfeb45fd57c1ff2f3f3bdf726743797f985125a76cd04"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/stage1-r5-baseline.json",
+      "bytes": 9423,
+      "sha256": "6452efb07110d0faa0d280e9dc7a2031232cd7c67bb0da51e7fb0a3209523a41"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/terrace-decisions.json",
+      "bytes": 8631,
+      "sha256": "f76ca8e16c947468c402866bea042aa9308f603390fc00d2b05c087c4a35e9a7"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/terrace_mesh.py",
+      "bytes": 6415,
+      "sha256": "cc5f718fae5890e0e1fffd94574b712a4d0ae8ce41ab28e1d87c7239327b7c2f"
+    },
+    {
+      "path": "reproduction/projects/highland-drawings/terraces.py",
+      "bytes": 4094,
+      "sha256": "32db6a3732ee6d1b7ca7d7ba3bbab1799acb0ee11e037bba0cc9f746ed735dd8"
     },
     {
       "path": "reproduction/projects/highland-drawings/validate.py",
-      "bytes": 10730,
-      "sha256": "a8974d8dec7555bdd2cd253602d9b80c0d8f0bdbe1c8140083576299c802285b"
+      "bytes": 14490,
+      "sha256": "f2ca67349ee1e96d16ecf4ac508523cf89b724143e61f9f4af2cfa481229a489"
     },
     {
       "path": "reproduction/deliverables/highland-roof/Highland-roof-and-terrace-revised.blend",

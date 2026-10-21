@@ -1,5 +1,5 @@
 {
-  "revision": "05 / P1 enclosure and southeast R5 return",
+  "revision": "06 / R5 footprint and terrace review",
   "base_blend": "deliverables/highland-roof/Highland-roof-and-terrace-revised.blend",
   "base_spec": "projects/highland-roof/geometry-revision.spec.json",
   "sources": [
