@@ -9,7 +9,7 @@ The separate A2.02 P1 enclosure and southeast R5 return are provisionally reconc
 - [Editable archive with PDFs and reproduction](Highland-drawing-editable.zip)
 - [Continuation handoff](HANDOFF.md)
 
-North dimensional alignment remains open, with the unchanged 42.443-pixel diagnostic maximum. R1 north entries, other R5 footprint steps, southeast tie-in residuals and the final south MO/MU split still need review. P1 ramp/structural details, sill/head dimensions, complete profiles and exterior guards remain assumed or provisional. This is not a verified as-built or construction model.
+North stair/MU alignment and R1 north entries are deferred at the owner's request; the unchanged 42.443-pixel diagnostic maximum remains explicit. The next priority is the remaining R5 footprint, including the southwest terrace/enclosure boundary, southeast tie-in residuals and the final south MO/MU split. P1 ramp/structural details, sill/head dimensions, complete profiles and exterior guards remain assumed or provisional. This is not a verified as-built or construction model.
 
 The native readback, source-bounded mesh allowlist, slab outlines, changed coping tops, no-overlap checks, complete GLB export and all 432 saved dusk camera frames pass. Eleven render-workflow tests pass without skips. See visual-review.json for exact inspected images/report pages and delivery-validation.json for machine checks. The older revision 03 film remains a separate delivery.
 

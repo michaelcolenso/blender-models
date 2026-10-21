@@ -2,8 +2,8 @@
   "files": [
     {
       "path": "delivery/HANDOFF.md",
-      "bytes": 3770,
-      "sha256": "871374486d20e4cb49da6813bb3894c33ef75782492a8f9e5869b5b9088e3435"
+      "bytes": 4294,
+      "sha256": "35557ebae50ee19a1ba084f24a3cb3a53a4f283e85dbbdd52379e90a7124674e"
     },
     {
       "path": "delivery/Highland-daylight-drawing-reconciled.png",
@@ -22,13 +22,13 @@
     },
     {
       "path": "delivery/Highland-drawing-reconciliation.pdf",
-      "bytes": 23080179,
-      "sha256": "4058fd1b8d5c599d810523b93cda695db9090585e303840f8bc4576ee15b712d"
+      "bytes": 23080292,
+      "sha256": "c850adc7d3c562511dd8015a00eac5ad2f8981ed106f26048626e524b4980729"
     },
     {
       "path": "delivery/README.md",
-      "bytes": 1796,
-      "sha256": "579a4c7db4ff562e30037dac50d4490f4df24db908e78b8fdb410cd32677ba1f"
+      "bytes": 1888,
+      "sha256": "9a997d4a92aac8606bfbfc6ee1002c7f1e7495eaab50c4d4a358e3f789b1c06c"
     },
     {
       "path": "delivery/change-ledger.json",
@@ -292,18 +292,18 @@
     },
     {
       "path": "delivery/visual-review.json",
-      "bytes": 3583,
-      "sha256": "4d6608edcb615c4016473bf41781bbb24389fab4c196f8df12ccb2597de5431d"
+      "bytes": 3781,
+      "sha256": "89dc0689106846d2f2c7108b9e457c23a8b7e88e98c7e8d05377cad6f8439e44"
     },
     {
       "path": "reproduction/projects/highland-drawings/HANDOFF.md",
-      "bytes": 3770,
-      "sha256": "871374486d20e4cb49da6813bb3894c33ef75782492a8f9e5869b5b9088e3435"
+      "bytes": 4294,
+      "sha256": "35557ebae50ee19a1ba084f24a3cb3a53a4f283e85dbbdd52379e90a7124674e"
     },
     {
       "path": "reproduction/projects/highland-drawings/README.md",
-      "bytes": 3533,
-      "sha256": "18f0c7d7577d5c90ebd337e314a39e2d57f17cf92385466a28455a3d78773360"
+      "bytes": 3665,
+      "sha256": "1a5c9956951388c42c53cb156236b8fedb84abd857e0303416907b7a1d8b3cb5"
     },
     {
       "path": "reproduction/projects/highland-drawings/build.py",
@@ -357,8 +357,8 @@
     },
     {
       "path": "reproduction/projects/highland-drawings/report.py",
-      "bytes": 13132,
-      "sha256": "83dba1366a15ca6a9907da578568346e21f7662614463bd7a0576ad12828052f"
+      "bytes": 13342,
+      "sha256": "cbea5c1b1f9a0085ca6f0f2416599645ac0879e00d38e8e440b08b519e02d959"
     },
     {
       "path": "reproduction/projects/highland-drawings/requirements.txt",

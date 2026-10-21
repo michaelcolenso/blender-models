@@ -4,7 +4,7 @@
   "native_sha256": "e90c1092b04c623a3dc25215a8b3ad712f04a16012ce1af0ac96e4fb7702c97b",
   "reviewed_files": {
     "Highland-daylight-drawing-reconciled.png": "5c48b01639f1a034a2623f42f3514bce7e2479b3d71b57c18df9444727e2da0e",
-    "Highland-drawing-reconciliation.pdf": "4058fd1b8d5c599d810523b93cda695db9090585e303840f8bc4576ee15b712d",
+    "Highland-drawing-reconciliation.pdf": "c850adc7d3c562511dd8015a00eac5ad2f8981ed106f26048626e524b4980729",
     "geometry-review/iso.png": "2e794378471c8721ffc116fc7901b1cf64addf784934238a0d13fb0581fc39c2",
     "geometry-review/north.png": "25bc5740740cdab81ece2c676623bb875f90f5a5fd70d3a78cfa6c89026cf6b9",
     "geometry-review/p1-plan.png": "136c36cf063d0189bfbcb0a1c5c9dac5efb624654b4f7631d9fd435a57446391",
@@ -28,15 +28,16 @@
     "Seven native provenance views inspected, including isolated P1 plan/south and a southeast R5 close-up. Complete components are colored orange as assumed.",
     "North projection overlay visibly retains disagreement, especially at the stair/MU pair; the 42.443-pixel diagnostic maximum is unchanged.",
     "Final 1995 x 1323 native Cycles daylight image inspected: nonblank, readable revision 05 caption and no new missing/floating facade parts.",
-    "All six final report pages inspected for layout, source evidence, candidate table and explicit remaining dimensional/profile limitations."
+    "All six final report pages inspected for layout, source evidence, candidate table and explicit remaining dimensional/profile limitations.",
+    "North alignment and R1 north entry work are explicitly deferred at the owner's request; the next recommended work is the remaining R5 footprint, followed by terrace/coping/guard arrangement."
   ],
   "pdf_pages_reviewed": 6,
   "pdf_page_raster_sha256": {
     "page-1": "16c4d58891d185a711cd1104347488395233eca6d1eaee3848c56f416d2c2a4b",
     "page-2": "e9a09247213e2a2fa7440113b6829a06637a1462115faf2cc2ddd0d0897d8d50",
     "page-3": "933814373356e4d354a739669284a21390f900def953b20e8bee77116860f52d",
-    "page-4": "9cf1c5d5eed6fb28b90ccfbbc7ed7b41a5b271cad98c1dd606403f94fea9baca",
+    "page-4": "63dbf99d36bc712eabe377ebf447c73ee908234ba954a2faa9006c39e18c3640",
     "page-5": "e7d08c32d16ec2c547e82d7dfeb7a7d38d88cc5ed094369b6ca5c38d83139f16",
-    "page-6": "006f6a28099fac7514a33e4686b03db999e9b237ba0f64b77accaefd241580ea"
+    "page-6": "86c5cd0531d1456ff55d2b55176e20e32ff476d33a3266288d3c302cea3550cd"
   }
 }
