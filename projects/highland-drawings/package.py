@@ -21,6 +21,8 @@ def main():
     assert validate['status']=='PASS'
     assert validate['native_sha256']==sha(OUT/'Highland-drawing-reconciled.blend')
     assert validate['glb_sha256']==sha(OUT/'Highland-drawing-reconciled.glb')
+    assert visual['native_sha256']==validate['native_sha256']
+    assert sha(OUT/'reconciled.spec.json')==sha(HERE/'reconciled.spec.json')
     records=[]
     def include(path,name):records.append((path,name))
     for path in sorted(OUT.rglob('*')):
@@ -30,7 +32,7 @@ def main():
         if path.is_file() and '__pycache__' not in path.parts:
             include(path,'reproduction/'+str(path.relative_to(ROOT)))
     for name in ('deliverables/highland-roof/Highland-roof-and-terrace-revised.blend',
-                 'projects/highland-roof/geometry-revision.spec.json','projects/highland-exterior/build.py',
+                 'projects/highland-roof/geometry-revision.spec.json','projects/highland-roof/geometry.json','projects/highland-exterior/build.py',
                  'deliverables/highland-roof/opening-audit.json'):
         include(ROOT/name,'reproduction/'+name)
     manifest={'files':[{'path':name,'bytes':path.stat().st_size,'sha256':sha(path)} for path,name in records]}

@@ -1,12 +1,14 @@
-# Highland / uploaded drawing reconciliation 04
+# Highland / drawing reconciliation 05
 
-This bounded revision uses the three uploaded PDFs (19 sheets) to locate thirteen previously omitted candidates provisionally, reject one false R5 repeat, and record two footprint conflicts. The model has 189 opening records. North R2-R5 rows are reconstructed from six actual elevation openings per floor. South R1-R4 columns 03/04 move to successive returns so restored column 02 does not overlap them; unsupported column-03 balcony recesses/guards are removed.
+This continuation traces the A2.02 P1 enclosure, audits all fourteen modeled P1 openings, and reconciles the southeast R5 return with its adjacent openings, slab, south roof plate and coping. OPEN-01 and OPEN-14 are provisionally placed without jamb clipping. The model has 192 openings: fifteen of the original sixteen candidates provisionally placed, one false R5 repeat rejected, and an additional P1 service door.
 
-All inherited plan polygons, floor/grid controls, roof and terrace geometry are preserved. Of 969 original architectural meshes, 863 remain identical; the revised file contains 998. Both native scenes, packed assets and the 432-frame dusk camera are retained. The prior revision 03 movie remains a separate older delivery; it is not a revision 04 render.
+North R2-R5 meshes remain identical to revision 04. Their diagnostic center differences remain explicit, with a maximum of 42.443 pixels on the inherited overview raster. P1 ramp/structural details, R1 north entries, other R5 local steps, southeast tie-in residuals and the MO/MU split remain provisional or unaudited. See [HANDOFF.md](HANDOFF.md) for exact remaining work. This is not a verified as-built or construction model.
 
-`decisions.json` records source picks and decisions. `prepare.py` produces `reconciled.spec.json`, the build specification. The native file is patched from revision 03 by reproducible code; it is never edited by hand. The builder imports only four pure mesh functions from the original exterior generator using its AST. It does not execute that script's scene setup.
+`decisions.json` preserves the revision 04 opening picks. `shell-decisions.json` adds the source picks for this continuation. `prepare.py` produces the single geometry specification, `reconciled.spec.json`, and exact source evidence. The builder patches revision 03 reproducibly; no native geometry is hand-edited. The cumulative ledger describes changes from revision 03, while `shell-reconciliation.json` isolates this continuation.
 
-Run from the repository root or the ZIP's `reproduction/` directory:
+The source PDFs (19 sheets) remain under `references/`. Each affected plan is calibrated independently to the dimensioned grids. XY positions are provisional raster measurements. Sill/head sizes, complete frame/wall/coping sections, guards and site context remain assumed. Local source/model residuals are reported, not hidden by changing a global scale.
+
+Run from the repository root, or from the archive's `reproduction/` directory:
 
 ```bash
 python projects/highland-drawings/prepare.py
@@ -15,15 +17,15 @@ HIGHLAND_BLENDER_PY=/workspace/.venvs/blender-models/bin/python
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=3 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/build.py
 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/validate.py
 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py --review
-# Inspect the source picks, overlay and four native provenance views.
+# Inspect the source picks, overlays and seven native provenance views.
 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py
 python projects/highland-drawings/report.py
 # Inspect the daylight image and every report page, then record exact hashes.
 python projects/highland-drawings/package.py
 ```
 
-Use a Python 3.11 environment with bpy 5.0.1 for native build/render/validation. Preparation/reporting additionally need NumPy, Pillow, PyMuPDF and ReportLab; DejaVu Sans must be installed. All dimensions are inches in the spec and meters in native meshes. Generated source-review details are 200 dpi; additional 300 dpi conflict crops were inspected during intake.
+Python 3.11 with bpy 5.0.1 is used for native build/render/validation. Preparation/reporting also need NumPy, Pillow, PyMuPDF and ReportLab; DejaVu Sans must be installed. Dimensions are inches in the specification and meters in meshes. Source detail renders are 200 dpi; additional 300-360 dpi crops were inspected for return jambs.
 
-The comparison overlay exposes a maximum horizontal center discrepancy of 42.443 pixels on the inherited 1815-pixel-wide overview raster. That is a diagnostic residual, not source accuracy. It includes unresolved model/elevation registration and simplified-wall effects. Accepted candidates establish visible presence and provisional plan placement, not verified jamb dimensions. Sills, heads, complete sections and exterior guards remain assumed. The window schedule and A4/A5 profile details are absent.
+Repository-only regression checks use the existing fixtures: `"$HIGHLAND_BLENDER_PY" -m unittest discover -s tests -p test_render_workflow.py`. Their results are included in the archive.
 
-The next architectural work is to reconcile the P1 enclosure against A2.02 and the southeast R5 return against A2.07/A3.01, then audit R1 north doors and the remaining north projection differences. Current drawings permit those follow-up investigations; no new upload is required to begin them. Keep their wider shell changes separate from this reviewable opening patch.
+Validation covers the exact mesh allowlist, protected north hashes, source links, both frame axes and wall-normal placement, unclipped jambs, overlapping voids, polygon simplicity, actual slab perimeter/area/levels, changed coping tops, packed images, all exported architecture and 432 saved dusk camera frames. Seven native provenance views, the daylight still and report are recorded in the visual review. The archive contains the original PDFs, base native scene and all reproduction inputs. Revision 03's movie remains a separate earlier delivery.

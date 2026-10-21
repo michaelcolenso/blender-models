@@ -28,10 +28,10 @@
     {
       "id": "highland-drawing-reconciliation",
       "blend": "deliverables/highland-drawings/Highland-drawing-reconciled.blend",
-      "scene": "Daylight / drawing reconciliation 04",
+      "scene": "Daylight / drawing reconciliation 05",
       "camera": "Photo reference / geometry revision 03",
       "frame": 1,
-      "notice": "Illustrative study. Thirteen candidates provisionally placed; two footprint conflicts and north model/elevation differences remain. Profiles, sill/head dimensions and site assumed."
+      "notice": "Illustrative study. P1 enclosure and southeast R5 return provisionally reconciled. North alignment differences, other local footprint details and assumed profiles/sill-head dimensions remain explicit."
     }
   ]
 }

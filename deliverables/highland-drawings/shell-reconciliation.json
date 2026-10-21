@@ -1,0 +1,1232 @@
+{
+  "revision": "05 / P1 enclosure and southeast R5 return",
+  "polygon_changes": {
+    "p1": {
+      "old_level_polygon": "r1",
+      "new": [
+        [
+          3.037,
+          1791.888
+        ],
+        [
+          460.799,
+          1791.888
+        ],
+        [
+          460.799,
+          1767.428
+        ],
+        [
+          807.776,
+          1767.428
+        ],
+        [
+          807.776,
+          1754.085
+        ],
+        [
+          1045.824,
+          1754.085
+        ],
+        [
+          1045.824,
+          1818.572
+        ],
+        [
+          1401.493,
+          1818.572
+        ],
+        [
+          1401.493,
+          794.778
+        ],
+        [
+          1225.881,
+          794.778
+        ],
+        [
+          1225.881,
+          732.484
+        ],
+        [
+          1216.989,
+          732.484
+        ],
+        [
+          1216.989,
+          476.405
+        ],
+        [
+          1399.27,
+          476.405
+        ],
+        [
+          1399.27,
+          11.236
+        ],
+        [
+          1114.735,
+          11.236
+        ],
+        [
+          1114.735,
+          66.791
+        ],
+        [
+          807.776,
+          66.791
+        ],
+        [
+          807.776,
+          11.236
+        ],
+        [
+          337.817,
+          11.236
+        ],
+        [
+          337.817,
+          224.678
+        ],
+        [
+          3.037,
+          224.678
+        ]
+      ],
+      "source": "A2.02",
+      "basis": "Separate orthogonal enclosure traced from A2.02, including north retaining-wall steps, the east garage/service recess and residential south steps. Open north ventilation shaft and external planters/trellises are excluded from enclosed floor area. Centerlines, wall thickness, floor flatness and below-grade wall heights remain simplified; the 337-to-342 parking ramp is not modeled."
+    },
+    "r5": {
+      "old": [
+        [
+          261.6,
+          1764.074
+        ],
+        [
+          1411.15,
+          1764.074
+        ],
+        [
+          1411.15,
+          1228.428
+        ],
+        [
+          1337.048,
+          1228.428
+        ],
+        [
+          1337.048,
+          476.25
+        ],
+        [
+          1260.701,
+          476.25
+        ],
+        [
+          1260.701,
+          248.372
+        ],
+        [
+          476.94,
+          248.372
+        ],
+        [
+          476.94,
+          430.698
+        ],
+        [
+          357.06,
+          430.698
+        ],
+        [
+          357.06,
+          687.75
+        ],
+        [
+          261.6,
+          687.75
+        ],
+        [
+          261.6,
+          1090.105
+        ],
+        [
+          357.06,
+          1090.105
+        ],
+        [
+          357.06,
+          1217.255
+        ],
+        [
+          261.6,
+          1217.255
+        ]
+      ],
+      "new": [
+        [
+          261.6,
+          1764.074
+        ],
+        [
+          1411.15,
+          1764.074
+        ],
+        [
+          1411.15,
+          1228.428
+        ],
+        [
+          1337.048,
+          1228.428
+        ],
+        [
+          1337.048,
+          472.254
+        ],
+        [
+          1229.145,
+          472.254
+        ],
+        [
+          1229.145,
+          248.372
+        ],
+        [
+          476.94,
+          248.372
+        ],
+        [
+          476.94,
+          430.698
+        ],
+        [
+          357.06,
+          430.698
+        ],
+        [
+          357.06,
+          687.75
+        ],
+        [
+          261.6,
+          687.75
+        ],
+        [
+          261.6,
+          1090.105
+        ],
+        [
+          357.06,
+          1090.105
+        ],
+        [
+          357.06,
+          1217.255
+        ],
+        [
+          261.6,
+          1217.255
+        ]
+      ],
+      "source": "A2.07 / A2.08",
+      "basis": "Move the southeast inner corner to the A2.07 wall centerline; retain the adjoining long east wall and south baseline as inherited tie-ins. Rebuild the return, adjoining east/south walls, R5 slab, south roof plate and four adjoining coping pieces together. A2.08 independently shows the same local return topology; its roof step is a check, not a second wall-position authority."
+    }
+  },
+  "opening_changes": [
+    {
+      "id": "south-P1-01",
+      "old": {
+        "id": "south-P1-01",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 30,
+        "u": 74.72,
+        "width": 91.121,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          884,
+          934
+        ],
+        "source_width_in": 91.121,
+        "plan_depth_in": 1521.571,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-01",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 20,
+        "u": 99.054,
+        "width": 116.986,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          884,
+          934
+        ],
+        "plan_depth_in": 224.678,
+        "source_width_in": 116.986,
+        "drawing_mark": "M06",
+        "plan_jamb_pixels": [
+          883,
+          936
+        ],
+        "plan_wall_pixel": 934,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-02",
+      "old": null,
+      "new": {
+        "id": "south-P1-02",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 20,
+        "u": 280.719,
+        "width": 101.021,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          990,
+          1018
+        ],
+        "plan_depth_in": 224.678,
+        "source_width_in": 101.021,
+        "drawing_mark": "M05",
+        "plan_jamb_pixels": [
+          969,
+          1015
+        ],
+        "plan_wall_pixel": 934,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-03",
+      "old": {
+        "id": "south-P1-03",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 28,
+        "u": 347.707,
+        "width": 19.968,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1040,
+          1065
+        ],
+        "source_width_in": 49.26,
+        "plan_depth_in": 878.788,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-P1-03",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 18,
+        "u": 397.112,
+        "width": 83.452,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1040,
+          1065
+        ],
+        "plan_depth_in": 11.236,
+        "source_width_in": 83.452,
+        "drawing_mark": "M03",
+        "plan_jamb_pixels": [
+          1026,
+          1064
+        ],
+        "plan_wall_pixel": 1030,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-04",
+      "old": {
+        "id": "south-P1-04",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "source_pixels": [
+          1103,
+          1163
+        ],
+        "kind": "wide",
+        "source_width_in": 92,
+        "z": 20,
+        "height": 72,
+        "source": "A3.01 / 01 south elevation; A2.03/A2.04 registered south plan returns",
+        "segment": 20,
+        "u": 595.9,
+        "width": 112,
+        "plan_depth_in": 143.133,
+        "status": "assumed",
+        "xy_status": "provisional",
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      },
+      "new": {
+        "id": "south-P1-04",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 18,
+        "u": 578.126,
+        "width": 138.026,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1103,
+          1163
+        ],
+        "plan_depth_in": 11.236,
+        "source_width_in": 138.026,
+        "drawing_mark": "ME",
+        "plan_jamb_pixels": [
+          1096,
+          1158
+        ],
+        "plan_wall_pixel": 1030,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-05",
+      "old": {
+        "id": "south-P1-05",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 18,
+        "u": 755.55,
+        "width": 60,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1188,
+          1218
+        ],
+        "source_width_in": 67.047,
+        "plan_depth_in": 184.489,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      },
+      "new": {
+        "id": "south-P1-05",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 18,
+        "u": 746.422,
+        "width": 73.625,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1188,
+          1218
+        ],
+        "plan_depth_in": 11.236,
+        "source_width_in": 73.625,
+        "drawing_mark": "M03",
+        "plan_jamb_pixels": [
+          1186,
+          1219
+        ],
+        "plan_wall_pixel": 1030,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-06",
+      "old": {
+        "id": "south-P1-06",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 898.258,
+        "width": 88,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1249,
+          1286
+        ],
+        "source_width_in": 82.691,
+        "plan_depth_in": 69.398,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      },
+      "new": {
+        "id": "south-P1-06",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 16,
+        "u": 872.366,
+        "width": 97.946,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1249,
+          1286
+        ],
+        "plan_depth_in": 66.791,
+        "source_width_in": 97.946,
+        "drawing_mark": "ML",
+        "plan_jamb_pixels": [
+          1237,
+          1281
+        ],
+        "plan_wall_pixel": 1005,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-07",
+      "old": {
+        "id": "south-P1-07",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 16,
+        "u": 1038.258,
+        "width": 58,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1320,
+          1350
+        ],
+        "source_width_in": 75.0,
+        "plan_depth_in": 69.398,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      },
+      "new": {
+        "id": "south-P1-07",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 16,
+        "u": 1038.043,
+        "width": 82.249,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1320,
+          1350
+        ],
+        "plan_depth_in": 66.791,
+        "source_width_in": 82.249,
+        "drawing_mark": "M07",
+        "plan_jamb_pixels": [
+          1315,
+          1352
+        ],
+        "plan_wall_pixel": 1005,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-08",
+      "old": {
+        "id": "south-P1-08",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 14,
+        "u": 1190.241,
+        "width": 64,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1420
+        ],
+        "source_width_in": 87.5,
+        "plan_depth_in": 184.489,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      },
+      "new": {
+        "id": "south-P1-08",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 14,
+        "u": 1175.865,
+        "width": 82.248,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1385,
+          1420
+        ],
+        "plan_depth_in": 11.236,
+        "source_width_in": 82.248,
+        "drawing_mark": "M03",
+        "plan_jamb_pixels": [
+          1377,
+          1414
+        ],
+        "plan_wall_pixel": 1030,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-P1-09",
+      "old": {
+        "id": "south-P1-09",
+        "face": "south",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 12,
+        "u": 1336.447,
+        "width": 106,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1444,
+          1486
+        ],
+        "source_width_in": 105.0,
+        "plan_depth_in": 143.133,
+        "basis": "Visible front bay reassigned by A2.03/A2.04 plan-return topology and A3.01 opening order. Exact jamb offsets and sill/head geometry remain assumed. Local correction does not establish a single dimensional tolerance."
+      },
+      "new": {
+        "id": "south-P1-09",
+        "face": "south",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 14,
+        "u": 1328.137,
+        "width": 102.255,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1444,
+          1486
+        ],
+        "plan_depth_in": 11.236,
+        "source_width_in": 102.255,
+        "drawing_mark": "MB",
+        "plan_jamb_pixels": [
+          1441,
+          1487
+        ],
+        "plan_wall_pixel": 1030,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-P1-01",
+      "old": {
+        "id": "east-P1-01",
+        "face": "east",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 15,
+        "u": 86.707,
+        "width": 22.619,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          664,
+          707
+        ],
+        "source_width_in": 94.39,
+        "plan_depth_in": 1117.696,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-P1-01",
+        "face": "east",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 13,
+        "u": 81.236,
+        "width": 117.777,
+        "z": 20,
+        "height": 72,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          664,
+          707
+        ],
+        "plan_depth_in": 1399.27,
+        "source_width_in": 117.777,
+        "drawing_mark": "MA",
+        "plan_jamb_pixels": [
+          972,
+          1025
+        ],
+        "plan_wall_pixel": 1496,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-P1-02",
+      "old": {
+        "id": "east-P1-02",
+        "face": "east",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 11,
+        "u": 224.211,
+        "width": 79.579,
+        "z": 20,
+        "height": 72,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          730,
+          766
+        ],
+        "source_width_in": 79.579,
+        "plan_depth_in": 1410.107,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-P1-02",
+        "face": "east",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 13,
+        "u": 217.998,
+        "width": 80.191,
+        "z": 20,
+        "height": 72,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          730,
+          766
+        ],
+        "plan_depth_in": 1399.27,
+        "source_width_in": 80.191,
+        "drawing_mark": "MC",
+        "plan_jamb_pixels": [
+          919,
+          955
+        ],
+        "plan_wall_pixel": 1496,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-P1-03",
+      "old": {
+        "id": "east-P1-03",
+        "face": "east",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 9,
+        "u": 356.842,
+        "width": 75.158,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          791,
+          825
+        ],
+        "source_width_in": 75.158,
+        "plan_depth_in": 1448.054,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-P1-03",
+        "face": "east",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 13,
+        "u": 316.013,
+        "width": 66.83,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          791,
+          825
+        ],
+        "plan_depth_in": 1399.27,
+        "source_width_in": 66.83,
+        "drawing_mark": "MI",
+        "plan_jamb_pixels": [
+          878,
+          908
+        ],
+        "plan_wall_pixel": 1496,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-P1-garage",
+      "old": {
+        "id": "east-P1-garage",
+        "face": "east",
+        "level": "P1",
+        "polygon": "r1",
+        "segment": 7,
+        "u": 634.3960396039604,
+        "width": 240,
+        "z": 28,
+        "height": 94,
+        "kind": "garage",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 east elevation / sectional overhead aluminum gate",
+        "basis": "Gate position scaled from the elevation; dimensions and grade clearance simplified.",
+        "plan_depth_in": 1410.107
+      },
+      "new": {
+        "id": "east-P1-garage",
+        "face": "east",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 11,
+        "u": 614.472,
+        "width": 218.226,
+        "z": 28,
+        "height": 94,
+        "kind": "garage",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": null,
+        "plan_depth_in": 1216.989,
+        "source_width_in": 218.226,
+        "drawing_mark": "sectional overhead gate",
+        "plan_jamb_pixels": [
+          710,
+          808
+        ],
+        "plan_wall_pixel": 1414,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-P1-service",
+      "old": null,
+      "new": {
+        "id": "east-P1-service",
+        "face": "east",
+        "level": "P1",
+        "polygon": "p1",
+        "segment": 9,
+        "u": 761.406,
+        "width": 44.496,
+        "z": 2,
+        "height": 96,
+        "kind": "door",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.02 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          982,
+          1003
+        ],
+        "plan_depth_in": 1225.881,
+        "source_width_in": 44.496,
+        "drawing_mark": "A / service door",
+        "plan_jamb_pixels": [
+          683,
+          703
+        ],
+        "plan_wall_pixel": 1418,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-R5-09",
+      "old": null,
+      "new": {
+        "id": "south-R5-09",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 4,
+        "u": 1256.967,
+        "width": 46.742,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1473,
+          1491
+        ],
+        "plan_depth_in": 472.254,
+        "source_width_in": 46.742,
+        "drawing_mark": "return window / schedule pending",
+        "plan_jamb_pixels": [
+          1434,
+          1455
+        ],
+        "plan_wall_pixel": 822,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-R5-01",
+      "old": {
+        "id": "east-R5-01",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 306.0,
+        "width": 103.256,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          759,
+          811
+        ],
+        "source_width_in": 114.947,
+        "plan_depth_in": 1260.701,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-01",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 338.593,
+        "width": 124.75,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          759,
+          811
+        ],
+        "plan_depth_in": 1229.145,
+        "source_width_in": 124.75,
+        "drawing_mark": "MA",
+        "plan_jamb_pixels": [
+          854,
+          910
+        ],
+        "plan_wall_pixel": 1432,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "east-R5-02",
+      "old": {
+        "id": "east-R5-02",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 414.316,
+        "width": 35.368,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          826,
+          842
+        ],
+        "source_width_in": 35.368,
+        "plan_depth_in": 1260.701,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-02",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 439.952,
+        "width": 37.87,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          826,
+          842
+        ],
+        "plan_depth_in": 1229.145,
+        "source_width_in": 37.87,
+        "drawing_mark": "MF / plan glazed door",
+        "plan_jamb_pixels": [
+          828,
+          845
+        ],
+        "plan_wall_pixel": 1432,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      }
+    },
+    {
+      "id": "south-R5-07",
+      "old": {
+        "id": "south-R5-07",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1128.5,
+        "width": 75.0,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1385,
+          1415
+        ],
+        "source_width_in": 75.0,
+        "plan_depth_in": 248.372,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R5-07",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1130.097,
+        "width": 46.742,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1385,
+          1415
+        ],
+        "plan_depth_in": 248.372,
+        "source_width_in": 46.742,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          1377,
+          1398
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. The final south MO/MU pair shares the end-of-row plan glazing band. Assignment of the internal split to the two elevation marks remains provisional."
+      }
+    },
+    {
+      "id": "south-R5-08",
+      "old": {
+        "id": "south-R5-08",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1222.25,
+        "width": 52.5,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1427,
+          1448
+        ],
+        "source_width_in": 52.5,
+        "plan_depth_in": 248.372,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R5-08",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1183.517,
+        "width": 51.193,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1427,
+          1448
+        ],
+        "plan_depth_in": 248.372,
+        "source_width_in": 51.193,
+        "drawing_mark": "MU",
+        "plan_jamb_pixels": [
+          1400,
+          1423
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. The final south MO/MU pair shares the end-of-row plan glazing band. Assignment of the internal split to the two elevation marks remains provisional."
+      }
+    }
+  ],
+  "limits": [
+    "P1 now has its own A2.02 enclosure and all fourteen modeled P1 openings have plan jamb evidence. The open ventilation shaft, external planters/trellises, parking ramp, structural slab design and below-grade wall sections are not modeled or verified.",
+    "The southeast R5 corner and adjoining openings are provisionally reconciled. The long east line and south baseline retain inherited registration; the final south MO/MU split is provisional. Other R5 local steps, including the southwest terrace/enclosure boundary, still need a separate full-footprint audit.",
+    "North R2-R5 geometry is unchanged from revision 04. The diagnostic maximum horizontal center discrepancy remains 42.443 overview-raster pixels; six windows per floor does not establish dimensional alignment. R1 north entries still need audit.",
+    "P1 and R5 sill/head heights, frame sections and coping profiles remain assumed. A2.08 supplies top datums, not the missing A4/A5 construction profiles. Model consistency is not an as-built or source-accuracy certificate."
+  ],
+  "r5_inner_corner_shift_in": -31.556,
+  "r5_return_y_shift_in": -3.996,
+  "retained_tiein_residuals_in": {
+    "long_east_line_vs_A2_07_1477px": 7.743,
+    "south_baseline_vs_A2_07_920px": -5.569
+  },
+  "roof_source_check": {
+    "sheet": "A2.08",
+    "inner_step_x_pixel": 1430,
+    "return_y_pixel": 822,
+    "model_minus_roof_pick_in": [
+      -0.844,
+      2.4
+    ],
+    "status": "provisional comparison / not a dimensional pass",
+    "basis": "Independent roof grid registration; local linework, wall/coping face convention and raster picks differ. A2.07 governs the wall; the modeled roof and coping follow it."
+  },
+  "p1_openings_rechecked": [
+    "south-P1-01",
+    "south-P1-02",
+    "south-P1-03",
+    "south-P1-04",
+    "south-P1-05",
+    "south-P1-06",
+    "south-P1-07",
+    "south-P1-08",
+    "south-P1-09",
+    "east-P1-01",
+    "east-P1-02",
+    "east-P1-03",
+    "east-P1-garage",
+    "east-P1-service"
+  ]
+}

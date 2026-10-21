@@ -33,7 +33,7 @@ def main():
     report={'basis':'Diagnostic spec projection onto A3.02, not an independent rendered-edge measurement. Native frame extents were separately read back against the spec. Blue outlines use plan-governed jamb positions and assumed sill/head heights. No accuracy certificate or edge-agreement pass is claimed.',
         'elevation_grid_pixels':[922,1073,1224,1393],'elevation_grid_inches':[1236,861,528,195],
         'floor_ticks':{'R5':212,'R4':269},'max_abs_horizontal_center_delta_px':max(abs(r['delta_px']) for r in records),
-        'findings':'Residual model-versus-elevation disagreement remains, especially around the north stair/MU pair. Plan jambs govern provisional placements; simplified walls, raster picks and drawing registration also affect comparison. The 13 accepted candidates establish presence and provisional plan locations, not fully reconciled dimensions. A4 window details, RFI responses and field verification are needed before confirmation.',
+        'findings':'Residual model-versus-elevation disagreement remains, especially around the north stair/MU pair. Plan jambs govern provisional placements; simplified walls, raster picks and drawing registration also affect comparison. The 15 accepted candidates establish presence and provisional plan locations, not fully reconciled dimensions. A4 window details, RFI responses and field verification are needed before confirmation.',
         'opening_comparisons':records}
     (OUT/'elevation-comparison.json').write_text(json.dumps(report,indent=2)+'\n')
     print('Diagnostic maximum center delta:',report['max_abs_horizontal_center_delta_px'],'pixels on the inherited 0.6 raster.')

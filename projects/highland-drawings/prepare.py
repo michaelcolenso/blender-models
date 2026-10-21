@@ -1,4 +1,5 @@
-"""Inventory exact uploaded PDFs and reconcile openings without changing footprints."""
+"""Inventory uploaded PDFs and reconcile openings and source-bounded shell geometry."""
+from shell import reconcile as reconcile_shell
 import copy
 import csv
 import hashlib
@@ -127,10 +128,15 @@ def main():
             spec['openings'].append(opening(level, 'north', row))
     assert len(spec['openings']) == 189
     assert len({e['id'] for e in spec['openings']}) == 189
+    shell = reconcile_shell(spec, registrations, OUT, plans, raster)
+    (OUT / 'plan-registration.json').write_text(json.dumps(registrations, indent=2)+'\n')
+    changes = [{'id': e['id'], 'old': next((old for old in before['openings'] if old['id'] == e['id']), None), 'new': e}
+               for e in spec['openings'] if e != next((old for old in before['openings'] if old['id'] == e['id']), None)]
     inherited_audit = json.loads((ROOT / 'deliverables/highland-roof/opening-audit.json').read_text())
     accepted = {r['candidate']: f'south-{r["level"]}-{r["column"]:02}' for r in CFG['south_restorations']}
     for candidate, level, col in [('OPEN-04','R2',1),('OPEN-05','R2',6),('OPEN-07','R3',1),('OPEN-08','R3',6),('OPEN-10','R4',1),('OPEN-11','R4',6),('OPEN-15','R5',6)]:
         accepted[candidate] = f'north-{level}-{col:02}'
+    accepted.update({'OPEN-01': 'south-P1-02', 'OPEN-14': 'south-R5-09'})
     audit = []
     for candidate in inherited_audit['candidates']:
         ident = candidate['id']
@@ -147,10 +153,10 @@ def main():
                       'model_opening': linked['id'] if linked else None,
                       'source': linked['source'] if linked else 'Uploaded A2.02/A2.07/A3.01/A3.02 PDFs',
                       'plan_jamb_pixels': linked.get('plan_jamb_pixels') if linked else None})
-    report = {'base_openings':175, 'revised_openings':189, 'reviewed_candidates':16,
-              'accepted_candidates':13, 'rejected_candidates':1, 'remaining_unresolved':2,
+    report = {'base_openings':175, 'revised_openings':192, 'reviewed_candidates':16,
+              'accepted_candidates':15, 'rejected_candidates':1, 'remaining_unresolved':0,
               'north_row_note':'R2-R5 north rows reconstructed from six actual elevation openings each. Existing column IDs are reassigned; use the change ledger rather than assuming ID continuity means an unchanged window.',
-              'candidates':audit, 'limits':CFG['limits']}
+              'candidates':audit, 'limits':spec['limitations'], 'dimensional_alignment_status':'Not closed: north residuals and remaining source limitations are explicit; candidate disposition is not dimensional verification.'}
     (OUT / 'opening-audit.json').write_text(json.dumps(report, indent=2)+'\n')
     with (OUT / 'opening-audit.csv').open('w', newline='') as f:
         writer=csv.DictWriter(f, fieldnames=list(audit[0]));writer.writeheader();writer.writerows(audit)
@@ -158,10 +164,14 @@ def main():
     spec['drawing_reconciliation'] = {'revision':CFG['revision'], 'sources':inventory,
         'calibration':registrations, 'complete_component_status':'assumed', 'limits':CFG['limits']}
     spec['limitations'].extend(CFG['limits'])
-    for key in ('polygons','levels','grid_dimensions_in','roof_features','roof_plate_z','north_roof_plate_z','north_roof_split_y'):
+    assert spec['polygons']['r1'] == before['polygons']['r1']
+    assert spec['polygons']['typical'] == before['polygons']['typical']
+    assert [(e['name'], e['z']) for e in spec['levels']] == [(e['name'], e['z']) for e in before['levels']]
+    for key in ('grid_dimensions_in','roof_features','roof_plate_z','north_roof_plate_z','north_roof_split_y'):
         assert spec[key] == before[key], key
     (HERE / 'reconciled.spec.json').write_text(json.dumps(spec, indent=2)+'\n')
-    (OUT / 'change-ledger.json').write_text(json.dumps({'revision':CFG['revision'], 'opening_changes':changes, 'coupled_south_correction':'Columns 02 and 03 previously shared one short return, while column 04 occupied the next return. Columns 03/04 are reassigned to their successive plan returns. The unsupported column-03 recess/guard is removed; source openings no longer overlap.', 'protected_controls':['All registered polygons','All six floor elevations','Dimensioned grid spans','Roof plate levels/split','All roof and terrace geometry from revision 03']}, indent=2)+'\n')
+    (OUT / 'reconciled.spec.json').write_text(json.dumps(spec, indent=2)+'\n')
+    (OUT / 'change-ledger.json').write_text(json.dumps({'revision':CFG['revision'], 'opening_changes':changes, 'coupled_south_correction':'Columns 02 and 03 previously shared one short return, while column 04 occupied the next return. Columns 03/04 are reassigned to their successive plan returns. The unsupported column-03 recess/guard is removed; source openings no longer overlap.', 'shell_changes':shell['polygon_changes'], 'protected_controls':['R1 and typical polygons','All six floor elevations','Dimensioned grid spans','Roof plate levels/split','Roof towers and terrace geometry'], 'roof_changes':['south roof plate','roof-parapet-3-south','roof-parapet-4','roof-parapet-5','roof-parapet-6']}, indent=2)+'\n')
 
     for level in registrations:
         selected = [e for e in evidence if e['level'] == level]
@@ -182,9 +192,11 @@ def main():
             im.save(review / f'{level}-{face}-plan-picks.png')
     for pg,name,box in [(2,'A3.02-north',(825,20,1515,445)),(1,'A3.01-south',(830,30,1535,525))]:
         raster(elevations[pg-1],box).save(review/(name+'.png'))
-    for pg,name,box in [(3,'P1-unresolved',(850,810,1040,1040)),(8,'R5-SE-unresolved',(1400,795,1490,855)),(9,'A2.08-roof-top-callouts',(1120,200,1470,940))]:
+    for pg,name,box in [(3,'P1-initial-conflict-detail',(850,810,1040,1040)),(8,'R5-SE-initial-conflict-detail',(1400,795,1490,855)),(9,'A2.08-roof-top-callouts',(1120,200,1470,940))]:
         raster(plans[pg-1],box).save(review/(name+'.png'))
-    print('Prepared 189 openings; 13 accepted candidates, 1 rejected, 2 remain.', flush=True)
+    for pg,name,box in [(1,'P1-east-elevation',(630,1082,1030,1140)),(1,'P1-south-elevation',(855,443,1510,517)),(1,'R5-east-elevation',(730,780,950,856)),(1,'R5-south-elevation',(970,150,1515,221))]:
+        raster(elevations[pg-1],box).save(review/(name+'.png'))
+    print('Prepared 192 openings; 15 candidates provisionally located, 1 rejected. North dimensional alignment remains unresolved.', flush=True)
 
 
 if __name__ == '__main__':

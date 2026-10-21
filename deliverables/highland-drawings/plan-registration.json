@@ -197,6 +197,148 @@
     ],
     "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
     "pick_uncertainty_in": 3,
-    "status": "provisional"
+    "status": "provisional",
+    "grid_y_pixels": [
+      225.704,
+      390.08,
+      535.664,
+      630.056,
+      724.232,
+      821.216,
+      953.192,
+      1034.192
+    ],
+    "grid_y_inches": [
+      1800,
+      1434,
+      1110,
+      900,
+      690,
+      474,
+      180,
+      0
+    ],
+    "y_method": "200 dpi horizontal grid/tick picks at the right-hand dimension chain, checked against A-H dimensions."
+  },
+  "P1": {
+    "page": 3,
+    "sheet": "A2.02",
+    "expected_x": [
+      865,
+      953,
+      1104,
+      1254,
+      1423
+    ],
+    "grid_x_pixels": [
+      864.624,
+      952.968,
+      1104.6,
+      1253.856,
+      1422.552
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.45304615384615354,
+      0.4553513513513512,
+      0.4482162162162165,
+      0.44985599999999976
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional",
+    "grid_y_pixels": [
+      226.352,
+      390.944,
+      536.528,
+      630.704,
+      725.096,
+      822.08,
+      954.056,
+      1035.056
+    ],
+    "grid_y_inches": [
+      1800,
+      1434,
+      1110,
+      900,
+      690,
+      474,
+      180,
+      0
+    ],
+    "y_method": "200 dpi horizontal grid/tick picks at the right-hand dimension chain, checked against A-H dimensions."
+  },
+  "Roof": {
+    "page": 9,
+    "sheet": "A2.08",
+    "expected_x": [
+      874,
+      962,
+      1113,
+      1264,
+      1430
+    ],
+    "grid_x_pixels": [
+      875.208,
+      963.336,
+      1115.4,
+      1264.008,
+      1432.704
+    ],
+    "grid_x_inches": [
+      0,
+      195,
+      528,
+      861,
+      1236
+    ],
+    "dimension_strings": [
+      "16 ft 3 in",
+      "27 ft 9 in",
+      "27 ft 9 in",
+      "31 ft 3 in"
+    ],
+    "pixels_per_inch_by_span": [
+      0.45193846153846173,
+      0.4566486486486489,
+      0.4462702702702701,
+      0.44985599999999976
+    ],
+    "method": "200 dpi dimension-tick/grid line picks; piecewise interpolation on this sheet only. Inspect annotated grid image.",
+    "pick_uncertainty_in": 3,
+    "status": "provisional",
+    "grid_y_pixels": [
+      224.624,
+      389.0,
+      534.584,
+      628.976,
+      723.368,
+      820.136,
+      952.328,
+      1033.112
+    ],
+    "grid_y_inches": [
+      1800,
+      1434,
+      1110,
+      900,
+      690,
+      474,
+      180,
+      0
+    ]
   }
 }

@@ -1,6 +1,6 @@
-# Highland / drawing reconciliation 04
+# Highland / drawing reconciliation 05
 
-The three uploaded PDFs (19 sheets) now support thirteen provisional candidate placements and rejection of one false R5 repeat. Two footprint conflicts remain. The editable model contains 189 opening records, both native scenes and the full dusk camera.
+The separate A2.02 P1 enclosure and southeast R5 return are provisionally reconciled. OPEN-01 and OPEN-14 are now placed without clipping; all fourteen P1 openings were rechecked, including the recessed garage gate and newly audited service door. The model has 192 opening records: fifteen of the original sixteen candidates provisionally placed and one false R5 repeat rejected.
 
 - [Source comparison and audit](Highland-drawing-reconciliation.pdf)
 - [Editable Blender model](Highland-drawing-reconciled.blend)
@@ -9,8 +9,8 @@ The three uploaded PDFs (19 sheets) now support thirteen provisional candidate p
 - [Editable archive with PDFs and reproduction](Highland-drawing-editable.zip)
 - [Continuation handoff](HANDOFF.md)
 
-The north overlay still shows model/elevation disagreement, particularly at the stair/MU pair. Thirteen accepted candidates establish visible presence and provisional plan locations; they are not fully reconciled dimensions. OPEN-01 needs the P1 footprint corrected; OPEN-14 needs the southeast R5 step corrected. R1 north entry geometry remains assumed. Window sizes, sill/head levels, complete sections, terrace profiles and guards are not confirmed.
+North dimensional alignment remains open, with the unchanged 42.443-pixel diagnostic maximum. R1 north entries, other R5 footprint steps, southeast tie-in residuals and the final south MO/MU split still need review. P1 ramp/structural details, sill/head dimensions, complete profiles and exterior guards remain assumed or provisional. This is not a verified as-built or construction model.
 
-The revision changes openings and their affected walls, retaining every inherited polygon, floor/grid control and roof/terrace mesh. The local native validation passes with no overlaps on corrected walls, no external images and complete GLB architecture. All 432 saved dusk camera frames pass framing checks. The earlier revision 03 film remains a separate older delivery.
+The native readback, source-bounded mesh allowlist, slab outlines, changed coping tops, no-overlap checks, complete GLB export and all 432 saved dusk camera frames pass. Eleven render-workflow tests pass without skips. See visual-review.json for exact inspected images/report pages and delivery-validation.json for machine checks. The older revision 03 film remains a separate delivery.
 
-See opening-audit.json/CSV, change-ledger.json, plan-registration.json, elevation-comparison.json, delivery-validation.json, element-provenance.csv and visual-review.json for exact evidence. Full uploaded PDFs and build instructions are preserved in the editable ZIP. This model remains illustrative and unsuitable for construction dimensions or quantities.
+Full PDFs and reproduction inputs are included in the editable archive. shell-reconciliation.json records the P1/R5 continuation; change-ledger.json is cumulative from revision 03. elevation-comparison.json retains every north residual.

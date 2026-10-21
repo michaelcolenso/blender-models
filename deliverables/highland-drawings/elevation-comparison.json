@@ -17,7 +17,7 @@
     "R4": 269
   },
   "max_abs_horizontal_center_delta_px": 42.443,
-  "findings": "Residual model-versus-elevation disagreement remains, especially around the north stair/MU pair. Plan jambs govern provisional placements; simplified walls, raster picks and drawing registration also affect comparison. The 13 accepted candidates establish presence and provisional plan locations, not fully reconciled dimensions. A4 window details, RFI responses and field verification are needed before confirmation.",
+  "findings": "Residual model-versus-elevation disagreement remains, especially around the north stair/MU pair. Plan jambs govern provisional placements; simplified walls, raster picks and drawing registration also affect comparison. The 15 accepted candidates establish presence and provisional plan locations, not fully reconciled dimensions. A4 window details, RFI responses and field verification are needed before confirmation.",
   "opening_comparisons": [
     {
       "id": "north-R2-01",

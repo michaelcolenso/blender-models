@@ -1,10 +1,10 @@
 {
   "base_openings": 175,
-  "revised_openings": 189,
+  "revised_openings": 192,
   "reviewed_candidates": 16,
-  "accepted_candidates": 13,
+  "accepted_candidates": 15,
   "rejected_candidates": 1,
-  "remaining_unresolved": 2,
+  "remaining_unresolved": 0,
   "north_row_note": "R2-R5 north rows reconstructed from six actual elevation openings each. Existing column IDs are reassigned; use the change ledger rather than assuming ID continuity means an unchanged window.",
   "candidates": [
     {
@@ -15,11 +15,14 @@
         990,
         1018
       ],
-      "decision": "unresolved / footprint reconciliation",
-      "reason": "A2.02 now locates the P1 residential door on a different stepped enclosure from the inherited R1-based P1 shell. Correct the complete P1 footprint and recheck all lower-story openings together; adding a door to the inherited return would put it on the wrong wall.",
-      "model_opening": null,
-      "source": "Uploaded A2.02/A2.07/A3.01/A3.02 PDFs",
-      "plan_jamb_pixels": null
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-P1-02",
+      "source": "A2.02 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        969,
+        1015
+      ]
     },
     {
       "id": "OPEN-02",
@@ -233,11 +236,14 @@
         1473,
         1491
       ],
-      "decision": "unresolved / footprint reconciliation",
-      "reason": "A2.07 shows the southeast R5 return opening, but its western jamb falls outside the inherited R5 return. The local stepped footprint needs reconciliation with the east elevation before altering the return and its roof/coping above. Do not clip the window to make it fit.",
-      "model_opening": null,
-      "source": "Uploaded A2.02/A2.07/A3.01/A3.02 PDFs",
-      "plan_jamb_pixels": null
+      "decision": "accepted / provisionally located",
+      "reason": "Plan wall and jambs paired with the actual elevation row; the previous projection was not retained.",
+      "model_opening": "south-R5-09",
+      "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+      "plan_jamb_pixels": [
+        1434,
+        1455
+      ]
     },
     {
       "id": "OPEN-15",
@@ -272,11 +278,18 @@
     }
   ],
   "limits": [
-    "Plan jambs and wall placement are provisional raster measurements, not scheduled opening sizes. Source sheets have local registration differences; no single building accuracy tolerance is asserted.",
-    "The inherited footprint remains unchanged. North stair-window depth stays on the simplified north envelope rather than acquiring an unsupported reconstructed stair recess.",
-    "Sill/head levels and complete frame sections remain assumed. Window marks identify the visible elevation pattern; the window schedule and A4/A5 detail sheets are still absent.",
-    "R1 north openings are outside this bounded correction and retain the prior assumed geometry. The new drawing evidence also calls for a separate R1 north door/entry audit.",
-    "Terrace-band heights stay provisional. A2.08 confirms top-elevation callouts already used, but A4/A5 profiles and exterior guard sections are not supplied. Stair guard details do not establish exterior terrace guards.",
-    "Drawings are dated 04-02-07 and carry handwritten ASI/RFI references without complete response records. They do not establish current installed conditions."
-  ]
+    "Exterior drawing study, not verified installed conditions.",
+    "The dimensioned plan grids control footprint scale. Elevation grid spans do not agree uniformly with the plan; facade widths use explicit piecewise registration.",
+    "No single dimensional accuracy tolerance is established for this exterior model. Source picks, simplified wall returns and standardized window heights remain provisional/assumed.",
+    "Facade openings are surface-envelope studies; jamb details, exact opening schedule and recessed balconies are simplified.",
+    "Roof slopes, drains, equipment, landscaping, sidewalk and street geometry are simplified; surrounding buildings are omitted.",
+    "Finish families follow the user photos; exact colors, reflectance, recess depth and landscape positions remain interpreted.",
+    "Not suitable for quantities, facade access design or construction dimensions.",
+    "Visible front bays have been reassigned within the registered plan topology; their exact opening offsets remain assumed. Rear/north omitted candidates remain unresolved.",
+    "P1 now has its own A2.02 enclosure and all fourteen modeled P1 openings have plan jamb evidence. The open ventilation shaft, external planters/trellises, parking ramp, structural slab design and below-grade wall sections are not modeled or verified.",
+    "The southeast R5 corner and adjoining openings are provisionally reconciled. The long east line and south baseline retain inherited registration; the final south MO/MU split is provisional. Other R5 local steps, including the southwest terrace/enclosure boundary, still need a separate full-footprint audit.",
+    "North R2-R5 geometry is unchanged from revision 04. The diagnostic maximum horizontal center discrepancy remains 42.443 overview-raster pixels; six windows per floor does not establish dimensional alignment. R1 north entries still need audit.",
+    "P1 and R5 sill/head heights, frame sections and coping profiles remain assumed. A2.08 supplies top datums, not the missing A4/A5 construction profiles. Model consistency is not an as-built or source-accuracy certificate."
+  ],
+  "dimensional_alignment_status": "Not closed: north residuals and remaining source limitations are explicit; candidate disposition is not dimensional verification."
 }
