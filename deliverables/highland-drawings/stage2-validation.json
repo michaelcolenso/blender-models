@@ -1,0 +1,22 @@
+{
+  "stage": "2 / terrace arrangement",
+  "status": "PASS",
+  "native_sha256": "dae759793f461975bc837b9b6d9abc0ab3c4ac132ae6a35ac0a1ca9993d3e100",
+  "note": "Intermediate source/geometry review before presentation refresh; complete profiles remain assumed.",
+  "validation": {
+    "status": "PASS",
+    "audited_R5_core_meshes_preserved": 99,
+    "terrace_and_planter_surfaces": 6,
+    "guard_paths": 5,
+    "band_paths": 3,
+    "enclosure_surface_overlap_sq_in": 0,
+    "guard_centerlines_inside_enclosure": 0,
+    "surface_readback_max_error_in": 6.641778418270405e-05,
+    "guard_sections": "assumed / arrangement provisional",
+    "clerestory_top_ft": 407.75
+  },
+  "reviewed_images": {
+    "geometry-review/stage2/terrace-plan.png": "a0f90534ac2b2c75003d4a3e9efa5447f16cea232760bda06f82c355952eeab4",
+    "geometry-review/stage2/r5-southwest.png": "db3c60934045fe694bca159fb3dc40b4013ca97a9230997bd47349313356d7f7"
+  }
+}

@@ -224,8 +224,8 @@
       "model_opening": "south-R5-02",
       "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
       "plan_jamb_pixels": [
-        1066,
-        1087
+        1043,
+        1077
       ]
     },
     {
@@ -287,9 +287,20 @@
     "Not suitable for quantities, facade access design or construction dimensions.",
     "Visible front bays have been reassigned within the registered plan topology; their exact opening offsets remain assumed. Rear/north omitted candidates remain unresolved.",
     "P1 now has its own A2.02 enclosure and all fourteen modeled P1 openings have plan jamb evidence. The open ventilation shaft, external planters/trellises, parking ramp, structural slab design and below-grade wall sections are not modeled or verified.",
-    "The southeast R5 corner and adjoining openings are provisionally reconciled. The long east line and south baseline retain inherited registration; the final south MO/MU split is provisional. Other R5 local steps, including the southwest terrace/enclosure boundary, still need a separate full-footprint audit.",
     "North R2-R5 geometry is unchanged from revision 04. The diagnostic maximum horizontal center discrepancy remains 42.443 overview-raster pixels; six windows per floor does not establish dimensional alignment. R1 north entries still need audit.",
-    "P1 and R5 sill/head heights, frame sections and coping profiles remain assumed. A2.08 supplies top datums, not the missing A4/A5 construction profiles. Model consistency is not an as-built or source-accuracy certificate."
+    "P1 and R5 sill/head heights, frame sections and coping profiles remain assumed. A2.08 supplies top datums, not the missing A4/A5 construction profiles. Model consistency is not an as-built or source-accuracy certificate.",
+    "R5 XY follows a manual orthogonal enclosure trace and per-sheet dimensioned-grid calibration. This establishes source-governed provisional placement, not verified as-built dimensions.",
+    "The north wall and stair/MU alignment retain revision 05 geometry and the 42.443-pixel diagnostic maximum. R1 north entries are also deferred.",
+    "South MO/MJ outer jambs and contiguous interface replace the former MO/MU transcription and unsupported masonry gap. Complete internal frame profiles remain assumed without the schedule.",
+    "R5 sill/head dimensions, wall and slab thicknesses, parapet/coping sections and guards remain assumed or provisional. A2.08 is an independent diagnostic comparison, not a second authority for floor-plan wall positions.",
+    "Differences between plan and elevation projections are reported as residuals. No common dimensional accuracy tolerance or source agreement certificate is asserted.",
+    "Guard arrangement is provisional from A2.07 and the exterior elevations. Height, infill, posts, connections and complete profiles are assumed; A6 stair guards are not used as exterior guard evidence.",
+    "Walking terraces and the south gravel planter are modeled separately. The east MR-window projection labeled with a cornice line above is not promoted to an occupied terrace or given an inferred guard.",
+    "J-west and K-east-door terrace tie-ins follow the deferred north wall endpoints; their source registration differences remain explicit.",
+    "Southwest, planter and southeast band tops retain provisional 26/28/30-inch source-scaled heights. Complete returns, projections and planter construction remain assumed.",
+    "The south clerestory footprint is re-registered to A2.08; its documented 407.75-foot complete top remains. Complete cap profile and four glazing sections remain assumed.",
+    "Drainage falls, thresholds, waterproofing, exterior guard compliance and installed conditions are not established by this coordination model.",
+    "No guard is placed across terrace edges that abut the R5 enclosure or its glazing. Only exposed edges receive the provisional guard paths."
   ],
   "dimensional_alignment_status": "Not closed: north residuals and remaining source limitations are explicit; candidate disposition is not dimensional verification."
 }

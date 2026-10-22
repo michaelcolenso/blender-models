@@ -1,16 +1,19 @@
-# Highland / drawing reconciliation 05
+# Highland / drawing reconciliation 06
 
-The separate A2.02 P1 enclosure and southeast R5 return are provisionally reconciled. OPEN-01 and OPEN-14 are now placed without clipping; all fourteen P1 openings were rechecked, including the recessed garage gate and newly audited service door. The model has 192 opening records: fifteen of the original sixteen candidates provisionally placed and one false R5 repeat rejected.
+Completed in order: remaining R5 enclosure/openings; terrace/coping/guard arrangement; whole-building review with fresh native daylight and dusk stills. The model retains 192 openings. P1 remains protected from revision 05.
 
-- [Source comparison and audit](Highland-drawing-reconciliation.pdf)
+- [Source comparison and review](Highland-drawing-reconciliation.pdf)
 - [Editable Blender model](Highland-drawing-reconciled.blend)
 - [Portable GLB](Highland-drawing-reconciled.glb)
 - [Daylight image](Highland-daylight-drawing-reconciled.png)
+- [Dusk image](Highland-dusk-drawing-reconciled.png)
 - [Editable archive with PDFs and reproduction](Highland-drawing-editable.zip)
 - [Continuation handoff](HANDOFF.md)
 
-North stair/MU alignment and R1 north entries are deferred at the owner's request; the unchanged 42.443-pixel diagnostic maximum remains explicit. The next priority is the remaining R5 footprint, including the southwest terrace/enclosure boundary, southeast tie-in residuals and the final south MO/MU split. P1 ramp/structural details, sill/head dimensions, complete profiles and exterior guards remain assumed or provisional. This is not a verified as-built or construction model.
+The R5 enclosure now separates west terraces from rooms. All 28 non-north R5 openings were re-registered, including the contiguous south MO/MJ pair. Five walking surfaces, the gravel planter, five guard paths and three band paths follow the provisional source arrangement. Roof plates/coping and the south clerestory follow the corrected footprint.
 
-The native readback, source-bounded mesh allowlist, slab outlines, changed coping tops, no-overlap checks, complete GLB export and all 432 saved dusk camera frames pass. Eleven render-workflow tests pass without skips. See visual-review.json for exact inspected images/report pages and delivery-validation.json for machine checks. The older revision 03 film remains a separate delivery.
+North stair/MU alignment and R1 entries remain deferred. The unchanged north diagnostic maximum is 42.443 overview pixels. R5 south/east/west plan/elevation diagnostics remain 33.859 / 14.744 / 14.913 pixels; north tie-in offsets remain explicit. These are source disagreements, not tolerances. Complete window/cornice/coping/guard profiles, sill/head dimensions, drainage, waterproofing and context remain assumed or undeveloped. This is not a verified as-built or construction model.
 
-Full PDFs and reproduction inputs are included in the editable archive. shell-reconciliation.json records the P1/R5 continuation; change-ledger.json is cumulative from revision 03. elevation-comparison.json retains every north residual.
+Native readback and protected-mesh checks pass, including slab/roof coverage, coping joints, terrace intersections, presentation transforms, packed images, GLB export and all 432 saved dusk camera frames. Eleven regression tests pass. Ten current provenance views, day/dusk stills, two camera endpoints and the report are recorded by exact hash in `visual-review.json`. The old revision 03 film remains separate; no new film is included.
+
+The archive includes original PDFs and reproduction inputs. `r5-completion.json` and `terrace-review.json` describe current R5 work; `shell-reconciliation.json` is historical revision 05 evidence. The cumulative ledger starts from revision 03. Further detail development requires missing schedules/sections or field evidence; optional P1 ramp work is separate. North audits remain deferred.

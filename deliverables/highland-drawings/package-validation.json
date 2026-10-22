@@ -1,10 +1,10 @@
 {
   "status": "PASS",
   "archive": "Highland-drawing-editable.zip",
-  "files": 84,
-  "bytes": 135222622,
-  "sha256": "91cbd0b6e85ff24a17710f5c0570f8888cb6fbcaaff30dec42adb1f5bb0120c9",
+  "files": 126,
+  "bytes": 173386648,
+  "sha256": "475ec36df6bbf088d14c94e8a7f6cb3c0bdec9b6cd4f2ad0a135cb0e55c94e7a",
   "crc_check": "PASS",
   "manifest_exact_file_hashes": "PASS",
-  "visual_review_sha256": "89dc0689106846d2f2c7108b9e457c23a8b7e88e98c7e8d05377cad6f8439e44"
+  "visual_review_sha256": "207b7bae3d8b203ef7cdc6b54d6a4086b4e38ff66892898e003ed58bed610dcf"
 }

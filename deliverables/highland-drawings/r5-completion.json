@@ -1,0 +1,1730 @@
+{
+  "revision": "06 / R5 footprint and terrace review",
+  "old_polygon": [
+    [
+      261.6,
+      1764.074
+    ],
+    [
+      1411.15,
+      1764.074
+    ],
+    [
+      1411.15,
+      1228.428
+    ],
+    [
+      1337.048,
+      1228.428
+    ],
+    [
+      1337.048,
+      472.254
+    ],
+    [
+      1229.145,
+      472.254
+    ],
+    [
+      1229.145,
+      248.372
+    ],
+    [
+      476.94,
+      248.372
+    ],
+    [
+      476.94,
+      430.698
+    ],
+    [
+      357.06,
+      430.698
+    ],
+    [
+      357.06,
+      687.75
+    ],
+    [
+      261.6,
+      687.75
+    ],
+    [
+      261.6,
+      1090.105
+    ],
+    [
+      357.06,
+      1090.105
+    ],
+    [
+      357.06,
+      1217.255
+    ],
+    [
+      261.6,
+      1217.255
+    ]
+  ],
+  "new_polygon": [
+    [
+      261.6,
+      1764.074
+    ],
+    [
+      1411.15,
+      1764.074
+    ],
+    [
+      1411.15,
+      1238.332
+    ],
+    [
+      1329.305,
+      1238.332
+    ],
+    [
+      1329.305,
+      472.254
+    ],
+    [
+      1229.145,
+      472.254
+    ],
+    [
+      1229.145,
+      253.941
+    ],
+    [
+      678.945,
+      253.941
+    ],
+    [
+      678.945,
+      429.928
+    ],
+    [
+      448.071,
+      429.928
+    ],
+    [
+      448.071,
+      694.977
+    ],
+    [
+      349.105,
+      694.977
+    ],
+    [
+      349.105,
+      1227.205
+    ],
+    [
+      261.6,
+      1227.205
+    ]
+  ],
+  "opening_changes": [
+    {
+      "id": "south-R5-01",
+      "old": {
+        "id": "south-R5-01",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 14,
+        "u": 302.921,
+        "width": 48.383,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1015
+        ],
+        "plan_depth_in": 1217.255,
+        "source_width_in": 48.383,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          1004,
+          1026
+        ],
+        "plan_wall_y_pixel": 483,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      },
+      "new": {
+        "id": "south-R5-01",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 12,
+        "u": 302.921,
+        "width": 48.384,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "return / mark obscured",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          996,
+          1015
+        ],
+        "source_width_in": 48.384,
+        "plan_depth_in": 1227.205,
+        "plan_jamb_pixels": [
+          1004,
+          1026
+        ],
+        "plan_wall_pixel": 483,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "south-R5-02",
+      "old": {
+        "id": "south-R5-02",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 8,
+        "u": 438.174,
+        "width": 46.184,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1042,
+          1073
+        ],
+        "plan_depth_in": 430.698,
+        "source_width_in": 46.184,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          1066,
+          1087
+        ],
+        "plan_wall_y_pixel": 841,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "Plan jambs measured on the uploaded sheet and assigned to the matching stepped wall; elevation controls presence, opening order and mark. Complete window sections and standardized sill/head dimensions remain assumed. Inherited wall depth is retained; no new global dimensional tolerance is established."
+      },
+      "new": {
+        "id": "south-R5-02",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 10,
+        "u": 401.887,
+        "width": 74.774,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MO",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1042,
+          1073
+        ],
+        "source_width_in": 74.774,
+        "plan_depth_in": 694.977,
+        "plan_jamb_pixels": [
+          1043,
+          1077
+        ],
+        "plan_wall_pixel": 722,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "south-R5-03",
+      "old": {
+        "id": "south-R5-03",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 516.263,
+        "width": 66.647,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1106,
+          1167
+        ],
+        "source_width_in": 126.278,
+        "plan_depth_in": 248.372,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R5-03",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 8,
+        "u": 565.532,
+        "width": 177.742,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MT",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1106,
+          1167
+        ],
+        "source_width_in": 177.742,
+        "plan_depth_in": 429.928,
+        "plan_jamb_pixels": [
+          1094,
+          1174
+        ],
+        "plan_wall_pixel": 841,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "south-R5-04",
+      "old": {
+        "id": "south-R5-04",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 667.681,
+        "width": 69.282,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1191,
+          1222
+        ],
+        "source_width_in": 69.282,
+        "plan_depth_in": 248.372,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R5-04",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 735.837,
+        "width": 87.012,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MO",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1191,
+          1222
+        ],
+        "source_width_in": 87.012,
+        "plan_depth_in": 253.941,
+        "plan_jamb_pixels": [
+          1191,
+          1230
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "south-R5-05",
+      "old": {
+        "id": "south-R5-05",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 804.01,
+        "width": 78.221,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1250,
+          1285
+        ],
+        "source_width_in": 78.221,
+        "plan_depth_in": 248.372,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R5-05",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 881.8969999999999,
+        "width": 84.63,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MN",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1250,
+          1285
+        ],
+        "source_width_in": 84.63,
+        "plan_depth_in": 253.941,
+        "plan_jamb_pixels": [
+          1257,
+          1295
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "south-R5-06",
+      "old": {
+        "id": "south-R5-06",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 969.75,
+        "width": 87.5,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 01 south elevation",
+        "source_pixels": [
+          1319,
+          1354
+        ],
+        "source_width_in": 87.5,
+        "plan_depth_in": 248.372,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "south-R5-06",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1028.8245,
+        "width": 93.483,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MN",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1319,
+          1354
+        ],
+        "source_width_in": 93.483,
+        "plan_depth_in": 253.941,
+        "plan_jamb_pixels": [
+          1321,
+          1363
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "south-R5-07",
+      "old": {
+        "id": "south-R5-07",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1130.097,
+        "width": 46.742,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1385,
+          1415
+        ],
+        "plan_depth_in": 248.372,
+        "source_width_in": 46.742,
+        "drawing_mark": "MO",
+        "plan_jamb_pixels": [
+          1377,
+          1398
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. The final south MO/MU pair shares the end-of-row plan glazing band. Assignment of the internal split to the two elevation marks remains provisional."
+      },
+      "new": {
+        "id": "south-R5-07",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1131.21,
+        "width": 48.968,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MO",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1385,
+          1415
+        ],
+        "source_width_in": 48.968,
+        "plan_depth_in": 253.941,
+        "plan_jamb_pixels": [
+          1377,
+          1399
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed. The final south glazing band is modeled as two contiguous opening records with a shared frame interface, without the former invented masonry pier. The last elevation mark reads MJ on the uploaded A3.01 (previously transcribed MU). Outer jambs follow A2.07; the internal pane/frame profile remains provisional/assumed.",
+        "opening_group": "south-R5-MO-MJ"
+      }
+    },
+    {
+      "id": "south-R5-08",
+      "old": {
+        "id": "south-R5-08",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1183.517,
+        "width": 51.193,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1427,
+          1448
+        ],
+        "plan_depth_in": 248.372,
+        "source_width_in": 51.193,
+        "drawing_mark": "MU",
+        "plan_jamb_pixels": [
+          1400,
+          1423
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. The final south MO/MU pair shares the end-of-row plan glazing band. Assignment of the internal split to the two elevation marks remains provisional."
+      },
+      "new": {
+        "id": "south-R5-08",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 6,
+        "u": 1182.4035,
+        "width": 53.419,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MJ",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1427,
+          1448
+        ],
+        "source_width_in": 53.419,
+        "plan_depth_in": 253.941,
+        "plan_jamb_pixels": [
+          1399,
+          1423
+        ],
+        "plan_wall_pixel": 920,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed. The final south glazing band is modeled as two contiguous opening records with a shared frame interface, without the former invented masonry pier. The last elevation mark reads MJ on the uploaded A3.01 (previously transcribed MU). Outer jambs follow A2.07; the internal pane/frame profile remains provisional/assumed.",
+        "opening_group": "south-R5-MO-MJ"
+      }
+    },
+    {
+      "id": "south-R5-09",
+      "old": {
+        "id": "south-R5-09",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 4,
+        "u": 1256.967,
+        "width": 46.742,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1473,
+          1491
+        ],
+        "plan_depth_in": 472.254,
+        "source_width_in": 46.742,
+        "drawing_mark": "return window / schedule pending",
+        "plan_jamb_pixels": [
+          1434,
+          1455
+        ],
+        "plan_wall_pixel": 822,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      },
+      "new": {
+        "id": "south-R5-09",
+        "face": "south",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 4,
+        "u": 1256.967,
+        "width": 46.742,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "return / mark obscured",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 south elevation; uploaded PDFs",
+        "source_pixels": [
+          1473,
+          1491
+        ],
+        "source_width_in": 46.742,
+        "plan_depth_in": 472.254,
+        "plan_jamb_pixels": [
+          1434,
+          1455
+        ],
+        "plan_wall_pixel": 822,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-01",
+      "old": {
+        "id": "east-R5-01",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 338.593,
+        "width": 124.75,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          759,
+          811
+        ],
+        "plan_depth_in": 1229.145,
+        "source_width_in": 124.75,
+        "drawing_mark": "MA",
+        "plan_jamb_pixels": [
+          854,
+          910
+        ],
+        "plan_wall_pixel": 1432,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      },
+      "new": {
+        "id": "east-R5-01",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 338.593,
+        "width": 124.75,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MA",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          759,
+          811
+        ],
+        "source_width_in": 124.75,
+        "plan_depth_in": 1229.145,
+        "plan_jamb_pixels": [
+          854,
+          910
+        ],
+        "plan_wall_pixel": 1432,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-02",
+      "old": {
+        "id": "east-R5-02",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 439.952,
+        "width": 37.87,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          826,
+          842
+        ],
+        "plan_depth_in": 1229.145,
+        "source_width_in": 37.87,
+        "drawing_mark": "MF / plan glazed door",
+        "plan_jamb_pixels": [
+          828,
+          845
+        ],
+        "plan_wall_pixel": 1432,
+        "geometry_revision": "05 / P1 enclosure and southeast R5 return",
+        "basis": "Jambs measured on the independently calibrated plan and paired with the elevation; no jamb clipping. Sill/head dimensions and sections remain assumed. "
+      },
+      "new": {
+        "id": "east-R5-02",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 5,
+        "u": 439.952,
+        "width": 37.87,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MF",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          826,
+          842
+        ],
+        "source_width_in": 37.87,
+        "plan_depth_in": 1229.145,
+        "plan_jamb_pixels": [
+          828,
+          845
+        ],
+        "plan_wall_pixel": 1432,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-03",
+      "old": {
+        "id": "east-R5-03",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 564.891,
+        "width": 62.02,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          889,
+          918
+        ],
+        "source_width_in": 62.02,
+        "plan_depth_in": 1337.048,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-03",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 561.341,
+        "width": 71.27,
+        "z": 645,
+        "height": 84,
+        "kind": "door",
+        "drawing_mark": "MO2",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          889,
+          918
+        ],
+        "source_width_in": 71.27,
+        "plan_depth_in": 1329.305,
+        "plan_jamb_pixels": [
+          766,
+          798
+        ],
+        "plan_wall_pixel": 1477,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-04",
+      "old": {
+        "id": "east-R5-04",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 689.904,
+        "width": 46.858,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          951,
+          972
+        ],
+        "source_width_in": 46.858,
+        "plan_depth_in": 1337.048,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-04",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 692.7574999999999,
+        "width": 40.117,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MX",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          951,
+          972
+        ],
+        "source_width_in": 40.117,
+        "plan_depth_in": 1329.305,
+        "plan_jamb_pixels": [
+          714,
+          732
+        ],
+        "plan_wall_pixel": 1477,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-05",
+      "old": {
+        "id": "east-R5-05",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 835.833,
+        "width": 72.333,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          1009,
+          1040
+        ],
+        "source_width_in": 72.333,
+        "plan_depth_in": 1337.048,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-05",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 833.2284999999999,
+        "width": 80.275,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MU",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          1009,
+          1040
+        ],
+        "source_width_in": 80.275,
+        "plan_depth_in": 1329.305,
+        "plan_jamb_pixels": [
+          642,
+          678
+        ],
+        "plan_wall_pixel": 1477,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-06",
+      "old": {
+        "id": "east-R5-06",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 1009.33,
+        "width": 62.784,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          1088,
+          1117
+        ],
+        "source_width_in": 62.784,
+        "plan_depth_in": 1337.048,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-06",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 1014.7,
+        "width": 73.418,
+        "z": 645,
+        "height": 84,
+        "kind": "door",
+        "drawing_mark": "MO2",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          1088,
+          1117
+        ],
+        "source_width_in": 73.418,
+        "plan_depth_in": 1329.305,
+        "plan_jamb_pixels": [
+          562,
+          595
+        ],
+        "plan_wall_pixel": 1477,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-07",
+      "old": {
+        "id": "east-R5-07",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 1183.837,
+        "width": 68.327,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          1167,
+          1198
+        ],
+        "source_width_in": 68.327,
+        "plan_depth_in": 1337.048,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-07",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 3,
+        "u": 1176.0175,
+        "width": 80.119,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MF",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          1167,
+          1198
+        ],
+        "source_width_in": 80.119,
+        "plan_depth_in": 1329.305,
+        "plan_jamb_pixels": [
+          488,
+          524
+        ],
+        "plan_wall_pixel": 1477,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-08",
+      "old": {
+        "id": "east-R5-08",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 1,
+        "u": 1332.612,
+        "width": 132.245,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          1220,
+          1280
+        ],
+        "source_width_in": 132.245,
+        "plan_depth_in": 1411.15,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-08",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 1,
+        "u": 1347.3825,
+        "width": 133.531,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MR",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          1220,
+          1280
+        ],
+        "source_width_in": 133.531,
+        "plan_depth_in": 1411.15,
+        "plan_jamb_pixels": [
+          399,
+          459
+        ],
+        "plan_wall_pixel": 1510,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-09",
+      "old": {
+        "id": "east-R5-09",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 1,
+        "u": 1504.299,
+        "width": 73.646,
+        "z": 645,
+        "height": 84,
+        "kind": "balcony",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          1311,
+          1344
+        ],
+        "source_width_in": 73.646,
+        "plan_depth_in": 1411.15,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-09",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 1,
+        "u": 1504.316,
+        "width": 73.478,
+        "z": 645,
+        "height": 84,
+        "kind": "door",
+        "drawing_mark": "MO2",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          1311,
+          1344
+        ],
+        "source_width_in": 73.478,
+        "plan_depth_in": 1411.15,
+        "plan_jamb_pixels": [
+          342,
+          375
+        ],
+        "plan_wall_pixel": 1510,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "east-R5-10",
+      "old": {
+        "id": "east-R5-10",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 1,
+        "u": 1662.75,
+        "width": 118.28,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.01 / 02 east elevation",
+        "source_pixels": [
+          1372,
+          1425
+        ],
+        "source_width_in": 118.28,
+        "plan_depth_in": 1411.15,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "east-R5-10",
+        "face": "east",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 1,
+        "u": 1662.405,
+        "width": 126.916,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MR",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.01 east elevation; uploaded PDFs",
+        "source_pixels": [
+          1372,
+          1425
+        ],
+        "source_width_in": 126.916,
+        "plan_depth_in": 1411.15,
+        "plan_jamb_pixels": [
+          259,
+          316
+        ],
+        "plan_wall_pixel": 1510,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-01",
+      "old": {
+        "id": "west-R5-01",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 15,
+        "u": 1622.579,
+        "width": 140.598,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          694,
+          757
+        ],
+        "source_width_in": 140.598,
+        "plan_depth_in": 261.6,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-01",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 13,
+        "u": 1636.799,
+        "width": 133.596,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MO8",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          694,
+          757
+        ],
+        "source_width_in": 133.596,
+        "plan_depth_in": 261.6,
+        "plan_jamb_pixels": [
+          269,
+          329
+        ],
+        "plan_wall_pixel": 993,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-02",
+      "old": {
+        "id": "west-R5-02",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 15,
+        "u": 1450.908,
+        "width": 68.843,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          787,
+          818
+        ],
+        "source_width_in": 68.843,
+        "plan_depth_in": 261.6,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-02",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 13,
+        "u": 1460.8995,
+        "width": 71.247,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MU",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          787,
+          818
+        ],
+        "source_width_in": 71.247,
+        "plan_depth_in": 261.6,
+        "plan_jamb_pixels": [
+          362,
+          394
+        ],
+        "plan_wall_pixel": 993,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-03",
+      "old": {
+        "id": "west-R5-03",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 15,
+        "u": 1297.176,
+        "width": 67.865,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          857,
+          888
+        ],
+        "source_width_in": 67.865,
+        "plan_depth_in": 261.6,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-03",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 13,
+        "u": 1305.098,
+        "width": 75.668,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MU",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          857,
+          888
+        ],
+        "source_width_in": 75.668,
+        "plan_depth_in": 261.6,
+        "plan_jamb_pixels": [
+          431,
+          465
+        ],
+        "plan_wall_pixel": 993,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-04",
+      "old": {
+        "id": "west-R5-04",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 13,
+        "u": 1154.878,
+        "width": 67.865,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          922,
+          953
+        ],
+        "source_width_in": 67.865,
+        "plan_depth_in": 357.06,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-04",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 11,
+        "u": 1155.988,
+        "width": 71.216,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MH",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          922,
+          953
+        ],
+        "source_width_in": 71.216,
+        "plan_depth_in": 349.105,
+        "plan_jamb_pixels": [
+          499,
+          531
+        ],
+        "plan_wall_pixel": 1036,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-05",
+      "old": {
+        "id": "west-R5-05",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 11,
+        "u": 967.9,
+        "width": 144.2,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          988,
+          1050
+        ],
+        "source_width_in": 144.2,
+        "plan_depth_in": 261.6,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-05",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 11,
+        "u": 1002.4635000000001,
+        "width": 102.339,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MO8",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          988,
+          1050
+        ],
+        "source_width_in": 102.339,
+        "plan_depth_in": 349.105,
+        "plan_jamb_pixels": [
+          561,
+          607
+        ],
+        "plan_wall_pixel": 1036,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-06",
+      "old": {
+        "id": "west-R5-06",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 11,
+        "u": 770.85,
+        "width": 60.9,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          1095,
+          1124
+        ],
+        "source_width_in": 60.9,
+        "plan_depth_in": 261.6,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-06",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 11,
+        "u": 776.367,
+        "width": 73.586,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MH",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          1095,
+          1124
+        ],
+        "source_width_in": 73.586,
+        "plan_depth_in": 349.105,
+        "plan_jamb_pixels": [
+          669,
+          702
+        ],
+        "plan_wall_pixel": 1036,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-07",
+      "old": {
+        "id": "west-R5-07",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 9,
+        "u": 524.369,
+        "width": 132.894,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          1193,
+          1253
+        ],
+        "source_width_in": 132.894,
+        "plan_depth_in": 357.06,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-07",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 9,
+        "u": 525.704,
+        "width": 133.634,
+        "z": 645,
+        "height": 84,
+        "kind": "wide",
+        "drawing_mark": "MO8",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          1193,
+          1253
+        ],
+        "source_width_in": 133.634,
+        "plan_depth_in": 448.071,
+        "plan_jamb_pixels": [
+          768,
+          828
+        ],
+        "plan_wall_pixel": 1081,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-08",
+      "old": {
+        "id": "west-R5-08",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 7,
+        "u": 356.859,
+        "width": 78.094,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          1280,
+          1314
+        ],
+        "source_width_in": 78.094,
+        "plan_depth_in": 476.94,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-08",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 7,
+        "u": 366.4385,
+        "width": 77.969,
+        "z": 645,
+        "height": 84,
+        "kind": "door",
+        "drawing_mark": "MO1",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          1280,
+          1314
+        ],
+        "source_width_in": 77.969,
+        "plan_depth_in": 678.945,
+        "plan_jamb_pixels": [
+          852,
+          887
+        ],
+        "plan_wall_pixel": 1185,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    },
+    {
+      "id": "west-R5-09",
+      "old": {
+        "id": "west-R5-09",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 7,
+        "u": 284.508,
+        "width": 39.047,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A3.02 / 02 west elevation",
+        "source_pixels": [
+          1320,
+          1337
+        ],
+        "source_width_in": 39.047,
+        "plan_depth_in": 476.94,
+        "basis": "Facade pattern picked from elevation and projected onto the simplified plan boundary. Standardized sill/head heights, depth and frame sections are assumed; width may be clipped to fit a plan return."
+      },
+      "new": {
+        "id": "west-R5-09",
+        "face": "west",
+        "level": "R5",
+        "polygon": "r5",
+        "segment": 7,
+        "u": 279.5595,
+        "width": 37.871,
+        "z": 645,
+        "height": 84,
+        "kind": "window",
+        "drawing_mark": "MX",
+        "status": "assumed",
+        "xy_status": "provisional",
+        "source": "A2.07 plan / A3.02 west elevation; uploaded PDFs",
+        "source_pixels": [
+          1320,
+          1337
+        ],
+        "source_width_in": 37.871,
+        "plan_depth_in": 678.945,
+        "plan_jamb_pixels": [
+          900,
+          917
+        ],
+        "plan_wall_pixel": 1185,
+        "geometry_revision": "06 / R5 footprint and terrace review",
+        "basis": "A2.07 wall and jamb picks govern provisional XY; actual elevation order/marks identify the opening. No jamb clipping. Sill/head heights, wall and complete frame sections remain assumed."
+      }
+    }
+  ],
+  "opening_groups": [
+    {
+      "id": "south-R5-MO-MJ",
+      "level": "R5",
+      "segment": 6,
+      "openings": [
+        "south-R5-07",
+        "south-R5-08"
+      ],
+      "outer_jambs_in": [
+        1106.726,
+        1209.113
+      ],
+      "interface_in": 1155.694,
+      "basis": "The final south glazing band is modeled as two contiguous opening records with a shared frame interface, without the former invented masonry pier. The last elevation mark reads MJ on the uploaded A3.01 (previously transcribed MU). Outer jambs follow A2.07; the internal pane/frame profile remains provisional/assumed.",
+      "status": "assumed",
+      "xy_status": "provisional",
+      "source": "A2.07 south glazing band / A3.01 MO and MJ marks"
+    }
+  ],
+  "north_tiein": "The two vertices and full north-facing wall on segment 0 retain revision 05 model coordinates. North stair/MU alignment and R1 entries are deferred. All other R5 vertices use this sheet registration. Upper east/west wall X lines continue the fixed north endpoints; their source residuals are reported.",
+  "retained_north_tiein_model_minus_plan_in": {
+    "west_x": 7.062,
+    "east_x": 8.394,
+    "north_y": -6.321
+  },
+  "southeast_model_minus_governing_plan_in": {
+    "long_east_line": 0.0,
+    "south_baseline": 0.0
+  },
+  "limits": [
+    "R5 XY follows a manual orthogonal enclosure trace and per-sheet dimensioned-grid calibration. This establishes source-governed provisional placement, not verified as-built dimensions.",
+    "The north wall and stair/MU alignment retain revision 05 geometry and the 42.443-pixel diagnostic maximum. R1 north entries are also deferred.",
+    "South MO/MJ outer jambs and contiguous interface replace the former MO/MU transcription and unsupported masonry gap. Complete internal frame profiles remain assumed without the schedule.",
+    "R5 sill/head dimensions, wall and slab thicknesses, parapet/coping sections and guards remain assumed or provisional. A2.08 is an independent diagnostic comparison, not a second authority for floor-plan wall positions.",
+    "Differences between plan and elevation projections are reported as residuals. No common dimensional accuracy tolerance or source agreement certificate is asserted."
+  ],
+  "disposition": "R5 enclosure topology and south/east/west jambs provisionally reconciled; north work deferred and source discrepancies retained."
+}

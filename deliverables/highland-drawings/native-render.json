@@ -1,7 +1,10 @@
 {
-  "elapsed_seconds": 255.61,
+  "native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "scene": "Daylight / drawing reconciliation 06",
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "elapsed_seconds": 214.69,
   "samples": 32,
   "images": {
-    "Highland-daylight-drawing-reconciled.png": "5c48b01639f1a034a2623f42f3514bce7e2479b3d71b57c18df9444727e2da0e"
+    "Highland-daylight-drawing-reconciled.png": "32588dbfdbf3d277af134b94ede555973e6c749f6e6c881c4a9703243b34c6ff"
   }
 }

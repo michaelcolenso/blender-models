@@ -1,0 +1,871 @@
+{
+  "revision": "06 / terrace arrangement review",
+  "source": "A2.07 terrace outlines, A3.01/A3.02 exterior guards and bands; A2.08 clerestory footprint and top datums",
+  "surfaces": [
+    {
+      "id": "J-west",
+      "polygon_pixels": [
+        [
+          950,
+          239
+        ],
+        [
+          993,
+          239
+        ],
+        [
+          993,
+          348
+        ],
+        [
+          950,
+          348
+        ]
+      ],
+      "anchor": "north-west",
+      "kind": "terrace",
+      "polygon": [
+        [
+          159.67,
+          1764.074
+        ],
+        [
+          261.6,
+          1764.074
+        ],
+        [
+          261.6,
+          1527.695
+        ],
+        [
+          159.67,
+          1527.695
+        ]
+      ]
+    },
+    {
+      "id": "K-east-door",
+      "polygon_pixels": [
+        [
+          1510,
+          341
+        ],
+        [
+          1523,
+          341
+        ],
+        [
+          1523,
+          378
+        ],
+        [
+          1510,
+          378
+        ]
+      ],
+      "anchor": "north-east",
+      "kind": "door balcony",
+      "polygon": [
+        [
+          1411.15,
+          1543.282
+        ],
+        [
+          1431.691,
+          1543.282
+        ],
+        [
+          1431.691,
+          1460.897
+        ],
+        [
+          1411.15,
+          1460.897
+        ]
+      ]
+    },
+    {
+      "id": "middle-west",
+      "polygon_pixels": [
+        [
+          993,
+          541
+        ],
+        [
+          1036,
+          541
+        ],
+        [
+          1036,
+          632
+        ],
+        [
+          993,
+          632
+        ]
+      ],
+      "kind": "terrace",
+      "polygon": [
+        [
+          254.538,
+          1098.129
+        ],
+        [
+          349.105,
+          1098.129
+        ],
+        [
+          349.105,
+          895.665
+        ],
+        [
+          254.538,
+          895.665
+        ]
+      ]
+    },
+    {
+      "id": "lower-west",
+      "polygon_pixels": [
+        [
+          1036,
+          722
+        ],
+        [
+          1081,
+          722
+        ],
+        [
+          1081,
+          841
+        ],
+        [
+          1036,
+          841
+        ]
+      ],
+      "kind": "terrace",
+      "polygon": [
+        [
+          349.105,
+          694.977
+        ],
+        [
+          448.071,
+          694.977
+        ],
+        [
+          448.071,
+          429.928
+        ],
+        [
+          349.105,
+          429.928
+        ]
+      ]
+    },
+    {
+      "id": "south-east-wrap",
+      "polygon_pixels": [
+        [
+          1185,
+          841
+        ],
+        [
+          1092,
+          841
+        ],
+        [
+          1092,
+          946
+        ],
+        [
+          1092,
+          965
+        ],
+        [
+          1185,
+          965
+        ],
+        [
+          1185,
+          943
+        ],
+        [
+          1240,
+          943
+        ],
+        [
+          1380,
+          943
+        ],
+        [
+          1432,
+          943
+        ],
+        [
+          1432,
+          965
+        ],
+        [
+          1510,
+          965
+        ],
+        [
+          1510,
+          822
+        ],
+        [
+          1510,
+          535
+        ],
+        [
+          1477,
+          535
+        ],
+        [
+          1477,
+          822
+        ],
+        [
+          1432,
+          822
+        ],
+        [
+          1432,
+          920
+        ],
+        [
+          1185,
+          920
+        ]
+      ],
+      "kind": "terrace",
+      "polygon": [
+        [
+          678.945,
+          429.928
+        ],
+        [
+          472.262,
+          429.928
+        ],
+        [
+          472.262,
+          196.021
+        ],
+        [
+          472.262,
+          153.76
+        ],
+        [
+          678.945,
+          153.76
+        ],
+        [
+          678.945,
+          202.704
+        ],
+        [
+          801.654,
+          202.704
+        ],
+        [
+          1113.404,
+          202.704
+        ],
+        [
+          1229.145,
+          202.704
+        ],
+        [
+          1229.145,
+          153.76
+        ],
+        [
+          1402.756,
+          153.76
+        ],
+        [
+          1402.756,
+          472.254
+        ],
+        [
+          1402.756,
+          1111.478
+        ],
+        [
+          1329.305,
+          1111.478
+        ],
+        [
+          1329.305,
+          472.254
+        ],
+        [
+          1229.145,
+          472.254
+        ],
+        [
+          1229.145,
+          253.941
+        ],
+        [
+          678.945,
+          253.941
+        ]
+      ]
+    },
+    {
+      "id": "south-planter",
+      "polygon_pixels": [
+        [
+          1245,
+          948
+        ],
+        [
+          1375,
+          948
+        ],
+        [
+          1375,
+          1001
+        ],
+        [
+          1245,
+          1001
+        ]
+      ],
+      "kind": "planter",
+      "finish": "decorative gravel / appearance assumed",
+      "polygon": [
+        [
+          812.809,
+          191.566
+        ],
+        [
+          1102.275,
+          191.566
+        ],
+        [
+          1102.275,
+          73.76
+        ],
+        [
+          812.809,
+          73.76
+        ]
+      ]
+    }
+  ],
+  "guards": [
+    {
+      "id": "J-west",
+      "path_pixels": [
+        [
+          993,
+          239
+        ],
+        [
+          950,
+          239
+        ],
+        [
+          950,
+          348
+        ],
+        [
+          993,
+          348
+        ]
+      ],
+      "anchor": "north-west",
+      "band_heights_in": [
+        0,
+        0,
+        0
+      ],
+      "path": [
+        [
+          261.6,
+          1764.074
+        ],
+        [
+          159.67,
+          1764.074
+        ],
+        [
+          159.67,
+          1527.695
+        ],
+        [
+          261.6,
+          1527.695
+        ]
+      ]
+    },
+    {
+      "id": "K-east-door",
+      "path_pixels": [
+        [
+          1510,
+          341
+        ],
+        [
+          1523,
+          341
+        ],
+        [
+          1523,
+          378
+        ],
+        [
+          1510,
+          378
+        ]
+      ],
+      "anchor": "north-east",
+      "band_heights_in": [
+        0,
+        0,
+        0
+      ],
+      "path": [
+        [
+          1411.15,
+          1543.282
+        ],
+        [
+          1431.691,
+          1543.282
+        ],
+        [
+          1431.691,
+          1460.897
+        ],
+        [
+          1411.15,
+          1460.897
+        ]
+      ]
+    },
+    {
+      "id": "middle-west",
+      "path_pixels": [
+        [
+          1036,
+          541
+        ],
+        [
+          993,
+          541
+        ],
+        [
+          993,
+          632
+        ],
+        [
+          1036,
+          632
+        ]
+      ],
+      "band_heights_in": [
+        0,
+        0,
+        0
+      ],
+      "path": [
+        [
+          349.105,
+          1098.129
+        ],
+        [
+          254.538,
+          1098.129
+        ],
+        [
+          254.538,
+          895.665
+        ],
+        [
+          349.105,
+          895.665
+        ]
+      ]
+    },
+    {
+      "id": "lower-west",
+      "path_pixels": [
+        [
+          1036,
+          722
+        ],
+        [
+          1036,
+          841
+        ],
+        [
+          1081,
+          841
+        ]
+      ],
+      "band_heights_in": [
+        0,
+        0
+      ],
+      "path": [
+        [
+          349.105,
+          694.977
+        ],
+        [
+          349.105,
+          429.928
+        ],
+        [
+          448.071,
+          429.928
+        ]
+      ]
+    },
+    {
+      "id": "south-east-wrap",
+      "path_pixels": [
+        [
+          1092,
+          841
+        ],
+        [
+          1092,
+          946
+        ],
+        [
+          1092,
+          965
+        ],
+        [
+          1185,
+          965
+        ],
+        [
+          1185,
+          943
+        ],
+        [
+          1240,
+          943
+        ],
+        [
+          1380,
+          943
+        ],
+        [
+          1432,
+          943
+        ],
+        [
+          1432,
+          965
+        ],
+        [
+          1510,
+          965
+        ],
+        [
+          1510,
+          822
+        ],
+        [
+          1510,
+          535
+        ],
+        [
+          1477,
+          535
+        ]
+      ],
+      "band_heights_in": [
+        0,
+        26,
+        26,
+        26,
+        0,
+        28,
+        0,
+        30,
+        30,
+        30,
+        0,
+        0
+      ],
+      "path": [
+        [
+          472.262,
+          429.928
+        ],
+        [
+          472.262,
+          196.021
+        ],
+        [
+          472.262,
+          153.76
+        ],
+        [
+          678.945,
+          153.76
+        ],
+        [
+          678.945,
+          202.704
+        ],
+        [
+          801.654,
+          202.704
+        ],
+        [
+          1113.404,
+          202.704
+        ],
+        [
+          1229.145,
+          202.704
+        ],
+        [
+          1229.145,
+          153.76
+        ],
+        [
+          1402.756,
+          153.76
+        ],
+        [
+          1402.756,
+          472.254
+        ],
+        [
+          1402.756,
+          1111.478
+        ],
+        [
+          1329.305,
+          1111.478
+        ]
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "south-west-cornice",
+      "path_pixels": [
+        [
+          1092,
+          946
+        ],
+        [
+          1092,
+          965
+        ],
+        [
+          1185,
+          965
+        ],
+        [
+          1185,
+          943
+        ]
+      ],
+      "height_in": 26,
+      "cap_height_in": 4,
+      "cap_width_in": 30,
+      "finish": "concrete",
+      "height_status": "provisional",
+      "basis": "Retained 26-inch source-scaled top; arrangement follows the A2.07 terrace edge. Complete section remains assumed.",
+      "path": [
+        [
+          472.262,
+          196.021
+        ],
+        [
+          472.262,
+          153.76
+        ],
+        [
+          678.945,
+          153.76
+        ],
+        [
+          678.945,
+          202.704
+        ]
+      ]
+    },
+    {
+      "id": "south-planter-parapet",
+      "path_pixels": [
+        [
+          1240,
+          943
+        ],
+        [
+          1380,
+          943
+        ],
+        [
+          1380,
+          1006
+        ],
+        [
+          1240,
+          1006
+        ]
+      ],
+      "closed": true,
+      "height_in": 28,
+      "cap_height_in": 3,
+      "cap_width_in": 12,
+      "finish": "brick",
+      "height_status": "provisional",
+      "basis": "Retained 28-inch source-scaled top; closed south planter follows the A2.07 gravel bed. Rear wall and complete section remain assumed.",
+      "path": [
+        [
+          801.654,
+          202.704
+        ],
+        [
+          1113.404,
+          202.704
+        ],
+        [
+          1113.404,
+          62.649
+        ],
+        [
+          801.654,
+          62.649
+        ]
+      ]
+    },
+    {
+      "id": "south-east-cornice",
+      "path_pixels": [
+        [
+          1432,
+          943
+        ],
+        [
+          1432,
+          965
+        ],
+        [
+          1510,
+          965
+        ],
+        [
+          1510,
+          822
+        ]
+      ],
+      "height_in": 30,
+      "cap_height_in": 4,
+      "cap_width_in": 30,
+      "finish": "concrete",
+      "height_status": "provisional",
+      "basis": "Retained 30-inch source-scaled top; arrangement follows the A2.07 southeast terrace end. Complete section remains assumed.",
+      "path": [
+        [
+          1229.145,
+          202.704
+        ],
+        [
+          1229.145,
+          153.76
+        ],
+        [
+          1402.756,
+          153.76
+        ],
+        [
+          1402.756,
+          472.254
+        ]
+      ]
+    }
+  ],
+  "clerestory_polygon_roof_pixels": [
+    [
+      1184,
+      835
+    ],
+    [
+      1430,
+      835
+    ],
+    [
+      1430,
+      920
+    ],
+    [
+      1184,
+      920
+    ]
+  ],
+  "guard_section": {
+    "height_in": 42,
+    "post_spacing_max_in": 36,
+    "wire_rows": 9,
+    "top_rail_height_in": 1.7,
+    "rail_depth_in": 1.5,
+    "wire_height_in": 0.55,
+    "post_width_in": 0.8,
+    "status": "assumed",
+    "basis": "Representative retained guard section; no exterior guard schedule, attachment, structural or code-compliance verification."
+  },
+  "limits": [
+    "Guard arrangement is provisional from A2.07 and the exterior elevations. Height, infill, posts, connections and complete profiles are assumed; A6 stair guards are not used as exterior guard evidence.",
+    "Walking terraces and the south gravel planter are modeled separately. The east MR-window projection labeled with a cornice line above is not promoted to an occupied terrace or given an inferred guard.",
+    "J-west and K-east-door terrace tie-ins follow the deferred north wall endpoints; their source registration differences remain explicit.",
+    "Southwest, planter and southeast band tops retain provisional 26/28/30-inch source-scaled heights. Complete returns, projections and planter construction remain assumed.",
+    "The south clerestory footprint is re-registered to A2.08; its documented 407.75-foot complete top remains. Complete cap profile and four glazing sections remain assumed.",
+    "Drainage falls, thresholds, waterproofing, exterior guard compliance and installed conditions are not established by this coordination model.",
+    "No guard is placed across terrace edges that abut the R5 enclosure or its glazing. Only exposed edges receive the provisional guard paths."
+  ],
+  "clerestory_old_polygon": [
+    [
+      684.576,
+      444.372
+    ],
+    [
+      1247.295,
+      444.372
+    ],
+    [
+      1247.295,
+      248.372
+    ],
+    [
+      684.576,
+      248.372
+    ]
+  ],
+  "clerestory_new_polygon": [
+    [
+      681.719,
+      440.942
+    ],
+    [
+      1229.989,
+      440.942
+    ],
+    [
+      1229.989,
+      251.899
+    ],
+    [
+      681.719,
+      251.899
+    ]
+  ],
+  "surface_room_overlap_sq_in": 0,
+  "surface_surface_overlap_sq_in": 0
+}

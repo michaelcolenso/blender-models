@@ -10,7 +10,7 @@ from bpy_extras.object_utils import world_to_camera_view
 from mathutils import Vector
 
 from build import inventory
-from shell_mesh import SUPPORTS
+from shell_mesh import support_names, roof_edges
 
 ROOT=Path(__file__).resolve().parents[2]
 HERE=Path(__file__).resolve().parent
@@ -34,16 +34,19 @@ def main():
     assert sha(OUT/'reconciled.spec.json')==sha(HERE/'reconciled.spec.json')
     assert len(spec['openings'])==192 and len(spec['rejected_candidates'])==0
     assert (audit['accepted_candidates'],audit['rejected_candidates'],audit['remaining_unresolved'])==(15,1,0)
-    protected=('grid_dimensions_in','roof_features','roof_plate_z','north_roof_plate_z','north_roof_split_y')
+    protected=('grid_dimensions_in','roof_plate_z','north_roof_plate_z','north_roof_split_y')
     for key in protected:assert spec[key]==base[key]
+    assert spec['roof_features'][:2]==base['roof_features'][:2]
+    assert [e['top'] for e in spec['roof_features']]==[e['top'] for e in base['roof_features']]
     assert spec['polygons']['r1']==base['polygons']['r1'] and spec['polygons']['typical']==base['polygons']['typical']
     assert [(e['name'],e['z']) for e in spec['levels']]==[(e['name'],e['z']) for e in base['levels']]
     assert spec['levels'][0]['polygon']=='p1' and len([e for e in spec['openings'] if e['level']=='P1'])==14
-    for i,p in enumerate(base['polygons']['r5']):
-        if i not in (4,5,6): assert spec['polygons']['r5'][i]==p
+    assert spec['polygons']['r5'][:2]==base['polygons']['r5'][:2]
+    assert len(spec['polygons']['r5'])==14
+    assert len([e for e in spec['openings'] if e['level']=='R5'])==34
     bpy.ops.wm.open_mainfile(filepath=str(native),load_ui=False,use_scripts=False)
     assert inventory()==geometry['after']
-    expected_scenes={'Daylight / drawing reconciliation 05','Dusk / drawing reconciliation 05'}
+    expected_scenes={'Daylight / drawing reconciliation 06','Dusk / drawing reconciliation 06'}
     assert set(bpy.data.scenes.keys())==expected_scenes
     missing=[o.name for o in bpy.data.objects if o.type in ('MESH','CURVE') and not all(o.get(k) for k in ('source','basis','status'))]
     assert not missing,missing[:20]
@@ -52,6 +55,8 @@ def main():
     assert all(geometry['after'].get(n)==h for n,h in north['mesh_hashes'].items()), 'North geometry changed'
     changed={n for n in geometry['before'] if geometry['after'].get(n)!=geometry['before'][n]}
     assert changed <= set(geometry['allowed_existing'])
+    protected05=json.loads((HERE/'revision05-controls.json').read_text())
+    assert all(geometry['after'].get(n)==h for n,h in protected05['mesh_hashes'].items()), 'A revision 05 protected mesh changed'
     largest_error=0
     for c in ledger['opening_changes']:
         e=c['new'];o=bpy.data.objects[e['id']+'-frames']
@@ -72,14 +77,14 @@ def main():
     # No two opening voids overlap on a corrected wall, including retained records.
     patched={(e['new']['level'],e['new']['segment']) for e in ledger['opening_changes']}
     patched |= {('P1',i) for i in range(len(spec['polygons']['p1']))}
-    patched |= {('R5',i) for i in spec['shell_reconciliation']['changed_r5_segments']}
+    patched |= {('R5',i) for i in spec['r5_completion']['changed_r5_segments']}
     for level,segment in patched:
         ops=[e for e in spec['openings'] if e['level']==level and e['segment']==segment]
         for i,e in enumerate(ops):
             for other in ops[i+1:]:
                 horizontal=min(e['u']+e['width']/2,other['u']+other['width']/2)-max(e['u']-e['width']/2,other['u']-other['width']/2)
                 vertical=min(e['z']+e['height'],other['z']+other['height'])-max(e['z'],other['z'])
-                assert horizontal<=0 or vertical<=0,(e['id'],other['id'])
+                assert horizontal<=.001 or vertical<=.001,(e['id'],other['id'])
     for level in ('R2','R3','R4','R5'):
         assert len([e for e in spec['openings'] if e['face']=='north' and e['level']==level])==6
     # Read back slab perimeter, face area and top datum from the actual meshes.
@@ -101,19 +106,38 @@ def main():
         assert abs(top_area-area)<1, (key,area,top_area)
         target_z=0 if key=='p1' else 627
         assert abs(max(v.co.z for v in slab.data.vertices)/I-target_z)<.001
-    for name in SUPPORTS:
-        if not name.startswith('roof-parapet'): continue
-        o=bpy.data.objects[name]
-        assert abs(max(v.co.z for v in o.data.vertices)/I-(406.25-342)*12)<.001
-    # Adjacent cap edges must meet after the corner moves; top datum alone is insufficient.
-    cap_join_error=0
-    for first,second in [('roof-parapet-3-south','roof-parapet-4'),('roof-parapet-4','roof-parapet-5'),('roof-parapet-5','roof-parapet-6'),('roof-parapet-6','roof-parapet-7')]:
-        a,b=bpy.data.objects[first],bpy.data.objects[second]
+    # Check every rebuilt coping top and actual shared cap edge.
+    edges=roof_edges(spec);cap_join_error=0
+    for k,(name,a,b,zone) in enumerate(edges):
+        obj=bpy.data.objects[name]
+        expected=(spec['shell_reconciliation']['roof_coping'][zone+'_top_ft']-342)*12
+        assert abs(max(v.co.z for v in obj.data.vertices)/I-expected)<.001,name
+        nxt=edges[(k+1)%len(edges)]
+        if zone!=nxt[3]:continue  # Deliberate 24-inch roof-level step.
+        other=bpy.data.objects[nxt[0]]
         for i,j in [(9,8),(10,11),(13,12),(14,15)]:
-            error=(a.data.vertices[i].co-b.data.vertices[j].co).length/I
+            error=(obj.data.vertices[i].co-other.data.vertices[j].co).length/I
             cap_join_error=max(cap_join_error,error)
-            assert error<.001,(first,second,error)
-    assert all(n in geometry['after'] for n in SUPPORTS)
+            assert error<.001,(name,nxt[0],error)
+    assert support_names(spec)<=set(geometry['after'])
+    # The two actual roof surface areas must partition the corrected enclosure.
+    poly=spec['polygons']['r5']
+    area=abs(sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(poly,poly[1:]+poly[:1])))/2
+    roof_area=sum(p.area for n in ('roof-north','roof-south') for p in bpy.data.objects[n].data.polygons if p.normal.z>.9)/I**2
+    assert abs(roof_area-area)<1,('split roof area',area,roof_area)
+    for segment in (3,11):
+        wall=next(o for o in bpy.data.collections['Envelope'].objects if o.name.startswith(f'wall-R5-{segment}-'))
+        name=wall.name
+        for vertex in wall.data.vertices:
+            if vertex.co.y/I<spec['north_roof_split_y']-.001:
+                assert vertex.co.z/I<=spec['roof_plate_z']+.001,('header crosses retained roof step',name)
+    # Adjacent MO/MJ records form one band with no invented wall pier.
+    group=spec['opening_groups'][0]
+    first,second=[next(e for e in spec['openings'] if e['id']==n) for n in group['openings']]
+    assert abs((first['u']+first['width']/2)-(second['u']-second['width']/2))<.001
+    assert abs(first['u']-first['width']/2-group['outer_jambs_in'][0])<.001
+    assert abs(second['u']+second['width']/2-group['outer_jambs_in'][1])<.001
+    assert (first['drawing_mark'],second['drawing_mark'])==('MO','MJ')
     # Verify all architecture is present in the portable GLB.
     glb=OUT/'Highland-drawing-reconciled.glb'
     data=glb.read_bytes();magic,version,length=struct.unpack_from('<4sII',data)
@@ -138,10 +162,36 @@ def main():
             minimum=min(minimum,min(min(p.x,p.y,1-p.x,1-p.y) for p in points))
         assert minimum>.015,(scene.name,minimum)
         margins[scene.name]=minimum
+    presentation_validation=None
+    if spec.get('presentation_refresh'):
+        p=json.loads((OUT/'presentation-validation.json').read_text())
+        assert p['native_sha256']==sha(native) and p['architecture_unchanged_by_refresh']
+        assert p['north_props_refreshed']==0
+        bpy.context.window.scene=bpy.data.scenes[p['evaluation_scene']]
+        bpy.context.scene.frame_set(spec['presentation_refresh']['dusk']['frame'])
+        bpy.context.view_layer.update()
+        presentation_error=0
+        for record in p['records']:
+            obj=bpy.data.objects[record['name']]
+            # Excluded lights can retain an identity dependency-graph matrix.
+            # These unparented props persist their world transform in the native
+            # basis matrix; read that saved transform directly.
+            matrix=obj.matrix_basis if obj.parent is None else obj.matrix_world
+            error=max(abs(matrix[i][j]-record['new_matrix_world'][i][j]) for i in range(4) for j in range(4))
+            presentation_error=max(presentation_error,error)
+            assert error<.00001,(record['name'],error)
+            center=matrix.translation if obj.type=='LIGHT' else matrix@(sum((Vector(v) for v in obj.bound_box),Vector())/8)
+            assert (center-Vector(record['mapped_center_m'])).length<.0001,record['name']
+            assert obj['reference_opening']==record['opening'] and not record['opening'].startswith('north-')
+        presentation_validation={'status':'PASS','objects_refreshed':p['objects_refreshed'],'openings_refreshed':p['openings_with_existing_props_refreshed'],'north_props_refreshed':0,'matrix_readback_max_error':presentation_error}
+    terrace_validation=None
+    if spec.get('terrace_review'):
+        from check_terraces import validate as validate_terraces
+        terrace_validation=validate_terraces(spec,geometry,OUT)
     report={'status':'PASS','native_sha256':sha(native),'glb_sha256':sha(glb),
-        'opening_inventory':192,'accepted_candidates':15,'rejected_candidates':1,'unresolved_candidates':0,
+        'presentation_validation':presentation_validation,'terrace_validation':terrace_validation,'opening_inventory':192,'accepted_candidates':15,'rejected_candidates':1,'unresolved_candidates':0,
         'candidate_disposition_note':'Presence and provisional placement only; dimensional/source issues remain open',
-        'p1_openings_rechecked':14,'north_meshes_identical_to_revision04':len(north['mesh_hashes']),
+        'p1_openings_rechecked':14,'r5_openings_rechecked':28,'r5_enclosure_vertices':14,'revision05_protected_meshes':len(protected05['mesh_hashes']),'south_MO_MJ_pier_gap_in':0,'north_meshes_identical_to_revision04':len(north['mesh_hashes']),
         'changed_opening_records':len(ledger['opening_changes']),'architecture_meshes':len(geometry['after']),
         'unchanged_architecture_meshes':geometry['unchanged_meshes'],'protected_spec_controls':list(protected),
         'roof_geometry_unchanged':False,'roof_changes_allowlist':geometry['roof_changes_allowlist'],'coping_join_max_error_in':cap_join_error,'corrected_wall_void_overlaps':0,'north_R2_to_R5_count_per_floor':6,

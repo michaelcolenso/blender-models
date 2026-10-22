@@ -1,0 +1,481 @@
+{
+  "revision": "06 / R5 footprint and terrace review",
+  "source": "A2.07 R5 floor plan; A3.01 south/east and A3.02 west elevations; independent A2.08 roof comparison",
+  "coordinate_convention": "0.6 PDF-point overview pixels; source detail inspection at 200-360 dpi; inches in the model.",
+  "polygon_pixels": [
+    [
+      993,
+      239
+    ],
+    [
+      1510,
+      239
+    ],
+    [
+      1510,
+      478
+    ],
+    [
+      1477,
+      478
+    ],
+    [
+      1477,
+      822
+    ],
+    [
+      1432,
+      822
+    ],
+    [
+      1432,
+      920
+    ],
+    [
+      1185,
+      920
+    ],
+    [
+      1185,
+      841
+    ],
+    [
+      1081,
+      841
+    ],
+    [
+      1081,
+      722
+    ],
+    [
+      1036,
+      722
+    ],
+    [
+      1036,
+      483
+    ],
+    [
+      993,
+      483
+    ]
+  ],
+  "north_tiein": "The two vertices and full north-facing wall on segment 0 retain revision 05 model coordinates. North stair/MU alignment and R1 entries are deferred. All other R5 vertices use this sheet registration. Upper east/west wall X lines continue the fixed north endpoints; their source residuals are reported.",
+  "south_pair": {
+    "ids": [
+      "south-R5-07",
+      "south-R5-08"
+    ],
+    "outer_jamb_pixels": [
+      1377,
+      1423
+    ],
+    "interface_pixel": 1399,
+    "marks": [
+      "MO",
+      "MJ"
+    ],
+    "basis": "The final south glazing band is modeled as two contiguous opening records with a shared frame interface, without the former invented masonry pier. The last elevation mark reads MJ on the uploaded A3.01 (previously transcribed MU). Outer jambs follow A2.07; the internal pane/frame profile remains provisional/assumed."
+  },
+  "openings": [
+    {
+      "id": "south-R5-01",
+      "face": "south",
+      "segment": 12,
+      "jamb_pixels": [
+        1004,
+        1026
+      ],
+      "wall_pixel": 483,
+      "mark": "return / mark obscured",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-02",
+      "face": "south",
+      "segment": 10,
+      "jamb_pixels": [
+        1043,
+        1077
+      ],
+      "wall_pixel": 722,
+      "mark": "MO",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-03",
+      "face": "south",
+      "segment": 8,
+      "jamb_pixels": [
+        1094,
+        1174
+      ],
+      "wall_pixel": 841,
+      "mark": "MT",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-04",
+      "face": "south",
+      "segment": 6,
+      "jamb_pixels": [
+        1191,
+        1230
+      ],
+      "wall_pixel": 920,
+      "mark": "MO",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-05",
+      "face": "south",
+      "segment": 6,
+      "jamb_pixels": [
+        1257,
+        1295
+      ],
+      "wall_pixel": 920,
+      "mark": "MN",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-06",
+      "face": "south",
+      "segment": 6,
+      "jamb_pixels": [
+        1321,
+        1363
+      ],
+      "wall_pixel": 920,
+      "mark": "MN",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-07",
+      "face": "south",
+      "segment": 6,
+      "jamb_pixels": [
+        1377,
+        1399
+      ],
+      "wall_pixel": 920,
+      "mark": "MO",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-08",
+      "face": "south",
+      "segment": 6,
+      "jamb_pixels": [
+        1399,
+        1423
+      ],
+      "wall_pixel": 920,
+      "mark": "MJ",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "south-R5-09",
+      "face": "south",
+      "segment": 4,
+      "jamb_pixels": [
+        1434,
+        1455
+      ],
+      "wall_pixel": 822,
+      "mark": "return / mark obscured",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-01",
+      "face": "east",
+      "segment": 5,
+      "jamb_pixels": [
+        854,
+        910
+      ],
+      "wall_pixel": 1432,
+      "mark": "MA",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-02",
+      "face": "east",
+      "segment": 5,
+      "jamb_pixels": [
+        828,
+        845
+      ],
+      "wall_pixel": 1432,
+      "mark": "MF",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-03",
+      "face": "east",
+      "segment": 3,
+      "jamb_pixels": [
+        766,
+        798
+      ],
+      "wall_pixel": 1477,
+      "mark": "MO2",
+      "kind": "door",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-04",
+      "face": "east",
+      "segment": 3,
+      "jamb_pixels": [
+        714,
+        732
+      ],
+      "wall_pixel": 1477,
+      "mark": "MX",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-05",
+      "face": "east",
+      "segment": 3,
+      "jamb_pixels": [
+        642,
+        678
+      ],
+      "wall_pixel": 1477,
+      "mark": "MU",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-06",
+      "face": "east",
+      "segment": 3,
+      "jamb_pixels": [
+        562,
+        595
+      ],
+      "wall_pixel": 1477,
+      "mark": "MO2",
+      "kind": "door",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-07",
+      "face": "east",
+      "segment": 3,
+      "jamb_pixels": [
+        488,
+        524
+      ],
+      "wall_pixel": 1477,
+      "mark": "MF",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-08",
+      "face": "east",
+      "segment": 1,
+      "jamb_pixels": [
+        399,
+        459
+      ],
+      "wall_pixel": 1510,
+      "mark": "MR",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-09",
+      "face": "east",
+      "segment": 1,
+      "jamb_pixels": [
+        342,
+        375
+      ],
+      "wall_pixel": 1510,
+      "mark": "MO2",
+      "kind": "door",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "east-R5-10",
+      "face": "east",
+      "segment": 1,
+      "jamb_pixels": [
+        259,
+        316
+      ],
+      "wall_pixel": 1510,
+      "mark": "MR",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-01",
+      "face": "west",
+      "segment": 13,
+      "jamb_pixels": [
+        269,
+        329
+      ],
+      "wall_pixel": 993,
+      "mark": "MO8",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-02",
+      "face": "west",
+      "segment": 13,
+      "jamb_pixels": [
+        362,
+        394
+      ],
+      "wall_pixel": 993,
+      "mark": "MU",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-03",
+      "face": "west",
+      "segment": 13,
+      "jamb_pixels": [
+        431,
+        465
+      ],
+      "wall_pixel": 993,
+      "mark": "MU",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-04",
+      "face": "west",
+      "segment": 11,
+      "jamb_pixels": [
+        499,
+        531
+      ],
+      "wall_pixel": 1036,
+      "mark": "MH",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-05",
+      "face": "west",
+      "segment": 11,
+      "jamb_pixels": [
+        561,
+        607
+      ],
+      "wall_pixel": 1036,
+      "mark": "MO8",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-06",
+      "face": "west",
+      "segment": 11,
+      "jamb_pixels": [
+        669,
+        702
+      ],
+      "wall_pixel": 1036,
+      "mark": "MH",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-07",
+      "face": "west",
+      "segment": 9,
+      "jamb_pixels": [
+        768,
+        828
+      ],
+      "wall_pixel": 1081,
+      "mark": "MO8",
+      "kind": "wide",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-08",
+      "face": "west",
+      "segment": 7,
+      "jamb_pixels": [
+        852,
+        887
+      ],
+      "wall_pixel": 1185,
+      "mark": "MO1",
+      "kind": "door",
+      "sill_in": 18,
+      "height_in": 84
+    },
+    {
+      "id": "west-R5-09",
+      "face": "west",
+      "segment": 7,
+      "jamb_pixels": [
+        900,
+        917
+      ],
+      "wall_pixel": 1185,
+      "mark": "MX",
+      "kind": "window",
+      "sill_in": 18,
+      "height_in": 84
+    }
+  ],
+  "limits": [
+    "R5 XY follows a manual orthogonal enclosure trace and per-sheet dimensioned-grid calibration. This establishes source-governed provisional placement, not verified as-built dimensions.",
+    "The north wall and stair/MU alignment retain revision 05 geometry and the 42.443-pixel diagnostic maximum. R1 north entries are also deferred.",
+    "South MO/MJ outer jambs and contiguous interface replace the former MO/MU transcription and unsupported masonry gap. Complete internal frame profiles remain assumed without the schedule.",
+    "R5 sill/head dimensions, wall and slab thicknesses, parapet/coping sections and guards remain assumed or provisional. A2.08 is an independent diagnostic comparison, not a second authority for floor-plan wall positions.",
+    "Differences between plan and elevation projections are reported as residuals. No common dimensional accuracy tolerance or source agreement certificate is asserted."
+  ]
+}

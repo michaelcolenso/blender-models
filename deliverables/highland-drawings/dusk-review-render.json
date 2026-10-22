@@ -1,0 +1,11 @@
+{
+  "native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "scene": "Dusk / drawing reconciliation 06",
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "elapsed_seconds": 55.28,
+  "samples": 12,
+  "images": {
+    "dusk-review/frame-001.png": "57ebbfea7c9ec07141376007dbbad233382f885d711f7d078def0561599b5865",
+    "dusk-review/frame-432.png": "615b3131e6bea05e9c0cc957251b220ccf20555fdb689cd3b325412cb8d29a50"
+  }
+}

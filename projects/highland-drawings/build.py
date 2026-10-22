@@ -1,4 +1,4 @@
-"""Patch source-reconciled openings, P1 enclosure and southeast R5 supports."""
+"""Build source-reconciled enclosures, openings, terraces and native presentation."""
 import ast
 import hashlib
 import json
@@ -7,7 +7,9 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
-from shell_mesh import SUPPORTS, rebuild as rebuild_supports
+from shell_mesh import support_names, existing_support_names, rebuild as rebuild_supports
+from terrace_mesh import existing_names as terrace_names, rebuild as rebuild_terraces
+from presentation_sync import controls as glazing_controls, refresh as refresh_presentation
 
 ROOT=Path(__file__).resolve().parents[2]
 HERE=Path(__file__).resolve().parent
@@ -38,6 +40,10 @@ def main():
     bpy.context.preferences.filepaths.use_scripts_auto_execute=False
     bpy.ops.wm.open_mainfile(filepath=str(source),load_ui=False,use_scripts=False)
     before=inventory()
+    original_glazing=glazing_controls(spec['openings'])
+    support_before=existing_support_names()
+    support_after=support_names(spec)
+    terrace_before=terrace_names() if spec.get('terrace_review') else set()
     # Reuse the existing generator's pure mesh functions, with the saved scene's
     # actual material datablocks. No scene initializer or rendering code executes.
     tree=ast.parse((ROOT/'projects/highland-exterior/build.py').read_text())
@@ -50,14 +56,14 @@ def main():
     boxes,segment_data,part=[scope[n] for n in ('boxes','segment_data','facade_part')]
     patches={(e['new']['level'],e['new']['segment']) for e in ledger['opening_changes']}
     patches |= {('P1',i) for i in range(len(spec['polygons']['p1']))}
-    patches |= {('R5',i) for i in spec['shell_reconciliation']['changed_r5_segments']}
+    patches |= {('R5',i) for i in spec['r5_completion']['changed_r5_segments']}
     ids={e['id'] for e in ledger['opening_changes']}
     old_ids={e['old']['id'] for e in ledger['opening_changes'] if e['old']}
     allowed_existing={n for n in before if any(n.startswith(f'wall-{level}-{seg}-') for level,seg in patches)
-                      or n.startswith(('wall-P1-', 'edge-P1-'))
-                      or n in SUPPORTS or any(n.startswith(ident+'-') for ident in old_ids)}
+                      or n.startswith(('wall-P1-', 'edge-P1-', 'wall-R5-'))
+                      or n in support_before or n in terrace_before or any(n.startswith(ident+'-') for ident in old_ids)}
     rebuild_supports(spec, scope)
-    for name in allowed_existing-SUPPORTS:
+    for name in allowed_existing-support_before:
         bpy.data.objects.remove(bpy.data.objects[name],do_unlink=True)
     for level,seg in sorted(patches):
         li=next(i for i,e in enumerate(spec['levels']) if e['name']==level)
@@ -96,7 +102,7 @@ def main():
                 zz=(z0+z1)/2
                 if any(h[0]<u<h[1] and h[2]<zz<h[3] for h in holes):continue
                 parts.append(part(a,v,n,u,zz,x1-x0,z1-z0,spec['wall_thickness']))
-        wall=boxes(f'wall-{level}-{seg}-{material}',parts,material,'Envelope','A2.02/A2.07 and uploaded elevations / revision 05',basis='Source-reconciled shell centerline and opening voids. Wall thickness, construction and vertical opening dimensions remain assumed.')
+        wall=boxes(f'wall-{level}-{seg}-{material}',parts,material,'Envelope','A2.02/A2.07 and uploaded elevations / revision 06',basis='Source-reconciled shell centerline and opening voids. Wall thickness, construction and vertical opening dimensions remain assumed.')
         wall['geometry_revision']=cfg['revision']
         for lo,hi,zb,zt,e,center in holes:
             if e['id'] not in ids:continue
@@ -116,12 +122,17 @@ def main():
                 o['reference_opening']=e['id']
                 o['plan_jamb_pixels']=e['plan_jamb_pixels']
                 o['scheduled_size_verified']=False
+    terrace_after=rebuild_terraces(spec,scope) if spec.get('terrace_review') else []
     after=inventory()
+    presentation=None
+    if spec.get('presentation_refresh'):
+        presentation=refresh_presentation(spec,ledger,original_glazing,set(after))
+        assert inventory()==after,'Presentation changed architecture'
     unchanged={n:v for n,v in before.items() if n not in allowed_existing}
     assert all(after.get(n)==h for n,h in unchanged.items())
-    assert all(after[n]==h for n,h in before.items() if n not in SUPPORTS and n in {o.name for o in bpy.data.collections['Roof'].objects})
+    assert all(after[n]==h for n,h in before.items() if n not in support_before and n not in terrace_before and n in {o.name for o in bpy.data.collections['Roof'].objects})
     for scene in bpy.data.scenes:
-        scene.name=scene.name.replace('roof and terrace revision 03','drawing reconciliation 05')
+        scene.name=scene.name.replace('roof and terrace revision 03','drawing reconciliation 06')
         scene['geometry_revision']=cfg['revision']
         scene['opening_inventory']=len(spec['openings'])
         scene['remaining_opening_conflicts']=0
@@ -134,18 +145,26 @@ def main():
         else:scene.render.filepath='//native-dusk/frame-'
     for obj in bpy.data.objects:
         if obj.type=='FONT':
-            obj.data.body=obj.data.body.replace('GEOMETRY REVISION 03','DRAWING REVISION 05')
+            obj.data.body=obj.data.body.replace('GEOMETRY REVISION 03','DRAWING REVISION 06')
+            if obj.data.body.startswith('Illustrative exterior study') and spec.get('presentation_refresh'):
+                obj.data.body=spec['presentation_refresh']['notice']
     native=OUT/'Highland-drawing-reconciled.blend'
+    if presentation is not None:
+        presentation['evaluation_scene']=next(s.name for s in bpy.data.scenes if s.name.startswith('Dusk'))
     bpy.context.window.scene=next(s for s in bpy.data.scenes if s.name.startswith('Daylight'))
     bpy.context.preferences.filepaths.save_version=0
     bpy.ops.wm.save_as_mainfile(filepath=str(native))
+    if presentation is not None:
+        presentation['native_sha256']=sha(native)
+        presentation['architecture_unchanged_by_refresh']=True
+        (OUT/'presentation-validation.json').write_text(json.dumps(presentation,indent=2)+'\n')
     (OUT/'geometry-validation.json').write_text(json.dumps({
         'status':'PASS','base_native_sha256':sha(source),'native_sha256':sha(native),
         'base_meshes':len(before),'revised_meshes':len(after),'unchanged_meshes':len(unchanged),
         'changed_existing':sorted(n for n in before.keys()&after.keys() if before[n]!=after[n]),
         'removed':sorted(before.keys()-after.keys()),'added':sorted(after.keys()-before.keys()),
-        'allowed_existing':sorted(allowed_existing),'roof_geometry_unchanged':False,'roof_changes_allowlist':sorted(SUPPORTS & {o.name for o in bpy.data.collections['Roof'].objects}),
-        'before':before,'after':after,'revised_spec_sha256':sha(HERE/'reconciled.spec.json')},indent=2)+'\n')
+        'allowed_existing':sorted(allowed_existing),'roof_geometry_unchanged':False,'roof_changes_allowlist':sorted(support_after & {o.name for o in bpy.data.collections['Roof'].objects}),
+        'terrace_names_before':sorted(terrace_before),'terrace_names_after':terrace_after,'support_names_before':sorted(support_before),'support_names_after':sorted(support_after),'before':before,'after':after,'revised_spec_sha256':sha(HERE/'reconciled.spec.json')},indent=2)+'\n')
     print('SAVED',native,'UNCHANGED',len(unchanged),flush=True)
     # Keep the GLB portable; native scenes/cameras remain the editing reference.
     bpy.context.window.scene=next(s for s in bpy.data.scenes if s.name.startswith('Dusk'))

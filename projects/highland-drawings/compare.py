@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+from shell import interpolate
 
 ROOT=Path(__file__).resolve().parents[2]
 HERE=Path(__file__).resolve().parent
@@ -36,7 +37,25 @@ def main():
         'findings':'Residual model-versus-elevation disagreement remains, especially around the north stair/MU pair. Plan jambs govern provisional placements; simplified walls, raster picks and drawing registration also affect comparison. The 15 accepted candidates establish presence and provisional plan locations, not fully reconciled dimensions. A4 window details, RFI responses and field verification are needed before confirmation.',
         'opening_comparisons':records}
     (OUT/'elevation-comparison.json').write_text(json.dumps(report,indent=2)+'\n')
+    compare_r5(spec)
     print('Diagnostic maximum center delta:',report['max_abs_horizontal_center_delta_px'],'pixels on the inherited 0.6 raster.')
+
+
+def compare_r5(spec):
+    rows=[]
+    for e in spec['openings']:
+        if e['level']!='R5' or e['face']=='north':continue
+        f=spec['facade_registration'][e['face']]
+        pred=interpolate(e['u'],f['inches'],f['pixels'])
+        lo,hi=[interpolate(u,f['inches'],f['pixels']) for u in (e['u']-e['width']/2,e['u']+e['width']/2)]
+        target=sum(e['source_pixels'])/2
+        rows.append({'id':e['id'],'mark':e['drawing_mark'],'source_center_px':target,
+                     'plan_model_projected_center_px':round(pred,3),'center_delta_px':round(pred-target,3),
+                     'model_projected_width_px':round(abs(hi-lo),3),'source_width_px':abs(e['source_pixels'][1]-e['source_pixels'][0])})
+    report={'basis':'Diagnostic inverse of the inherited per-elevation grid registration applied to source-governed A2.07 plan positions. Overview-raster residuals are not independent rendered-edge/source-accuracy checks. Sill/head dimensions and complete frame sections remain assumed.',
+            'by_face_max_abs_center_delta_px':{face:max(abs(r['center_delta_px']) for r in rows if r['id'].startswith(face+'-')) for face in ('south','east','west')},
+            'openings':rows}
+    (OUT/'r5-elevation-comparison.json').write_text(json.dumps(report,indent=2)+'\n')
 
 
 if __name__=='__main__':main()

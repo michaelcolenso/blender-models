@@ -1,14 +1,12 @@
-# Highland / drawing reconciliation 05
+# Highland / drawing reconciliation 06
 
-This continuation traces the A2.02 P1 enclosure, audits all fourteen modeled P1 openings, and reconciles the southeast R5 return with its adjacent openings, slab, south roof plate and coping. OPEN-01 and OPEN-14 are provisionally placed without jamb clipping. The model has 192 openings: fifteen of the original sixteen candidates provisionally placed, one false R5 repeat rejected, and an additional P1 service door.
+The remaining R5 enclosure/openings, terrace/coping/guard arrangement and whole-building day/dusk review were completed in that order. The 14-vertex enclosure distinguishes rooms from west terraces; 28 non-north R5 openings were rechecked. Five walking terraces and the gravel planter are separate, with five exposed-edge guard paths and three band paths. The south MO/MJ pair has a shared interface; MJ corrects the prior MU transcription. P1 remains as reconciled in revision 05. The inventory remains 192 openings.
 
-North stair/MU alignment and R1 north entries are deferred at the owner's request. The remaining R5 footprint is the next priority. North R2-R5 meshes remain identical to revision 04. Their diagnostic center differences remain explicit, with a maximum of 42.443 pixels on the inherited overview raster. P1 ramp/structural details, R1 north entries, other R5 local steps, southeast tie-in residuals and the MO/MU split remain provisional or unaudited. See [HANDOFF.md](HANDOFF.md) for exact remaining work. This is not a verified as-built or construction model.
+North stair/MU and R1 entries are deferred. The 42.443-pixel north diagnostic remains explicit, as do the R5 non-north plan/elevation differences and preserved north tie-in offsets. Source XY is provisional. Complete window/cornice/coping/guard profiles, drainage, waterproofing, sill/head dimensions and context remain assumed or undeveloped. This is not a verified as-built or construction model. See [HANDOFF.md](HANDOFF.md) for exact residuals and remaining assumptions.
 
-`decisions.json` preserves the revision 04 opening picks. `shell-decisions.json` adds the source picks for this continuation. `prepare.py` produces the single geometry specification, `reconciled.spec.json`, and exact source evidence. The builder patches revision 03 reproducibly; no native geometry is hand-edited. The cumulative ledger describes changes from revision 03, while `shell-reconciliation.json` isolates this continuation.
+`prepare.py` produces the single geometry source `reconciled.spec.json`. The builder patches revision 03 reproducibly; geometry is not hand-edited in Blender. `r5-completion.json` and `terrace-review.json` supersede historical revision 05 R5 limits in `shell-reconciliation.json`. Source decisions are recorded separately for openings, P1/southeast patch, full R5, terraces and presentation. The three PDFs (19 sheets) remain under `references/`; every plan is registered independently to its dimensioned grids.
 
-The source PDFs (19 sheets) remain under `references/`. Each affected plan is calibrated independently to the dimensioned grids. XY positions are provisional raster measurements. Sill/head sizes, complete frame/wall/coping sections, guards and site context remain assumed. Local source/model residuals are reported, not hidden by changing a global scale.
-
-Run from the repository root, or from the archive's `reproduction/` directory:
+Run from the repository root, or the archive's `reproduction/` directory:
 
 ```bash
 python projects/highland-drawings/prepare.py
@@ -16,16 +14,19 @@ python projects/highland-drawings/compare.py
 HIGHLAND_BLENDER_PY=/workspace/.venvs/blender-models/bin/python
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=3 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/build.py
 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/validate.py
-"$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py --review
-# Inspect the source picks, overlays and seven native provenance views.
+"$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py --review --views north,south,east,west,plan,iso,r5-return,r5-plan,r5-southwest,terrace-plan
+# Inspect source evidence and all ten native provenance views before presentation.
 "$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py
+"$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py --dusk
+"$HIGHLAND_BLENDER_PY" projects/highland-drawings/render.py --dusk-review
+python projects/highland-drawings/check_renders.py
 python projects/highland-drawings/report.py
-# Inspect the daylight image and every report page, then record exact hashes.
+# Inspect both stills, dusk endpoints and every report page; record their hashes.
 python projects/highland-drawings/package.py
 ```
 
-Python 3.11 with bpy 5.0.1 is used for native build/render/validation. Preparation/reporting also need NumPy, Pillow, PyMuPDF and ReportLab; DejaVu Sans must be installed. Dimensions are inches in the specification and meters in meshes. Source detail renders are 200 dpi; additional 300-360 dpi crops were inspected for return jambs.
+Preparation supports `--stage r5`, `--stage terraces` and default `--stage presentation`. Intermediate proofs are retained; the final independent validator protects 99 stage-1 enclosure/roof meshes, 815 revision 05 meshes and 97 north meshes. Native rendering/validation use Python 3.11 with bpy 5.0.1. Preparation/reporting also need NumPy, Pillow, PyMuPDF, ReportLab and DejaVu Sans. Specification dimensions are inches; mesh coordinates are meters. No new geometry dependency was added.
 
-Repository-only regression checks use the existing fixtures: `"$HIGHLAND_BLENDER_PY" -m unittest discover -s tests -p test_render_workflow.py`. Their results are included in the archive.
+The integrated checks cover real saved meshes, protected controls, frames in both axes and wall-normal placement, overlapping voids, polygon simplicity, actual slab outlines/areas/levels, split roof coverage, coping tops/joints, terrace-room/guard intersections, dressing transforms, packed images, exported architecture and all 432 saved dusk camera frames. Eleven render-workflow tests pass without skips; the catalog resolves five shots. Source measurements remain provisional regardless of floating-point readback agreement.
 
-Validation covers the exact mesh allowlist, protected north hashes, source links, both frame axes and wall-normal placement, unclipped jambs, overlapping voids, polygon simplicity, actual slab perimeter/area/levels, changed coping tops, packed images, all exported architecture and 432 saved dusk camera frames. Seven native provenance views, the daylight still and report are recorded in the visual review. The archive contains the original PDFs, base native scene and all reproduction inputs. Revision 03's movie remains a separate earlier delivery.
+The delivery contains ten current provenance views, fresh native daylight/dusk stills and two dusk camera endpoints. Revision 05 P1 views are retained as historical evidence; stage-specific images are in named subfolders. Exact inspected hashes are in `visual-review.json`. The editable archive includes the original PDFs, base native and reproduction inputs. Revision 03's film remains separate; this refresh does not include a new movie.
