@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "source_native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "source_glb_sha256": "36fc9dd38da549959b45606019f1aefcf2507737e06787e1cc4b9d2ba66a4211",
+  "movie_sha256": "3c7bdc5dc3bcc2a000b786cade06c9fe705b18536ba4388262965c6b8239b100",
+  "decoded_frames": 432,
+  "distinct_decoded_frames": 432,
+  "resolution": [
+    1280,
+    720
+  ],
+  "duration_seconds": 18.0,
+  "fps": 24,
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "color_space": "BT.709 limited range",
+  "faststart": true,
+  "lossless_capture_frames": 432,
+  "signature": "c05be2e9f69e471e2fe384b70f74596f73dd77158cf35ef8656947d13cc43a55",
+  "aa_samples": 4,
+  "fxaa": true,
+  "all_frame_minimum_pixel_stddev": 0.17399007884350132,
+  "review_frame_minimum_pixel_stddev": 0.17418641218680012,
+  "browser_errors": [],
+  "aa_baseline_and_revised_images_differ": true,
+  "scope": "Full decode, distinct frames, capture completeness and encoding checks. See visual-review.json for visual judgement."
+}

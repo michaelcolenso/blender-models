@@ -1,0 +1,16 @@
+{
+  "movie_sha256": "3c7bdc5dc3bcc2a000b786cade06c9fe705b18536ba4388262965c6b8239b100",
+  "decoded_frame_files": {
+    "decoded-review/frame-000.png": "d80e423c5db01f9d0f62a7aac56894325524d34f6f2e1df49171688744365da8",
+    "decoded-review/frame-216.png": "c90ca51b2a274fb4291c97550088899afc12cff0059ff9eae0c793dbeedfff0b",
+    "decoded-review/frame-431.png": "32184fcab86aeae573107be30c5c98208dd684034a028fb0e7ccfcf909441163"
+  },
+  "decoded_vs_capture_mean_abs_rgb_error": {
+    "frame-000": 1.8785452835648149,
+    "frame-216": 2.073575303819444,
+    "frame-431": 2.0363867187499998
+  },
+  "poster_frame": 217,
+  "poster_file": "Highland-dusk-poster.png",
+  "poster_sha256": "c90ca51b2a274fb4291c97550088899afc12cff0059ff9eae0c793dbeedfff0b"
+}

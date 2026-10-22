@@ -1,0 +1,15 @@
+{
+  "title": "200 WEST HIGHLAND / DRAWING REVISION 06",
+  "notice": "Illustrative study | Plan XY provisional; profiles, guards and site assumed.",
+  "source_native": "deliverables/highland-drawings/Highland-drawing-reconciled.blend",
+  "source_glb": "deliverables/highland-drawings/Highland-drawing-reconciled.glb",
+  "source_validation": "deliverables/highland-drawings/delivery-validation.json",
+  "sky": "projects/highland-cinematic/assets/kloofendal_48d_partly_cloudy_puresky_4k.hdr",
+  "scene": "Dusk / drawing reconciliation 06",
+  "frames": 432,
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "poster_frame": 216,
+  "basis": "Existing native camera sampled without saving or changing the model. Three.js lighting/materials approximate the native Cycles reference. Architecture is preserved; only context foliage receives display LOD."
+}

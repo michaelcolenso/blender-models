@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "sourceMeshes": 6177,
+    "drawCalls": 56,
+    "triangles": 541849,
+    "leafTriangles": 338704,
+    "frames": 432,
+    "dimensions": [
+      1280,
+      720
+    ],
+    "msaaSamples": 0,
+    "fxaa": true,
+    "aaScope": "rails and window frames",
+    "renderTarget": "RGBA16F base / RGBA8 MSAA fine metal / FXAA",
+    "glError": 0,
+    "renderer": "WebKit WebGL"
+  },
+  "revised": {
+    "sourceMeshes": 6177,
+    "drawCalls": 98,
+    "triangles": 1053785,
+    "leafTriangles": 338704,
+    "frames": 432,
+    "dimensions": [
+      1280,
+      720
+    ],
+    "msaaSamples": 4,
+    "fxaa": true,
+    "aaScope": "rails and window frames",
+    "renderTarget": "RGBA16F base / RGBA8 MSAA fine metal / FXAA",
+    "glError": 0,
+    "renderer": "WebKit WebGL"
+  },
+  "frame": 217
+}
