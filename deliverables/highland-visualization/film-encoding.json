@@ -1,0 +1,13 @@
+{
+  "signature": "c05be2e9f69e471e2fe384b70f74596f73dd77158cf35ef8656947d13cc43a55",
+  "frames": 432,
+  "fps": 24,
+  "duration_seconds": 18,
+  "resolution": [
+    1280,
+    720
+  ],
+  "bytes": 10989215,
+  "source": "Lossless RGB PNG frame cache; full RGB to limited-range BT.709 conversion.",
+  "color_normalization": "color-normalization.json"
+}

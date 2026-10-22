@@ -1,0 +1,30 @@
+{
+  "status": "reviewed",
+  "pending": [],
+  "movie_sha256": "3c7bdc5dc3bcc2a000b786cade06c9fe705b18536ba4388262965c6b8239b100",
+  "source_native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "source_glb_sha256": "36fc9dd38da549959b45606019f1aefcf2507737e06787e1cc4b9d2ba66a4211",
+  "reviewed_files": {
+    "Highland-dusk-poster.png": "c90ca51b2a274fb4291c97550088899afc12cff0059ff9eae0c793dbeedfff0b",
+    "decoded-review/frame-000.png": "d80e423c5db01f9d0f62a7aac56894325524d34f6f2e1df49171688744365da8",
+    "decoded-review/frame-216.png": "c90ca51b2a274fb4291c97550088899afc12cff0059ff9eae0c793dbeedfff0b",
+    "decoded-review/frame-431.png": "32184fcab86aeae573107be30c5c98208dd684034a028fb0e7ccfcf909441163",
+    "film-review/frame-000.png": "8bebb94164fcdd303feb4099c70f79d4d8facda718a8f91d4c96ddae7c86627f",
+    "film-review/frame-072.png": "71f20a5c9b4a1ccfa010afb3dc908a19a19c5781d6c6e1aa846d69c95dea63ee",
+    "film-review/frame-144.png": "cf11a462a75ad91450e415c2d9b2896077a948278c1e5253ea149f171d2d4d1f",
+    "film-review/frame-216-fxaa-only.png": "e69ee13a62f95c1f440f1b5d8b80c3ce68e449644adf1862d21c0c464c4bc2b5",
+    "film-review/frame-216.png": "e0b777deab3abca4ffe1c03ef8978a16c3a54a02d2aaff25aa24bd83eff7a5be",
+    "film-review/frame-288.png": "bedacae7790a7a5617fac3da6e51331057bbcced9febe37732ba7cc154d2e8c1",
+    "film-review/frame-360.png": "3d05c287a3cd7ebc6baa3c1ebad5c521041b2540b41302efea4d6c0db2fe43bd",
+    "film-review/frame-431.png": "9974705368162e38af052c0d765edecac92baac2969dae90bac858dab80d5a81"
+  },
+  "observations": [
+    "Seven native-camera preview positions inspected before full capture: opening, frames 73/145/217/289/361, and closing. Building framing, terrace/roof silhouette, warm windows, context and revision-06 caption remain readable.",
+    "Magnified frame-217 rails/window-frame comparison inspected: 4x MSAA fine-metal pass plus FXAA smooths the thin edges relative to FXAA-only. The architecture is preserved; foliage alone uses display LOD.",
+    "Opening, midpoint and closing frames decoded from the actual final MP4 were inspected. They agree with the captured previews, with mean absolute RGB reconstruction errors below 2.1 out of 255.",
+    "The poster is an exact copy of the inspected decoded frame 217. Movie caption retains provisional/assumed qualifications.",
+    "All 432 frames were fully decoded and checked automatically; all are distinct and nonblank. This is separate from the sampled visual inspection.",
+    "Native revision-06 Blender and GLB files remain byte-identical to the source delivery. North stair/MU and R1 entries remain deferred; the original source residuals remain explicit in the linked drawing review.",
+    "This is an 18-second 1280x720 24fps presentation with Three.js material/lighting approximations. The native Cycles dusk still remains the detailed material reference."
+  ]
+}

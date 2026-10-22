@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "source_native_sha256": "493c97a84298e6de4737b32ffe0f61009e3b4850a95967cd870cf784ab796976",
+  "source_glb_sha256": "36fc9dd38da549959b45606019f1aefcf2507737e06787e1cc4b9d2ba66a4211",
+  "files": [
+    {
+      "path": "deliverables/highland-visualization/Highland-dusk-drawing-reconciled-18s.mp4",
+      "bytes": 10989215,
+      "sha256": "3c7bdc5dc3bcc2a000b786cade06c9fe705b18536ba4388262965c6b8239b100"
+    },
+    {
+      "path": "deliverables/highland-visualization/Highland-dusk-poster.png",
+      "bytes": 905431,
+      "sha256": "c90ca51b2a274fb4291c97550088899afc12cff0059ff9eae0c793dbeedfff0b"
+    },
+    {
+      "path": "deliverables/highland-visualization/README.md",
+      "bytes": 1742,
+      "sha256": "6c7a6d025b341ebee620202f443df500241aecca8cdc522949b208392ef1e713"
+    },
+    {
+      "path": "deliverables/highland-visualization/aa-comparison.json",
+      "bytes": 795,
+      "sha256": "d7f82a0563462402e4e73e50c71465721a809c1fac097736e2b8edf73067b1e8"
+    },
+    {
+      "path": "deliverables/highland-visualization/camera-path.json",
+      "bytes": 130870,
+      "sha256": "c7a94237be71c85f6d2dfa8956958d8338c21eef9bac221fc73789a047708e6c"
+    },
+    {
+      "path": "deliverables/highland-visualization/capture-frame-hashes.json",
+      "bytes": 35859,
+      "sha256": "3c2ae7146d03d06a0164a91e2759d8c176b356c356ffaa7a407cf9e86fd81806"
+    },
+    {
+      "path": "deliverables/highland-visualization/color-normalization.json",
+      "bytes": 631,
+      "sha256": "da467b7e885e6c008d1dbbc51e589a17434f1febcaa97de566a78102f2f73042"
+    },
+    {
+      "path": "deliverables/highland-visualization/decoded-frame-checksums.txt",
+      "bytes": 34775,
+      "sha256": "287078b8991754890d3da2f525665025cfab933ac33395266eafd282b7cf7d15"
+    },
+    {
+      "path": "deliverables/highland-visualization/decoded-review/frame-000.png",
+      "bytes": 685839,
+      "sha256": "d80e423c5db01f9d0f62a7aac56894325524d34f6f2e1df49171688744365da8"
+    },
+    {
+      "path": "deliverables/highland-visualization/decoded-review/frame-216.png",
+      "bytes": 905431,
+      "sha256": "c90ca51b2a274fb4291c97550088899afc12cff0059ff9eae0c793dbeedfff0b"
+    },
+    {
+      "path": "deliverables/highland-visualization/decoded-review/frame-431.png",
+      "bytes": 810017,
+      "sha256": "32184fcab86aeae573107be30c5c98208dd684034a028fb0e7ccfcf909441163"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-capture.json",
+      "bytes": 1461,
+      "sha256": "525fca9ec209259650693c7610a2cac2d53add6379d78f9e4676ea873aa709e0"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-encoding.json",
+      "bytes": 347,
+      "sha256": "091e4056aa31b47b4f6dc0b95defba03dbc054c8c63299014f12cdaf19fcb55b"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-000.png",
+      "bytes": 1031936,
+      "sha256": "8bebb94164fcdd303feb4099c70f79d4d8facda718a8f91d4c96ddae7c86627f"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-072.png",
+      "bytes": 1059792,
+      "sha256": "71f20a5c9b4a1ccfa010afb3dc908a19a19c5781d6c6e1aa846d69c95dea63ee"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-144.png",
+      "bytes": 1124031,
+      "sha256": "cf11a462a75ad91450e415c2d9b2896077a948278c1e5253ea149f171d2d4d1f"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-216-fxaa-only.png",
+      "bytes": 1131604,
+      "sha256": "e69ee13a62f95c1f440f1b5d8b80c3ce68e449644adf1862d21c0c464c4bc2b5"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-216.png",
+      "bytes": 1146078,
+      "sha256": "e0b777deab3abca4ffe1c03ef8978a16c3a54a02d2aaff25aa24bd83eff7a5be"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-288.png",
+      "bytes": 1114941,
+      "sha256": "bedacae7790a7a5617fac3da6e51331057bbcced9febe37732ba7cc154d2e8c1"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-360.png",
+      "bytes": 1073144,
+      "sha256": "3d05c287a3cd7ebc6baa3c1ebad5c521041b2540b41302efea4d6c0db2fe43bd"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review/frame-431.png",
+      "bytes": 1042569,
+      "sha256": "9974705368162e38af052c0d765edecac92baac2969dae90bac858dab80d5a81"
+    },
+    {
+      "path": "deliverables/highland-visualization/film-review.json",
+      "bytes": 1457,
+      "sha256": "5a3b7e22d9e43dbde5aab3d264da06debba98cb50cbf92feadee445c61553395"
+    },
+    {
+      "path": "deliverables/highland-visualization/media-validation.json",
+      "bytes": 1018,
+      "sha256": "d4b19a5eecd35c20829d763cd6ac627eae0b9af8d002dc2961b210c7f79b2805"
+    },
+    {
+      "path": "deliverables/highland-visualization/poster.json",
+      "bytes": 746,
+      "sha256": "85da31d830f2c12214b14acb2148e82480c22ef57a19c4db1a217bcc81cd3405"
+    },
+    {
+      "path": "deliverables/highland-visualization/source-validation.json",
+      "bytes": 3488,
+      "sha256": "9c5f14f2794a404a919dcbee40d16632d4a3727205b00569a23ba8628bd4b589"
+    },
+    {
+      "path": "deliverables/highland-visualization/visual-review.json",
+      "bytes": 2909,
+      "sha256": "7dcd0345c3d13aba278accdbb61115b390f7b0e64939db6b17c54f55c83ed2eb"
+    },
+    {
+      "path": "projects/highland-visualization/.gitignore",
+      "bytes": 14,
+      "sha256": "4d56952b0fb13bf8f9b6c13a6d4c34a075bac3af447636a1df4335d7576e2f97"
+    },
+    {
+      "path": "projects/highland-visualization/README.md",
+      "bytes": 3245,
+      "sha256": "8e9474302a28e6817413b91086a8846c270981519ecc7fc8b1fa1c1063443295"
+    },
+    {
+      "path": "projects/highland-visualization/export.py",
+      "bytes": 3868,
+      "sha256": "46e6fced93a4141a13a1d074356aad326a50e87665da20e0ba297352be1f022d"
+    },
+    {
+      "path": "projects/highland-visualization/film.json",
+      "bytes": 847,
+      "sha256": "b2ba37d1b02e6b35c72a91a4a2867f38e4574837b9d70dc247dc3d6d84454a50"
+    },
+    {
+      "path": "projects/highland-visualization/finish-film.py",
+      "bytes": 2652,
+      "sha256": "56724dab2ac4f714b8dbff70f1174d4c655cbfb2a494d35adf8ed40fed94bd6f"
+    },
+    {
+      "path": "projects/highland-visualization/package-lock.json",
+      "bytes": 1911,
+      "sha256": "510e62a64c61dd58c4bd730147930221b7f6b1b4bce4d1d6e4581eceecd6ffd0"
+    },
+    {
+      "path": "projects/highland-visualization/package.json",
+      "bytes": 134,
+      "sha256": "d3ffb17f1816ad295cc63ef09755e02a3ed41fdb0eaf29d0943272fa108babba"
+    },
+    {
+      "path": "projects/highland-visualization/render-film.cjs",
+      "bytes": 6729,
+      "sha256": "a91642526d8c31ccc73c7ec9177456a456411b281f776489adc76764b4fca50a"
+    },
+    {
+      "path": "projects/highland-visualization/review_movie.py",
+      "bytes": 1850,
+      "sha256": "c522456796d844bf74603d66556f1bf37d995c758b2fb1315ba27c22ffe8d6f0"
+    },
+    {
+      "path": "projects/highland-visualization/validate_media.py",
+      "bytes": 4726,
+      "sha256": "071c88f43131fde43b270e8478cbae390fc83808738e741bf8c51d74124b46dd"
+    },
+    {
+      "path": "projects/highland-visualization/viewer.html",
+      "bytes": 1024,
+      "sha256": "fcc0e2e1bc19c964163b935a68da5cd6716a4dbb7daa4d356eac8991f4d2db81"
+    },
+    {
+      "path": "projects/highland-visualization/viewer.js",
+      "bytes": 12607,
+      "sha256": "339a4ce496a13cb52242110fbbb829c24076e1ff63311f4e0ee5ee4d7ffab479"
+    }
+  ]
+}
