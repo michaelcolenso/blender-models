@@ -1,0 +1,186 @@
+{
+  "expected_functions_present": [
+    "build_b101_demolition_fittings",
+    "build_b101_demolition_model",
+    "run_pass1",
+    "run_pass2",
+    "run_pass3",
+    "validate_model"
+  ],
+  "files": {
+    "BLENDER_REVIEW_CHECKLIST.md": {
+      "sha256": "8a98308a291f54be7875aaefbcb58b40f0936a51490c9bb11d08b285a07d19a8",
+      "size": 3809
+    },
+    "CODEX_HANDOFF_PROMPT.txt": {
+      "sha256": "d963bc2151bcfedf0fe21a7ee1e4abb6229efe6131e5c48c2cde81233305447c",
+      "size": 2950
+    },
+    "COMMANDS.md": {
+      "sha256": "66c4b3be3cf7cfc7235e4826baf27d241e37fc9c014e3b0d5118d467b32ffb34",
+      "size": 1546
+    },
+    "HANDOFF_STATUS.md": {
+      "sha256": "6f552eff54a3247f267357408bfec0483d9198973fa63e6be84114c9e85abaaf",
+      "size": 1455
+    },
+    "KNOWN_UNCERTAINTIES.md": {
+      "sha256": "560224b83b350afd348c1d989c63b608104551d95af94f3ddea22990b24293c5",
+      "size": 1977
+    },
+    "PACKAGE_CONTENTS.txt": {
+      "sha256": "9ca0a6f46bdb02ab72acb2efc142eee7ca01384383607f1954dd5b341ed8df95",
+      "size": 1524
+    },
+    "README.md": {
+      "sha256": "1722b2c94254b9d3c6fba65241ee7aae234271e6d49185ac35651219de3cd62e",
+      "size": 5263
+    },
+    "SOURCE_FILES_NOT_INCLUDED.md": {
+      "sha256": "768c0f16a43c9f42c811a20708c0274a3ccc17726740ffb79ca458577ef49c20",
+      "size": 675
+    },
+    "SOURCE_INDEX.md": {
+      "sha256": "975ea0e89fd16a966ab1c3d48c80f673ec49cedd9c944d843abdef60f9d93d83",
+      "size": 3058
+    },
+    "START_HERE.txt": {
+      "sha256": "d150253581de5ce34f953713e2f07a9df37566b00cffdd56be1b9724b16a7fa9",
+      "size": 739
+    },
+    "data/B101_demolition_fitting_schedule_v4.csv": {
+      "sha256": "16e61dc10561cdd292c2b4920457ecb35ed83992781ab2e06834188e950751ac",
+      "size": 4191
+    },
+    "data/b101_route_controls_calibrated_v2.csv": {
+      "sha256": "adff6d9ae572c84382efd47197f6eb40a250627bef287f528157e311f2fa00f3",
+      "size": 4795
+    },
+    "data/meydenbauer_route_controls_v2_reference.csv": {
+      "sha256": "a7a65c347bdaa659bcec76e6e6d7d99985e8d378658cf631cb492980a298b14c",
+      "size": 7032
+    },
+    "docs/B101_demolition_fitting_notes_v4.md": {
+      "sha256": "93cec92f210634a2cd4c54e0578e4b3d84733d6f1c84eb2835337daa7c0faae6",
+      "size": 3981
+    },
+    "docs/B101_demolition_model_notes_v3.md": {
+      "sha256": "a77edca858e04218d5719348e1ad6388b838522a96ea3a0752440a93336eda55",
+      "size": 3122
+    },
+    "docs/b101_calibration_report.md": {
+      "sha256": "46c79fb71fa24688e213d188f24fa296088fb99b53d364901b660fabb97940d5",
+      "size": 1335
+    },
+    "docs/meydenbauer_v2_audit.md": {
+      "sha256": "590f82206abcec84470bd649f70a771a87f58b64898aa3715c0ca9f2587305f6",
+      "size": 4354
+    },
+    "handoff.json": {
+      "sha256": "070cdf16262ac4f68cf9ba3c9a4fb8c4a62453e5a7f362ab95c1aa9ac7c44ff6",
+      "size": 1271
+    },
+    "logs/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "logs/launcher.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "logs/preflight.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "logs/preflight_core.log": {
+      "sha256": "a211ae7185c2efa1e4091bca22ebb3616b74594783f83ae93d6cd722e0b74b61",
+      "size": 497
+    },
+    "output/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "qa/B101_calibrated_QA_board.png": {
+      "sha256": "0fae2a89a410a5769df8f6c9cb16b36a7422bed7c595d620812ddb01a51d3566",
+      "size": 111240
+    },
+    "qa/B101_demolition_plan_overlay_v3.png": {
+      "sha256": "7e88ac105fd2651e1ef72214c7a8419c91fa360a97d26452673c666df92e5c88",
+      "size": 522650
+    },
+    "qa/B101_fitting_cut_QA_overlay_v4.png": {
+      "sha256": "fc96c04a0fddd019f43f9fa4ed35ec6c41d8fa84d63eaaa75caae70cf69e2ef8",
+      "size": 84595
+    },
+    "qa/b101_P3_1_calibrated_overlay.png": {
+      "sha256": "7fba044e4f2fc6e91b68ee5a6aa64007bd1932babeb63dff323a5670f7ef88e4",
+      "size": 45059
+    },
+    "renders/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "run_blender.bat": {
+      "sha256": "0dacd408709db5e0df5811c31a4d9a8b657f04a306e6d8f4ea6f727b8953553f",
+      "size": 118
+    },
+    "run_blender.ps1": {
+      "sha256": "58c9bb46f6687ff45a346d070afed4d79e7941d482610b4b40cd67b60e4d163d",
+      "size": 2296
+    },
+    "run_blender.sh": {
+      "sha256": "b8b283285162e8fd437b42c222be516029400ffa9e050f6368cb757f0077f2ee",
+      "size": 1775
+    },
+    "scripts/__pycache__/build_meydenbauer_b101_v4.cpython-312.pyc": {
+      "sha256": "4a9f2926748ccfe88fbb633587eb1d0b072229800332e4a48b6d32f5a804b7f9",
+      "size": 183157
+    },
+    "scripts/__pycache__/build_meydenbauer_b101_v4.cpython-313.pyc": {
+      "sha256": "0e9f4c67795bf64ddec6489af467cf128f8c961a672cdc3587cff176990eb6e3",
+      "size": 181911
+    },
+    "scripts/__pycache__/run_build_and_verify.cpython-312.pyc": {
+      "sha256": "d2a58887ec6c2d6c76f92fbaefd61506e8d833e0d0680bf5565753ae67620a88",
+      "size": 12978
+    },
+    "scripts/__pycache__/run_build_and_verify.cpython-313.pyc": {
+      "sha256": "8040856eab143bd566561df4726f6a8a3b8ad5a9be11b9f503a70529fbc74b25",
+      "size": 13012
+    },
+    "scripts/__pycache__/verify_saved_blend.cpython-312.pyc": {
+      "sha256": "8eb20302e9bdc95bac21dae1fc63511c472c5be927261b532dc52e3a8367ed8c",
+      "size": 4435
+    },
+    "scripts/__pycache__/verify_saved_blend.cpython-313.pyc": {
+      "sha256": "6cb3c9dde816347f225597cce0092989f72997fecd0f0f11f7e3f7eb9bd1a8d2",
+      "size": 4452
+    },
+    "scripts/build_meydenbauer_b101_v4.py": {
+      "sha256": "0f28e165976e2cd7e82680caa9b5092bfb3b69e4c0836721c4dc72ab83e1a5b9",
+      "size": 152108
+    },
+    "scripts/preflight.py": {
+      "sha256": "1843a39509fd66177debce16af9828ff5e3056508e9346131cf3007f2179005e",
+      "size": 3291
+    },
+    "scripts/run_build_and_verify.py": {
+      "sha256": "2ed60699cd2ecc51fbb0394fd3ec0513a1acb69c4d4c6566d7b43959315e7700",
+      "size": 7674
+    },
+    "scripts/verify_saved_blend.py": {
+      "sha256": "a79b91fbb5a92aa83ce115ab17d2d5aec8eb7cb56ee119facca6aa2b2da7d2ec",
+      "size": 2427
+    },
+    "sources/modeling_brief.txt": {
+      "sha256": "34e45913cce171042fa28a3f838f62410db6a780fa10d3a3a8648e5a147b8d45",
+      "size": 15589
+    }
+  },
+  "fitting_schedule_rows": 33,
+  "issues": [],
+  "passed": true,
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "route_control_rows": 45,
+  "timestamp_utc": "2026-10-24T23:23:31.403645+00:00"
+}

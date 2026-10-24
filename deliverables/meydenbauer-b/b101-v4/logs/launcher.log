@@ -1,0 +1,149 @@
+{
+  "timestamp_utc": "2026-10-24T23:23:31.403645+00:00",
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "issues": [],
+  "passed": true,
+  "route_control_rows": 45,
+  "fitting_schedule_rows": 33,
+  "expected_functions_present": [
+    "build_b101_demolition_fittings",
+    "build_b101_demolition_model",
+    "run_pass1",
+    "run_pass2",
+    "run_pass3",
+    "validate_model"
+  ]
+}
+PREFLIGHT_REPORT=/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/preflight_report.json
+Using Blender: /usr/bin/blender
+Blender 4.3.2
+EGL Error (0x3009): EGL_BAD_MATCH: Arguments are inconsistent (for example, a valid context requires buffers not supplied by a valid surface).
+EGL Error (0x3009): EGL_BAD_MATCH: Arguments are inconsistent (for example, a valid context requires buffers not supplied by a valid surface).
+Blender 4.3.2
+Fra:1 Mem:158.90M (Peak 159.62M) | Time:00:47.24 | Rendering 1 / 32 samples
+Fra:1 Mem:158.90M (Peak 159.62M) | Time:02:29.39 | Rendering 25 / 32 samples
+Fra:1 Mem:158.90M (Peak 159.62M) | Time:03:05.40 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_001_existing.png'
+Time: 03:07.11 (Saving: 00:01.51)
+
+Fra:38 Mem:165.50M (Peak 167.12M) | Time:00:08.61 | Rendering 1 / 32 samples
+Fra:38 Mem:165.50M (Peak 167.12M) | Time:01:51.57 | Rendering 25 / 32 samples
+Fra:38 Mem:165.50M (Peak 167.12M) | Time:02:12.11 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_038_remove_reinstall_access_items.png'
+Time: 02:12.28 (Saving: 00:00.16)
+
+Fra:50 Mem:165.37M (Peak 166.99M) | Time:00:03.62 | Rendering 1 / 32 samples
+Fra:50 Mem:165.37M (Peak 166.99M) | Time:01:15.17 | Rendering 25 / 32 samples
+Fra:50 Mem:165.37M (Peak 166.99M) | Time:01:32.22 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_050_finish_stripout.png'
+Time: 01:32.43 (Saving: 00:00.18)
+
+Fra:61 Mem:165.25M (Peak 166.81M) | Time:00:04.25 | Rendering 1 / 32 samples
+Fra:61 Mem:165.25M (Peak 166.81M) | Time:01:09.63 | Rendering 25 / 32 samples
+Fra:61 Mem:165.25M (Peak 166.81M) | Time:01:25.13 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_061_wall_stack_exposure.png'
+Time: 01:25.30 (Saving: 00:00.14)
+
+Fra:68 Mem:166.89M (Peak 168.55M) | Time:00:03.58 | Rendering 1 / 32 samples
+Fra:68 Mem:166.89M (Peak 168.55M) | Time:00:57.60 | Rendering 25 / 32 samples
+Fra:68 Mem:166.89M (Peak 168.55M) | Time:01:13.24 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_068_slab_sawcut.png'
+Time: 01:13.41 (Saving: 00:00.15)
+
+Fra:76 Mem:168.66M (Peak 170.38M) | Time:00:04.19 | Rendering 1 / 32 samples
+Fra:76 Mem:168.66M (Peak 170.38M) | Time:00:59.92 | Rendering 25 / 32 samples
+Fra:76 Mem:168.66M (Peak 170.38M) | Time:01:15.91 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_076_slab_lift_vapor_exposure.png'
+Time: 01:16.24 (Saving: 00:00.19)
+
+Fra:83 Mem:168.35M (Peak 170.34M) | Time:00:05.00 | Rendering 1 / 32 samples
+Fra:83 Mem:168.35M (Peak 170.34M) | Time:01:03.01 | Rendering 25 / 32 samples
+Fra:83 Mem:168.35M (Peak 170.34M) | Time:01:19.31 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_083_excavation_expose_ci.png'
+Time: 01:19.58 (Saving: 00:00.19)
+
+Fra:89 Mem:165.53M (Peak 166.82M) | Time:00:04.29 | Rendering 1 / 32 samples
+Fra:89 Mem:165.53M (Peak 166.82M) | Time:00:58.91 | Rendering 25 / 32 samples
+Fra:89 Mem:165.53M (Peak 166.82M) | Time:01:14.72 | Rendering 32 / 32 samples
+Saved: '/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/renders/B101_demo_089_ci_removed_clean_trench.png'
+Time: 01:14.91 (Saving: 00:00.15)
+
+
+=== MEYDENBAUER PASS 1 ===
+Pass 1 complete. Building grid: 160.458 ft x 66.333 ft
+
+=== MEYDENBAUER PASS 2 ===
+Pass 2 complete. Existing/new DWV and restoration layers generated.
+
+=== MEYDENBAUER PASS 3 ===
+Pass 3 complete. PHASE_CONTROLLER + 8-phase driver rig generated.
+
+=== MEYDENBAUER VALIDATION ===
+Grid: 160.458 ft N-S x 66.333 ft E-W
+Pass-generated objects: 1035
+Context stacks: 12
+Trench raw plan area before overlap: 487.0 sf
+B101 demo raw slab area before overlap: 119.5 sf
+B101 demo raw finish access strip area before overlap: 154.7 sf
+B101 demo raw excavation volume before overlap: 15.41 CY
+B101 demo junction fittings: 10
+B101 demo plan bends: 7
+B101 demo P-traps/conditional traps: 7
+B101 demo WC carriers: 2
+B101 demo cut locations: 7
+Allowance benchmark (not a forced geometry target): 700 sf
+Route source: P1.02/P3.1/P3.2 plan-traced controls; field verification required by drawings
+Validation checks passed.
+
+Done. Save the .blend under a new revision after review of route/invert control points.
+
+=== MEYDENBAUER VALIDATION ===
+Grid: 160.458 ft N-S x 66.333 ft E-W
+Pass-generated objects: 1035
+Context stacks: 12
+Trench raw plan area before overlap: 487.0 sf
+B101 demo raw slab area before overlap: 119.5 sf
+B101 demo raw finish access strip area before overlap: 154.7 sf
+B101 demo raw excavation volume before overlap: 15.41 CY
+B101 demo junction fittings: 10
+B101 demo plan bends: 7
+B101 demo P-traps/conditional traps: 7
+B101 demo WC carriers: 2
+B101 demo cut locations: 7
+Allowance benchmark (not a forced geometry target): 700 sf
+Route source: P1.02/P3.1/P3.2 plan-traced controls; field verification required by drawings
+Validation checks passed.
+Info: Saved "Meydenbauer_B101_Demolition_v4.blend"
+Info: Saved "Meydenbauer_B101_Demolition_v4.blend"
+
+HANDOFF_BUILD_REPORT=/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/build_validation_report.json
+HANDOFF_BLEND=/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/Meydenbauer_B101_Demolition_v4.blend
+
+Blender quit
+
+=== MEYDENBAUER VALIDATION ===
+Grid: 160.458 ft N-S x 66.333 ft E-W
+Pass-generated objects: 1035
+Context stacks: 12
+Trench raw plan area before overlap: 487.0 sf
+B101 demo raw slab area before overlap: 119.5 sf
+B101 demo raw finish access strip area before overlap: 154.7 sf
+B101 demo raw excavation volume before overlap: 15.41 CY
+B101 demo junction fittings: 10
+B101 demo plan bends: 7
+B101 demo P-traps/conditional traps: 7
+B101 demo WC carriers: 2
+B101 demo cut locations: 7
+Allowance benchmark (not a forced geometry target): 700 sf
+Route source: P1.02/P3.1/P3.2 plan-traced controls; field verification required by drawings
+Validation checks passed.
+SAVED_BLEND_VERIFY_REPORT=/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/saved_blend_verification.json
+Blender 4.3.2
+Read blend: "/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/Meydenbauer_B101_Demolition_v4.blend"
+
+Blender quit
+
+Handoff verification complete.
+Blend:   /workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/Meydenbauer_B101_Demolition_v4.blend
+Reports: /workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/build_validation_report.json
+         /workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/saved_blend_verification.json

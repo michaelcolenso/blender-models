@@ -1,0 +1,82 @@
+{
+  "blend_filepath": "/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/Meydenbauer_B101_Demolition_v4.blend",
+  "blender_version": "4.3.2",
+  "boolean_modifier_present": true,
+  "collection_count": 56,
+  "frame_state": [
+    {
+      "Construction_Phase": 1,
+      "Demolition_Subphase": 0,
+      "frame": 1
+    },
+    {
+      "Construction_Phase": 2,
+      "Demolition_Subphase": 0,
+      "frame": 31
+    },
+    {
+      "Construction_Phase": 2,
+      "Demolition_Subphase": 1,
+      "frame": 38
+    },
+    {
+      "Construction_Phase": 2,
+      "Demolition_Subphase": 2,
+      "frame": 50
+    },
+    {
+      "Construction_Phase": 3,
+      "Demolition_Subphase": 3,
+      "frame": 61
+    },
+    {
+      "Construction_Phase": 3,
+      "Demolition_Subphase": 4,
+      "frame": 68
+    },
+    {
+      "Construction_Phase": 3,
+      "Demolition_Subphase": 5,
+      "frame": 76
+    },
+    {
+      "Construction_Phase": 3,
+      "Demolition_Subphase": 6,
+      "frame": 83
+    },
+    {
+      "Construction_Phase": 3,
+      "Demolition_Subphase": 7,
+      "frame": 89
+    },
+    {
+      "Construction_Phase": 4,
+      "Demolition_Subphase": 7,
+      "frame": 91
+    },
+    {
+      "Construction_Phase": 5,
+      "Demolition_Subphase": 7,
+      "frame": 121
+    },
+    {
+      "Construction_Phase": 6,
+      "Demolition_Subphase": 7,
+      "frame": 151
+    },
+    {
+      "Construction_Phase": 7,
+      "Demolition_Subphase": 7,
+      "frame": 181
+    },
+    {
+      "Construction_Phase": 8,
+      "Demolition_Subphase": 7,
+      "frame": 211
+    }
+  ],
+  "object_count": 1038,
+  "timestamp_utc": "2026-10-24T23:37:52.928878+00:00",
+  "validation_issues": [],
+  "validation_passed": true
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "scripts/verify_saved_blend.py",
+    "unchanged": true,
+    "sha256": "a79b91fbb5a92aa83ce115ab17d2d5aec8eb7cb56ee119facca6aa2b2da7d2ec"
+  },
+  {
+    "file": "scripts/preflight.py",
+    "unchanged": true,
+    "sha256": "1843a39509fd66177debce16af9828ff5e3056508e9346131cf3007f2179005e"
+  },
+  {
+    "file": "scripts/run_build_and_verify.py",
+    "unchanged": true,
+    "sha256": "2ed60699cd2ecc51fbb0394fd3ec0513a1acb69c4d4c6566d7b43959315e7700"
+  },
+  {
+    "file": "scripts/build_meydenbauer_b101_v4.py",
+    "unchanged": true,
+    "sha256": "0f28e165976e2cd7e82680caa9b5092bfb3b69e4c0836721c4dc72ab83e1a5b9"
+  }
+]

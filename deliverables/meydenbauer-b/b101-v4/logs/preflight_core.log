@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-10-24T23:12:58.890067+00:00",
+  "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "issues": [],
+  "passed": true,
+  "route_control_rows": 45,
+  "fitting_schedule_rows": 33,
+  "expected_functions_present": [
+    "build_b101_demolition_fittings",
+    "build_b101_demolition_model",
+    "run_pass1",
+    "run_pass2",
+    "run_pass3",
+    "validate_model"
+  ]
+}
+PREFLIGHT_REPORT=/mnt/data/Meydenbauer_B101_Blender_Core_v4/output/preflight_report.json

@@ -1,0 +1,22 @@
+
+=== MEYDENBAUER VALIDATION ===
+Grid: 160.458 ft N-S x 66.333 ft E-W
+Pass-generated objects: 1035
+Context stacks: 12
+Trench raw plan area before overlap: 487.0 sf
+B101 demo raw slab area before overlap: 119.5 sf
+B101 demo raw finish access strip area before overlap: 154.7 sf
+B101 demo raw excavation volume before overlap: 15.41 CY
+B101 demo junction fittings: 10
+B101 demo plan bends: 7
+B101 demo P-traps/conditional traps: 7
+B101 demo WC carriers: 2
+B101 demo cut locations: 7
+Allowance benchmark (not a forced geometry target): 700 sf
+Route source: P1.02/P3.1/P3.2 plan-traced controls; field verification required by drawings
+Validation checks passed.
+SAVED_BLEND_VERIFY_REPORT=/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/saved_blend_verification.json
+Blender 4.3.2
+Read blend: "/workspace/meydenbauer-run/Meydenbauer_B101_Blender_Core_v4/output/Meydenbauer_B101_Demolition_v4.blend"
+
+Blender quit

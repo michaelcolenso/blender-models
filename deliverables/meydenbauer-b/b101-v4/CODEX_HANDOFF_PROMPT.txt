@@ -1,0 +1,53 @@
+You have a Blender-capable environment. Unpack this handoff and execute it; do not merely review the Python statically.
+
+GOAL
+Build, save, reopen, validate, and visually QA the 101 Meydenbauer Building B / Unit B-101 underground DW demolition + replacement coordination model.
+
+START HERE
+1. Read README.md, HANDOFF_STATUS.md, KNOWN_UNCERTAINTIES.md, and BLENDER_REVIEW_CHECKLIST.md.
+2. Run the package preflight.
+3. Run Blender headless with the supplied launcher and --render-keyframes.
+4. Do not rewrite the model before first reproducing the supplied build.
+
+PREFERRED COMMAND
+macOS/Linux:
+  ./run_blender.sh --render-keyframes
+Windows PowerShell:
+  .\\run_blender.ps1 --render-keyframes
+Windows cmd:
+  run_blender.bat --render-keyframes
+
+If Blender is not on PATH, locate the installed Blender executable and set BLENDER_BIN, then rerun.
+
+REQUIRED OUTPUTS
+- output/Meydenbauer_B101_Demolition_v4.blend
+- output/build_validation_report.json
+- output/saved_blend_verification.json
+- renders for frames 001, 038, 050, 061, 068, 076, 083, 089
+- terminal/Blender logs showing the build and reopen verification
+
+ACCEPTANCE CHECKS
+- All 3 modular passes execute.
+- validate_model() completes without unresolved hard failures.
+- Saved .blend reopens in a fresh Blender process.
+- PHASE_CONTROLLER and Demolition_Subphase drivers persist and evaluate.
+- Slab Boolean produces continuous trench openings without corner slivers or accidental removal outside intended demolition.
+- B-101 retained prior ABS remains protected and is not included in slab demolition.
+- Fittings, P-traps, WC carriers/flanges, cut locations, and temporary support indicators exist and are oriented plausibly.
+- Demolition checkpoints visually progress: existing -> access-item removal -> finish strip -> wall/stack exposure -> slab sawcut -> slab lift/vapor exposure -> excavation/existing CI -> clean trench.
+- No hidden geometry, driver, or Boolean failure is silently ignored.
+
+SOURCE DISCIPLINE
+Treat the model as a coordination/4D model, not a surveyed as-built. Do not convert FIELD_VERIFY items into asserted facts. Known uncertainties include concealed inverts, exact legacy fitting type, exact prior-ABS transition, final vertical cut elevations, and structural crossing conditions.
+
+IF SOMETHING FAILS
+Diagnose and make the smallest coherent correction needed to get a successful Blender execution. Preserve the calibrated B-101 routing and demolition intent. Document every code change, rerun the complete build, reopen the resulting .blend, rerun verification, and regenerate affected renders.
+
+REPORT BACK WITH
+1. Blender version and platform.
+2. Exact command used.
+3. Build status and any modifications made.
+4. Validation results.
+5. Reopen/persistence results.
+6. Render review findings, especially Boolean cuts, prior-ABS protection, fitting/cut geometry, and demolition phase progression.
+7. Links/paths to the final .blend, JSON reports, logs, and renders.

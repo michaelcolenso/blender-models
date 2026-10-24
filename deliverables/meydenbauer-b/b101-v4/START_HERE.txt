@@ -1,0 +1,22 @@
+SMALL-ATTACHMENT CORE PACKAGE
+Contract PDFs are in the separate Reference Pack.
+
+101 MEYDENBAUER — B-101 BLENDER HANDOFF v4
+
+1) Put this entire folder on the machine with Blender.
+2) Run one command:
+
+   macOS/Linux:  ./run_blender.sh --render-keyframes
+   Windows:      run_blender.bat --render-keyframes
+
+3) A successful strict run creates:
+
+   output/Meydenbauer_B101_Demolition_v4.blend
+   output/build_validation_report.json
+   output/saved_blend_verification.json
+   renders/B101_demo_*.png
+
+4) Then open BLENDER_REVIEW_CHECKLIST.md and review the scene/renders.
+
+Do not redesign or expand the model before establishing whether v4 executes as authored.
+Known concealed-condition uncertainties are listed in KNOWN_UNCERTAINTIES.md.

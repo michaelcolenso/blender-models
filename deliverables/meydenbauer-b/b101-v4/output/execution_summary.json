@@ -1,0 +1,33 @@
+{
+  "blender_version": "4.3.2",
+  "platform": "Linux x86_64",
+  "command": "bash run_blender.sh --render-keyframes",
+  "launcher_exit_code": 0,
+  "requested_passes": [
+    1,
+    2,
+    3
+  ],
+  "requested_render_frames": [
+    1,
+    38,
+    50,
+    61,
+    68,
+    76,
+    83,
+    89
+  ],
+  "requested_render_count": 8,
+  "additional_diagnostic_render_count": 12,
+  "strict_build_validation_passed": true,
+  "fresh_process_reopen_validation_passed": true,
+  "original_python_sources_modified": false,
+  "runtime_model_fixes": [],
+  "coordination_acceptance": "REVISION REQUIRED",
+  "acceptance_blockers": [
+    "Authored trench cutters overlap the marked prior-ABS no-demolition envelope.",
+    "Authored default camera is obstructed by upper-floor context and poorly frames B-101."
+  ],
+  "blend_sha256": "2087f3053451adc7abb6c1077815c5dc525468799f1eda754dbe05ac0938f283"
+}
