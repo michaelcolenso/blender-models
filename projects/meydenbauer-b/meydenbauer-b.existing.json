@@ -1,0 +1,906 @@
+{
+ "source": "P1.01 Waste Plumbing Demolition Plan: hatched dashed centrelines (remove & replace)",
+ "calibration_pt_per_ft": [
+  8.998,
+  9.002
+ ],
+ "status": "provisional (plan); depth assumed = new pipe profile; material per SOR (cast iron)",
+ "runs": [
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     16.786,
+     13.515
+    ],
+    [
+     13.093,
+     13.515
+    ]
+   ],
+   "length_ft": 3.69,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     15.506,
+     0.342
+    ],
+    [
+     15.506,
+     2.755
+    ]
+   ],
+   "length_ft": 2.41,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     19.133,
+     4.182
+    ],
+    [
+     16.146,
+     4.182
+    ]
+   ],
+   "length_ft": 2.99,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     22.986,
+     13.515
+    ],
+    [
+     16.786,
+     13.515
+    ]
+   ],
+   "length_ft": 6.2,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     18.493,
+     -0.045
+    ],
+    [
+     18.493,
+     2.755
+    ]
+   ],
+   "length_ft": 2.8,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     22.986,
+     10.795
+    ],
+    [
+     18.693,
+     10.795
+    ]
+   ],
+   "length_ft": 4.29,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     22.986,
+     4.182
+    ],
+    [
+     19.133,
+     4.182
+    ]
+   ],
+   "length_ft": 3.85,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-101",
+   "points_ft": [
+    [
+     23.346,
+     27.555
+    ],
+    [
+     23.346,
+     -0.791
+    ]
+   ],
+   "length_ft": 28.35,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     59.173,
+     11.595
+    ],
+    [
+     60.893,
+     11.595
+    ]
+   ],
+   "length_ft": 1.72,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     60.893,
+     13.142
+    ],
+    [
+     64.428,
+     13.142
+    ]
+   ],
+   "length_ft": 3.54,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     62.694,
+     14.987
+    ],
+    [
+     63.786,
+     13.804
+    ]
+   ],
+   "length_ft": 1.61,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     62.706,
+     4.115
+    ],
+    [
+     62.706,
+     8.622
+    ]
+   ],
+   "length_ft": 4.51,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     68.373,
+     8.982
+    ],
+    [
+     63.066,
+     8.982
+    ]
+   ],
+   "length_ft": 5.31,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     64.428,
+     13.142
+    ],
+    [
+     66.12,
+     13.142
+    ]
+   ],
+   "length_ft": 1.69,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.04
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     65.426,
+     27.275
+    ],
+    [
+     68.146,
+     27.275
+    ]
+   ],
+   "length_ft": 2.72,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.04
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     66.013,
+     4.115
+    ],
+    [
+     66.013,
+     8.675
+    ]
+   ],
+   "length_ft": 4.56,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     66.12,
+     19.609
+    ],
+    [
+     66.12,
+     13.142
+    ]
+   ],
+   "length_ft": 6.47,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     70.026,
+     25.324
+    ],
+    [
+     68.88,
+     26.56
+    ]
+   ],
+   "length_ft": 1.69,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     71.085,
+     24.143
+    ],
+    [
+     69.955,
+     25.447
+    ]
+   ],
+   "length_ft": 1.73,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     70.32,
+     13.142
+    ],
+    [
+     73.6,
+     13.142
+    ]
+   ],
+   "length_ft": 3.28,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     72.222,
+     23.04
+    ],
+    [
+     71.004,
+     24.258
+    ]
+   ],
+   "length_ft": 1.72,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     73.289,
+     21.92
+    ],
+    [
+     72.071,
+     23.138
+    ]
+   ],
+   "length_ft": 1.72,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     74.346,
+     20.791
+    ],
+    [
+     73.2,
+     22.026
+    ]
+   ],
+   "length_ft": 1.69,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     75.08,
+     12.502
+    ],
+    [
+     75.08,
+     5.929
+    ]
+   ],
+   "length_ft": 6.57,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-102",
+   "points_ft": [
+    [
+     75.08,
+     20.022
+    ],
+    [
+     75.08,
+     12.502
+    ]
+   ],
+   "length_ft": 7.52,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     89.266,
+     13.729
+    ],
+    [
+     89.266,
+     8.609
+    ]
+   ],
+   "length_ft": 5.12,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     89.266,
+     16.662
+    ],
+    [
+     89.266,
+     15.155
+    ]
+   ],
+   "length_ft": 1.51,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     93.653,
+     11.702
+    ],
+    [
+     89.573,
+     11.702
+    ]
+   ],
+   "length_ft": 4.08,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     89.892,
+     17.378
+    ],
+    [
+     91.094,
+     18.666
+    ]
+   ],
+   "length_ft": 1.76,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.01
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     89.906,
+     9.249
+    ],
+    [
+     94.08,
+     9.249
+    ]
+   ],
+   "length_ft": 4.17,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     93.066,
+     14.369
+    ],
+    [
+     89.906,
+     14.369
+    ]
+   ],
+   "length_ft": 3.16,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     90.96,
+     18.551
+    ],
+    [
+     92.106,
+     19.786
+    ]
+   ],
+   "length_ft": 1.69,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.02
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     92.035,
+     19.663
+    ],
+    [
+     93.165,
+     20.967
+    ]
+   ],
+   "length_ft": 1.73,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     93.093,
+     20.844
+    ],
+    [
+     94.24,
+     22.08
+    ]
+   ],
+   "length_ft": 1.69,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     94.16,
+     22.018
+    ],
+    [
+     95.307,
+     23.253
+    ]
+   ],
+   "length_ft": 1.69,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     101.066,
+     14.369
+    ],
+    [
+     94.48,
+     14.369
+    ]
+   ],
+   "length_ft": 6.59,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     95.08,
+     5.249
+    ],
+    [
+     95.08,
+     8.942
+    ]
+   ],
+   "length_ft": 3.69,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     95.235,
+     23.13
+    ],
+    [
+     96.365,
+     24.434
+    ]
+   ],
+   "length_ft": 1.73,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     95.493,
+     9.249
+    ],
+    [
+     98.4,
+     9.249
+    ]
+   ],
+   "length_ft": 2.91,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     96.231,
+     24.32
+    ],
+    [
+     97.449,
+     25.538
+    ]
+   ],
+   "length_ft": 1.72,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     97.315,
+     25.423
+    ],
+    [
+     98.445,
+     26.727
+    ]
+   ],
+   "length_ft": 1.73,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-103",
+   "points_ft": [
+    [
+     98.76,
+     6.035
+    ],
+    [
+     98.76,
+     8.942
+    ]
+   ],
+   "length_ft": 2.91,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     122.653,
+     40.395
+    ],
+    [
+     138.293,
+     40.395
+    ]
+   ],
+   "length_ft": 15.64,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     138.293,
+     25.995
+    ],
+    [
+     135.066,
+     25.995
+    ]
+   ],
+   "length_ft": 3.23,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     138.653,
+     4.235
+    ],
+    [
+     138.653,
+     0.755
+    ]
+   ],
+   "length_ft": 3.48,
+   "nominal_in": 4,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     138.653,
+     40.035
+    ],
+    [
+     138.653,
+     4.235
+    ]
+   ],
+   "length_ft": 35.8,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     142.514,
+     10.902
+    ],
+    [
+     138.96,
+     10.902
+    ]
+   ],
+   "length_ft": 3.55,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     139.013,
+     13.835
+    ],
+    [
+     140.64,
+     13.835
+    ]
+   ],
+   "length_ft": 1.63,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     139.293,
+     4.929
+    ],
+    [
+     146.08,
+     4.929
+    ]
+   ],
+   "length_ft": 6.79,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     141.906,
+     0.595
+    ],
+    [
+     141.906,
+     4.569
+    ]
+   ],
+   "length_ft": 3.97,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     142.514,
+     10.902
+    ],
+    [
+     143.565,
+     12.114
+    ]
+   ],
+   "length_ft": 1.6,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     143.72,
+     12.289
+    ],
+    [
+     146.293,
+     12.289
+    ]
+   ],
+   "length_ft": 2.57,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     144.461,
+     13.263
+    ],
+    [
+     145.591,
+     14.567
+    ]
+   ],
+   "length_ft": 1.73,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     145.483,
+     14.43
+    ],
+    [
+     146.597,
+     15.801
+    ]
+   ],
+   "length_ft": 1.77,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     148.106,
+     14.049
+    ],
+    [
+     146.373,
+     14.049
+    ]
+   ],
+   "length_ft": 1.73,
+   "nominal_in": 3,
+   "nearest_new_ft": 0.05
+  },
+  {
+   "unit": "B-104",
+   "points_ft": [
+    [
+     146.386,
+     1.715
+    ],
+    [
+     146.386,
+     4.569
+    ]
+   ],
+   "length_ft": 2.85,
+   "nominal_in": 2,
+   "nearest_new_ft": 0.0
+  }
+ ]
+}
