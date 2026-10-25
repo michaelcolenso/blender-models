@@ -39,6 +39,21 @@ Per unit, base case S2 at a 3.5 ft POC invert:
 | B-104 | 96.5 (19.6 / 18.4 / 58.5) | 8 | 215 | 24.6 | 1.22 ft |
 | **Total** | **312.7** | **30** | **686** | **82.3** | |
 
+## Construction-phase realism views (team use)
+
+[Realism views and editable model](realism/README.md). B-104 is shown during the work: the slab
+saw-cut and the trench open, bedding and new ABS, the record footing at the trench, Ram Board, poly
+dust walls and work lights. A section at the B-103 east lav branch shows the trench against the
+1974 footing. Built from the bid set and the record set. Pipe depths, the slab and the protection
+layout are assumed and are labelled on every image.
+
+The record footings change the dig. Under every exterior wall the record set shows a strip footing
+2'-6" wide, its bottom 3'-4" below the floor. In every unit the lav risers sit over that footing,
+so the lav branches run on top of it or beside it. Besides the four tie-in crossings that A-A/P5.1
+details, about 27 LF of trench overlaps the footing in plan. At a 3.5 ft tie-in invert, another
+44 LF runs below the footing bottom within 1.5 ft of it. At 2.5 ft, nothing does. This is a
+screening check, not a structural finding: [table and method](../../projects/meydenbauer-b/REALISM.md#structure-check-structurepy).
+
 ## Document conflicts and draft RFIs
 
 SOR General Note 24 reads "All RFI's shall be issued to KEAD within 5 business days of the
