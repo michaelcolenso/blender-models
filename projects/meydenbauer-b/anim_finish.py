@@ -61,7 +61,8 @@ def hud(im, t, total_s):
     d.text((pad + 2 * k, pad + 76 * k), NOTES[i], font=F["note"], fill=(*DIM, a))
     # brand, top right
     brand = "101 MEYDENBAUER  ·  BUILDING B  ·  UNDER-SLAB WASTE RE-PIPE"
-    d.text((w - pad - d.textlength(brand, font=F["brand"]), pad), brand, font=F["brand"], fill=(*INK, 200))
+    if w - pad - d.textlength(brand, font=F["brand"]) > pad + cw + 24 * k:      # only where it clears the card
+        d.text((w - pad - d.textlength(brand, font=F["brand"]), pad), brand, font=F["brand"], fill=(*INK, 200))
     # progress bar
     by = h - int(78 * k); bh = int(6 * k); gap = int(6 * k)
     x0, x1 = pad, w - pad
@@ -74,9 +75,13 @@ def hud(im, t, total_s):
         if p > 0:
             d.rectangle([sx, by, sx + segw * p, by + bh], fill=(*ACCENT, 255))
         col = INK if j == i else DIM
-        d.text((sx, by - 24 * k), name, font=F["seg"], fill=(*col, 255 if j == i else 170))
-    d.text((x0, by + 16 * k), DISCLAIMER, font=F["small"], fill=(*DIM, 220))
+        label = name if d.textlength(name, font=F["seg"]) < segw - 4 * k else name.split(" ")[0]
+        d.text((sx, by - 24 * k), label, font=F["seg"], fill=(*col, 255 if j == i else 170))
     clock = f"{t:4.1f}s / {total_s:.0f}s"
+    disc = DISCLAIMER
+    while d.textlength(disc, font=F["small"]) > x1 - x0 - d.textlength(clock, font=F["small"]) - 20 * k:
+        disc = disc.rsplit(" ", 1)[0]
+    d.text((x0, by + 16 * k), disc if disc == DISCLAIMER else disc.rstrip(";,") + " ...", font=F["small"], fill=(*DIM, 220))
     d.text((x1 - d.textlength(clock, font=F["small"]), by + 16 * k), clock, font=F["small"], fill=(*DIM, 220))
     return Image.alpha_composite(im.convert("RGBA"), ov).convert("RGB")
 
