@@ -3,11 +3,12 @@
 #   bash projects/meydenbauer-b/runpod_animate.sh setup            # deps, CC0 assets, build + 14 sequence checks
 #   bash projects/meydenbauer-b/runpod_animate.sh bench            # 3 frames at full settings, projected hours
 #   bash projects/meydenbauer-b/runpod_animate.sh render [workers] # all frames, resumable (default 2 workers)
-#   bash projects/meydenbauer-b/runpod_animate.sh finish           # HUD + MP4 into deliverables/
-# Env: FPS (60, or 30 for half the frames), SAMPLES (128), RES (1.0 = 1920x1080), DEVICE (OPTIX | CUDA)
+#   bash projects/meydenbauer-b/runpod_animate.sh finish           # HUD + MP4 + clean master into deliverables/
+#   bash projects/meydenbauer-b/runpod_animate.sh hud              # later HUD/text fixes from the clean master (CPU)
+# Env: FPS (30 default, as rendered on 2026-10-25; 60 doubles the frames), SAMPLES (128), RES (1.0 = 1920x1080), DEVICE (OPTIX | CUDA)
 set -euo pipefail
 STAGE=${1:-all}; WORKERS=${2:-2}
-FPS=${FPS:-60}; SAMPLES=${SAMPLES:-128}; RES=${RES:-1.0}; DEVICE=${DEVICE:-OPTIX}
+FPS=${FPS:-30}; SAMPLES=${SAMPLES:-128}; RES=${RES:-1.0}; DEVICE=${DEVICE:-OPTIX}
 ROOT=$(cd "$(dirname "$0")/../.." && pwd); cd "$ROOT"
 OUT=build/meydenbauer-b/anim; LOG=$OUT/logs; mkdir -p "$LOG"
 BPY=.venv-bpy/bin/python
@@ -44,8 +45,16 @@ render() {
 finish() {
   "$BPY" projects/meydenbauer-b/anim_finish.py --tag "$TAG-$FPS" --fps "$FPS" --crf 16
   mkdir -p deliverables/meydenbauer-b/anim
-  cp "$OUT/$TAG-$FPS.mp4" "$OUT/$TAG-$FPS-poster.png" deliverables/meydenbauer-b/anim/
+  cp "$OUT/$TAG-$FPS.mp4" "$OUT/$TAG-$FPS-poster.png" "$OUT/$TAG-$FPS-clean.mp4" deliverables/meydenbauer-b/anim/
   ls -la deliverables/meydenbauer-b/anim
+  echo "Commit deliverables/meydenbauer-b/anim (MP4s go to Git LFS) before stopping the pod: the clean master"
+  echo "is what makes later HUD fixes a CPU job (stage: hud) instead of a re-render."
+}
+
+hud() {   # no GPU needed: re-apply the HUD to the saved clean master
+  "$BPY" projects/meydenbauer-b/anim_finish.py --tag "$TAG-$FPS" --fps "$FPS" --crf 16 \
+    --from-video "deliverables/meydenbauer-b/anim/$TAG-$FPS-clean.mp4"
+  cp "$OUT/$TAG-$FPS.mp4" "$OUT/$TAG-$FPS-poster.png" deliverables/meydenbauer-b/anim/
 }
 
 case "$STAGE" in
@@ -53,6 +62,7 @@ case "$STAGE" in
   bench) bench ;;
   render) render ;;
   finish) finish ;;
+  hud) hud ;;
   all) setup; bench; render; finish ;;
   *) echo "Unknown stage $STAGE"; exit 2 ;;
 esac

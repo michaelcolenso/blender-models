@@ -11,10 +11,23 @@ encoding come from [anim_finish.py](../../../projects/meydenbauer-b/anim_finish.
 | [proxy-60-poster.png](proxy-60-poster.png) | A water-test frame from the proxy |
 | [Meydenbauer-B-4D.blend](Meydenbauer-B-4D.blend) | Editable scene (Git LFS). The timeline has eight phase markers; every timed change is a keyframe. |
 
-For the full film (1920×1080, 60 fps, 1,920 frames, 128 samples), run
+For the full film (1920×1080, 30 fps, 960 frames, 128 samples), run
 [runpod_animate.sh](../../../projects/meydenbauer-b/runpod_animate.sh) on one RTX 4090:
 `setup`, then `bench` (it prints the projected hours), then `render 2`, then `finish`. Setting
-`FPS=30` renders half the frames for the same 32 seconds.
+`FPS=60` doubles the frames for the same 32 seconds. The 2026-10-25 RunPod film is in
+[../runpod](../runpod/).
+
+`finish` also writes a clean master with no HUD (`final-30-clean.mp4`). Commit it before stopping
+the pod. After that, changing a phase note, the disclaimer or the progress bar is
+`runpod_animate.sh hud`, a CPU job of minutes that needs no re-render.
+
+Fixed after the 2026-10-25 render, and checked on every build:
+
+- **Black patches.** At 2 s and 30 s, faded objects behind many ghost-wall layers rendered black.
+  Fully faded objects are now hidden from render (490 objects keyed).
+- **Wide-shot crop.** The wide shots cropped B-101. All seven wide shots must now keep the whole
+  building inside the frame and clear of the HUD bands.
+- **Vanity tops.** The tops did not fade with their cabinets.
 
 ## What each phase shows, and from where
 

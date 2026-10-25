@@ -45,19 +45,20 @@ LIFT_FINISH = 0.5 / R.FT            # 0.5 m
 UNIT_ORDER = ["B-101", "B-102", "B-103", "B-104"]
 STUDIO_BG = (0.0033, 0.0052, 0.0080)    # #0B1017 in linear RGB
 
-# Camera key poses: (seconds, camera xyz ft, target xyz ft, lens mm). Plan frame as everywhere:
+# Camera key poses: (seconds, camera xyz ft, target xyz ft, lens mm). The wide keys (0, 4, 8, 27, 32 s)
+# are fitted so the whole building clears the HUD bands; validate() re-checks it every build. Plan frame as everywhere:
 # x south along the building, y west, z up from finished floor.
 CAMERA = [
-    (0.0, (8, 150, 118), (82, 30, -2), 35),
-    (4.0, (34, 158, 112), (84, 30, -2), 35),
-    (8.0, (84, 140, 100), (104, 30, -2), 35),
+    (0.0, (-22.9, 185.3, 152.8), (72.5, 30.6, -2), 35),
+    (4.0, (18.9, 179.8, 129.5), (76.6, 32.2, -2), 35),
+    (8.0, (53.2, 175.9, 133.2), (79.7, 30.1, -2), 35),
     (11.0, (146, 76, 66), (132, 28, -2), 35),
     (14.0, (160, 56, 52), (134, 24, -3), 35),
     (17.0, (156, 18, 50), (133, 24, -3), 35),
     (20.0, (138, -2, 58), (126, 28, -2.5), 35),
     (23.0, (176, 30, 84), (108, 30, -2), 35),
-    (27.0, (176, 118, 108), (88, 30, -2), 35),
-    (32.0, (150, 162, 118), (80, 30, -2), 35),
+    (27.0, (239.4, 173.7, 178.3), (95.1, 29.4, -2), 35),
+    (32.0, (168.8, 183.9, 137.1), (87.6, 31.0, -2), 35),
 ]
 
 
@@ -402,11 +403,11 @@ def fixtures(M, I, c):
                 ls = LineString([(ctr[0] - d[0] * 1.0, ctr[1] - d[1] * 1.0), (ctr[0] + d[0] * 1.0, ctr[1] + d[1] * 1.0)])
                 body = ls.buffer(0.85, cap_style="flat")
                 bm = bmesh.new(); R.prism(bm, body, 2.75, R.FINISH)
-                v = R.obj(f'{u["unit"]} vanity', bm, M["cabinet"], c, unit=u["unit"], status="assumed",
-                          basis="vanity 24x21 in at the LAV connection; size assumed")
-                bm = bmesh.new(); R.prism(bm, ls.buffer(0.92, cap_style="flat").buffer(0.04, join_style="mitre"), 2.9, 2.75)
-                top = R.obj(f'{u["unit"]} vanity top', bm, M["quartz"], c)
-                top.parent = v
+                R.prism(bm, ls.buffer(0.92, cap_style="flat").buffer(0.04, join_style="mitre"), 2.9, 2.75)
+                # one object, two materials, so the top fades with the cabinet
+                v = R.obj(f'{u["unit"]} vanity', bm, [M["cabinet"], M["quartz"]], c, unit=u["unit"], status="assumed",
+                          basis="vanity 24x21 in with quartz top at the LAV connection; size assumed")
+                R.set_face_materials(v, lambda ctr, n: 1 if ctr[2] > 2.749 else 0)
                 v["unit"] = u["unit"]; out.append(v)
     bpy.data.objects.remove(toilet)
     return out
@@ -553,6 +554,29 @@ def choreograph(clk, S):
         lo.data.energy = 90; lo.data.keyframe_insert("energy", frame=ph(7, 2.8))
 
 
+def hide_vanished(clk):
+    """Hide an object from render on every frame where it is fully faded (vanish >= 0.999).
+    A fully transparent surface still costs a transparent bounce per crossing; behind several
+    ghosted walls the rays run out of bounces and render black. Children inherit the parent's
+    visibility (a vanity top fades with its cabinet). Returns the number of objects keyed."""
+    n = 0
+    for o in bpy.data.objects:
+        fc = next((c for c in fcurves(o) if c.data_path == '["vanish"]'), None)
+        if fc is None:
+            continue
+        hidden = [fc.evaluate(f) >= 0.999 for f in range(1, clk.end + 1)]
+        targets = [o] + list(o.children_recursive)
+        for t in targets:
+            prev = None
+            for f, h in enumerate(hidden, start=1):
+                if h != prev:
+                    t.hide_render = h
+                    t.keyframe_insert("hide_render", frame=f)
+                    prev = h
+        n += 1
+    return n
+
+
 def camera_rig(clk):
     """Camera + Camera_Target empty, path baked per frame (Catmull-Rom through the key poses)."""
     sc = bpy.context.scene
@@ -638,9 +662,28 @@ def build(fps):
     for i, name in enumerate(PHASES):
         sc.timeline_markers.new(name, frame=clk.phase_frame(i))
     choreograph(clk, S)
+    stats.update(hidden_when_faded=hide_vanished(clk))
     camera_rig(clk)
     stats.update(pipe_lf_anim=lf)
     return clk, S, stats
+
+
+WIDE_SHOTS = (0.5, 2.0, 4.0, 6.0, 28.0, 30.0, 31.9)    # seconds that must show the whole building
+FRAME_SAFE = (0.02, 0.98, 0.11, 0.86)                  # x0, x1, y0, y1 (normalized, y up): clear of the HUD bands
+
+
+def framing(clk):
+    """Projected bounds of the building envelope (slab to wall top) at each wide shot."""
+    from bpy_extras.object_utils import world_to_camera_view
+    sc = bpy.context.scene
+    env = Polygon(R.SHELL["envelope_ft"])
+    pts = [R.P(x, y, z) for x, y in env.exterior.coords for z in (-R.GROUND, R.WALL_TOP)]
+    out = []
+    for s_ in WIDE_SHOTS:
+        sc.frame_set(clk.f(s_))
+        v = [world_to_camera_view(sc, sc.camera, p) for p in pts]
+        out.append((s_, (min(q.x for q in v), max(q.x for q in v), min(q.y for q in v), max(q.y for q in v))))
+    return out
 
 
 def validate(clk, S, stats):
@@ -670,8 +713,12 @@ def validate(clk, S, stats):
         sc.frame_set(f)
         if not test():
             errs.append(f"frame {f}: {label}")
+    for s_, box_ in framing(clk):
+        if not (FRAME_SAFE[0] <= box_[0] and box_[1] <= FRAME_SAFE[1] and FRAME_SAFE[2] <= box_[2] and box_[3] <= FRAME_SAFE[3]):
+            errs.append(f"t={s_:.1f}s: building leaves the safe frame {[round(v, 3) for v in box_]}")
     res = {"ok": not errs, "errors": errs, "frames": clk.end, "fps": clk.fps, "pipe_lf": round(stats["pipe_lf_anim"], 2),
-           "existing_ci_runs": len(S["ci"]), "fixtures": len(S["fixtures"]), "checks": len(checks)}
+           "existing_ci_runs": len(S["ci"]), "fixtures": len(S["fixtures"]), "checks": len(checks),
+           "framing_checks": len(WIDE_SHOTS), "hidden_when_faded": stats.get("hidden_when_faded")}
     print("CHECKS", json.dumps(res), flush=True)
     if errs:
         sys.exit(1)
