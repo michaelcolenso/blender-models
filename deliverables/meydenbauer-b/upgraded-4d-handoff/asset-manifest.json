@@ -1,0 +1,84 @@
+{
+  "project": "25-048 / 101 Meydenbauer Building B",
+  "handoff_version": "a6fe0f4",
+  "created": "2026-10-25",
+  "items": [
+    {
+      "file": "Meydenbauer_4D_Construction_Sequence_Upgraded.mp4",
+      "source_path": "output/meydenbauer_model/upgraded/Meydenbauer_4D_Construction_Sequence_Upgraded.mp4",
+      "size_bytes": 16918114,
+      "sha256": "967c932b785449ab23ddb619d28c93d4c10f9354a766c57d86f5cf0dfe095ee8",
+      "mime_type": "video/mp4"
+    },
+    {
+      "file": "Meydenbauer_4D_Construction_Sequence_Upgraded.blend",
+      "source_path": "output/meydenbauer_model/upgraded/Meydenbauer_4D_Construction_Sequence_Upgraded.blend",
+      "size_bytes": 49396725,
+      "sha256": "1cb3a04f239e6f41acbe3d174f00b47c48df869d21f3e6196a12029f3263889e",
+      "mime_type": "application/octet-stream"
+    },
+    {
+      "file": "Meydenbauer_4D_Construction_Sequence_Poster.png",
+      "source_path": "output/meydenbauer_model/upgraded/Meydenbauer_4D_Construction_Sequence_Poster.png",
+      "size_bytes": 416851,
+      "sha256": "fff42f20f7c9e82e7410655e4ce4ac7e7d957988225ee3aac18db2e02eca6139",
+      "mime_type": "image/png"
+    },
+    {
+      "file": "Meydenbauer_Photorealistic_Coordination_Model.glb",
+      "source_path": "output/meydenbauer_model/realistic/Meydenbauer_Photorealistic_Coordination_Model.glb",
+      "size_bytes": 23420956,
+      "sha256": "06ccd703402535de789fcafa5dddb1b2f61573eddc1c9f2044f68b94bdc49c07",
+      "mime_type": "model/gltf-binary"
+    },
+    {
+      "file": "Meydenbauer_Photorealistic_Coordination_Source.blend",
+      "source_path": "output/meydenbauer_model/realistic/Meydenbauer_Photorealistic_Coordination_Source.blend",
+      "size_bytes": 40390450,
+      "sha256": "e618aba7c23286030ba20c7187e358c205989a63c20b1459ae7ab9146256e659",
+      "mime_type": "application/octet-stream"
+    },
+    {
+      "file": "Meydenbauer_Comprehensive_Project_Takeoff.xlsx",
+      "source_path": "output/Meydenbauer_Comprehensive_Project_Takeoff.xlsx",
+      "size_bytes": 38662,
+      "sha256": "b3968b31546bc75af2b8981d1725fa2453a61ca992c1715828a825a728db48a8",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    },
+    {
+      "file": "Meydenbauer_Bellevue_Q1_2027_Priced_Takeoff.xlsx",
+      "source_path": "output/Meydenbauer_Bellevue_Q1_2027_Priced_Takeoff.xlsx",
+      "size_bytes": 47276,
+      "sha256": "ec1a94037c1e9ef5f771c89cae7acfa4e6719069b722d68b77157a6575945616",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    },
+    {
+      "file": "Meydenbauer_Waste_Repipe_Bid_Set.pdf",
+      "source_path": "output/app/assets/Meydenbauer_Waste_Repipe_Bid_Set.pdf",
+      "size_bytes": 2958819,
+      "sha256": "94389ddff0e3ea4181932f2fae759da336727062fe80647ef214b15555ad4974",
+      "mime_type": "application/pdf"
+    },
+    {
+      "file": "index.html",
+      "source_path": "output/app/index.html",
+      "size_bytes": 31126,
+      "sha256": "a0f07fe6cd7d273a8b3b96a2cf0865ed47a645fd69bcabafafb71fd5d3406091",
+      "mime_type": "text/html"
+    },
+    {
+      "file": "bundle.js",
+      "source_path": "output/app/src/bundle.js",
+      "size_bytes": 595864,
+      "sha256": "9463f7d76e5f0bbc13769c5d7b2b7c7959efcb8bc3b251c26a6eaa0bac0e2e64",
+      "mime_type": "text/javascript"
+    },
+    {
+      "file": "CREDITS.md",
+      "source_path": "output/app/CREDITS.md",
+      "size_bytes": 1766,
+      "sha256": "591c269a1250921c7bbc693422b9f24cc3b0182a65ae1d5ba0065ce67074c33a",
+      "mime_type": "text/markdown"
+    }
+  ]
+}
