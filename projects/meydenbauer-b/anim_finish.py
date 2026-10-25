@@ -6,10 +6,13 @@ standing disclaimer. Frames may be a subset (frame step); timing comes from fram
 
 Usage:
   python projects/meydenbauer-b/anim_finish.py --tag proxy-60 --fps 60
-  python projects/meydenbauer-b/anim_finish.py --tag final-60 --fps 60 --crf 16
-Writes build/meydenbauer-b/anim/<tag>.mp4 and <tag>-poster.png.
+  python projects/meydenbauer-b/anim_finish.py --tag final-30 --fps 30 --crf 16
+  python projects/meydenbauer-b/anim_finish.py --tag final-30 --fps 30 --from-video final-30-clean.mp4
+Writes build/meydenbauer-b/anim/<tag>.mp4, <tag>-poster.png and, from rendered frames, <tag>-clean.mp4
+(no HUD, CRF 10). Keep the clean master: a HUD or note change is then a CPU re-composite, not a re-render.
 """
 import argparse, subprocess, sys
+from fractions import Fraction
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -91,8 +94,24 @@ def main():
     ap.add_argument("--tag", required=True)
     ap.add_argument("--fps", type=int, default=60, help="timeline fps the frames were rendered on")
     ap.add_argument("--crf", type=int, default=18)
+    ap.add_argument("--from-video", default="", help="clean master MP4 to re-apply the HUD to (no re-render)")
     a = ap.parse_args()
-    src = ROOT / "build/meydenbauer-b/anim/frames" / a.tag
+    anim = ROOT / "build/meydenbauer-b/anim"
+    if a.from_video:
+        # Re-apply the HUD to a clean master: no GPU, minutes on CPU.
+        src = anim / "frames" / f"{a.tag}-from-clean"; src.mkdir(parents=True, exist_ok=True)
+        for old in src.glob("*.png"):
+            old.unlink()
+        rate_in = float(Fraction(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                                                 "stream=r_frame_rate", "-of", "csv=p=0", a.from_video],
+                                                capture_output=True, text=True, check=True).stdout.strip()))
+        step = round(a.fps / rate_in)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", a.from_video, "-start_number", "0",
+                        str(src / "%05d.png")], check=True)
+        for p in sorted(src.glob("*.png")):
+            p.rename(src / f"{1 + int(p.stem) * step:04d}.png")
+    else:
+        src = anim / "frames" / a.tag
     frames = sorted(p for p in src.glob("[0-9]*.png") if not p.name.endswith(".tmp.png"))
     if not frames:
         sys.exit(f"no frames in {src}")
@@ -101,16 +120,27 @@ def main():
     missing = sorted(set(range(nums[0], nums[-1] + 1, step)) - set(nums))
     if missing:
         sys.exit(f"{len(missing)} frames missing, first {missing[:5]}")
+    rate = a.fps / step
+
+    def encode(pattern, out, crf):
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", f"{rate:g}", "-i", pattern,
+                        "-c:v", "libx264", "-preset", "slow", "-crf", str(crf), "-pix_fmt", "yuv420p",
+                        "-movflags", "+faststart", str(out)], check=True)
+    if not a.from_video:
+        # Clean master (no HUD), near-lossless: keep it, and HUD fixes never need the GPU again.
+        lst = anim / f"{a.tag}-clean.txt"
+        lst.write_text("".join(f"file '{p}'\nduration {1 / rate:.6f}\n" for p in frames))
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
+                        "-r", f"{rate:g}", "-c:v", "libx264", "-preset", "slow", "-crf", "10", "-pix_fmt", "yuv420p",
+                        "-movflags", "+faststart", str(anim / f"{a.tag}-clean.mp4")], check=True)
+        lst.unlink()
     total_s = len(PHASES) * PHASE_S
     tmp = src.parent / f"{a.tag}-hud"; tmp.mkdir(exist_ok=True)
     for j, p in enumerate(frames):
         t = (int(p.stem) - 1) / a.fps
         hud(Image.open(p), t, total_s).save(tmp / f"{j:05d}.png")
-    out = ROOT / f"build/meydenbauer-b/anim/{a.tag}.mp4"
-    rate = a.fps / step
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", f"{rate:g}", "-i", str(tmp / "%05d.png"),
-                    "-c:v", "libx264", "-preset", "slow", "-crf", str(a.crf), "-pix_fmt", "yuv420p",
-                    "-movflags", "+faststart", str(out)], check=True)
+    out = anim / f"{a.tag}.mp4"
+    encode(str(tmp / "%05d.png"), out, a.crf)
     poster = len(frames) * 21 // 32                   # inside the water test
     Image.open(tmp / f"{poster:05d}.png").save(out.with_name(f"{a.tag}-poster.png"))
     probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=width,height,r_frame_rate,nb_frames",
