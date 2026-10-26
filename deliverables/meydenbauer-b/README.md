@@ -80,6 +80,56 @@ cutoff unless KEAD says otherwise. The RFI form is Document 00 63 13.13.
    Date: October 30, 2024". Confirm that the Invitation to Bid date, October 30, 2026 at 5:00 PM,
    governs.
 
+## Bid clarifications from the 4D sequence
+
+The RFI window closed on Oct 23. These items came out of the unit-by-unit sequence. State them as
+clarifications or assumptions in the proposal, or raise them with KEAD if they still take
+questions. Each line is marked: **[doc]** is a documented requirement, **[rec]** a
+recommendation, **[assume]** an assumption.
+
+1. **Contract time.**
+   - **[doc]** The bid form (§1.11, Addendum 1) asks for substantial completion in ___ calendar
+     days.
+   - **[doc]** Alternates 1 and 2 each ask for the calendar days they add.
+   - **[doc]** SOR note 14 says to distinguish calendar days from working days, which exclude
+     holidays.
+   - **[assume]** The strawman field schedule, one unit at a time, is **81.5 working days, about
+     115 calendar days**. It leaves out holidays, submittal review (01 33 00), the SOR mock-up,
+     the permit and mobilization.
+   - **[rec]** Replace the rates in `schedule.py` with your crew plan before you fill in §1.11.
+2. **One ground-level entry.**
+   - **[doc]** 00 22 13 §1.14.B: "limit building access to a single entry at ground level."
+   - **[doc]** 01 50 00 permits the existing stairs and prohibits the elevators.
+   - **[assume]** P2.1 shows two X-hatched cores, at grid C-D and J-K. Read as entries, B-101 and
+     B-102 are reached from C-D, and B-103 and B-104 from J-K. No common corridor joins them.
+   - **[rec]** State that one entry is in use at a time and that it switches with the unit. If
+     KEAD means one entry for the whole job, an interior path to the other pair of units is needed.
+3. **Haul path through the planter.**
+   - **[doc]** SOR note 3 puts the side-sewer tie-ins in the planter between the garages and
+     Building B. SOR Fig 8 puts staging east of the garages.
+   - **[doc]** 00 22 13 §1.14.A: the Contractor "shall restore landscaping and/or property damage
+     occurring during the Work".
+   - **[assume]** Haul runs along that planter and around the north end of the garages, 148–243 ft
+     one way. That is about 754 barrow trips out and 629 in, at 4 CF a trip.
+   - **[rec]** Price ground protection and landscape restoration along the path. Confirm the path
+     with the Association. Consider a power buggy for B-103 and B-104.
+4. **Continuous service vs. 5 PM restoration.** This is a document conflict.
+   - **[doc]** P2.1 scope note: "Contractor shall maintain continuous sanitary service to occupied
+     units and shall provide temporary bypass systems". P1.01 demolition note 3 says the same for
+     unaffected units.
+   - **[doc]** SOR note 21 asks only that one sink and one toilet work by 5:00 PM daily.
+   - **[doc]** P2.1: "the more stringent requirement shall govern as determined by the Engineer of
+     Record".
+   - **[doc]** The SOR says the upper floors share the stacks. P1.02 shows stack ends in B-102
+     (2), B-103 (2) and B-104 (1).
+   - **[assume]** A unit's line is open for 10.5–13.5 working days (phases 03–06). Every working
+     day of that needs a bypass for the stacks above, plus a nightly reconnection in the unit.
+   - **[rec]** Carry the bypass as a priced line, and state the method: pumped or gravity, and
+     whether it runs during working hours or only overnight.
+   - **[doc]** P1.02, as extracted and reviewed, shows no WC connection in B-102. It is unclear how
+     that unit's toilet reaches the under-slab line.
+   - **[rec]** Confirm the B-102 toilet's path at the walk.
+
 ## Files
 
 | File | Use |

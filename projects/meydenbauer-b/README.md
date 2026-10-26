@@ -27,6 +27,24 @@ python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt pymupdf sh
 | `takeoff.py` | spec | `build/meydenbauer-b/takeoff.json`, `Meydenbauer-B-underslab-takeoff.xlsx` |
 | `build.py` | spec + takeoff | `.blend` (underlay packed), `.glb` (element properties as extras), `present-*.png`, `review-*.png`, `model-checks.json` |
 
+4D films (construction-phase model in [REALISM.md](REALISM.md); results in
+[deliverables/meydenbauer-b/anim](../../deliverables/meydenbauer-b/anim/README.md)):
+
+```bash
+.venv/bin/python projects/meydenbauer-b/schedule.py         # strawman unit-by-unit schedule (rates assumed)
+.venv/bin/python projects/meydenbauer-b/logistics.py        # entries, staging, haul routes (assumed, SOR Fig 8)
+.venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render   # .blend + 88 + 44 checks
+.venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --stills --res 0.4 --samples 12
+PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh setup   # then bench, render 2, finish
+```
+
+| Step | Reads | Writes |
+| --- | --- | --- |
+| `schedule.py` | takeoff | `meydenbauer-b.schedule.json` (days per unit and phase, haul quantities) |
+| `logistics.py` | shell, takeoff, schedule | `meydenbauer-b.logistics.json` (entries, site massing, routes, bins) |
+| `animate.py` | realism scene + the two above | `Meydenbauer-B-4D.blend` (overview) or `Meydenbauer-B-4D-sequence.blend`, frames |
+| `anim_finish.py` | frames or a clean master | MP4 with HUD, clean master, poster |
+
 ## Method
 
 1. **Calibration.** P1.02 is a vector CAD plot at 9 pt/ft (1/8" = 1'-0" on a 36×24 sheet). The grid
