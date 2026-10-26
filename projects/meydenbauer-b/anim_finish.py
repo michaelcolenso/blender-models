@@ -199,10 +199,10 @@ def hud_seq(im, t, total_s, plan, W, L):
         d.text((pad, y0 - 1 * k), u["unit"], font=F["seg"], fill=(*(INK if active else DIM), 255 if active else 190))
         for j, (s0, dd) in enumerate(zip(u["phase_start_day"], u["days"])):
             xa, xb = X(s0), X(s0 + dd)
-            d.rectangle([xa, y0, xb - max(1, k), y0 + rh], fill=(*PHASE_RGB[j], 70))
+            d.rectangle([xa, y0, max(xa, xb - max(1, k)), y0 + rh], fill=(*PHASE_RGB[j], 70))
             done = min(max(day - s0, 0.0), dd)
             if done > 0:
-                d.rectangle([xa, y0, X(s0 + done) - max(1, k), y0 + rh], fill=(*PHASE_RGB[j], 240))
+                d.rectangle([xa, y0, max(xa, min(X(s0 + done), xb - max(1, k))), y0 + rh], fill=(*PHASE_RGB[j], 240))
     px = X(day)
     d.line([px, ry - 7 * k, px, ry + 4 * (rh + rg) - 2 * k], fill=(*INK, 255), width=max(1, int(2 * k)))
     d.polygon([(px - 5 * k, ry - 11 * k), (px + 5 * k, ry - 11 * k), (px, ry - 4 * k)], fill=(*INK, 255))
