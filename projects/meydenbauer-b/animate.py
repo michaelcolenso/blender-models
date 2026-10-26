@@ -1035,12 +1035,16 @@ def choreograph_seq(clk, S, W, plan):
         key_scale(pile, ph(u, 5, 0.2), 1.0); key_scale(pile, ph(u, 5, 3.4), 0.05)
         key(pile, "vanish", ph(u, 5, 3.4), 0); key(pile, "vanish", ph(u, 5, 3.8), 1)
 
-        # 07 finishes (after the cure): patches come down from +0.5 m with a fade-in, south across the unit
+        # 07 finishes, after the cure: the first cure_days of the phase pass with the patches still out,
+        # then they come down from +0.5 m with a fade-in, south across the unit, in the time left
+        cure = PHASE_S * min(0.8, p["cure_days"] / p["days"][6])
+        rest = PHASE_S - cure
         for o in mine("finish", u):
             x = centre_ft(o)[0]
-            s0 = 0.3 + 2.2 * max(0.0, x - x0) / (x1 - x0)
+            s0 = cure + rest * (0.075 + 0.55 * max(0.0, x - x0) / (x1 - x0))
+            t_in = min(T, 0.3 * rest)
             key_z(o, ph(u, 6, 0.0), LIFT_FINISH); key(o, "vanish", ph(u, 6, s0), 1); key_z(o, ph(u, 6, s0), LIFT_FINISH)
-            key_z(o, ph(u, 6, s0 + T), 0); key(o, "vanish", ph(u, 6, s0 + T), 0)
+            key_z(o, ph(u, 6, s0 + t_in), 0); key(o, "vanish", ph(u, 6, s0 + t_in), 0)
 
         # 08 reinstatement: protection out, fixtures back, the unit's lights up (done, occupied)
         for o in mine("protection", u):
@@ -1298,6 +1302,7 @@ def validate_seq(clk, S, stats):
         errs.append("film length does not match schedule.windows()")
     at = lambda u, i, s: clk.f(W[u][i][0] + (W[u][i][1] - W[u][i][0]) * s / PHASE_S)
     of = lambda name, u: [o for o in S[name] if o.get("unit") == u]
+    cure_frac = lambda u: next(min(0.8, p["cure_days"] / p["days"][6]) for p in plan["units"] if p["unit"] == u)
     checks = []
     for n, u in enumerate(SCHED.ORDER):
         fx = of("fixtures", u); kept = [o for o in fx if o.get("service")]; moved = [o for o in fx if not o.get("service")]
@@ -1320,6 +1325,8 @@ def validate_seq(clk, S, stats):
             (at(u, 3, 2.0), lambda u=u: all(o["vanish"] < 0.01 for o in of("bypass", u)), f"{u}: stacks on bypass"),
             (at(u, 7, 2.0), lambda u=u: all(o["vanish"] > 0.99 for o in of("bypass", u)), f"{u}: bypass removed"),
             (at(u, 6, 0.0), lambda u=u: all(o["vanish"] < 0.01 for o in of("pour", u)), f"{u}: pour-back placed"),
+            (at(u, 6, PHASE_S * cure_frac(u) - 0.02), lambda u=u: all(o["vanish"] > 0.99 for o in of("finish", u)),
+             f"{u}: no finishes before the cure ends"),
             (at(u, 7, 3.99), lambda u=u, fx=fx, m=moved: all(o.get("vanish", 0) < 0.01 for o in fx) and
              all(o["vanish"] < 0.01 and abs(o.location.z) < 1e-4 for o in m + of("finish", u)),
              f"{u}: fixtures and finishes restored"),

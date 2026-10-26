@@ -164,7 +164,8 @@ def hud_seq(im, t, total_s, plan, W, L):
             chips.append((AMBER, f'HAUL OUT  {q["out_cy_loose"]:g} CY loose  ·  {r["out_length_ft"]} ft via {r["entry"]} core  ·  '
                                  f'{q["bin_swaps"]} bin swaps'))
         if i == 5:
-            chips.append((ACCENT, f'HAUL IN  {q["in_cy"]:g} CY bedding + backfill  ·  {q["concrete_cy"]:g} CY concrete'))
+            chips.append((ACCENT, f'HAUL IN  {q["in_cy"] - q["concrete_cy"]:.1f} CY bedding + backfill  ·  '
+                                  f'{q["concrete_cy"]:g} CY concrete'))
         if i == 6:
             chips.append((DIM, f'Includes {plan["rates"]["cure_days"]:g}-day cure before floor finishes (assumed)'))
     cy = pad + 92 * k

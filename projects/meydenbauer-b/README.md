@@ -33,7 +33,7 @@ python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt pymupdf sh
 ```bash
 .venv/bin/python projects/meydenbauer-b/schedule.py         # strawman unit-by-unit schedule (rates assumed)
 .venv/bin/python projects/meydenbauer-b/logistics.py        # entries, staging, haul routes (assumed, SOR Fig 8)
-.venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render   # .blend + 88 + 44 checks
+.venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render   # .blend + 92 + 44 checks
 .venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --stills --res 0.4 --samples 12
 PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh setup   # then bench, render 2, finish
 ```

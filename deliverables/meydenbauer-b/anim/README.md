@@ -35,7 +35,7 @@ All values below are assumptions. They come from
 
 Replace the rates with your crew plan and re-run the two scripts. The film, HUD and checks follow.
 
-| Unit | Order | Working days by phase (01–08) | Total | Screen time | Out (CY loose) | Route | One way | 10-yd bins | In (CY) | Concrete (CY) |
+| Unit | Order | Working days by phase (01–08) | Total | Screen time | Out (CY loose) | Route | One way | 10-yd bins | In, total (CY) | of which concrete (CY) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | B-103 | 1 | 1 / 1 / 3.5 / 3 / 1 / 3 / 5.5 / 1 | 19 | 22.5 s | 24.4 | J-K core | 243 ft | 3 | 20.4 | 2.2 |
 | B-102 | 2 | 1 / 1 / 4 / 3.5 / 1 / 3 / 6 / 1 | 20.5 | 24.1 s | 28.3 | C-D core | 152 ft | 3 | 23.6 | 2.7 |
@@ -44,7 +44,7 @@ Replace the rates with your crew plan and re-run the two scripts. The film, HUD 
 
 The total is 81.5 working days, which is 115 calendar days at 5 working days a week. There are no
 holidays and no preconstruction time: no submittals, permit, mock-up or mobilization. Out of
-that, 111 CY loose goes out and 93 CY comes in. At 4 CF a barrow (assumed), that is about 754
+that, 111 CY loose goes out and 93 CY comes in, 10.5 CY of it concrete. At 4 CF a barrow (assumed), that is about 754
 trips out and 629 in.
 
 Why this order (assumed):
@@ -66,9 +66,10 @@ Why this order (assumed):
 
 Checks, run on every build (`animate.py` exits 1 on failure):
 
-- **88 sequence checks**, 22 per unit, including:
+- **92 sequence checks**, 23 per unit, including:
   - the unit's own order: fixtures out before demolition, the service pair kept, no ABS before
-    the cast iron is gone, full during the hold, drained before backfill, restored at the end;
+    the cast iron is gone, full during the hold, drained before backfill, no finishes before the
+    cure ends, restored at the end;
   - its haul routes and bypasses shown, then removed;
   - every later unit untouched and every earlier unit finished, while each unit works.
 - **44 framing checks.** Each of the 22 shots keeps its subject inside the frame and clear of the
