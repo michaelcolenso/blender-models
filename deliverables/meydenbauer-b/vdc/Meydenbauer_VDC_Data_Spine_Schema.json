@@ -1,0 +1,859 @@
+{
+  "schema_version": "MEYD-VDC-001",
+  "revision": "VDC-P1-001",
+  "created_utc": "2026-10-26T17:44:28.529746+00:00",
+  "project": {
+    "number": "25-048",
+    "name": "101 Meydenbauer Condominiums - Building B Underground DWV Repipe",
+    "building": "Building B",
+    "units": [
+      "B101",
+      "B102",
+      "B103",
+      "B104"
+    ],
+    "location": "Bellevue, WA",
+    "delivery_context": "Non-union/open-shop pricing basis, Q1 2027"
+  },
+  "coordinate_contract": {
+    "blender_unit": "1 foot",
+    "unit_settings_scale_length": 0.3048,
+    "up_axis": "Z",
+    "note": "Scene is in imperial display units with one Blender unit treated as one foot."
+  },
+  "phase_register": [
+    {
+      "phase_id": "01",
+      "phase_name": "Existing + Investigation",
+      "frame_start": 1,
+      "frame_end": 84
+    },
+    {
+      "phase_id": "02",
+      "phase_name": "Staging + Fixture Removal",
+      "frame_start": 85,
+      "frame_end": 168
+    },
+    {
+      "phase_id": "03",
+      "phase_name": "Demolition + Excavation",
+      "frame_start": 169,
+      "frame_end": 252
+    },
+    {
+      "phase_id": "04",
+      "phase_name": "New ABS Installation",
+      "frame_start": 253,
+      "frame_end": 336
+    },
+    {
+      "phase_id": "05",
+      "phase_name": "Water Test",
+      "frame_start": 337,
+      "frame_end": 420
+    },
+    {
+      "phase_id": "06",
+      "phase_name": "Backfill + Slab Pourback",
+      "frame_start": 421,
+      "frame_end": 504
+    },
+    {
+      "phase_id": "07",
+      "phase_name": "Patching + Finishes",
+      "frame_start": 505,
+      "frame_end": 588
+    },
+    {
+      "phase_id": "08",
+      "phase_name": "Fixture Reinstall + As-Built",
+      "frame_start": 589,
+      "frame_end": 672
+    }
+  ],
+  "fields": [
+    {
+      "name": "vdc_schema_version",
+      "type": "string",
+      "required": true,
+      "description": "Data-spine schema version."
+    },
+    {
+      "name": "vdc_revision",
+      "type": "string",
+      "required": true,
+      "description": "Model data revision."
+    },
+    {
+      "name": "vdc_element_id",
+      "type": "string",
+      "required": true,
+      "description": "Stable production element identifier."
+    },
+    {
+      "name": "vdc_legacy_name",
+      "type": "string",
+      "required": true,
+      "description": "Original Blender object name preserved for animation compatibility."
+    },
+    {
+      "name": "vdc_project_number",
+      "type": "string",
+      "required": true,
+      "description": "Project number."
+    },
+    {
+      "name": "vdc_unit",
+      "type": "string",
+      "required": true,
+      "description": "Residential unit or SITE."
+    },
+    {
+      "name": "vdc_level",
+      "type": "string",
+      "required": true,
+      "description": "Building level."
+    },
+    {
+      "name": "vdc_discipline",
+      "type": "string",
+      "required": true,
+      "description": "Responsible discipline."
+    },
+    {
+      "name": "vdc_system",
+      "type": "string",
+      "required": true,
+      "description": "Building system."
+    },
+    {
+      "name": "vdc_work_status",
+      "type": "string",
+      "required": true,
+      "description": "NEW, DEMOLITION, EXISTING_REMAIN, TEMPORARY, TEST, REINSTALLED, RECORD, or context status."
+    },
+    {
+      "name": "vdc_component_type",
+      "type": "string",
+      "required": true,
+      "description": "Production component type."
+    },
+    {
+      "name": "vdc_phase_id",
+      "type": "string",
+      "required": true,
+      "description": "Current eight-phase sequence ID."
+    },
+    {
+      "name": "vdc_phase_name",
+      "type": "string",
+      "required": true,
+      "description": "Current eight-phase sequence name."
+    },
+    {
+      "name": "vdc_cost_code",
+      "type": "string",
+      "required": true,
+      "description": "Provisional project cost code."
+    },
+    {
+      "name": "vdc_cost_code_status",
+      "type": "string",
+      "required": true,
+      "description": "PROVISIONAL until reconciled with estimating cost-code standard."
+    },
+    {
+      "name": "vdc_lod",
+      "type": "string",
+      "required": true,
+      "description": "Target model detail level for the object role."
+    },
+    {
+      "name": "vdc_model_state",
+      "type": "string",
+      "required": true,
+      "description": "SOURCE_GEOMETRY, DERIVED_ANIMATION, REFERENCE_CONTEXT, DOCUMENTATION, or VISUALIZATION_CONTROL."
+    },
+    {
+      "name": "vdc_animation_role",
+      "type": "string",
+      "required": true,
+      "description": "How this object participates in the 4D animation."
+    },
+    {
+      "name": "vdc_source",
+      "type": "string",
+      "required": true,
+      "description": "Source document, field note, or modeling basis."
+    },
+    {
+      "name": "vdc_verification_status",
+      "type": "string",
+      "required": true,
+      "description": "DOCUMENT_DERIVED or FIELD_VERIFY_REQUIRED."
+    },
+    {
+      "name": "vdc_quantity_type",
+      "type": "string",
+      "required": true,
+      "description": "LENGTH, AREA, VOLUME, COUNT, or NA."
+    },
+    {
+      "name": "vdc_quantity_value",
+      "type": "number",
+      "required": false,
+      "description": "Computed quantity when available."
+    },
+    {
+      "name": "vdc_quantity_unit",
+      "type": "string",
+      "required": false,
+      "description": "FT, SF, CF, EA, or NA."
+    },
+    {
+      "name": "vdc_quantity_basis",
+      "type": "string",
+      "required": true,
+      "description": "CURVE_CENTERLINE, GROWTH_LENGTH, BBOX_APPROX, COUNT, or NOT_COMPUTED."
+    },
+    {
+      "name": "vdc_parent_route_name",
+      "type": "string",
+      "required": false,
+      "description": "Source route object for derived animation geometry."
+    },
+    {
+      "name": "vdc_parent_route_id",
+      "type": "string",
+      "required": false,
+      "description": "Source route VDC element ID."
+    },
+    {
+      "name": "vdc_nominal_diameter_in",
+      "type": "number",
+      "required": false,
+      "description": "Nominal pipe diameter in inches."
+    },
+    {
+      "name": "vdc_slope_in_per_ft",
+      "type": "number",
+      "required": false,
+      "description": "Pipe slope in inches per foot."
+    },
+    {
+      "name": "vdc_slope_status",
+      "type": "string",
+      "required": false,
+      "description": "DOCUMENTED, NOT_DOCUMENTED, or NA."
+    }
+  ],
+  "collection_classification": {
+    "ANIM_ABS_Extrusion": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "INSTALLATION_SEGMENT",
+      "quantity_type": "LENGTH",
+      "cost_code": "22-100",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "DERIVED_ANIMATION"
+    },
+    "ANIM_Water_Test": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "TEST",
+      "phase_id": "05",
+      "component_type": "HYDRO_TEST_ROUTE",
+      "quantity_type": "LENGTH",
+      "cost_code": "22-900",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "DERIVED_ANIMATION"
+    },
+    "ANIM_Construction_Effects": {
+      "discipline": "GENERAL",
+      "system": "ANIMATION",
+      "status": "ANIMATION",
+      "phase_id": "03",
+      "component_type": "ANIMATION_CONTROL",
+      "quantity_type": "NA",
+      "cost_code": "99-000",
+      "lod": "NA",
+      "managed_scope": false,
+      "model_state": "DERIVED_ANIMATION"
+    },
+    "Ex_Cast_Iron_Pipes_DEMO": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "DEMOLITION",
+      "phase_id": "03",
+      "component_type": "PIPE_ROUTE",
+      "quantity_type": "LENGTH",
+      "cost_code": "22-050",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Ex_Unit101_&_104_Prior_ABS_REMAIN": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "PIPE_ROUTE",
+      "quantity_type": "LENGTH",
+      "cost_code": "22-000",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Concrete_Slab_Trench_Cuts_DEMO": {
+      "discipline": "CONCRETE",
+      "system": "SLAB_ON_GRADE",
+      "status": "DEMOLITION",
+      "phase_id": "03",
+      "component_type": "SLAB_CUT_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "03-050",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Drywall_Cutouts_DEMO": {
+      "discipline": "INTERIORS",
+      "system": "GYPSUM_BOARD",
+      "status": "DEMOLITION",
+      "phase_id": "03",
+      "component_type": "WALL_OPENING_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "09-250",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "New_ABS_Branches_&_Traps": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "PIPE_ROUTE",
+      "quantity_type": "LENGTH",
+      "cost_code": "22-100",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "New_ABS_UnderSlab_4in_6in": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "PIPE_ROUTE",
+      "quantity_type": "LENGTH",
+      "cost_code": "22-100",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "New_Stack_TieIns_&_Cleanouts": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "FITTING",
+      "quantity_type": "COUNT",
+      "cost_code": "22-110",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Firestop_&_Sleeves": {
+      "discipline": "FIRESTOPPING",
+      "system": "PENETRATION_FIRESTOP",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "FIRESTOP",
+      "quantity_type": "COUNT",
+      "cost_code": "07-840",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Pipe_Zone_Bedding": {
+      "discipline": "EARTHWORK",
+      "system": "TRENCH",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "BEDDING_VOLUME",
+      "quantity_type": "VOLUME",
+      "cost_code": "31-200",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "General_Trench_Backfill": {
+      "discipline": "EARTHWORK",
+      "system": "TRENCH",
+      "status": "NEW",
+      "phase_id": "06",
+      "component_type": "BACKFILL_VOLUME",
+      "quantity_type": "VOLUME",
+      "cost_code": "31-230",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Vapor_Barrier_Stegowrap": {
+      "discipline": "MOISTURE_PROTECTION",
+      "system": "SLAB_VAPOR_BARRIER",
+      "status": "NEW",
+      "phase_id": "06",
+      "component_type": "VAPOR_BARRIER_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "07-260",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Concrete_Pourback": {
+      "discipline": "CONCRETE",
+      "system": "SLAB_ON_GRADE",
+      "status": "NEW",
+      "phase_id": "06",
+      "component_type": "POURBACK_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "03-300",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Rebar_Dowels_&_Grid": {
+      "discipline": "CONCRETE",
+      "system": "SLAB_REINFORCEMENT",
+      "status": "NEW",
+      "phase_id": "06",
+      "component_type": "REINFORCEMENT",
+      "quantity_type": "COUNT",
+      "cost_code": "03-210",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Gypsum_Board_Patches": {
+      "discipline": "INTERIORS",
+      "system": "GYPSUM_BOARD",
+      "status": "NEW",
+      "phase_id": "07",
+      "component_type": "PATCH_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "09-290",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Wall_Framing_Nailers": {
+      "discipline": "CARPENTRY",
+      "system": "WALL_FRAMING",
+      "status": "NEW",
+      "phase_id": "07",
+      "component_type": "FRAMING_MEMBER",
+      "quantity_type": "COUNT",
+      "cost_code": "06-100",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Waterproofing_Membrane": {
+      "discipline": "MOISTURE_PROTECTION",
+      "system": "WATERPROOFING",
+      "status": "NEW",
+      "phase_id": "06",
+      "component_type": "MEMBRANE_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "07-100",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Vapor_Mitigating_Epoxy_Primer": {
+      "discipline": "FINISHES",
+      "system": "FLOOR_PREP",
+      "status": "NEW",
+      "phase_id": "07",
+      "component_type": "COATING_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "09-600",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Temporary_Protection": {
+      "discipline": "GENERAL_REQUIREMENTS",
+      "system": "TEMPORARY_PROTECTION",
+      "status": "TEMPORARY",
+      "phase_id": "02",
+      "component_type": "PROTECTION_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "01-500",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Staging_Area": {
+      "discipline": "GENERAL_REQUIREMENTS",
+      "system": "SITE_LOGISTICS",
+      "status": "TEMPORARY",
+      "phase_id": "02",
+      "component_type": "STAGING_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "01-500",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Plumbing_Fixtures": {
+      "discipline": "PLUMBING",
+      "system": "FIXTURES",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "FIXTURE",
+      "quantity_type": "COUNT",
+      "cost_code": "22-420",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Cabinets_&_Countertops": {
+      "discipline": "FINISHES",
+      "system": "CASEWORK",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "CASEWORK",
+      "quantity_type": "COUNT",
+      "cost_code": "12-300",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Unit_B101_Finishes": {
+      "discipline": "FINISHES",
+      "system": "UNIT_FINISHES",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "FINISH",
+      "quantity_type": "COUNT",
+      "cost_code": "09-900",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Unit_B102_Finishes": {
+      "discipline": "FINISHES",
+      "system": "UNIT_FINISHES",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "FINISH",
+      "quantity_type": "COUNT",
+      "cost_code": "09-900",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Unit_B103_Finishes": {
+      "discipline": "FINISHES",
+      "system": "UNIT_FINISHES",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "FINISH",
+      "quantity_type": "COUNT",
+      "cost_code": "09-900",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Unit_B104_Finishes": {
+      "discipline": "FINISHES",
+      "system": "UNIT_FINISHES",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "FINISH",
+      "quantity_type": "COUNT",
+      "cost_code": "09-900",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "As_Built_Callout_Overlay": {
+      "discipline": "DOCUMENTATION",
+      "system": "AS_BUILT",
+      "status": "RECORD",
+      "phase_id": "08",
+      "component_type": "CALLOUT",
+      "quantity_type": "COUNT",
+      "cost_code": "01-780",
+      "lod": "NA",
+      "managed_scope": true,
+      "model_state": "DOCUMENTATION"
+    },
+    "Side_Sewer_Main_6in": {
+      "discipline": "CIVIL",
+      "system": "SITE_SEWER",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "PIPE_ROUTE",
+      "quantity_type": "LENGTH",
+      "cost_code": "33-300",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Concrete_Slab_Unmodified": {
+      "discipline": "STRUCTURE",
+      "system": "SLAB_ON_GRADE",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "SLAB_AREA",
+      "quantity_type": "AREA",
+      "cost_code": "03-000",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Foundation_Footings": {
+      "discipline": "STRUCTURE",
+      "system": "FOUNDATION",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "FOOTING",
+      "quantity_type": "COUNT",
+      "cost_code": "03-000",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Precast_Concrete_Walls": {
+      "discipline": "STRUCTURE",
+      "system": "FOUNDATION_WALL",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "WALL",
+      "quantity_type": "AREA",
+      "cost_code": "03-000",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Wood_Stud_Partitions": {
+      "discipline": "CARPENTRY",
+      "system": "WALL_FRAMING",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "FRAMING_MEMBER",
+      "quantity_type": "COUNT",
+      "cost_code": "06-000",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Subgrade_&_Soil": {
+      "discipline": "EARTHWORK",
+      "system": "SUBGRADE",
+      "status": "EXISTING_REMAIN",
+      "phase_id": "01",
+      "component_type": "SOIL_VOLUME",
+      "quantity_type": "VOLUME",
+      "cost_code": "31-000",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Radiant_Heating_Coils": {
+      "discipline": "HVAC",
+      "system": "RADIANT_HEATING",
+      "status": "EXISTING_PROTECT",
+      "phase_id": "03",
+      "component_type": "IN_SLAB_UTILITY",
+      "quantity_type": "LENGTH",
+      "cost_code": "23-000",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "00_Site_&_Context": {
+      "discipline": "ARCHITECTURE",
+      "system": "SITE_CONTEXT",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "00-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "01_Structural_Base": {
+      "discipline": "STRUCTURE",
+      "system": "BUILDING_STRUCTURE",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "03-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "02_Existing_Conditions_&_Demo": {
+      "discipline": "GENERAL",
+      "system": "EXISTING_CONDITIONS",
+      "status": "DEMOLITION",
+      "phase_id": "03",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "02-410",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "03_New_Plumbing_DWV": {
+      "discipline": "PLUMBING",
+      "system": "DWV",
+      "status": "NEW",
+      "phase_id": "04",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "22-100",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "04_Trench_Backfill_&_Slab_Pourback": {
+      "discipline": "CONSTRUCTION",
+      "system": "TRENCH_AND_SLAB",
+      "status": "NEW",
+      "phase_id": "06",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "31-200",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "05_Wall_&_Floor_Substrates": {
+      "discipline": "INTERIORS",
+      "system": "SUBSTRATES",
+      "status": "NEW",
+      "phase_id": "07",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "09-000",
+      "lod": "300",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "06_Interior_Finishes_&_Fixtures": {
+      "discipline": "FINISHES",
+      "system": "FINISHES_AND_FIXTURES",
+      "status": "REINSTALLED",
+      "phase_id": "08",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "09-900",
+      "lod": "200",
+      "managed_scope": true,
+      "model_state": "SOURCE_GEOMETRY"
+    },
+    "Bldg_B_Shell_&_Upper_Stacks": {
+      "discipline": "ARCHITECTURE",
+      "system": "BUILDING_CONTEXT",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "00-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "East_Garages_&_Planter_Strip": {
+      "discipline": "ARCHITECTURE",
+      "system": "SITE_CONTEXT",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "00-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "PHOTOREAL_Architecture": {
+      "discipline": "ARCHITECTURE",
+      "system": "PRESENTATION_CONTEXT",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "00-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "PHOTOREAL_Fixtures_&_Details": {
+      "discipline": "ARCHITECTURE",
+      "system": "PRESENTATION_CONTEXT",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "00-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "PHOTOREAL_Landscape": {
+      "discipline": "LANDSCAPE",
+      "system": "PRESENTATION_CONTEXT",
+      "status": "EXISTING_CONTEXT",
+      "phase_id": "01",
+      "component_type": "CONTEXT",
+      "quantity_type": "NA",
+      "cost_code": "00-000",
+      "lod": "200",
+      "managed_scope": false,
+      "model_state": "REFERENCE_CONTEXT"
+    },
+    "PHOTOREAL_Cameras_&_Lighting": {
+      "discipline": "VISUALIZATION",
+      "system": "PRESENTATION",
+      "status": "ANIMATION",
+      "phase_id": "01",
+      "component_type": "CAMERA_LIGHT",
+      "quantity_type": "NA",
+      "cost_code": "99-000",
+      "lod": "NA",
+      "managed_scope": false,
+      "model_state": "VISUALIZATION_CONTROL"
+    },
+    "Collection": {
+      "discipline": "VISUALIZATION",
+      "system": "PRESENTATION",
+      "status": "ANIMATION",
+      "phase_id": "01",
+      "component_type": "CAMERA_LIGHT",
+      "quantity_type": "NA",
+      "cost_code": "99-000",
+      "lod": "NA",
+      "managed_scope": false,
+      "model_state": "VISUALIZATION_CONTROL"
+    }
+  },
+  "quality_rules": [
+    "Every object receives a unique vdc_element_id.",
+    "Every managed-scope object receives unit, source, verification status, quantity type, and provisional cost code.",
+    "Pipe routes require nominal diameter; undocumented slope is carried as an open data item rather than invented.",
+    "Derived growth and hydrotest objects must resolve to a parent source route.",
+    "Original Blender names are preserved as vdc_legacy_name during Phase 1."
+  ]
+}

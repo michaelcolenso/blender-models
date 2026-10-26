@@ -1,0 +1,9 @@
+Activity ID,Activity Name,Phase,Start,Finish,Duration (wd),Predecessors,Old Frames,New Frames
+A1010,Existing + Investigation,01,2027-01-04,2027-01-06,3,,1-84,1.0-70.5
+A1020,Staging + Fixture Removal,02,2027-01-07,2027-01-08,2,A1010,85-168,70.5-116.9
+A1030,Demolition + Excavation,03,2027-01-11,2027-01-15,5,A1020,169-252,116.9-232.7
+A1040,New ABS Installation,04,2027-01-18,2027-01-27,8,A1030,253-336,232.7-418.1
+A1050,Water Test,05,2027-01-28,2027-01-29,2,A1040,337-420,418.1-464.4
+A1060,Backfill + Slab Pourback,06,2027-02-01,2027-02-04,4,A1050,421-504,464.4-557.1
+A1070,Patching + Finishes,07,2027-02-05,2027-02-09,3,A1060,505-588,557.1-626.7
+A1080,Fixture Reinstall + As-Built,08,2027-02-10,2027-02-11,2,A1070,589-672,626.7-673.0

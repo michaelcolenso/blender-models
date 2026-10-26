@@ -1,0 +1,14 @@
+{
+  "revision": "VDC-P4-001",
+  "status": "PHASE_4_MODEL_LINKED_TAKEOFF",
+  "objects": 2981,
+  "actions": 2972,
+  "fcurves": 4397,
+  "keyframes": 19769,
+  "takeoff_lines": 195,
+  "objects_linked_to_lines": 754,
+  "orphan_line_refs": 0,
+  "schedule_still_embedded": true,
+  "issues_still_embedded": true,
+  "passed": true
+}

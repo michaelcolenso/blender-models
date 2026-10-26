@@ -1,3 +1,0 @@
-Narration: locally synthesized with Piper, en_US-ljspeech-high, LJ Speech public-domain dataset. Source: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/ljspeech/high
-Score and transition cues: original procedural composition generated for this project.
-No original site audio or actual flow measurements are represented.

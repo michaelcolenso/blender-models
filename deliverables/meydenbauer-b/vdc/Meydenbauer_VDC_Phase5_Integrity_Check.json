@@ -1,0 +1,11 @@
+{
+  "revision": "VDC-P5-001",
+  "status": "PHASE_5_FIELD_PACKAGE",
+  "objects": 2981,
+  "fcurves": 4397,
+  "keyframes": 19769,
+  "field_package_embedded": true,
+  "takeoff_embedded": true,
+  "schedule_embedded": true,
+  "passed": true
+}

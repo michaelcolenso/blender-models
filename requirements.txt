@@ -1,4 +1,0 @@
-bpy==5.0.1
-pyyaml
-openpyxl
-pillow

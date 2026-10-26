@@ -1,0 +1,82 @@
+{
+  "revision": "VDC-P3-001",
+  "status": "PHASE_3_SCHEDULE_DRIVEN_4D",
+  "objects": 2981,
+  "actions": 2972,
+  "fcurves": 4397,
+  "keyframes": 19769,
+  "objects_linked": 2981,
+  "schedule_embedded": true,
+  "schedule_finish": "2027-02-11",
+  "per_phase_observed_key_ranges": {
+    "01": [
+      1.0,
+      654.8
+    ],
+    "02": [
+      1.0,
+      672.4
+    ],
+    "03": [
+      1.0,
+      672.4
+    ],
+    "04": [
+      1.0,
+      673.0
+    ],
+    "05": [
+      1.0,
+      464.4
+    ],
+    "06": [
+      1.0,
+      672.4
+    ],
+    "07": [
+      1.0,
+      672.4
+    ],
+    "08": [
+      1.0,
+      672.4
+    ]
+  },
+  "expected_phase_ranges": {
+    "01": [
+      1.0,
+      70.52
+    ],
+    "02": [
+      70.52,
+      116.86
+    ],
+    "03": [
+      116.86,
+      232.72
+    ],
+    "04": [
+      232.72,
+      418.1
+    ],
+    "05": [
+      418.1,
+      464.45
+    ],
+    "06": [
+      464.45,
+      557.14
+    ],
+    "07": [
+      557.14,
+      626.66
+    ],
+    "08": [
+      626.66,
+      673.0
+    ]
+  },
+  "all_keys_in_global_range": true,
+  "keyframe_count_matches_phase2": true,
+  "passed": true
+}
