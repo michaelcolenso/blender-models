@@ -8,7 +8,7 @@
     bm check [--staged | --base REF]           specs, metadata, large files, links, tests
     bm <tool> [args]                           calibrate, extract, overlay, detail-overlay, render,
                                                render-plan, animate-house, animate-sequence,
-                                               room, skp, usdz
+                                               room, skp, usdz, audit-blends
 
 Run through uv: `uv run bm …`. Nothing here imports bpy; Blender work runs in a subprocess.
 """
@@ -34,6 +34,7 @@ TOOLS = {  # bm <name> -> python -m bmodels.<module>
     "room": "room",
     "skp": "skp_code",
     "usdz": "export_usdz",
+    "audit-blends": "blend_audit",
 }
 # Anything under these paths can change every build, so a change rebuilds every spec.
 REBUILD_ALL = ("src/", "pyproject.toml", "uv.lock", ".github/", "takeoff/")
