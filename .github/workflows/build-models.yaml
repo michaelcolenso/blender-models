@@ -2,10 +2,10 @@ name: Build & verify models
 
 on:
   pull_request:
-    paths: ["specs/**", "projects/*/specs/**", "projects/*/project.yaml", "takeoff/**", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
+    paths: ["projects/*/specs/**", "projects/*/takeoff/**", "projects/*/project.yaml", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   push:
     branches: [main]
-    paths: ["specs/**", "projects/*/specs/**", "projects/*/project.yaml", "takeoff/**", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
+    paths: ["projects/*/specs/**", "projects/*/takeoff/**", "projects/*/project.yaml", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   workflow_dispatch:
     inputs:
       spec:

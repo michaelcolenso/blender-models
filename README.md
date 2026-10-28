@@ -1,6 +1,6 @@
 # Blender Project — Instructions
 
-Highland cinematic film: [30-second graded owner film, stills and editable scene](deliverables/highland-cinema/README.md) · [shot list and rebuild](projects/highland-drone/CINEMA.md).
+Highland cinematic film: [shot list and rebuild](projects/highland-drone/CINEMA.md) (the rendered film is not published in this repo).
 
 Highland architectural walkthrough: [upgraded full film, phone preview and Blender scene](deliverables/highland-archviz/README.md).
 
@@ -16,12 +16,12 @@ Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guid
 
 1. **Intake.** Inventory every source: sheet number, detail number, revision/date, scale, photo IDs. Read drawings at full resolution (rasterize PDFs with `pdftoppm -r 200+`; crop into details). Note scale bars and "NTS" details.
 2. **Takeoff.** Extract every dimension, member size, spacing, elevation, and count into the model spec. Use actual lumber sizes (2x10 = 1½ × 9¼), not nominal. Never scale an NTS detail. Never infer a dimension from a partial drawing and call it documented.
-3. **Model spec** (`specs/<project>-<area>.yaml`). The spec is the single source of truth; geometry is never hand-edited in Blender without the spec changing too. Every element carries:
+3. **Model spec** (`projects/<site>/specs/<area>.yaml`; start a site with `uv run bm new <site>`). The spec is the single source of truth; geometry is never hand-edited in Blender without the spec changing too. Every element carries:
    - `status: confirmed` — dimension shown on a document (`source` required)
    - `status: provisional` — derived: scaled from a drawing with a scale bar, or measured from a photo against a known reference (`source` required; note the reference and expected tolerance)
    - `status: assumed` — not in any document (`basis` required, e.g. "code-minimum", "typical", "massing only")
    - Document-driven `checks`: counts, overall extents, clear gaps, spacing, elevations — each with its `source`.
-4. **Build.** `uv run bm build specs/<name>.yaml [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
+4. **Build.** `uv run bm build <site>[/<spec>] [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
 5. **Verify.** The builder fails (exit 1) on: missing source/basis, count or extent mismatch, gap mismatch, or a blank render. Then look at the review renders myself — plan, front, side, iso — colored by provenance (green confirmed, yellow provisional, orange assumed). Where a drawing elevation exists, compare the ortho render against it at the same scale. "Checks passed" and "looked right" are both required; report which were done.
 6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
 7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (src/bmodels/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
@@ -42,7 +42,7 @@ Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guid
 
 - **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `src/bmodels/detail.py`.
 - **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `src/bmodels/house.py`, `src/bmodels/qto.py`.
-- **room** — interior shell + furniture + lighting from a photo or sketch (`specs/room-*.yaml`, `src/bmodels/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `src/bmodels/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `uv run bm room specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
+- **room** — interior shell + furniture + lighting from a photo or sketch (`projects/<site>/specs/room-*.yaml`, `src/bmodels/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `src/bmodels/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `uv run bm room projects/room-living-kitchen/specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
 - **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
 All types share: provenance on every element, failing checks, CI rebuild.
 

@@ -1,0 +1,7 @@
+name: "SAMPLE — pipeline fixture (not a real project)"
+address: ""
+client: ""
+building_type: "fictional balcony framing bay"
+scope: "exercises the build, checks and renders in CI"
+units: imperial
+release_tag_prefix: sample

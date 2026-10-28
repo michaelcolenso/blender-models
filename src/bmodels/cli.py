@@ -37,7 +37,7 @@ TOOLS = {  # bm <name> -> python -m bmodels.<module>
     "audit-blends": "blend_audit",
 }
 # Anything under these paths can change every build, so a change rebuilds every spec.
-REBUILD_ALL = ("src/", "pyproject.toml", "uv.lock", ".github/", "takeoff/")
+REBUILD_ALL = ("src/", "pyproject.toml", "uv.lock", ".github/")
 
 
 def rel(p):

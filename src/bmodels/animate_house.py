@@ -1,6 +1,6 @@
 """Build-up animation for a house model (type: house) from the spec's `sequence:` block.
 
-  uv run bm animate-house specs/<name>.yaml [--blend build/<name>/<name>.blend] --out build/<name>-sequence/<name>-sequence
+  uv run bm animate-house projects/<site>/specs/<name>.yaml [--blend build/<site>/<name>/<name>.blend] --out build/<site>/<name>-sequence/<name>-sequence
       [--fps 12] [--res 960x540] [--samples 8] [--no-video] [--test-frames 1,60,200]
 
 Needs the built .blend (run `bm build` first). Steps: {caption, objects: [glob..], motion, seconds, stagger}
