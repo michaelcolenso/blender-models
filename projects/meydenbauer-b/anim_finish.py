@@ -4,14 +4,19 @@ HUD (Pillow, per frame): phase number and title with a cross-fade at each phase 
 one-line source note per phase, an 8-segment progress bar along the bottom, and the
 standing disclaimer. Frames may be a subset (frame step); timing comes from frame numbers.
 
+--plan sequence (one unit at a time): unit and phase card, a working-day counter, haul and
+SOR note 21 chips, and a Gantt of the strawman schedule with a playhead, from schedule.py and
+meydenbauer-b.logistics.json. --upscale lets a small proxy carry a legible HUD.
+
 Usage:
   python projects/meydenbauer-b/anim_finish.py --tag proxy-60 --fps 60
+  python projects/meydenbauer-b/anim_finish.py --plan sequence --tag seqproxy-30 --fps 30 --upscale 540
   python projects/meydenbauer-b/anim_finish.py --tag final-30 --fps 30 --crf 16
   python projects/meydenbauer-b/anim_finish.py --tag final-30 --fps 30 --from-video final-30-clean.mp4
 Writes build/meydenbauer-b/anim/<tag>.mp4, <tag>-poster.png and, from rendered frames, <tag>-clean.mp4
 (no HUD, CRF 10). Keep the clean master: a HUD or note change is then a CPU re-composite, not a re-render.
 """
-import argparse, subprocess, sys
+import argparse, json, math, subprocess, sys
 from fractions import Fraction
 from pathlib import Path
 
@@ -21,6 +26,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 from animate import PHASES, PHASE_S  # noqa: E402
+import schedule as SCHED  # noqa: E402
+
+SPEC = json.loads((HERE / "meydenbauer-b.spec.json").read_text())
 
 NOTES = [  # each line cites where it comes from
     "Locate and mark existing cast iron; verify depths and stacks before demolition (P1.01 contractor's note)",
@@ -35,6 +43,12 @@ NOTES = [  # each line cites where it comes from
 DISCLAIMER = ("Illustrative sequence for internal planning, not a contract document. Routes from bid set P1.01/P1.02; "
               "depths, protection layout and fixtures assumed.")
 INK = (236, 240, 246); DIM = (150, 160, 175); ACCENT = (64, 214, 255); BG = (11, 16, 23)
+AMBER = (255, 160, 60); GREEN = (90, 220, 130)
+PHASE_RGB = [(255, 140, 40), (205, 185, 140), (240, 100, 55), (64, 214, 255), (70, 140, 255), (170, 172, 180),
+             (196, 146, 96), (90, 210, 120)]
+PHASE_SHORT = ["Locate", "Stage", "Demo + dig", "ABS", "Test", "Backfill + pour", "Cure + finish", "Reset"]
+SEQ_DISCLAIMER = ("Illustrative sequence for internal planning, not a contract document. Schedule, order, haul routes, "
+                  "staging layout and depths assumed; pipe routes from bid set P1.01/P1.02.")
 
 
 def fonts(h):
@@ -89,12 +103,126 @@ def hud(im, t, total_s):
     return Image.alpha_composite(im.convert("RGBA"), ov).convert("RGB")
 
 
+def fit_text(d, text, font, width):
+    if d.textlength(text, font=font) <= width:
+        return text
+    while text and d.textlength(text + " ...", font=font) > width:
+        text = text.rsplit(" ", 1)[0] if " " in text else text[:-1]
+    return text.rstrip(";,·") + " ..."
+
+
+def hud_seq(im, t, total_s, plan, W, L):
+    """Sequence HUD: card (unit, phase, note), day counter, chips, Gantt with playhead."""
+    w, h = im.size
+    F, k = fonts(h)
+    ov = Image.new("RGBA", im.size, (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
+    pad = int(36 * k)
+    day, unit, i = SCHED.day_at(plan, W, t)
+    order = [u["unit"] for u in plan["units"]]
+    first, last = W[order[0]][0][0], W[order[-1]][-1][1]
+    if unit is None:
+        t0, t1 = (0.0, first) if t < first else (last, total_s)
+        num, title = "", "Site overview"
+        sub = "BUILDING B  ·  ONE UNIT AT A TIME"
+        note = (f'Order {" > ".join(order)} (assumed); haul through one core entry at a time (00 22 13 1.14.B)' if t < first
+                else f'{plan["working_days"]:g} working days, about {plan["calendar_days_approx"]} calendar days, no holidays (strawman)')
+    else:
+        t0, t1 = W[unit][i]
+        num, title = PHASES[i].split(" ", 1)
+        sub = f"UNIT {unit}  ·  {order.index(unit) + 1} OF {len(order)}"
+        note = NOTES[i]
+    ramp = min(0.35, 0.25 * (t1 - t0))
+    a = int(255 * max(0.0, min(1.0, (t - t0) / ramp + (0.2 if t0 == 0 else 0), (t1 - t) / ramp if t1 < total_s else 1.0)))
+    # top-left card
+    tx = pad + (92 * k if num else 0)
+    note = fit_text(d, note, F["note"], w * 0.62)
+    cw = max(tx - pad + d.textlength(title, font=F["title"]), d.textlength(note, font=F["note"]),
+             d.textlength(sub, font=F["brand"])) + 24 * k
+    d.rounded_rectangle([pad - 16 * k, pad - 12 * k, pad + cw, pad + 150 * k], radius=12 * k, fill=(*BG, int(150 * a / 255)))
+    d.text((pad + 2 * k, pad - 2 * k), sub, font=F["brand"], fill=(*ACCENT, a))
+    if num:
+        d.text((pad, pad + 20 * k), num, font=F["num"], fill=(*ACCENT, a))
+    d.text((tx, pad + 30 * k), title, font=F["title"], fill=(*INK, a))
+    d.text((pad + 2 * k, pad + 98 * k), note, font=F["note"], fill=(*DIM, a))
+    # top-right day counter
+    shown = 0 if unit is None and t < first else min(math.ceil(day - 1e-9), plan["working_days"])
+    big = f"DAY {shown:g}"
+    small = f'of {plan["working_days"]:g} working days  ·  week {max(1, math.ceil(day / 5 - 1e-9))}'
+    x1 = w - pad
+    d.text((x1 - d.textlength(big, font=F["num"]), pad - 6 * k), big, font=F["num"], fill=(*INK, 235))
+    d.text((x1 - d.textlength(small, font=F["note"]), pad + 58 * k), small, font=F["note"], fill=(*DIM, 230))
+    # chips under the counter
+    chips = []
+    if unit is not None:
+        r, q = L["routes"][unit], L["haul"][unit]
+        if 1 <= i <= 6:
+            stacks = 2 <= i <= 5 and any(e["kind"].startswith("STACK") for su in SPEC["units"] if su["unit"] == unit
+                                         for e in su["ends"])
+            chips.append((GREEN, "SERVICE  1 toilet + 1 sink by 5 PM (SOR 21)  ·  stacks on bypass (P2.1)" if stacks
+                          else "SERVICE  1 toilet + 1 sink in use by 5:00 PM daily (SOR note 21)"))
+        if i == 2:
+            chips.append((AMBER, f'HAUL OUT  {q["out_cy_loose"]:g} CY loose  ·  {r["out_length_ft"]} ft via {r["entry"]} core  ·  '
+                                 f'{q["bin_swaps"]} bin swaps'))
+        if i == 5:
+            chips.append((ACCENT, f'HAUL IN  {q["in_cy"] - q["concrete_cy"]:.1f} CY bedding + backfill  ·  '
+                                  f'{q["concrete_cy"]:g} CY concrete'))
+        if i == 6:
+            chips.append((DIM, f'Includes {plan["rates"]["cure_days"]:g}-day cure before floor finishes (assumed)'))
+    cy = pad + 92 * k
+    for col, text in chips:
+        text = fit_text(d, text, F["note"], w * 0.45)
+        tw = d.textlength(text, font=F["note"])
+        d.rounded_rectangle([x1 - tw - 26 * k, cy, x1, cy + 32 * k], radius=8 * k, fill=(*BG, int(170 * a / 255)))
+        d.rectangle([x1 - tw - 26 * k, cy, x1 - tw - 20 * k, cy + 32 * k], fill=(*col, a))
+        d.text((x1 - tw - 10 * k, cy + 5 * k), text, font=F["note"], fill=(*INK, a))
+        cy += 40 * k
+    # Gantt band
+    by = h - int(196 * k)
+    d.rectangle([0, by, w, h], fill=(*BG, 175))
+    gx0, gx1 = pad + 70 * k, w - pad
+    X = lambda dd: gx0 + dd / plan["working_days"] * (gx1 - gx0)
+    lx = gx0
+    for j, name in enumerate(PHASE_SHORT):                       # legend
+        lab = f"{j + 1:02d} {name}"
+        if lx + 18 * k + d.textlength(lab, font=F["small"]) > gx1:
+            break
+        d.rectangle([lx, by + 12 * k, lx + 11 * k, by + 23 * k], fill=(*PHASE_RGB[j], 255))
+        d.text((lx + 16 * k, by + 9 * k), lab, font=F["small"], fill=(*DIM, 230))
+        lx += 28 * k + d.textlength(lab, font=F["small"])
+    ry, rh, rg = by + 40 * k, 16 * k, 5 * k
+    for dd in range(0, int(plan["working_days"]) + 1, 5):
+        d.line([X(dd), ry - 3 * k, X(dd), ry + 4 * (rh + rg)], fill=(*DIM, 50), width=max(1, int(k)))
+        if dd % 10 == 0:
+            d.text((X(dd) - 4 * k, ry + 4 * (rh + rg) + 2 * k), f"D{dd}", font=F["small"], fill=(*DIM, 200))
+    for r_, u in enumerate(plan["units"]):
+        y0 = ry + r_ * (rh + rg)
+        active = u["unit"] == unit
+        d.text((pad, y0 - 1 * k), u["unit"], font=F["seg"], fill=(*(INK if active else DIM), 255 if active else 190))
+        for j, (s0, dd) in enumerate(zip(u["phase_start_day"], u["days"])):
+            xa, xb = X(s0), X(s0 + dd)
+            d.rectangle([xa, y0, max(xa, xb - max(1, k)), y0 + rh], fill=(*PHASE_RGB[j], 70))
+            done = min(max(day - s0, 0.0), dd)
+            if done > 0:
+                d.rectangle([xa, y0, max(xa, min(X(s0 + done), xb - max(1, k))), y0 + rh], fill=(*PHASE_RGB[j], 240))
+    px = X(day)
+    d.line([px, ry - 7 * k, px, ry + 4 * (rh + rg) - 2 * k], fill=(*INK, 255), width=max(1, int(2 * k)))
+    d.polygon([(px - 5 * k, ry - 11 * k), (px + 5 * k, ry - 11 * k), (px, ry - 4 * k)], fill=(*INK, 255))
+    clock = f"{t:5.1f}s / {total_s:.1f}s"
+    dy = h - int(30 * k)
+    d.text((pad, dy), fit_text(d, SEQ_DISCLAIMER, F["small"], x1 - pad - d.textlength(clock, font=F["small"]) - 20 * k),
+           font=F["small"], fill=(*DIM, 220))
+    d.text((x1 - d.textlength(clock, font=F["small"]), dy), clock, font=F["small"], fill=(*DIM, 220))
+    return Image.alpha_composite(im.convert("RGBA"), ov).convert("RGB")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", required=True)
     ap.add_argument("--fps", type=int, default=60, help="timeline fps the frames were rendered on")
     ap.add_argument("--crf", type=int, default=18)
     ap.add_argument("--from-video", default="", help="clean master MP4 to re-apply the HUD to (no re-render)")
+    ap.add_argument("--plan", default="overview", choices=["overview", "sequence"])
+    ap.add_argument("--upscale", type=int, default=0, help="scale frames to this height before the HUD (proxies)")
     a = ap.parse_args()
     anim = ROOT / "build/meydenbauer-b/anim"
     if a.from_video:
@@ -134,14 +262,27 @@ def main():
                         "-r", f"{rate:g}", "-c:v", "libx264", "-preset", "slow", "-crf", "10", "-pix_fmt", "yuv420p",
                         "-movflags", "+faststart", str(anim / f"{a.tag}-clean.mp4")], check=True)
         lst.unlink()
-    total_s = len(PHASES) * PHASE_S
+    if a.plan == "sequence":
+        plan = SCHED.build(); W, total_s = SCHED.windows(plan)
+        L = json.loads((HERE / "meydenbauer-b.logistics.json").read_text())
+        draw = lambda im, t: hud_seq(im, t, total_s, plan, W, L)
+        w4 = W[plan["order"][-1]][2]                     # B-104 demolition: the longest haul, on the haul shot
+        t_poster = w4[0] + 0.8 * (w4[1] - w4[0])
+    else:
+        total_s = len(PHASES) * PHASE_S
+        draw = lambda im, t: hud(im, t, total_s)
+        t_poster = total_s * 21 / 32                     # inside the water test
     tmp = src.parent / f"{a.tag}-hud"; tmp.mkdir(exist_ok=True)
+    for old in tmp.glob("*.png"):
+        old.unlink()
     for j, p in enumerate(frames):
-        t = (int(p.stem) - 1) / a.fps
-        hud(Image.open(p), t, total_s).save(tmp / f"{j:05d}.png")
+        im = Image.open(p)
+        if a.upscale:
+            im = im.resize((round(im.width * a.upscale / im.height / 2) * 2, a.upscale), Image.LANCZOS)
+        draw(im, (int(p.stem) - 1) / a.fps).save(tmp / f"{j:05d}.png")
     out = anim / f"{a.tag}.mp4"
     encode(str(tmp / "%05d.png"), out, a.crf)
-    poster = len(frames) * 21 // 32                   # inside the water test
+    poster = min(range(len(frames)), key=lambda j: abs((int(frames[j].stem) - 1) / a.fps - t_poster))
     Image.open(tmp / f"{poster:05d}.png").save(out.with_name(f"{a.tag}-poster.png"))
     probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=width,height,r_frame_rate,nb_frames",
                             "-of", "default=nw=1", str(out)], capture_output=True, text=True).stdout.split()

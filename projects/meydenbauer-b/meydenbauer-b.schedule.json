@@ -1,0 +1,182 @@
+{
+ "phases": [
+  "01 Existing + investigation",
+  "02 Staging + fixture removal",
+  "03 Demolition + excavation",
+  "04 New ABS installation",
+  "05 Water test",
+  "06 Backfill + slab pourback",
+  "07 Patching + finishes",
+  "08 Fixture reinstatement"
+ ],
+ "order": [
+  "B-103",
+  "B-102",
+  "B-101",
+  "B-104"
+ ],
+ "order_basis": "B-103 first as the pilot (smallest network, 64.8 LF); B-104 last (largest, and its kitchen-stack run waits on RFI 4)",
+ "rates": {
+  "investigation_days": 1.0,
+  "staging_days": 1.0,
+  "sawcut_sf_per_day": 150.0,
+  "excavation_cy_per_day": 8.0,
+  "abs_lf_per_day": 40.0,
+  "days_per_connection": 0.15,
+  "water_test_days": 1.0,
+  "backfill_cy_per_day": 12.0,
+  "pour_days": 1.0,
+  "cure_days": 3.0,
+  "finish_sf_per_day": 80.0,
+  "reset_days": 1.0,
+  "slab_in": 4.0,
+  "pourback_in": 5.0,
+  "swell": 1.25
+ },
+ "status": "STRAWMAN: rates and order assumed; quantities from takeoff S2 @ 3.5 ft",
+ "units": [
+  {
+   "unit": "B-103",
+   "days": [
+    1.0,
+    1.0,
+    3.5,
+    3.0,
+    1.0,
+    3.0,
+    5.5,
+    1.0
+   ],
+   "cure_days": 3.0,
+   "quantities": {
+    "slab_cut_sf": 145,
+    "excavation_bank_cy": 18.1,
+    "pipe_lf": 64.8,
+    "connections": 7,
+    "haul_out_cy": 24.4,
+    "haul_in_cy": 20.4,
+    "concrete_cy": 2.2
+   },
+   "start_day": 0.0,
+   "phase_start_day": [
+    0.0,
+    1.0,
+    2.0,
+    5.5,
+    8.5,
+    9.5,
+    12.5,
+    18.0
+   ]
+  },
+  {
+   "unit": "B-102",
+   "days": [
+    1.0,
+    1.0,
+    4.0,
+    3.5,
+    1.0,
+    3.0,
+    6.0,
+    1.0
+   ],
+   "cure_days": 3.0,
+   "quantities": {
+    "slab_cut_sf": 174,
+    "excavation_bank_cy": 20.9,
+    "pipe_lf": 85.2,
+    "connections": 7,
+    "haul_out_cy": 28.3,
+    "haul_in_cy": 23.6,
+    "concrete_cy": 2.7
+   },
+   "start_day": 19.0,
+   "phase_start_day": [
+    19.0,
+    20.0,
+    21.0,
+    25.0,
+    28.5,
+    29.5,
+    32.5,
+    38.5
+   ]
+  },
+  {
+   "unit": "B-101",
+   "days": [
+    1.0,
+    1.0,
+    3.5,
+    3.0,
+    1.0,
+    3.0,
+    5.5,
+    1.0
+   ],
+   "cure_days": 3.0,
+   "quantities": {
+    "slab_cut_sf": 152,
+    "excavation_bank_cy": 18.7,
+    "pipe_lf": 66.2,
+    "connections": 8,
+    "haul_out_cy": 25.2,
+    "haul_in_cy": 21.0,
+    "concrete_cy": 2.3
+   },
+   "start_day": 39.5,
+   "phase_start_day": [
+    39.5,
+    40.5,
+    41.5,
+    45.0,
+    48.0,
+    49.0,
+    52.0,
+    57.5
+   ]
+  },
+  {
+   "unit": "B-104",
+   "days": [
+    1.0,
+    1.0,
+    5.0,
+    4.0,
+    1.0,
+    3.5,
+    6.5,
+    1.0
+   ],
+   "cure_days": 3.0,
+   "quantities": {
+    "slab_cut_sf": 215,
+    "excavation_bank_cy": 24.6,
+    "pipe_lf": 96.5,
+    "connections": 8,
+    "haul_out_cy": 33.4,
+    "haul_in_cy": 27.9,
+    "concrete_cy": 3.3
+   },
+   "start_day": 58.5,
+   "phase_start_day": [
+    58.5,
+    59.5,
+    60.5,
+    65.5,
+    69.5,
+    70.5,
+    74.0,
+    80.5
+   ]
+  }
+ ],
+ "working_days": 81.5,
+ "calendar_days_approx": 115,
+ "constraints": [
+  "SOR note 21: one sink and one toilet in service at 5:00 PM daily",
+  "SOR note 13: 48 h shut-off notice, weekdays only",
+  "00 22 13 1.9: work 8:00 AM-5:00 PM Mon-Fri; schedule by fixture and bathroom"
+ ]
+}
