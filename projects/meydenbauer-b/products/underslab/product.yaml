@@ -11,12 +11,13 @@ steps:
   assets: python $BM_PRODUCT_DIR/assets.py
   realism: python $BM_PRODUCT_DIR/realism.py
   animate: python $BM_PRODUCT_DIR/animate.py
-  # fast, CPU only, no source PDFs: everything a change must keep passing
+  # fast, CPU only, no source PDFs: everything a change must keep passing. build.py is not
+  # here: it packs build/meydenbauer-b/underlay_P1.02.png, which prepare.py makes from the
+  # bid set in sources/ (never committed).
   check:
     - python $BM_PRODUCT_DIR/takeoff.py
     - python $BM_PRODUCT_DIR/structure.py
     - python $BM_PRODUCT_DIR/schedule.py
     - python $BM_PRODUCT_DIR/logistics.py
-    - python $BM_PRODUCT_DIR/build.py --no-render
   runpod-render: bash $BM_PRODUCT_DIR/runpod_render.sh
   runpod-animate: bash $BM_PRODUCT_DIR/runpod_animate.sh
