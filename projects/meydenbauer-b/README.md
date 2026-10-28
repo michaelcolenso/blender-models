@@ -13,12 +13,12 @@ Results, renders and draft RFIs: [deliverables/meydenbauer-b](../../deliverables
 ## Pipeline
 
 ```bash
-python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt pymupdf shapely numpy
+uv sync --group pdf
 # sources/ is git-ignored; put the bid set there first
-.venv/bin/python projects/meydenbauer-b/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
-.venv/bin/python projects/meydenbauer-b/takeoff.py          # takeoff.json + workbook
-.venv/bin/python projects/meydenbauer-b/build.py            # .blend, .glb, 8 renders (~11 min, 4 cores)
-.venv/bin/python projects/meydenbauer-b/build.py --no-render   # model + checks only (~3 s)
+uv run python projects/meydenbauer-b/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
+uv run python projects/meydenbauer-b/takeoff.py          # takeoff.json + workbook
+uv run python projects/meydenbauer-b/build.py            # .blend, .glb, 8 renders (~11 min, 4 cores)
+uv run python projects/meydenbauer-b/build.py --no-render   # model + checks only (~3 s)
 ```
 
 | Step | Reads | Writes |
@@ -31,10 +31,10 @@ python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt pymupdf sh
 [deliverables/meydenbauer-b/anim](../../deliverables/meydenbauer-b/anim/README.md)):
 
 ```bash
-.venv/bin/python projects/meydenbauer-b/schedule.py         # strawman unit-by-unit schedule (rates assumed)
-.venv/bin/python projects/meydenbauer-b/logistics.py        # entries, staging, haul routes (assumed, SOR Fig 8)
-.venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render   # .blend + 92 + 44 checks
-.venv/bin/python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --stills --res 0.4 --samples 12
+uv run python projects/meydenbauer-b/schedule.py         # strawman unit-by-unit schedule (rates assumed)
+uv run python projects/meydenbauer-b/logistics.py        # entries, staging, haul routes (assumed, SOR Fig 8)
+uv run python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render   # .blend + 92 + 44 checks
+uv run python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --stills --res 0.4 --samples 12
 PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh setup   # then bench, render 2, finish
 ```
 

@@ -49,18 +49,17 @@ lengths are whole beats at 80 BPM, and the score's chord changes land on the cut
 
 ## Rebuild
 
-Python 3.11. The scene and score use `bpy==5.0.1` (with its NumPy 1.26). Finishing needs
-a separate environment, because `opencv-python-headless` releases after 4.10 pull NumPy 2,
-which `bpy` 5.0.1 cannot import.
+Python 3.11 from the repo-wide uv lock. `bpy==5.0.1` needs NumPy 1.26, so the lock pins
+`opencv-python-headless` 4.10 (later releases pull NumPy 2) and one environment covers the
+scene, score and finish.
 
 ```bash
-python3.11 -m venv .venv-bpy && .venv-bpy/bin/pip install bpy==5.0.1 pillow
-python3.11 -m venv .venv-finish && .venv-finish/bin/pip install -r projects/highland-drone/requirements-cinema.txt
+uv sync --group vision
 
-.venv-bpy/bin/python projects/highland-drone/cinema_assets.py           # CC0 assets, checksum-verified
-.venv-bpy/bin/python projects/highland-drone/cinema.py --validate --profile proof --step 12   # quick look
-.venv-bpy/bin/python projects/highland-drone/cinema.py --reuse --profile local                # all 630 frames
-.venv-finish/bin/python projects/highland-drone/cinema_finish.py --profile local
+uv run python projects/highland-drone/cinema_assets.py           # CC0 assets, checksum-verified
+uv run python projects/highland-drone/cinema.py --validate --profile proof --step 12   # quick look
+uv run python projects/highland-drone/cinema.py --reuse --profile local                # all 630 frames
+uv run python projects/highland-drone/cinema_finish.py --profile local
 ```
 
 | Profile | Render size | Max samples | Where | Use |

@@ -12,14 +12,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: ./.github/actions/setup-blender-env
         with:
-          python-version: "3.11"
-      - name: Install native Blender and review tools
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y -q fonts-dejavu-core libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
-          python -m pip install --disable-pip-version-check bpy==5.0.1 pillow
+          apt: fonts-dejavu-core
       - name: Build, validate, and render the upgraded native scene
         run: |
           python projects/highland-drone/build_blender.py \

@@ -21,7 +21,7 @@ Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guid
    - `status: provisional` — derived: scaled from a drawing with a scale bar, or measured from a photo against a known reference (`source` required; note the reference and expected tolerance)
    - `status: assumed` — not in any document (`basis` required, e.g. "code-minimum", "typical", "massing only")
    - Document-driven `checks`: counts, overall extents, clear gaps, spacing, elevations — each with its `source`.
-4. **Build.** `python tools/build.py specs/<name>.yaml [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
+4. **Build.** `uv run python tools/build.py specs/<name>.yaml [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
 5. **Verify.** The builder fails (exit 1) on: missing source/basis, count or extent mismatch, gap mismatch, or a blank render. Then look at the review renders myself — plan, front, side, iso — colored by provenance (green confirmed, yellow provisional, orange assumed). Where a drawing elevation exists, compare the ortho render against it at the same scale. "Checks passed" and "looked right" are both required; report which were done.
 6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
 7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (tools/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
@@ -42,7 +42,7 @@ Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guid
 
 - **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `tools/detail.py`.
 - **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `tools/house.py`, `tools/qto.py`.
-- **room** — interior shell + furniture + lighting from a photo or sketch (`specs/room-*.yaml`, `tools/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `tools/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `python tools/room.py specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
+- **room** — interior shell + furniture + lighting from a photo or sketch (`specs/room-*.yaml`, `tools/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `tools/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `uv run python tools/room.py specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
 - **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
 All types share: provenance on every element, failing checks, CI rebuild.
 
@@ -60,7 +60,7 @@ Resident notices (what's happening at their unit), access and sequencing diagram
 
 ## Environment facts (verified 2026-09-27)
 
-- `pip install bpy==5.0.1` works on Python 3.11 in Claude's Linux workspace; build + checks for a small spec run in seconds.
+- `uv sync` installs Python 3.11 and the locked `bpy==5.0.1` (see `pyproject.toml`); always run Python as `uv run python …`; build + checks for a small spec run in seconds.
 - Headless has no GPU: **Workbench and EEVEE render blank frames** — use Cycles on CPU only. Cameras need explicit rotation (track-to constraints are not evaluated before headless renders).
 - Exports confirmed working: .blend, .glb, .obj, .stl, .fbx, .usdz. SVG import add-on present. IFC (Bonsai) not installed — unverified.
 - Cycles realistic render: ~2 min for 4 review views + 1 realistic view at 1600×1200 on 2 CPU cores. EEVEE took 45 s for a trivial scene and still returned blank.

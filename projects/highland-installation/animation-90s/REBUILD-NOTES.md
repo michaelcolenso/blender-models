@@ -24,12 +24,12 @@ Python 3.11 with bpy 5.0.1 runs the Blender steps. Pillow, NumPy and OpenCV run 
 Run from `projects/highland-installation/animation-90s` in a working copy:
 
 ```bash
-/workspace/.venvs/highland-audio/bin/python prepare_animation.py
-/workspace/.venvs/highland-audio/bin/python make_audio.py --reuse-narration
-/workspace/.venvs/blender-models/bin/python animate_highland.py --preview --width 960 --samples 4
-/workspace/.venvs/highland-audio/bin/python compose_film.py --previews
-/workspace/.venvs/blender-models/bin/python finalize_blender.py
-/workspace/.venvs/blender-models/bin/python verify_presentation.py
+uv run python prepare_animation.py
+uv run python make_audio.py --reuse-narration
+uv run python animate_highland.py --preview --width 960 --samples 4
+uv run python compose_film.py --previews
+uv run python finalize_blender.py
+uv run python verify_presentation.py
 ```
 
 The eight preview times are 00:01.5, 00:13, 00:23.5, 00:42.5, 00:55.5, 01:09, 01:20 and 01:28. These are individual 960 × 540 / four-sample Cycles renders composed into 4K storyboard frames. They are not a newly rendered movie. Expect minutes on a CPU, rather than a guaranteed 15-second pass.
@@ -41,12 +41,12 @@ The eight preview times are 00:01.5, 00:13, 00:23.5, 00:42.5, 00:55.5, 01:09, 01
 After preview acceptance, the same scripts render a fresh complete sequence:
 
 ```bash
-/workspace/.venvs/blender-models/bin/python animate_highland.py --resume
-/workspace/.venvs/highland-audio/bin/python compose_film.py
-/workspace/.venvs/blender-models/bin/python finalize_blender.py
-/workspace/.venvs/blender-models/bin/python verify_presentation.py
-/workspace/.venvs/highland-audio/bin/python deliver_animation.py
-python package_rebuild.py --destination /path/to/delivery
+uv run python animate_highland.py --resume
+uv run python compose_film.py
+uv run python finalize_blender.py
+uv run python verify_presentation.py
+uv run python deliver_animation.py
+uv run python package_rebuild.py --destination /path/to/delivery
 ```
 
 The default is 1600 × 900 model imagery, 16 Cycles samples and six native frames per second, interpolated to a 3840 × 2160 / 24 fps composition. Native 4K/24 fps requires changing the render settings and clearing incompatible caches; the studio guide covers the production path. H.264 cannot guarantee byte-exact paper RGB.

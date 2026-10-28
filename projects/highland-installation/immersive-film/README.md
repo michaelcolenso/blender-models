@@ -16,10 +16,10 @@ The font pair is Noto Serif Display and Noto Sans, supplied with its license. Po
 From this script folder, with the supplied environment or equivalent dependencies:
 
 ```bash
-/workspace/.venvs/highland-audio/bin/python compose_immersive.py --previews
-/workspace/.venvs/highland-audio/bin/python compose_immersive.py
-/workspace/.venvs/blender-models/bin/python build_editable.py
-python validate_delivery.py
+uv run python compose_immersive.py --previews
+uv run python compose_immersive.py
+uv run python build_editable.py
+uv run python validate_delivery.py
 ```
 
 The archive includes `output/media/` so the film can be re-exported without the earlier working caches. Python needs Pillow; Blender steps need bpy 5.0.1. FFmpeg and FFprobe are system dependencies. Validation covers runtime, frame count, codecs, unchanged audio, readable picture bounds, smooth focus changes, full-frame layout and the editable source. The original gate scripts remain unchanged.

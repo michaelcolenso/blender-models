@@ -10,11 +10,11 @@ Rendered views: [deliverables/meydenbauer-b/realism](../../deliverables/meydenba
 ## Pipeline
 
 ```bash
-.venv/bin/python projects/meydenbauer-b/shell.py sources/meydenbauer/exhibit-a-bid-set.pdf   # walls, openings, rooms, tubs (P2.1)
-.venv/bin/python projects/meydenbauer-b/structure.py        # record footings + trench clash table
-.venv/bin/python projects/meydenbauer-b/assets.py           # Poly Haven CC0 textures/props, MD5-checked
-.venv/bin/python projects/meydenbauer-b/realism.py --no-render   # .blend + checks (about 10 s)
-.venv/bin/python projects/meydenbauer-b/realism.py --only b104_kitchen_run --samples 32 --res 0.6
+uv run python projects/meydenbauer-b/shell.py sources/meydenbauer/exhibit-a-bid-set.pdf   # walls, openings, rooms, tubs (P2.1)
+uv run python projects/meydenbauer-b/structure.py        # record footings + trench clash table
+uv run python projects/meydenbauer-b/assets.py           # Poly Haven CC0 textures/props, MD5-checked
+uv run python projects/meydenbauer-b/realism.py --no-render   # .blend + checks (about 10 s)
+uv run python projects/meydenbauer-b/realism.py --only b104_kitchen_run --samples 32 --res 0.6
 bash projects/meydenbauer-b/runpod_render.sh setup && bash projects/meydenbauer-b/runpod_render.sh render final
 ```
 

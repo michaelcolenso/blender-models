@@ -51,7 +51,7 @@ Resident notices (what's happening at their unit), access and sequencing diagram
 
 ## Environment facts (verified 2026-09-27)
 
-- `pip install bpy==5.0.1` works on Python 3.11 in Claude's Linux workspace; build + checks for a small spec run in seconds.
+- `uv sync` installs Python 3.11 and the locked `bpy==5.0.1` (see `pyproject.toml`); always run Python as `uv run python …`; build + checks for a small spec run in seconds.
 - Headless has no GPU: **Workbench and EEVEE render blank frames** — use Cycles on CPU only. Cameras need explicit rotation (track-to constraints are not evaluated before headless renders).
 - Exports confirmed working: .blend, .glb, .obj, .stl, .fbx, .usdz. SVG import add-on present. IFC (Bonsai) not installed — unverified.
 - Cycles realistic render: ~2 min for 4 review views + 1 realistic view at 1600×1200 on 2 CPU cores. EEVEE took 45 s for a trivial scene and still returned blank.
