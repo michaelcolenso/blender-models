@@ -1,0 +1,10 @@
+# Steps run from the repo root: uv run bm run {{ref}} <step> [extra args for the last command]
+# Env in every step: $BM_PRODUCT_DIR (this folder), $BM_BUILD (build/<site>/<product>), $BM_DELIVERABLES.
+kind: "{{kind}}"
+description: ""
+deliverables: ../../deliverables/{{name}}
+steps:
+  build: python $BM_PRODUCT_DIR/build.py
+  # CI runs `check` on every change to this folder: CPU only, no source PDFs, no GPU. Best form:
+  # regenerate a committed output and fail on any diff. Replace with check_unavailable: "<reason>" if impossible.
+  check: python $BM_PRODUCT_DIR/build.py --check

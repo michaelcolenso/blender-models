@@ -4,3 +4,4 @@ deliverables: ../../deliverables/exterior
 steps:
   build: python $BM_PRODUCT_DIR/build.py
   package: python $BM_PRODUCT_DIR/package.py
+check_unavailable: "prepare.py reads the A2/A3 drawing PDF (projects/highland/sources/, never committed) and build.py needs bpy plus that takeoff; nothing CPU-only regenerates a committed file"

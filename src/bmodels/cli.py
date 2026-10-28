@@ -1,9 +1,11 @@
 """`bm` — one entry point for every construction project in the repo.
 
-    bm list [--markdown]                       sites, specs and products
+    bm doctor [--json]                         what this machine can run; the fix for each gap
+    bm list [--markdown | --json]              sites, specs, products (--json: steps, deliverables)
     bm new <site> [--type element|detail]      start a site from templates/project
+    bm add-product <site>/<name> [--kind K]    scaffold products/<name>/ (product.yaml with a check step)
     bm build [target ...] [--changed BASE]     build + verify specs (path, site, or site/spec)
-    bm run <site>/<product> <step> [args]      run a product step from its product.yaml
+    bm run <site>/<product> [<step> [args]]    run a product step (no step: list them)
     bm check-products [--changed BASE]         run every product's `check` step (CI)
     bm assets pull|verify|push <manifest> ...  release assets with checksums
     bm publish <site>/<product> <file ...>     upload outputs to the product's GitHub Release
@@ -40,6 +42,7 @@ TOOLS = {  # bm <name> -> python -m bmodels.<module>
     "usdz": "export_usdz",
     "audit-blends": "blend_audit",
 }
+DOCTOR_HINT = "Environment problem (ImportError, missing file or tool)? `uv run bm doctor` names the fix."
 # Anything under these paths can change every build, so a change rebuilds every spec.
 REBUILD_ALL = ("src/", "pyproject.toml", "uv.lock", ".github/")
 
@@ -50,7 +53,27 @@ def rel(p):
 
 
 # ----------------------------------------------------------------------------- list / new
+def inventory():
+    """Everything an agent needs to navigate: sites, spec kinds, product steps, deliverables, build dirs."""
+    out = []
+    for s in project.sites():
+        out.append({
+            "site": s.name, "dir": str(rel(s.dir)), **{k: v for k, v in s.meta.items() if v},
+            "specs": [{"ref": f"{s.name}/{sp.stem}", "path": str(rel(sp)), "kind": spec.kind(spec.load(sp)),
+                       "build_dir": str(rel(project.build_dir(sp) / sp.stem))} for sp in s.specs],
+            "products": [{"ref": p.ref, "dir": str(rel(p.dir)), "kind": p.meta.get("kind"),
+                          "description": p.meta.get("description"), "steps": list(p.meta.get("steps") or {}), "check_unavailable": p.meta.get("check_unavailable"),
+                          "deliverables": [str(rel(d)) for d in p.deliverable_dirs],
+                          "readme": str(rel(p.dir / "README.md")) if (p.dir / "README.md").exists() else None}
+                         for p in s.products],
+        })
+    return out
+
+
 def cmd_list(a):
+    if a.json:
+        print(json.dumps(inventory(), indent=2))
+        return 0
     rows = []
     for s in project.sites():
         rows.append((s.name, s.meta.get("name", ""), [sp.stem for sp in s.specs], [p.name for p in s.products]))
@@ -104,6 +127,27 @@ def cmd_new(a):
     return 0
 
 
+def cmd_add_product(a):
+    site_name, _, name = a.ref.partition("/")
+    s = project.site(site_name)
+    if not name:
+        raise SystemExit("bm add-product <site>/<name>")
+    dest = s.dir / "products" / name
+    if dest.exists():
+        raise SystemExit(f"{rel(dest)} already exists")
+    fill = {"{{site}}": s.name, "{{name}}": name, "{{ref}}": f"{s.name}/{name}", "{{kind}}": a.kind}
+    for src in sorted((TEMPLATES / "product").iterdir()):
+        text = src.read_text()
+        for k, v in fill.items():
+            text = text.replace(k, v)
+        dest.mkdir(parents=True, exist_ok=True)
+        (dest / src.name).write_text(text)
+    (s.dir / "deliverables" / name).mkdir(parents=True, exist_ok=True)
+    print(f"Created {rel(dest)}/ and {rel(s.dir / 'deliverables' / name)}/ — edit product.yaml steps, "
+          f"then: uv run bm run {s.name}/{name} check")
+    return 0
+
+
 # ----------------------------------------------------------------------------- build
 def changed_specs(base):
     try:
@@ -145,6 +189,8 @@ def cmd_build(a):
             with open(summary, "a") as f:
                 f.write(report.read_text() + "\n")
     print(f"\n{len(specs) - len(failed)}/{len(specs)} specs passed" + (f"; failed: {', '.join(map(str, failed))}" if failed else ""))
+    if failed:
+        print(DOCTOR_HINT)
     return 1 if failed else 0
 
 
@@ -152,6 +198,13 @@ def cmd_build(a):
 def cmd_run(a):
     p = project.product(a.product)
     steps = p.meta.get("steps") or {}
+    if a.step is None:
+        print(f"{p.ref} — {p.meta.get('description', '')}\nsteps (uv run bm run {p.ref} <step>):")
+        for name, cmd in steps.items():
+            for line in (cmd if isinstance(cmd, list) else [cmd]):
+                print(f"  {name:<16} {line}")
+                name = ""
+        return 0
     if a.step not in steps:
         raise SystemExit(f"{p.ref} has no step '{a.step}'. Steps: {', '.join(steps)}")
     cmds = steps[a.step] if isinstance(steps[a.step], list) else [steps[a.step]]
@@ -180,6 +233,8 @@ def cmd_check_products(a):
             failed.append(p.ref)
     print(f"\n{len(products) - len(failed)}/{len(products)} product checks passed"
           + (f"; failed: {', '.join(failed)}" if failed else ""))
+    if failed:
+        print(DOCTOR_HINT)
     return 1 if failed else 0
 
 
@@ -243,14 +298,25 @@ def parser():
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("list", help="sites, specs and products")
-    p.add_argument("--markdown", action="store_true")
+    g = p.add_mutually_exclusive_group()
+    g.add_argument("--markdown", action="store_true", help="table for the README")
+    g.add_argument("--json", action="store_true", help="full inventory: spec kinds, product steps, deliverables")
     p.set_defaults(fn=cmd_list)
+
+    p = sub.add_parser("doctor", help="what this machine can run, and the fix for each gap")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(fn=lambda a: __import__("bmodels.doctor").doctor.main(a.json))
 
     p = sub.add_parser("new", help="start a site from templates/project")
     p.add_argument("site", help="folder name, lowercase-hyphenated (e.g. qp-cottage-a)")
     p.add_argument("--name", help="display name (default: the site folder)")
     p.add_argument("--type", choices=["element", "detail"], default="element", help="starter spec")
     p.set_defaults(fn=cmd_new)
+
+    p = sub.add_parser("add-product", help="scaffold projects/<site>/products/<name>/")
+    p.add_argument("ref", help="site/name")
+    p.add_argument("--kind", default="pipeline", help="e.g. film, viewer, bid-model, report")
+    p.set_defaults(fn=cmd_add_product)
 
     p = sub.add_parser("build", help="build and verify specs")
     p.add_argument("targets", nargs="*", help="spec path, site, or site/spec (default: all)")
@@ -261,7 +327,7 @@ def parser():
 
     p = sub.add_parser("run", help="run a product step from its product.yaml")
     p.add_argument("product", help="site/product")
-    p.add_argument("step")
+    p.add_argument("step", nargs="?", help="omit to list the product's steps")
     p.add_argument("args", nargs=argparse.REMAINDER, help="appended to the step's last command")
     p.set_defaults(fn=cmd_run)
 

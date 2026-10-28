@@ -3,13 +3,14 @@
 Dimensionally accurate, provenance-tracked 3D models of restoration and defect-repair work in occupied
 multifamily buildings, built headless in Blender from construction drawings, details, specs and site photos.
 Accuracy first, realism second: every dimension traces to a source or is labeled assumed, automated checks
-must pass, and the renders get looked at. How models are made: **[docs/METHOD.md](docs/METHOD.md)** ·
+must pass, and the renders get looked at. Agents: **[AGENTS.md](AGENTS.md)**. How models are made: **[docs/METHOD.md](docs/METHOD.md)** ·
 step-by-step commands: **[docs/RUNBOOK.md](docs/RUNBOOK.md)**.
 
 ## Quickstart
 
 ```bash
 uv sync                                   # Python 3.11 + locked bpy 5.0.1, PyMuPDF, OpenCV (one environment)
+uv run bm doctor                          # what this machine can run, and the fix for each gap
 uvx pre-commit install                    # once per clone: blocks oversized or unsourced commits
 uv run bm list                            # sites, specs, products
 uv run bm new <site> --type detail        # start a project from templates/project/
@@ -60,8 +61,10 @@ Meydenbauer [bid model, realism views and 4D films](projects/meydenbauer-b/deliv
 
 | Command | Does |
 |---|---|
+| `bm doctor [--json]` · `bm list [--json \| --markdown]` | environment gaps with fixes · full inventory (spec kinds, product steps, deliverables) |
+| `bm new <site>` · `bm add-product <site>/<name>` | scaffold a site · a product with a CI `check` step |
 | `bm build [path \| site \| site/spec] [--realistic] [--changed BASE]` | build, verify and render specs → `build/<site>/<spec>/` |
-| `bm run <site>/<product> <step> [args]` | run a step declared in `product.yaml` |
+| `bm run <site>/<product> [<step> [args]]` | run a step declared in `product.yaml` (no step: list them) |
 | `bm check [--staged \| --base REF]` · `bm check-products` | repo checks · every product's `check` step |
 | `bm publish <site>/<product> <files…>` · `bm assets pull\|verify <manifest>` | large outputs to/from GitHub Releases |
 | `bm calibrate`, `extract`, `overlay`, `detail-overlay` | drawing intake (see the runbook) |
