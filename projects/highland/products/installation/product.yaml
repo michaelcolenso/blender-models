@@ -7,3 +7,4 @@ steps:
   validate: python $BM_PRODUCT_DIR/installation/validate_installation.py
   build: [cd $BM_PRODUCT_DIR/installation && python build_installation.py && python verify_blends.py,
           cd $BM_PRODUCT_DIR/installation && python package_installation.py && python validate_installation.py]
+check_unavailable: "validation needs Highland-original.pdf and the .blend models restored from the LFS assets (bm run highland/installation restore); CI does not fetch LFS in build-models"

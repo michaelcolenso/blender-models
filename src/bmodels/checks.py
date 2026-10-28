@@ -43,6 +43,9 @@ def metadata():
             steps = p.meta.get("steps") or {}
             if not isinstance(steps, dict) or not steps:
                 errors.append(f"{where}: needs 'steps' (name -> command or list of commands)")
+            elif "check" not in steps and not p.meta.get("check_unavailable"):
+                errors.append(f"{where}: needs a `check` step (CPU, no source PDFs; CI runs it) "
+                              "or `check_unavailable: <reason>`")
             for name, cmd in (steps.items() if isinstance(steps, dict) else []):
                 if not (isinstance(cmd, str) or (isinstance(cmd, list) and all(isinstance(c, str) for c in cmd))):
                     errors.append(f"{where}: step '{name}' must be a command or list of commands")
@@ -81,7 +84,7 @@ def links():
     allow = set(config().get("broken_link_allow") or [])
     errors = []
     for f in _git("ls-files", "*.md"):
-        if not f or f in allow:
+        if not f or f in allow or f.startswith("templates/"):  # templates hold {{placeholder}} links
             continue
         text = re.sub(r"```.*?```", "", (ROOT / f).read_text(errors="ignore"), flags=re.DOTALL)
         for m in LINK.finditer(text):

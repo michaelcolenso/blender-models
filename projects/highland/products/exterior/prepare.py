@@ -3,9 +3,11 @@ Coordinates in the expanded model spec are inches. Source raster picks use the
 1815 x 1296 review images of the original 3024 x 2160 point scanned sheets.
 """
 from pathlib import Path
-import json,hashlib
+import json,hashlib,sys
+from bmodels.paths import ROOT
 H=Path(__file__).parent
-PDF=Path('/workspace/attachments/30581d0a-b0d6-4762-a564-634ec32432d7/Pages from 200 W. Highland Construction Plans - Complete.pdf')
+# Source drawings live in the site's git-ignored sources/ folder; pass another path to override.
+PDF=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'projects/highland/sources/Pages from 200 W. Highland Construction Plans - Complete.pdf'
 X=[0,195,528,861,1236];Y=[1800,1434,1110,900,690,474,180,0]
 def interp(v,ps,vs):
  pairs=sorted(zip(ps,vs));i=next((i for i in range(len(pairs)-1) if v<=pairs[i+1][0]),len(pairs)-2);a,b=pairs[i:i+2];return a[1]+(v-a[0])/(b[0]-a[0])*(b[1]-a[1])

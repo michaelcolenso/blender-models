@@ -86,10 +86,42 @@ class NewSiteTests(unittest.TestCase):
         big.write_bytes(b"0" * (2 * 1024 * 1024))
         small = big.with_name("poster.png")
         small.write_bytes(b"0" * 1024)
-        rel = lambda p: str(p.relative_to(ROOT))  # noqa: E731
+        rel = lambda p: str(p.relative_to(ROOT))
         errors = checks.large_files([rel(big), rel(small)])
         self.assertEqual(len(errors), 1)
         self.assertIn("bm publish", errors[0])
+
+    def test_inventory_lists_every_site_with_steps_and_deliverables(self):
+        inv = {s["site"]: s for s in cli.inventory()}
+        self.assertEqual(set(inv), {s.name for s in project.sites()})
+        for s in inv.values():
+            for p in s["products"]:
+                self.assertTrue("check" in p["steps"] or p["check_unavailable"],
+                                f"{p['ref']} needs a `check` step for CI or check_unavailable")
+                for d in p["deliverables"]:
+                    self.assertTrue((ROOT / d).is_dir(), f"{p['ref']}: deliverables {d} does not exist")
+            for sp in s["specs"]:
+                self.assertTrue(sp["build_dir"].startswith(f"build/{s['site']}/"))
+
+    def test_doctor_reports_every_check_with_a_fix(self):
+        from bmodels import doctor
+        for name, ok, detail, fix, blocks in doctor.checks():
+            self.assertIsInstance(ok, bool, name)
+            self.assertTrue(fix and blocks, name)
+
+    def test_add_product_scaffolds_a_runnable_check(self):
+        tmp = Path(tempfile.mkdtemp())
+        old = (project.PROJECTS, cli.PROJECTS)
+        project.PROJECTS = cli.PROJECTS = tmp
+        try:
+            cli.main(["new", "demo"])
+            self.assertEqual(cli.main(["add-product", "demo/film", "--kind", "film"]), 0)
+            p = project.product("demo/film")
+            self.assertEqual(p.meta["kind"], "film")
+            self.assertTrue(p.deliverables.is_dir())
+            self.assertEqual(cli.main(["run", "demo/film", "check"]), 0)
+        finally:
+            project.PROJECTS, cli.PROJECTS = old
 
     def test_paths_point_at_repo(self):
         self.assertTrue((ROOT / "pyproject.toml").exists())

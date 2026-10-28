@@ -29,8 +29,16 @@ class Product:
         return f"{self.site.name}/{self.name}"
 
     @property
+    def deliverable_dirs(self):
+        """Declared in product.yaml (`deliverables:` path or list, relative to the product); default deliverables/<name>."""
+        d = self.meta.get("deliverables")
+        if not d:
+            return [self.site.dir / "deliverables" / self.name]
+        return [(self.dir / x).resolve() for x in ([d] if isinstance(d, str) else d)]
+
+    @property
     def deliverables(self):
-        return self.site.dir / "deliverables" / self.name
+        return self.deliverable_dirs[0]
 
     @property
     def build(self):
