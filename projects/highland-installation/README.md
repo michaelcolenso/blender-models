@@ -24,12 +24,12 @@ The source title says 200 West Highland; its location block says 202 W Highland.
 Use Python 3.11 and Git LFS, with GitHub access to this private repository. Run these commands from the repository root:
 
 ```bash
-git lfs install
-git lfs pull --include='deliverables/highland-installation/assets/*'
-uv run python projects/highland-installation/restore_assets.py
+uv run bm assets pull projects/highland-installation/release-assets.json
 ```
 
-The restoration script verifies both archives before writing, restores the original PDF, Blender/GLB models, PDFs, short installation movie and audio stems, and preserves modified local assets by refusing to overwrite them. It leaves tracked source files intact. The two 90-second movie masters remain in the delivery assets folder. To use ZIPs downloaded through GitHub's **Download raw file** button instead, pass their directory as the script's optional argument.
+With Git LFS installed (`git lfs pull --include='deliverables/highland-installation/assets/*'`) the committed copies are used; otherwise the assets are downloaded from the `highland-repipe-2026-10-17` release with `gh`.
+
+The restoration script verifies both archives before writing, restores the original PDF, Blender/GLB models, PDFs, short installation movie and audio stems, and preserves modified local assets by refusing to overwrite them. It leaves tracked source files intact. The two 90-second movie masters remain in the delivery assets folder. To use ZIPs downloaded through GitHub's **Download raw file** button instead, add `--from <their directory>`.
 
 Open `animation-90s/Highland-repipe-90s.blend` at **MASTER - 90 seconds**. Its two source-derived 3D scenes, camera keyframes, construction reveals, native graphics and relative audio/image references remain editable. Keep the folder structure intact. The original installation Blender files remain separate and unchanged.
 

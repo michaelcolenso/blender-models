@@ -1,6 +1,6 @@
 """Export a built model to USDZ for iPhone/iPad Quick Look + AR (no app needed).
 
-  python tools/export_usdz.py build/<name>/<name>.blend [--out build/<name>/<name>.usdz]
+  uv run bm usdz build/<name>/<name>.blend [--out build/<name>/<name>.usdz]
 
 - Meshes only (no cameras/lights/ground); real-world scale (1 unit = 1 m, meters_per_unit = 1).
 - Model re-seated so its lowest point is at Z = 0 and it is centred in X/Y — AR places it on the floor.

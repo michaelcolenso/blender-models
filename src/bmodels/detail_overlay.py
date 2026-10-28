@@ -4,7 +4,7 @@ Renders a thin slab (first 0.3 in of the sweep) orthographically, looking along 
 at exactly the drawing raster's px/in, aligned on the section origin, and overlays drawing ink.
 Reports: share of model edge pixels within 1/8 in of drawing ink.
 
-  python tools/detail_overlay.py build/<name>/<name>.blend --pdf sources/X.pdf --page 8 \
+  uv run bm detail-overlay build/<name>/<name>.blend --pdf sources/X.pdf --page 8 \
      --clip 1640,360,2030,630 --pt-per-ft 106.5 --origin-pt 1772.5,<z0 y pt> --px-per-in 16 \
      --out build/<name>/overlay_section.png
 """

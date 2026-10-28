@@ -2,12 +2,12 @@
 
 The SketchUp connector (Trimble MCP) is only reachable from a Claude chat session, not from CI,
 so this script prints the code Claude passes to `build_model`; Claude then adds scenes/camera and
-calls `save_model`. Geometry matches tools/detail.py: rect profiles in the section plane (X, Z),
+calls `save_model`. Geometry matches src/bmodels/detail.py: rect profiles in the section plane (X, Z),
 swept along Y with rise = pitch/12 (sheared, plumb faces stay plumb). Parts identical in both
 specs go on the "Shared" layer; the rest on "Existing" / "Proposed". Proposed parts are colored
 by scope label prefix: NEW / REQ'D / REC.
 
-  python tools/skp_code.py specs/field-parapet-existing.yaml specs/field-parapet-proposed.yaml > build/skp_code.py
+  uv run bm skp specs/field-parapet-existing.yaml specs/field-parapet-proposed.yaml > build/skp_code.py
 """
 import json, sys
 import yaml

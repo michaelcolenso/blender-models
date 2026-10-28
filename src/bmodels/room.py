@@ -1,7 +1,7 @@
 """Room builder: photo-derived interior (shell + furniture + lighting) from a YAML spec.
 
 Usage:
-    python tools/room.py specs/room-living-kitchen.yaml [--out build/] [--no-render] [--quality draft|final]
+    uv run bm room specs/room-living-kitchen.yaml [--out build/] [--no-render] [--quality draft|final]
 
 Writes <out>/<name>/: .blend, .glb, review renders colored by provenance, realistic renders
 (night = photo lighting, day = inspection lighting, hero views), photo-match camera render, report.md/json.
@@ -16,8 +16,7 @@ import yaml
 from mathutils import Matrix, Vector
 
 IN = 0.0254
-STATUS_COLORS = {"confirmed": (0.55, 0.72, 0.55, 1), "provisional": (0.95, 0.80, 0.25, 1), "assumed": (0.95, 0.45, 0.20, 1)}
-FACE_ROT = {"+y": 0, "-x": 90, "-y": 180, "+x": -90}
+from bmodels.spec import FACE_ROT, STATUS_COLORS, validate_room as validate  # noqa: F401  (validate used by main)
 
 # ----------------------------------------------------------------------------- materials
 _M = {}
@@ -801,32 +800,6 @@ def verify(spec):
             inside_bad.append(it["id"])
     res.append({"check": "all items inside the room envelope", "expected": "none outside", "actual": inside_bad or "none", "ok": not inside_bad})
     return res
-
-
-def validate(spec):
-    errs = []
-    src = {s["id"] for s in spec["sources"]}
-    for gid, g in spec["groups"].items():
-        if g.get("status") not in STATUS_COLORS:
-            errs.append(f"group {gid}: bad status")
-        if g.get("status") in ("confirmed", "provisional") and g.get("source") not in src:
-            errs.append(f"group {gid}: needs source id")
-        if g.get("status") == "assumed" and not g.get("basis"):
-            errs.append(f"group {gid}: assumed needs basis")
-        if "trade" not in g:
-            errs.append(f"group {gid}: missing trade")
-    ids = set()
-    for it in spec["items"]:
-        if it["id"] in ids:
-            errs.append(f"{it['id']}: duplicate")
-        ids.add(it["id"])
-        if it["group"] not in spec["groups"]:
-            errs.append(f"{it['id']}: unknown group {it['group']}")
-        if it.get("faces") not in FACE_ROT:
-            errs.append(f"{it['id']}: faces must be one of {list(FACE_ROT)}")
-        if any(v <= 0 for v in it["size"]):
-            errs.append(f"{it['id']}: size must be > 0")
-    return errs
 
 
 # ----------------------------------------------------------------------------- main

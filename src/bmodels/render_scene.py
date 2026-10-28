@@ -9,8 +9,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageStat
 
-from render_assets import validate_scene_assets
-from render_plan import CATALOG, PROFILES, ROOT, load_shots, select_shots
+from bmodels.render_assets import validate_scene_assets
+from bmodels.render_plan import CATALOG, PROFILES, ROOT, load_shots, select_shots
 
 
 def sha256(path):

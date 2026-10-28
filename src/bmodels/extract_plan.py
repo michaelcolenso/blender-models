@@ -1,7 +1,7 @@
 """Plan takeoff: extract walls, windows and perimeter door openings from a vector PDF floor plan.
 
 Usage:
-    python tools/extract_plan.py <plan.pdf> --page N --clip x0,y0,x1,y1 --pt-per-ft 18
+    uv run bm extract <plan.pdf> --page N --clip x0,y0,x1,y1 --pt-per-ft 18
         --center-px CX --rear-px RY --half right --out takeoff/<name>.json
 
 Method (all at an exact 2 px per inch raster of the sheet):

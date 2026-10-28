@@ -1,7 +1,8 @@
 """Deterministic Blender model builder for construction takeoff specs.
 
 Usage:
-    python tools/build.py specs/<name>.yaml [--out build/] [--realistic]
+    uv run bm build <spec.yaml | site | site/spec> [--realistic] [--no-render]
+    (bm runs `python -m bmodels.build <spec> --out <dir>` per spec; <dir> = build/<site>/ or build/)
 
 Reads a YAML model spec (every element traced to a source or marked assumed),
 builds it with bpy, verifies geometry against the spec, and writes:
@@ -13,6 +14,8 @@ from pathlib import Path
 
 import bpy
 import yaml
+
+from bmodels.spec import STATUS_COLORS, VALID_STATUS, fail, validate  # noqa: F401  (re-exported for animate_*)
 from mathutils import Vector
 
 IN = 0.0254  # spec units are inches; Blender works in meters internally
@@ -54,68 +57,6 @@ PATTERN = {  # (axis, period_in, duty, bump_strength): procedural relief for rea
     "shingles": ("z", 1.7, 0.15, 0.4),      # course lines (visual only)
     "garage_door": ("z", 19.5, 0.03, 0.4),
 }
-STATUS_COLORS = {  # review renders: color by provenance, not by material
-    "confirmed": (0.55, 0.72, 0.55, 1),
-    "provisional": (0.95, 0.80, 0.25, 1),
-    "assumed": (0.95, 0.45, 0.20, 1),
-}
-VALID_STATUS = set(STATUS_COLORS)
-
-
-def fail(msg, errors):
-    errors.append(msg)
-
-
-def validate(spec):
-    errors = []
-    src_ids = {s["id"] for s in spec.get("sources", [])}
-    seen = set()
-    for e in spec.get("elements", []):
-        eid = e.get("id", "?")
-        if eid in seen:
-            fail(f"{eid}: duplicate id", errors)
-        seen.add(eid)
-        if e.get("type") == "detail":
-            for c in e.get("components", []):
-                cid = c.get("id", "?")
-                if c.get("status") not in VALID_STATUS:
-                    fail(f"{eid}/{cid}: status must be one of {sorted(VALID_STATUS)}", errors)
-                if c.get("status") in ("confirmed", "provisional") and c.get("source") not in src_ids:
-                    fail(f"{eid}/{cid}: needs a source id from 'sources'", errors)
-                if c.get("status") == "assumed" and not c.get("basis"):
-                    fail(f"{eid}/{cid}: assumed component needs a 'basis'", errors)
-                if "rect" not in c and "polygon" not in c:
-                    fail(f"{eid}/{cid}: needs rect or polygon", errors)
-            continue
-        if e.get("type") == "house":
-            for k in ("takeoff", "walls_source", "plate_height_in", "roof", "openings"):
-                if k not in e:
-                    fail(f"{eid}: missing '{k}'", errors)
-            for o in e.get("openings", []):
-                if o.get("status", "provisional") in ("confirmed", "provisional") and o.get("source", e.get("walls_source")) not in src_ids:
-                    fail(f"{eid}/{o.get('id')}: source not in 'sources'", errors)
-                if o.get("status") == "assumed" and not o.get("basis"):
-                    fail(f"{eid}/{o.get('id')}: assumed opening needs 'basis'", errors)
-            for k in ("walls_source",):
-                if e.get(k) not in src_ids:
-                    fail(f"{eid}: {k} must reference a source id", errors)
-            if e.get("roof", {}).get("source") not in src_ids:
-                fail(f"{eid}: roof.source must reference a source id", errors)
-            continue
-        for k in ("size", "at", "status", "trade"):
-            if k not in e:
-                fail(f"{eid}: missing '{k}'", errors)
-        if e.get("status") not in VALID_STATUS:
-            fail(f"{eid}: status must be one of {sorted(VALID_STATUS)}", errors)
-        if e.get("status") in ("confirmed", "provisional") and e.get("source") not in src_ids:
-            fail(f"{eid}: status '{e.get('status')}' requires a source id from 'sources'", errors)
-        if e.get("status") == "assumed" and not e.get("basis"):
-            fail(f"{eid}: assumed elements need a 'basis' explaining the assumption", errors)
-        if any(v <= 0 for v in e.get("size", [1, 1, 1])):
-            fail(f"{eid}: size values must be > 0", errors)
-    return errors
-
-
 def material(key):
     name = f"mat_{key}"
     if name in bpy.data.materials:
@@ -206,15 +147,13 @@ def build(spec, spec_dir=Path(".")):
     extra = {}
     for e in spec["elements"]:
         if e.get("type") == "detail":
-            sys.path.insert(0, str(Path(__file__).parent))
-            import detail
+            from bmodels import detail
             for meta, o in detail.build(e, material, coll_for):
                 o["spec_id"] = e["id"]
                 built.append((meta, o))
             continue
         if e.get("type") == "house":
-            sys.path.insert(0, str(Path(__file__).parent))
-            import house
+            from bmodels import house
             hb, ridges = house.build(e, spec_dir, material, coll_for)
             extra["ridges"] = ridges
             for meta, o in hb:
@@ -411,9 +350,8 @@ def main():
     a = ap.parse_args()
     spec_path = Path(a.spec)
     spec = yaml.safe_load(spec_path.read_text())
-    if "items" in spec:      # room spec (photo-derived interior): handled by tools/room.py; CI gets checks + review renders only
-        sys.path.insert(0, str(Path(__file__).parent))
-        import room
+    if "items" in spec:      # room spec (photo-derived interior): handled by src/bmodels/room.py; CI gets checks + review renders only
+        from bmodels import room
         sys.argv = [sys.argv[0], a.spec, "--out", a.out] + (["--no-render"] if a.no_render else ["--only", "review_plan,review_iso,review_front"])
         return room.main()
     name = spec_path.stem
@@ -428,7 +366,7 @@ def main():
     results, overall, bounds = verify(spec, built)
     qto_file = None
     if any(e.get("type") == "house" for e in spec["elements"]):
-        import house, qto
+        from bmodels import house, qto
         qto_file, q = qto.run(spec, built, out, house)
         chk = spec.get("qto_checks", {})
         if "plan_area_sf" in chk:
@@ -441,7 +379,7 @@ def main():
         cd_ = next((e.get("cutaway_dir") for e in spec["elements"] if e.get("cutaway_dir")), None)
         if cd_:
             render_views.cut_dir = tuple(cd_)
-        import detail as _d
+        from bmodels import detail as _d
         render_views.annotate_cb = lambda f, cam: _d.annotate(f, spec, built, cam)
     renders = [] if a.no_render else render_views(name, out, bounds, a.realistic)
     for r in renders:  # guard against silent blank renders

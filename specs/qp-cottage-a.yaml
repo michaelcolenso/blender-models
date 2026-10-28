@@ -22,7 +22,7 @@ sources:
 elements:
   - id: cottage_a
     type: house
-    takeoff: ../takeoff/qp-cottage-a.json        # from tools/extract_plan.py on AH201 (18 pt/ft verified vs 39'-0" string)
+    takeoff: ../takeoff/qp-cottage-a.json        # from `bm extract` on AH201 (18 pt/ft verified vs 39'-0" string)
     walls_source: AH201
     plate_height_in: 109.125                      # FF 100'-0" to truss bearing 109'-1 1/8" (AH500, SH202) — documented
     slab_t_in: 6
@@ -91,7 +91,7 @@ qto_checks:
     tol_pct: 0.5
     source: AH202
 
-# Presentation sequence for tools/animate_house.py — shows how the shell goes together; the order is a
+# Presentation sequence for `bm animate-house` — shows how the shell goes together; the order is a
 # typical build order for illustration, NOT a schedule or a documented requirement.
 # objects: glob patterns on built object names. motion: drop (lower in from above) | rise (grow up
 # from its base) | grow (scale up in place). stagger: opening = one opening (all its parts) at a time.

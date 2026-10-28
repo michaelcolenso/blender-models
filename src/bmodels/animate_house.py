@@ -1,9 +1,9 @@
 """Build-up animation for a house model (type: house) from the spec's `sequence:` block.
 
-  python tools/animate_house.py specs/<name>.yaml [--blend build/<name>/<name>.blend] --out build/<name>-sequence/<name>-sequence
+  uv run bm animate-house specs/<name>.yaml [--blend build/<name>/<name>.blend] --out build/<name>-sequence/<name>-sequence
       [--fps 12] [--res 960x540] [--samples 8] [--no-video] [--test-frames 1,60,200]
 
-Needs the built .blend (run tools/build.py first). Steps: {caption, objects: [glob..], motion, seconds, stagger}
+Needs the built .blend (run `bm build` first). Steps: {caption, objects: [glob..], motion, seconds, stagger}
   motion drop  = lowered in from 3 m above (roof, slab)
   motion rise  = grows up from its own base (walls, gable ends)
   motion grow  = scales up in place; stagger: opening -> one opening (all parts) after another
@@ -17,8 +17,7 @@ import bpy
 import yaml
 from mathutils import Matrix, Vector
 
-sys.path.insert(0, str(Path(__file__).parent))
-import anim_common as AC  # noqa: E402
+from bmodels import anim_common as AC  # noqa: E402
 
 
 def bake_pivot(o, pivot):

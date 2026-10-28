@@ -1,0 +1,7 @@
+# Settings and known exceptions for `bm check`. Every exception says why.
+large_file_mb: 1          # new files above this go to GitHub Releases (bm assets push), not git
+large_file_allow: []      # globs of files allowed above the limit
+broken_link_allow:
+  # The cinema film, stills and validation JSON were rendered on RunPod but never committed or
+  # released; the README links to them. Remove once they are published (bm assets push).
+  - deliverables/highland-cinema/README.md

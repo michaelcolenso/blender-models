@@ -1,7 +1,7 @@
 """Overlay an orthographic model render on a drawing elevation at the same scale.
 
 Usage:
-  python tools/overlay.py build/<name>/<name>.blend --pdf sources/X.pdf --page 6 \
+  uv run bm overlay build/<name>/<name>.blend --pdf sources/X.pdf --page 6 \
       --clip x0,y0,x1,y1 --pt-per-ft 9 --view front --out build/<name>/overlay_front.png
 
 Rasterizes the elevation at 1 px/in, renders the model's silhouette edges from the same

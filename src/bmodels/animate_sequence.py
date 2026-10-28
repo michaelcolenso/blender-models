@@ -1,6 +1,6 @@
 """Construction-sequence animation for an existing/proposed detail pair.
 
-  python tools/animate_sequence.py specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence
+  uv run bm animate-sequence specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence
       [--fps 12] [--res 960x540] [--samples 12] [--no-video]
 
 Reads `sequence:` from the proposed spec. Each step: {caption, remove: [ids], install: [ids], seconds}
@@ -17,10 +17,9 @@ import bpy
 import yaml
 from mathutils import Vector
 
-sys.path.insert(0, str(Path(__file__).parent))
-import detail  # noqa: E402
-import build as B  # noqa: E402  (material palette + material())
-import anim_common as AC  # noqa: E402
+from bmodels import detail  # noqa: E402
+from bmodels import build as B  # noqa: E402  (material palette + material())
+from bmodels import anim_common as AC  # noqa: E402
 
 IN = 0.0254
 

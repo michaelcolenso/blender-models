@@ -13,10 +13,10 @@ Operator procedure with exact commands: **RUNBOOK.md**.
    - `status: provisional` — derived: scaled from a drawing with a scale bar, or measured from a photo against a known reference (`source` required; note the reference and expected tolerance)
    - `status: assumed` — not in any document (`basis` required, e.g. "code-minimum", "typical", "massing only")
    - Document-driven `checks`: counts, overall extents, clear gaps, spacing, elevations — each with its `source`.
-4. **Build.** `python tools/build.py specs/<name>.yaml [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
+4. **Build.** `python src/bmodels/build.py specs/<name>.yaml [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
 5. **Verify.** The builder fails (exit 1) on: missing source/basis, count or extent mismatch, gap mismatch, or a blank render. Then look at the review renders myself — plan, front, side, iso — colored by provenance (green confirmed, yellow provisional, orange assumed). Where a drawing elevation exists, compare the ortho render against it at the same scale. "Checks passed" and "looked right" are both required; report which were done.
 6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
-7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (tools/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
+7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (src/bmodels/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
 8. **Deliver.** `.blend` (editable), `.glb` (phone/web viewing, carries element metadata), review renders, `report.md`. List every assumed element in the handoff.
 
 ## Plan-set method (proven on QP Cottage A, 2026-09-27)
@@ -28,12 +28,12 @@ Operator procedure with exact commands: **RUNBOOK.md**.
 - **Mirror-image units:** extract the cleaner half and mirror, but first measure the match (Cottage A: 94% of walls within 1½").
 - **Roofs:** union of convex hip/gable pieces taken from the eave outline on the roof plan; verify predicted ridge/hip positions against the drawn ones and ridge heights against elevations.
 - **Walls are built boolean-free** (rectangle decomposition, openings cut by box splitting). Roof unions use Blender's **Manifold** boolean solver — the Exact solver fails on the coplanar faces that roofs inevitably have.
-- **Overlay check:** `tools/overlay.py` renders the model orthographically at the drawing's scale and overlays it on the elevation; report the edge-agreement % and look at the image.
+- **Overlay check:** `src/bmodels/overlay.py` renders the model orthographically at the drawing's scale and overlays it on the elevation; report the edge-agreement % and look at the image.
 
 ## Model types
 
-- **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `tools/detail.py`.
-- **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `tools/house.py`, `tools/qto.py`.
+- **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `src/bmodels/detail.py`.
+- **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `src/bmodels/house.py`, `src/bmodels/qto.py`.
 - **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
 All types share: provenance on every element, failing checks, CI rebuild.
 
