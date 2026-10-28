@@ -1,7 +1,7 @@
 # Runbook: Drawing set → verified Blender model + quantity takeoff
 
 **Owner:** Michael Colenso | **Frequency:** As needed (one run per building / drawing set)
-**Last updated:** 2026-09-27 | **Last run:** 2026-09-27 (QP Cottage Duplex A, `projects/qp-cottage-a/specs/qp-cottage-a.yaml`)
+**Last updated:** 2026-10-27 (uv, `bm`, site layout) | **Last run:** 2026-09-27 (QP Cottage Duplex A, `projects/qp-cottage-a/specs/qp-cottage-a.yaml`)
 **Scope today:** vector-PDF plan sets (CAD-plotted). Single-story, orthogonal walls, hip/gable roofs.
 **Not yet supported:** scanned/raster drawings, photos or field measurements as geometry sources,
 multi-story, curved or skewed walls. Don't force those through this pipeline — flag them.
@@ -28,14 +28,15 @@ Time for a first building like Cottage A: ~2–3 h of operator time; builds take
 
 ## Procedure
 
-Paths below are from the repo root. `PDF=sources/<project>.pdf` throughout.
+Paths below are from the repo root. `PDF=projects/<site>/sources/<project>.pdf` throughout.
 
 ### Step 1 — Set up
 
 ```bash
 git clone https://github.com/michaelcolenso/blender-models && cd blender-models
-uv sync --group pdf --group vision     # downloads Python 3.11 + the locked deps into .venv
-mkdir -p sources takeoff && cp /path/to/set.pdf sources/<project>.pdf   # sources/ is git-ignored
+uv sync                                # Python 3.11 + the locked deps (bpy, PyMuPDF, OpenCV) into .venv
+uv run bm new <site> --type element    # projects/<site>/ with project.yaml, sources/, specs/
+mkdir -p projects/<site>/takeoff && cp /path/to/set.pdf projects/<site>/sources/<project>.pdf   # only sources/manifest.json is committed
 ```
 **Expected:** `uv run python -c "import bpy; print(bpy.app.version_string)"` prints `5.0.1`.
 **If it fails:** on Linux install `libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1`.
@@ -228,8 +229,7 @@ the frame width and keep the step counter in sync with the caption on screen.
 | Gable "hipped" (shingled triangle at gable end) | Inner roof solid closed the gable end | Inner gable pieces extend 24" past ends (already in `roof_piece`) |
 | Overlay shifted sideways | Wrong centre column | `calibrate.py elev`; don't use mirror-symmetry guesses |
 | Gable panel sf far too high | Interior plane counted | Party-wall plane is excluded in `qto.gable_areas`; check for other interior planes |
-| CI can't push workflow changes from Claude | Token lacks `workflow` scope | Edit `.github/workflows/*` in the GitHub web UI |
-| CI doesn't trigger on workflow-only edits | Path filter says `.yml`, file is `.yaml` | Fix the filter in the web UI |
+| CI can't push workflow changes from a cloud agent | Its token lacks the `workflow` scope | Push `.github/workflows/*` from a local clone |
 
 ## Rollback
 

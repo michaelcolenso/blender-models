@@ -1,88 +1,89 @@
-# Blender Project — Instructions
+# Blender models of construction projects
 
-Highland cinematic film: [shot list and rebuild](projects/highland/products/walkthrough/CINEMA.md) (the rendered film is not published in this repo).
+Dimensionally accurate, provenance-tracked 3D models of restoration and defect-repair work in occupied
+multifamily buildings, built headless in Blender from construction drawings, details, specs and site photos.
+Accuracy first, realism second: every dimension traces to a source or is labeled assumed, automated checks
+must pass, and the renders get looked at. How models are made: **[docs/METHOD.md](docs/METHOD.md)** ·
+step-by-step commands: **[docs/RUNBOOK.md](docs/RUNBOOK.md)**.
 
-Highland architectural walkthrough: [upgraded full film, phone preview and Blender scene](projects/highland/deliverables/archviz/README.md).
+## Quickstart
 
-Highland installation: [90-second installation animation and downloads](projects/highland/deliverables/installation/README.md) · [source project and editable-model setup](projects/highland/products/installation/README.md).
+```bash
+uv sync                                   # Python 3.11 + locked bpy 5.0.1, PyMuPDF, OpenCV (one environment)
+uvx pre-commit install                    # once per clone: blocks oversized or unsourced commits
+uv run bm list                            # sites, specs, products
+uv run bm new <site> --type detail        # start a project from templates/project/
+uv run bm build <site>                    # build + verify every spec of a site (or <site>/<spec>)
+uv run bm check                           # provenance, metadata, large files, links, tests
+```
 
-Purpose: build dimensionally accurate, realistic 3D models of Michael's restoration and defect-repair projects (occupied multifamily) from construction drawings, details, specs, and site photos, using Blender driven by Python. Accuracy first, realism second. A model is finished only when every dimension traces to a source or is labeled as assumed, the automated checks pass, and the renders have been looked at.
+Linux needs the X11 libraries bpy links against:
+`sudo apt-get install libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1`.
+Always run Python through uv (`uv run python …`, `uv run bm …`). Node pieces (browser viewers, Playwright
+films) use npm inside their product folder.
 
-Operator procedure with exact commands: **RUNBOOK.md**.
+## Layout
 
-Saved-model rendering: [GitHub Actions workflow, shot catalog and operating guide](render/README.md).
+```
+projects/<site>/
+  project.yaml               name, address, building type, scope, release tag prefix
+  sources/manifest.json      inventory of drawings and photos (the files themselves stay out of git)
+  specs/*.yaml               spec-driven models: detail | house | room | element  → `bm build`
+  takeoff/                   extracted plan data the specs read
+  products/<name>/           bespoke pipelines (films, viewers, bid models) + product.yaml steps → `bm run`
+  deliverables/<name>/       what gets handed over: READMEs, previews; large files via Releases
+src/bmodels/                 the shared toolkit and the `bm` CLI
+templates/project/           what `bm new` copies
+assets/                      shared CC0 assets (HDRIs)
+render/                      saved-scene shot catalog for the render-scenes workflow
+docs/                        METHOD.md, RUNBOOK.md
+```
 
-## Pipeline (always in this order)
+## Sites
 
-1. **Intake.** Inventory every source: sheet number, detail number, revision/date, scale, photo IDs. Read drawings at full resolution (rasterize PDFs with `pdftoppm -r 200+`; crop into details). Note scale bars and "NTS" details.
-2. **Takeoff.** Extract every dimension, member size, spacing, elevation, and count into the model spec. Use actual lumber sizes (2x10 = 1½ × 9¼), not nominal. Never scale an NTS detail. Never infer a dimension from a partial drawing and call it documented.
-3. **Model spec** (`projects/<site>/specs/<area>.yaml`; start a site with `uv run bm new <site>`). The spec is the single source of truth; geometry is never hand-edited in Blender without the spec changing too. Every element carries:
-   - `status: confirmed` — dimension shown on a document (`source` required)
-   - `status: provisional` — derived: scaled from a drawing with a scale bar, or measured from a photo against a known reference (`source` required; note the reference and expected tolerance)
-   - `status: assumed` — not in any document (`basis` required, e.g. "code-minimum", "typical", "massing only")
-   - Document-driven `checks`: counts, overall extents, clear gaps, spacing, elevations — each with its `source`.
-4. **Build.** `uv run bm build <site>[/<spec>] [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
-5. **Verify.** The builder fails (exit 1) on: missing source/basis, count or extent mismatch, gap mismatch, or a blank render. Then look at the review renders myself — plan, front, side, iso — colored by provenance (green confirmed, yellow provisional, orange assumed). Where a drawing elevation exists, compare the ortho render against it at the same scale. "Checks passed" and "looked right" are both required; report which were done.
-6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
-7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (src/bmodels/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
-8. **Deliver.** `.blend` (editable), `.glb` (phone/web viewing, carries element metadata), review renders, `report.md`. List every assumed element in the handoff.
+| Site | Name | Specs | Products |
+|---|---|---|---|
+| [field-parapet](projects/field-parapet/) | Field parapet (site photo P1) | field-parapet-existing, field-parapet-proposed | — |
+| [highland](projects/highland/) | 200 W. Highland condominiums | — | exterior, installation, repipe, walkthrough, water |
+| [meydenbauer-b](projects/meydenbauer-b/) | 101 Meydenbauer, Building B | — | underslab |
+| [qp-cottage-a](projects/qp-cottage-a/) | Quail Park of Lynnwood — Cottage Duplex A | qp-cottage-a, qp-rake-ah700-12 | — |
+| [room-living-kitchen](projects/room-living-kitchen/) | Living room / kitchen (occupied apartment) | room-living-kitchen | — |
+| [sample](projects/sample/) | SAMPLE — pipeline fixture (not a real project) | sample-bay | — |
 
-## Plan-set method (proven on QP Cottage A, 2026-09-27)
+Regenerate with `uv run bm list --markdown`. Highlights: Highland
+[archviz walkthrough](projects/highland/deliverables/archviz/README.md),
+[installation film](projects/highland/deliverables/installation/README.md),
+[cinema shot list](projects/highland/products/walkthrough/CINEMA.md) (film not published);
+Meydenbauer [bid model, realism views and 4D films](projects/meydenbauer-b/deliverables/underslab/README.md).
 
-- **Calibrate every sheet from its own dimension strings** before measuring anything: find the tick marks of a long dimension and compute pt/ft (AH201: 39'-0" ticks 702 pt apart = 18.0 pt/ft = true 1/4"). Never trust the title-block scale alone.
-- **Rasterize at an exact scale** (2 px/in plans, 1–2 px/in elevations). Walls drawn as hollow outlines are found as thin enclosed white cores (half-width 2.5–7.5 px); window glazing splits the band into strips under 2.3 px half-width.
-- **Every extracted opening must appear on an elevation** or it is rejected (tubs, showers, garage-door lines and revision clouds all produce false openings). Record rejected candidates in the spec.
-- **Revision clouds and tags break linework** — look for missing wall where a cloud crosses, trace it manually, and add it as an `extra_walls` entry with its reason.
-- **Mirror-image units:** extract the cleaner half and mirror, but first measure the match (Cottage A: 94% of walls within 1½").
-- **Roofs:** union of convex hip/gable pieces taken from the eave outline on the roof plan; verify predicted ridge/hip positions against the drawn ones and ridge heights against elevations.
-- **Walls are built boolean-free** (rectangle decomposition, openings cut by box splitting). Roof unions use Blender's **Manifold** boolean solver — the Exact solver fails on the coplanar faces that roofs inevitably have.
-- **Overlay check:** `src/bmodels/overlay.py` renders the model orthographically at the drawing's scale and overlays it on the elevation; report the edge-agreement % and look at the image.
+## Commands
 
-## Model types
-
-- **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `src/bmodels/detail.py`.
-- **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `src/bmodels/house.py`, `src/bmodels/qto.py`.
-- **room** — interior shell + furniture + lighting from a photo or sketch (`projects/<site>/specs/room-*.yaml`, `src/bmodels/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `src/bmodels/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `uv run bm room projects/room-living-kitchen/specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
-- **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
-All types share: provenance on every element, failing checks, CI rebuild.
-
-## Accuracy rules
-
-- Never present an assumed or provisional element as documented. Review renders always show provenance colors; realistic renders shared outside the team must carry a note if any assumed elements are visible.
-- Photos: state the reference object used for scale (brick course, CMU, door, siding exposure, known member size), the camera angle limits, and the resulting tolerance. Photo-only geometry is at best `provisional`.
-- Conflicts between sources (drawing vs. photo vs. spec): model per the governing document, flag the conflict in the report — don't average or silently pick.
-- Existing-conditions models (defect repair) and proposed-repair models are separate scenes or separate specs. Don't merge them.
-- Models are illustrative/coordination tools, not contract documents. Any render used in a scope, PCO, or resident notice gets that label.
-
-## Occupied-building use cases
-
-Resident notices (what's happening at their unit), access and sequencing diagrams, protection/staging/egress layouts, and PCO backup showing concealed conditions. For these, include the relevant occupied-building elements (egress paths, protection, staging area, work zone) as their own collection, marked by source like everything else.
-
-## Environment facts (verified 2026-09-27)
-
-- `uv sync` installs Python 3.11 and the locked `bpy==5.0.1` (see `pyproject.toml`); always run Python as `uv run python …`; build + checks for a small spec run in seconds.
-- Headless has no GPU: **Workbench and EEVEE render blank frames** — use Cycles on CPU only. Cameras need explicit rotation (track-to constraints are not evaluated before headless renders).
-- Exports confirmed working: .blend, .glb, .obj, .stl, .fbx, .usdz. SVG import add-on present. IFC (Bonsai) not installed — unverified.
-- Cycles realistic render: ~2 min for 4 review views + 1 realistic view at 1600×1200 on 2 CPU cores. EEVEE took 45 s for a trivial scene and still returned blank.
+| Command | Does |
+|---|---|
+| `bm build [path \| site \| site/spec] [--realistic] [--changed BASE]` | build, verify and render specs → `build/<site>/<spec>/` |
+| `bm run <site>/<product> <step> [args]` | run a step declared in `product.yaml` |
+| `bm check [--staged \| --base REF]` · `bm check-products` | repo checks · every product's `check` step |
+| `bm publish <site>/<product> <files…>` · `bm assets pull\|verify <manifest>` | large outputs to/from GitHub Releases |
+| `bm calibrate`, `extract`, `overlay`, `detail-overlay` | drawing intake (see the runbook) |
+| `bm render`, `render-plan`, `animate-house`, `animate-sequence`, `room`, `skp`, `usdz`, `audit-blends` | renders, sequences, exports, scene audit |
 
 ## Large files
 
 New files over 1 MB (MP4, .blend, ZIP, EXR, GLB, big GIF/HTML) go to **GitHub Releases**, not git:
-
-```bash
-uv run bm publish <site>/<product> <files…>     # upload, record sha256 in release-assets.json, print README links
-uv run bm assets pull <manifest>                # restore them anywhere, checksum-verified
-uvx pre-commit install                          # once per clone: blocks oversized commits locally
-```
-
-`bm check` (pre-commit and the `checks` workflow) rejects new oversized files. Files already in Git LFS stay there and may be updated; nothing new goes to LFS.
+`uv run bm publish <site>/<product> <files…>` uploads them, records sha256 in the product's
+`release-assets.json`, keeps the local copies out of git and prints README links; `uv run bm assets pull
+<manifest>` restores them. `bm check` (pre-commit and CI) rejects new oversized files. Files already in Git LFS
+stay there and may be updated; nothing new goes to LFS.
 
 ## CI
 
-Workflow: `.github/workflows/build-models.yaml` (edit it in the GitHub web UI — Claude's token can't write workflow files).
+| Workflow | When | What |
+|---|---|---|
+| `build-models` | specs, takeoff, products, `src/`, lock change | `bm build --changed` (every spec when code or the lock changes) and `bm check-products`; reports in the job summary, `build/` as artifact |
+| `checks` | every PR and push to main | `bm check --base …` (provenance, metadata, large files, links, tests) and `bm audit-blends` |
+| `render-scenes` | `render/`, renderer or project changes | render each shot in `render/scenes.json` on CPU and validate the pixels |
+| `highland-*` | manual | Highland native film, archviz review and preview renders |
 
-GitHub Actions (`.github/workflows/build-models.yml`) rebuilds changed specs on every PR and push to main, fails the PR if any check fails, writes each report to the job summary, and uploads `build/` as an artifact. Claude does the takeoff and spec edits; CI makes the geometry reproducible and blocks unsourced or inconsistent changes.
-
-## Working style
-
-Ask once, batched, only for what can't be read from the documents (e.g. a missing detail, which revision governs). Otherwise take the next step and mark assumptions. Don't claim a model is accurate beyond what its sources support.
+Every workflow sets up through `.github/actions/setup-blender-env` (apt libraries, setup-uv cached on
+`uv.lock`, `uv sync --frozen`). Pushes from a local clone can change workflow files; cloud agent tokens
+without the `workflow` scope cannot.
