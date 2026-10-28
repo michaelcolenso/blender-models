@@ -1,0 +1,26 @@
+# STARTER — detail model: one construction section swept along a short path (1/16" intent).
+# Section frame, inches: X = 0 at the exterior face of sheathing, +X inward; Z up. rect = [x0, z0, x1, z1].
+# Replace every source and dimension from the documents; never scale an NTS detail.
+project: "{{name}} — wall section"
+tolerance_in: 0.0625
+
+sources:
+  - {id: D1, ref: "Sheet A-501 detail 1 (replace)", type: drawing}
+
+elements:
+  - id: wall_section
+    type: detail
+    path: {length_in: 48, pitch: 0}
+    components:
+      - {id: siding, trade: siding, material: trim, rect: [-0.3125, 0, 0, 96],
+         status: assumed, basis: "5/16 in fiber cement lap — typical, replace from wall type"}
+      - {id: sheathing, trade: framing, material: osb, rect: [0, 0, 0.5, 96],
+         status: confirmed, source: D1, callout: "1/2\" APA sheathing"}
+      - {id: stud, trade: framing, material: df_lumber, rect: [0.5, 0, 6.0, 96],
+         status: confirmed, source: D1, callout: "2x6 studs (5 1/2\" actual)"}
+
+checks:
+  - between: [sheathing, x0, stud, x1]
+    label: "sheathing + stud depth"
+    expect: 6.0
+    source: D1

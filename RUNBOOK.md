@@ -43,7 +43,7 @@ mkdir -p sources takeoff && cp /path/to/set.pdf sources/<project>.pdf   # source
 ### Step 2 — Inventory the set
 
 ```bash
-uv run python tools/calibrate.py sheets $PDF
+uv run bm calibrate sheets $PDF
 pdftoppm -r 72 -f <page> -l <page> -png $PDF preview    # at 72 dpi, 1 pixel = 1 PDF point
 ```
 **Expected:** each page's own sheet number (title block) and drawing titles; find the floor plan, roof plan,
@@ -55,8 +55,8 @@ Record each sheet in the spec's `sources:` list (sheet number, title, revision/d
 ### Step 3 — Calibrate the plan sheet from its own dimensions
 
 ```bash
-uv run python tools/calibrate.py scale $PDF --page <plan page> --text "<overall dim, e.g. 78-0>" --feet 78
-uv run python tools/calibrate.py scale $PDF --page <plan page> --text "<another dim, e.g. 39-0>" --feet 39
+uv run bm calibrate scale $PDF --page <plan page> --text "<overall dim, e.g. 78-0>" --feet 78
+uv run bm calibrate scale $PDF --page <plan page> --text "<another dim, e.g. 39-0>" --feet 39
 ```
 **Expected:** both give the same pt/ft (Cottage A: 18.000 = ¼"). Must agree within 0.1%.
 **If it fails:** "no bracketing ticks" → the string uses dots/arrows, try another string. Disagreement →
@@ -68,7 +68,7 @@ one string is not-to-scale or mislabeled; use strings that agree and note it.
    (include the building, exclude title block and schedules).
 2. Centre (party wall / symmetry line) from the overall-width ticks printed in Step 3:
    ```bash
-   python tools/calibrate.py plan $PDF --page <p> --clip <clip> --pt-per-ft <pt/ft> --left-tick-pt <L> --right-tick-pt <R>
+   python src/bmodels/calibrate.py plan $PDF --page <p> --clip <clip> --pt-per-ft <pt/ft> --left-tick-pt <L> --right-tick-pt <R>
    ```
 3. `--rear-px` = `(rear wall face y in points − clip y0) × 24 / pt_per_ft`. Pick the rear face of the section
    you want as Y = 0 (Cottage A: 156).
@@ -76,7 +76,7 @@ one string is not-to-scale or mislabeled; use strings that agree and note it.
 ### Step 5 — Extract walls and openings
 
 ```bash
-uv run python tools/extract_plan.py $PDF --page <p> --clip <clip> --pt-per-ft <pt/ft> \
+uv run bm extract $PDF --page <p> --clip <clip> --pt-per-ft <pt/ft> \
   --center-px <cx> --rear-px <ry> --half right --out takeoff/<project>.json
 ```
 **Expected:** `walls rings=… windows=… doors=…` and `takeoff/<project>_review.png`
@@ -98,11 +98,11 @@ Use `--half right` only for mirror-image units (see Step 6); otherwise `--half a
 
 1. Elevation scale: `calibrate.py scale` on an elevation string or use the sheet's stated scale (Cottage A AH500: 9 pt/ft).
 2. **Plate height** from the documented elevations (FF and truss-bearing lines) → `plate_height_in` (documented).
-3. **Window/door heads and sills**: measure on the elevation (see `tools/overlay.py` raster at 1 px/in) → provisional.
+3. **Window/door heads and sills**: measure on the elevation (see `src/bmodels/overlay.py` raster at 1 px/in) → provisional.
    Nominal sizes come from the window schedule → put the mark (`mark: A`) on each opening.
 4. **Roof eave outline:**
    ```bash
-   python tools/calibrate.py outline $PDF --page <roof plan page> --clip <roof clip> --pt-per-ft <pt/ft> \
+   python src/bmodels/calibrate.py outline $PDF --page <roof plan page> --clip <roof clip> --pt-per-ft <pt/ft> \
      --origin-x-pt <centre x pt> --origin-y-pt <rear eave y pt>
    ```
    Take the closed loop of segments (ignore stray section-cut lines drawn at the same weight). Convert Y to the
@@ -124,8 +124,8 @@ Copy `specs/qp-cottage-a.yaml` → `specs/<project>.yaml` and fill it in. Requir
 ### Step 9 — Build locally
 
 ```bash
-uv run python tools/build.py specs/<project>.yaml --out build              # ~2 min, review renders
-uv run python tools/build.py specs/<project>.yaml --out build --realistic  # ~6 min, adds hero renders
+uv run bm build specs/<project>.yaml              # ~2 min, review renders
+uv run bm build specs/<project>.yaml --realistic  # ~6 min, adds hero renders
 ```
 **Expected:** `**PASS** — n/n checks`, exit code 0, and in `build/<project>/`: `.blend`, `.glb`,
 `_review_{iso,plan,front,side}.png`, `_takeoff.xlsx`, `report.md`.
@@ -134,9 +134,9 @@ uv run python tools/build.py specs/<project>.yaml --out build --realistic  # ~6 
 ### Step 10 — Overlay the model on the elevations
 
 ```bash
-uv run python tools/calibrate.py elev $PDF --page <elev page> --clip <elevation clip> --pt-per-ft <pt/ft> \
+uv run bm calibrate elev $PDF --page <elev page> --clip <elevation clip> --pt-per-ft <pt/ft> \
   --plate-in <plate height> --half-width-in <half of wall-face-to-wall-face width>
-uv run python tools/overlay.py build/<project>/<project>.blend --pdf $PDF --page <elev page> --clip <clip> \
+uv run bm overlay build/<project>/<project>.blend --pdf $PDF --page <elev page> --clip <clip> \
   --pt-per-ft <pt/ft> --view front|rear|right --floor-row <row> --center-col <col> --out build/<project>/overlay_<view>.png
 ```
 **Expected:** ≥ 80% edge agreement (Cottage A: front 82%, rear 87%) **and** a visual check that windows, doors,
@@ -167,20 +167,20 @@ Use when the source is a **section detail**, not a plan. Spec type `detail` (exa
 
 1. **Pick a true section at a stated scale.** Reject NTS / perspective sketches for geometry (AT401/4 rake is NTS — used only for sequence).
 2. **Verify the detail scale** from a dimension string inside the detail:
-   `uv run python tools/calibrate.py scale $PDF --page 8 --text "1-6" --feet 1.5` (AH700/12: 106.5 pt/ft vs 108 nominal — sheet plots 1.4% small; always use the measured value).
+   `uv run bm calibrate scale $PDF --page 8 --text "1-6" --feet 1.5` (AH700/12: 106.5 pt/ft vs 108 nominal — sheet plots 1.4% small; always use the measured value).
 3. **Section frame:** X horizontal from a named face (e.g. fascia outer face = 0), Z plumb from a named plane (e.g. underside of roof sheathing = 0). Write that in the spec header.
 4. **One component per callout**, sized by the callout's **actual** dimensions (5/4x10 = 1 × 9¼; 1x6 = ¾ × 5½), positioned from the drawing. Thicknesses stated elsewhere (wall types, structural notes) cite that sheet. Anything drawn but not called out = provisional with a `basis`; anything not drawn = assumed.
 5. **Checks:** every dimension string in the detail as a `between:` check (hard); measured drawn sizes as `drawn:` checks (warn only — they test the *drawing* against its callouts; a ⚠️ means the drawing and the callout disagree, e.g. fascia drawn 10.1" deep vs 9¼" called out).
 6. `path:` length and `pitch:` (rake follows the roof slope). `peel:` / `cutaway_step_in:` are presentation only — the near end stays a true section.
 7. Build with `--realistic` for the labeled cutaway; then
-   `uv run python tools/detail_overlay.py build/<n>/<n>.blend --pdf $PDF --page <p> --clip <clip> --pt-per-ft <measured> --origin-pt <x,y of X=0,Z=0> --out build/<n>/overlay_section.png`
+   `uv run bm detail-overlay build/<n>/<n>.blend --pdf $PDF --page <p> --clip <clip> --pt-per-ft <measured> --origin-pt <x,y of X=0,Z=0> --out build/<n>/overlay_section.png`
    Judge by eye: the % counts model outline beyond the detail's break lines as misses, so it understates fit.
 
 ## SketchUp output (on request, from a Claude chat session)
 
 The Trimble SketchUp connector is available to Claude in chat, **not in CI**, and its plan has a save quota
 (30 saves; check `saves_remaining` in the save result). Use it for the human-facing file, not every build.
-1. `uv run python tools/skp_code.py specs/<x>-existing.yaml specs/<x>-proposed.yaml` → code for `build_model` (clean: true).
+1. `uv run bm skp specs/<x>-existing.yaml specs/<x>-proposed.yaml` → code for `build_model` (clean: true).
 2. Add scenes "1 Existing" / "2 Proposed" (hide the other layer), style, model camera; `save_model`.
 3. Download the .skp from the returned URL (follow the redirect) and deliver it. The file's thumbnail shows all
    layers; the scene tabs switch Existing/Proposed.
@@ -190,7 +190,7 @@ Limits: solid colors only (no textures), no booleans (openings by construction),
 
 Add a `sequence:` block to the proposed spec (steps with caption / remove / install / seconds; `weave` for
 shingles + step flashing course by course; `extras` / `initial_show` / `initial_hide` for partial tear-off).
-`uv run python tools/animate_sequence.py specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence/<x>`
+`uv run bm animate-sequence specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence/<x>`
 → `<x>.mp4` (captioned, any phone) + `<x>.usdz` (same timeline as transform animation, AR-seated).
 Test first with `--test-frames 10,150,236`. Full render ≈ 6 s/frame on 2 CPU cores (Cycles; Workbench/EEVEE
 render blank headless). The sequence is presentation of a recommended order — label it that way when shared.
@@ -199,10 +199,10 @@ render blank headless). The sequence is presentation of a recommended order — 
 `objects` (glob patterns on built object names: `slab_*`, `walls`, `attic_*`, `roof`, `soffit`, opening ids such as
 `rear_A*`, `garage_*`), `motion` (`drop` / `rise` / `grow`), `seconds`, and `stagger: opening` to install one
 opening (glass, frame, mullions, casing) at a time. Build the model first, then
-`uv run python tools/animate_house.py specs/<name>.yaml --out build/<name>-sequence/<name>-sequence`.
+`uv run bm animate-house specs/<name>.yaml --out build/<name>-sequence/<name>-sequence`.
 The script stops if a step matches nothing and warns about objects in no step. The camera does one elevated
 orbit starting front-left. Cottage A: 271 frames, ≈9 s/frame at 960×540 with 8 samples ≈ 40 min, so run it
-with `nohup … &` and poll the log. Both animators share `tools/anim_common.py` for captions, which shrink to fit
+with `nohup … &` and poll the log. Both animators share `src/bmodels/anim_common.py` for captions, which shrink to fit
 the frame width and keep the step counter in sync with the caption on screen.
 
 ## Verification (definition of done)
@@ -249,6 +249,6 @@ CI artifacts remain downloadable for 30 days. Nothing in this pipeline writes ou
 
 | Date | Run by | Notes |
 |---|---|---|
-| 2026-09-30 | Claude | Cottage A build-up animation (tools/animate_house.py): 6 steps, 22.6 s, MP4 + animated USDZ. Walls mesh includes interior partitions traced from AH201 — the caption says so. |
+| 2026-09-30 | Claude | Cottage A build-up animation (src/bmodels/animate_house.py): 6 steps, 22.6 s, MP4 + animated USDZ. Walls mesh includes interior partitions traced from AH201 — the caption says so. |
 | 2026-09-27 | Claude | Rake detail AH700/12 (detail mode): 16 components, 2 documented dims pass, drawing-vs-callout warnings on fascia depth and wall sheathing. |
 | 2026-09-27 | Claude (with Michael) | QP Cottage Duplex A (2017 CD set, AH201/AH202/AH500/SH202). Right unit mirrored; 5 false openings rejected; 3 walls under a revision cloud traced manually; roof plan area 3,935.7 vs 3,935 sf documented; overlays 82% / 87%. |

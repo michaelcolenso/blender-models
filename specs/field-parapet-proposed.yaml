@@ -91,7 +91,7 @@ checks:
     min: 0.5
     source: S1
 
-# Construction sequence for tools/animate_sequence.py (presentation; order is the recommended
+# Construction sequence for `bm animate-sequence` (presentation; order is the recommended
 # means-and-methods sequence, not a documented requirement).
 sequence:
   title: "Existing: raked parapet at roof-to-wall — coping to remain"

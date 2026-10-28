@@ -1,0 +1,8 @@
+# Site metadata. `bm new` fills the name; complete the rest from the contract / drawing set.
+name: "{{name}}"
+address: ""
+client: ""
+building_type: ""      # e.g. multifamily wood-frame, podium, single-family, commercial TI
+scope: ""              # e.g. envelope repair, under-slab repipe, deck rebuild
+units: imperial        # specs are in inches
+release_tag_prefix: "{{site}}"   # GitHub Release tags for large outputs: <prefix>-<product>-<yyyy-mm-dd>

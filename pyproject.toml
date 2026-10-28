@@ -14,6 +14,16 @@ dependencies = [
     "shapely>=2",
 ]
 
+[project.scripts]
+bm = "bmodels.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "bmodels"
+
 [dependency-groups]
 # Drawing intake and PDF reports/storyboards.
 pdf = ["pymupdf>=1.24", "reportlab>=4"]
@@ -26,8 +36,7 @@ audio = ["piper-tts", "scipy"]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [tool.uv]
-package = false
-default-groups = ["dev"]
+default-groups = ["dev", "pdf", "vision"]  # the whole spec pipeline; `audio` is opt-in
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

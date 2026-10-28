@@ -2,14 +2,14 @@ name: Build & verify models
 
 on:
   pull_request:
-    paths: ["specs/**", "tools/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
+    paths: ["specs/**", "projects/*/specs/**", "projects/*/project.yaml", "takeoff/**", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   push:
     branches: [main]
-    paths: ["specs/**", "tools/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
+    paths: ["specs/**", "projects/*/specs/**", "projects/*/project.yaml", "takeoff/**", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   workflow_dispatch:
     inputs:
       spec:
-        description: "One spec to build (e.g. specs/unit-204-deck.yaml). Blank = all."
+        description: "Spec path, site, or site/spec to build (e.g. qp-cottage-a). Blank = all."
         required: false
       realistic:
         description: "Add Cycles realistic render (slower)"
@@ -31,33 +31,21 @@ jobs:
 
       - uses: ./.github/actions/setup-blender-env
 
-      - name: Pick specs
-        id: pick
-        run: |
-          if [ -n "${{ inputs.spec }}" ]; then
-            echo "${{ inputs.spec }}" > specs.txt
-          elif [ "${{ github.event_name }}" = "pull_request" ] && \
-               ! git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -qE '^(tools/|pyproject.toml|uv.lock|\.github/)'; then
-            git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'specs/*.yaml' > specs.txt
-          else
-            ls specs/*.yaml > specs.txt   # builder/env changed or main push: rebuild everything
-          fi
-          cat specs.txt
-
       - name: Build, verify, render
+        env:
+          SPEC: ${{ inputs.spec }}
+          REALISTIC: ${{ inputs.realistic }}
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          FLAGS=""
-          if [ "${{ inputs.realistic }}" = "true" ]; then FLAGS="--realistic"; fi
-          status=0
-          while read -r spec; do
-            [ -f "$spec" ] || continue
-            echo "::group::$spec"
-            python tools/build.py "$spec" --out build $FLAGS || status=1
-            echo "::endgroup::"
-            name=$(basename "$spec" .yaml)
-            [ -f "build/$name/report.md" ] && cat "build/$name/report.md" >> "$GITHUB_STEP_SUMMARY"
-          done < specs.txt
-          exit $status
+          flags=(); [ "$REALISTIC" = "true" ] && flags+=(--realistic)
+          if [ -n "$SPEC" ]; then
+            bm build "$SPEC" "${flags[@]}"
+          elif [ "$EVENT" = "pull_request" ]; then
+            bm build --changed "origin/$BASE_REF" "${flags[@]}"   # code/env changes rebuild everything
+          else
+            bm build "${flags[@]}"                                 # main push / dispatch: every spec
+          fi
 
       - uses: actions/upload-artifact@v7
         if: always()

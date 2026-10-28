@@ -9,10 +9,9 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from render_plan import load_shots, select_shots
-from render_scene import validate_image
-from render_assets import validate_scene_assets
+from bmodels.render_plan import load_shots, select_shots
+from bmodels.render_scene import validate_image
+from bmodels.render_assets import validate_scene_assets
 
 try:
     import bpy

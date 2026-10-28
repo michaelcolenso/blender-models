@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]  # stdlib only: CI runs this file before installing deps
 CATALOG = ROOT / "render/scenes.json"
 PROFILES = {
     "preview": {"max_dimension": 640, "samples": 16},

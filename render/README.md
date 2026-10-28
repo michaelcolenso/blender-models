@@ -22,8 +22,8 @@ flowchart LR
 | --- | --- |
 | `render/scenes.json` | Stable shot IDs, model paths, exact scene/camera names, frame and assumption notice |
 | `pyproject.toml` / `uv.lock` | Pinned Blender Python runtime and Pillow (repo-wide lock) |
-| `tools/render_plan.py` | Validate the catalog and create one matrix job per shot |
-| `tools/render_scene.py` | Open a model, select its shot, render, validate pixels and write evidence |
+| `src/bmodels/render_plan.py` | Validate the catalog and create one matrix job per shot |
+| `src/bmodels/render_scene.py` | Open a model, select its shot, render, validate pixels and write evidence |
 | `.github/workflows/render-scenes.yaml` | Triggers, isolated runners, dependency cache and artifact retention |
 | `tests/test_render_workflow.py` | Invalid-input and image-validation checks |
 
@@ -81,9 +81,9 @@ environment. From the repository root:
 
 ```bash
 uv sync
-uv run python tools/render_plan.py
+uv run bm render-plan
 uv run python -m unittest discover -s tests -p test_render_workflow.py
-uv run python tools/render_scene.py \
+uv run bm render \
   --shot highland-water-overview --profile preview --device CPU \
   --output build/scene-renders/highland-water-overview
 ```

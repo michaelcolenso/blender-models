@@ -7,7 +7,7 @@ on:
       - "pyproject.toml"
       - "uv.lock"
       - ".github/actions/**"
-      - "tools/render_*.py"
+      - "src/bmodels/render_*.py"
       - "tests/test_render_workflow.py"
       - "deliverables/**"
       - "projects/**"
@@ -19,7 +19,7 @@ on:
       - "pyproject.toml"
       - "uv.lock"
       - ".github/actions/**"
-      - "tools/render_*.py"
+      - "src/bmodels/render_*.py"
       - "tests/test_render_workflow.py"
       - "deliverables/**"
       - "projects/**"
@@ -60,7 +60,7 @@ jobs:
           SHOT: ${{ inputs.shot || 'all' }}
           PROFILE: ${{ github.event_name == 'pull_request' && 'preview' || inputs.profile || 'final' }}
         run: |
-          matrix="$(python3 tools/render_plan.py --shot "$SHOT")"
+          matrix="$(python3 src/bmodels/render_plan.py --shot "$SHOT")"
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "profile=$PROFILE" >> "$GITHUB_OUTPUT"
 
@@ -89,7 +89,7 @@ jobs:
         run: |
           mkdir -p "$OUTPUT"
           set -o pipefail
-          python -u tools/render_scene.py --shot "$SHOT" --profile "$PROFILE" \
+          python -u -m bmodels.render_scene --shot "$SHOT" --profile "$PROFILE" \
             --device CPU --output "$OUTPUT" 2>&1 | tee "$OUTPUT/render.log"
       - name: Add render report to job summary
         if: always()

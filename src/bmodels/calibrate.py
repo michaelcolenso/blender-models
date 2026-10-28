@@ -1,24 +1,24 @@
 """Calibration helpers so an operator never has to eyeball scales or pixel offsets.
 
   sheets  List pages with their own sheet number (title block) and drawing titles.
-          python tools/calibrate.py sheets <pdf>
+          uv run bm calibrate sheets <pdf>
 
   scale   Find a sheet's true scale from one of its own dimension strings.
-          python tools/calibrate.py scale <pdf> --page 4 --text "39-0" --feet 39
+          uv run bm calibrate scale <pdf> --page 4 --text "39-0" --feet 39
           -> tick positions, pt/ft, and the implied scale (18 pt/ft = 1/4" = 1'-0").
           Always cross-check with a second, different string (--text "78-0" --feet 78).
 
   plan    Suggest --center-px / --rear-px for extract_plan.py from a pair of tick marks
           (e.g. the overall-width string's ends) and the rear wall face.
-          python tools/calibrate.py plan <pdf> --page 4 --clip x0,y0,x1,y1 --pt-per-ft 18 \
+          uv run bm calibrate plan <pdf> --page 4 --clip x0,y0,x1,y1 --pt-per-ft 18 \
                  --left-tick-pt 676.75 --right-tick-pt 2080.75
 
   outline List the heaviest orthogonal lines (roof-plan eave/fascia outline) in feet from an origin
-          python tools/calibrate.py outline <pdf> --page 5 --clip 576,486,2250,1620 --pt-per-ft 18 \
+          uv run bm calibrate outline <pdf> --page 5 --clip 576,486,2250,1620 --pt-per-ft 18 \
                  --origin-x-pt 1378.8 --origin-y-pt 561.3
 
   elev    Suggest --floor-row / --center-col for overlay.py on an elevation.
-          python tools/calibrate.py elev <pdf> --page 6 --clip x0,y0,x1,y1 --pt-per-ft 9 \
+          uv run bm calibrate elev <pdf> --page 6 --clip x0,y0,x1,y1 --pt-per-ft 9 \
                  --plate-in 109.125 --half-width-in 436
           Finds the pair of long horizontal lines separated by the documented floor-to-plate
           height (FF line and truss-bearing line), and the wall-face columns separated by the
