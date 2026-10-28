@@ -1,12 +1,13 @@
 """bm CLI, spec validation and release-asset restore (no bpy, no network)."""
 import json
+import os
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
 
-from bmodels import assets, cli, project, spec
-from bmodels.paths import ROOT, TEMPLATES
+from bmodels import assets, checks, cli, project, spec
+from bmodels.paths import BUILD, ROOT, TEMPLATES
 
 
 class SpecTests(unittest.TestCase):
@@ -79,8 +80,82 @@ class NewSiteTests(unittest.TestCase):
         finally:
             cli.PROJECTS = old
 
+    def test_large_new_file_is_blocked(self):
+        BUILD.mkdir(exist_ok=True)
+        big = Path(tempfile.mkdtemp(dir=BUILD)) / "render.mp4"
+        big.write_bytes(b"0" * (2 * 1024 * 1024))
+        small = big.with_name("poster.png")
+        small.write_bytes(b"0" * 1024)
+        rel = lambda p: str(p.relative_to(ROOT))  # noqa: E731
+        errors = checks.large_files([rel(big), rel(small)])
+        self.assertEqual(len(errors), 1)
+        self.assertIn("bm publish", errors[0])
+
     def test_paths_point_at_repo(self):
         self.assertTrue((ROOT / "pyproject.toml").exists())
+
+
+FAKE_GH = """#!/bin/sh
+echo "$@" >> "$GH_LOG"
+case "$1 $2" in
+  "release view") exit 1 ;;
+  "repo view") echo owner/repo ;;
+esac
+"""
+
+
+class PublishTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        bin_ = self.tmp / "bin"
+        bin_.mkdir()
+        (bin_ / "gh").write_text(FAKE_GH)
+        (bin_ / "gh").chmod(0o755)
+        self.log = self.tmp / "gh.log"
+        self.env = {"PATH": f"{bin_}:{os.environ['PATH']}", "GH_LOG": str(self.log)}
+        self.old_env = {k: os.environ.get(k) for k in self.env}
+        os.environ.update(self.env)
+
+    def tearDown(self):
+        for k, v in self.old_env.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+    def test_publish_creates_manifest_release_and_records_checksums(self):
+        site = self.tmp / "projects/demo"
+        (site / "products/film").mkdir(parents=True)
+        (site / "project.yaml").write_text("name: Demo\nrelease_tag_prefix: demo\n")
+        (site / "products/film/product.yaml").write_text("kind: film\nsteps: {render: echo}\n")
+        movie = self.tmp / "film.mp4"
+        movie.write_bytes(b"x" * 10)
+        old = project.PROJECTS
+        project.PROJECTS = self.tmp / "projects"
+        try:
+            self.assertEqual(cli.main(["publish", "demo/film", str(movie), "--tag", "demo-film-test"]), 0)
+        finally:
+            project.PROJECTS = old
+        m = json.loads((site / "products/film/release-assets.json").read_text())
+        self.assertEqual((m["repository"], m["tag"], m["storage"]), ("owner/repo", "demo-film-test", "release"))
+        self.assertEqual(m["assets"], [{"name": "film.mp4", "bytes": 10, "sha256": assets.digest(movie)}])
+        calls = self.log.read_text().splitlines()
+        self.assertTrue(any(c.startswith("release create demo-film-test") for c in calls))
+        self.assertTrue(any(c.startswith("release upload demo-film-test") and c.endswith("film.mp4") for c in calls))
+
+    def test_publish_refuses_lfs_manifest(self):
+        site = self.tmp / "projects/demo"
+        (site / "products/old").mkdir(parents=True)
+        (site / "project.yaml").write_text("name: Demo\n")
+        (site / "products/old/product.yaml").write_text("kind: film\nsteps: {render: echo}\n")
+        (site / "products/old/release-assets.json").write_text('{"tag": "t", "storage": "git-lfs", "assets": []}')
+        old = project.PROJECTS
+        project.PROJECTS = self.tmp / "projects"
+        try:
+            with self.assertRaises(SystemExit):
+                cli.main(["publish", "demo/old", str(self.tmp / "x.mp4")])
+        finally:
+            project.PROJECTS = old
 
 
 if __name__ == "__main__":

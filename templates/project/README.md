@@ -19,4 +19,4 @@ uv run bm build {{site}}            # all specs; or {{site}}/<spec>
 `uv run bm run {{site}}/<name> <step>`.
 
 ## Releases
-Outputs over 1 MB go to GitHub Releases: `uv run bm assets push <manifest> <files…>`.
+Outputs over 1 MB go to GitHub Releases, not git: `uv run bm publish {{site}}/<product> <files…>` uploads them, records checksums in the product's `release-assets.json`, keeps the local copies out of git, and prints links for the deliverable README. `uv run bm assets pull <manifest>` restores them.
