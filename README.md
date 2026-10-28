@@ -1,10 +1,10 @@
 # Blender Project — Instructions
 
-Highland cinematic film: [shot list and rebuild](projects/highland-drone/CINEMA.md) (the rendered film is not published in this repo).
+Highland cinematic film: [shot list and rebuild](projects/highland/products/walkthrough/CINEMA.md) (the rendered film is not published in this repo).
 
-Highland architectural walkthrough: [upgraded full film, phone preview and Blender scene](deliverables/highland-archviz/README.md).
+Highland architectural walkthrough: [upgraded full film, phone preview and Blender scene](projects/highland/deliverables/archviz/README.md).
 
-Highland installation: [90-second installation animation and downloads](deliverables/highland-installation/README.md) · [source project and editable-model setup](projects/highland-installation/README.md).
+Highland installation: [90-second installation animation and downloads](projects/highland/deliverables/installation/README.md) · [source project and editable-model setup](projects/highland/products/installation/README.md).
 
 Purpose: build dimensionally accurate, realistic 3D models of Michael's restoration and defect-repair projects (occupied multifamily) from construction drawings, details, specs, and site photos, using Blender driven by Python. Accuracy first, realism second. A model is finished only when every dimension traces to a source or is labeled as assumed, the automated checks pass, and the renders have been looked at.
 

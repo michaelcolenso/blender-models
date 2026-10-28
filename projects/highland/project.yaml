@@ -1,0 +1,7 @@
+name: "200 W. Highland condominiums"
+address: "200 W. Highland Dr, Seattle WA"
+client: ""
+building_type: "occupied multifamily condominium (R1/R2 levels, corridors, elevator)"
+scope: "domestic-water repipe: drawing-based plumbing model, installation method model, repipe strategy, owner walkthroughs and films"
+units: imperial
+release_tag_prefix: highland

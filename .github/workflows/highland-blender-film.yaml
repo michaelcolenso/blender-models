@@ -54,7 +54,7 @@ jobs:
           fi
           first=$((CHUNK * 39 + 1))
           last=$((first + 38))
-          python projects/highland-drone/build_blender.py \
+          python projects/highland/products/walkthrough/build_blender.py \
             --start "$first" --end "$last" \
             --width "$width" --height "$height" --samples "$samples" --threads 2
       - uses: actions/upload-artifact@v4
@@ -97,7 +97,7 @@ jobs:
           fi
           frame_list="$(python -c 'import os; a=int(os.environ["FIRST"]); b=int(os.environ["LAST"]); k=int(os.environ["FRAGMENT"]); assert 1<=a<=b<=624; print(",".join(str(f) for f in range(a+k,b+1,16)))')"
           if [ -z "$frame_list" ]; then exit 0; fi
-          python projects/highland-drone/build_blender.py \
+          python projects/highland/products/walkthrough/build_blender.py \
             --frames "$frame_list" \
             --width "$width" --height "$height" --samples "$samples" --threads 2
       - uses: actions/upload-artifact@v4
@@ -168,17 +168,17 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: native-editable-scene
-          path: deliverables/highland-blender
+          path: projects/highland/deliverables/blender-film
       - name: Caption, score, encode and validate native film
-        run: python projects/highland-drone/assemble_blender.py
+        run: python projects/highland/products/walkthrough/assemble_blender.py
       - name: Verify complete phone playback and create visual review sheet
         if: inputs.quality == 'phone'
         run: |
-          python projects/highland-drone/verify_blender_film.py \
-            deliverables/highland-blender/Highland-Blender-walkthrough.mp4 \
-            --output deliverables/highland-blender
+          python projects/highland/products/walkthrough/verify_blender_film.py \
+            projects/highland/deliverables/blender-film/Highland-Blender-walkthrough.mp4 \
+            --output projects/highland/deliverables/blender-film
       - uses: actions/upload-artifact@v4
         with:
           name: highland-blender-native-tour
-          path: deliverables/highland-blender/
+          path: projects/highland/deliverables/blender-film/
           retention-days: 14

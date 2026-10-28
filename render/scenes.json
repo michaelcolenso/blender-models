@@ -3,7 +3,7 @@
   "shots": [
     {
       "id": "highland-water-overview",
-      "blend": "deliverables/highland-water/Highland-domestic-water.blend",
+      "blend": "projects/highland/deliverables/water/Highland-domestic-water.blend",
       "scene": "Scene",
       "camera": "Camera",
       "frame": 1,

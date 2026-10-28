@@ -1,0 +1,6 @@
+kind: model
+description: "Exterior massing study from drawings and photos (.blend, review PDF)"
+deliverables: ../../deliverables/exterior
+steps:
+  build: python $BM_PRODUCT_DIR/build.py
+  package: python $BM_PRODUCT_DIR/package.py

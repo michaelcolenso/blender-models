@@ -1,0 +1,9 @@
+kind: model+film
+description: "Proposed repipe installation method model, 90-second film, immersive and studio cuts"
+deliverables: ../../deliverables/installation
+assets: release-assets.json
+steps:
+  restore: bm assets pull $BM_PRODUCT_DIR/release-assets.json
+  validate: python $BM_PRODUCT_DIR/installation/validate_installation.py
+  build: [cd $BM_PRODUCT_DIR/installation && python build_installation.py && python verify_blends.py,
+          cd $BM_PRODUCT_DIR/installation && python package_installation.py && python validate_installation.py]

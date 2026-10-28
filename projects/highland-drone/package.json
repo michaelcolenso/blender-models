@@ -1,1 +1,0 @@
-{"private":true,"type":"module","scripts":{"bundle":"esbuild app.js --bundle --minify --format=iife --outfile=../../build/highland-drone/app.bundle.js"},"dependencies":{"three":"0.180.0","esbuild":"0.25.10"},"devDependencies":{"playwright":"1.62.1"}}

@@ -17,21 +17,21 @@ jobs:
           apt: fonts-dejavu-core
       - name: Build, validate, and render the upgraded native scene
         run: |
-          python projects/highland-drone/build_blender.py \
+          python projects/highland/products/walkthrough/build_blender.py \
             --output build/highland-archviz/Highland-archviz.blend \
             --frames 1,160,319,529 --width 540 --height 960 --samples 24 --threads 2
       - name: Render matching frames from the previous published scene
         run: |
           mkdir -p build/highland-archviz-before
-          cp deliverables/highland-archviz/Highland-study-baseline.blend build/highland-archviz-before/Highland-study.blend
-          python projects/highland-drone/build_blender.py --reuse \
+          cp projects/highland/deliverables/archviz/Highland-study-baseline.blend build/highland-archviz-before/Highland-study.blend
+          python projects/highland/products/walkthrough/build_blender.py --reuse \
             --output build/highland-archviz-before/Highland-study.blend \
             --frames 1,160,319,529 --width 540 --height 960 --samples 24 --threads 2
       - name: Package phone stills and comparisons
-        run: python projects/highland-drone/review_archviz.py
+        run: python projects/highland/products/walkthrough/review_archviz.py
       - uses: actions/upload-artifact@v4
         with:
           name: highland-archviz-stills-and-blender-scene
-          path: deliverables/highland-archviz/
+          path: projects/highland/deliverables/archviz/
           if-no-files-found: error
           retention-days: 14
