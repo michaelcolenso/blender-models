@@ -5,17 +5,17 @@ in the ground-floor units: the saw-cut slab, the open trench at its modelled dep
 bedding and new ABS, the record footings where the trench meets them, and the occupied-unit
 conditions around the work.
 
-Rendered views: [deliverables/meydenbauer-b/realism](../../deliverables/meydenbauer-b/realism/).
+Rendered views: [projects/meydenbauer-b/deliverables/underslab/realism](../../deliverables/underslab/realism/).
 
 ## Pipeline
 
 ```bash
-uv run python projects/meydenbauer-b/shell.py sources/meydenbauer/exhibit-a-bid-set.pdf   # walls, openings, rooms, tubs (P2.1)
-uv run python projects/meydenbauer-b/structure.py        # record footings + trench clash table
-uv run python projects/meydenbauer-b/assets.py           # Poly Haven CC0 textures/props, MD5-checked
-uv run python projects/meydenbauer-b/realism.py --no-render   # .blend + checks (about 10 s)
-uv run python projects/meydenbauer-b/realism.py --only b104_kitchen_run --samples 32 --res 0.6
-bash projects/meydenbauer-b/runpod_render.sh setup && bash projects/meydenbauer-b/runpod_render.sh render final
+uv run python projects/meydenbauer-b/products/underslab/shell.py sources/meydenbauer/exhibit-a-bid-set.pdf   # walls, openings, rooms, tubs (P2.1)
+uv run python projects/meydenbauer-b/products/underslab/structure.py        # record footings + trench clash table
+uv run python projects/meydenbauer-b/products/underslab/assets.py           # Poly Haven CC0 textures/props, MD5-checked
+uv run python projects/meydenbauer-b/products/underslab/realism.py --no-render   # .blend + checks (about 10 s)
+uv run python projects/meydenbauer-b/products/underslab/realism.py --only b104_kitchen_run --samples 32 --res 0.6
+bash projects/meydenbauer-b/products/underslab/runpod_render.sh setup && bash projects/meydenbauer-b/products/underslab/runpod_render.sh render final
 ```
 
 `shell.py` and `exb_overlay.py` need the PDFs in the git-ignored `sources/` folder.

@@ -1,6 +1,6 @@
 # Building B: 4D sequences (bid team only)
 
-Two films from one Blender build, [animate.py](../../../projects/meydenbauer-b/animate.py):
+Two films from one Blender build, [animate.py](../../../products/underslab/animate.py):
 
 - **Unit-by-unit sequence** (`--plan sequence`, new). The units go one at a time on a strawman
   schedule. Each phase gets screen time in proportion to its working days, and the film shows the
@@ -24,8 +24,8 @@ is long on screen, and the 3-day cure inside "07 Patching + finishes" plays as t
 ### Strawman schedule and haul
 
 All values below are assumptions. They come from
-[schedule.py](../../../projects/meydenbauer-b/schedule.py) and
-[logistics.py](../../../projects/meydenbauer-b/logistics.py).
+[schedule.py](../../../products/underslab/schedule.py) and
+[logistics.py](../../../products/underslab/logistics.py).
 
 - **Quantities** are the takeoff's S2 case at a 3.5 ft tie-in invert.
 - **Rates** are in `RATES`: saw-cut 150 SF/day, hand excavation 8 CY/day, ABS 40 LF/day plus
@@ -79,10 +79,10 @@ Checks, run on every build (`animate.py` exits 1 on failure):
 ### Render the film
 
 ```bash
-PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh setup    # build + checks
-PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh bench    # prints the projected hours
-PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh render 2
-PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh finish   # HUD, MP4, clean master
+PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh setup    # build + checks
+PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh bench    # prints the projected hours
+PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh render 2
+PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh finish   # HUD, MP4, clean master
 ```
 
 The film is 3,045 frames at 30 fps, 3.2 times the 960-frame overview, so check `bench` before
@@ -93,8 +93,8 @@ clean master so HUD changes stay a CPU job (`hud` stage).
 
 A 32-second construction sequence of the under-slab re-pipe across all four ground-floor units,
 with a push-in on B-104. Built and keyframed in Blender by
-[projects/meydenbauer-b/animate.py](../../../projects/meydenbauer-b/animate.py). The HUD and
-encoding come from [anim_finish.py](../../../projects/meydenbauer-b/anim_finish.py).
+[projects/meydenbauer-b/products/underslab/animate.py](../../../products/underslab/animate.py). The HUD and
+encoding come from [anim_finish.py](../../../products/underslab/anim_finish.py).
 
 | File | What it is |
 | --- | --- |
@@ -103,7 +103,7 @@ encoding come from [anim_finish.py](../../../projects/meydenbauer-b/anim_finish.
 | [Meydenbauer-B-4D.blend](Meydenbauer-B-4D.blend) | Editable scene (Git LFS). The timeline has eight phase markers; every timed change is a keyframe. |
 
 For the full film (1920×1080, 30 fps, 960 frames, 128 samples), run
-[runpod_animate.sh](../../../projects/meydenbauer-b/runpod_animate.sh) on one RTX 4090:
+[runpod_animate.sh](../../../products/underslab/runpod_animate.sh) on one RTX 4090:
 `setup`, then `bench` (it prints the projected hours), then `render 2`, then `finish`. Setting
 `FPS=60` doubles the frames for the same 32 seconds. The 2026-10-25 RunPod film is in
 [../runpod](../runpod/).

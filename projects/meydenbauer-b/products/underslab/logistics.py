@@ -13,7 +13,7 @@ switches once, from the J-K core (B-103) to the C-D core (B-102, B-101) and back
 That reading is an assumption to confirm (README: bid clarifications; the RFI cutoff was Oct 23).
 
 Writes meydenbauer-b.logistics.json. No Blender here.
-Usage: python projects/meydenbauer-b/logistics.py
+Usage: python projects/meydenbauer-b/products/underslab/logistics.py
 """
 import json, math
 from pathlib import Path
@@ -24,7 +24,7 @@ from shapely.ops import unary_union
 import schedule as SCHED
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 SHELL = json.loads((HERE / "meydenbauer-b.shell.json").read_text())
 TAKE = json.loads((ROOT / "build/meydenbauer-b/takeoff.json").read_text())
 

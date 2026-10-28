@@ -5,7 +5,7 @@ Grid bubble positions were read by eye from the 150 dpi rasters (REVIEWED below)
 labels its columns A-N without I; its J-N are the bid set's I-M, and its row 6 is the bid set's
 row 1. Fit residuals are printed; the 2026-10-24 run gave <= 0.06 ft (FPB1) and <= 0.26 ft (FPB2).
 
-Usage: python projects/meydenbauer-b/exb_overlay.py sources/meydenbauer/exhibit-b-precast-panels.pdf
+Usage: python projects/meydenbauer-b/products/underslab/exb_overlay.py sources/meydenbauer/exhibit-b-precast-panels.pdf
 Writes build/meydenbauer-b/exhibit-b-overlay.png (reproduces the record drawing: internal use only).
 """
 import json, subprocess, sys, tempfile
@@ -15,7 +15,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 KX = {"A": 0, "B": 31.417, "C": 34.667, "D": 42.667, "E": 45.917, "F": 73.0, "G": 80.0, "H": 87.0,
       "J": 114.542, "K": 117.792, "L": 125.792, "M": 129.042, "N": 160.458}
 KY = {6: 0, 5: 6.333, 4: 26.167, 3: 45.583, 2: 60.0, 1: 66.333}

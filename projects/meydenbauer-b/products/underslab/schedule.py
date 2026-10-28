@@ -12,13 +12,13 @@ Documented constraints the sequence respects (shown in the film, not scheduled h
 
 Writes meydenbauer-b.schedule.json. No Blender here; animate.py and anim_finish.py read it.
 
-Usage: python projects/meydenbauer-b/schedule.py
+Usage: python projects/meydenbauer-b/products/underslab/schedule.py
 """
 import json, math
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 
 PHASES = ["01 Existing + investigation", "02 Staging + fixture removal", "03 Demolition + excavation",
           "04 New ABS installation", "05 Water test", "06 Backfill + slab pourback",

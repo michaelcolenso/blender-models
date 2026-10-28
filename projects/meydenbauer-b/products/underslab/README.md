@@ -8,17 +8,17 @@ allowance** (Bid Form Allowance No. 7, Addendum 1), measures pipe by size, and s
 excavation that will be hauled through occupied units. It is an estimating and coordination aid,
 not a contract document.
 
-Results, renders and draft RFIs: [deliverables/meydenbauer-b](../../deliverables/meydenbauer-b/README.md).
+Results, renders and draft RFIs: [projects/meydenbauer-b/deliverables/underslab](../../deliverables/underslab/README.md).
 
 ## Pipeline
 
 ```bash
 uv sync --group pdf
 # sources/ is git-ignored; put the bid set there first
-uv run python projects/meydenbauer-b/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
-uv run python projects/meydenbauer-b/takeoff.py          # takeoff.json + workbook
-uv run python projects/meydenbauer-b/build.py            # .blend, .glb, 8 renders (~11 min, 4 cores)
-uv run python projects/meydenbauer-b/build.py --no-render   # model + checks only (~3 s)
+uv run python projects/meydenbauer-b/products/underslab/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
+uv run python projects/meydenbauer-b/products/underslab/takeoff.py          # takeoff.json + workbook
+uv run python projects/meydenbauer-b/products/underslab/build.py            # .blend, .glb, 8 renders (~11 min, 4 cores)
+uv run python projects/meydenbauer-b/products/underslab/build.py --no-render   # model + checks only (~3 s)
 ```
 
 | Step | Reads | Writes |
@@ -28,14 +28,14 @@ uv run python projects/meydenbauer-b/build.py --no-render   # model + checks onl
 | `build.py` | spec + takeoff | `.blend` (underlay packed), `.glb` (element properties as extras), `present-*.png`, `review-*.png`, `model-checks.json` |
 
 4D films (construction-phase model in [REALISM.md](REALISM.md); results in
-[deliverables/meydenbauer-b/anim](../../deliverables/meydenbauer-b/anim/README.md)):
+[projects/meydenbauer-b/deliverables/underslab/anim](../../deliverables/underslab/anim/README.md)):
 
 ```bash
-uv run python projects/meydenbauer-b/schedule.py         # strawman unit-by-unit schedule (rates assumed)
-uv run python projects/meydenbauer-b/logistics.py        # entries, staging, haul routes (assumed, SOR Fig 8)
-uv run python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render   # .blend + 92 + 44 checks
-uv run python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --stills --res 0.4 --samples 12
-PLAN=sequence bash projects/meydenbauer-b/runpod_animate.sh setup   # then bench, render 2, finish
+uv run python projects/meydenbauer-b/products/underslab/schedule.py         # strawman unit-by-unit schedule (rates assumed)
+uv run python projects/meydenbauer-b/products/underslab/logistics.py        # entries, staging, haul routes (assumed, SOR Fig 8)
+uv run python projects/meydenbauer-b/products/underslab/animate.py --plan sequence --fps 30 --no-render   # .blend + 92 + 44 checks
+uv run python projects/meydenbauer-b/products/underslab/animate.py --plan sequence --fps 30 --stills --res 0.4 --samples 12
+PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh setup   # then bench, render 2, finish
 ```
 
 | Step | Reads | Writes |

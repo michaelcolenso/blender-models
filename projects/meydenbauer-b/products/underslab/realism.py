@@ -13,10 +13,10 @@ Each view is built in its own pass. A section view clips the plan at a vertical 
 the cut through soil, footing, slab and pipe is exact geometry rather than a render trick.
 
 Usage:
-  python projects/meydenbauer-b/realism.py                       # all views, local CPU preview
-  python projects/meydenbauer-b/realism.py --only section_b103_east --samples 32 --res 0.5
-  python projects/meydenbauer-b/realism.py --device OPTIX --profile final   # RunPod GPU
-  python projects/meydenbauer-b/realism.py --no-render           # model + checks + .blend only
+  python projects/meydenbauer-b/products/underslab/realism.py                       # all views, local CPU preview
+  python projects/meydenbauer-b/products/underslab/realism.py --only section_b103_east --samples 32 --res 0.5
+  python projects/meydenbauer-b/products/underslab/realism.py --device OPTIX --profile final   # RunPod GPU
+  python projects/meydenbauer-b/products/underslab/realism.py --no-render           # model + checks + .blend only
 """
 import argparse, json, math, sys, time
 from pathlib import Path
@@ -29,7 +29,7 @@ from shapely.geometry import LineString, Point, Polygon, box
 from shapely.ops import unary_union
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 sys.path.insert(0, str(HERE))
 import assets  # noqa: E402
 
@@ -38,7 +38,7 @@ SPEC = json.loads((HERE / "meydenbauer-b.spec.json").read_text())
 SHELL = json.loads((HERE / "meydenbauer-b.shell.json").read_text())
 STRUCT = json.loads((HERE / "meydenbauer-b.structure.json").read_text())
 TAKE = json.loads((ROOT / "build/meydenbauer-b/takeoff.json").read_text())
-HDRI = ROOT / "projects/highland-drone/assets/kloofendal_48d_partly_cloudy_puresky_1k.hdr"
+HDRI = ROOT / "assets/hdri/kloofendal_48d_partly_cloudy_puresky_1k.hdr"
 
 FT = 0.3048
 TIE_DEPTH = 3.5                                  # POC invert, ft below FF (assumed; SOR 2.5-4.5)

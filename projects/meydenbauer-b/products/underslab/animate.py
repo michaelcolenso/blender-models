@@ -18,11 +18,11 @@ with the site logistics (logistics.py): haul routes out to the staging area and 
 bin and a bedding stockpile, and the SOR note 21 service toilet and sink kept in each unit.
 
 Usage:
-  python projects/meydenbauer-b/animate.py --no-render                 # build, check, save .blend
-  python projects/meydenbauer-b/animate.py --plan sequence --fps 30 --no-render
-  python projects/meydenbauer-b/animate.py --stills                    # 8 check frames (one per phase)
-  python projects/meydenbauer-b/animate.py --frames 1:1920:8 --res 0.33 --samples 8 --tag proxy
-  python projects/meydenbauer-b/animate.py --device OPTIX --samples 128 --worker 0/2   # RunPod
+  python projects/meydenbauer-b/products/underslab/animate.py --no-render                 # build, check, save .blend
+  python projects/meydenbauer-b/products/underslab/animate.py --plan sequence --fps 30 --no-render
+  python projects/meydenbauer-b/products/underslab/animate.py --stills                    # 8 check frames (one per phase)
+  python projects/meydenbauer-b/products/underslab/animate.py --frames 1:1920:8 --res 0.33 --samples 8 --tag proxy
+  python projects/meydenbauer-b/products/underslab/animate.py --device OPTIX --samples 128 --worker 0/2   # RunPod
 """
 import argparse, json, math, sys, time
 from pathlib import Path
@@ -35,7 +35,7 @@ from shapely.geometry import LineString, Point, Polygon, box
 from shapely.ops import unary_union
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 sys.path.insert(0, str(HERE))
 import realism as R  # noqa: E402
 import schedule as SCHED  # noqa: E402

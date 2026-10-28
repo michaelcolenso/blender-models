@@ -10,7 +10,7 @@ The film includes HDRI lighting, individual leaf canopies, warm curtained window
 
 Open the scene in **Blender 5.0.1 or newer** and play frames 1–624. HDRI and sound are packed. The floor datums and circulation follow the drawings; finishes, furniture, planting, facade details and nearby massing remain illustrative.
 
-Sky: [Poly Haven / CC0](../../projects/highland-drone/assets/README.md). Surrounding massing: [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0, with approximate registration and assumed heights.
+Sky: [Poly Haven / CC0](../../assets/hdri/README.md). Surrounding massing: [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0, with approximate registration and assumed heights.
 
 - [Poster](Highland-Blender-poster.png)
 - [Elevator section](Highland-Blender-section.png)

@@ -7,7 +7,7 @@ run on P1.02 (KEAD replaces in kind along the same routes) and is assigned to a 
 Writes meydenbauer-b.existing.json. Depth is not documented: realism/animation place the
 existing pipe at the new pipe's modelled profile (assumed).
 
-Usage: python projects/meydenbauer-b/existing.py sources/meydenbauer/exhibit-a-bid-set.pdf
+Usage: python projects/meydenbauer-b/products/underslab/existing.py sources/meydenbauer/exhibit-a-bid-set.pdf
 """
 import json, math, sys
 from pathlib import Path

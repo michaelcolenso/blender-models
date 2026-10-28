@@ -4,7 +4,7 @@ Reads meydenbauer-b.spec.json (from prepare.py), computes the trench footprint a
 the drawn routes widened to the trench width, then sizes excavation from the invert profile.
 Writes takeoff.json (consumed by build.py) and Meydenbauer-B-underslab-takeoff.xlsx.
 
-Usage: python projects/meydenbauer-b/takeoff.py [--out build/meydenbauer-b]
+Usage: python projects/meydenbauer-b/products/underslab/takeoff.py [--out build/meydenbauer-b]
 """
 import argparse, json, math
 from collections import defaultdict
@@ -18,6 +18,7 @@ from shapely.geometry import LineString, Point, box
 from shapely.ops import unary_union
 
 HERE = Path(__file__).parent
+from bmodels.paths import ROOT as REPO  # noqa: E402
 SPEC = json.loads((HERE / "meydenbauer-b.spec.json").read_text())
 
 ALLOWANCE_7_SF = 700.0              # Bid Form 00 41 13 (Addendum 1) Allowance No. 7
@@ -285,5 +286,5 @@ def write_xlsx(r, path):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(HERE.parent.parent / "build" / "meydenbauer-b"))
+    ap.add_argument("--out", default=str(REPO / "build" / "meydenbauer-b"))
     main(Path(ap.parse_args().out))

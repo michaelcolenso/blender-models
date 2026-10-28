@@ -1,8 +1,8 @@
 # Building B: construction-phase views (bid team only)
 
 What the work looks like inside the occupied units. Rendered from
-[projects/meydenbauer-b/realism.py](../../../projects/meydenbauer-b/realism.py); sources and
-assumptions are in [REALISM.md](../../../projects/meydenbauer-b/REALISM.md). Every image
+[projects/meydenbauer-b/products/underslab/realism.py](../../../products/underslab/realism.py); sources and
+assumptions are in [REALISM.md](../../../products/underslab/REALISM.md). Every image
 carries its assumption band. These images show KEAD's drawings and are not for distribution.
 
 | View | What to look at |
@@ -29,7 +29,7 @@ collections:
 
 These previews were rendered on 4 CPU cores at 1280×800 and 64 samples. For 2560×1600 at 512
 samples, or 3840×2400 at 1024 samples, run
-[runpod_render.sh](../../../projects/meydenbauer-b/runpod_render.sh) on one RTX 4090.
+[runpod_render.sh](../../../products/underslab/runpod_render.sh) on one RTX 4090.
 
 ## Not modelled, or assumed
 

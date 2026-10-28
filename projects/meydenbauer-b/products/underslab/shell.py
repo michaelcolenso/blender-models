@@ -8,7 +8,7 @@ meydenbauer-b.shell.json in the same grid frame as meydenbauer-b.spec.json. No B
 Checks (reported, not gating): each closed room is compared with the area KEAD measured for it.
 Rooms that open onto the glazed west wall or merge across an unclosed gap do not close.
 
-Usage: python projects/meydenbauer-b/shell.py sources/meydenbauer/exhibit-a-bid-set.pdf
+Usage: python projects/meydenbauer-b/products/underslab/shell.py sources/meydenbauer/exhibit-a-bid-set.pdf
 """
 import json, math, re, sys
 from pathlib import Path

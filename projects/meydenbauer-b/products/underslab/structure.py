@@ -8,7 +8,7 @@ bid-set grid from its own grid bubbles (fit residual <= 0.26 ft; see README). Fr
 Writes meydenbauer-b.structure.json, including a trench-vs-footing clash list for three POC
 invert depths. No Blender here.
 
-Usage: python projects/meydenbauer-b/structure.py
+Usage: python projects/meydenbauer-b/products/underslab/structure.py
 """
 import json
 from pathlib import Path
@@ -18,7 +18,7 @@ from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent.parent
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 SPEC = json.loads((HERE / "meydenbauer-b.spec.json").read_text())
 SHELL = json.loads((HERE / "meydenbauer-b.shell.json").read_text())
 TAKE = json.loads((ROOT / "build/meydenbauer-b/takeoff.json").read_text())

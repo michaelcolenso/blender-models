@@ -4,7 +4,7 @@ modelled invert profile, new ABS runs by size, stack/fixture risers and POC clea
 Geometry comes only from meydenbauer-b.spec.json (prepare.py) and build/meydenbauer-b/takeoff.json
 (takeoff.py); no PDF parsing here. Writes .blend, .glb and review renders to build/meydenbauer-b.
 
-Usage: python projects/meydenbauer-b/build.py [--no-render] [--samples 48]
+Usage: python projects/meydenbauer-b/products/underslab/build.py [--no-render] [--samples 48]
 """
 import argparse, json, math, sys
 from pathlib import Path
@@ -15,7 +15,7 @@ from mathutils import Vector
 from shapely.geometry import Polygon, box as sbox
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent.parent
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 OUT = ROOT / "build" / "meydenbauer-b"
 SPEC = json.loads((HERE / "meydenbauer-b.spec.json").read_text())
 TAKE = json.loads((OUT / "takeoff.json").read_text())

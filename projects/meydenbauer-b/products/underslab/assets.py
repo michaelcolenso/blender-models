@@ -1,18 +1,18 @@
 """Poly Haven CC0 textures and props for the Building B realism model.
 
-Reuses the Highland asset pipeline (projects/highland-drone/cinema_assets.py) with this
+Configures the shared Poly Haven pipeline (bmodels.polyhaven) with this
 project's own list and lock file. Files download to build/assets/polyhaven and are checked
 against the MD5s in assets/polyhaven.lock.json; nothing large is committed.
 
-    python projects/meydenbauer-b/assets.py --lock   # re-resolve URLs and checksums
-    python projects/meydenbauer-b/assets.py          # fetch and verify
+    python projects/meydenbauer-b/products/underslab/assets.py --lock   # re-resolve URLs and checksums
+    python projects/meydenbauer-b/products/underslab/assets.py          # fetch and verify
 """
 import sys
 from pathlib import Path
 
+from bmodels import polyhaven as ca
+
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parents[0] / "highland-drone"))
-import cinema_assets as ca  # noqa: E402
 
 ca.LOCK = HERE / "assets/polyhaven.lock.json"
 ca.TEXTURES = {"excavated_soil_wall": "2k", "gravel": "2k", "brushed_concrete": "2k", "concrete": "2k",

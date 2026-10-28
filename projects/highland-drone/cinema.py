@@ -51,7 +51,7 @@ def source_hash():
     """Everything that shapes the prepared scene: builders, look code, flight spec and cameras."""
     parts = [camera_hash()]+[hashlib.sha256((HERE/f).read_bytes()).hexdigest()
                              for f in ('cinema.py', 'cinema_assets.py', 'build_blender.py', 'archviz.py', 'flight.spec.json',
-                                       'assets/polyhaven-cinema.lock.json')]
+                                       'assets/polyhaven-cinema.lock.json', '../../src/bmodels/polyhaven.py')]
     return hashlib.sha256('|'.join(parts).encode()).hexdigest()
 
 

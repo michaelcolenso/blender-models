@@ -9,10 +9,10 @@ SOR note 21 chips, and a Gantt of the strawman schedule with a playhead, from sc
 meydenbauer-b.logistics.json. --upscale lets a small proxy carry a legible HUD.
 
 Usage:
-  python projects/meydenbauer-b/anim_finish.py --tag proxy-60 --fps 60
-  python projects/meydenbauer-b/anim_finish.py --plan sequence --tag seqproxy-30 --fps 30 --upscale 540
-  python projects/meydenbauer-b/anim_finish.py --tag final-30 --fps 30 --crf 16
-  python projects/meydenbauer-b/anim_finish.py --tag final-30 --fps 30 --from-video final-30-clean.mp4
+  python projects/meydenbauer-b/products/underslab/anim_finish.py --tag proxy-60 --fps 60
+  python projects/meydenbauer-b/products/underslab/anim_finish.py --plan sequence --tag seqproxy-30 --fps 30 --upscale 540
+  python projects/meydenbauer-b/products/underslab/anim_finish.py --tag final-30 --fps 30 --crf 16
+  python projects/meydenbauer-b/products/underslab/anim_finish.py --tag final-30 --fps 30 --from-video final-30-clean.mp4
 Writes build/meydenbauer-b/anim/<tag>.mp4, <tag>-poster.png and, from rendered frames, <tag>-clean.mp4
 (no HUD, CRF 10). Keep the clean master: a HUD or note change is then a CPU re-composite, not a re-render.
 """
@@ -23,7 +23,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
+from bmodels.paths import ROOT  # noqa: E402  (repo root)
 sys.path.insert(0, str(HERE))
 from animate import PHASES, PHASE_S  # noqa: E402
 import schedule as SCHED  # noqa: E402

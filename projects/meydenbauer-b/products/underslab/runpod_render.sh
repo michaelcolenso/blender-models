@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Render the Building B construction-phase views on a RunPod GPU (one RTX 4090 is plenty).
-#   bash projects/meydenbauer-b/runpod_render.sh setup          # deps, CC0 assets, model + checks
-#   bash projects/meydenbauer-b/runpod_render.sh bench          # one view, low samples, timed
-#   bash projects/meydenbauer-b/runpod_render.sh render final   # 2560x1600, 512 spp, all views
-#   bash projects/meydenbauer-b/runpod_render.sh render uhd     # 3840x2400, 1024 spp
-#   bash projects/meydenbauer-b/runpod_render.sh deliver final  # copy finished PNGs to deliverables/
+#   bash projects/meydenbauer-b/products/underslab/runpod_render.sh setup          # deps, CC0 assets, model + checks
+#   bash projects/meydenbauer-b/products/underslab/runpod_render.sh bench          # one view, low samples, timed
+#   bash projects/meydenbauer-b/products/underslab/runpod_render.sh render final   # 2560x1600, 512 spp, all views
+#   bash projects/meydenbauer-b/products/underslab/runpod_render.sh render uhd     # 3840x2400, 1024 spp
+#   bash projects/meydenbauer-b/products/underslab/runpod_render.sh deliver final  # copy finished PNGs to deliverables/
 # Needs only the committed JSON (spec, shell, structure); the source PDFs are not used here.
 set -euo pipefail
 STAGE=${1:-all}; PROFILE=${2:-final}; DEVICE=${DEVICE:-OPTIX}
-ROOT=$(cd "$(dirname "$0")/../.." && pwd); cd "$ROOT"
+ROOT=$(cd "$(dirname "$0")/../../../.." && pwd); cd "$ROOT"
 OUT=build/meydenbauer-b/realism; LOG=$OUT/logs; mkdir -p "$LOG"
 # One uv environment from the committed lock. --no-sync: the bpy 5.0.1 wheel mislabels its
 # own tag (cp39), so a syncing `uv run` would reinstall bpy under parallel render workers.
@@ -27,27 +27,27 @@ setup() {
   export PATH="$HOME/.local/bin:$PATH"
   # Python 3.11 (downloaded if the image lacks it) and the locked dependencies; a no-op when current.
   uv sync --frozen
-  "${BPY[@]}" projects/meydenbauer-b/assets.py
-  "${BPY[@]}" projects/meydenbauer-b/takeoff.py > "$LOG/takeoff.log"
-  "${BPY[@]}" -W ignore projects/meydenbauer-b/realism.py --no-render 2>&1 | tee "$LOG/setup.log" | grep -E "CHECKS|SAVED"
+  "${BPY[@]}" projects/meydenbauer-b/products/underslab/assets.py
+  "${BPY[@]}" projects/meydenbauer-b/products/underslab/takeoff.py > "$LOG/takeoff.log"
+  "${BPY[@]}" -W ignore projects/meydenbauer-b/products/underslab/realism.py --no-render 2>&1 | tee "$LOG/setup.log" | grep -E "CHECKS|SAVED"
   grep -q '"ok": true' "$LOG/setup.log"
 }
 
 bench() {
-  "${BPY[@]}" -W ignore projects/meydenbauer-b/realism.py --only b104_kitchen_run --device "$DEVICE" --profile "$PROFILE" \
+  "${BPY[@]}" -W ignore projects/meydenbauer-b/products/underslab/realism.py --only b104_kitchen_run --device "$DEVICE" --profile "$PROFILE" \
     --samples 64 2>&1 | grep -E "Cycles devices|RENDER|Error" | tee "$LOG/bench-$PROFILE.log"
   echo "Scale RENDER seconds by $SAMPLES/64 for the full render of each view."
 }
 
 render() {
-  "${BPY[@]}" -W ignore projects/meydenbauer-b/realism.py --only "$VIEWS" --device "$DEVICE" --profile "$PROFILE" \
+  "${BPY[@]}" -W ignore projects/meydenbauer-b/products/underslab/realism.py --only "$VIEWS" --device "$DEVICE" --profile "$PROFILE" \
     --samples "$SAMPLES" 2>&1 | tee "$LOG/render-$PROFILE.log" | grep -E "RENDER|Error"
 }
 
 deliver() {
-  mkdir -p deliverables/meydenbauer-b/realism
-  for v in ${VIEWS//,/ }; do cp "$OUT/$v-$PROFILE.png" deliverables/meydenbauer-b/realism/; done
-  ls -la deliverables/meydenbauer-b/realism
+  mkdir -p projects/meydenbauer-b/deliverables/underslab/realism
+  for v in ${VIEWS//,/ }; do cp "$OUT/$v-$PROFILE.png" projects/meydenbauer-b/deliverables/underslab/realism/; done
+  ls -la projects/meydenbauer-b/deliverables/underslab/realism
   echo "Commit and push from the pod, or download the folder."
 }
 

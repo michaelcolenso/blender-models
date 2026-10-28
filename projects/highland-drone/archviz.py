@@ -249,7 +249,7 @@ def upgrade(scene, M, col, lighting, box, area, material):
     area('Lobby art wash',(1270,1380,225),25,.8,lighting,target=(1270,1400,194))
 
     # A genuine high-dynamic-range sky is packed into the editable scene.
-    hdr=Path(__file__).with_name('assets')/'kloofendal_48d_partly_cloudy_puresky_1k.hdr'
+    hdr=Path(__file__).resolve().parents[2]/'assets/hdri/kloofendal_48d_partly_cloudy_puresky_1k.hdr'
     world=scene.world;world.use_nodes=True;n,l=world.node_tree.nodes,world.node_tree.links;n.clear()
     env=n.new('ShaderNodeTexEnvironment');env.image=bpy.data.images.load(str(hdr),check_existing=True)
     tex=n.new('ShaderNodeTexCoord');mapping=n.new('ShaderNodeMapping');mapping.inputs['Rotation'].default_value[2]=math.radians(110)

@@ -68,7 +68,7 @@ The film includes HDRI lighting, individual leaf canopies, warm curtained window
 
 Open the scene in **Blender 5.0.1 or newer** and play frames 1–624. HDRI and sound are packed. The floor datums and circulation follow the drawings; finishes, furniture, planting, facade details and nearby massing remain illustrative.
 
-Sky: [Poly Haven / CC0](../../projects/highland-drone/assets/README.md). Surrounding massing: [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0, with approximate registration and assumed heights.
+Sky: [Poly Haven / CC0](../../assets/hdri/README.md). Surrounding massing: [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0, with approximate registration and assumed heights.
 
 - [Poster](Highland-Blender-poster.png)
 - [Elevator section](Highland-Blender-section.png)
@@ -100,7 +100,7 @@ Use the [matching film scene](../highland-blender/Highland-walkthrough.blend?raw
 
 [Full-film review sheet](../highland-blender/Highland-Blender-full-review.jpg) · [Playback checks](../highland-blender/playback-validation.json) · [Native camera checks](../highland-blender/Highland-walkthrough.validation.json) · [Film provenance](../highland-blender/media-validation.json)
 
-The model retains drawing-based circulation and the 123-inch R1-to-R2 rise. Planting, warm window back panels, furniture, finishes, facade details and fixture optics are illustrative. No manufacturer IES profiles or paid botanical libraries are included. Nearby massing uses [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright) / ODbL 1.0, with approximate placement and heights. [HDRI source and license](../../projects/highland-drone/assets/README.md) · [Still-image provenance](review-manifest.json) · [Build and render instructions](../../projects/highland-drone/BLENDER.md)
+The model retains drawing-based circulation and the 123-inch R1-to-R2 rise. Planting, warm window back panels, furniture, finishes, facade details and fixture optics are illustrative. No manufacturer IES profiles or paid botanical libraries are included. Nearby massing uses [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright) / ODbL 1.0, with approximate placement and heights. [HDRI source and license](../../assets/hdri/README.md) · [Still-image provenance](review-manifest.json) · [Build and render instructions](../../projects/highland-drone/BLENDER.md)
 '''
     readme.write_text(intro+content+outro)
     print('Published checked archviz film and matching scene:',target)

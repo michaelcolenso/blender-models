@@ -65,7 +65,7 @@ python projects/highland-drone/build_blender.py \
 
 `--look study` retains the simpler materials and original tree meshes. `--reuse`
 opens an existing scene without rebuilding it; it does not apply a new look.
-The HDRI source, license and checksum are recorded in [assets/sources.json](assets/sources.json).
+The HDRI source, license and checksum are recorded in [assets/sources.json](../../assets/hdri/sources.json).
 
 `assemble_blender.py --review-only` adds the film captions to available review
 frames without requiring the complete animation or encoding a movie.

@@ -1,0 +1,22 @@
+# Steps run from the repo root: uv run bm run meydenbauer-b/underslab <step> [extra args for the last command]
+kind: bid-model
+description: "Under-slab waste re-pipe bid model: takeoff, slab allowance, realism views and 4D films"
+deliverables: ../../deliverables/underslab
+steps:
+  # needs the bid set in sources/meydenbauer/ (git-ignored)
+  prepare: python $BM_PRODUCT_DIR/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
+  takeoff: python $BM_PRODUCT_DIR/takeoff.py
+  build: python $BM_PRODUCT_DIR/build.py
+  plan: [python $BM_PRODUCT_DIR/schedule.py, python $BM_PRODUCT_DIR/logistics.py]
+  assets: python $BM_PRODUCT_DIR/assets.py
+  realism: python $BM_PRODUCT_DIR/realism.py
+  animate: python $BM_PRODUCT_DIR/animate.py
+  # fast, CPU only, no source PDFs: everything a change must keep passing
+  check:
+    - python $BM_PRODUCT_DIR/takeoff.py
+    - python $BM_PRODUCT_DIR/structure.py
+    - python $BM_PRODUCT_DIR/schedule.py
+    - python $BM_PRODUCT_DIR/logistics.py
+    - python $BM_PRODUCT_DIR/build.py --no-render
+  runpod-render: bash $BM_PRODUCT_DIR/runpod_render.sh
+  runpod-animate: bash $BM_PRODUCT_DIR/runpod_animate.sh

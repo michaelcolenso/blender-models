@@ -2,7 +2,7 @@
 
 KEAD 25-048. Bid due **Thu Oct 30, 2026, 5:00 PM**. Estimating and coordination aid; not a
 contract document. Method, provenance and reproduction:
-[projects/meydenbauer-b](../../projects/meydenbauer-b/README.md).
+[projects/meydenbauer-b](../../products/underslab/README.md).
 
 ![Plan: new under-slab waste by size and S2 trench footprint](present-plan.png)
 
@@ -52,7 +52,7 @@ The record footings change the dig. Under every exterior wall the record set sho
 so the lav branches run on top of it or beside it. Besides the four tie-in crossings that A-A/P5.1
 details, about 27 LF of trench overlaps the footing in plan. At a 3.5 ft tie-in invert, another
 44 LF runs below the footing bottom within 1.5 ft of it. At 2.5 ft, nothing does. This is a
-screening check, not a structural finding: [table and method](../../projects/meydenbauer-b/REALISM.md#structure-check-structurepy).
+screening check, not a structural finding: [table and method](../../products/underslab/REALISM.md#structure-check-structurepy).
 
 ## Document conflicts and draft RFIs
 

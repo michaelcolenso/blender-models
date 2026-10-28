@@ -2,10 +2,10 @@ name: Build & verify models
 
 on:
   pull_request:
-    paths: ["projects/*/specs/**", "projects/*/takeoff/**", "projects/*/project.yaml", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
+    paths: ["projects/*/specs/**", "projects/*/takeoff/**", "projects/*/project.yaml", "projects/*/products/**", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   push:
     branches: [main]
-    paths: ["projects/*/specs/**", "projects/*/takeoff/**", "projects/*/project.yaml", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
+    paths: ["projects/*/specs/**", "projects/*/takeoff/**", "projects/*/project.yaml", "projects/*/products/**", "src/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   workflow_dispatch:
     inputs:
       spec:
@@ -46,6 +46,14 @@ jobs:
           else
             bm build "${flags[@]}"                                 # main push / dispatch: every spec
           fi
+
+      - name: Product checks (each product.yaml `check` step)
+        if: ${{ !inputs.spec }}
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          if [ "$EVENT" = "pull_request" ]; then bm check-products --changed "origin/$BASE_REF"; else bm check-products; fi
 
       - uses: actions/upload-artifact@v7
         if: always()

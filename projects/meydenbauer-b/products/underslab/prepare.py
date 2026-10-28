@@ -4,7 +4,7 @@ Reads sheet P1.02 (Waste Plumbing Foundation Plan, 1/8" = 1'-0") of Exhibit A, f
 new-pipe linework (0.96 pt black strokes), nodes it into one graph per unit, labels the
 ends from the sheet text, and writes meydenbauer-b.spec.json. No Blender here.
 
-Usage: python projects/meydenbauer-b/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
+Usage: python projects/meydenbauer-b/products/underslab/prepare.py sources/meydenbauer/exhibit-a-bid-set.pdf
 """
 import hashlib, heapq, json, math, sys
 from collections import defaultdict
@@ -15,6 +15,7 @@ from shapely.geometry import LineString, Point
 from shapely.ops import snap, unary_union
 
 HERE = Path(__file__).parent
+from bmodels.paths import ROOT as REPO  # noqa: E402
 PAGE = 5                       # P1.02 is the sixth page of Exhibit A
 PT_PER_FT = 9.0                # 1/8" = 1'-0" on a 36x24 plot; verified below from the grid
 GRID_X = {"A": 0.0}            # feet, from the P1.02 dimension string A..M
@@ -268,7 +269,7 @@ def main(pdf):
     # Saved under build/ (git-ignored) because it reproduces the engineer's drawing.
     zoom, ft_box = 3.0, (-12.0, -10.0, 172.0, 70.0)
     pix = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom))
-    bdir = HERE.parent.parent / "build" / "meydenbauer-b"; bdir.mkdir(parents=True, exist_ok=True)
+    bdir = REPO / "build" / "meydenbauer-b"; bdir.mkdir(parents=True, exist_ok=True)
     full = bdir / "_p102_full.png"; pix.save(full)
     from PIL import Image
     x0 = (origin[0] + ft_box[0] * PT_PER_FT) * zoom; y0 = (origin[1] + ft_box[1] * PT_PER_FT) * zoom
