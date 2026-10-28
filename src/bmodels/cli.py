@@ -6,6 +6,7 @@
     bm run <site>/<product> <step> [args]      run a product step from its product.yaml
     bm check-products [--changed BASE]         run every product's `check` step (CI)
     bm assets pull|verify|push <manifest> ...  release assets with checksums
+    bm publish <site>/<product> <file ...>     upload outputs to the product's GitHub Release
     bm check [--staged | --base REF]           specs, metadata, large files, links, tests
     bm <tool> [args]                           calibrate, extract, overlay, detail-overlay, render,
                                                render-plan, animate-house, animate-sequence,
@@ -14,10 +15,12 @@
 Run through uv: `uv run bm …`. Nothing here imports bpy; Blender work runs in a subprocess.
 """
 import argparse
+import json
 import os
 import shlex
 import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 from bmodels import assets, checks, project, spec
@@ -197,6 +200,27 @@ def cmd_assets(a):
     return 0
 
 
+def cmd_publish(a):
+    """Large outputs go to GitHub Releases, not git: upload, record checksums, print links."""
+    p = project.product(a.product)
+    manifest = p.dir / (p.meta.get("assets") or "release-assets.json")
+    if not manifest.exists():
+        repo = subprocess.run(["gh", "repo", "view", "--json", "nameWithOwner", "-q", ".nameWithOwner"],
+                              cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+        prefix = p.site.meta.get("release_tag_prefix") or p.site.name
+        tag = a.tag or f"{prefix}-{p.name}-{date.today().isoformat()}"
+        assets.new_manifest(manifest, repo, tag)
+        print(f"New release manifest {rel(manifest)} (tag {tag}); commit it with the README links below.")
+    elif json.loads(manifest.read_text()).get("storage") == "git-lfs":
+        raise SystemExit(f"{rel(manifest)} records Git LFS storage; new outputs go to Releases: pass a product "
+                         "whose manifest uses storage 'release', or move this one over deliberately.")
+    links = assets.push(manifest, a.files, title=f"{p.site.meta.get('name', p.site.name)} — {p.name}")
+    print("\nMarkdown links:")
+    for f, link in zip(a.files, links):
+        print(f"- [{Path(f).name}]({link})")
+    return 0
+
+
 def cmd_check(a):
     sections = [("specs", checks.specs()), ("site/product metadata", checks.metadata())]
     files = checks.changed_files(a.staged, a.base)
@@ -252,6 +276,12 @@ def parser():
     p.add_argument("--from", dest="from_dirs", action="append", default=[], metavar="DIR",
                    help="also look for verified copies here (e.g. manually downloaded ZIPs)")
     p.set_defaults(fn=cmd_assets)
+
+    p = sub.add_parser("publish", help="upload outputs to the product's GitHub Release")
+    p.add_argument("product", help="site/product")
+    p.add_argument("files", nargs="+")
+    p.add_argument("--tag", help="release tag for a new manifest (default <prefix>-<product>-<date>)")
+    p.set_defaults(fn=cmd_publish)
 
     p = sub.add_parser("check", help="specs, metadata, large files, links, tests")
     g = p.add_mutually_exclusive_group()

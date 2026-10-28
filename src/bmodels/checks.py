@@ -50,27 +50,30 @@ def metadata():
 
 
 def changed_files(staged=False, base=None):
+    """(status, path) for added (A) or modified (M) files: staged ones, or the diff since base."""
     if staged:
-        return [f for f in _git("diff", "--cached", "--name-only", "--diff-filter=AM") if f]
-    if base:
-        return [f for f in _git("diff", "--name-only", "--diff-filter=AM", f"{base}...HEAD") if f]
-    return []
+        out = _git("diff", "--cached", "--name-status", "--diff-filter=AM")
+    elif base:
+        out = _git("diff", "--name-status", "--diff-filter=AM", f"{base}...HEAD")
+    else:
+        return []
+    return [tuple(line.split("\t", 1)) for line in out if line]
 
 
 def large_files(files):
+    """Files over the limit. Updates to files already in Git LFS pass; new ones go to Releases."""
     cfg = config()
     limit = cfg.get("large_file_mb", 1) * 1024 * 1024
     allow = cfg.get("large_file_allow") or []
     errors = []
-    for f in files:
+    for status, f in (x if isinstance(x, tuple) else ("A", x) for x in files):
         p = ROOT / f
         if not p.is_file() or p.stat().st_size <= limit or any(fnmatch.fnmatch(f, g) for g in allow):
             continue
-        attr = _git("check-attr", "filter", "--", f)[0]
-        if attr.endswith(": lfs"):
+        if status == "M" and _git("check-attr", "filter", "--", f)[0].endswith(": lfs"):
             continue
-        errors.append(f"{f}: {p.stat().st_size / 1e6:.1f} MB — publish with `bm assets push` and link the release, "
-                      "or add to large_file_allow in .bmcheck.yaml with a reason")
+        errors.append(f"{f}: {p.stat().st_size / 1e6:.1f} MB — publish with `bm publish <site>/<product> <file>` "
+                      "and link the release, or add to large_file_allow in .bmcheck.yaml with a reason")
     return errors
 
 

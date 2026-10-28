@@ -1,0 +1,5 @@
+{
+  "note": "Inventory every source here (sheet, detail, revision/date, scale, photo IDs, sha256). Source files themselves stay out of git (sources/ is ignored).",
+  "documents": [],
+  "photos": []
+}

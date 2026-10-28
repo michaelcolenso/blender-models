@@ -65,6 +65,18 @@ Resident notices (what's happening at their unit), access and sequencing diagram
 - Exports confirmed working: .blend, .glb, .obj, .stl, .fbx, .usdz. SVG import add-on present. IFC (Bonsai) not installed — unverified.
 - Cycles realistic render: ~2 min for 4 review views + 1 realistic view at 1600×1200 on 2 CPU cores. EEVEE took 45 s for a trivial scene and still returned blank.
 
+## Large files
+
+New files over 1 MB (MP4, .blend, ZIP, EXR, GLB, big GIF/HTML) go to **GitHub Releases**, not git:
+
+```bash
+uv run bm publish <site>/<product> <files…>     # upload, record sha256 in release-assets.json, print README links
+uv run bm assets pull <manifest>                # restore them anywhere, checksum-verified
+uvx pre-commit install                          # once per clone: blocks oversized commits locally
+```
+
+`bm check` (pre-commit and the `checks` workflow) rejects new oversized files. Files already in Git LFS stay there and may be updated; nothing new goes to LFS.
+
 ## CI
 
 Workflow: `.github/workflows/build-models.yaml` (edit it in the GitHub web UI — Claude's token can't write workflow files).

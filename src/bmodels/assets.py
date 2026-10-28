@@ -24,6 +24,7 @@ push   upload files to the release (created if missing) and record their bytes a
 """
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import zipfile
@@ -137,16 +138,45 @@ def pull(manifest, names=None, extra_dirs=()):
 
 
 def push(manifest, files, title=None):
+    """Upload files to the manifest's release and record bytes, sha256 and (inside the repo) dest."""
     m = Manifest(manifest)
+    files = [Path(f).resolve() for f in files]
+    if len({f.name for f in files}) != len(files):
+        raise SystemExit("Release asset names must be unique (they share one release).")
     repo = ["-R", m.repo] if m.repo else []
     if subprocess.run(["gh", "release", "view", m.tag, *repo], capture_output=True, check=False).returncode:
         _gh("release", "create", m.tag, *repo, "--title", title or m.tag, "--notes", "")
     _gh("release", "upload", m.tag, *repo, "--clobber", *map(str, files))
-    for f in map(Path, files):
+    for f in files:
         rec = next((a for a in m.assets if a["name"] == f.name), None)
         if rec is None:
             rec = {"name": f.name}
             m.assets.append(rec)
         rec.update(bytes=f.stat().st_size, sha256=digest(f))
+        if f.is_relative_to(ROOT) and not f.is_relative_to(BUILD):  # restore it where it was made
+            rec["dest"] = os.path.relpath(f, m.dir)
+            _ignore(f)
     m.save()
     print(f"Uploaded {len(files)} files to {m.tag}; manifest updated: {m.path}")
+    return [url(m, f.name) for f in files]
+
+
+def _ignore(f):
+    """Keep a published file out of git: list it in the .gitignore beside it."""
+    gi = f.parent / ".gitignore"
+    lines = gi.read_text().splitlines() if gi.exists() else []
+    if f.name not in lines:
+        if not lines:
+            lines.append("# Published to GitHub Releases (bm publish); restore with bm assets pull")
+        gi.write_text("\n".join([*lines, f.name]) + "\n")
+
+
+def url(m, name):
+    return f"https://github.com/{m.repo}/releases/download/{m.tag}/{name}"
+
+
+def new_manifest(path, repo, tag):
+    """Start a release manifest (storage: release) for a product."""
+    path = Path(path)
+    path.write_text(json.dumps({"repository": repo, "tag": tag, "storage": "release", "assets": []}, indent=2) + "\n")
+    return path

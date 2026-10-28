@@ -1,5 +1,7 @@
 build/
 __pycache__/
 *.blend1
-sources/
+# Source drawings and photos stay out of git; their inventory (manifest.json) is committed.
+**/sources/*
+!**/sources/manifest.json
 .venv/
