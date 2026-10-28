@@ -1,0 +1,9 @@
+kind: films
+description: "Lobby-to-corridor walkthrough: browser drone tour, native Blender film, archviz stills and the RunPod cinema cut"
+deliverables: [../../deliverables/drone, ../../deliverables/blender-film, ../../deliverables/archviz]
+steps:
+  drone: bash $BM_PRODUCT_DIR/build.sh
+  preview: python $BM_PRODUCT_DIR/blender_preview.py --samples 8 --width 270 --height 480
+  cinema-assets: python $BM_PRODUCT_DIR/cinema_assets.py
+  runpod-cinema: bash $BM_PRODUCT_DIR/runpod_render.sh
+  check: python $BM_PRODUCT_DIR/prepare.py && git diff --exit-code -- $BM_PRODUCT_DIR/flight.spec.json

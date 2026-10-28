@@ -9,7 +9,6 @@ on:
       - ".github/actions/**"
       - "src/bmodels/render_*.py"
       - "tests/test_render_workflow.py"
-      - "deliverables/**"
       - "projects/**"
       - ".github/workflows/render-scenes.yaml"
   push:
@@ -21,7 +20,6 @@ on:
       - ".github/actions/**"
       - "src/bmodels/render_*.py"
       - "tests/test_render_workflow.py"
-      - "deliverables/**"
       - "projects/**"
       - ".github/workflows/render-scenes.yaml"
   workflow_dispatch:

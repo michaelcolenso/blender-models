@@ -4,11 +4,12 @@
     bm new <site> [--type element|detail]      start a site from templates/project
     bm build [target ...] [--changed BASE]     build + verify specs (path, site, or site/spec)
     bm run <site>/<product> <step> [args]      run a product step from its product.yaml
+    bm check-products [--changed BASE]         run every product's `check` step (CI)
     bm assets pull|verify|push <manifest> ...  release assets with checksums
     bm check [--staged | --base REF]           specs, metadata, large files, links, tests
     bm <tool> [args]                           calibrate, extract, overlay, detail-overlay, render,
                                                render-plan, animate-house, animate-sequence,
-                                               room, skp, usdz
+                                               room, skp, usdz, audit-blends
 
 Run through uv: `uv run bm …`. Nothing here imports bpy; Blender work runs in a subprocess.
 """
@@ -34,9 +35,10 @@ TOOLS = {  # bm <name> -> python -m bmodels.<module>
     "room": "room",
     "skp": "skp_code",
     "usdz": "export_usdz",
+    "audit-blends": "blend_audit",
 }
 # Anything under these paths can change every build, so a change rebuilds every spec.
-REBUILD_ALL = ("src/", "pyproject.toml", "uv.lock", ".github/", "takeoff/")
+REBUILD_ALL = ("src/", "pyproject.toml", "uv.lock", ".github/")
 
 
 def rel(p):
@@ -162,6 +164,22 @@ def cmd_run(a):
     return 0
 
 
+def cmd_check_products(a):
+    products = [p for s in project.sites() for p in s.products if "check" in (p.meta.get("steps") or {})]
+    if a.changed:
+        files = [f for f in checks._git("diff", "--name-only", f"{a.changed}...HEAD") if f]
+        if not any(f.startswith(REBUILD_ALL) for f in files):
+            products = [p for p in products if any(f.startswith(f"{rel(p.dir)}/") for f in files)]
+    failed = []
+    for p in products:
+        print(f"== {p.ref} check", flush=True)
+        if cmd_run(argparse.Namespace(product=p.ref, step="check", args=[])):
+            failed.append(p.ref)
+    print(f"\n{len(products) - len(failed)}/{len(products)} product checks passed"
+          + (f"; failed: {', '.join(failed)}" if failed else ""))
+    return 1 if failed else 0
+
+
 def run_tool(module, args):
     return subprocess.run([sys.executable, "-m", f"bmodels.{module}", *args], check=False).returncode
 
@@ -222,6 +240,10 @@ def parser():
     p.add_argument("step")
     p.add_argument("args", nargs=argparse.REMAINDER, help="appended to the step's last command")
     p.set_defaults(fn=cmd_run)
+
+    p = sub.add_parser("check-products", help="run every product's `check` step")
+    p.add_argument("--changed", metavar="BASE", help="only products with changes since BASE")
+    p.set_defaults(fn=cmd_check_products)
 
     p = sub.add_parser("assets", help="release assets with checksums")
     p.add_argument("action", choices=["pull", "verify", "push"])

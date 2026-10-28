@@ -1,6 +1,6 @@
 """Construction-sequence animation for an existing/proposed detail pair.
 
-  uv run bm animate-sequence specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence
+  uv run bm animate-sequence projects/<site>/specs/<x>-existing.yaml projects/<site>/specs/<x>-proposed.yaml --out build/<site>/<x>-sequence
       [--fps 12] [--res 960x540] [--samples 12] [--no-video]
 
 Reads `sequence:` from the proposed spec. Each step: {caption, remove: [ids], install: [ids], seconds}

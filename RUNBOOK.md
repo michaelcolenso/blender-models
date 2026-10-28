@@ -1,7 +1,7 @@
 # Runbook: Drawing set → verified Blender model + quantity takeoff
 
 **Owner:** Michael Colenso | **Frequency:** As needed (one run per building / drawing set)
-**Last updated:** 2026-09-27 | **Last run:** 2026-09-27 (QP Cottage Duplex A, `specs/qp-cottage-a.yaml`)
+**Last updated:** 2026-09-27 | **Last run:** 2026-09-27 (QP Cottage Duplex A, `projects/qp-cottage-a/specs/qp-cottage-a.yaml`)
 **Scope today:** vector-PDF plan sets (CAD-plotted). Single-story, orthogonal walls, hip/gable roofs.
 **Not yet supported:** scanned/raster drawings, photos or field measurements as geometry sources,
 multi-story, curved or skewed walls. Don't force those through this pipeline — flag them.
@@ -77,9 +77,9 @@ one string is not-to-scale or mislabeled; use strings that agree and note it.
 
 ```bash
 uv run bm extract $PDF --page <p> --clip <clip> --pt-per-ft <pt/ft> \
-  --center-px <cx> --rear-px <ry> --half right --out takeoff/<project>.json
+  --center-px <cx> --rear-px <ry> --half right --out projects/<site>/takeoff/<project>.json
 ```
-**Expected:** `walls rings=… windows=… doors=…` and `takeoff/<project>_review.png`
+**Expected:** `walls rings=… windows=… doors=…` and `projects/<site>/takeoff/<project>_review.png`
 (walls black, window candidates orange `W#`, door candidates blue `D#`, labelled with X,Y in inches).
 Use `--half right` only for mirror-image units (see Step 6); otherwise `--half all` is not implemented yet — escalate.
 **If it fails:** walls missing in the review image → see Troubleshooting (clouds, tags, dimension clutter).
@@ -92,7 +92,7 @@ Use `--half right` only for mirror-image units (see Step 6); otherwise `--half a
       elevation; accept (copy to spec `openings:`) or reject (list in a spec comment with reason).
       Typical false candidates: tubs/showers, garage-door lines, revision clouds, the party-wall FEC cabinet.
 - [ ] **Holes:** look for walls missing under revision clouds, tags or text. Add each as `extra_walls:` with
-      a comment saying why (see `specs/qp-cottage-a.yaml`).
+      a comment saying why (see `projects/qp-cottage-a/specs/qp-cottage-a.yaml`).
 
 ### Step 7 — Heights and roof
 
@@ -114,7 +114,7 @@ Use `--half right` only for mirror-image units (see Step 6); otherwise `--half a
 
 ### Step 8 — Write the spec and checks
 
-Copy `specs/qp-cottage-a.yaml` → `specs/<project>.yaml` and fill it in. Required checks:
+Create the site with `uv run bm new <site>` (once per project), copy `projects/qp-cottage-a/specs/qp-cottage-a.yaml` → `projects/<site>/specs/<project>.yaml` and fill it in. Required checks:
 - wall extents vs overall dimension strings (documented),
 - plate height (documented),
 - eave outline extents (roof plan),
@@ -124,10 +124,10 @@ Copy `specs/qp-cottage-a.yaml` → `specs/<project>.yaml` and fill it in. Requir
 ### Step 9 — Build locally
 
 ```bash
-uv run bm build specs/<project>.yaml              # ~2 min, review renders
-uv run bm build specs/<project>.yaml --realistic  # ~6 min, adds hero renders
+uv run bm build <site>/<project>              # ~2 min, review renders
+uv run bm build <site>/<project> --realistic  # ~6 min, adds hero renders
 ```
-**Expected:** `**PASS** — n/n checks`, exit code 0, and in `build/<project>/`: `.blend`, `.glb`,
+**Expected:** `**PASS** — n/n checks`, exit code 0, and in `build/<site>/<project>/`: `.blend`, `.glb`,
 `_review_{iso,plan,front,side}.png`, `_takeoff.xlsx`, `report.md`.
 **If it fails:** the report names the failing check — fix the spec, never loosen a tolerance to pass.
 
@@ -136,8 +136,8 @@ uv run bm build specs/<project>.yaml --realistic  # ~6 min, adds hero renders
 ```bash
 uv run bm calibrate elev $PDF --page <elev page> --clip <elevation clip> --pt-per-ft <pt/ft> \
   --plate-in <plate height> --half-width-in <half of wall-face-to-wall-face width>
-uv run bm overlay build/<project>/<project>.blend --pdf $PDF --page <elev page> --clip <clip> \
-  --pt-per-ft <pt/ft> --view front|rear|right --floor-row <row> --center-col <col> --out build/<project>/overlay_<view>.png
+uv run bm overlay build/<site>/<project>/<project>.blend --pdf $PDF --page <elev page> --clip <clip> \
+  --pt-per-ft <pt/ft> --view front|rear|right --floor-row <row> --center-col <col> --out build/<site>/<project>/overlay_<view>.png
 ```
 **Expected:** ≥ 80% edge agreement (Cottage A: front 82%, rear 87%) **and** a visual check that windows, doors,
 eaves, ridges and gables sit on the drawing's lines. The % alone is not proof.
@@ -146,7 +146,7 @@ fix that element in the spec; `side` views need the building's Y-centre (not aut
 
 ### Step 11 — Review the takeoff
 
-Open `build/<project>/<project>_takeoff.xlsx`:
+Open `build/<site>/<project>/<project>_takeoff.xlsx`:
 - [ ] Opening counts per elevation match the drawings.
 - [ ] Any documented quantity reconciles (roof area, window count).
 - [ ] Set the **roof waste %** (yellow cell) to your standard.
@@ -155,7 +155,7 @@ Open `build/<project>/<project>_takeoff.xlsx`:
 ### Step 12 — Commit and let CI rebuild
 
 ```bash
-git add specs/<project>.yaml takeoff/<project>.json && git commit -m "Model <project>" && git push
+git add projects/<site> && git commit -m "Model <project>" && git push
 ```
 **Expected:** Actions run "Build & verify models" goes green; the job summary shows each `report.md`;
 artifact `models-<sha>` contains the build folder (kept 30 days).
@@ -163,7 +163,7 @@ artifact `models-<sha>` contains the build folder (kept 30 days).
 
 ## Detail mode (sections: rake, eave, balcony edge, window head …)
 
-Use when the source is a **section detail**, not a plan. Spec type `detail` (example: `specs/qp-rake-ah700-12.yaml`).
+Use when the source is a **section detail**, not a plan. Spec type `detail` (example: `projects/qp-cottage-a/specs/qp-rake-ah700-12.yaml`).
 
 1. **Pick a true section at a stated scale.** Reject NTS / perspective sketches for geometry (AT401/4 rake is NTS — used only for sequence).
 2. **Verify the detail scale** from a dimension string inside the detail:
@@ -173,14 +173,14 @@ Use when the source is a **section detail**, not a plan. Spec type `detail` (exa
 5. **Checks:** every dimension string in the detail as a `between:` check (hard); measured drawn sizes as `drawn:` checks (warn only — they test the *drawing* against its callouts; a ⚠️ means the drawing and the callout disagree, e.g. fascia drawn 10.1" deep vs 9¼" called out).
 6. `path:` length and `pitch:` (rake follows the roof slope). `peel:` / `cutaway_step_in:` are presentation only — the near end stays a true section.
 7. Build with `--realistic` for the labeled cutaway; then
-   `uv run bm detail-overlay build/<n>/<n>.blend --pdf $PDF --page <p> --clip <clip> --pt-per-ft <measured> --origin-pt <x,y of X=0,Z=0> --out build/<n>/overlay_section.png`
+   `uv run bm detail-overlay build/<site>/<n>/<n>.blend --pdf $PDF --page <p> --clip <clip> --pt-per-ft <measured> --origin-pt <x,y of X=0,Z=0> --out build/<site>/<n>/overlay_section.png`
    Judge by eye: the % counts model outline beyond the detail's break lines as misses, so it understates fit.
 
 ## SketchUp output (on request, from a Claude chat session)
 
 The Trimble SketchUp connector is available to Claude in chat, **not in CI**, and its plan has a save quota
 (30 saves; check `saves_remaining` in the save result). Use it for the human-facing file, not every build.
-1. `uv run bm skp specs/<x>-existing.yaml specs/<x>-proposed.yaml` → code for `build_model` (clean: true).
+1. `uv run bm skp projects/<site>/specs/<x>-existing.yaml projects/<site>/specs/<x>-proposed.yaml` → code for `build_model` (clean: true).
 2. Add scenes "1 Existing" / "2 Proposed" (hide the other layer), style, model camera; `save_model`.
 3. Download the .skp from the returned URL (follow the redirect) and deliver it. The file's thumbnail shows all
    layers; the scene tabs switch Existing/Proposed.
@@ -190,7 +190,7 @@ Limits: solid colors only (no textures), no booleans (openings by construction),
 
 Add a `sequence:` block to the proposed spec (steps with caption / remove / install / seconds; `weave` for
 shingles + step flashing course by course; `extras` / `initial_show` / `initial_hide` for partial tear-off).
-`uv run bm animate-sequence specs/<x>-existing.yaml specs/<x>-proposed.yaml --out build/<x>-sequence/<x>`
+`uv run bm animate-sequence projects/<site>/specs/<x>-existing.yaml projects/<site>/specs/<x>-proposed.yaml --out build/<x>-sequence/<x>`
 → `<x>.mp4` (captioned, any phone) + `<x>.usdz` (same timeline as transform animation, AR-seated).
 Test first with `--test-frames 10,150,236`. Full render ≈ 6 s/frame on 2 CPU cores (Cycles; Workbench/EEVEE
 render blank headless). The sequence is presentation of a recommended order — label it that way when shared.
@@ -199,7 +199,7 @@ render blank headless). The sequence is presentation of a recommended order — 
 `objects` (glob patterns on built object names: `slab_*`, `walls`, `attic_*`, `roof`, `soffit`, opening ids such as
 `rear_A*`, `garage_*`), `motion` (`drop` / `rise` / `grow`), `seconds`, and `stagger: opening` to install one
 opening (glass, frame, mullions, casing) at a time. Build the model first, then
-`uv run bm animate-house specs/<name>.yaml --out build/<name>-sequence/<name>-sequence`.
+`uv run bm animate-house projects/<site>/specs/<name>.yaml --out build/<name>-sequence/<name>-sequence`.
 The script stops if a step matches nothing and warns about objects in no step. The camera does one elevated
 orbit starting front-left. Cottage A: 271 frames, ≈9 s/frame at 960×540 with 8 samples ≈ 40 min, so run it
 with `nohup … &` and poll the log. Both animators share `src/bmodels/anim_common.py` for captions, which shrink to fit

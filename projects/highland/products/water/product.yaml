@@ -1,0 +1,9 @@
+kind: model+viewer
+description: "Unit 107 domestic-water pipe model from P3.02/P4.01, 3D viewer and review"
+deliverables: ../../deliverables/water
+steps:
+  prepare: [python $BM_PRODUCT_DIR/prepare_spec.py]
+  build: python $BM_PRODUCT_DIR/build.py
+  viewer:
+    - cd $BM_PRODUCT_DIR && npm install && npm run bundle
+    - cd $BM_PRODUCT_DIR && python package_viewer.py && python make_review.py
