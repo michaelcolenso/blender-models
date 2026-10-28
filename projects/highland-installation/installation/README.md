@@ -43,11 +43,11 @@ Confirm measured routes/elevations, current configuration, water pressure under 
 The model uses a dedicated spec-driven pipe builder because the existing generic house/detail builder does not implement this multistory plumbing-method model. P4.01 contains vector linework and was rasterized at 200 dpi for the original source review; the studio revision uses a 400-dpi crop. No automatic dimensional extraction or calibrated physical mapping is claimed.
 
 ```bash
-python prepare_spec.py
-/workspace/.venvs/blender-models/bin/python build_installation.py
-/workspace/.venvs/blender-models/bin/python verify_blends.py
-python validate_installation.py
-python package_installation.py
+uv run python prepare_spec.py
+uv run python build_installation.py
+uv run python verify_blends.py
+uv run python validate_installation.py
+uv run python package_installation.py
 ```
 
 Keep highland-installation-proposed.yaml as the model source of truth when revising geometry. prepare_spec.py recreates the initial spec; do not run it over later field edits. build_installation.py reads the YAML. package_installation.py and validation use the matching installation-data.json generated from that same YAML when packaging.

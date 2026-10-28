@@ -1,0 +1,36 @@
+[project]
+name = "blender-models"
+version = "0.1.0"
+description = "Dimensionally accurate, provenance-tracked Blender models of construction projects, built from specs."
+readme = "README.md"
+# bpy 5.0.x wheels are cp311 only.
+requires-python = "==3.11.*"
+dependencies = [
+    "bpy==5.0.1",
+    "pyyaml>=6,<7",
+    "openpyxl>=3.1",
+    "pillow>=12.3",
+    "numpy>=1.26,<3",
+]
+
+[dependency-groups]
+# Drawing intake and PDF reports/storyboards.
+pdf = ["pymupdf>=1.24", "reportlab>=4"]
+# Compositing, grading, review sheets, plan extraction. 4.10 is the newest
+# opencv that runs on numpy<2, which bpy 5.0.1 requires; this pin also keeps the
+# graded cinema film reproducible.
+vision = ["opencv-python-headless==4.10.0.84"]
+# Narration and score generation.
+audio = ["piper-tts", "scipy"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.uv]
+package = false
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"

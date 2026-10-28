@@ -2,10 +2,10 @@ name: Build & verify models
 
 on:
   pull_request:
-    paths: ["specs/**", "tools/**", ".github/workflows/build-models.yml"]
+    paths: ["specs/**", "tools/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   push:
     branches: [main]
-    paths: ["specs/**", "tools/**", ".github/workflows/build-models.yml"]
+    paths: ["specs/**", "tools/**", ".github/workflows/build-models.yaml", ".github/actions/**", "pyproject.toml", "uv.lock"]
   workflow_dispatch:
     inputs:
       spec:
@@ -29,18 +29,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"   # bpy 5.0.x wheels are cp311 only
-          cache: pip
-
-      - name: System libraries bpy links against (no GPU needed)
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 \
-            libxkbcommon0 libsm6 libice6 libgl1
-
-      - run: pip install -r requirements.txt
+      - uses: ./.github/actions/setup-blender-env
 
       - name: Pick specs
         id: pick
@@ -48,10 +37,10 @@ jobs:
           if [ -n "${{ inputs.spec }}" ]; then
             echo "${{ inputs.spec }}" > specs.txt
           elif [ "${{ github.event_name }}" = "pull_request" ] && \
-               ! git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -q '^tools/'; then
+               ! git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -qE '^(tools/|pyproject.toml|uv.lock|\.github/)'; then
             git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'specs/*.yaml' > specs.txt
           else
-            ls specs/*.yaml > specs.txt   # builder changed or main push: rebuild everything
+            ls specs/*.yaml > specs.txt   # builder/env changed or main push: rebuild everything
           fi
           cat specs.txt
 

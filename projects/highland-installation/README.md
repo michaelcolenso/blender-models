@@ -26,7 +26,7 @@ Use Python 3.11 and Git LFS, with GitHub access to this private repository. Run 
 ```bash
 git lfs install
 git lfs pull --include='deliverables/highland-installation/assets/*'
-python3.11 projects/highland-installation/restore_assets.py
+uv run python projects/highland-installation/restore_assets.py
 ```
 
 The restoration script verifies both archives before writing, restores the original PDF, Blender/GLB models, PDFs, short installation movie and audio stems, and preserves modified local assets by refusing to overwrite them. It leaves tracked source files intact. The two 90-second movie masters remain in the delivery assets folder. To use ZIPs downloaded through GitHub's **Download raw file** button instead, pass their directory as the script's optional argument.
@@ -35,19 +35,18 @@ Open `animation-90s/Highland-repipe-90s.blend` at **MASTER - 90 seconds**. Its t
 
 ## Rebuild and verify
 
-FFmpeg/FFprobe and the DejaVu Sans regular/bold fonts are system prerequisites. Create a Python 3.11 environment and install `requirements.txt`; the generic house/detail builder does not implement this plumbing-method model.
+FFmpeg/FFprobe and the DejaVu Sans regular/bold fonts are system prerequisites. `uv sync --group vision --group pdf` (from the repo root) installs Python 3.11 and the locked dependencies; the generic house/detail builder does not implement this plumbing-method model.
 
 ```bash
-python3.11 -m venv .venv-highland
-.venv-highland/bin/python -m pip install -r projects/highland-installation/requirements.txt
-.venv-highland/bin/python projects/highland-installation/installation/validate_installation.py
+uv sync --group vision --group pdf
+uv run python projects/highland-installation/installation/validate_installation.py
 ```
 
 For geometry revisions, edit `installation/highland-installation-proposed.yaml`, run `build_installation.py` and `verify_blends.py`, then `package_installation.py` and `validate_installation.py`. The packaging step refreshes `installation-data.json` from YAML. `prepare_spec.py` recreates the initial specification and must not overwrite later field edits.
 
 For visual re-rendering, use `animation-90s/animate_highland.py --resume`, `compose_film.py --watch`, `finalize_blender.py`, then `deliver_animation.py`. Run the scripts with the prepared environment. A fresh render generates the omitted frame cache; final delivery validation requires that cache and both finished MP4s. To create a new rig from changed source models, run `animate_highland.py` without `--resume`. Update the animation specification and source hashes when intentionally revising its source models.
 
-The supplied audio stems avoid a voice-model download. Audio regeneration additionally uses `requirements-audio.txt` and the `en_US-ljspeech-high` Piper model and configuration referenced in `animation-90s/audio/CREDITS.txt`; voice weights are not committed.
+The supplied audio stems avoid a voice-model download. Audio regeneration additionally needs `uv sync --group audio` and the `en_US-ljspeech-high` Piper model and configuration referenced in `animation-90s/audio/CREDITS.txt`; voice weights are not committed.
 
 ## Validation and production limits
 

@@ -47,10 +47,10 @@ See delivery-validation.json and blender-validation.json. Checks cover source-fi
 Keep the original installation spec as the geometry authority and animation-spec.json as the production timeline. Python scripts require Blender bpy 5.0.1, Pillow, NumPy, OpenCV and FFmpeg; audio regeneration additionally needs Piper, SciPy and the referenced voice model. The supplied WAV files allow visual re-rendering without downloading voice weights. The scripts use the supplied animation-90s / installation folder relationship. In this prepared workspace:
 
 ```bash
-/workspace/.venvs/blender-models/bin/python animate_highland.py --resume
-/workspace/.venvs/highland-audio/bin/python compose_film.py --watch
-/workspace/.venvs/blender-models/bin/python finalize_blender.py
-python deliver_animation.py
+uv run python animate_highland.py --resume
+uv run python compose_film.py --watch
+uv run python finalize_blender.py
+uv run python deliver_animation.py
 ```
 
 The MP4 graphics and Blender graphics use the same event/timing data; their rasterization can differ slightly. The native Blender master renders scene strips directly. The delivered movie uses the interpolated render/compositing pipeline described above.

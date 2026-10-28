@@ -15,7 +15,9 @@ set -euo pipefail
 STAGE=${1:-all}; PROFILE=${2:-uhd}; WORKERS=${3:-2}; DEVICE=${DEVICE:-OPTIX}
 ROOT=$(cd "$(dirname "$0")/../.." && pwd); cd "$ROOT"
 LOG=build/highland-cinema/logs; mkdir -p "$LOG"
-BPY=.venv-bpy/bin/python; FIN=.venv-finish/bin/python
+# One uv environment from the committed lock. --no-sync: the bpy 5.0.1 wheel mislabels its
+# own tag (cp39), so a syncing `uv run` would reinstall bpy under the parallel render workers.
+BPY=(uv run --frozen --no-sync python); FIN=("${BPY[@]}")
 MASTER=1080; [ "$PROFILE" = uhd ] && MASTER=2160
 
 setup() {
@@ -28,37 +30,33 @@ setup() {
   fi
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
   export PATH="$HOME/.local/bin:$PATH"
-  # bpy 5.0.1 needs exactly Python 3.11; uv downloads it if the image lacks it.
-  [ -x "$BPY" ] || uv venv -p 3.11 .venv-bpy
-  [ -x "$FIN" ] || uv venv -p 3.11 .venv-finish
-  # Always reconcile dependencies: a venv left by an older setup may lack newer ones.
-  uv pip install -p "$BPY" bpy==5.0.1 pillow
-  uv pip install -p "$FIN" -r projects/highland-drone/requirements-cinema.txt
+  # Python 3.11 (downloaded if the image lacks it) and the locked dependencies; a no-op when current.
+  uv sync --frozen --group vision
   # Poly Haven CC0 textures and models, verified against the committed lock (about 190 MB).
-  "$BPY" projects/highland-drone/cinema_assets.py
+  "${BPY[@]}" projects/highland-drone/cinema_assets.py
   # cinema.py rebuilds the base walkthrough unless its own validation report is clean and
   # current, then prepares the cinema scene and checks every film camera; CPU, a few minutes.
   # A failed camera check must stop the pipeline before any GPU time is spent.
-  if ! "$BPY" projects/highland-drone/cinema.py --validate --only 0 > "$LOG/setup-cinema.log" 2>&1; then
+  if ! "${BPY[@]}" projects/highland-drone/cinema.py --validate --only 0 > "$LOG/setup-cinema.log" 2>&1; then
     tail -20 "$LOG/setup-cinema.log"; echo "Cinema scene preparation or camera validation failed"; exit 1
   fi
   grep -E "validated" "$LOG/setup-cinema.log"
 }
 
 bench() {
-  "$BPY" projects/highland-drone/cinema.py --reuse --device "$DEVICE" --profile "$PROFILE" --bench 2>&1 \
+  "${BPY[@]}" projects/highland-drone/cinema.py --reuse --device "$DEVICE" --profile "$PROFILE" --bench 2>&1 \
     | grep -E "Cycles devices|BENCH|SHOT|Error|refusing" | tee "$LOG/bench-$PROFILE.log"
 }
 
 render() {
   # Bind the frame folder to the prepared scene once; stale frames are moved aside.
-  if ! "$BPY" projects/highland-drone/cinema.py --reuse --profile "$PROFILE" --claim-frames > "$LOG/claim-$PROFILE.log" 2>&1; then
+  if ! "${BPY[@]}" projects/highland-drone/cinema.py --reuse --profile "$PROFILE" --claim-frames > "$LOG/claim-$PROFILE.log" 2>&1; then
     tail -5 "$LOG/claim-$PROFILE.log"; exit 1
   fi
   grep -E "Moved" "$LOG/claim-$PROFILE.log" || true
   pids=()
   for k in $(seq 0 $((WORKERS-1))); do
-    "$BPY" projects/highland-drone/cinema.py --reuse --device "$DEVICE" --profile "$PROFILE" --worker "$k/$WORKERS" \
+    "${BPY[@]}" projects/highland-drone/cinema.py --reuse --device "$DEVICE" --profile "$PROFILE" --worker "$k/$WORKERS" \
       > "$LOG/render-$PROFILE-$k.log" 2>&1 &
     pids+=($!)
   done
@@ -70,7 +68,7 @@ render() {
 }
 
 finish() {
-  "$FIN" projects/highland-drone/cinema_finish.py --profile "$PROFILE" --master "$MASTER"
+  "${FIN[@]}" projects/highland-drone/cinema_finish.py --profile "$PROFILE" --master "$MASTER"
   ls -la deliverables/highland-cinema
 }
 

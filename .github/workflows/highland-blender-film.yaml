@@ -41,14 +41,7 @@ jobs:
         chunk: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install native Blender runtime
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
-          python -m pip install --disable-pip-version-check bpy==5.0.1
+      - uses: ./.github/actions/setup-blender-env
       - name: Build native scene and render frame range
         env:
           QUALITY: ${{ inputs.quality || 'draft' }}
@@ -89,14 +82,7 @@ jobs:
         fragment: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install native Blender runtime
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
-          python -m pip install --disable-pip-version-check bpy==5.0.1
+      - uses: ./.github/actions/setup-blender-env
       - name: Render replacement frame range from the current scene
         env:
           QUALITY: ${{ inputs.quality }}
@@ -135,14 +121,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: ./.github/actions/setup-blender-env
         with:
-          python-version: "3.11"
-      - name: Install compositor dependencies
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y -q ffmpeg fonts-dejavu-core libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
-          python -m pip install --disable-pip-version-check bpy==5.0.1 pillow
+          apt: ffmpeg fonts-dejavu-core
       - uses: actions/download-artifact@v4
         if: ${{ !inputs.existing_run }}
         with:

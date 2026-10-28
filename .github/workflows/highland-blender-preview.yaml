@@ -3,7 +3,7 @@ name: Highland Blender preview
 on:
   push:
     branches: [deliver/highland-owner-tour]
-    paths: [".github/workflows/highland-blender-preview.yaml"]
+    paths: [".github/workflows/highland-blender-preview.yaml", ".github/actions/**", "uv.lock"]
   workflow_dispatch:
     inputs:
       samples:
@@ -18,14 +18,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install Blender Python runtime
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y -q libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1
-          python -m pip install --disable-pip-version-check bpy==5.0.1
+      - uses: ./.github/actions/setup-blender-env
       - name: Render exterior preview with Cycles CPU
         run: |
           python projects/highland-drone/blender_preview.py \

@@ -203,7 +203,7 @@ From the repository root, replacing `PY_BPY` and `PY_COMPOSE` with the appropria
 
 ```bash
 # Source preparation needs PyMuPDF:
-python projects/highland-installation/studio-upgrade/prepare_blueprint.py
+uv run python projects/highland-installation/studio-upgrade/prepare_blueprint.py
 
 # Build a separate editable studio scene:
 PY_BPY projects/highland-installation/studio-upgrade/studio_upgrade.py
@@ -217,7 +217,7 @@ PY_BPY projects/highland-installation/studio-upgrade/render_studio.py --sequence
 PY_COMPOSE projects/highland-installation/studio-upgrade/studio_composite.py --sequence --native-fps 6
 ```
 
-`PY_BPY` needs bpy 5.0.1; `PY_COMPOSE` needs NumPy, Pillow and OpenCV. The supplied **requirements.txt** lists the complete Python 3.11 dependencies, including PyMuPDF for source preparation and ReportLab for the guide/storyboard PDFs. FFmpeg/FFprobe and DejaVu Sans fonts are system dependencies. `--watch` lets the compositor process completed shots while the renderer continues. Native FPS must divide 24. Rendering uses a profile signature to reject an incompatible old cache; move the generated `output/raw/` directory before changing settings.
+`PY_BPY` needs bpy 5.0.1; `PY_COMPOSE` needs NumPy, Pillow and OpenCV. From the repository root, `uv sync --group vision --group pdf` installs the complete locked Python 3.11 dependencies, including PyMuPDF for source preparation and ReportLab for the guide/storyboard PDFs; both `PY_BPY` and `PY_COMPOSE` can then be `uv run --no-sync python`. FFmpeg/FFprobe and DejaVu Sans fonts are system dependencies. `--watch` lets the compositor process completed shots while the renderer continues. Native FPS must divide 24. Rendering uses a profile signature to reject an incompatible old cache; move the generated `output/raw/` directory before changing settings.
 
 After changing post-processing settings, remove the generated **output/clips/** folder to rebuild those intermediates. Complete clips are otherwise reused after their exact frame counts are verified; new encodes use a temporary file until validation succeeds.
 

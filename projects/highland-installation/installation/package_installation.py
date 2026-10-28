@@ -164,8 +164,8 @@ The model uses a dedicated spec-driven pipe builder because the existing generic
 
 ```bash
 python prepare_spec.py
-/workspace/.venvs/blender-models/bin/python build_installation.py
-/workspace/.venvs/blender-models/bin/python verify_blends.py
+uv run python build_installation.py
+uv run python verify_blends.py
 python validate_installation.py
 python package_installation.py
 ```

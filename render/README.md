@@ -21,7 +21,7 @@ flowchart LR
 | File | Responsibility |
 | --- | --- |
 | `render/scenes.json` | Stable shot IDs, model paths, exact scene/camera names, frame and assumption notice |
-| `render/requirements.txt` | Pinned Blender Python runtime and Pillow |
+| `pyproject.toml` / `uv.lock` | Pinned Blender Python runtime and Pillow (repo-wide lock) |
 | `tools/render_plan.py` | Validate the catalog and create one matrix job per shot |
 | `tools/render_scene.py` | Open a model, select its shot, render, validate pixels and write evidence |
 | `.github/workflows/render-scenes.yaml` | Triggers, isolated runners, dependency cache and artifact retention |
@@ -80,11 +80,10 @@ Use Python 3.11, the system libraries listed in the workflow, and a virtual
 environment. From the repository root:
 
 ```bash
-python3.11 -m venv .venv-render
-.venv-render/bin/python -m pip install -r render/requirements.txt
-.venv-render/bin/python tools/render_plan.py
-.venv-render/bin/python -m unittest discover -s tests -p test_render_workflow.py
-.venv-render/bin/python tools/render_scene.py \
+uv sync
+uv run python tools/render_plan.py
+uv run python -m unittest discover -s tests -p test_render_workflow.py
+uv run python tools/render_scene.py \
   --shot highland-water-overview --profile preview --device CPU \
   --output build/scene-renders/highland-water-overview
 ```
@@ -123,7 +122,7 @@ record drivers/device hardware, and retain the validated inputs with outputs.
 ## Cost, caching and GPU rendering
 
 The default uses standard GitHub-hosted CPU runners. It requires no render-service
-account or application secrets. The pip cache avoids repeated package downloads;
+account or application secrets. The uv cache avoids repeated package downloads;
 it does not cache rendered images. The complete catalog is rendered on input
 changes, avoiding missed texture or shared-asset dependencies. PR updates cancel
 older preview runs. Main/manual runs have a 45-minute limit per shot and a
