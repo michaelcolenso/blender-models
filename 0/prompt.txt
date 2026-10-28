@@ -1,0 +1,21 @@
+we need to organize and optimizw  our workflow in this repo.
+
+---
+
+let the CI handle it
+
+---
+
+start PR 2 while CI runs
+
+---
+
+yes
+
+---
+
+add to pr
+
+---
+
+now what
