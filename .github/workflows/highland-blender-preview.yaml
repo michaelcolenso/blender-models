@@ -21,7 +21,7 @@ jobs:
       - uses: ./.github/actions/setup-blender-env
       - name: Render exterior preview with Cycles CPU
         run: |
-          python projects/highland-drone/blender_preview.py \
+          python projects/highland/products/walkthrough/blender_preview.py \
             --output build/highland-blender-preview \
             --samples "${{ inputs.samples || '16' }}"
       - uses: actions/upload-artifact@v4

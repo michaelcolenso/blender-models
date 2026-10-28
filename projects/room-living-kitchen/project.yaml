@@ -1,0 +1,7 @@
+name: "Living room / kitchen (occupied apartment)"
+address: ""
+client: ""
+building_type: "occupied apartment interior"
+scope: "photo-only interior model for resident communication; nothing is confirmed"
+units: imperial
+release_tag_prefix: room-living-kitchen

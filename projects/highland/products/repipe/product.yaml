@@ -1,0 +1,7 @@
+kind: viewer+film
+description: "Proposed parallel-install, unit-by-unit cutover sequence (interactive page and MP4)"
+deliverables: ../../deliverables/repipe
+steps:
+  prepare: python $BM_PRODUCT_DIR/prepare.py
+  package: python $BM_PRODUCT_DIR/package.py
+  check: python $BM_PRODUCT_DIR/prepare.py && git diff --exit-code -- $BM_PRODUCT_DIR/repipe-strategy.json

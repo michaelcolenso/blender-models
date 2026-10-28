@@ -1,0 +1,63 @@
+# Method
+
+How every model in this repo is made, whatever the site or model type. Operator commands step by step:
+[RUNBOOK.md](RUNBOOK.md). Repo layout and tools: [../README.md](../README.md).
+
+Purpose: build dimensionally accurate, realistic 3D models of restoration and defect-repair projects (occupied multifamily) from construction drawings, details, specs, and site photos, using Blender driven by Python. Accuracy first, realism second. A model is finished only when every dimension traces to a source or is labeled as assumed, the automated checks pass, and the renders have been looked at.
+
+## Pipeline (always in this order)
+
+1. **Intake.** Inventory every source: sheet number, detail number, revision/date, scale, photo IDs. Read drawings at full resolution (rasterize PDFs with `pdftoppm -r 200+`; crop into details). Note scale bars and "NTS" details.
+2. **Takeoff.** Extract every dimension, member size, spacing, elevation, and count into the model spec. Use actual lumber sizes (2x10 = 1½ × 9¼), not nominal. Never scale an NTS detail. Never infer a dimension from a partial drawing and call it documented.
+3. **Model spec** (`projects/<site>/specs/<area>.yaml`; start a site with `uv run bm new <site>`). The spec is the single source of truth; geometry is never hand-edited in Blender without the spec changing too. Every element carries:
+   - `status: confirmed` — dimension shown on a document (`source` required)
+   - `status: provisional` — derived: scaled from a drawing with a scale bar, or measured from a photo against a known reference (`source` required; note the reference and expected tolerance)
+   - `status: assumed` — not in any document (`basis` required, e.g. "code-minimum", "typical", "massing only")
+   - Document-driven `checks`: counts, overall extents, clear gaps, spacing, elevations — each with its `source`.
+4. **Build.** `uv run bm build <site>[/<spec>] [--realistic]` (bpy, headless). One collection per trade; trades stay separate. Inches in the spec; Blender stores meters, displays imperial.
+5. **Verify.** The builder fails (exit 1) on: missing source/basis, count or extent mismatch, gap mismatch, or a blank render. Then look at the review renders myself — plan, front, side, iso — colored by provenance (green confirmed, yellow provisional, orange assumed). Where a drawing elevation exists, compare the ortho render against it at the same scale. "Checks passed" and "looked right" are both required; report which were done.
+6. **Realism pass** (only after geometry is verified). PBR materials by real product where known; realistic lighting via Cycles. Realism never changes geometry.
+7. **Quantities.** Every house build writes `<name>_takeoff.xlsx` (src/bmodels/qto.py): openings schedule, siding + gable panel net of openings by elevation, casing and corner-board LF, roof area by pitch, squares (waste is a yellow input), ridge/hip/valley/eave/rake LF, and an Elements sheet of stable IDs for trackers. Measured values are blue inputs with method + status; everything derived is a live formula. Reconcile against any documented quantity (Cottage A: plan roof area 3,935.7 vs 3,935 sf on AH202).
+8. **Deliver.** `.blend` (editable), `.glb` (phone/web viewing, carries element metadata), review renders, `report.md`. List every assumed element in the handoff.
+
+## Plan-set method (proven on QP Cottage A, 2026-09-27)
+
+- **Calibrate every sheet from its own dimension strings** before measuring anything: find the tick marks of a long dimension and compute pt/ft (AH201: 39'-0" ticks 702 pt apart = 18.0 pt/ft = true 1/4"). Never trust the title-block scale alone.
+- **Rasterize at an exact scale** (2 px/in plans, 1–2 px/in elevations). Walls drawn as hollow outlines are found as thin enclosed white cores (half-width 2.5–7.5 px); window glazing splits the band into strips under 2.3 px half-width.
+- **Every extracted opening must appear on an elevation** or it is rejected (tubs, showers, garage-door lines and revision clouds all produce false openings). Record rejected candidates in the spec.
+- **Revision clouds and tags break linework** — look for missing wall where a cloud crosses, trace it manually, and add it as an `extra_walls` entry with its reason.
+- **Mirror-image units:** extract the cleaner half and mirror, but first measure the match (Cottage A: 94% of walls within 1½").
+- **Roofs:** union of convex hip/gable pieces taken from the eave outline on the roof plan; verify predicted ridge/hip positions against the drawn ones and ridge heights against elevations.
+- **Walls are built boolean-free** (rectangle decomposition, openings cut by box splitting). Roof unions use Blender's **Manifold** boolean solver — the Exact solver fails on the coplanar faces that roofs inevitably have.
+- **Overlay check:** `src/bmodels/overlay.py` renders the model orthographically at the drawing's scale and overlays it on the elevation; report the edge-agreement % and look at the image.
+
+## Model types
+
+- **detail** — one construction section (rake, eave, balcony edge, window head) as callout-sized components swept along a short path; 1/16" intent. `src/bmodels/detail.py`.
+- **house** — plan-extracted shell (walls, openings, roof) + quantity takeoff. `src/bmodels/house.py`, `src/bmodels/qto.py`.
+- **room** — interior shell + furniture + lighting from a photo or sketch (`projects/<site>/specs/room-*.yaml`, `src/bmodels/room.py`). Photo-only, so nothing can be `confirmed`: every group is `provisional` (visible, sized from a reference) or `assumed`. Checks are internal consistency (body corners match the spec, clearances, footprints don't overlap), not accuracy to the real room. `src/bmodels/build.py` hands room specs to `room.py` (checks + review renders only, so CI needs no workflow change). Run `uv run bm room projects/room-living-kitchen/specs/room-living-kitchen.yaml [--only review_iso,photomatch_night] [--no-render]`; the full render set is ~25 min on 4 CPU cores.
+- **element / building** — not built yet: parametric components (balcony, stair) and multi-level buildings with repeated units.
+All types share: provenance on every element, failing checks, CI rebuild.
+
+## Accuracy rules
+
+- Never present an assumed or provisional element as documented. Review renders always show provenance colors; realistic renders shared outside the team must carry a note if any assumed elements are visible.
+- Photos: state the reference object used for scale (brick course, CMU, door, siding exposure, known member size), the camera angle limits, and the resulting tolerance. Photo-only geometry is at best `provisional`.
+- Conflicts between sources (drawing vs. photo vs. spec): model per the governing document, flag the conflict in the report — don't average or silently pick.
+- Existing-conditions models (defect repair) and proposed-repair models are separate scenes or separate specs. Don't merge them.
+- Models are illustrative/coordination tools, not contract documents. Any render used in a scope, PCO, or resident notice gets that label.
+
+## Occupied-building use cases
+
+Resident notices (what's happening at their unit), access and sequencing diagrams, protection/staging/egress layouts, and PCO backup showing concealed conditions. For these, include the relevant occupied-building elements (egress paths, protection, staging area, work zone) as their own collection, marked by source like everything else.
+
+## Environment facts (verified 2026-09-27)
+
+- `uv sync` installs Python 3.11 and the locked `bpy==5.0.1` (see `pyproject.toml`); always run Python as `uv run python …`; build + checks for a small spec run in seconds.
+- Headless has no GPU: **Workbench and EEVEE render blank frames** — use Cycles on CPU only. Cameras need explicit rotation (track-to constraints are not evaluated before headless renders).
+- Exports confirmed working: .blend, .glb, .obj, .stl, .fbx, .usdz. SVG import add-on present. IFC (Bonsai) not installed — unverified.
+- Cycles realistic render: ~2 min for 4 review views + 1 realistic view at 1600×1200 on 2 CPU cores. EEVEE took 45 s for a trivial scene and still returned blank.
+
+## Working style
+
+Ask once, batched, only for what can't be read from the documents (e.g. a missing detail, which revision governs). Otherwise take the next step and mark assumptions. Don't claim a model is accurate beyond what its sources support.

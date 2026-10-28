@@ -1,0 +1,7 @@
+name: "101 Meydenbauer, Building B"
+address: "101 Meydenbauer, Bellevue WA"
+client: "KEAD project 25-048"
+building_type: "occupied multifamily, slab-on-grade"
+scope: "under-slab waste re-pipe: bid quantities, slab-allowance check, construction-phase and 4D sequence models"
+units: imperial
+release_tag_prefix: meydenbauer-b

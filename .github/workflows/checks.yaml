@@ -1,0 +1,33 @@
+name: Repo checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blender-env
+      - name: uv.lock matches pyproject.toml
+        run: uv lock --check
+      - name: Specs, site/product metadata, large files, links, tests
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'HEAD~1' }}
+        run: bm check --base "$BASE"
+      - name: Every committed .blend resolves its external files
+        run: bm audit-blends

@@ -1,0 +1,111 @@
+# Field condition — raked parapet with metal coping. PROPOSED REPAIR (same section as
+# field-parapet-existing.yaml; existing items not touched keep their ids).
+# Scope per S1: coping REMAINS; NEW roof-to-wall flashing; NEW siding at back of parapet.
+# Labels: NEW = stated scope (S1); REQ'D-BY = needed to perform stated scope; REC = recommendation,
+# not in stated scope; REMAIN = existing to remain / protect.
+project: Field parapet (photo P1) — PROPOSED roof-to-wall flashing + siding
+tolerance_in: 0.125
+
+sources:
+  - {id: P1, ref: "Site photo P1 (sources/field/parapet-P1.jpg), Michael Colenso, 2026-09-27", type: photo}
+  - {id: S1, ref: "Scope statement, M. Colenso 2026-09-27: coping remains; new roof-to-wall flashing and siding at back of parapet", type: scope}
+  - {id: IRC, ref: "IRC 2018 R905.2.8.3 sidewall flashing: step flashing min 4\" up wall x 4\" on roof (via DOE/PNNL BASC guide). Reference only if the building is under the IBC", type: code}
+  - {id: MFR, ref: "Siding manufacturer's roof clearance — NOT VERIFIED; secondary sources state 1 1/2\"-2\". Confirm for the installed product", type: manufacturer}
+
+field_verify:
+  - "Everything in field-parapet-existing.yaml's field-verify list"
+  - "Siding product + current installation instructions → roof clearance and flashing requirements"
+  - "Governing code: condo/multifamily is usually IBC, not IRC — then shingle + siding manufacturer instructions govern flashing sizes"
+  - "Coping: can the siding top course slide up under the roof-side face leg without removing the coping? Face-leg fasteners into the new siding?"
+
+flags:
+  - "Coping splice at the slope break (low end) is packed with debris and stained — likely leak path; coping 'remains' leaves it as-is. Reseal/splice-plate is a scope decision"
+  - "Kickout (diverter) flashing at the bottom of the roof-to-wall run — not visible in P1; confirm where the run terminates at an eave"
+  - "New WRB must tie in UNDER the existing membrane/WRB at the parapet top (upper layer laps over lower) while the coping stays on — access is the constraint"
+  - "Shingles within one shingle width of the wall must be removed and relaid (or replaced) to weave step flashing — separate roofing trade scope"
+  - "Dark patch at gable-end top (possible exposed WRB) sits at the upper end of this work — include or exclude explicitly"
+
+elements:
+  - id: parapet_proposed
+    type: detail
+    path: {length_in: 102, pitch: 6}
+    cutaway_step_in: 8
+    color_by: scope                   # realistic cutaway colored by scope category
+    cutaway_dir: [1.0, 0.7, 0.9]      # view from the roof side (+X), above, toward the stepped far end
+    components:
+      # --- roof ---
+      - {id: roof_deck, label: "roof sheathing (REMAIN)", trade: roofing, material: osb, rect: [0.0, -0.905, 36.0, -0.28],
+         status: assumed, basis: "5/8\" deck typical; not visible"}
+      - {id: underlayment, label: "underlayment (REMAIN)", trade: roofing, material: membrane, rect: [12.0, -0.28, 36.0, -0.25],
+         status: assumed, basis: "not visible"}
+      - {id: membrane_deck, label: "REC: self-adhered membrane at wall, 6\" on deck", peel: 1, trade: roofing, material: membrane,
+         rect: [0.0, -0.28, 12.0, -0.25], status: assumed, basis: "recommendation, not in stated scope"}
+      - {id: membrane_wall, label: "REC: membrane turned up wall 4\"", peel: 1, trade: roofing, material: membrane,
+         rect: [0.0, -0.25, 0.04, 4.0], status: assumed, basis: "recommendation, not in stated scope"}
+      - {id: shingles, label: "shingles (REMAIN)", trade: roofing, material: shingles, rect: [12.0, -0.25, 36.0, 0.0],
+         status: provisional, source: P1, basis: "existing field shingles"}
+      - {id: shingles_relay, label: "REQ'D-BY: remove + relay shingles 12\" at wall", peel: 3, trade: roofing, material: shingles,
+         rect: [0.0, -0.25, 12.0, 0.0], status: assumed, basis: "needed to weave step flashing; one shingle width typical"}
+      - {id: step_leg_wall, label: "NEW step flashing, 5\" up wall (5x7 pieces, 1 per course)", peel: 2, trade: sheet_metal, material: flashing,
+         rect: [0.04, 0.0, 0.08, 5.0], repeat: {width_in: 4.6, spacing_in: 4.8, start_in: 0},
+         status: provisional, source: IRC, basis: "5x7 standard piece exceeds 4x4 minimum; spacing = course exposure (assumed 5 3/8\" along slope); drawn without the 2\" overlap for clarity"}
+      - {id: step_leg_roof, label: "NEW step flashing, 5\" on roof", peel: 2, trade: sheet_metal, material: flashing,
+         rect: [0.04, -0.23, 5.04, -0.2], repeat: {width_in: 4.6, spacing_in: 4.8, start_in: 0},
+         status: provisional, source: IRC, basis: "woven between shingle courses"}
+      # --- parapet wall ---
+      - {id: wall_framing, label: "parapet framing (REMAIN)", trade: framing, material: df_lumber, rect: [-6.0, -12.0, -0.5, 17.5],
+         status: assumed, basis: "not visible; 2x6 assumed"}
+      - {id: sheathing_roofside, label: "wall sheathing (REMAIN, repair as found)", trade: framing, material: osb, rect: [-0.5, -12.0, 0.0, 17.5],
+         status: assumed, basis: "condition unknown until open"}
+      - {id: wrb_new, label: "NEW WRB, lapped under existing at parapet top", peel: 1, trade: envelope, material: wrb, rect: [0.0, 0.0, 0.03, 16.5],
+         status: assumed, basis: "implied by siding replacement; tie-in detail to confirm"}
+      - {id: siding_new, label: "NEW fiber-cement siding/trim, 2\" clear of roof", peel: 4, trade: siding, material: siding,
+         rect: [0.08, 2.0, 0.83, 14.5], status: provisional, source: MFR, basis: "clearance per manufacturer (not verified); thickness assumed"}
+      - {id: sheathing_ext, label: "sheathing, exterior side (REMAIN)", trade: framing, material: osb, rect: [-6.5, -12.0, -6.0, 17.5],
+         status: assumed, basis: "not in scope"}
+      - {id: siding_ext, label: "siding, exterior side (REMAIN)", trade: siding, material: siding, rect: [-7.25, -12.0, -6.5, 14.5],
+         status: assumed, basis: "not in scope"}
+      # --- coping remains ---
+      - {id: coping_top, label: "metal coping (REMAIN — protect)", trade: sheet_metal, material: flashing, rect: [-7.75, 17.5, 1.45, 17.6],
+         status: provisional, source: P1, basis: "existing to remain per S1"}
+      - {id: coping_leg_roof, label: "coping face leg (REMAIN) — new siding tucks under", trade: sheet_metal, material: flashing,
+         rect: [1.35, 13.5, 1.45, 17.6], status: provisional, source: P1, basis: "4\" leg depth assumed"}
+      - {id: coping_leg_ext, label: "coping face leg, exterior (REMAIN)", trade: sheet_metal, material: flashing, rect: [-7.75, 13.5, -7.65, 17.6],
+         status: assumed, basis: "far side not visible"}
+
+checks:
+  - between: [step_leg_wall, z0, step_leg_wall, z1]
+    label: "step flashing wall leg (IRC min 4\")"
+    min: 4.0
+    source: IRC
+  - between: [step_leg_roof, x0, step_leg_roof, x1]
+    label: "step flashing roof leg (IRC min 4\")"
+    min: 4.0
+    source: IRC
+  - between: [shingles_relay, z1, siding_new, z0]
+    label: "new siding clearance above shingles (secondary sources 1 1/2\"-2\")"
+    min: 1.5
+    source: MFR
+  - between: [coping_leg_roof, z0, siding_new, z1]
+    label: "siding top above coping leg bottom (siding must tuck under the drip) "
+    min: 0.5
+    source: S1
+
+# Construction sequence for `bm animate-sequence` (presentation; order is the recommended
+# means-and-methods sequence, not a documented requirement).
+sequence:
+  title: "Existing: raked parapet at roof-to-wall — coping to remain"
+  closing: "Complete — coping untouched; new flashing + siding"
+  initial_hide: [shingles, underlayment]          # existing full-width pieces, replaced by field + band below
+  initial_show: [shingles, underlayment]          # proposed field pieces (remain) visible from the start
+  extras:
+    - {id: shingles_band_existing, rect: [0.0, -0.25, 12.0, 0.0], material: shingles}
+    - {id: underlayment_band_existing, rect: [0.0, -0.28, 12.0, -0.25], material: membrane}
+  steps:
+    - {caption: "1. Protect coping; remove roof-side siding/trim and wall-base apron", remove: [siding_roofside, base_apron], seconds: 1.6}
+    - {caption: "2. Roofing trade: remove shingles within 12 in of the wall", remove: [shingles_band_existing], seconds: 1.4}
+    - {caption: "3. Remove WRB + underlayment at wall; inspect sheathing", remove: [wrb_existing, underlayment_band_existing], seconds: 1.4}
+    - {caption: "4. New WRB — lap UNDER the existing membrane at the parapet top", install: [wrb_new], seconds: 1.4}
+    - {caption: "5. Recommended: self-adhered membrane at the wall (not in stated scope)", install: [membrane_deck, membrane_wall], seconds: 1.4}
+    - {caption: "6. Relay shingles and step flashing — one piece per course, woven", weave: {shingles: shingles_relay, flashing: [step_leg_roof, step_leg_wall]}, seconds: 5.0}
+    - {caption: "7. New fiber-cement siding, 2 in clear of roof, tucked under coping leg", install: [siding_new], seconds: 1.6}

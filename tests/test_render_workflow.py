@@ -9,10 +9,9 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from render_plan import load_shots, select_shots
-from render_scene import validate_image
-from render_assets import validate_scene_assets
+from bmodels.render_plan import load_shots, select_shots
+from bmodels.render_scene import validate_image
+from bmodels.render_assets import validate_scene_assets
 
 try:
     import bpy
@@ -99,7 +98,7 @@ class BlenderAssetDependencyTests(unittest.TestCase):
         return path, image, material
 
     def test_relocated_model_ignores_missing_saved_brush_catalog(self):
-        source = Path(__file__).resolve().parents[1] / "deliverables/highland-water/Highland-domestic-water.blend"
+        source = Path(__file__).resolve().parents[1] / "projects/highland/deliverables/water/Highland-domestic-water.blend"
         relocated = self.folder / "relocated.blend"
         shutil.copy2(source, relocated)
         bpy.ops.wm.open_mainfile(filepath=str(relocated), load_ui=False, use_scripts=False)

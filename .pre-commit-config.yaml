@@ -1,0 +1,10 @@
+# Install once: uvx pre-commit install   (runs on every `git commit`)
+repos:
+  - repo: local
+    hooks:
+      - id: bm-check
+        name: bm check --staged (large files, spec provenance, site/product metadata)
+        # --no-sync: the bpy wheel's tag mismatch would otherwise reinstall it on every commit
+        entry: uv run --no-sync bm check --staged
+        language: system
+        pass_filenames: false
