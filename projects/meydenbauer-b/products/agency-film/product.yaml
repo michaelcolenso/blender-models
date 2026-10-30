@@ -1,0 +1,13 @@
+# Steps run from the repo root: uv run bm run meydenbauer-b/agency-film <step> [extra args for the last command]
+# Env in every step: $BM_PRODUCT_DIR (this folder), $BM_BUILD (build/<site>/<product>), $BM_DELIVERABLES.
+kind: film
+description: "75-second presentation film of the Building B re-pipe approach: plan graphics, hero stills, RunPod footage, scratch VO and original score"
+deliverables: ../../deliverables/agency-film
+steps:
+  # needs `git lfs pull` for the 4D scene (stills) and the RunPod film (video)
+  stills: python $BM_PRODUCT_DIR/hero_stills.py --res 2304x964 --samples 20
+  # needs `uv sync --group audio` and the Piper LJ Speech voice in build/meydenbauer-b/agency-film/voice/
+  audio: python $BM_PRODUCT_DIR/film.py --audio
+  video: python $BM_PRODUCT_DIR/film.py --video
+  # CPU, stdlib + JSON only: edit decision list, claims, caption sync, plan length vs takeoff
+  check: python $BM_PRODUCT_DIR/film.py --check
