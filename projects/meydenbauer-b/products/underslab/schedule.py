@@ -68,8 +68,9 @@ def unit_plan(u, R=RATES):
                            "concrete_cy": round(sf * R["pourback_in"] / 12 / 27, 1)}}
 
 
-def build():
-    take = json.loads((ROOT / "build/meydenbauer-b/takeoff.json").read_text())
+def build(takeoff=None):
+    # Adapters can use the committed takeoff without a prior Blender/build pass.
+    take = takeoff if takeoff is not None else json.loads((ROOT / "build/meydenbauer-b/takeoff.json").read_text())
     by = {u["unit"]: u for u in take["units"]}
     units, day = [], 0.0
     for name in ORDER:

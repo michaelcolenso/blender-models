@@ -1,18 +1,43 @@
+"""CPU-only contract/drift checks; never rewrites tracked outputs."""
+
 from __future__ import annotations
+
+import importlib.util
 import json
+import subprocess
+import sys
 from pathlib import Path
-HERE=Path(__file__).parent; ROOT=HERE.parents[3]
-state=json.loads((ROOT/'projects/meydenbauer-b/state/project-state.json').read_text()); app=(HERE/'app.js').read_text(); html=(HERE/'index.html').read_text(); errors=[]
-def need(ok,msg):
-    if not ok: errors.append(msg)
-need(state.get('schema_version')=='0.1.0','unexpected CIE schema')
-need(len(state.get('scenarios',[]))>=3,'S1/S2/S3 scenarios missing')
-qs={(q.get('scenario_id'),q.get('measure')):q.get('value') for q in state.get('quantities',[])}
-s2=qs.get(('meydenbauer-b:scenario:s2','slab_cut')); s3=qs.get(('meydenbauer-b:scenario:s3','slab_cut'))
-allowance=next((c.get('value') for c in state.get('claims',[]) if c.get('predicate')=='slab_allowance'),None)
-need(s2==686.0,'S2 slab decision regression'); need(s3==991.0,'S3 slab decision regression'); need(allowance==700,'700 SF allowance claim missing')
-need(s2 is not None and allowance is not None and s2<=allowance,'S2 should remain inside allowance'); need(s3 is not None and allowance is not None and s3>allowance,'S3 should exceed allowance')
-for token in ['cie_id','GLTFLoader','Raycaster','related(el)','scenario_id','slab_allowance','data-mode="evidence"','data-mode="risk"']: need(token in app or token in html,f'Explorer wiring missing: {token}')
-for forbidden in ['686.0','991.0','700 SF']: need(forbidden not in app,f'duplicated decision value in app.js: {forbidden}')
-if errors: raise SystemExit('EXPLORER CHECK FAILED\n- '+'\n- '.join(errors))
-print(f'EXPLORER CHECK PASS — {len(state.get("scenarios",[]))} scenarios; allowance {allowance} SF; S2 {s2} SF; S3 {s3} SF')
+
+from bmodels.paths import ROOT
+
+HERE = Path(__file__).resolve().parent
+STATE = ROOT / "projects/meydenbauer-b/state"
+
+
+def main():
+    for script in [STATE / "build_from_artifacts.py", HERE / "time_model.py"]:
+        subprocess.run([sys.executable, str(script), "--check"], check=True)
+    state = json.loads((STATE / "project-state.json").read_text())
+    timeline = state["metadata"]["timeline"]
+    assert timeline["working_days"] == 81.5
+    assert timeline["order"] == ["B-103", "B-102", "B-101", "B-104"]
+    assert len(state["activities"]) == 32
+    schedule_spec = importlib.util.spec_from_file_location("schedule", HERE.parent / "underslab/schedule.py")
+    assert schedule_spec and schedule_spec.loader
+    schedule = importlib.util.module_from_spec(schedule_spec)
+    schedule_spec.loader.exec_module(schedule)
+    takeoff = json.loads((ROOT / "projects/meydenbauer-b/deliverables/underslab/takeoff.json").read_text())
+    assert schedule.build(takeoff) == json.loads((HERE.parent / "underslab/meydenbauer-b.schedule.json").read_text())
+    app = (HERE / "app.js").read_text()
+    assert "metadata.timeline" in app and "decisionAt(state, scenario)" in app
+    for forbidden in ["686.0", "991.0", "700 SF", "excavation_cy_per_day", "projected_working_days"]:
+        assert forbidden not in app, f"browser duplicates construction state: {forbidden}"
+    subprocess.run(["node", "--input-type=module", "--check"], input=app, text=True, check=True)
+    subprocess.run(["node", "--test", str(HERE / "view-state.test.mjs")], check=True)
+    print(
+        "EXPLORER CHECK PASS — canonical state, S2 schedule, scenario decisions, semantic bindings and time projection"
+    )
+
+
+if __name__ == "__main__":
+    main()

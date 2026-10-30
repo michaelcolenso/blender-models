@@ -4,21 +4,37 @@ This is intentionally an adapter, not a rewrite of takeoff/schedule/logistics.
 The production artifacts remain authoritative for their calculations; this module
 adds stable identity, provenance, relationships and a common state envelope.
 """
+
 from __future__ import annotations
 
+import argparse
+import importlib.util
 import json
 from pathlib import Path
 from typing import Any
 
 from cie.ids import semantic_id
-from cie.model import Activity, Claim, Confidence, Element, Evidence, ProjectState, Quantity, Relationship, Scenario, Status
+from cie.model import (
+    Activity,
+    Claim,
+    Confidence,
+    Element,
+    Evidence,
+    Issue,
+    ProjectState,
+    Quantity,
+    Relationship,
+    Scenario,
+    Status,
+)
+from cie.scenario import aggregate_unit_case, allowance_delta
 from cie.validate import assert_valid_project_state
 
 PROJECT = "meydenbauer-b"
 ROOT = Path(__file__).parents[1]
 PRODUCT = ROOT / "products" / "underslab"
 DELIVERABLE = ROOT / "deliverables" / "underslab"
-OUT = Path(__file__).with_name("project-state.generated.json")
+OUT = Path(__file__).with_name("project-state.json")
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -28,7 +44,11 @@ def _load(path: Path) -> dict[str, Any]:
 def build() -> ProjectState:
     spec = _load(PRODUCT / "meydenbauer-b.spec.json")
     takeoff = _load(DELIVERABLE / "takeoff.json")
-    schedule = _load(PRODUCT / "meydenbauer-b.schedule.json")
+    module_spec = importlib.util.spec_from_file_location("meydenbauer_schedule", PRODUCT / "schedule.py")
+    assert module_spec and module_spec.loader
+    schedule_module = importlib.util.module_from_spec(module_spec)
+    module_spec.loader.exec_module(schedule_module)
+    schedule = schedule_module.build(takeoff)
     logistics = _load(PRODUCT / "meydenbauer-b.logistics.json")
 
     evidence: list[Evidence] = []
@@ -114,6 +134,8 @@ def build() -> ProjectState:
     takeoff_units = {unit["unit"]: unit for unit in takeoff["units"]}
     schedule_units = {unit["unit"]: unit for unit in schedule["units"]}
 
+    geometry_bindings = {}
+    previous: str | None = None
     pipe_count = 0
     for unit_name in schedule["order"]:
         unit_id = semantic_id(PROJECT, "unit", unit_name)
@@ -137,11 +159,30 @@ def build() -> ProjectState:
             )
         )
 
+        trench_id = semantic_id(PROJECT, "trench", unit_name)
+        elements.append(
+            Element(
+                id=trench_id,
+                kind="trench",
+                name=f"{unit_name} S2 trench overlay",
+                project_id=PROJECT,
+                parent_id=unit_id,
+                source_ids=(p102, trench_detail),
+                status=Status.ASSUMED,
+                properties={
+                    "unit": unit_name,
+                    "basis": "S2 schematic envelope; working pits and 3.5 ft POC invert assumed, not verified excavation.",
+                },
+            )
+        )
+        geometry_bindings[f"{unit_name}-trench-0"] = {"element_id": trench_id, "role": "trench"}
+        geometry_bindings[f"{unit_name}-outside-0"] = {"element_id": trench_id, "role": "trench"}
         unit_spec = spec_units[unit_name]
         for index, edge in enumerate(unit_spec["edges"], start=1):
             pipe_count += 1
             a, b = edge["a"], edge["b"]
             pipe_id = semantic_id(PROJECT, "pipe", unit_name, a, b)
+            geometry_bindings[f"{unit_name}-R{index - 1:03d}"] = {"element_id": pipe_id, "role": "pipe"}
             elements.append(
                 Element(
                     id=pipe_id,
@@ -204,7 +245,6 @@ def build() -> ProjectState:
         )
 
         sq = schedule_units[unit_name]
-        previous: str | None = None
         for phase_index, (phase, duration) in enumerate(zip(schedule["phases"], sq["days"], strict=True), start=1):
             activity_id = semantic_id(PROJECT, "activity", unit_name, f"{phase_index:02d}")
             activities.append(
@@ -255,7 +295,12 @@ def build() -> ProjectState:
             )
         )
 
+    # Keep the schedule's S2 @ 3.5 ft baseline. The S3 decision case includes
+    # the deeper 4.5 ft invert; S1 uses 3.5 ft so width/pit effects remain comparable.
+    cases = {"S1": "S1@3.5", "S2": "S2@3.5", "S3": "S3@4.5"}
+    measures = {"slab_cut_sf": ("slab_cut", "SF"), "excavation_bank_cy": ("excavation_bank", "CY")}
     scenarios: list[Scenario] = []
+    decisions = {}
     for name, description, width, pit, deep_width in takeoff["inputs"]["scenarios"]:
         scenarios.append(
             Scenario(
@@ -266,9 +311,121 @@ def build() -> ProjectState:
                     "trench_width_ft": width,
                     "connection_pit_ft": pit,
                     "deep_cut_width_ft": deep_width,
+                    "poc_invert_ft": float(cases[name].split("@")[1]),
+                    "takeoff_case": cases[name],
                 },
             )
         )
+
+    for scenario in scenarios:
+        case_key = cases[scenario.name]
+        totals = aggregate_unit_case(takeoff["units"], case_key, tuple(measures))
+        for target, values in [(system_id, totals)] + [
+            (semantic_id(PROJECT, "unit", u["unit"]), u["cases"][case_key]) for u in takeoff["units"]
+        ]:
+            for raw, (measure, unit) in measures.items():
+                quantities.append(
+                    Quantity(
+                        id=semantic_id(PROJECT, "quantity", scenario.name, target.split(":")[-1], measure),
+                        element_id=target,
+                        measure=measure,
+                        value=float(values[raw]),
+                        unit=unit,
+                        scenario_id=scenario.id,
+                        source_claim_ids=(route_claim.id, trench_claim.id, depth_claim.id),
+                    )
+                )
+        decision = allowance_delta(totals["slab_cut_sf"], allowance_claim.value)
+        decisions[scenario.id] = {
+            **decision,
+            "excavation_bank_cy": totals["excavation_bank_cy"],
+            "takeoff_case": case_key,
+            "schedule_status": "baseline_strawman" if scenario.name == "S2" else "not_calculated",
+            "working_days": schedule["working_days"] if scenario.name == "S2" else None,
+            "schedule_basis": schedule["status"]
+            if scenario.name == "S2"
+            else "Not calculated: timeline remains S2 baseline; no S1/S3 duration or delta asserted.",
+            "claim_ids": [allowance_claim.id, trench_claim.id, depth_claim.id],
+            "quantity_ids": [q.id for q in quantities if q.element_id == system_id and q.scenario_id == scenario.id],
+        }
+
+    # Presentation states describe the existing schematic GLB. They do not simulate
+    # removal, testing acceptance, or continuous pipe installation quantities.
+    labels = [
+        "investigation",
+        "protected",
+        "excavated",
+        "installing",
+        "testing",
+        "backfilled",
+        "finishing",
+        "reinstating",
+    ]
+    colors = ["#aeb5bf", "#d4ba76", "#d98b61", "#55c6df", "#b898f4", "#b49b74", "#8ec3a7", "#b4db7b"]
+    opacity = [0.12, 0.18, 0.3, 1.0, 1.0, 0.45, 0.6, 0.85]
+    timeline_units = []
+    for u in schedule["units"]:
+        unit_id = semantic_id(PROJECT, "unit", u["unit"])
+        phases = []
+        for i, name in enumerate(schedule["phases"]):
+            start = u["phase_start_day"][i]
+            phases.append(
+                {
+                    "activity_id": semantic_id(PROJECT, "activity", u["unit"], f"{i + 1:02d}"),
+                    "name": name,
+                    "start_day": start,
+                    "end_day": start + u["days"][i],
+                    "duration_days": u["days"][i],
+                    "construction_state": labels[i],
+                    "styles": {
+                        "pipe": {"color": colors[i], "opacity": opacity[i]},
+                        "trench": {"color": colors[i], "opacity": [0.05, 0.1, 0.75, 0.6, 0.5, 0.22, 0.1, 0.05][i]},
+                    },
+                }
+            )
+        timeline_units.append(
+            {
+                "unit": u["unit"],
+                "element_id": unit_id,
+                "start_day": u["start_day"],
+                "end_day": phases[-1]["end_day"],
+                "phases": phases,
+            }
+        )
+    timeline = {
+        "baseline_scenario_id": semantic_id(PROJECT, "scenario", "S2"),
+        "status": schedule["status"],
+        "working_days": schedule["working_days"],
+        "calendar_days_approx": schedule["calendar_days_approx"],
+        "order": schedule["order"],
+        "constraints": schedule["constraints"],
+        "rates": schedule["rates"],
+        "units": timeline_units,
+        "future_style": {"color": "#79818a", "opacity": 0.08},
+        "complete_styles": {
+            "pipe": {"color": "#a9c489", "opacity": 0.85},
+            "trench": {"color": "#a9c489", "opacity": 0.05},
+        },
+        "visual_basis": "Schematic phase overlay on S2 geometry; colors/opacity show sequence, not verified installed quantities or test acceptance.",
+    }
+    issues = [
+        Issue(
+            id=semantic_id(PROJECT, "issue", "poc-depth"),
+            title="POC inverts undocumented",
+            description="Depth controls trench protection, slab disturbance, excavation and logistics.",
+            severity="critical",
+            element_ids=(system_id,),
+            claim_ids=(depth_claim.id,),
+        ),
+        Issue(
+            id=semantic_id(PROJECT, "issue", "groundwater"),
+            title="Groundwater basis unresolved",
+            description="SOR notes a high water table; dewatering scope and schedule effects remain unresolved.",
+            severity="high",
+            element_ids=(system_id,),
+            claim_ids=(depth_claim.id,),
+        ),
+    ]
 
     quantities.append(
         Quantity(
@@ -291,8 +448,12 @@ def build() -> ProjectState:
         relationships=relationships,
         quantities=quantities,
         activities=activities,
+        issues=issues,
         scenarios=scenarios,
         metadata={
+            "timeline": timeline,
+            "decisions": decisions,
+            "geometry_bindings": geometry_bindings,
             "scope": "under-slab waste re-pipe",
             "adapter_status": "live-artifact-adapter",
             "pipe_element_count": pipe_count,
@@ -307,8 +468,17 @@ def build() -> ProjectState:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
     state = build()
-    OUT.write_text(json.dumps(state.to_dict(), indent=2) + "\n")
+    content = json.dumps(state.to_dict(), indent=2) + "\n"
+    if args.check:
+        if OUT.read_text() != content:
+            raise SystemExit("canonical state drift; regenerate with build_from_artifacts.py")
+        print("ok canonical artifact state")
+        return
+    OUT.write_text(content)
     print(f"wrote {OUT} ({state.metadata['pipe_element_count']} pipe elements)")
 
 
