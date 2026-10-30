@@ -8,10 +8,10 @@ diagrammatic. The script, sources and limits are in the
 
 | File | What it is |
 | --- | --- |
-| `poster.jpg` | The *after* frame (shot 11). Written by the `video` step; not committed yet |
-| `contact-sheet.jpg` | One frame from each of the 13 shots. Written by the `video` step; not committed yet |
+| [poster.jpg](poster.jpg) | The *after* frame (shot 11) |
+| [contact-sheet.jpg](contact-sheet.jpg) | One frame from each of the 13 shots |
 | [Meydenbauer-B-film.srt](../../products/agency-film/Meydenbauer-B-film.srt) | Captions, timed to the narration |
-| `Meydenbauer-B-film-1080p24.mp4` | The film: H.264, AAC at −16 LUFS, with an embedded caption track. It is over 1 MB, so it is not in Git. Publish it with `uv run bm publish meydenbauer-b/agency-film build/meydenbauer-b/agency-film/Meydenbauer-B-film-1080p24.mp4` and link the printed URL here. |
+| `Meydenbauer-B-film-1080p24.mp4` (160 MB master, picture at CRF 16) and `Meydenbauer-B-film-1080p24-web.mp4` (47 MB, CRF 23) | The film: 74.5 s, H.264, AAC at −15.8 LUFS integrated with a −1.3 dBFS peak, and an embedded caption track. Both are over 1 MB, so neither is in Git. Publish them with `uv run bm publish meydenbauer-b/agency-film build/meydenbauer-b/agency-film/Meydenbauer-B-film-1080p24*.mp4` and link the printed URLs here. |
 
 **Before any external use:**
 
