@@ -2,4 +2,6 @@ kind: interactive-viewer
 description: "Evidence-first Meydenbauer Construction Intelligence Explorer"
 deliverables: ../../deliverables/explorer
 steps:
-  check: python $BM_PRODUCT_DIR/check.py
+  check:
+    - python $BM_PRODUCT_DIR/time_model.py
+    - python $BM_PRODUCT_DIR/check.py
