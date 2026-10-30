@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meydenbauer — Construction Intelligence</title><link rel="stylesheet" href="./style.css"></head>
+<body>
+<header><div><span class="eyebrow">101 MEYDENBAUER · BUILDING B</span><h1>Construction Intelligence</h1></div><div id="health" class="health">loading state…</div></header>
+<main>
+<aside class="rail"><button class="mode active" data-mode="model">Model</button><button class="mode" data-mode="evidence">Evidence</button><button class="mode" data-mode="risk">Risk</button><div class="rule"></div><span class="label">SCENARIO</span><div id="scenarios"></div></aside>
+<section id="viewport"><div id="canvas"></div><div class="viewport-note">SELECT PIPEWORK TO TRACE EVIDENCE → DECISION</div><div id="decision" class="decision"></div></section>
+<aside id="inspector"><div class="empty"><span class="eyebrow">INSPECTOR</span><h2>Select an element</h2><p>Click semantic geometry to trace what it is, where it came from, how certain it is, and what it affects.</p></div></aside>
+</main>
+<footer><div><span class="label">DECISION</span><strong id="decision-line">Loading…</strong></div><div><span class="label">SOURCE OF TRUTH</span><strong>project-state.json</strong></div><div><span class="label">VIEW</span><strong id="mode-label">MODEL</strong></div></footer>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.181.1/build/three.module.js","three/addons/":"https://unpkg.com/three@0.181.1/examples/jsm/"}}</script><script type="module" src="./app.js"></script>
+</body></html>
