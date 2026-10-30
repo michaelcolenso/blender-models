@@ -1,0 +1,86 @@
+{
+  "scene": "projects/meydenbauer-b/deliverables/underslab/anim/Meydenbauer-B-4D.blend",
+  "note": "Stills rendered from the committed overview 4D scene (60 fps timeline, 8 x 240-frame phases). Cameras are new; geometry and timing are the scene's. Positions in metres, scene axes. H0-before, H2-abs and H4-after share one camera so the edit can match-cut before / during / after.",
+  "shots": [
+    {
+      "id": "H0-before",
+      "frame": 100,
+      "camera": [
+        47.5,
+        -12.5,
+        9.5
+      ],
+      "target": [
+        41.2,
+        -5,
+        -0.9
+      ],
+      "lens": 35,
+      "fstop": 5.6
+    },
+    {
+      "id": "H1-wide",
+      "frame": 900,
+      "camera": [
+        25,
+        -31,
+        44
+      ],
+      "target": [
+        24.5,
+        -7.5,
+        -0.5
+      ],
+      "lens": 34,
+      "fstop": 11
+    },
+    {
+      "id": "H2-abs",
+      "frame": 905,
+      "camera": [
+        47.5,
+        -12.5,
+        9.5
+      ],
+      "target": [
+        41.2,
+        -5,
+        -0.9
+      ],
+      "lens": 35,
+      "fstop": 5.6
+    },
+    {
+      "id": "H3-water",
+      "frame": 1090,
+      "camera": [
+        26.5,
+        -10.5,
+        9
+      ],
+      "target": [
+        20.5,
+        -4.8,
+        -0.9
+      ],
+      "lens": 35,
+      "fstop": 5.6
+    },
+    {
+      "id": "H4-after",
+      "frame": 1915,
+      "camera": [
+        47.5,
+        -12.5,
+        9.5
+      ],
+      "target": [
+        41.2,
+        -5,
+        -0.9
+      ],
+      "lens": 35,
+      "fstop": 5.6
+    }
+  ]
+}

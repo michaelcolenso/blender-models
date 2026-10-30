@@ -1,0 +1,207 @@
+{
+  "title": "101 Meydenbauer, Building B: Home, Uninterrupted",
+  "audience": "Owner, board and property-manager presentation of the proposed under-slab re-pipe approach (assumed audience)",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "picture_height": 804,
+    "fps": 24,
+    "aspect": "2.39:1 letterboxed in 16:9"
+  },
+  "disclaimer": "Illustrative, not a contract document. Sequence, protection and depths assumed.",
+  "palette": {
+    "ink": "#0b0e12",
+    "paper": "#f4f1ea",
+    "accent": "#3fc4e6",
+    "warm": "#e8a35a",
+    "dim": "#8b939c"
+  },
+  "sources": {
+    "gpu": {
+      "file": "projects/meydenbauer-b/deliverables/underslab/runpod/Meydenbauer-B-4D-runpod-1080p30.mp4",
+      "fps": 30,
+      "phase_seconds": 4,
+      "crop": [
+        1880,
+        787,
+        20,
+        158
+      ],
+      "note": "2026-10-25 RunPod film; the crop removes its HUD bands"
+    },
+    "stills": "build/meydenbauer-b/agency-film/stills",
+    "plan": "projects/meydenbauer-b/products/underslab/meydenbauer-b.spec.json",
+    "shell": "projects/meydenbauer-b/products/underslab/meydenbauer-b.shell.json"
+  },
+  "shots": [
+    {
+      "id": "01-title",
+      "dur": 5.0,
+      "kind": "title",
+      "lines": [
+        "101 MEYDENBAUER",
+        "Building B  ·  Bellevue, Washington"
+      ]
+    },
+    {
+      "id": "02-plan",
+      "dur": 7.5,
+      "kind": "plan",
+      "reveal": "shell",
+      "vo": "Under four occupied homes in Building B, the cast-iron waste line is being replaced.",
+      "super": [
+        "4 homes",
+        "1 slab"
+      ],
+      "claims": [
+        "four units B-101 to B-104 (P1.02)",
+        "existing cast iron (SOR)"
+      ]
+    },
+    {
+      "id": "03-routes",
+      "dur": 7.0,
+      "kind": "plan",
+      "reveal": "routes",
+      "vo": "Three hundred twelve feet of new pipe, routed under kitchens and baths.",
+      "super": [
+        "312 LF",
+        "new ABS waste line"
+      ],
+      "claims": [
+        "312.75 LF modelled from P1.02 routes (takeoff.json)"
+      ]
+    },
+    {
+      "id": "04-before",
+      "dur": 6.0,
+      "kind": "still",
+      "still": "H0-before",
+      "move": "push",
+      "vo": "This work happens inside people's homes, so it is planned around the people who live there.",
+      "claims": [
+        "occupied units (SOR)"
+      ]
+    },
+    {
+      "id": "05-protect",
+      "dur": 5.0,
+      "kind": "gpu",
+      "phase": 2,
+      "from": 0.0,
+      "speed": 0.8,
+      "vo": "Lines are located, floors protected, and dust walls go up. Then, a narrow saw-cut trench, two feet wide.",
+      "claims": [
+        "P1.01 contractor's note (locate)",
+        "P1.01 keynote 10 (protection)",
+        "2'-0\" typical trench width, detail 10/P5.1"
+      ]
+    },
+    {
+      "id": "06-trench",
+      "dur": 5.0,
+      "kind": "gpu",
+      "phase": 3,
+      "from": 0.0,
+      "speed": 0.8,
+      "super": [
+        "2'-0\"",
+        "typical trench, 10/P5.1"
+      ],
+      "claims": [
+        "2'-0\" typical trench width, detail 10/P5.1"
+      ]
+    },
+    {
+      "id": "07-abs",
+      "dur": 6.0,
+      "kind": "still",
+      "still": "H2-abs",
+      "move": "push",
+      "vo": "New Schedule 40 ABS goes in, sloped a quarter inch per foot.",
+      "super": [
+        "1/4\" per ft",
+        "Sch 40 ABS"
+      ],
+      "claims": [
+        "Sch 40 ABS at 1/4 in/ft, P1.02"
+      ]
+    },
+    {
+      "id": "08-water",
+      "dur": 5.0,
+      "kind": "gpu",
+      "phase": 5,
+      "from": 0.0,
+      "speed": 0.8,
+      "vo": "Every line is filled and held for a water test before anything is covered.",
+      "super": [
+        "Water test",
+        "City of Bellevue standards"
+      ],
+      "claims": [
+        "SOR WP #2 leak test per City of Bellevue standards"
+      ]
+    },
+    {
+      "id": "09-water-still",
+      "dur": 3.5,
+      "kind": "still",
+      "still": "H3-water",
+      "move": "drift"
+    },
+    {
+      "id": "10-close",
+      "dur": 5.0,
+      "kind": "gpu",
+      "phase": 6,
+      "from": 0.0,
+      "speed": 0.8,
+      "vo": "Then backfill, new concrete, and finishes patched to match.",
+      "super": [
+        "5\"",
+        "concrete pour-back"
+      ],
+      "claims": [
+        "5 in pour-back, detail 10/P5.1",
+        "finishes per SOR WP #1"
+      ]
+    },
+    {
+      "id": "11-after",
+      "dur": 7.0,
+      "kind": "still",
+      "still": "H4-after",
+      "move": "push",
+      "vo": "And at the end of every working day, each home has a working toilet and sink.",
+      "super": [
+        "Every day by 5:00 PM",
+        "one toilet + one sink in service"
+      ],
+      "claims": [
+        "SOR note 21"
+      ]
+    },
+    {
+      "id": "12-wide",
+      "dur": 6.0,
+      "kind": "still",
+      "still": "H1-wide",
+      "move": "pull",
+      "vo": "Phased unit by unit, so residents stay home throughout.",
+      "claims": [
+        "phased work so units stay occupied (SOR)"
+      ]
+    },
+    {
+      "id": "13-end",
+      "dur": 6.5,
+      "kind": "end",
+      "lines": [
+        "101 MEYDENBAUER  ·  BUILDING B",
+        "Under-slab waste re-pipe",
+        "Proposed approach"
+      ]
+    }
+  ]
+}
