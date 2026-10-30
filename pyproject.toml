@@ -22,7 +22,9 @@ requires = ["uv_build>=0.12,<0.13"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "bmodels"
+# CIE is deliberately a second top-level module: it is the renderer-independent
+# semantic kernel, while bmodels remains the existing Blender/project CLI.
+module-name = ["bmodels", "cie"]
 
 [dependency-groups]
 # Drawing intake and PDF reports/storyboards.
