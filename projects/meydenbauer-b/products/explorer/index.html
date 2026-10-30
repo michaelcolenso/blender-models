@@ -3,11 +3,14 @@
 <body>
 <header><div><span class="eyebrow">101 MEYDENBAUER · BUILDING B</span><h1>Construction Intelligence</h1></div><div id="health" class="health">loading state…</div></header>
 <main>
-<aside class="rail"><button class="mode active" data-mode="model">Model</button><button class="mode" data-mode="evidence">Evidence</button><button class="mode" data-mode="risk">Risk</button><button class="mode" data-mode="time">Time</button><div class="rule"></div><span class="label">SCENARIO</span><div id="scenarios"></div></aside>
+<aside class="rail"><button class="mode" data-mode="model">Model</button><button class="mode" data-mode="evidence">Evidence</button><button class="mode" data-mode="risk">Risk</button><button class="mode active" data-mode="time">Time</button><div class="rule"></div><span class="label">SCENARIO</span><div id="scenarios"></div><p id="scenario-description" class="source"></p></aside>
 <section id="viewport"><div id="canvas"></div><div class="viewport-note">SELECT PIPEWORK TO TRACE EVIDENCE → DECISION</div><div id="decision" class="decision"></div></section>
 <aside id="inspector"><div class="empty"><span class="eyebrow">INSPECTOR</span><h2>Select an element</h2><p>Click semantic geometry to trace what it is, where it came from, how certain it is, and what it affects.</p></div></aside>
 </main>
-<section id="timeline" class="timeline"><div class="timeline-head"><div><span class="label">CONSTRUCTION TIME</span><strong id="time-readout">DAY 0.0 / 81.5</strong></div><div id="active-phase">Preconstruction</div><button id="play" type="button">PLAY</button></div><input id="time-slider" type="range" min="0" max="81.5" value="0" step="0.5"><div id="unit-track" class="unit-track"></div></section>
-<footer><div><span class="label">DECISION</span><strong id="decision-line">Loading…</strong></div><div><span class="label">PROPAGATION</span><strong id="propagation-line">Loading…</strong></div><div><span class="label">VIEW</span><strong id="mode-label">MODEL</strong></div></footer>
+<section id="timeline" class="timeline"><div class="timeline-head"><div><span class="label">CONSTRUCTION TIME</span><strong id="time-readout">DAY 0.0 / 81.5</strong></div><div id="active-phase">Preconstruction</div><button id="play" type="button" disabled>PLAY</button></div><input id="time-slider" type="range" min="0" max="81.5" value="0" step="0.1" aria-label="S2 baseline working day" disabled><div id="unit-track" class="unit-track"></div><div id="phase-track"></div>
+<div class="time-details"><strong id="elapsed"></strong><span id="phase-duration"></span></div>
+<div id="active-quantities"></div><div id="schedule-basis" role="status"></div>
+<details><summary>Schedule assumptions and visual basis</summary><p id="visual-basis"></p><p id="constraints"></p></details></section>
+<footer><div><span class="label">DECISION</span><strong id="decision-line">Loading…</strong></div><div><span class="label">PROPAGATION</span><strong id="propagation-line">Loading…</strong></div><div><span class="label">VIEW</span><strong id="mode-label">TIME</strong></div></footer>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.181.1/build/three.module.js","three/addons/":"https://unpkg.com/three@0.181.1/examples/jsm/"}}</script><script type="module" src="./app.js"></script>
 </body></html>

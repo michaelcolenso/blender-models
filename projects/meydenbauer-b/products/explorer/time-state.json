@@ -1,17 +1,724 @@
 {
+  "baseline_scenario_id": "meydenbauer-b:scenario:s2",
   "status": "STRAWMAN: rates and order assumed; quantities from takeoff S2 @ 3.5 ft",
   "working_days": 81.5,
   "calendar_days_approx": 115,
-  "order": ["B-103", "B-102", "B-101", "B-104"],
-  "units": [
-    {"unit":"B-103","start_day":0.0,"end_day":19.0,"phases":[{"name":"01 Existing + investigation","start_day":0.0,"end_day":1.0,"duration_days":1.0},{"name":"02 Staging + fixture removal","start_day":1.0,"end_day":2.0,"duration_days":1.0},{"name":"03 Demolition + excavation","start_day":2.0,"end_day":5.5,"duration_days":3.5},{"name":"04 New ABS installation","start_day":5.5,"end_day":8.5,"duration_days":3.0},{"name":"05 Water test","start_day":8.5,"end_day":9.5,"duration_days":1.0},{"name":"06 Backfill + slab pourback","start_day":9.5,"end_day":12.5,"duration_days":3.0},{"name":"07 Patching + finishes","start_day":12.5,"end_day":18.0,"duration_days":5.5},{"name":"08 Fixture reinstatement","start_day":18.0,"end_day":19.0,"duration_days":1.0}]},
-    {"unit":"B-102","start_day":19.0,"end_day":39.5,"phases":[{"name":"01 Existing + investigation","start_day":19.0,"end_day":20.0,"duration_days":1.0},{"name":"02 Staging + fixture removal","start_day":20.0,"end_day":21.0,"duration_days":1.0},{"name":"03 Demolition + excavation","start_day":21.0,"end_day":25.0,"duration_days":4.0},{"name":"04 New ABS installation","start_day":25.0,"end_day":28.5,"duration_days":3.5},{"name":"05 Water test","start_day":28.5,"end_day":29.5,"duration_days":1.0},{"name":"06 Backfill + slab pourback","start_day":29.5,"end_day":32.5,"duration_days":3.0},{"name":"07 Patching + finishes","start_day":32.5,"end_day":38.5,"duration_days":6.0},{"name":"08 Fixture reinstatement","start_day":38.5,"end_day":39.5,"duration_days":1.0}]},
-    {"unit":"B-101","start_day":39.5,"end_day":58.5,"phases":[{"name":"01 Existing + investigation","start_day":39.5,"end_day":40.5,"duration_days":1.0},{"name":"02 Staging + fixture removal","start_day":40.5,"end_day":41.5,"duration_days":1.0},{"name":"03 Demolition + excavation","start_day":41.5,"end_day":45.0,"duration_days":3.5},{"name":"04 New ABS installation","start_day":45.0,"end_day":48.0,"duration_days":3.0},{"name":"05 Water test","start_day":48.0,"end_day":49.0,"duration_days":1.0},{"name":"06 Backfill + slab pourback","start_day":49.0,"end_day":52.0,"duration_days":3.0},{"name":"07 Patching + finishes","start_day":52.0,"end_day":57.5,"duration_days":5.5},{"name":"08 Fixture reinstatement","start_day":57.5,"end_day":58.5,"duration_days":1.0}]},
-    {"unit":"B-104","start_day":58.5,"end_day":81.5,"phases":[{"name":"01 Existing + investigation","start_day":58.5,"end_day":59.5,"duration_days":1.0},{"name":"02 Staging + fixture removal","start_day":59.5,"end_day":60.5,"duration_days":1.0},{"name":"03 Demolition + excavation","start_day":60.5,"end_day":65.5,"duration_days":5.0},{"name":"04 New ABS installation","start_day":65.5,"end_day":69.5,"duration_days":4.0},{"name":"05 Water test","start_day":69.5,"end_day":70.5,"duration_days":1.0},{"name":"06 Backfill + slab pourback","start_day":70.5,"end_day":74.0,"duration_days":3.5},{"name":"07 Patching + finishes","start_day":74.0,"end_day":80.5,"duration_days":6.5},{"name":"08 Fixture reinstatement","start_day":80.5,"end_day":81.5,"duration_days":1.0}]}
+  "order": [
+    "B-103",
+    "B-102",
+    "B-101",
+    "B-104"
   ],
+  "constraints": [
+    "SOR note 21: one sink and one toilet in service at 5:00 PM daily",
+    "SOR note 13: 48 h shut-off notice, weekdays only",
+    "00 22 13 1.9: work 8:00 AM-5:00 PM Mon-Fri; schedule by fixture and bathroom"
+  ],
+  "rates": {
+    "investigation_days": 1.0,
+    "staging_days": 1.0,
+    "sawcut_sf_per_day": 150.0,
+    "excavation_cy_per_day": 8.0,
+    "abs_lf_per_day": 40.0,
+    "days_per_connection": 0.15,
+    "water_test_days": 1.0,
+    "backfill_cy_per_day": 12.0,
+    "pour_days": 1.0,
+    "cure_days": 3.0,
+    "finish_sf_per_day": 80.0,
+    "reset_days": 1.0,
+    "slab_in": 4.0,
+    "pourback_in": 5.0,
+    "swell": 1.25
+  },
+  "units": [
+    {
+      "unit": "B-103",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "start_day": 0.0,
+      "end_day": 19.0,
+      "phases": [
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:01",
+          "name": "01 Existing + investigation",
+          "start_day": 0.0,
+          "end_day": 1.0,
+          "duration_days": 1.0,
+          "construction_state": "investigation",
+          "styles": {
+            "pipe": {
+              "color": "#aeb5bf",
+              "opacity": 0.12
+            },
+            "trench": {
+              "color": "#aeb5bf",
+              "opacity": 0.05
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:02",
+          "name": "02 Staging + fixture removal",
+          "start_day": 1.0,
+          "end_day": 2.0,
+          "duration_days": 1.0,
+          "construction_state": "protected",
+          "styles": {
+            "pipe": {
+              "color": "#d4ba76",
+              "opacity": 0.18
+            },
+            "trench": {
+              "color": "#d4ba76",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:03",
+          "name": "03 Demolition + excavation",
+          "start_day": 2.0,
+          "end_day": 5.5,
+          "duration_days": 3.5,
+          "construction_state": "excavated",
+          "styles": {
+            "pipe": {
+              "color": "#d98b61",
+              "opacity": 0.3
+            },
+            "trench": {
+              "color": "#d98b61",
+              "opacity": 0.75
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:04",
+          "name": "04 New ABS installation",
+          "start_day": 5.5,
+          "end_day": 8.5,
+          "duration_days": 3.0,
+          "construction_state": "installing",
+          "styles": {
+            "pipe": {
+              "color": "#55c6df",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#55c6df",
+              "opacity": 0.6
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:05",
+          "name": "05 Water test",
+          "start_day": 8.5,
+          "end_day": 9.5,
+          "duration_days": 1.0,
+          "construction_state": "testing",
+          "styles": {
+            "pipe": {
+              "color": "#b898f4",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#b898f4",
+              "opacity": 0.5
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:06",
+          "name": "06 Backfill + slab pourback",
+          "start_day": 9.5,
+          "end_day": 12.5,
+          "duration_days": 3.0,
+          "construction_state": "backfilled",
+          "styles": {
+            "pipe": {
+              "color": "#b49b74",
+              "opacity": 0.45
+            },
+            "trench": {
+              "color": "#b49b74",
+              "opacity": 0.22
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:07",
+          "name": "07 Patching + finishes",
+          "start_day": 12.5,
+          "end_day": 18.0,
+          "duration_days": 5.5,
+          "construction_state": "finishing",
+          "styles": {
+            "pipe": {
+              "color": "#8ec3a7",
+              "opacity": 0.6
+            },
+            "trench": {
+              "color": "#8ec3a7",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-103:08",
+          "name": "08 Fixture reinstatement",
+          "start_day": 18.0,
+          "end_day": 19.0,
+          "duration_days": 1.0,
+          "construction_state": "reinstating",
+          "styles": {
+            "pipe": {
+              "color": "#b4db7b",
+              "opacity": 0.85
+            },
+            "trench": {
+              "color": "#b4db7b",
+              "opacity": 0.05
+            }
+          }
+        }
+      ]
+    },
+    {
+      "unit": "B-102",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "start_day": 19.0,
+      "end_day": 39.5,
+      "phases": [
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:01",
+          "name": "01 Existing + investigation",
+          "start_day": 19.0,
+          "end_day": 20.0,
+          "duration_days": 1.0,
+          "construction_state": "investigation",
+          "styles": {
+            "pipe": {
+              "color": "#aeb5bf",
+              "opacity": 0.12
+            },
+            "trench": {
+              "color": "#aeb5bf",
+              "opacity": 0.05
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:02",
+          "name": "02 Staging + fixture removal",
+          "start_day": 20.0,
+          "end_day": 21.0,
+          "duration_days": 1.0,
+          "construction_state": "protected",
+          "styles": {
+            "pipe": {
+              "color": "#d4ba76",
+              "opacity": 0.18
+            },
+            "trench": {
+              "color": "#d4ba76",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:03",
+          "name": "03 Demolition + excavation",
+          "start_day": 21.0,
+          "end_day": 25.0,
+          "duration_days": 4.0,
+          "construction_state": "excavated",
+          "styles": {
+            "pipe": {
+              "color": "#d98b61",
+              "opacity": 0.3
+            },
+            "trench": {
+              "color": "#d98b61",
+              "opacity": 0.75
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:04",
+          "name": "04 New ABS installation",
+          "start_day": 25.0,
+          "end_day": 28.5,
+          "duration_days": 3.5,
+          "construction_state": "installing",
+          "styles": {
+            "pipe": {
+              "color": "#55c6df",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#55c6df",
+              "opacity": 0.6
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:05",
+          "name": "05 Water test",
+          "start_day": 28.5,
+          "end_day": 29.5,
+          "duration_days": 1.0,
+          "construction_state": "testing",
+          "styles": {
+            "pipe": {
+              "color": "#b898f4",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#b898f4",
+              "opacity": 0.5
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:06",
+          "name": "06 Backfill + slab pourback",
+          "start_day": 29.5,
+          "end_day": 32.5,
+          "duration_days": 3.0,
+          "construction_state": "backfilled",
+          "styles": {
+            "pipe": {
+              "color": "#b49b74",
+              "opacity": 0.45
+            },
+            "trench": {
+              "color": "#b49b74",
+              "opacity": 0.22
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:07",
+          "name": "07 Patching + finishes",
+          "start_day": 32.5,
+          "end_day": 38.5,
+          "duration_days": 6.0,
+          "construction_state": "finishing",
+          "styles": {
+            "pipe": {
+              "color": "#8ec3a7",
+              "opacity": 0.6
+            },
+            "trench": {
+              "color": "#8ec3a7",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-102:08",
+          "name": "08 Fixture reinstatement",
+          "start_day": 38.5,
+          "end_day": 39.5,
+          "duration_days": 1.0,
+          "construction_state": "reinstating",
+          "styles": {
+            "pipe": {
+              "color": "#b4db7b",
+              "opacity": 0.85
+            },
+            "trench": {
+              "color": "#b4db7b",
+              "opacity": 0.05
+            }
+          }
+        }
+      ]
+    },
+    {
+      "unit": "B-101",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "start_day": 39.5,
+      "end_day": 58.5,
+      "phases": [
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:01",
+          "name": "01 Existing + investigation",
+          "start_day": 39.5,
+          "end_day": 40.5,
+          "duration_days": 1.0,
+          "construction_state": "investigation",
+          "styles": {
+            "pipe": {
+              "color": "#aeb5bf",
+              "opacity": 0.12
+            },
+            "trench": {
+              "color": "#aeb5bf",
+              "opacity": 0.05
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:02",
+          "name": "02 Staging + fixture removal",
+          "start_day": 40.5,
+          "end_day": 41.5,
+          "duration_days": 1.0,
+          "construction_state": "protected",
+          "styles": {
+            "pipe": {
+              "color": "#d4ba76",
+              "opacity": 0.18
+            },
+            "trench": {
+              "color": "#d4ba76",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:03",
+          "name": "03 Demolition + excavation",
+          "start_day": 41.5,
+          "end_day": 45.0,
+          "duration_days": 3.5,
+          "construction_state": "excavated",
+          "styles": {
+            "pipe": {
+              "color": "#d98b61",
+              "opacity": 0.3
+            },
+            "trench": {
+              "color": "#d98b61",
+              "opacity": 0.75
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:04",
+          "name": "04 New ABS installation",
+          "start_day": 45.0,
+          "end_day": 48.0,
+          "duration_days": 3.0,
+          "construction_state": "installing",
+          "styles": {
+            "pipe": {
+              "color": "#55c6df",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#55c6df",
+              "opacity": 0.6
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:05",
+          "name": "05 Water test",
+          "start_day": 48.0,
+          "end_day": 49.0,
+          "duration_days": 1.0,
+          "construction_state": "testing",
+          "styles": {
+            "pipe": {
+              "color": "#b898f4",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#b898f4",
+              "opacity": 0.5
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:06",
+          "name": "06 Backfill + slab pourback",
+          "start_day": 49.0,
+          "end_day": 52.0,
+          "duration_days": 3.0,
+          "construction_state": "backfilled",
+          "styles": {
+            "pipe": {
+              "color": "#b49b74",
+              "opacity": 0.45
+            },
+            "trench": {
+              "color": "#b49b74",
+              "opacity": 0.22
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:07",
+          "name": "07 Patching + finishes",
+          "start_day": 52.0,
+          "end_day": 57.5,
+          "duration_days": 5.5,
+          "construction_state": "finishing",
+          "styles": {
+            "pipe": {
+              "color": "#8ec3a7",
+              "opacity": 0.6
+            },
+            "trench": {
+              "color": "#8ec3a7",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-101:08",
+          "name": "08 Fixture reinstatement",
+          "start_day": 57.5,
+          "end_day": 58.5,
+          "duration_days": 1.0,
+          "construction_state": "reinstating",
+          "styles": {
+            "pipe": {
+              "color": "#b4db7b",
+              "opacity": 0.85
+            },
+            "trench": {
+              "color": "#b4db7b",
+              "opacity": 0.05
+            }
+          }
+        }
+      ]
+    },
+    {
+      "unit": "B-104",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "start_day": 58.5,
+      "end_day": 81.5,
+      "phases": [
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:01",
+          "name": "01 Existing + investigation",
+          "start_day": 58.5,
+          "end_day": 59.5,
+          "duration_days": 1.0,
+          "construction_state": "investigation",
+          "styles": {
+            "pipe": {
+              "color": "#aeb5bf",
+              "opacity": 0.12
+            },
+            "trench": {
+              "color": "#aeb5bf",
+              "opacity": 0.05
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:02",
+          "name": "02 Staging + fixture removal",
+          "start_day": 59.5,
+          "end_day": 60.5,
+          "duration_days": 1.0,
+          "construction_state": "protected",
+          "styles": {
+            "pipe": {
+              "color": "#d4ba76",
+              "opacity": 0.18
+            },
+            "trench": {
+              "color": "#d4ba76",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:03",
+          "name": "03 Demolition + excavation",
+          "start_day": 60.5,
+          "end_day": 65.5,
+          "duration_days": 5.0,
+          "construction_state": "excavated",
+          "styles": {
+            "pipe": {
+              "color": "#d98b61",
+              "opacity": 0.3
+            },
+            "trench": {
+              "color": "#d98b61",
+              "opacity": 0.75
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:04",
+          "name": "04 New ABS installation",
+          "start_day": 65.5,
+          "end_day": 69.5,
+          "duration_days": 4.0,
+          "construction_state": "installing",
+          "styles": {
+            "pipe": {
+              "color": "#55c6df",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#55c6df",
+              "opacity": 0.6
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:05",
+          "name": "05 Water test",
+          "start_day": 69.5,
+          "end_day": 70.5,
+          "duration_days": 1.0,
+          "construction_state": "testing",
+          "styles": {
+            "pipe": {
+              "color": "#b898f4",
+              "opacity": 1.0
+            },
+            "trench": {
+              "color": "#b898f4",
+              "opacity": 0.5
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:06",
+          "name": "06 Backfill + slab pourback",
+          "start_day": 70.5,
+          "end_day": 74.0,
+          "duration_days": 3.5,
+          "construction_state": "backfilled",
+          "styles": {
+            "pipe": {
+              "color": "#b49b74",
+              "opacity": 0.45
+            },
+            "trench": {
+              "color": "#b49b74",
+              "opacity": 0.22
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:07",
+          "name": "07 Patching + finishes",
+          "start_day": 74.0,
+          "end_day": 80.5,
+          "duration_days": 6.5,
+          "construction_state": "finishing",
+          "styles": {
+            "pipe": {
+              "color": "#8ec3a7",
+              "opacity": 0.6
+            },
+            "trench": {
+              "color": "#8ec3a7",
+              "opacity": 0.1
+            }
+          }
+        },
+        {
+          "activity_id": "meydenbauer-b:activity:b-104:08",
+          "name": "08 Fixture reinstatement",
+          "start_day": 80.5,
+          "end_day": 81.5,
+          "duration_days": 1.0,
+          "construction_state": "reinstating",
+          "styles": {
+            "pipe": {
+              "color": "#b4db7b",
+              "opacity": 0.85
+            },
+            "trench": {
+              "color": "#b4db7b",
+              "opacity": 0.05
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "future_style": {
+    "color": "#79818a",
+    "opacity": 0.08
+  },
+  "complete_styles": {
+    "pipe": {
+      "color": "#a9c489",
+      "opacity": 0.85
+    },
+    "trench": {
+      "color": "#a9c489",
+      "opacity": 0.05
+    }
+  },
+  "visual_basis": "Schematic phase overlay on S2 geometry; colors/opacity show sequence, not verified installed quantities or test acceptance.",
   "scenarios": {
-    "meydenbauer-b:scenario:s1":{"name":"S1","slab_cut_sf":590.0,"excavation_bank_cy":72.0,"allowance_sf":700,"allowance_delta_sf":-110.0,"projected_working_days":80.21,"schedule_basis":"S2 strawman + excavation delta / published excavation rate"},
-    "meydenbauer-b:scenario:s2":{"name":"S2","slab_cut_sf":686.0,"excavation_bank_cy":82.3,"allowance_sf":700,"allowance_delta_sf":-14.0,"projected_working_days":81.5,"schedule_basis":"S2 strawman + excavation delta / published excavation rate"},
-    "meydenbauer-b:scenario:s3":{"name":"S3","slab_cut_sf":991.0,"excavation_bank_cy":158.0,"allowance_sf":700,"allowance_delta_sf":291.0,"projected_working_days":90.96,"schedule_basis":"S2 strawman + excavation delta / published excavation rate"}
+    "meydenbauer-b:scenario:s1": {
+      "value": 590.0664520618559,
+      "allowance": 700.0,
+      "delta": 109.9335479381441,
+      "within_allowance": true,
+      "utilization": 0.8429520743740798,
+      "excavation_bank_cy": 71.61635443110225,
+      "takeoff_case": "S1@3.5",
+      "schedule_status": "not_calculated",
+      "working_days": null,
+      "schedule_basis": "Not calculated: timeline remains S2 baseline; no S1/S3 duration or delta asserted.",
+      "claim_ids": [
+        "meydenbauer-b:claim:slab-allowance",
+        "meydenbauer-b:claim:typical-trench-width",
+        "meydenbauer-b:claim:poc-invert-depth"
+      ],
+      "quantity_ids": [
+        "meydenbauer-b:quantity:s1:underslab-waste:slab-cut",
+        "meydenbauer-b:quantity:s1:underslab-waste:excavation-bank"
+      ]
+    },
+    "meydenbauer-b:scenario:s2": {
+      "value": 686.1152567048161,
+      "allowance": 700.0,
+      "delta": 13.884743295183853,
+      "within_allowance": true,
+      "utilization": 0.9801646524354516,
+      "excavation_bank_cy": 82.34975689904661,
+      "takeoff_case": "S2@3.5",
+      "schedule_status": "baseline_strawman",
+      "working_days": 81.5,
+      "schedule_basis": "STRAWMAN: rates and order assumed; quantities from takeoff S2 @ 3.5 ft",
+      "claim_ids": [
+        "meydenbauer-b:claim:slab-allowance",
+        "meydenbauer-b:claim:typical-trench-width",
+        "meydenbauer-b:claim:poc-invert-depth"
+      ],
+      "quantity_ids": [
+        "meydenbauer-b:quantity:s2:underslab-waste:slab-cut",
+        "meydenbauer-b:quantity:s2:underslab-waste:excavation-bank"
+      ]
+    },
+    "meydenbauer-b:scenario:s3": {
+      "value": 990.957844619837,
+      "allowance": 700.0,
+      "delta": -290.95784461983703,
+      "within_allowance": false,
+      "utilization": 1.4156540637426243,
+      "excavation_bank_cy": 157.82477283196394,
+      "takeoff_case": "S3@4.5",
+      "schedule_status": "not_calculated",
+      "working_days": null,
+      "schedule_basis": "Not calculated: timeline remains S2 baseline; no S1/S3 duration or delta asserted.",
+      "claim_ids": [
+        "meydenbauer-b:claim:slab-allowance",
+        "meydenbauer-b:claim:typical-trench-width",
+        "meydenbauer-b:claim:poc-invert-depth"
+      ],
+      "quantity_ids": [
+        "meydenbauer-b:quantity:s3:underslab-waste:slab-cut",
+        "meydenbauer-b:quantity:s3:underslab-waste:excavation-bank"
+      ]
+    }
   }
 }
