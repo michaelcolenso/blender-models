@@ -246,8 +246,8 @@ def audio():
     music = score(total)
     duck = np.convolve(act[::480], np.ones(40) / 40, mode="same")
     duck = np.interp(np.arange(len(act)), np.arange(len(duck)) * 480, duck).astype(np.float32)
-    music *= (1 - 0.55 * duck)[:, None]
-    music *= 0.6 / max(float(np.abs(music).max()), 1e-3)
+    music *= (1 - 0.7 * duck)[:, None]
+    music *= 0.45 / max(float(np.abs(music).max()), 1e-3)
     write_wav(OUT / "score.wav", music)
     write_wav(OUT / "narration.wav", speech)
     mix = music + speech[:, None] * 0.92
@@ -426,6 +426,19 @@ def grade(pic, i, rng_cache=None):
     return (np.clip(x, 0, 1) * 255).astype(np.uint8)
 
 
+_SCRIM = {}
+
+
+def scrim(a):
+    """Soft lower-left darkening behind the super, so white type reads over bright floors."""
+    from PIL import Image
+    if "m" not in _SCRIM:
+        yy, xx = np.mgrid[0:PH, 0:W].astype(np.float32)
+        r = np.hypot((xx - 60) / 1100, (yy - PH + 40) / 420)
+        _SCRIM["m"] = np.clip(1 - r, 0, 1) ** 1.4 * 0.62
+    return Image.fromarray((_SCRIM["m"] * a * 255).astype(np.uint8), "L")
+
+
 def compose(pic, shot, t, lf=None, labels=(), plan=None, zoom=1.0):
     """Letterbox + typography over the graded picture. Returns the full RGB frame."""
     from PIL import Image, ImageDraw
@@ -467,6 +480,8 @@ def compose(pic, shot, t, lf=None, labels=(), plan=None, zoom=1.0):
     if shot.get("super"):
         a = ease((t - 0.7) / 0.6) * ease((dur - 0.3 - t) / 0.4)
         rise = 14 * (1 - ease((t - 0.7) / 0.6))
+        frame.paste((0, 0, 0), (0, BAR), scrim(a))
+        d = ImageDraw.Draw(frame, "RGBA")
         big, small = shot["super"]
         if lf is not None:
             big = f"{int(min(lf, TAKEOFF_LF))} LF"
@@ -487,7 +502,7 @@ def video():
     global FONT
     import cv2
     FONT = fonts()
-    st, total = starts()
+    st, _ = starts()
     plan = Plan()
     stills = {}
     sdir = ROOT / FILM["sources"]["stills"]
@@ -539,13 +554,24 @@ def video():
         cs.paste(im.resize((tw, th), Image.LANCZOS), (x, y)); dd.text((x + 8, y + th + 6), sid, fill=(180, 186, 194))
     cs.save(OUT / "contact-sheet.jpg", quality=86)
     dict(sheet)["11-after"].save(OUT / "poster.jpg", quality=90)
-    final = OUT / "Meydenbauer-B-film-1080p24.mp4"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(master), "-i", str(OUT / "mix.wav"), "-i", str(SRT),
-                    "-map", "0:v", "-map", "1:a", "-map", "2:0", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k",
-                    "-af", "loudnorm=I=-16:TP=-1.5:LRA=9,aresample=48000", "-c:s", "mov_text",
-                    "-metadata:s:s:0", "language=eng", "-metadata", f"title={FILM['title']}",
-                    "-shortest", "-movflags", "+faststart", str(final)], check=True)
-    print(f"FILM {final} ({total:.1f} s)")
+    mux()
+
+
+def mux():
+    """Master (picture stream copied) and a web encode, both with the mix and the caption track."""
+    _, total = starts()
+    master = OUT / "Meydenbauer-B-film-picture.mp4"
+    for name, vcodec in (("Meydenbauer-B-film-1080p24.mp4", ["-c:v", "copy"]),
+                         ("Meydenbauer-B-film-1080p24-web.mp4", ["-c:v", "libx264", "-preset", "slow", "-crf", "23",
+                                                                 "-pix_fmt", "yuv420p", "-maxrate", "8M", "-bufsize", "16M"])):
+        final = OUT / name
+        # -t, not -shortest: the caption stream ends at the last cue, before the end card
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(master), "-i", str(OUT / "mix.wav"), "-i", str(SRT),
+                        "-map", "0:v", "-map", "1:a", "-map", "2:0", *vcodec, "-c:a", "aac", "-b:a", "256k",
+                        "-af", "loudnorm=I=-16:TP=-1.5:LRA=9,aresample=48000", "-c:s", "mov_text",
+                        "-metadata:s:s:0", "language=eng", "-metadata", f"title={FILM['title']}",
+                        "-t", f"{total:.3f}", "-movflags", "+faststart", str(final)], check=True)
+        print(f"FILM {final} ({total:.1f} s)", flush=True)
 
 
 def main():
@@ -553,13 +579,16 @@ def main():
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--audio", action="store_true")
     ap.add_argument("--video", action="store_true")
+    ap.add_argument("--mux", action="store_true", help="re-mux audio and captions onto the existing picture")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     if a.audio:
         audio()
     if a.video:
         video()
-    if a.check or not (a.audio or a.video):
+    elif a.mux:
+        mux()
+    if a.check or not (a.audio or a.video or a.mux):
         sys.exit(0 if check() else 1)
 
 
