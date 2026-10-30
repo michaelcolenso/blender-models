@@ -1,8 +1,18 @@
-from projects.meydenbauer_b.state.build_project_state import build
+import importlib.util
+from pathlib import Path
+
+
+def _load_builder():
+    path = Path(__file__).parents[1] / "projects/meydenbauer-b/state/build_project_state.py"
+    spec = importlib.util.spec_from_file_location("meydenbauer_state", path)
+    module = importlib.util.module_from_spec(spec)
+    assert spec and spec.loader
+    spec.loader.exec_module(module)
+    return module.build
 
 
 def test_reference_state_carries_decision_signal():
-    state = build()
+    state = _load_builder()()
     values = {(q.measure, q.scenario_id): q.value for q in state.quantities}
     scenarios = {s.name: s.id for s in state.scenarios}
 
