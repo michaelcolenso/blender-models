@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 HERE=Path(__file__).parent; ROOT=HERE.parents[3]
-state=json.loads((ROOT/'projects/meydenbauer-b/state/project-state.json').read_text()); app=(HERE/'app.js').read_text(); html=(HERE/'index.html').read_text(); errors=[]
+state=json.loads((ROOT/'projects/meydenbauer-b/state/project-state.json').read_text()); schedule=json.loads((ROOT/'projects/meydenbauer-b/products/underslab/meydenbauer-b.schedule.json').read_text()); app=(HERE/'app.js').read_text(); html=(HERE/'index.html').read_text(); errors=[]
 def need(ok,msg):
     if not ok: errors.append(msg)
 need(state.get('schema_version')=='0.1.0','unexpected CIE schema')
@@ -12,7 +12,16 @@ s2=qs.get(('meydenbauer-b:scenario:s2','slab_cut')); s3=qs.get(('meydenbauer-b:s
 allowance=next((c.get('value') for c in state.get('claims',[]) if c.get('predicate')=='slab_allowance'),None)
 need(s2==686.0,'S2 slab decision regression'); need(s3==991.0,'S3 slab decision regression'); need(allowance==700,'700 SF allowance claim missing')
 need(s2 is not None and allowance is not None and s2<=allowance,'S2 should remain inside allowance'); need(s3 is not None and allowance is not None and s3>allowance,'S3 should exceed allowance')
-for token in ['cie_id','GLTFLoader','Raycaster','related(el)','scenario_id','slab_allowance','data-mode="evidence"','data-mode="risk"']: need(token in app or token in html,f'Explorer wiring missing: {token}')
-for forbidden in ['686.0','991.0','700 SF']: need(forbidden not in app,f'duplicated decision value in app.js: {forbidden}')
+need(schedule.get('working_days')==81.5,'working-day baseline regression')
+need(schedule.get('order')==['B-103','B-102','B-101','B-104'],'unit sequence regression')
+need(len(schedule.get('phases',[]))==8,'eight construction phases required')
+for unit in schedule.get('units',[]):
+    need(len(unit.get('days',[]))==8,f"{unit.get('unit')} phase duration count")
+    need(len(unit.get('phase_start_day',[]))==8,f"{unit.get('unit')} phase start count")
+    need(abs(sum(unit.get('days',[]))-(unit['phase_start_day'][-1]+unit['days'][-1]-unit['start_day']))<1e-9,f"{unit.get('unit')} timeline continuity")
+for token in ['cie_id','GLTFLoader','Raycaster','related(el)','scenario_id','slab_allowance','data-mode="evidence"','data-mode="risk"','data-mode="time"','time-slider','activeAt(day)','scenarioQuantity','propagation-line','schedule.working_days']: need(token in app or token in html,f'Explorer wiring missing: {token}')
+for forbidden in ['686.0','991.0','700 SF','81.5']:
+    need(forbidden not in app,f'duplicated canonical value in app.js: {forbidden}')
+need('meydenbauer-b.schedule.json' in app,'timeline must consume authoritative schedule artifact')
 if errors: raise SystemExit('EXPLORER CHECK FAILED\n- '+'\n- '.join(errors))
-print(f'EXPLORER CHECK PASS — {len(state.get("scenarios",[]))} scenarios; allowance {allowance} SF; S2 {s2} SF; S3 {s3} SF')
+print(f'EXPLORER CHECK PASS — {len(state.get("scenarios",[]))} scenarios; allowance {allowance} SF; S2 {s2} SF; S3 {s3} SF; schedule {schedule["working_days"]} working days')
