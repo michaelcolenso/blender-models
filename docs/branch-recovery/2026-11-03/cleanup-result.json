@@ -1,0 +1,282 @@
+{
+  "deleted": [
+    {
+      "branch": "agents/ergonomics",
+      "sha": "f5f322b31b6a3f01011e41e596ffbfc71dc625ca",
+      "archive_tag": "archive/2026-11-03/agents/ergonomics",
+      "ahead": 0,
+      "behind": 61,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "cinema/highland-materials",
+      "sha": "c59525b44616adbee0f3dcdf8d7222f7576c4c59",
+      "archive_tag": "archive/2026-11-03/cinema/highland-materials",
+      "ahead": 0,
+      "behind": 94,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "cinema/highland-owner-film",
+      "sha": "0a60fd3489aa044b18ba79d9c10b8f1af8bf670a",
+      "archive_tag": "archive/2026-11-03/cinema/highland-owner-film",
+      "ahead": 0,
+      "behind": 98,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "deliver/highland-owner-tour",
+      "sha": "11e7de673b4fd08957fe8225312ef2e42f656cb3",
+      "archive_tag": "archive/2026-11-03/deliver/highland-owner-tour",
+      "ahead": 0,
+      "behind": 125,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "deliver/highland-repipe-installation",
+      "sha": "7a3c5526e96d609c433c3820054991aa3e1a38d7",
+      "archive_tag": "archive/2026-11-03/deliver/highland-repipe-installation",
+      "ahead": 0,
+      "behind": 132,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-first-slice",
+      "sha": "1b1bbba1eda2f32e3717ea2c7972551f81f14fa4",
+      "archive_tag": "archive/2026-11-03/feat/cie-first-slice",
+      "ahead": 0,
+      "behind": 22,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-kernel",
+      "sha": "d35dac7b745a7cf63f216a51447a32f734150460",
+      "archive_tag": "archive/2026-11-03/feat/cie-kernel",
+      "ahead": 0,
+      "behind": 34,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-kernel-implementation",
+      "sha": "d35dac7b745a7cf63f216a51447a32f734150460",
+      "archive_tag": "archive/2026-11-03/feat/cie-kernel-implementation",
+      "ahead": 0,
+      "behind": 34,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-semantic-kernel",
+      "sha": "d35dac7b745a7cf63f216a51447a32f734150460",
+      "archive_tag": "archive/2026-11-03/feat/cie-semantic-kernel",
+      "ahead": 0,
+      "behind": 34,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-semantic-kernel-clean",
+      "sha": "cf8c1d2fb0e26a27281ba99d95ff9d8da738cd9d",
+      "archive_tag": "archive/2026-11-03/feat/cie-semantic-kernel-clean",
+      "ahead": 0,
+      "behind": 54,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-semantic-kernel-final",
+      "sha": "d35dac7b745a7cf63f216a51447a32f734150460",
+      "archive_tag": "archive/2026-11-03/feat/cie-semantic-kernel-final",
+      "ahead": 0,
+      "behind": 34,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-semantic-kernel-v1",
+      "sha": "d35dac7b745a7cf63f216a51447a32f734150460",
+      "archive_tag": "archive/2026-11-03/feat/cie-semantic-kernel-v1",
+      "ahead": 0,
+      "behind": 34,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/cie-semantic-kernel-v2",
+      "sha": "cf8c1d2fb0e26a27281ba99d95ff9d8da738cd9d",
+      "archive_tag": "archive/2026-11-03/feat/cie-semantic-kernel-v2",
+      "ahead": 0,
+      "behind": 54,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/construction-intelligence-spec",
+      "sha": "d35dac7b745a7cf63f216a51447a32f734150460",
+      "archive_tag": "archive/2026-11-03/feat/construction-intelligence-spec",
+      "ahead": 0,
+      "behind": 34,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/meydenbauer-cie-explorer",
+      "sha": "6da68941a14de0087d927d013fa677c6f73fb707",
+      "archive_tag": "archive/2026-11-03/feat/meydenbauer-cie-explorer",
+      "ahead": 0,
+      "behind": 12,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/meydenbauer-runpod-1080p30",
+      "sha": "50244e3cfcb6df8d378b6f6adff9cf44c309bb93",
+      "archive_tag": "archive/2026-11-03/feat/meydenbauer-runpod-1080p30",
+      "ahead": 0,
+      "behind": 85,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "feat/meydenbauer-time-propagation",
+      "sha": "fc66681be67cc5be02768d90c9fa98eaba0ed44c",
+      "archive_tag": "archive/2026-11-03/feat/meydenbauer-time-propagation",
+      "ahead": 0,
+      "behind": 1,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "film/meydenbauer-agency-film",
+      "sha": "4205255324bf77a390360a3e4686556ffa31f928",
+      "archive_tag": "archive/2026-11-03/film/meydenbauer-agency-film",
+      "ahead": 1,
+      "behind": 59,
+      "classification": "patch-equivalent"
+    },
+    {
+      "branch": "film/meydenbauer-agency-film-fixes",
+      "sha": "ceaeb89dc39c66cc224978715ff59c5ad7b0cc7c",
+      "archive_tag": "archive/2026-11-03/film/meydenbauer-agency-film-fixes",
+      "ahead": 1,
+      "behind": 53,
+      "classification": "patch-equivalent"
+    },
+    {
+      "branch": "film/meydenbauer-film-poster",
+      "sha": "34e8100f298b2d39f2382483e419ca595a85206e",
+      "archive_tag": "archive/2026-11-03/film/meydenbauer-film-poster",
+      "ahead": 0,
+      "behind": 51,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "fix/blender-render-assets",
+      "sha": "c9d42c38bbf243e24d3f6fcf2adf7c761e969dec",
+      "archive_tag": "archive/2026-11-03/fix/blender-render-assets",
+      "ahead": 0,
+      "behind": 110,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "improve/highland-archviz",
+      "sha": "4c112ae841aeb8845ffd7c22aba8b9ffad5b8bc6",
+      "archive_tag": "archive/2026-11-03/improve/highland-archviz",
+      "ahead": 0,
+      "behind": 114,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "meydenbauer-b/underslab-stills-ci",
+      "sha": "1c1465a4e978c7970d1a351bafe5260c928f10ca",
+      "archive_tag": "archive/2026-11-03/meydenbauer-b/underslab-stills-ci",
+      "ahead": 0,
+      "behind": 60,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "meydenbauer/4d-sequence",
+      "sha": "fc576104c007dba4b2db0fd7d6770374f9036c44",
+      "archive_tag": "archive/2026-11-03/meydenbauer/4d-sequence",
+      "ahead": 0,
+      "behind": 78,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "meydenbauer/realism",
+      "sha": "157abbe4e7494567c843cc9b6a6f719a4f8641fe",
+      "archive_tag": "archive/2026-11-03/meydenbauer/realism",
+      "ahead": 0,
+      "behind": 87,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "meydenbauer/underslab-bid-model",
+      "sha": "ca5627fd2de2db05692991122cedf44eec91d565",
+      "archive_tag": "archive/2026-11-03/meydenbauer/underslab-bid-model",
+      "ahead": 0,
+      "behind": 92,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "room-living-kitchen",
+      "sha": "9fd194149d92846a9e74e7bfc3e6ec7689cf477d",
+      "archive_tag": "archive/2026-11-03/room-living-kitchen",
+      "ahead": 0,
+      "behind": 143,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "workflow/bm-cli",
+      "sha": "11b1c64d0843d38b32ed10b70a6b62de8b9c6bc6",
+      "archive_tag": "archive/2026-11-03/workflow/bm-cli",
+      "ahead": 1,
+      "behind": 69,
+      "classification": "merge-only"
+    },
+    {
+      "branch": "workflow/ci-lock",
+      "sha": "ce1b2416febf858f311e966743b44f0fe5fb276b",
+      "archive_tag": "archive/2026-11-03/workflow/ci-lock",
+      "ahead": 0,
+      "behind": 65,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "workflow/docs",
+      "sha": "ac8ce351ecad76e4f5d0afa3c7b0e602e9b2195a",
+      "archive_tag": "archive/2026-11-03/workflow/docs",
+      "ahead": 0,
+      "behind": 64,
+      "classification": "ancestor"
+    },
+    {
+      "branch": "workflow/releases",
+      "sha": "478d1e04848bc0bbd4632bb49df7cb4a7f21fb80",
+      "archive_tag": "archive/2026-11-03/workflow/releases",
+      "ahead": 1,
+      "behind": 67,
+      "classification": "merge-only"
+    },
+    {
+      "branch": "workflow/sites",
+      "sha": "ffd135d7807b98397dfcc529455e99de1cf121e5",
+      "archive_tag": "archive/2026-11-03/workflow/sites",
+      "ahead": 1,
+      "behind": 68,
+      "classification": "merge-only"
+    },
+    {
+      "branch": "workflow/uv-foundation",
+      "sha": "e183dc6b6357c4663b386a0d84e5668294cbcf6e",
+      "archive_tag": "archive/2026-11-03/workflow/uv-foundation",
+      "ahead": 1,
+      "behind": 74,
+      "classification": "merge-only"
+    }
+  ],
+  "remaining": {
+    "refs/heads/continue/highland-drawing-reconciliation": "516ef7b153dba196e8d4fcccc778633566cca886",
+    "refs/heads/continue/highland-exterior-daylight": "3785f7fc3f7df103be0e17ca75f28cfaab26cfac",
+    "refs/heads/continue/highland-roof-geometry": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+    "refs/heads/deliver/highland-archviz-film": "0322d7d8d5854366660350be84e9e9df4935a23a",
+    "refs/heads/docs/meydenbauer-cutaway-design": "8488002d6e4bb18fc1bc232e45ba695464b95036",
+    "refs/heads/feat/render-scenes-actions": "deaf6ea1eb8f06aeea0f01125e39144691551528",
+    "refs/heads/handoff/highland-exterior-2026-10-20": "fab3bd0b4d09bd4231b2a39620501562a432011a",
+    "refs/heads/improve-docs-and-reports": "03dc8a1bb3a5496c84d64ed09904b70eca4a627f",
+    "refs/heads/main": "b46c1c7c96238ab43e9cb2bc736fb023f7421dfb",
+    "refs/heads/meydenbauer/4d-fixes": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+    "refs/heads/meydenbauer/b101-v4-executed": "70fc8d60ef50006c27222ad7fbd50bf519815cac"
+  },
+  "archive_tags_verified": 44
+}
