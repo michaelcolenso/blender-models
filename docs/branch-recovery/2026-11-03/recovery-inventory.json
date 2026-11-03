@@ -1,0 +1,3653 @@
+[
+  {
+    "branch": "continue/highland-roof-geometry",
+    "source_tag": "archive/2026-11-03/continue/highland-roof-geometry",
+    "source_sha": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+    "merge_base": "85b3bae31218d422b5f7e57d283b9fce914c0a53",
+    "changed_paths": 352,
+    "changes": [
+      {
+        "status": "A",
+        "path": ".gitattributes"
+      },
+      {
+        "status": "M",
+        "path": ".github/workflows/render-scenes.yaml"
+      },
+      {
+        "status": "M",
+        "path": "README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/Highland-dusk-4K.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/Highland-dusk.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/Highland-dusk.glb"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/delivery-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/final-render.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/package-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/scene-readback.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/scene-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-cinematic/source-records.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/CHANGELOG.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/Highland-camera-landmarks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/Highland-daylight-photo-study.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/Highland-daylight-photo-study.glb"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/Highland-daylight-photo-study.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/Highland-daylight-source-comparison.pdf"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/camera-fit.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/delivery-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/opening-audit.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/opening-audit.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/package-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/scene-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/source-manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-daylight/workflow-input-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/HANDOFF.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/Highland-daylight-drawing-reconciled.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/Highland-drawing-reconciled.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/Highland-drawing-reconciled.glb"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/Highland-drawing-reconciliation.pdf"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/Highland-dusk-drawing-reconciled.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/change-ledger.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/delivery-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/dusk-render.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/dusk-review-render.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/dusk-review/frame-001.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/dusk-review/frame-432.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/element-provenance.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/elevation-comparison.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/east.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/iso.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/north.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/p1-plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/p1-south.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/r5-plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/r5-return.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/r5-southwest.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/south.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/stage1/r5-plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/stage1/r5-southwest.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/stage1/west.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/stage2/r5-southwest.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/stage2/terrace-plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/terrace-plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-review/west.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/geometry-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/native-render.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/opening-audit.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/opening-audit.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/package-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/plan-registration.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/presentation-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/r5-completion.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/r5-elevation-comparison.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/reconciled.spec.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/render-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/reproduction-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/review-render.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/shell-reconciliation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-inventory.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/A2.08-roof-top-callouts.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/A3.01-south.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/A3.02-north.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/P1-east-elevation.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/P1-enclosure-reconciled.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/P1-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/P1-initial-conflict-detail.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/P1-south-elevation.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/P1-south-reconciled.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R1-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R1-south-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R2-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R2-north-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R2-south-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R3-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R3-north-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R3-south-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R4-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R4-north-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R4-south-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-MO-MJ-completed.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-SE-initial-conflict-detail.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-SE-reconciled.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-SW-completed.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-east-completed.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-east-elevation.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-enclosure-completed.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-north-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-roof-comparison.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-roof-completed.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-south-elevation.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-south-plan-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-south-terraces.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/R5-terrace-arrangement.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/Roof-grid-calibration.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/source-review/north-plan-model-overlay.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/stage1-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/stage2-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/terrace-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/verification-tests.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-drawings/visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-HANDOFF.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-continuation-handoff.zip"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-daylight-revised.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-dusk-approach-and-rise-18s.mp4"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-handoff.pdf"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-photo-and-drawing-comparison.pdf"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-revised-daylight-and-film.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/Highland-revised-exterior.glb"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/archive-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/builder-regression.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/camera-path.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/delivery-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/element-provenance.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/encoded-review/frame-01.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/encoded-review/frame-02.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/encoded-review/frame-03.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/exterior-revised.spec.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-000.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-072.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-144.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-216.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-288.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-360.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-review/frame-431.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/film-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/handoff-archive-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/handoff-manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/presentation-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/revision-ledger.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/revision-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/scene-readback.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/source-records.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/source-review/east.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/source-review/plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/source-review/provenance.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/source-review/south.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/unresolved-openings.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-refined/visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/CHANGELOG.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/HANDOFF.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-MN-window-source.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-daylight-geometry-revised.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-dusk-geometry-revised-18s.mp4"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-geometry-revised.glb"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-rail-AA-comparison.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-revised-camera-landmarks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-roof-and-terrace-revised.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-roof-terrace-source-comparison.pdf"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-source-height-detail.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/Highland-source-height-picks.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/aa-comparison.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/camera-fit.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/camera-path.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/ci-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/color-normalization.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/cycles-dusk-benchmark/frame-001.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/cycles-dusk-benchmark/frame-217.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/cycles-dusk-benchmark/frame-432.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/decoded-frame-checksums.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/delivery-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/element-provenance.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/encoded-review/frame-01.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/encoded-review/frame-02.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/encoded-review/frame-03.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-capture.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-encoding.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-000.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-072.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-144.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-216-fxaa-only.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-216.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-288.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-360.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/film-review/frame-431.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-review/after-east.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-review/after-iso.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-review/after-plan.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-review/after-south.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-review/before-south.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/geometry-visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/media-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/native-dusk-benchmark.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/native-render.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/opening-audit.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/opening-audit.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/package-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/revision-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/source-manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/source-measurements.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-roof/visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/Highland-dusk-drawing-reconciled-18s.mp4"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/Highland-dusk-poster.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/aa-comparison.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/camera-path.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/capture-frame-hashes.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/color-normalization.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/decoded-frame-checksums.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/decoded-review/frame-000.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/decoded-review/frame-216.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/decoded-review/frame-431.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/delivery-manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-capture.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-encoding.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-000.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-072.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-144.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-216-fxaa-only.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-216.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-288.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-360.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/film-review/frame-431.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/media-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/poster.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/source-validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/highland-visualization/visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/README.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/assets/kloofendal_48d_partly_cloudy_puresky_4k.hdr"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/assets/source.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/build.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/export.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/package.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/scene.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-cinematic/validate_delivery.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/README.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/audit_openings.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/build.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/daylight.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/fit_camera.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/package.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/photo-landmarks.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/report.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/requirements.txt"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-daylight/validate.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/HANDOFF.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/README.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/build.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/check_renders.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/check_terraces.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/compare.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/decisions.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/package.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/prepare.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/presentation.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/presentation_sync.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/r5-decisions.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/r5.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/reconciled.spec.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/references/exterior-elevations-and-sections.pdf"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/references/site-and-floor-plans.pdf"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/references/stairs-and-rcp.pdf"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/render.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/report.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/requirements.txt"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/revision04-north-baseline.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/revision05-controls.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/shell-decisions.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/shell.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/shell_mesh.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/stage1-r5-baseline.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/terrace-decisions.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/terrace_mesh.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/terraces.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-drawings/validate.py"
+      },
+      {
+        "status": "M",
+        "path": "projects/highland-exterior/build.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/HANDOFF.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/README.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/create-handoff.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/detail-spec.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/detail.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/exterior-revised.spec.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/package-lock.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/package.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/package.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/prepare.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/presentation.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/render-film.cjs"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/render-review.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/report.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/revision-ledger.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/validate-scene.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/viewer.html"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-refined/viewer.js"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/HANDOFF.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/README.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/build.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/finish-film.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/geometry-revision.spec.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/geometry.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/geometry.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/package-lock.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/package.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/package.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/photo-landmarks.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/prepare.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/presentation.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/render-film.cjs"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/render_still.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/report.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/requirements.txt"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/review_geometry.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/validate.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/validate_media.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/viewer.html"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-roof/viewer.js"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/.gitignore"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/README.md"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/export.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/film.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/finish-film.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/package-lock.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/package.json"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/render-film.cjs"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/review_movie.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/validate_media.py"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/viewer.html"
+      },
+      {
+        "status": "A",
+        "path": "projects/highland-visualization/viewer.js"
+      },
+      {
+        "status": "M",
+        "path": "render/scenes.json"
+      }
+    ]
+  },
+  {
+    "branch": "meydenbauer/4d-fixes",
+    "source_tag": "archive/2026-11-03/meydenbauer/4d-fixes",
+    "source_sha": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+    "merge_base": "b2dac8f08ef683f65892f4f9d2ebe2e2087d484d",
+    "changed_paths": 473,
+    "changes": [
+      {
+        "status": "D",
+        "path": ".github/workflows/build-models.yaml"
+      },
+      {
+        "status": "D",
+        "path": ".github/workflows/highland-archviz-review.yaml"
+      },
+      {
+        "status": "D",
+        "path": ".github/workflows/highland-blender-film.yaml"
+      },
+      {
+        "status": "D",
+        "path": ".github/workflows/highland-blender-preview.yaml"
+      },
+      {
+        "status": "D",
+        "path": ".github/workflows/render-scenes.yaml"
+      },
+      {
+        "status": "D",
+        "path": ".gitignore"
+      },
+      {
+        "status": "D",
+        "path": "INSTRUCTIONS.md"
+      },
+      {
+        "status": "D",
+        "path": "README.md"
+      },
+      {
+        "status": "D",
+        "path": "RUNBOOK.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Compare-corridor.jpg"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Compare-elevator.jpg"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Compare-exterior.jpg"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Compare-lobby.jpg"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-corridor.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-elevator.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-exterior.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-film-poster.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-lobby.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-preview.gif"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz-walkthrough.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-archviz.validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/Highland-study-baseline.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-archviz/review-manifest.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-corridor-review.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-full-review.jpg"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-lobby-review.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-poster.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-preview.gif"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-section-review.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-section.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-Blender-walkthrough.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-walkthrough.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/Highland-walkthrough.validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/media-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/native-frame-provenance.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-blender/playback-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-cinema/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-cinema/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/Highland-corridor-drone.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/Highland-drone-poster.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/Highland-drone-preview.gif"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/Highland-drone-tour.html"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/Highland-xray-preview.gif"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-drone/validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/Highland-exterior-east-entry.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/Highland-exterior-portrait.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/Highland-exterior-review.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/Highland-exterior-southeast.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/Highland-exterior.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/Highland-exterior.glb"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/elements.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-exterior/validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/Highland-repipe-storyboard.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/assets/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/assets/Highland-installation-model.zip"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/assets/Highland-repipe-90s-1080p.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/assets/Highland-repipe-90s-4K.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/assets/Highland-repipe-animation-editable.zip"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/assets/Highland-repipe-storyboard.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/Highland-immersive-editable.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/Highland-immersive-editable.zip"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/Highland-immersive-storyboard.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/Highland-repipe-immersive-90s-1080p.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/blender-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/delivery-files.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/delivery-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/source-manifest.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/01-01.8s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/02-06.2s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/03-13.0s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/04-22.5s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/05-33.5s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/06-55.5s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/07-60.5s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/08-69.5s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/09-79.0s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/immersive-film/storyboard/10-88.0s.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/Highland-corrected-rebuild-review.zip"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/Highland-repipe-90s.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/REBUILD-NOTES.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/blender-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/callouts-2d.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/editable-exterior-check.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/editable-master-check.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/package-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/pipeline-smoke-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/presentation-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/review-scope.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard-preview-contact.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/01.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/02.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/03.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/04.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/05.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/06.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/07.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/storyboard/08.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/rebuild-review/validator-source-hashes.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-repipe-studio-90s-1080p.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-studio-color-reference.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-studio-storyboard.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-studio-storyboard.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-studio-upgrade-editable.zip"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-studio-upgrade-guide.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/Highland-studio-upgrade.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/UPGRADE-GUIDE.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/VISUAL-REVIEW.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/delivery-files.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/delivery-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/media-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/sequence-profile.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-01.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-02.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-03.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-04.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-05.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-06.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-07.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/storyboard/shot-08.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-installation/studio-upgrade/studio-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-repipe/Cutover-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-repipe/Highland-repipe-preview.gif"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-repipe/Highland-repipe-sequence.html"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-repipe/Highland-repipe-strategy.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-repipe/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-repipe/validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Highland-domestic-water.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Highland-pipe-model-review.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Highland-plumbing-3D.html"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Source-reference-sheets.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/THREE-LICENSE.txt"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-bathroom-pilot.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-bathroom-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-connections-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-plumbing-animation.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-plumbing-preview.gif"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/Unit-107-trace-review.html"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/building.glb"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/calibration.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/plant.glb"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/provenance-review-contact.jpg"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/unit.glb"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland-water/video-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland/Highland-owner-overview.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland/Highland-owner-presentation.pdf"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland/Highland-owner-tour.html"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/highland/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/Meydenbauer-B-underslab-takeoff.xlsx"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/Meydenbauer-B-underslab.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/Meydenbauer-B-underslab.glb"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/anim/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/anim/Meydenbauer-B-4D.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/anim/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/anim/proxy-60-poster.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/anim/proxy-60.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/model-checks.json"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/present-iso-B-101.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/present-iso-B-102.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/present-iso-B-103.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/present-iso-B-104.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/present-iso.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/present-plan.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/.gitattributes"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/Meydenbauer-B-construction.blend"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/README.md"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/b104_kitchen_run-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/b104_master_bath-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/b104_overview-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/b104_plan-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/realism/section_b103_east-preview.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/review-iso.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/review-plan.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/runpod/Meydenbauer-B-4D-runpod-1080p30.mp4"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/runpod/poster.png"
+      },
+      {
+        "status": "D",
+        "path": "deliverables/meydenbauer-b/takeoff.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase2.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase3.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase4.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase5.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase7.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Data_Spine_Schema.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Element_Register.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Integrity_Check.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase1_Data_Package.xlsx"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase1_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase1_Validation.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Constructability_Package.xlsx"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Constructability_Report.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Integrity_Check.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Issue_Register.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Quantity_Refinements.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Route_Diagnostics.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase3_Integrity_Check.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase3_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase3_Schedule_Package.xlsx"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Integrity_Check.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Takeoff.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Takeoff_Backing.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Takeoff_Package.xlsx"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Field_Package.xlsx"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Field_Verification_Checklist.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Hydrotest_Package.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Installation_Schedule.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Integrity_Check.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Penetration_Schedule.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase6_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase7_SHA256.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Schedule.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_01_Existing_Conditions.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_02_ABS_Installation.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_03_Hydro_Test.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_04_As_Built.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7_f180_trench.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7_f30_garage.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7_f650_final.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f440_hydro.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f455_hydro_full.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f500_backfill.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f530_backfill.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/.gitignore"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/BLENDER.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/CINEMA.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/RUNPOD.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/app.js"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/archviz.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/assemble_blender.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/assets/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/assets/kloofendal_48d_partly_cloudy_puresky_1k.hdr"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/assets/polyhaven-cinema.lock.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/assets/sources.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/audio.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/blender_preview.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/build.sh"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/build_blender.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/cinema.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/cinema.shots.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/cinema_assets.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/cinema_finish.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/cinema_score.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/finish.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/flight.spec.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/osm-buildings-source.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/package-lock.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/package.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/package.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/package_archviz_film.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/prepare.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/render.cjs"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/requirements-cinema.txt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/review_archviz.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/runpod_render.sh"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/source-review/r1-corridor.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/source-review/r2-corridor.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/template.html"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-drone/verify_blender_film.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/build.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/exterior.spec.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/package.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/photo-manifest.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/prepare.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/report.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/east-grid.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/east.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/north.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/plan-grid.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/plan-y-dim.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/r1-outline.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/r5-outline.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/roof.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/south-front.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/south-grid.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/south.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/user-photo-01.jpg"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/user-photo-02.jpg"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-exterior/source-review/west.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/.gitignore"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/Highland-repipe-90s.srt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/REBUILD-NOTES.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/VISUAL-REVIEW.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/animate_highland.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/animation-spec.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/audio/CREDITS.txt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/audio/ljspeech-MODEL_CARD"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/audio/timing.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/blender-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/compose_film.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/deliver_animation.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/delivery-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/editorial-events.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/editorial.ass"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/finalize_blender.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/make_audio.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/opening-source.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/package_rebuild.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/prepare_animation.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-01.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-02.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-03.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-04.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-05.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-06.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-07.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/storyboard/shot-08.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/animation-90s/verify_presentation.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/.gitignore"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/assets/FONT-LICENSE.txt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/assets/anchors.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/assets/fonts/NotoSans-Regular.ttf"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/assets/fonts/NotoSerifDisplay-Italic.ttf"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/assets/fonts/NotoSerifDisplay-Regular.ttf"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/build_editable.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/compose_immersive.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/design.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/immersive-film/validate_delivery.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/VISUAL-REVIEW.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/blender-validation.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/build-result.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/build_installation.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/highland-installation-existing-reference.yaml"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/highland-installation-proposed.yaml"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/installation-data.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/installation-elements.csv"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/package_installation.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/prepare_spec.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/phase-01.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/phase-02.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/phase-03.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/phase-04.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/phase-05.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/phase-06.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/plan-route-overlay.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/review-contact.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/review-front.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/review-iso.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/review-plan.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/review-side.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/shared-distribution.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/video-check-02.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/video-check-14.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/renders/video-check-22.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/risers-200dpi.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/unit-b-plan.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/unit-b-service.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/validate_installation.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/validation.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/installation/verify_blends.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/release-assets.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/requirements-audio.txt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/requirements.txt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/restore_assets.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/source-manifest.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/.gitignore"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/UPGRADE-GUIDE.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/VISUAL-REVIEW.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/assets/blueprint-source.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/assets/neutral-studio.exr"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/assets/unit-b-plan-400dpi.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/blender_compat.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/export_guide.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/package_studio.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/prepare_blueprint.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/render_studio.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/requirements.txt"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/studio-config.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/studio_composite.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/studio_upgrade.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-installation/studio-upgrade/validate_studio.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/.gitignore"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/app.js"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/package.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/prepare.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/render.cjs"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/repipe-strategy.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-repipe/template.html"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/.gitignore"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/bathroom.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/build.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/calibration.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/highland-water.spec.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/make_review.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/package.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/package_viewer.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/prepare_spec.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/register_source.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/render_video.cjs"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-manifest.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-review/P2.02-base.jpg"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-review/architectural-grid-dimensions.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-review/architectural-levels.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-review/architectural-vertical-grid.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-review/registration.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/source-review/unit-a.png"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/viewer.js"
+      },
+      {
+        "status": "D",
+        "path": "projects/highland-water/viewer.template.html"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/README.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/REALISM.md"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/anim_finish.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/animate.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/assets.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/assets/polyhaven.lock.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/build.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/exb_overlay.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/existing.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/meydenbauer-b.existing.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/meydenbauer-b.shell.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/meydenbauer-b.spec.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/meydenbauer-b.structure.json"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/prepare.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/realism.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/runpod_animate.sh"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/runpod_render.sh"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/shell.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/structure.py"
+      },
+      {
+        "status": "D",
+        "path": "projects/meydenbauer-b/takeoff.py"
+      },
+      {
+        "status": "D",
+        "path": "render/README.md"
+      },
+      {
+        "status": "D",
+        "path": "render/requirements.txt"
+      },
+      {
+        "status": "D",
+        "path": "render/scenes.json"
+      },
+      {
+        "status": "D",
+        "path": "requirements.txt"
+      },
+      {
+        "status": "D",
+        "path": "specs/_sample-bay.yaml"
+      },
+      {
+        "status": "D",
+        "path": "specs/field-parapet-existing.yaml"
+      },
+      {
+        "status": "D",
+        "path": "specs/field-parapet-proposed.yaml"
+      },
+      {
+        "status": "D",
+        "path": "specs/qp-cottage-a.yaml"
+      },
+      {
+        "status": "D",
+        "path": "specs/qp-rake-ah700-12.yaml"
+      },
+      {
+        "status": "D",
+        "path": "specs/room-living-kitchen.yaml"
+      },
+      {
+        "status": "D",
+        "path": "takeoff/qp-cottage-a.json"
+      },
+      {
+        "status": "D",
+        "path": "tests/test_render_workflow.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/anim_common.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/animate_house.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/animate_sequence.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/build.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/calibrate.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/detail.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/detail_overlay.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/export_usdz.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/extract_plan.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/house.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/overlay.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/qto.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/render_assets.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/render_plan.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/render_scene.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/room.py"
+      },
+      {
+        "status": "D",
+        "path": "tools/skp_code.py"
+      }
+    ]
+  },
+  {
+    "branch": "meydenbauer/b101-v4-executed",
+    "source_tag": "archive/2026-11-03/meydenbauer/b101-v4-executed",
+    "source_sha": "70fc8d60ef50006c27222ad7fbd50bf519815cac",
+    "merge_base": "11a200681d890a2c84322df30e6bc2d1a2be107f",
+    "changed_paths": 81,
+    "changes": [
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/BLENDER_REVIEW_CHECKLIST.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/CODEX_HANDOFF_PROMPT.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/COMMANDS.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/DELIVERY_MANIFEST.sha256"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/DELIVERY_README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/HANDOFF_STATUS.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/KNOWN_UNCERTAINTIES.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/MANIFEST.sha256"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/PACKAGE_CONTENTS.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/README.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/SOURCE_FILES_NOT_INCLUDED.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/SOURCE_INDEX.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/START_HERE.txt"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/data/B101_demolition_fitting_schedule_v4.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/data/b101_route_controls_calibrated_v2.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/data/meydenbauer_route_controls_v2_reference.csv"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/docs/B101_demolition_fitting_notes_v4.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/docs/B101_demolition_model_notes_v3.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/docs/b101_calibration_report.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/docs/meydenbauer_v2_audit.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/handoff.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/.gitkeep"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/blender_version.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/build.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/detail_renders.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/extended_runtime_qa.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/isolated_detail_renders.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/launcher.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/preflight.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/preflight_core.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/protection_conflict_render.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/logs/verify_saved_blend.log"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/.gitkeep"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/Meydenbauer_B101_Demolition_v4.blend"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/acceptance_notes.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/build_validation_report.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/changes.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/checklist_review.md"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/execution_summary.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/extended_runtime_qa.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/preflight_report.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/render_inventory.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/saved_blend_verification.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/output/source_integrity.json"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/qa/B101_calibrated_QA_board.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/qa/B101_demolition_plan_overlay_v3.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/qa/B101_fitting_cut_QA_overlay_v4.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/qa/b101_P3_1_calibrated_overlay.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/.gitkeep"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_001_existing.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_038_remove_reinstall_access_items.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_050_finish_stripout.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_061_wall_stack_exposure.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_068_slab_sawcut.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_076_slab_lift_vapor_exposure.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_083_excavation_expose_ci.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_089_ci_removed_clean_trench.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_001.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_038.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_050.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_061.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_068.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_076.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_083.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_089.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_fittings_cuts_supports_083.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_new_ABS_route_091.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_prior_ABS_envelope_conflict_089.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_slab_boolean_top_089.png"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/run_blender.bat"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/run_blender.ps1"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/run_blender.sh"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/build_meydenbauer_b101_v4.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/extended_runtime_qa.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/package_delivery.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/preflight.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/render_detail_qa.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/render_protection_conflict.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/run_build_and_verify.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/scripts/verify_saved_blend.py"
+      },
+      {
+        "status": "A",
+        "path": "deliverables/meydenbauer-b/b101-v4/sources/modeling_brief.txt"
+      }
+    ]
+  }
+]
