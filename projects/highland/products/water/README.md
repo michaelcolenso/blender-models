@@ -19,6 +19,8 @@ python package_viewer.py
 python make_review.py
 ```
 
+The same sequence runs as product steps from the repo root: `uv run bm run highland/water build`, then `viewer`, then `video` (film, preview GIF and viewer preview PNGs; needs FFmpeg and the system libraries Playwright's Chromium links against).
+
 Outputs go to `build/highland-water/`. `prepare_spec.py` is the manual takeoff / presentation-coordinate definition. Its expanded `highland-water.spec.json` is the single input used for geometry, connectivity checks and drawing overlay. All dimensional values are inches; Blender uses meters internally. This project uses a dedicated builder because the repository's house extractor does not support scanned multistory plumbing plans. It is not wired into the existing house-model CI workflow.
 
 ## Sources and interpretation
@@ -78,7 +80,7 @@ The full takeoff and assumptions are in `calibration.json`. The horizontal calib
 
 The five-fixture primary bathroom now has an explicit port contract in `bathroom_pilot`: five cold and four hot supply connections, five representative fixture stops, two mixing bodies, two mixed-water outlets and five flexible fixture connectors. Elbows and tees are separately selectable geometry derived from the pipe routes. Their counts are model counts, not a drawing takeoff or product schedule.
 
-`bathroom.py` adds these details to the expanded specification. Fixture anchors retain their calibrated-plan basis; lavatory and toilet drops move to **assumed wall-side positions** behind the fixture envelopes. These offsets are not covered by the schematic ±6 inch trace allowance. Overhead CW/HW/HWC are separated at assumed heights of 102/100/98 inches; both existing schematic hot-to-return joins remain connected across those offsets.
+`bathroom.py` adds these details to the expanded specification. Fixture anchors retain their calibrated-plan basis; lavatory and toilet drops move to **assumed wall-side positions** behind the fixture envelopes. These offsets are not covered by the schematic ±6 inch trace allowance. Overhead CW/HW/HWC are separated at assumed heights of 108/106/104 inches (originally 102/100/98; see the structural ceiling update); both existing schematic hot-to-return joins remain connected across those offsets.
 
 The builder checks each drop/connector endpoint against the corresponding fixture or mixer port, ensures the toilet receives cold water only, verifies both mixed outlets, and checks that stops lie on their supply routes. A generated-mesh check measures clearance between the five wall-side vertical supply drops and the actual lavatory/toilet bounds. This is a targeted interference check; it does not establish whole-model clash freedom, hydraulic adequacy, code compliance, temperature performance or installed conditions. Purple indicates mixed water without asserting any temperature setting.
 
@@ -86,14 +88,16 @@ The bathroom domestic-water pilot is ready for visual review. Sanitary/vent syst
 
 ## Animated review
 
-`render_video.cjs` captures deterministic Three.js camera sweeps at 1280 × 720, 24 fps, and encodes an H.264 MP4 with FFmpeg. It needs Playwright and Chromium in addition to the viewer dependencies. Serve `build/highland-water/` locally after packaging the viewer, then run:
+`render_video.cjs` captures deterministic Three.js camera sweeps at 1280 × 720, 24 fps, and encodes an H.264 MP4 with FFmpeg. `render_previews.cjs` screenshots the viewer's Bathroom, Connections and Reset views at 1440 × 1000 for the deliverable README. Both use the Playwright version pinned in `package.json` and its own Chromium. After the viewer step, run:
 
 ```bash
-node projects/highland/products/water/render_video.cjs http://127.0.0.1:8878/Highland-plumbing-3D.html build/highland-water
+uv run bm run highland/water video
 ```
+
+`make_video.sh` serves `build/highland-water/` on a free local port, renders the film and previews, cuts the preview GIF from the first 10 s (shot 1) at 10 fps and 800 px, fully decodes the MP4, and fails if the decoded frame count differs from the captured one. If Chromium reports missing libraries (`libnss3`, `libnspr4`, `libasound2t64` on Ubuntu), install them with apt.
 
 The 24-second sequence contains a bathroom orbit, an under-fixture connection view and full-unit context. The video uses the same GLB geometry as the viewer; it does not add any pipe routes. `video-validation.json` records frame count, timing and browser errors. Captured frames and decoded video frames were inspected before delivery.
 
 ## Structural ceiling update
 
-The spec now carries the provisional Unit 107 ceiling derivation above and the raised assumed pipe heights. The committed `.blend`, GLBs, viewer and review PDFs under `projects/highland/deliverables/water/` were built from the earlier 102/100/98 inch heights and have **not** been rebuilt; re-run `bm run highland/water build` and the viewer steps (bpy, CI or RunPod) before re-issuing them.
+The spec carries the provisional Unit 107 ceiling derivation above and the raised assumed pipe heights (108/106/104 inches). The deliverables under `projects/highland/deliverables/water/` were rebuilt from it on 2026-11-04 (`build`, `viewer`, `video`). The review PDF, viewer and film state the provisional ceilings and assumed heights and are marked "Illustrative, not a contract document". Files over 1 MB are on the `highland-water-2026-11-04` GitHub Release, recorded in `release-assets.json`.

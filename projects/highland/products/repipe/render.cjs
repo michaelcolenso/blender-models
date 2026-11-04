@@ -1,7 +1,7 @@
 // node projects/highland/products/repipe/render.cjs URL [output-dir] [--review-only]
 const {chromium}=require('playwright'),{spawn}=require('node:child_process'),{once}=require('node:events'),fs=require('node:fs'),path=require('node:path');
 const out=path.resolve(process.argv[3]||'build/highland-repipe');fs.mkdirSync(out,{recursive:true});
-(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1280,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});const page=await browser.newPage({viewport:{width:1280,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{await page.goto(process.argv[2]);await page.waitForFunction(()=>window.ready);const stage=page.locator('#stage');
 const checks=[];const phases=await page.evaluate(()=>window.REPIPE_SPEC.phases);let start=0;
 for(let i=0;i<phases.length;i++){const p=phases[i],t=start+p.seconds*.5;const state=await page.evaluate(t=>window.repipe.frame(t),t);checks.push({time:t,...state});await stage.screenshot({path:path.join(out,`phase-${i+1}.png`)});start+=p.seconds;}

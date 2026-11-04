@@ -84,21 +84,6 @@
     1280,
     720
   ],
-  "full_video_decode": "passed",
-  "encoded_format": "H.264 / yuv420p",
-  "decoded_samples_inspected_seconds": [
-    22,
-    31
-  ],
-  "phase_stills_inspected": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7
-  ],
-  "preview_gif_frames": 192,
-  "validation_scope": "Presentation sequence and source-port agreement only; no actual isolation, hydraulic or construction validation."
+  "ffmpeg_full_decode": "passed",
+  "decoded_frames": 768
 }
