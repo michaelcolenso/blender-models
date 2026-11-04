@@ -1,0 +1,68 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6MAW2SP2NNP0XC64HSV3FXP",
+  "strategy": "manual-commit",
+  "branch": "feat/highland-water-deliverables-refresh",
+  "checkpoints_count": 6,
+  "files_touched": [
+    "projects/highland/deliverables/water/Highland-domestic-water.blend",
+    "projects/highland/deliverables/water/Highland-pipe-model-review.pdf",
+    "projects/highland/deliverables/water/Highland-plumbing-3D.html",
+    "projects/highland/deliverables/water/README.md",
+    "projects/highland/deliverables/water/Unit-107-bathroom-pilot.pdf",
+    "projects/highland/deliverables/water/Unit-107-bathroom-preview.png",
+    "projects/highland/deliverables/water/Unit-107-connections-preview.png",
+    "projects/highland/deliverables/water/Unit-107-plumbing-animation.mp4",
+    "projects/highland/deliverables/water/Unit-107-plumbing-preview.gif",
+    "projects/highland/deliverables/water/Unit-107-preview.png",
+    "projects/highland/deliverables/water/Unit-107-trace-review.html",
+    "projects/highland/deliverables/water/building.glb",
+    "projects/highland/deliverables/water/calibration.json",
+    "projects/highland/deliverables/water/plant.glb",
+    "projects/highland/deliverables/water/provenance-review-contact.jpg",
+    "projects/highland/deliverables/water/unit.glb",
+    "projects/highland/deliverables/water/validation.json",
+    "projects/highland/deliverables/water/video-validation.json",
+    "projects/highland/products/repipe/repipe-strategy.json",
+    "projects/highland/products/water/README.md",
+    "projects/highland/products/water/make_review.py",
+    "projects/highland/products/water/make_video.sh",
+    "projects/highland/products/water/package-lock.json",
+    "projects/highland/products/water/package.json",
+    "projects/highland/products/water/product.yaml",
+    "projects/highland/products/water/render_previews.cjs",
+    "projects/highland/products/water/render_video.cjs",
+    "projects/highland/products/water/viewer.js",
+    "projects/highland/products/water/viewer.template.html"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 154,
+    "cache_creation_tokens": 262263,
+    "cache_read_tokens": 7598686,
+    "output_tokens": 38257,
+    "api_call_count": 70
+  },
+  "redaction": {
+    "replacements": 0,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 0,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
