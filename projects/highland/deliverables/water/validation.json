@@ -6,7 +6,9 @@
     "boilers": 2,
     "storage_tanks": 2,
     "expansion_vessels": 4,
-    "installed_pumps": 3
+    "installed_pumps": 3,
+    "p1_corridor_mains": 3,
+    "p1_unit_approaches": 3
   },
   "connectivity": {
     "building:CW": {
@@ -38,6 +40,21 @@
       "terminal_routes_reachable": 0,
       "nodes_reachable": 8,
       "nodes_total": 8
+    },
+    "p1:CW": {
+      "terminal_routes_reachable": 1,
+      "nodes_reachable": 5,
+      "nodes_total": 5
+    },
+    "p1:HW": {
+      "terminal_routes_reachable": 1,
+      "nodes_reachable": 5,
+      "nodes_total": 5
+    },
+    "p1:HWC": {
+      "terminal_routes_reachable": 1,
+      "nodes_reachable": 5,
+      "nodes_total": 5
     }
   },
   "calibration_checks": {
@@ -58,13 +75,29 @@
     "registration_inliers": 21,
     "median_registration_error_pt": 0.22395328315076451,
     "unit_scale_in_per_pixel": 0.5139834915133287,
+    "p1_working_px_per_inch": {
+      "plumbing": [
+        1.4928068358595707,
+        1.510067141714877
+      ],
+      "architecture": [
+        1.5088531231335014,
+        1.4907785908943656
+      ]
+    },
+    "p1_max_grid_residual_in": {
+      "plumbing": 4.770967974437326,
+      "architecture": 2.248834823795505
+    },
     "floor_datums_checked": 7,
     "unit_107_floor_to_floor_in": 132
   },
   "limitations": [
     "Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.",
     "Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.",
-    "A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height. Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.",
+    "P1 is a separate coordination scene limited to the south residential corridor mains and Unit 107 service approach. Its 2006 P2.2 source is reference-only/separate-permit; Unit 107 internal routing remains governed by the October 2007 P4.01 study. The two scenes are not spatially joined.",
+    "P1 garage, plant, other-unit and irrigation services are not modeled. The P1 approach terminates at the Unit 107 boundary; its exact tie-in to P4.01 is unresolved.",
+    "A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height (see unit_107_ceiling). Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.",
     "Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.",
     "Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.",
     "04 stack has four explicit upper branch groups on P3.02; its R1 dwelling branch is unresolved and is not invented.",
@@ -73,10 +106,11 @@
     "Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.",
     "Annotations in the supplied PDF are treated as review information, not proof of installed conditions.",
     "Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.",
-    "Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the \u00b16 in source-trace allowance."
+    "Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 108 in, HW 106 in, HWC 104 in; the local service offsets are not covered by the \u00b16 in source-trace allowance.",
+    "Unit 107 clear heights are provisional: R1 drop-slab soffit 351.21 ft (S3.8) less the A7.63 ceiling drops gives living/dining 102.5 in, hallway 98.5 in, laundry 92.5 in above the P1 floor. Overhead pipe heights remain assumed but are held inside the documented band 102.5-109.56 in. RFI/ASI responses on ceiling heights were not supplied and govern."
   ],
   "result": "PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated",
-  "element_count": 360,
+  "element_count": 386,
   "bathroom_pilot": {
     "fixtures": 5,
     "supply_ports": {
