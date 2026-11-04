@@ -1,0 +1,72 @@
+[
+  {
+    "file": "site-and-floor-plans.pdf",
+    "original_name": "Pages from General and Architectrual Plans.pdf",
+    "sheets": [
+      "A1.01",
+      "A2.01",
+      "A2.02",
+      "A2.03",
+      "A2.04",
+      "A2.05",
+      "A2.06",
+      "A2.07",
+      "A2.08"
+    ],
+    "sha256": "06fe5b05c553c66689b69a5d89611673a6aaee5f4a36ace60de50cfa4f3deed4",
+    "bytes": 6462535,
+    "pages": 9,
+    "sheet_size_pt": [
+      0.0,
+      0.0,
+      3024.0,
+      2160.0
+    ],
+    "printed_date": "2007-04-02",
+    "annotation_dates": "not established"
+  },
+  {
+    "file": "stairs-and-rcp.pdf",
+    "original_name": "Pages from General and Architectrual Plans2.pdf",
+    "sheets": [
+      "A6.01",
+      "A6.02",
+      "A6.03",
+      "A6.04",
+      "A7.51"
+    ],
+    "sha256": "66d5064f7efd27d5e943e4879d646a0a64a026b05dfceab1635b60b6bb2e7274",
+    "bytes": 3635013,
+    "pages": 5,
+    "sheet_size_pt": [
+      0.0,
+      0.0,
+      3024.0,
+      2160.0
+    ],
+    "printed_date": "2007-04-02",
+    "annotation_dates": "not established"
+  },
+  {
+    "file": "exterior-elevations-and-sections.pdf",
+    "original_name": "exteriors Pages from General and Architectrual Plans.pdf",
+    "sheets": [
+      "A3.01",
+      "A3.02",
+      "A3.11",
+      "A3.12",
+      "A3.13"
+    ],
+    "sha256": "636cc7cb0d147d5749eb6a9f0898fef61fc67da987ffb895fc91193e354b5df4",
+    "bytes": 4360402,
+    "pages": 5,
+    "sheet_size_pt": [
+      0.0,
+      0.0,
+      3024.0,
+      2160.0
+    ],
+    "printed_date": "2007-04-02",
+    "annotation_dates": "not established"
+  }
+]

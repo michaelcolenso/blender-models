@@ -2,6 +2,11 @@
 
 An editable Blender exterior built from the 2007 architectural drawings and the owner's two appearance photos. Includes a stepped shell, 165 representative facade openings, recessed balconies, upper terraces, roof enclosures and a sloping street context. This is a first exterior study, not a verified as-built or an exact photographic reconstruction.
 
+The later 192-opening drawing reconciliation is being recovered separately in
+[exterior-reconciliation](../exterior-reconciliation/README.md). Its source specs,
+evidence locators and protected controls are available with CPU checks. Its native
+builder has not yet been ported; the commands and outputs below remain this earlier study.
+
 ## Sources and coordinates
 
 The supplied **Pages from 200 W. Highland Construction Plans - Complete.pdf**, dated 04-02-07, is the dimensional source. Its SHA-256 is recorded in `exterior.spec.json`.

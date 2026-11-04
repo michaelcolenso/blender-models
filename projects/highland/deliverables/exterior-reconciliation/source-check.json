@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "scope": "source snapshot integrity and CPU consistency only",
+  "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+  "source_tag": "archive/2026-11-03/continue/highland-roof-geometry",
+  "verified_snapshot_blobs": 12,
+  "opening_counts": {
+    "R1": 36,
+    "R2": 36,
+    "R3": 36,
+    "R4": 36,
+    "R5": 34,
+    "P1": 14
+  },
+  "deferred_north_openings": 30,
+  "r5_vertices": 14,
+  "terrace_surfaces": 6,
+  "guard_paths": 5,
+  "band_paths": 3,
+  "south_pair_gap_in": -0.0,
+  "independently_registered_sheets": 7,
+  "historical_mesh_hash_counts": {
+    "revision04-north-baseline.json": 97,
+    "revision05-controls.json": 815,
+    "stage1-r5-baseline.json": 99
+  },
+  "document_count": 3,
+  "document_sheet_count": 19,
+  "native_mesh_readback": "not_run",
+  "source_pdf_review": "not_run",
+  "visual_review": "not_run",
+  "notice": "Illustrative, not a contract document. Source XY provisional; complete components assumed. Historical hashes are preserved controls, not validation of a current Blender scene."
+}

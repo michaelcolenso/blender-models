@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "source_branch": "continue/highland-roof-geometry",
+  "source_tag": "archive/2026-11-03/continue/highland-roof-geometry",
+  "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+  "note": "Byte-identical historical inputs. Legacy paths and earlier limits remain historical; no script executes these paths. Native mesh/render validation is not performed by the source check.",
+  "files": [
+    {
+      "file": "snapshots/reconciled.spec.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/reconciled.spec.json",
+      "git_blob_sha": "fcac3ef3bdaed5e45967c76359ef95e1c63db7dd",
+      "sha256": "1cf80e055f28065a647d124cf0623a33af5c4cc96067afd93c8c9069d559ae8f",
+      "bytes": 209337
+    },
+    {
+      "file": "snapshots/decisions.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/decisions.json",
+      "git_blob_sha": "46f68a1fe39f66e8cb6463e7dc22ff0c828ab6fb",
+      "sha256": "942b1bfb8a560a3de6b4dd8f0002c4f25a18ebb74df5872beb1c284a6a4c6edb",
+      "bytes": 8204
+    },
+    {
+      "file": "snapshots/shell-decisions.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/shell-decisions.json",
+      "git_blob_sha": "1b8d59b641a6496fb543ce150c479cda010312e6",
+      "sha256": "289fdacf6a59443bf25eb69c18228cdc1fb1cc61c17b4ec7a2f09a39bc1bbaee",
+      "bytes": 6359
+    },
+    {
+      "file": "snapshots/r5-decisions.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/r5-decisions.json",
+      "git_blob_sha": "77a929294e8748c7db74a247d6f31af172810493",
+      "sha256": "07ba97a7ab731de1a7d61d7937823dc8f14c6d9c3ecc40db7b097c0ea2c1e779",
+      "bytes": 9733
+    },
+    {
+      "file": "snapshots/terrace-decisions.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/terrace-decisions.json",
+      "git_blob_sha": "b07bbfe0d47453eb262eec038a98ee9d3f108fa1",
+      "sha256": "f76ca8e16c947468c402866bea042aa9308f603390fc00d2b05c087c4a35e9a7",
+      "bytes": 8631
+    },
+    {
+      "file": "snapshots/presentation.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/presentation.json",
+      "git_blob_sha": "1e337a1640e4b4739b24897cabd6a530b03d67df",
+      "sha256": "12d5af8b3d941095980c5218829e8e51a907969ae2bf59d79d38bcba78568b0c",
+      "bytes": 1150
+    },
+    {
+      "file": "snapshots/revision04-north-baseline.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/revision04-north-baseline.json",
+      "git_blob_sha": "d6175f7b159132bdb9e6f6bfd2b1a9057a7b427e",
+      "sha256": "2987d65ba93fc70e134365c86c5202f399de9c71d64ea5ff9ea182ecf3321e4a",
+      "bytes": 9170
+    },
+    {
+      "file": "snapshots/revision05-controls.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/revision05-controls.json",
+      "git_blob_sha": "9fd084894909325a0bf9badb01a3419b652e3702",
+      "sha256": "67963544febce9ca86f2006713c83c859c562d8e4f7f738d1aeabc1164cc2125",
+      "bytes": 75983
+    },
+    {
+      "file": "snapshots/stage1-r5-baseline.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-drawings/stage1-r5-baseline.json",
+      "git_blob_sha": "6a2dab7f0eb042c92e4afc962ef9591457bc0e78",
+      "sha256": "6452efb07110d0faa0d280e9dc7a2031232cd7c67bb0da51e7fb0a3209523a41",
+      "bytes": 9423
+    },
+    {
+      "file": "snapshots/base-roof.spec.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "projects/highland-roof/geometry-revision.spec.json",
+      "git_blob_sha": "143ab7a10dc7ebd350ee7675283d17abe7932e02",
+      "sha256": "ce2f2be7e1baa901dd71e3276bea49e3b7c90be0e5e1ac0afdb42f7d0ec794c4",
+      "bytes": 141051
+    },
+    {
+      "file": "snapshots/source-inventory.json",
+      "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+      "source_path": "deliverables/highland-drawings/source-inventory.json",
+      "git_blob_sha": "4235f62e8e016b3d381282da9f724bef394c8dbb",
+      "sha256": "7abc16513b5c1b041fab4876ef421040395f0a3b9280ae7c86bcf8cb476e81d0",
+      "bytes": 1556
+    },
+    {
+      "file": "snapshots/revision04.spec.json",
+      "source_commit": "183f22c4a80e4b2b2b6c4e30eb35705e12f4ea96",
+      "source_path": "projects/highland-drawings/reconciled.spec.json",
+      "git_blob_sha": "ab8b8e2274281b74d833e5d2910f48dbd351e057",
+      "sha256": "a0852c6d7fd0020e18aee64de81b0383963593693ab22171c3b8d90c108981b9",
+      "bytes": 168998
+    }
+  ]
+}

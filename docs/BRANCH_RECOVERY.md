@@ -38,6 +38,13 @@ overwrite an existing branch. Fetch the archive tag first in another clone.
 
 ## Recovery 1: Highland drawing reconciliation
 
+The [source/control slice](../projects/highland/products/exterior-reconciliation/README.md)
+now restores 12 byte-identical historical JSON inputs, registers three source PDFs
+in Highland's ignored-sources manifest, and exposes a read-only CPU product check.
+The check verifies archive integrity and planar/spec consistency; the 97/815/99
+mesh hashes remain historical preservation targets. The native builder port,
+asset restoration, actual mesh readback and visual acceptance are still pending.
+
 Start the implementation branch from current main. The source snapshot is
 `archive/2026-11-03/continue/highland-roof-geometry` at
 `bddd5b8fb4085677028108754ef82a722bc0b17c`. It already contains

@@ -1,0 +1,6 @@
+kind: source-recovery
+description: "Archived Highland reconciliation spec, evidence locators and protected controls; CPU checks only"
+deliverables: ../../deliverables/exterior-reconciliation
+steps:
+  check: python $BM_PRODUCT_DIR/check.py
+  check-sources: python $BM_PRODUCT_DIR/check.py --require-sources
