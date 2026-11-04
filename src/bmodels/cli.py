@@ -221,11 +221,12 @@ def cmd_run(a):
 
 
 def cmd_check_products(a):
-    products = [p for s in project.sites() for p in s.products if "check" in (p.meta.get("steps") or {})]
+    products = [p for s in project.sites() for p in s.products]
     if a.changed:
         files = [f for f in checks._git("diff", "--name-only", f"{a.changed}...HEAD") if f]
         if not any(f.startswith(REBUILD_ALL) for f in files):
-            products = [p for p in products if any(f.startswith(f"{rel(p.dir)}/") for f in files)]
+            products = project.affected_products(products, files)  # includes products that depend_on them
+    products = [p for p in products if "check" in (p.meta.get("steps") or {})]
     failed = []
     for p in products:
         print(f"== {p.ref} check", flush=True)
@@ -332,7 +333,7 @@ def parser():
     p.set_defaults(fn=cmd_run)
 
     p = sub.add_parser("check-products", help="run every product's `check` step")
-    p.add_argument("--changed", metavar="BASE", help="only products with changes since BASE")
+    p.add_argument("--changed", metavar="BASE", help="only products with changes since BASE, and products that depend_on them")
     p.set_defaults(fn=cmd_check_products)
 
     p = sub.add_parser("assets", help="release assets with checksums")

@@ -1,6 +1,8 @@
 kind: interactive-viewer
 description: "Evidence-first Meydenbauer Construction Intelligence Explorer"
 deliverables: ../../deliverables/explorer
+# check.py reads underslab schedule.py, its schedule JSON and deliverables/underslab/takeoff.json
+depends_on: [meydenbauer-b/underslab]
 steps:
   check:
     - python $BM_PRODUCT_DIR/check.py

@@ -1,6 +1,8 @@
 kind: viewer+film
 description: "Proposed parallel-install, unit-by-unit cutover sequence (interactive page and MP4)"
 deliverables: ../../deliverables/repipe
+# prepare.py and package.py read the water spec and build/highland-water/unit.glb
+depends_on: [highland/water]
 steps:
   prepare: python $BM_PRODUCT_DIR/prepare.py
   package: python $BM_PRODUCT_DIR/package.py

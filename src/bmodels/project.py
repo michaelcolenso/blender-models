@@ -88,6 +88,20 @@ def product(ref):
     raise SystemExit(f"No product '{ref}'. Products: {', '.join(p.ref for p in site(site_name).products) or 'none'}")
 
 
+def affected_products(products, files):
+    """Products with a changed file in their folder or deliverables, plus every product that `depends_on`
+    one of those (transitively). `depends_on` in product.yaml lists the <site>/<product> refs whose files
+    (product folder or deliverables) it reads."""
+    def owns(p, f):
+        return any(f.startswith(d.resolve().relative_to(ROOT).as_posix() + "/") for d in [p.dir, *p.deliverable_dirs])
+    hit = {p.ref for p in products if any(owns(p, f) for f in files)}
+    while True:
+        more = {p.ref for p in products if p.ref not in hit and hit & set(p.meta.get("depends_on") or [])}
+        if not more:
+            return [p for p in products if p.ref in hit]
+        hit |= more
+
+
 def legacy_specs():
     return sorted(LEGACY_SPECS.glob("*.yaml"))
 

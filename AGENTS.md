@@ -70,8 +70,10 @@ If something can only be verified in CI, say so, push a branch, and read the run
 - Spec-driven models: `projects/<site>/specs/*.yaml`, built with `bm build <site>[/<spec>]`.
 - Anything bespoke (films, viewers, bid models): `projects/<site>/products/<name>/` with a `product.yaml`
   (`kind`, `description`, `deliverables`, `steps`). Include a `check` step: fast, CPU, no source PDFs, ideally
-  "regenerate a tracked output and `git diff --exit-code` it"; CI runs it. Steps run from the repo root
-  with `$BM_PRODUCT_DIR`, `$BM_BUILD`, `$BM_DELIVERABLES` set. Run with `bm run`.
+  "regenerate a tracked output and `git diff --exit-code` it"; CI runs it. If a product reads another product's
+  folder or deliverables, list it in `depends_on: [<site>/<product>]` so CI re-runs its check when that one
+  changes. Steps run from the repo root with `$BM_PRODUCT_DIR`, `$BM_BUILD`, `$BM_DELIVERABLES` set. Run with
+  `bm run`.
 - Shared code goes in `src/bmodels/`, never imported across sites through `sys.path`. Shared CC0 assets go
   in `assets/`. Repo root in scripts: `from bmodels.paths import ROOT`, not counted `parents[N]`.
 - Handover files: `projects/<site>/deliverables/<name>/`.

@@ -1,6 +1,8 @@
 kind: films
 description: "Lobby-to-corridor walkthrough: browser drone tour, native Blender film, archviz stills and the RunPod cinema cut"
 deliverables: [../../deliverables/drone, ../../deliverables/blender-film, ../../deliverables/archviz]
+# prepare.py (the check) reads exterior/exterior.spec.json
+depends_on: [highland/exterior]
 steps:
   drone: bash $BM_PRODUCT_DIR/build.sh
   preview: python $BM_PRODUCT_DIR/blender_preview.py --samples 8 --width 270 --height 480
