@@ -105,12 +105,88 @@
         "date": "2006-09-28",
         "note": "Drawings for reference only; separate permit"
       }
-    ]
+    ],
+    "ceiling_sheets": [
+      {
+        "page": 126,
+        "sheet": "A7.63",
+        "title": "RCP: Unit 107 (Unit A)",
+        "date": "2007-04-02",
+        "revision": "Addendum 1, 2007-05-01 (entire sheet revised)",
+        "note": "Ceiling drops from bottom of drop slab; handwritten RFI 99, ASI 54, RFI 245 (ceiling heights), ASI 59 (diffusers), RFI 344 (drop header heights @ kitchen), RFI 377 (living room lighting) - responses not supplied"
+      },
+      {
+        "page": 90,
+        "sheet": "A5.02",
+        "title": "Bldg assemblies - floors & roofs",
+        "date": "2007-04-02",
+        "note": "Concrete floor thickness per structural; handwritten RFI 201 (ceiling assemblies @ plenums), RFI 366 (plenum insulation)"
+      },
+      {
+        "page": 186,
+        "sheet": "P1.1",
+        "title": "Plumbing legend & schedule",
+        "date": "2006-09-28",
+        "note": "Fixture schedule P-7A dishwasher: 1/2 in HW only; reference only / separate permit"
+      }
+    ],
+    "cover_note": "Cover sheet G0.00 carries a handwritten 'AS BUILT' mark; not treated as evidence of installed conditions."
   },
   "calibration_sources": [
     "A2.03 page 1",
     "A3.11 page 9",
     "P2.02 page 5",
     "P4.01 page 15"
-  ]
+  ],
+  "plumbing_reference_set": {
+    "filename": "Plumbing - 200 W Highland - 9.28.06.pdf",
+    "sha256": "7e2d6584b9e4bb8eddfc23f2843ae66ef2917e10771b26ec2af5da2e46b303fd",
+    "page_count": 11,
+    "text_layer": true,
+    "issue": "2006-09-28",
+    "sheets": [
+      "P1.1",
+      "P1.2",
+      "P2.1",
+      "P2.2",
+      "P2.3",
+      "P2.4",
+      "P2.5",
+      "P2.6",
+      "P2.7",
+      "P2.8",
+      "P2.9"
+    ],
+    "note": "Lower-resolution OCR copy of full-set PDF pages 176-186 (P2.2 visually identical to full-set page 183). No P3/P4 sheets and no domestic-water pipe elevations."
+  },
+  "structural_set": {
+    "filename": "Structural Plans - 200 W Highland - 4.02.07.pdf",
+    "sha256": "7e77eaa8d76cb1ab67ce7a5b0ae09988cbeabe71eb15c3b8a0bc031784ebfd41",
+    "page_count": 24,
+    "text_layer": true,
+    "issue": "2007-04-02",
+    "engineer": "Perbix Bykonen",
+    "inventory": [
+      {
+        "page": 4,
+        "sheet": "S2.3",
+        "title": "Level R1 - Plan"
+      },
+      {
+        "page": 14,
+        "sheet": "S3.4",
+        "title": "PT beam schedule (detail 20)"
+      },
+      {
+        "page": 17,
+        "sheet": "S3.7",
+        "title": "Typical concrete sections"
+      },
+      {
+        "page": 18,
+        "sheet": "S3.8",
+        "title": "Typical concrete details"
+      }
+    ]
+  }
 }

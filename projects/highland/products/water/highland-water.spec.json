@@ -46,6 +46,24 @@
       "page": 183,
       "issue": "2006-09-28",
       "note": "reference only; separate permit"
+    },
+    {
+      "file": "200 W. Highland Construction Plans - Complete.pdf",
+      "sheet": "A7.63",
+      "page": 126,
+      "issue": "2007-04-02 (Addendum 1 2007-05-01)"
+    },
+    {
+      "file": "Structural Plans - 200 W Highland - 4.02.07.pdf",
+      "sheet": "S3.7",
+      "page": 17,
+      "issue": "2007-04-02"
+    },
+    {
+      "file": "Structural Plans - 200 W Highland - 4.02.07.pdf",
+      "sheet": "S3.8",
+      "page": 18,
+      "issue": "2007-04-02"
     }
   ],
   "calibration": {
@@ -121,9 +139,63 @@
     "unit_107_floor": "P1",
     "unit_107_floor_to_floor_in": 132,
     "unit_pipe_elevation_status": "assumed",
-    "unit_overhead_pipe_in": 102,
+    "unit_overhead_pipe_in": {
+      "CW": 108,
+      "HW": 106,
+      "HWC": 104
+    },
+    "unit_overhead_pipe_basis": "No drawing gives domestic-water pipe elevations. Heights are assumed, keeping 2 in separations, and placed inside the documented overhead band (unit_107_ceiling.overhead_band_in): above the highest documented finished ceiling and below the lowest documented drop-slab soffit. Superseded 102/100/98 in placed HWC below the derived hallway and living-room ceilings.",
     "unit_below_floor_pipe_in": -6,
-    "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. A2.02 supplies the P1 architectural plan and RCP, but explicit water-pipe elevations remain unavailable.",
+    "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. Clear heights are derived in unit_107_ceiling from the structural R1 soffit elevations and the A7.63 ceiling drops; explicit water-pipe elevations remain unavailable.",
+    "unit_107_ceiling": {
+      "status": "provisional",
+      "datum": "P1 finished floor 342.00 ft (A2.02 +342.00; A3.11 P1 LEVEL +342.00). Heights are inches above that floor.",
+      "structure": {
+        "source": "Structural Plans - 200 W Highland - 4.02.07.pdf (Perbix Bykonen, 2007-04-02)",
+        "r1_top_of_slab_ft": {
+          "value": 353.0,
+          "source": "S3.7 details 2/5/15, PDF page 17; agrees with A3.11 R1 +353.00"
+        },
+        "r1_bottom_of_slab_ft": {
+          "value": 351.88,
+          "source": "S3.8 details 5, 16-20, PDF page 18"
+        },
+        "r1_bottom_of_band_beam_ft": [
+          {
+            "value": 351.21,
+            "beams": "R1-B11 to R1-B14, grid G (north side of Unit 107)",
+            "source": "S3.8 details 19/20, PDF page 18"
+          },
+          {
+            "value": 351.13,
+            "beams": "R1-B7 / R1-B9, grids 7-8",
+            "source": "S3.7 detail 15, PDF page 17"
+          }
+        ],
+        "band_beam_size": "72 in wide, depth varies (16 in min), S3.4 schedule 20, PDF page 14",
+        "note": "Top of slab slopes down up to 2-3 in toward exterior per architectural; bottom-of-slab and bottom-of-beam elevations are level. Soffit strips on S2.3 (PDF page 4) are 'soffit per plan' and their depths are not resolved here."
+      },
+      "drop_datum_rule": "A7.63 RCP legend note 01: soffit depths are taken from bottom of slab or drop slab, whichever is lower. Drops are therefore applied to the drop-slab (band beam) bottom, 351.21 ft. Measuring from bottom of slab (351.88 ft) instead would raise each ceiling by 8 in; that reading is not adopted.",
+      "drops_source": "A7.63 RCP: Unit 107 (Unit A), full-set PDF page 126, 2007-04-02, Addendum 1 2007-05-01",
+      "drops_in": {
+        "living_dining": 8,
+        "hallway_plenum": 12,
+        "laundry_mechanical": 18
+      },
+      "drops_note": "A7.63 states each drop as +/-. Master WIC is shaded low dropped ceiling without a dimension. Other rooms carry no drop callout.",
+      "derived_ceiling_in": {
+        "underside_of_drop_slab": 110.5,
+        "living_dining": 102.5,
+        "hallway_plenum": 98.5,
+        "laundry_mechanical": 92.5
+      },
+      "overhead_band_in": {
+        "min": 102.5,
+        "max": 109.56,
+        "basis": "min = highest derived finished ceiling (living/dining); max = lowest documented drop-slab bottom (351.13 ft = 109.56 in). Pipe centerline +/- half nominal bore must stay inside."
+      },
+      "open_items": "RFI 99, ASI 54 and RFI 245 (ceiling heights), RFI 344 (drop header heights @ kitchen), RFI 201 (ceiling assemblies @ plenums) and RFI 366 (plenum insulation) revised these conditions; their responses are not in the supplied documents and govern over this derivation."
+    },
     "p1": {
       "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
       "architecture_source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
@@ -134,10 +206,11 @@
       "scope": "South residential corridor CW/HW/HWC mains and Unit 107 service approach",
       "z_status": "assumed",
       "overhead_pipe_in": {
-        "CW": 102,
-        "HW": 100,
-        "HWC": 98
-      }
+        "CW": 108,
+        "HW": 106,
+        "HWC": 104
+      },
+      "overhead_pipe_basis": "Assumed; matched to the Unit 107 heights so the approach meets the unit at the same level. P1 corridor ceilings are not derived, so the Unit 107 band check does not apply to this scene."
     }
   },
   "bathroom_pilot": {
@@ -292,9 +365,9 @@
     "scope": "Primary bathroom domestic-water supplies only; drainage and venting are not included.",
     "hardware_basis": "Elbows, tees, flexible connector dimensions, five stops and two mixer bodies are representative; not a manufacturer schedule or verified installed assembly.",
     "heights_in": {
-      "CW_overhead": 102,
-      "HW_overhead": 100,
-      "HWC_overhead": 98,
+      "CW_overhead": 108,
+      "HW_overhead": 106,
+      "HWC_overhead": 104,
       "lav_stop": 26,
       "wc_stop": 14,
       "shower_mixer": 48,
@@ -308,7 +381,7 @@
     "Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.",
     "P1 is a separate coordination scene limited to the south residential corridor mains and Unit 107 service approach. Its 2006 P2.2 source is reference-only/separate-permit; Unit 107 internal routing remains governed by the October 2007 P4.01 study. The two scenes are not spatially joined.",
     "P1 garage, plant, other-unit and irrigation services are not modeled. The P1 approach terminates at the Unit 107 boundary; its exact tie-in to P4.01 is unresolved.",
-    "A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height. Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.",
+    "A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height (see unit_107_ceiling). Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.",
     "Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.",
     "Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.",
     "04 stack has four explicit upper branch groups on P3.02; its R1 dwelling branch is unresolved and is not invented.",
@@ -317,7 +390,8 @@
     "Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.",
     "Annotations in the supplied PDF are treated as review information, not proof of installed conditions.",
     "Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.",
-    "Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the \u00b16 in source-trace allowance."
+    "Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 108 in, HW 106 in, HWC 104 in; the local service offsets are not covered by the \u00b16 in source-trace allowance.",
+    "Unit 107 clear heights are provisional: R1 drop-slab soffit 351.21 ft (S3.8) less the A7.63 ceiling drops gives living/dining 102.5 in, hallway 98.5 in, laundry 92.5 in above the P1 floor. Overhead pipe heights remain assumed but are held inside the documented band 102.5-109.56 in. RFI/ASI responses on ceiling heights were not supplied and govern."
   ],
   "display": {
     "building_pipe_multiplier": 2.5,
@@ -335,7 +409,13 @@
     "installed_pumps": 3,
     "p1_corridor_mains": 3,
     "p1_unit_approaches": 3,
-    "source": "P3.02 / domestic water riser diagram (PDF page 13); P3.02 / detail 1, low temp boiler piping diagram, SCALE NONE (PDF page 13); P4.01 / Unit A 107 domestic water plan (PDF page 15)"
+    "source": "P3.02 / domestic water riser diagram (PDF page 13); P3.02 / detail 1, low temp boiler piping diagram, SCALE NONE (PDF page 13); P4.01 / Unit A 107 domestic water plan (PDF page 15)",
+    "unit_overhead_band_in": {
+      "min": 102.5,
+      "max": 109.56,
+      "basis": "min = highest derived finished ceiling (living/dining); max = lowest documented drop-slab bottom (351.13 ft = 109.56 in). Pipe centerline +/- half nominal bore must stay inside.",
+      "checked_runs": 37
+    }
   },
   "roots": {
     "building:CW": [
@@ -356,32 +436,32 @@
     "unit:CW": [
       282.69092,
       267.27142,
-      102
+      108
     ],
     "unit:HW": [
       282.69092,
       256.99175,
-      100
+      106
     ],
     "unit:HWC": [
       272.41125,
       233.86249,
-      98
+      104
     ],
     "p1:CW": [
       -271.07895,
       -27.69001,
-      102
+      108
     ],
     "p1:HW": [
       -271.07895,
       -35.63667,
-      100
+      106
     ],
     "p1:HWC": [
       -271.07895,
       -43.58334,
-      98
+      104
     ]
   },
   "elements": [
@@ -6334,12 +6414,12 @@
         [
           282.69092,
           267.27142,
-          102
+          108
         ],
         [
           -406.04696,
           267.27142,
-          102
+          108
         ]
       ],
       "nominal_in": 1,
@@ -6352,12 +6432,12 @@
         [
           282.69092,
           267.27142,
-          102
+          108
         ],
         [
           -406.04696,
           267.27142,
-          102
+          108
         ]
       ],
       "xy_status": "provisional",
@@ -6377,12 +6457,12 @@
         [
           282.69092,
           256.99175,
-          100
+          106
         ],
         [
           -406.04696,
           256.99175,
-          100
+          106
         ]
       ],
       "nominal_in": 1,
@@ -6395,12 +6475,12 @@
         [
           282.69092,
           256.99175,
-          100
+          106
         ],
         [
           -406.04696,
           256.99175,
-          100
+          106
         ]
       ],
       "xy_status": "provisional",
@@ -6420,17 +6500,17 @@
         [
           -377.77787,
           267.27142,
-          102
+          108
         ],
         [
           -377.77787,
           187.60397,
-          102
+          108
         ],
         [
           -256.99175,
           187.60397,
-          102
+          108
         ]
       ],
       "nominal_in": 0.5,
@@ -6443,57 +6523,57 @@
         [
           -377.77787,
           267.27142,
-          102
+          108
         ],
         [
           -377.77787,
           188.85397,
-          102.0
+          108.0
         ],
         [
           -377.75385,
           188.61011,
-          102.0
+          108.0
         ],
         [
           -377.68272,
           188.37562,
-          102.0
+          108.0
         ],
         [
           -377.56721,
           188.15951,
-          102.0
+          108.0
         ],
         [
           -377.41175,
           187.97009,
-          102.0
+          108.0
         ],
         [
           -377.22233,
           187.81463,
-          102.0
+          108.0
         ],
         [
           -377.00622,
           187.69912,
-          102.0
+          108.0
         ],
         [
           -376.77173,
           187.62799,
-          102.0
+          108.0
         ],
         [
           -376.52787,
           187.60397,
-          102.0
+          108.0
         ],
         [
           -256.99175,
           187.60397,
-          102
+          108
         ]
       ],
       "xy_status": "provisional",
@@ -6513,27 +6593,27 @@
         [
           -377.77787,
           256.99175,
-          100
+          106
         ],
         [
           -377.77787,
           179.89422,
-          100
+          106
         ],
         [
           -41.11868,
           179.89422,
-          100
+          106
         ],
         [
           -41.11868,
           233.86249,
-          100
+          106
         ],
         [
           251.85191,
           233.86249,
-          100
+          106
         ]
       ],
       "nominal_in": 0.75,
@@ -6546,147 +6626,147 @@
         [
           -377.77787,
           256.99175,
-          100
+          106
         ],
         [
           -377.77787,
           181.76922,
-          100.0
+          106.0
         ],
         [
           -377.74184,
           181.40343,
-          100.0
+          106.0
         ],
         [
           -377.63514,
           181.05169,
-          100.0
+          106.0
         ],
         [
           -377.46188,
           180.72753,
-          100.0
+          106.0
         ],
         [
           -377.2287,
           180.44339,
-          100.0
+          106.0
         ],
         [
           -376.94456,
           180.21021,
-          100.0
+          106.0
         ],
         [
           -376.6204,
           180.03695,
-          100.0
+          106.0
         ],
         [
           -376.26866,
           179.93025,
-          100.0
+          106.0
         ],
         [
           -375.90287,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -42.99368,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -42.62789,
           179.93025,
-          100.0
+          106.0
         ],
         [
           -42.27615,
           180.03695,
-          100.0
+          106.0
         ],
         [
           -41.95199,
           180.21021,
-          100.0
+          106.0
         ],
         [
           -41.66785,
           180.44339,
-          100.0
+          106.0
         ],
         [
           -41.43467,
           180.72753,
-          100.0
+          106.0
         ],
         [
           -41.26141,
           181.05169,
-          100.0
+          106.0
         ],
         [
           -41.15471,
           181.40343,
-          100.0
+          106.0
         ],
         [
           -41.11868,
           181.76922,
-          100.0
+          106.0
         ],
         [
           -41.11868,
           231.98749,
-          100.0
+          106.0
         ],
         [
           -41.08265,
           232.35328,
-          100.0
+          106.0
         ],
         [
           -40.97595,
           232.70502,
-          100.0
+          106.0
         ],
         [
           -40.80269,
           233.02918,
-          100.0
+          106.0
         ],
         [
           -40.56951,
           233.31332,
-          100.0
+          106.0
         ],
         [
           -40.28537,
           233.5465,
-          100.0
+          106.0
         ],
         [
           -39.96121,
           233.71976,
-          100.0
+          106.0
         ],
         [
           -39.60947,
           233.82646,
-          100.0
+          106.0
         ],
         [
           -39.24368,
           233.86249,
-          100.0
+          106.0
         ],
         [
           251.85191,
           233.86249,
-          100
+          106
         ]
       ],
       "xy_status": "provisional",
@@ -6706,17 +6786,17 @@
         [
           251.85191,
           233.86249,
-          100
+          106
         ],
         [
           251.85191,
           233.86249,
-          98
+          104
         ],
         [
           272.41125,
           233.86249,
-          98
+          104
         ]
       ],
       "nominal_in": 0.5,
@@ -6741,22 +6821,22 @@
         [
           254.42183,
           267.27142,
-          102
+          108
         ],
         [
           254.42183,
           28.26909,
-          102
+          108
         ],
         [
           354.64861,
           28.26909,
-          102
+          108
         ],
         [
           354.64861,
           -89.94711,
-          102
+          108
         ]
       ],
       "nominal_in": 0.75,
@@ -6781,22 +6861,22 @@
         [
           262.13158,
           256.99175,
-          100
+          106
         ],
         [
           262.13158,
           17.98942,
-          100
+          106
         ],
         [
           344.36894,
           17.98942,
-          100
+          106
         ],
         [
           344.36894,
           -89.94711,
-          100
+          106
         ]
       ],
       "nominal_in": 0.75,
@@ -6821,32 +6901,32 @@
         [
           272.41125,
           233.86249,
-          98
+          104
         ],
         [
           272.41125,
           7.70975,
-          98
+          104
         ],
         [
           334.08927,
           7.70975,
-          98
+          104
         ],
         [
           334.08927,
           -89.94711,
-          98
+          104
         ],
         [
           344.36894,
           -89.94711,
-          98
+          104
         ],
         [
           344.36894,
           -89.94711,
-          100
+          106
         ]
       ],
       "nominal_in": 0.5,
@@ -6871,12 +6951,12 @@
         [
           354.64861,
           -89.94711,
-          102
+          108
         ],
         [
           313.52993,
           -89.94711,
-          102
+          108
         ]
       ],
       "nominal_in": 0.5,
@@ -6901,12 +6981,12 @@
         [
           344.36894,
           -89.94711,
-          100
+          106
         ],
         [
           321.23968,
           -89.94711,
-          100
+          106
         ]
       ],
       "nominal_in": 0.5,
@@ -6931,22 +7011,22 @@
         [
           254.42183,
           28.26909,
-          102
+          108
         ],
         [
           254.42183,
           -35.97884,
-          102
+          108
         ],
         [
           79.66744,
           -35.97884,
-          102
+          108
         ],
         [
           79.66744,
           -292.97059,
-          102
+          108
         ],
         [
           79.66744,
@@ -7639,12 +7719,12 @@
         [
           -382.9177,
           267.27142,
-          102
+          108
         ],
         [
           -382.9177,
           274.98117,
-          102
+          108
         ],
         [
           -382.9177,
@@ -7662,52 +7742,52 @@
         [
           -382.9177,
           267.27142,
-          102
+          108
         ],
         [
           -382.9177,
           273.73117,
-          102.0
+          108.0
         ],
         [
           -382.9177,
           273.97503,
-          101.97598
+          107.97598
         ],
         [
           -382.9177,
           274.20952,
-          101.90485
+          107.90485
         ],
         [
           -382.9177,
           274.42563,
-          101.78934
+          107.78934
         ],
         [
           -382.9177,
           274.61505,
-          101.63388
+          107.63388
         ],
         [
           -382.9177,
           274.77051,
-          101.44446
+          107.44446
         ],
         [
           -382.9177,
           274.88602,
-          101.22835
+          107.22835
         ],
         [
           -382.9177,
           274.95715,
-          100.99386
+          106.99386
         ],
         [
           -382.9177,
           274.98117,
-          100.75
+          106.75
         ],
         [
           -382.9177,
@@ -7732,12 +7812,12 @@
         [
           -372.63803,
           256.99175,
-          100
+          106
         ],
         [
           -372.63803,
           274.98117,
-          100
+          106
         ],
         [
           -372.63803,
@@ -7755,52 +7835,52 @@
         [
           -372.63803,
           256.99175,
-          100
+          106
         ],
         [
           -372.63803,
           273.73117,
-          100.0
+          106.0
         ],
         [
           -372.63803,
           273.97503,
-          99.97598
+          105.97598
         ],
         [
           -372.63803,
           274.20952,
-          99.90485
+          105.90485
         ],
         [
           -372.63803,
           274.42563,
-          99.78934
+          105.78934
         ],
         [
           -372.63803,
           274.61505,
-          99.63388
+          105.63388
         ],
         [
           -372.63803,
           274.77051,
-          99.44446
+          105.44446
         ],
         [
           -372.63803,
           274.88602,
-          99.22835
+          105.22835
         ],
         [
           -372.63803,
           274.95715,
-          98.99386
+          104.99386
         ],
         [
           -372.63803,
           274.98117,
-          98.75
+          104.75
         ],
         [
           -372.63803,
@@ -7825,12 +7905,12 @@
         [
           -295.54051,
           267.27142,
-          102
+          108
         ],
         [
           -295.54051,
           282.69092,
-          102
+          108
         ],
         [
           -295.54051,
@@ -7848,52 +7928,52 @@
         [
           -295.54051,
           267.27142,
-          102
+          108
         ],
         [
           -295.54051,
           280.81592,
-          102.0
+          108.0
         ],
         [
           -295.54051,
           281.18171,
-          101.96397
+          107.96397
         ],
         [
           -295.54051,
           281.53345,
-          101.85727
+          107.85727
         ],
         [
           -295.54051,
           281.85761,
-          101.68401
+          107.68401
         ],
         [
           -295.54051,
           282.14175,
-          101.45083
+          107.45083
         ],
         [
           -295.54051,
           282.37493,
-          101.16669
+          107.16669
         ],
         [
           -295.54051,
           282.54819,
-          100.84253
+          106.84253
         ],
         [
           -295.54051,
           282.65489,
-          100.49079
+          106.49079
         ],
         [
           -295.54051,
           282.69092,
-          100.125
+          106.125
         ],
         [
           -295.54051,
@@ -7918,12 +7998,12 @@
         [
           -285.26084,
           256.99175,
-          100
+          106
         ],
         [
           -285.26084,
           282.69092,
-          100
+          106
         ],
         [
           -285.26084,
@@ -7941,52 +8021,52 @@
         [
           -285.26084,
           256.99175,
-          100
+          106
         ],
         [
           -285.26084,
           280.19092,
-          100.0
+          106.0
         ],
         [
           -285.26084,
           280.67865,
-          99.95196
+          105.95196
         ],
         [
           -285.26084,
           281.14763,
-          99.8097
+          105.8097
         ],
         [
           -285.26084,
           281.57985,
-          99.57867
+          105.57867
         ],
         [
           -285.26084,
           281.95869,
-          99.26777
+          105.26777
         ],
         [
           -285.26084,
           282.26959,
-          98.88893
+          104.88893
         ],
         [
           -285.26084,
           282.50062,
-          98.45671
+          104.45671
         ],
         [
           -285.26084,
           282.64288,
-          97.98773
+          103.98773
         ],
         [
           -285.26084,
           282.69092,
-          97.5
+          103.5
         ],
         [
           -285.26084,
@@ -8011,12 +8091,12 @@
         [
           -217.30315,
           267.27142,
-          102
+          108
         ],
         [
           -217.30315,
           290.41125,
-          102
+          108
         ],
         [
           -217.30315,
@@ -8036,52 +8116,52 @@
         [
           -217.30315,
           267.27142,
-          102
+          108
         ],
         [
           -217.30315,
           289.16125,
-          102.0
+          108.0
         ],
         [
           -217.30315,
           289.40511,
-          101.97598
+          107.97598
         ],
         [
           -217.30315,
           289.6396,
-          101.90485
+          107.90485
         ],
         [
           -217.30315,
           289.85571,
-          101.78934
+          107.78934
         ],
         [
           -217.30315,
           290.04513,
-          101.63388
+          107.63388
         ],
         [
           -217.30315,
           290.20059,
-          101.44446
+          107.44446
         ],
         [
           -217.30315,
           290.3161,
-          101.22835
+          107.22835
         ],
         [
           -217.30315,
           290.38723,
-          100.99386
+          106.99386
         ],
         [
           -217.30315,
           290.41125,
-          100.75
+          106.75
         ],
         [
           -217.30315,
@@ -8105,12 +8185,12 @@
         [
           -310.96001,
           187.60397,
-          102
+          108
         ],
         [
           -310.96001,
           190.18447,
-          102
+          108
         ],
         [
           -310.96001,
@@ -8130,52 +8210,52 @@
         [
           -310.96001,
           187.60397,
-          102
+          108
         ],
         [
           -310.96001,
           189.66837,
-          102.0
+          108.0
         ],
         [
           -310.96001,
           189.76906,
-          101.99008
+          107.99008
         ],
         [
           -310.96001,
           189.86587,
-          101.96071
+          107.96071
         ],
         [
           -310.96001,
           189.9551,
-          101.91302
+          107.91302
         ],
         [
           -310.96001,
           190.03331,
-          101.84884
+          107.84884
         ],
         [
           -310.96001,
           190.09749,
-          101.77063
+          107.77063
         ],
         [
           -310.96001,
           190.14518,
-          101.6814
+          107.6814
         ],
         [
           -310.96001,
           190.17455,
-          101.58459
+          107.58459
         ],
         [
           -310.96001,
           190.18447,
-          101.4839
+          107.4839
         ],
         [
           -310.96001,
@@ -8199,12 +8279,12 @@
         [
           -305.82018,
           179.89422,
-          100
+          106
         ],
         [
           -305.82018,
           190.18447,
-          100
+          106
         ],
         [
           -305.82018,
@@ -8224,52 +8304,52 @@
         [
           -305.82018,
           179.89422,
-          100
+          106
         ],
         [
           -305.82018,
           188.93447,
-          100.0
+          106.0
         ],
         [
           -305.82018,
           189.17833,
-          99.97598
+          105.97598
         ],
         [
           -305.82018,
           189.41282,
-          99.90485
+          105.90485
         ],
         [
           -305.82018,
           189.62893,
-          99.78934
+          105.78934
         ],
         [
           -305.82018,
           189.81835,
-          99.63388
+          105.63388
         ],
         [
           -305.82018,
           189.97381,
-          99.44446
+          105.44446
         ],
         [
           -305.82018,
           190.08932,
-          99.22835
+          105.22835
         ],
         [
           -305.82018,
           190.16045,
-          98.99386
+          104.99386
         ],
         [
           -305.82018,
           190.18447,
-          98.75
+          104.75
         ],
         [
           -305.82018,
@@ -8293,12 +8373,12 @@
         [
           -272.41125,
           187.60397,
-          102
+          108
         ],
         [
           -272.41125,
           190.18447,
-          102
+          108
         ],
         [
           -272.41125,
@@ -8318,52 +8398,52 @@
         [
           -272.41125,
           187.60397,
-          102
+          108
         ],
         [
           -272.41125,
           189.66837,
-          102.0
+          108.0
         ],
         [
           -272.41125,
           189.76906,
-          101.99008
+          107.99008
         ],
         [
           -272.41125,
           189.86587,
-          101.96071
+          107.96071
         ],
         [
           -272.41125,
           189.9551,
-          101.91302
+          107.91302
         ],
         [
           -272.41125,
           190.03331,
-          101.84884
+          107.84884
         ],
         [
           -272.41125,
           190.09749,
-          101.77063
+          107.77063
         ],
         [
           -272.41125,
           190.14518,
-          101.6814
+          107.6814
         ],
         [
           -272.41125,
           190.17455,
-          101.58459
+          107.58459
         ],
         [
           -272.41125,
           190.18447,
-          101.4839
+          107.4839
         ],
         [
           -272.41125,
@@ -8387,12 +8467,12 @@
         [
           -267.27142,
           179.89422,
-          100
+          106
         ],
         [
           -267.27142,
           190.18447,
-          100
+          106
         ],
         [
           -267.27142,
@@ -8412,52 +8492,52 @@
         [
           -267.27142,
           179.89422,
-          100
+          106
         ],
         [
           -267.27142,
           188.93447,
-          100.0
+          106.0
         ],
         [
           -267.27142,
           189.17833,
-          99.97598
+          105.97598
         ],
         [
           -267.27142,
           189.41282,
-          99.90485
+          105.90485
         ],
         [
           -267.27142,
           189.62893,
-          99.78934
+          105.78934
         ],
         [
           -267.27142,
           189.81835,
-          99.63388
+          105.63388
         ],
         [
           -267.27142,
           189.97381,
-          99.44446
+          105.44446
         ],
         [
           -267.27142,
           190.08932,
-          99.22835
+          105.22835
         ],
         [
           -267.27142,
           190.16045,
-          98.99386
+          104.99386
         ],
         [
           -267.27142,
           190.18447,
-          98.75
+          104.75
         ],
         [
           -267.27142,
@@ -8481,17 +8561,17 @@
         [
           143.91538,
           267.27142,
-          102
+          108
         ],
         [
           141.34546,
           267.27142,
-          102
+          108
         ],
         [
           141.34546,
           223.58282,
-          102
+          108
         ],
         [
           141.34546,
@@ -8521,17 +8601,17 @@
         [
           143.91538,
           256.99175,
-          100
+          106
         ],
         [
           146.4853,
           256.99175,
-          100
+          106
         ],
         [
           146.4853,
           223.58282,
-          100
+          106
         ],
         [
           146.4853,
@@ -8561,17 +8641,17 @@
         [
           115.64629,
           267.27142,
-          102
+          108
         ],
         [
           115.64629,
           267.27142,
-          102
+          108
         ],
         [
           115.64629,
           195.31373,
-          102
+          108
         ],
         [
           115.64629,
@@ -8601,17 +8681,17 @@
         [
           254.42183,
           236.43241,
-          102
+          108
         ],
         [
           300.68034,
           236.43241,
-          102
+          108
         ],
         [
           300.68034,
           236.43241,
-          102
+          108
         ],
         [
           300.68034,
@@ -8641,17 +8721,17 @@
         [
           262.13158,
           236.43241,
-          100
+          106
         ],
         [
           305.82018,
           236.43241,
-          100
+          106
         ],
         [
           305.82018,
           236.43241,
-          100
+          106
         ],
         [
           305.82018,
@@ -8681,17 +8761,17 @@
         [
           354.64861,
           -17.98942,
-          102
+          108
         ],
         [
           359.78844,
           -17.98942,
-          102
+          108
         ],
         [
           359.78844,
           -17.98942,
-          102
+          108
         ],
         [
           359.78844,
@@ -8721,17 +8801,17 @@
         [
           344.36894,
           -17.98942,
-          100
+          106
         ],
         [
           349.50877,
           -17.98942,
-          100
+          106
         ],
         [
           349.50877,
           -17.98942,
-          100
+          106
         ],
         [
           349.50877,
@@ -8761,17 +8841,17 @@
         [
           313.52993,
           -89.94711,
-          102
+          108
         ],
         [
           321.23968,
           -89.94711,
-          102
+          108
         ],
         [
           321.23968,
           -102.7967,
-          102
+          108
         ],
         [
           321.23968,
@@ -8801,17 +8881,17 @@
         [
           321.23968,
           -89.94711,
-          100
+          106
         ],
         [
           326.37952,
           -89.94711,
-          100
+          106
         ],
         [
           326.37952,
           -102.7967,
-          100
+          106
         ],
         [
           326.37952,
@@ -8841,17 +8921,17 @@
         [
           354.64861,
           -89.94711,
-          102
+          108
         ],
         [
           359.78844,
           -89.94711,
-          102
+          108
         ],
         [
           359.78844,
           -97.65686,
-          102
+          108
         ],
         [
           359.78844,
@@ -8881,7 +8961,7 @@
         [
           254.42183,
           28.26909,
-          102
+          108
         ],
         [
           254.42183,
@@ -8926,7 +9006,7 @@
         [
           262.13158,
           28.26909,
-          100
+          106
         ],
         [
           262.13158,
@@ -8969,7 +9049,7 @@
       "at": [
         262.13158,
         267.27142,
-        102
+        108
       ],
       "system": "CW",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
@@ -8988,7 +9068,7 @@
       "at": [
         262.13158,
         256.99175,
-        100
+        106
       ],
       "system": "HW",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
@@ -9007,7 +9087,7 @@
       "at": [
         251.85191,
         233.86249,
-        98
+        104
       ],
       "system": "HWC",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
@@ -9026,7 +9106,7 @@
       "at": [
         282.69092,
         267.27142,
-        102
+        108
       ],
       "system": "CW",
       "source": "P4.01 / Unit A 107 domestic water plan (PDF page 15)",
@@ -10265,59 +10345,59 @@
         [
           -377.77787,
           188.85397,
-          102.0
+          108.0
         ],
         [
           -377.75385,
           188.61011,
-          102.0
+          108.0
         ],
         [
           -377.68272,
           188.37562,
-          102.0
+          108.0
         ],
         [
           -377.56721,
           188.15951,
-          102.0
+          108.0
         ],
         [
           -377.41175,
           187.97009,
-          102.0
+          108.0
         ],
         [
           -377.22233,
           187.81463,
-          102.0
+          108.0
         ],
         [
           -377.00622,
           187.69912,
-          102.0
+          108.0
         ],
         [
           -376.77173,
           187.62799,
-          102.0
+          108.0
         ],
         [
           -376.52787,
           187.60397,
-          102.0
+          108.0
         ]
       ],
       "ports": [
         [
           -377.77787,
           188.85397,
-          102.0
+          108.0
         ],
         [
           -376.52787,
           187.60397,
-          102.0
+          108.0
         ]
       ],
       "nominal_in": 0.5,
@@ -10344,59 +10424,59 @@
         [
           -377.77787,
           181.76922,
-          100.0
+          106.0
         ],
         [
           -377.74184,
           181.40343,
-          100.0
+          106.0
         ],
         [
           -377.63514,
           181.05169,
-          100.0
+          106.0
         ],
         [
           -377.46188,
           180.72753,
-          100.0
+          106.0
         ],
         [
           -377.2287,
           180.44339,
-          100.0
+          106.0
         ],
         [
           -376.94456,
           180.21021,
-          100.0
+          106.0
         ],
         [
           -376.6204,
           180.03695,
-          100.0
+          106.0
         ],
         [
           -376.26866,
           179.93025,
-          100.0
+          106.0
         ],
         [
           -375.90287,
           179.89422,
-          100.0
+          106.0
         ]
       ],
       "ports": [
         [
           -377.77787,
           181.76922,
-          100.0
+          106.0
         ],
         [
           -375.90287,
           179.89422,
-          100.0
+          106.0
         ]
       ],
       "nominal_in": 0.75,
@@ -10423,59 +10503,59 @@
         [
           -42.99368,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -42.62789,
           179.93025,
-          100.0
+          106.0
         ],
         [
           -42.27615,
           180.03695,
-          100.0
+          106.0
         ],
         [
           -41.95199,
           180.21021,
-          100.0
+          106.0
         ],
         [
           -41.66785,
           180.44339,
-          100.0
+          106.0
         ],
         [
           -41.43467,
           180.72753,
-          100.0
+          106.0
         ],
         [
           -41.26141,
           181.05169,
-          100.0
+          106.0
         ],
         [
           -41.15471,
           181.40343,
-          100.0
+          106.0
         ],
         [
           -41.11868,
           181.76922,
-          100.0
+          106.0
         ]
       ],
       "ports": [
         [
           -42.99368,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -41.11868,
           181.76922,
-          100.0
+          106.0
         ]
       ],
       "nominal_in": 0.75,
@@ -10502,59 +10582,59 @@
         [
           -41.11868,
           231.98749,
-          100.0
+          106.0
         ],
         [
           -41.08265,
           232.35328,
-          100.0
+          106.0
         ],
         [
           -40.97595,
           232.70502,
-          100.0
+          106.0
         ],
         [
           -40.80269,
           233.02918,
-          100.0
+          106.0
         ],
         [
           -40.56951,
           233.31332,
-          100.0
+          106.0
         ],
         [
           -40.28537,
           233.5465,
-          100.0
+          106.0
         ],
         [
           -39.96121,
           233.71976,
-          100.0
+          106.0
         ],
         [
           -39.60947,
           233.82646,
-          100.0
+          106.0
         ],
         [
           -39.24368,
           233.86249,
-          100.0
+          106.0
         ]
       ],
       "ports": [
         [
           -41.11868,
           231.98749,
-          100.0
+          106.0
         ],
         [
           -39.24368,
           233.86249,
-          100.0
+          106.0
         ]
       ],
       "nominal_in": 0.75,
@@ -10581,59 +10661,59 @@
         [
           -382.9177,
           273.73117,
-          102.0
+          108.0
         ],
         [
           -382.9177,
           273.97503,
-          101.97598
+          107.97598
         ],
         [
           -382.9177,
           274.20952,
-          101.90485
+          107.90485
         ],
         [
           -382.9177,
           274.42563,
-          101.78934
+          107.78934
         ],
         [
           -382.9177,
           274.61505,
-          101.63388
+          107.63388
         ],
         [
           -382.9177,
           274.77051,
-          101.44446
+          107.44446
         ],
         [
           -382.9177,
           274.88602,
-          101.22835
+          107.22835
         ],
         [
           -382.9177,
           274.95715,
-          100.99386
+          106.99386
         ],
         [
           -382.9177,
           274.98117,
-          100.75
+          106.75
         ]
       ],
       "ports": [
         [
           -382.9177,
           273.73117,
-          102.0
+          108.0
         ],
         [
           -382.9177,
           274.98117,
-          100.75
+          106.75
         ]
       ],
       "nominal_in": 0.5,
@@ -10660,59 +10740,59 @@
         [
           -372.63803,
           273.73117,
-          100.0
+          106.0
         ],
         [
           -372.63803,
           273.97503,
-          99.97598
+          105.97598
         ],
         [
           -372.63803,
           274.20952,
-          99.90485
+          105.90485
         ],
         [
           -372.63803,
           274.42563,
-          99.78934
+          105.78934
         ],
         [
           -372.63803,
           274.61505,
-          99.63388
+          105.63388
         ],
         [
           -372.63803,
           274.77051,
-          99.44446
+          105.44446
         ],
         [
           -372.63803,
           274.88602,
-          99.22835
+          105.22835
         ],
         [
           -372.63803,
           274.95715,
-          98.99386
+          104.99386
         ],
         [
           -372.63803,
           274.98117,
-          98.75
+          104.75
         ]
       ],
       "ports": [
         [
           -372.63803,
           273.73117,
-          100.0
+          106.0
         ],
         [
           -372.63803,
           274.98117,
-          98.75
+          104.75
         ]
       ],
       "nominal_in": 0.5,
@@ -10739,59 +10819,59 @@
         [
           -295.54051,
           280.81592,
-          102.0
+          108.0
         ],
         [
           -295.54051,
           281.18171,
-          101.96397
+          107.96397
         ],
         [
           -295.54051,
           281.53345,
-          101.85727
+          107.85727
         ],
         [
           -295.54051,
           281.85761,
-          101.68401
+          107.68401
         ],
         [
           -295.54051,
           282.14175,
-          101.45083
+          107.45083
         ],
         [
           -295.54051,
           282.37493,
-          101.16669
+          107.16669
         ],
         [
           -295.54051,
           282.54819,
-          100.84253
+          106.84253
         ],
         [
           -295.54051,
           282.65489,
-          100.49079
+          106.49079
         ],
         [
           -295.54051,
           282.69092,
-          100.125
+          106.125
         ]
       ],
       "ports": [
         [
           -295.54051,
           280.81592,
-          102.0
+          108.0
         ],
         [
           -295.54051,
           282.69092,
-          100.125
+          106.125
         ]
       ],
       "nominal_in": 0.75,
@@ -10818,59 +10898,59 @@
         [
           -285.26084,
           280.19092,
-          100.0
+          106.0
         ],
         [
           -285.26084,
           280.67865,
-          99.95196
+          105.95196
         ],
         [
           -285.26084,
           281.14763,
-          99.8097
+          105.8097
         ],
         [
           -285.26084,
           281.57985,
-          99.57867
+          105.57867
         ],
         [
           -285.26084,
           281.95869,
-          99.26777
+          105.26777
         ],
         [
           -285.26084,
           282.26959,
-          98.88893
+          104.88893
         ],
         [
           -285.26084,
           282.50062,
-          98.45671
+          104.45671
         ],
         [
           -285.26084,
           282.64288,
-          97.98773
+          103.98773
         ],
         [
           -285.26084,
           282.69092,
-          97.5
+          103.5
         ]
       ],
       "ports": [
         [
           -285.26084,
           280.19092,
-          100.0
+          106.0
         ],
         [
           -285.26084,
           282.69092,
-          97.5
+          103.5
         ]
       ],
       "nominal_in": 1,
@@ -10897,59 +10977,59 @@
         [
           -217.30315,
           289.16125,
-          102.0
+          108.0
         ],
         [
           -217.30315,
           289.40511,
-          101.97598
+          107.97598
         ],
         [
           -217.30315,
           289.6396,
-          101.90485
+          107.90485
         ],
         [
           -217.30315,
           289.85571,
-          101.78934
+          107.78934
         ],
         [
           -217.30315,
           290.04513,
-          101.63388
+          107.63388
         ],
         [
           -217.30315,
           290.20059,
-          101.44446
+          107.44446
         ],
         [
           -217.30315,
           290.3161,
-          101.22835
+          107.22835
         ],
         [
           -217.30315,
           290.38723,
-          100.99386
+          106.99386
         ],
         [
           -217.30315,
           290.41125,
-          100.75
+          106.75
         ]
       ],
       "ports": [
         [
           -217.30315,
           289.16125,
-          102.0
+          108.0
         ],
         [
           -217.30315,
           290.41125,
-          100.75
+          106.75
         ]
       ],
       "nominal_in": 0.5,
@@ -10976,59 +11056,59 @@
         [
           -310.96001,
           189.66837,
-          102.0
+          108.0
         ],
         [
           -310.96001,
           189.76906,
-          101.99008
+          107.99008
         ],
         [
           -310.96001,
           189.86587,
-          101.96071
+          107.96071
         ],
         [
           -310.96001,
           189.9551,
-          101.91302
+          107.91302
         ],
         [
           -310.96001,
           190.03331,
-          101.84884
+          107.84884
         ],
         [
           -310.96001,
           190.09749,
-          101.77063
+          107.77063
         ],
         [
           -310.96001,
           190.14518,
-          101.6814
+          107.6814
         ],
         [
           -310.96001,
           190.17455,
-          101.58459
+          107.58459
         ],
         [
           -310.96001,
           190.18447,
-          101.4839
+          107.4839
         ]
       ],
       "ports": [
         [
           -310.96001,
           189.66837,
-          102.0
+          108.0
         ],
         [
           -310.96001,
           190.18447,
-          101.4839
+          107.4839
         ]
       ],
       "nominal_in": 0.5,
@@ -11055,59 +11135,59 @@
         [
           -305.82018,
           188.93447,
-          100.0
+          106.0
         ],
         [
           -305.82018,
           189.17833,
-          99.97598
+          105.97598
         ],
         [
           -305.82018,
           189.41282,
-          99.90485
+          105.90485
         ],
         [
           -305.82018,
           189.62893,
-          99.78934
+          105.78934
         ],
         [
           -305.82018,
           189.81835,
-          99.63388
+          105.63388
         ],
         [
           -305.82018,
           189.97381,
-          99.44446
+          105.44446
         ],
         [
           -305.82018,
           190.08932,
-          99.22835
+          105.22835
         ],
         [
           -305.82018,
           190.16045,
-          98.99386
+          104.99386
         ],
         [
           -305.82018,
           190.18447,
-          98.75
+          104.75
         ]
       ],
       "ports": [
         [
           -305.82018,
           188.93447,
-          100.0
+          106.0
         ],
         [
           -305.82018,
           190.18447,
-          98.75
+          104.75
         ]
       ],
       "nominal_in": 0.5,
@@ -11134,59 +11214,59 @@
         [
           -272.41125,
           189.66837,
-          102.0
+          108.0
         ],
         [
           -272.41125,
           189.76906,
-          101.99008
+          107.99008
         ],
         [
           -272.41125,
           189.86587,
-          101.96071
+          107.96071
         ],
         [
           -272.41125,
           189.9551,
-          101.91302
+          107.91302
         ],
         [
           -272.41125,
           190.03331,
-          101.84884
+          107.84884
         ],
         [
           -272.41125,
           190.09749,
-          101.77063
+          107.77063
         ],
         [
           -272.41125,
           190.14518,
-          101.6814
+          107.6814
         ],
         [
           -272.41125,
           190.17455,
-          101.58459
+          107.58459
         ],
         [
           -272.41125,
           190.18447,
-          101.4839
+          107.4839
         ]
       ],
       "ports": [
         [
           -272.41125,
           189.66837,
-          102.0
+          108.0
         ],
         [
           -272.41125,
           190.18447,
-          101.4839
+          107.4839
         ]
       ],
       "nominal_in": 0.5,
@@ -11213,59 +11293,59 @@
         [
           -267.27142,
           188.93447,
-          100.0
+          106.0
         ],
         [
           -267.27142,
           189.17833,
-          99.97598
+          105.97598
         ],
         [
           -267.27142,
           189.41282,
-          99.90485
+          105.90485
         ],
         [
           -267.27142,
           189.62893,
-          99.78934
+          105.78934
         ],
         [
           -267.27142,
           189.81835,
-          99.63388
+          105.63388
         ],
         [
           -267.27142,
           189.97381,
-          99.44446
+          105.44446
         ],
         [
           -267.27142,
           190.08932,
-          99.22835
+          105.22835
         ],
         [
           -267.27142,
           190.16045,
-          98.99386
+          104.99386
         ],
         [
           -267.27142,
           190.18447,
-          98.75
+          104.75
         ]
       ],
       "ports": [
         [
           -267.27142,
           188.93447,
-          100.0
+          106.0
         ],
         [
           -267.27142,
           190.18447,
-          98.75
+          104.75
         ]
       ],
       "nominal_in": 0.5,
@@ -11528,23 +11608,23 @@
       "at": [
         -377.77787,
         267.27142,
-        102
+        108
       ],
       "ports": [
         [
           -375.37787,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -380.17787,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -377.77787,
           264.87142,
-          102.0
+          108.0
         ]
       ],
       "diameters": [
@@ -11575,23 +11655,23 @@
       "at": [
         -377.77787,
         256.99175,
-        100
+        106
       ],
       "ports": [
         [
           -375.37787,
           256.99175,
-          100.0
+          106.0
         ],
         [
           -380.17787,
           256.99175,
-          100.0
+          106.0
         ],
         [
           -377.77787,
           254.59175,
-          100.0
+          106.0
         ]
       ],
       "diameters": [
@@ -11622,23 +11702,23 @@
       "at": [
         -382.9177,
         267.27142,
-        102
+        108
       ],
       "ports": [
         [
           -380.5177,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -385.3177,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -382.9177,
           269.67142,
-          102.0
+          108.0
         ]
       ],
       "diameters": [
@@ -11669,23 +11749,23 @@
       "at": [
         -372.63803,
         256.99175,
-        100
+        106
       ],
       "ports": [
         [
           -370.23803,
           256.99175,
-          100.0
+          106.0
         ],
         [
           -375.03803,
           256.99175,
-          100.0
+          106.0
         ],
         [
           -372.63803,
           259.39175,
-          100.0
+          106.0
         ]
       ],
       "diameters": [
@@ -11716,23 +11796,23 @@
       "at": [
         -295.54051,
         267.27142,
-        102
+        108
       ],
       "ports": [
         [
           -293.14051,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -297.94051,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -295.54051,
           269.67142,
-          102.0
+          108.0
         ]
       ],
       "diameters": [
@@ -11763,23 +11843,23 @@
       "at": [
         -285.26084,
         256.99175,
-        100
+        106
       ],
       "ports": [
         [
           -282.86084,
           256.99175,
-          100.0
+          106.0
         ],
         [
           -287.66084,
           256.99175,
-          100.0
+          106.0
         ],
         [
           -285.26084,
           259.39175,
-          100.0
+          106.0
         ]
       ],
       "diameters": [
@@ -11810,23 +11890,23 @@
       "at": [
         -217.30315,
         267.27142,
-        102
+        108
       ],
       "ports": [
         [
           -214.90315,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -219.70315,
           267.27142,
-          102.0
+          108.0
         ],
         [
           -217.30315,
           269.67142,
-          102.0
+          108.0
         ]
       ],
       "diameters": [
@@ -11857,23 +11937,23 @@
       "at": [
         -310.96001,
         187.60397,
-        102
+        108
       ],
       "ports": [
         [
           -312.16001,
           187.60397,
-          102.0
+          108.0
         ],
         [
           -309.76001,
           187.60397,
-          102.0
+          108.0
         ],
         [
           -310.96001,
           188.80397,
-          102.0
+          108.0
         ]
       ],
       "diameters": [
@@ -11904,23 +11984,23 @@
       "at": [
         -305.82018,
         179.89422,
-        100
+        106
       ],
       "ports": [
         [
           -307.62018,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -304.02018,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -305.82018,
           181.69422,
-          100.0
+          106.0
         ]
       ],
       "diameters": [
@@ -11951,23 +12031,23 @@
       "at": [
         -272.41125,
         187.60397,
-        102
+        108
       ],
       "ports": [
         [
           -273.61125,
           187.60397,
-          102.0
+          108.0
         ],
         [
           -271.21125,
           187.60397,
-          102.0
+          108.0
         ],
         [
           -272.41125,
           188.80397,
-          102.0
+          108.0
         ]
       ],
       "diameters": [
@@ -11998,23 +12078,23 @@
       "at": [
         -267.27142,
         179.89422,
-        100
+        106
       ],
       "ports": [
         [
           -269.07142,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -265.47142,
           179.89422,
-          100.0
+          106.0
         ],
         [
           -267.27142,
           181.69422,
-          100.0
+          106.0
         ]
       ],
       "diameters": [
@@ -12042,22 +12122,22 @@
         [
           -271.07895,
           -27.69001,
-          102
+          108
         ],
         [
           499.28194,
           -27.69001,
-          102
+          108
         ],
         [
           499.28194,
           -127.02334,
-          102
+          108
         ],
         [
           646.65532,
           -127.02334,
-          102
+          108
         ]
       ],
       "nominal_in": 1.25,
@@ -12083,12 +12163,12 @@
         [
           646.65532,
           -127.02334,
-          102
+          108
         ],
         [
           646.65532,
           -221.05889,
-          102
+          108
         ]
       ],
       "nominal_in": 1.25,
@@ -12114,22 +12194,22 @@
         [
           -271.07895,
           -35.63667,
-          100
+          106
         ],
         [
           507.32048,
           -35.63667,
-          100
+          106
         ],
         [
           507.32048,
           -134.97,
-          100
+          106
         ],
         [
           646.65532,
           -134.97,
-          100
+          106
         ]
       ],
       "nominal_in": 1.0,
@@ -12155,12 +12235,12 @@
         [
           646.65532,
           -134.97,
-          100
+          106
         ],
         [
           646.65532,
           -221.05889,
-          100
+          106
         ]
       ],
       "nominal_in": 1.0,
@@ -12186,22 +12266,22 @@
         [
           -271.07895,
           -43.58334,
-          98
+          104
         ],
         [
           515.35903,
           -43.58334,
-          98
+          104
         ],
         [
           515.35903,
           -142.91667,
-          98
+          104
         ],
         [
           646.65532,
           -142.91667,
-          98
+          104
         ]
       ],
       "nominal_in": 0.5,
@@ -12227,12 +12307,12 @@
         [
           646.65532,
           -142.91667,
-          98
+          104
         ],
         [
           646.65532,
           -221.05889,
-          98
+          104
         ]
       ],
       "nominal_in": 0.5,
@@ -12717,7 +12797,7 @@
       "at": [
         646.65532,
         -254.17,
-        102
+        108
       ],
       "text": "UNIT 107 / P4.01 CONTINUES",
       "size": 10,
