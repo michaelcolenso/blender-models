@@ -5,7 +5,7 @@ of the visual mesh. Fitting quantities are derived model quantities, not takeoff
 """
 import math
 
-def refine(elements, source):
+def refine(elements, source, overhead):
     byid={e['id']:e for e in elements}
     fixtures=['master-shower','master-bath','master-wc','master-lav-1','master-lav-2']
     routes=['A-cold-master','A-hot-master','A-cold-lavs','A-hot-bath-loop',
@@ -143,5 +143,5 @@ def refine(elements, source):
         expected_supply_ports={'CW':5,'HW':4},expected_stops=5,expected_mixers=2,
         scope='Primary bathroom domestic-water supplies only; drainage and venting are not included.',
         hardware_basis='Elbows, tees, flexible connector dimensions, five stops and two mixer bodies are representative; not a manufacturer schedule or verified installed assembly.',
-        heights_in={'CW_overhead':102,'HW_overhead':100,'HWC_overhead':98,'lav_stop':26,'wc_stop':14,'shower_mixer':48,'tub_mixer':24,'shower_head':80},
+        heights_in={'CW_overhead':overhead['CW'],'HW_overhead':overhead['HW'],'HWC_overhead':overhead['HWC'],'lav_stop':26,'wc_stop':14,'shower_mixer':48,'tub_mixer':24,'shower_head':80},
         height_status='assumed')

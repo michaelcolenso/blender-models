@@ -10,6 +10,7 @@ import p1_takeoff
 
 HERE = Path(__file__).parent
 CAL=json.loads((HERE/'calibration.json').read_text())
+H=CAL['unit_overhead_pipe_in']  # assumed overhead CW/HW/HWC centerlines, inches above P1 floor
 elements = []
 def element(id, scene, kind, **kw):
     obj = dict(id=id, scene=scene, kind=kind, status='assumed',
@@ -106,8 +107,8 @@ label('plant-heading','plant',[-170,-180,3],'BOILERS + STORAGE',12)
 
 # Unit A plan trace. XY coordinates reference the displayed P4.01 crop;
 # conversion is PROVISIONAL, calibrated through the shared structural grid.
-# Pipe heights are assigned 102 in overhead; island route -6 in underfloor.
-def p(x,y,z=102): return [round((x-900)*CAL['unit_xy_in_per_normalized_pixel'],5),round((700-y)*CAL['unit_xy_in_per_normalized_pixel'],5),z]
+# Pipe heights are assigned H['CW'] overhead (HW/HWC offset below); island route -6 in underfloor.
+def p(x,y,z=H['CW']): return [round((x-900)*CAL['unit_xy_in_per_normalized_pixel'],5),round((700-y)*CAL['unit_xy_in_per_normalized_pixel'],5),z]
 def route(id,sys,coords,size=.5,terminal=False,assumed=False):
     return pipe(id,'unit',sys,[p(*c) for c in coords],size,U,'assumed' if assumed else 'confirmed',terminal)
 roots['unit:CW']=p(1450,180)
@@ -177,18 +178,18 @@ for i,(a,b) in enumerate([((100,420),(650,420)),((650,120),(650,420)),((1080,120
 # Assumed vertical separation keeps crossing overhead services distinct.
 for e in elements:
     if e['scene']=='unit' and e['system'] in ['HW','HWC']:
-        height=100 if e['system']=='HW' else 98
+        height=H[e['system']]
         if 'points' in e:
-            e['points']=[[x,y,height if z==102 else z] for x,y,z in e['points']]
-        if 'at' in e and e['at'][2]==102:e['at'][2]=height
-for sys,height in [('HW',100),('HWC',98)]:roots['unit:'+sys][2]=height
+            e['points']=[[x,y,height if z==H['CW'] else z] for x,y,z in e['points']]
+        if 'at' in e and e['at'][2]==H['CW']:e['at'][2]=height
+for sys in ['HW','HWC']:roots['unit:'+sys][2]=H[sys]
 # Retain the two schematic hot-to-return loop joins across the assumed height offsets.
 for e in elements:
     if e['id']=='A-bath-return-link':
-        first=e['points'][0];e['points'].insert(0,[first[0],first[1],100])
+        first=e['points'][0];e['points'].insert(0,[first[0],first[1],H['HW']])
     if e['id']=='A-return-spine':
-        last=e['points'][-1];e['points'].append([last[0],last[1],100])
-bathroom=refine(elements,U)
+        last=e['points'][-1];e['points'].append([last[0],last[1],H['HW']])
+bathroom=refine(elements,U,H)
 for e in elements:
     if e['scene']=='unit':
         e.setdefault('xy_status','provisional');e['xy_source']=CAL['dimension_source']+' → P2.02 common grid → P4.01 registered crop'
@@ -208,7 +209,7 @@ for e in elements:
 
 spec={
  'project':'Highland | domestic water in 3D','units':'inches','workflow':'manual scanned drawing takeoff; separate from house extractor',
- 'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'provisional cross-sheet calibration; see calibration.json'}, {'sheet':'P2.02','page':5,'issue':'2007-10-29','scale':'common structural grid calibrated to A2.03 dimensions'}, {'file':CAL['architectural_file'],'sheet':'A2.03','page':1,'issue':'2007-04-02'}, {'file':CAL['architectural_file'],'sheet':'A3.11','page':9,'issue':'2007-04-02'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'A2.02','page':46,'issue':'2007-04-02'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'P2.2','page':183,'issue':'2006-09-28','note':'reference only; separate permit'}],
+ 'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'provisional cross-sheet calibration; see calibration.json'}, {'sheet':'P2.02','page':5,'issue':'2007-10-29','scale':'common structural grid calibrated to A2.03 dimensions'}, {'file':CAL['architectural_file'],'sheet':'A2.03','page':1,'issue':'2007-04-02'}, {'file':CAL['architectural_file'],'sheet':'A3.11','page':9,'issue':'2007-04-02'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'A2.02','page':46,'issue':'2007-04-02'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'P2.2','page':183,'issue':'2006-09-28','note':'reference only; separate permit'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'A7.63','page':126,'issue':'2007-04-02 (Addendum 1 2007-05-01)'}, {'file':'Structural Plans - 200 W Highland - 4.02.07.pdf','sheet':'S3.7','page':17,'issue':'2007-04-02'}, {'file':'Structural Plans - 200 W Highland - 4.02.07.pdf','sheet':'S3.8','page':18,'issue':'2007-04-02'}],
  'calibration':CAL,
  'bathroom_pilot':bathroom,
  'limitations':[
@@ -216,7 +217,7 @@ spec={
  'Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.',
  'P1 is a separate coordination scene limited to the south residential corridor mains and Unit 107 service approach. Its 2006 P2.2 source is reference-only/separate-permit; Unit 107 internal routing remains governed by the October 2007 P4.01 study. The two scenes are not spatially joined.',
  'P1 garage, plant, other-unit and irrigation services are not modeled. The P1 approach terminates at the Unit 107 boundary; its exact tie-in to P4.01 is unresolved.',
- 'A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height. Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.',
+ 'A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height (see unit_107_ceiling). Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.',
  'Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.',
  'Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.',
  '04 stack has four explicit upper branch groups on P3.02; its R1 dwelling branch is unresolved and is not invented.',
@@ -225,11 +226,24 @@ spec={
  'Unit A island underfloor path is assumed between annotated drops. Dishwasher connection is unresolved and omitted. Hot/return joins are depicted at representative loop endpoints.',
  'Annotations in the supplied PDF are treated as review information, not proof of installed conditions.'
  ,'Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.'
- ,'Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the ±6 in source-trace allowance.'
+ ,'Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW {CW} in, HW {HW} in, HWC {HWC} in; the local service offsets are not covered by the ±6 in source-trace allowance.'.format(**H)
+ ,'Unit 107 clear heights are provisional: R1 drop-slab soffit 351.21 ft (S3.8) less the A7.63 ceiling drops gives living/dining 102.5 in, hallway 98.5 in, laundry 92.5 in above the P1 floor. Overhead pipe heights remain assumed but are held inside the documented band {min}-{max} in. RFI/ASI responses on ceiling heights were not supplied and govern.'.format(**CAL['unit_107_ceiling']['overhead_band_in'])
  ],
  'display':{'building_pipe_multiplier':2.5,'plant_pipe_multiplier':1.0,'unit_pipe_multiplier':1.5,'p1_pipe_multiplier':2.0},
  'checks':{'stack_groups':5,'typical_branch_trios':23,'unit_fixtures':14,'boilers':2,'storage_tanks':2,'expansion_vessels':4,'installed_pumps':3,'p1_corridor_mains':3,'p1_unit_approaches':3,'source':S+'; '+B+'; '+U},
  'roots':roots,'elements':elements}
+# Unit 107 overhead runs must sit inside the documented ceiling-to-soffit band.
+band=CAL['unit_107_ceiling']['overhead_band_in']
+violations=[]
+for e in elements:
+    if e['scene']!='unit' or e['kind']!='pipe' or e['system'] not in H:continue
+    for a,b in zip(e['points'],e['points'][1:]):
+        if a[2]==b[2] and a[2]>=band['min']-12:
+            r=e['nominal_in']/2
+            if a[2]-r<band['min'] or a[2]+r>band['max']:violations.append((e['id'],a[2],e['nominal_in']))
+if violations:
+    raise SystemExit(f"overhead pipes outside the {band['min']}-{band['max']} in band: {sorted(set(violations))}")
+spec['checks']['unit_overhead_band_in']=dict(band,checked_runs=sum(1 for e in elements if e['scene']=='unit' and e['kind']=='pipe' and e['system'] in H))
 out=HERE/'highland-water.spec.json'
 out.write_text(json.dumps(spec,indent=2)+'\n')
 print(f'{len(elements)} source-tagged elements → {out}')
