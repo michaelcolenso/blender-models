@@ -2,6 +2,8 @@ kind: model+viewer
 description: "Unit 107 domestic-water pipe model from P3.02/P4.01, 3D viewer and review"
 deliverables: ../../deliverables/water
 steps:
+  p1-sources: python $BM_PRODUCT_DIR/prepare_p1_sources.py
+  register-p1: python $BM_PRODUCT_DIR/register_p1.py
   prepare: [python $BM_PRODUCT_DIR/prepare_spec.py]
   build: python $BM_PRODUCT_DIR/build.py
   viewer:

@@ -23,8 +23,27 @@ svg.append('</svg>')
 html='''<!doctype html><html><meta charset="utf-8"><title>Unit 107 | trace review</title><style>body{font:15px/1.6 Arial;background:#ecf1f4;color:#142934;margin:0}header{padding:20px 30px;background:#112936;color:white;position:sticky;top:0}h1{font-size:23px;margin:0}p{margin:6px 0}button{padding:8px 15px;cursor:pointer}svg{width:100%;height:auto}small{color:#becfd8}</style><header><h1>Unit A / 107 — drawing-to-model trace</h1><p>Blue: cold · Orange: hot · Green: circulation return · Purple: mixed outlet · Dashed kitchen route: assumed below floor</p><button onclick="document.querySelectorAll('polyline').forEach(p=>p.style.display=p.style.display==='none'?'':'none')">Toggle modeled routes</button><p><small>Review overlay only. Fixture anchors derive from the shared structural grid (scale allowance ±1%). Bathroom wall-side service offsets are assumed and are not covered by the schematic ±6 in trace allowance. Vertical drops collapse to points. Pipe separation is expanded in places for readability.</small></p></header>'''+''.join(svg)+'</html>'
 (BUILD/'Unit-107-trace-review.html').write_text(html)
 
+p1reg=json.loads((HERE/cal['p1']['registration_file']).read_text())
+p1source=HERE/'source-review/p1-P2.2.jpg'
+raster_scale=1800/6048
+def p1pixel(point):
+    x,y,z=point;transform=p1reg['plumbing']
+    px=(x-transform['x']['offset_in'])/transform['x']['in_per_working_px']*raster_scale
+    py=(y-transform['y']['offset_in'])/transform['y']['in_per_working_px']*raster_scale
+    return px,py
+p1svg=['<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1286" viewBox="0 0 1800 1286">',
+ f'<image width="1800" height="1286" href="data:image/jpeg;base64,{base64.b64encode(p1source.read_bytes()).decode()}" opacity="0.72"/>']
+for e in spec['elements']:
+    if e['scene']!='p1' or e['kind']!='pipe' or e['system']=='context':continue
+    points=' '.join(f'{x:.2f},{y:.2f}' for x,y in map(p1pixel,e['points']))
+    p1svg.append(f'<polyline points="{points}" fill="none" stroke="{colors[e["system"]]}" stroke-width="4"><title>{e["id"]}: {e["nominal_in"]} in nominal; XY provisional; heights assumed</title></polyline>')
+p1svg.append('</svg>')
+(BUILD/'p1-trace.svg').write_text(''.join(p1svg))
+p1html='''<!doctype html><html><meta charset="utf-8"><title>Highland P1 | trace review</title><style>body{font:15px/1.6 Arial;background:#ecf1f4;color:#142934;margin:0}header{padding:20px 30px;background:#112936;color:white;position:sticky;top:0}h1{font-size:23px;margin:0}p{margin:6px 0}button{padding:8px 15px;cursor:pointer}svg{width:100%;height:auto}small{color:#becfd8}</style><header><h1>P1 south corridor / Unit 107 approach — drawing-to-model trace</h1><p>Blue: cold · Orange: hot · Green: circulation return</p><button onclick="document.querySelectorAll('polyline').forEach(p=>p.style.display=p.style.display==='none'?'':'none')">Toggle modeled routes</button><p><small>2006 P2.2 reference-only sheet. Provisional XY; assumed heights. Scope excludes other P1 services. Unit 107 internal routing remains in the separate October 2007 P4.01 study.</small></p></header>'''+''.join(p1svg)+'</html>'
+(BUILD/'P1-trace-review.html').write_text(p1html)
+
 # Fail on blank review images; make a contact sheet for human inspection.
-review_names=['review-plan','review-front','review-side','review-iso','review-building']
+review_names=['review-plan','review-front','review-side','review-iso','review-building','review-p1']
 contact=Image.new('RGB',(1200,450*3),'#152c39')
 for i,name in enumerate(review_names):
     im=Image.open(BUILD/(name+'.png')).convert('RGB')
@@ -49,17 +68,22 @@ p.insert_image(fitz.Rect(35,140,965,710),filename=str(BUILD/'bath-connections.pn
 p=page('Check the route before extending the model','Overlay generated from the calibrated specification and projected back to P4.01. Scale allowance: +/-1%; schematic trace allowance: +/-6 in. Bathroom wall-side service offsets are additional assumptions. Kitchen underfloor path and exact loop joins remain assumptions. Not a field survey.')
 svgdoc=fitz.open(stream=(BUILD/'unit-107-trace.svg').read_bytes(),filetype='svg')
 pdf=fitz.open('pdf',svgdoc.convert_to_pdf());p.show_pdf_page(fitz.Rect(35,140,965,710),pdf,0)
+p=page('P1: south corridor and Unit 107 approach','The full construction set adds A2.02 and P2.2. This separate scene traces CW, HW and HWC along the south residential corridor to the Unit 107 approach. Other P1 services and the exact internal tie-in are not modeled. XY provisional; Z assumed.')
+p.insert_image(fitz.Rect(35,140,965,710),filename=str(BUILD/'p1-iso.png'),keep_proportion=True)
+p=page('P1 drawing-to-model trace','P2.2 is dated September 28, 2006 and marked reference only / separate permit. Shared structural grids register it to A2.02. Unit 107 internal routing remains governed by the separate October 2007 P4.01 study; the scenes are not spatially joined.')
+svgdoc=fitz.open(stream=(BUILD/'p1-trace.svg').read_bytes(),filetype='svg')
+pdf=fitz.open('pdf',svgdoc.convert_to_pdf());p.show_pdf_page(fitz.Rect(35,140,965,710),pdf,0)
 p=page('The shared network: documented floor datums','Floor levels now follow A3.11: P2 332.00, P1 342.00, R1 353.00, R2 363.25, R3 373.50, R4 383.75, R5 394.25 ft. The upper guide is PLATE 404.42, not a flat roof. Stack XY and pipe offsets remain assumed.')
 p.insert_image(fitz.Rect(35,140,965,710),filename=str(BUILD/'building-iso.png'),keep_proportion=True)
 p=page('Plant connections','P3.02 / detail 1: two boilers, two storage tanks, four expansion vessels and three installed pumps. WAC2 is a loose spare. Equipment envelopes are representative; relief piping, flues, detailed controls and balancing bypasses are incomplete.')
 p.insert_image(fitz.Rect(35,140,965,710),filename=str(BUILD/'plant-iso.png'),keep_proportion=True)
-p=page('Calibration evidence','A2.03 dimensions the shared structural grid. Those dimensions calibrate P2.02; matched architectural features then transfer scale to the enlarged P4.01 Unit A drawing. The excerpt does not include the P1 architectural plan.')
+p=page('Calibration evidence','A2.03 dimensions the shared structural grid. Those dimensions calibrate P2.02; matched architectural features then transfer scale to the enlarged P4.01 Unit A drawing. The full set separately supplies A2.02 and P2.2 for the P1 study.')
 p.insert_image(fitz.Rect(35,155,690,360),filename=str(HERE/'source-review/architectural-grid-dimensions.png'),keep_proportion=True)
 p.insert_image(fitz.Rect(730,145,960,695),filename=str(HERE/'source-review/architectural-levels.png'),keep_proportion=True)
 evidence='HORIZONTAL GRID\n6-7: 16 ft 3 in | 7-8: 27 ft 9 in\n8-9: 27 ft 9 in | 9-10: 31 ft 3 in\nOverall: 1,236 in across 927 PDF points on P2.02\nScale: 0.75 PDF points / inch\n\nINDEPENDENT VERTICAL CHECK\nE-F: 18 ft | F-G: 24 ft 6 in | G-H: 15 ft\nAll individual spans agree with the working scale within 0.6%.\n\nCROP REGISTRATION\n21 matching features; median residual 0.224 PDF points.\nUnit conversion: 0.51398 in per normalized pixel.\nPlan dimensions increase 28.5% from the earlier placeholder.\n\nDATUM CAUTION\nUse the labeled elevations; some interval notes also say\n(+1/4 in). That small discrepancy is retained for review.\n11 ft at Unit 107 is floor-to-floor, not clear ceiling height.'
 p.insert_textbox(fitz.Rect(40,370,705,705),evidence,fontsize=11,lineheight=1.25,color=(.84,.90,.94))
 p=page('What is checked, and what is still needed','The new construction plans establish building levels and support a provisional horizontal calibration. Concealed pipe placement and equipment geometry still require further evidence.')
-text=f'CHECKED\n\n- Unique IDs and provenance on {len(spec["elements"])} elements; distribution graphs remain connected.\n- Five stack groups, 23 explicit branch groups, 14 Unit A fixtures.\n- Bathroom: 9 fixture ports, 5 stops, 2 mixing bodies and 2 mixed outlets checked.\n- Seven floor datums match A3.11; Unit 107 floor-to-floor height is 132 in.\n- Horizontal and vertical structural-grid spans agree within the raster allowance.\n- Cross-sheet registration and model-projected drawing overlay reviewed.\n\nSTILL NEEDED\n\n- Unit 107 / P1 architectural and reflected-ceiling plans (not in this excerpt).\n- Clear ceiling heights, concealed pipe elevations, offsets and actual shaft positions.\n- Equipment dimensions; resolution of the 04 stack R1 and dishwasher connections.\n- Clarification of quarter-inch interval notes versus the labeled floor elevations.\n- Field records or measurements if installed conditions are the objective.\n\nCURRENT SCOPE\n\nDomestic water supply and return only; sanitary, vent and gas are not modeled.\nWorking allowances are not survey accuracy: +/-1% scale; +/-6 in local route trace.\nNo construction lengths or quantities should be taken from this model.'
+text=f'CHECKED\n\n- Unique IDs and provenance on {len(spec["elements"])} elements; distribution graphs remain connected.\n- Five stack groups, 23 explicit branch groups, 14 Unit A fixtures.\n- Bathroom: 9 fixture ports, 5 stops, 2 mixing bodies and 2 mixed outlets checked.\n- P1: 3 corridor mains and 3 Unit 107 approach branches; shared-grid scales and residuals checked.\n- Seven floor datums match A3.11; Unit 107 floor-to-floor height is 132 in.\n- Horizontal and vertical structural-grid spans agree within the raster allowance.\n- Cross-sheet registration and model-projected drawing overlays reviewed.\n\nSTILL NEEDED\n\n- Clear ceiling heights, concealed pipe elevations, offsets and actual shaft positions.\n- Exact P1-to-P4.01 tie-in; other P1 services and equipment dimensions.\n- Resolution of the 04 stack R1 and dishwasher connections.\n- Clarification of quarter-inch interval notes versus the labeled floor elevations.\n- Field records or measurements if installed conditions are the objective.\n\nCURRENT SCOPE\n\nDomestic water supply and return only; sanitary, vent and gas are not modeled.\nP1 is a separate 2006 reference-sheet study; Unit 107 uses the October 2007 plan.\nWorking allowances are not survey accuracy. No quantities should be taken from this model.'
 p.insert_textbox(fitz.Rect(45,155,945,700),text,fontsize=13,lineheight=1.4,color=(.84,.90,.94))
 doc.save(BUILD/'Highland-pipe-model-review.pdf',garbage=4,deflate=True)
 bathdoc=fitz.open();bathdoc.insert_pdf(doc,from_page=1,to_page=2);bathdoc.save(BUILD/'Unit-107-bathroom-pilot.pdf',garbage=4,deflate=True)

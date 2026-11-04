@@ -6,6 +6,7 @@ this scanned, multistory source. No raster coordinates are claimed as measuremen
 from pathlib import Path
 import json, hashlib
 from bathroom import refine
+import p1_takeoff
 
 HERE = Path(__file__).parent
 CAL=json.loads((HERE/'calibration.json').read_text())
@@ -196,14 +197,25 @@ for e in elements:
         if not e.get('hardware_status') and not e.get('local_offset_assumed'):
             e['basis']='XY derived from calibrated raster trace. Pipe elevations, fixture envelopes and simplified fittings remain assumed.'
 
+p1_registration=json.loads((HERE/CAL['p1']['registration_file']).read_text())
+p1_takeoff.refine(roots,CAL,p1_registration,pipe,element,label)
+for e in elements:
+    if e['scene']=='p1':
+        e['xy_status']='provisional';e['xy_source']=CAL['p1']['source']+' → shared structural grid registration'
+        e['xy_tolerance']='Grid-pick allowance ±5 in; local simplified trace allowance ±6 in; not field accuracy.'
+        e['z_status']='assumed';e['envelope_status']='assumed'
+        e['basis']='XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.'
+
 spec={
  'project':'Highland | domestic water in 3D','units':'inches','workflow':'manual scanned drawing takeoff; separate from house extractor',
- 'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'provisional cross-sheet calibration; see calibration.json'}, {'sheet':'P2.02','page':5,'issue':'2007-10-29','scale':'common structural grid calibrated to A2.03 dimensions'}, {'file':CAL['architectural_file'],'sheet':'A2.03','page':1,'issue':'2007-04-02'}, {'file':CAL['architectural_file'],'sheet':'A3.11','page':9,'issue':'2007-04-02'}],
+ 'sources':[{'file':'RL- REVISED Highland Condos Plumbing 10-29-07.pdf','sheet':'P3.02','page':13,'issue':'2007-10-29','scale':'NONE for boiler diagram'}, {'sheet':'P4.01','page':15,'issue':'2007-10-29','scale':'provisional cross-sheet calibration; see calibration.json'}, {'sheet':'P2.02','page':5,'issue':'2007-10-29','scale':'common structural grid calibrated to A2.03 dimensions'}, {'file':CAL['architectural_file'],'sheet':'A2.03','page':1,'issue':'2007-04-02'}, {'file':CAL['architectural_file'],'sheet':'A3.11','page':9,'issue':'2007-04-02'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'A2.02','page':46,'issue':'2007-04-02'}, {'file':'200 W. Highland Construction Plans - Complete.pdf','sheet':'P2.2','page':183,'issue':'2006-09-28','note':'reference only; separate permit'}],
  'calibration':CAL,
  'bathroom_pilot':bathroom,
  'limitations':[
  'Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.',
  'Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.',
+ 'P1 is a separate coordination scene limited to the south residential corridor mains and Unit 107 service approach. Its 2006 P2.2 source is reference-only/separate-permit; Unit 107 internal routing remains governed by the October 2007 P4.01 study. The two scenes are not spatially joined.',
+ 'P1 garage, plant, other-unit and irrigation services are not modeled. The P1 approach terminates at the Unit 107 boundary; its exact tie-in to P4.01 is unresolved.',
  'A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height. Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.',
  'Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.',
  'Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.',
@@ -215,8 +227,8 @@ spec={
  ,'Bathroom pilot hardware is representative: five fixture stops, two mixing bodies, flexible connectors, elbows and tees are not a verified fitting/product schedule. Purple identifies mixed-water outlets without asserting temperature or valve performance.'
  ,'Bathroom lavatory and toilet drops have assumed wall-side offsets behind the fixture envelopes. Overhead services are assumed at CW 102 in, HW 100 in, HWC 98 in; the local service offsets are not covered by the ±6 in source-trace allowance.'
  ],
- 'display':{'building_pipe_multiplier':2.5,'plant_pipe_multiplier':1.0,'unit_pipe_multiplier':1.5},
- 'checks':{'stack_groups':5,'typical_branch_trios':23,'unit_fixtures':14,'boilers':2,'storage_tanks':2,'expansion_vessels':4,'installed_pumps':3,'source':S+'; '+B+'; '+U},
+ 'display':{'building_pipe_multiplier':2.5,'plant_pipe_multiplier':1.0,'unit_pipe_multiplier':1.5,'p1_pipe_multiplier':2.0},
+ 'checks':{'stack_groups':5,'typical_branch_trios':23,'unit_fixtures':14,'boilers':2,'storage_tanks':2,'expansion_vessels':4,'installed_pumps':3,'p1_corridor_mains':3,'p1_unit_approaches':3,'source':S+'; '+B+'; '+U},
  'roots':roots,'elements':elements}
 out=HERE/'highland-water.spec.json'
 out.write_text(json.dumps(spec,indent=2)+'\n')

@@ -26,7 +26,9 @@ def validate():
       'boilers':len([e for e in es if e.get('role')=='boiler']),
       'storage_tanks':len([e for e in es if e.get('role')=='storage tank']),
       'expansion_vessels':len([e for e in es if e.get('role')=='expansion vessel']),
-      'installed_pumps':len([e for e in es if e['kind']=='pump'])}
+      'installed_pumps':len([e for e in es if e['kind']=='pump']),
+      'p1_corridor_mains':len([e for e in es if e.get('role')=='west continuation and south corridor main']),
+      'p1_unit_approaches':len([e for e in es if e.get('role')=='Unit 107 service approach; internal routing governed by P4.01'])}
     for k,v in actual.items(): assert v==SPEC['checks'][k],(k,v)
     # Endpoint / tee reachability, separately for each system. This checks the
     # modeled graph, not construction adequacy or the correctness of a source.
@@ -65,6 +67,13 @@ def validate():
     assert reg['inliers']>=20 and reg['median_residual_pdf_pt']<.5
     factor=math.hypot(*reg['affine'][0][:2])/.75
     assert abs(factor/cal['unit_xy_in_per_normalized_pixel']-1)<1e-6
+    p1reg=json.loads((HERE/cal['p1']['registration_file']).read_text())
+    p1_scales={}
+    for sheet in ['plumbing','architecture']:
+        scales=p1reg[sheet]['working_px_per_in']
+        assert abs(scales[0]/scales[1]-1)<.02,(sheet,scales)
+        assert p1reg[sheet]['max_grid_residual_in']<=cal['p1']['grid_pick_tolerance_in']
+        p1_scales[sheet]=scales
     for level,elev in cal['floor_elevations_ft'].items():
         line=next(e for e in es if e['id']=='floor-'+level+'-0')
         assert abs(line['points'][0][2]-(elev-332)*12)<.001
@@ -102,7 +111,7 @@ def validate():
                 t=(Vector(p)-a).dot(v)/v.length_squared
                 assert 0<=t<=1 and (Vector(p)-(a+t*v)).length<.001
     pilot_checks={'fixtures':len(pilot['fixtures']),'supply_ports':dict(port_counts),'matching_fixture_endpoints':9,'mixed_outlets':2,'hardware_model_counts':hardware,'result':'All nine modeled fixture supplies meet explicit ports; five stops lie on their supply routes; both mixed outlets meet mixer ports. Hardware and heights remain assumed.'}
-    report={'counts':actual,'connectivity':connected,'calibration_checks':{'grid_points_per_inch':grid_scales,'max_allowed_raster_grid_variation_percent':.6,'registration_inliers':reg['inliers'],'median_registration_error_pt':reg['median_residual_pdf_pt'],'unit_scale_in_per_pixel':factor,'floor_datums_checked':7,'unit_107_floor_to_floor_in':132},'limitations':SPEC['limitations'],'result':'PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated'}
+    report={'counts':actual,'connectivity':connected,'calibration_checks':{'grid_points_per_inch':grid_scales,'max_allowed_raster_grid_variation_percent':.6,'registration_inliers':reg['inliers'],'median_registration_error_pt':reg['median_residual_pdf_pt'],'unit_scale_in_per_pixel':factor,'p1_working_px_per_inch':p1_scales,'p1_max_grid_residual_in':{sheet:p1reg[sheet]['max_grid_residual_in'] for sheet in p1_scales},'floor_datums_checked':7,'unit_107_floor_to_floor_in':132},'limitations':SPEC['limitations'],'result':'PASS: modeled counts, provenance, distribution reachability, raster-scale consistency and floor datums; exact pipe XYZ and plant internals not validated'}
     report['element_count']=len(es);report['bathroom_pilot']=pilot_checks
     (OUT/'validation.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2),flush=True)
@@ -131,7 +140,7 @@ for name,c in colors.items():
         bsdf.inputs['Emission Color'].default_value=c;bsdf.inputs['Emission Strength'].default_value=.15
     mats[name]=mat
 collections={}
-for model in ['building','plant','unit']:
+for model in ['building','plant','unit','p1']:
     parent=bpy.data.collections.new(model);scene.collection.children.link(parent)
     collections[model]=parent
     for trade in ['CW','HW','HWC','MW','equipment','fixtures','context']:
@@ -314,7 +323,7 @@ report=json.loads((OUT/'validation.json').read_text());report['bathroom_pilot'][
 (OUT/'validation.json').write_text(json.dumps(report,indent=2))
 
 # Separate GLBs avoid loading the building and unit into the same coordinate space.
-for model in ['building','plant','unit']:
+for model in ['building','plant','unit','p1']:
     bpy.ops.object.select_all(action='DESELECT')
     for obj in collections[model].all_objects:obj.select_set(True)
     bpy.ops.export_scene.gltf(filepath=str(OUT/(model+'.glb')),export_format='GLB',use_selection=True,export_extras=True,export_cameras=False,export_lights=False)
@@ -334,19 +343,22 @@ views=[
  ('unit','review-front',(0,-35,4),(0,0,1.3),26),
  ('unit','review-side',(35,0,4),(0,0,1.3),26),
  ('building','review-building',(31,-40,28),(0,0,11),39),
+ ('p1','p1-iso',(35,-45,45),(0,-5,2),55),
+ ('p1','p1-plan',(0,0,55),(0,0,0),55),
+ ('p1','review-p1',(35,-45,45),(0,-5,2),55),
  ('unit','review-iso',(20,-29,26),(0,-2.2,1.0),26)]
 for model,name,pos,target,scale in views:
     if '--unit-only' in sys.argv and model!='unit':continue
-    for m in ['building','plant','unit']:collections[m].hide_render=m!=model
+    for m in ['building','plant','unit','p1']:collections[m].hide_render=m!=model
     camera.location=pos;camera.rotation_euler=(Vector(target)-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=scale
     scene.view_layers[0].material_override=mats['assumed'] if name.startswith('review') else None
     scene.render.filepath=str(OUT/(name+'.png'))
     bpy.ops.render.render(write_still=True)
 scene.view_layers[0].material_override=None
-for m in ['building','plant','unit']:
+for m in ['building','plant','unit','p1']:
     collections[m].hide_render=m!='unit'
     for obj in collections[m].all_objects:obj.hide_set(m!='unit')
 camera.location=(2,-5,10);camera.rotation_euler=(Vector((-7,5.5,1))-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=11
-scene['readme']='Highland domestic water; opens on Unit 107 bathroom. Unit XY provisional; pipe heights and hardware assumed; floor datums documented. Hide unit and unhide plant or building to explore other studies. See specification and report.'
+scene['readme']='Highland domestic water; opens on Unit 107 bathroom. Unit and P1 XY provisional; pipe heights and hardware assumed; floor datums documented. P1 is a separate 2006 reference-sheet study of the south corridor and Unit 107 approach. Hide unit and unhide plant, building or p1 to explore other studies. See specification and report.'
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'Highland-domestic-water.blend'))
 print('BUILD COMPLETE',flush=True)

@@ -33,6 +33,19 @@
       "sheet": "A3.11",
       "page": 9,
       "issue": "2007-04-02"
+    },
+    {
+      "file": "200 W. Highland Construction Plans - Complete.pdf",
+      "sheet": "A2.02",
+      "page": 46,
+      "issue": "2007-04-02"
+    },
+    {
+      "file": "200 W. Highland Construction Plans - Complete.pdf",
+      "sheet": "P2.2",
+      "page": 183,
+      "issue": "2006-09-28",
+      "note": "reference only; separate permit"
     }
   ],
   "calibration": {
@@ -110,7 +123,22 @@
     "unit_pipe_elevation_status": "assumed",
     "unit_overhead_pipe_in": 102,
     "unit_below_floor_pipe_in": -6,
-    "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. The new excerpt lacks the P1 unit plan, unit reflected-ceiling plan and explicit water-pipe elevations."
+    "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. A2.02 supplies the P1 architectural plan and RCP, but explicit water-pipe elevations remain unavailable.",
+    "p1": {
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "architecture_source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "registration_file": "source-review/registration-p1.json",
+      "status": "provisional",
+      "local_trace_tolerance_in": 6.0,
+      "grid_pick_tolerance_in": 5.0,
+      "scope": "South residential corridor CW/HW/HWC mains and Unit 107 service approach",
+      "z_status": "assumed",
+      "overhead_pipe_in": {
+        "CW": 102,
+        "HW": 100,
+        "HWC": 98
+      }
+    }
   },
   "bathroom_pilot": {
     "fixtures": [
@@ -278,6 +306,8 @@
   "limitations": [
     "Domestic water only. Sanitary, vent, gas, fire protection and architectural building geometry are not modeled.",
     "Unit 107 XY is provisionally calibrated through the shared structural grid; building floor datums are documented. Pipe heights, building stack XY, fittings and equipment envelopes remain assumed. This is not an as-built or fully coordinated model.",
+    "P1 is a separate coordination scene limited to the south residential corridor mains and Unit 107 service approach. Its 2006 P2.2 source is reference-only/separate-permit; Unit 107 internal routing remains governed by the October 2007 P4.01 study. The two scenes are not spatially joined.",
+    "P1 garage, plant, other-unit and irrigation services are not modeled. The P1 approach terminates at the Unit 107 boundary; its exact tie-in to P4.01 is unresolved.",
     "A3.11 establishes 11 ft floor-to-floor at Unit 107, not clear ceiling height. Its (+1/4 in) interval notes conflict slightly with labeled elevation differences; model uses the labeled elevations.",
     "Nominal bore is used as outside visual diameter; pipe material, wall thickness, insulation and actual OD are not established. No pipe lengths or quantities should be taken from this model.",
     "Building stack positions are arranged for presentation. Typical unit branches terminate at continuations; their diameters are assumed pending unit-specific takeoff.",
@@ -292,7 +322,8 @@
   "display": {
     "building_pipe_multiplier": 2.5,
     "plant_pipe_multiplier": 1.0,
-    "unit_pipe_multiplier": 1.5
+    "unit_pipe_multiplier": 1.5,
+    "p1_pipe_multiplier": 2.0
   },
   "checks": {
     "stack_groups": 5,
@@ -302,6 +333,8 @@
     "storage_tanks": 2,
     "expansion_vessels": 4,
     "installed_pumps": 3,
+    "p1_corridor_mains": 3,
+    "p1_unit_approaches": 3,
     "source": "P3.02 / domestic water riser diagram (PDF page 13); P3.02 / detail 1, low temp boiler piping diagram, SCALE NONE (PDF page 13); P4.01 / Unit A 107 domestic water plan (PDF page 15)"
   },
   "roots": {
@@ -333,6 +366,21 @@
     "unit:HWC": [
       272.41125,
       233.86249,
+      98
+    ],
+    "p1:CW": [
+      -271.07895,
+      -27.69001,
+      102
+    ],
+    "p1:HW": [
+      -271.07895,
+      -35.63667,
+      100
+    ],
+    "p1:HWC": [
+      -271.07895,
+      -43.58334,
       98
     ]
   },
@@ -11980,6 +12028,703 @@
       "role": "representative branch tee",
       "xy_source": "A2.03, Level R1 Plan & RCP, uploaded page 1, 04-02-07 \u2192 P2.02 common grid \u2192 P4.01 registered crop",
       "xy_tolerance": "Scale allowance \u00b11%; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-south-corridor-CW",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "CW",
+      "points": [
+        [
+          -271.07895,
+          -27.69001,
+          102
+        ],
+        [
+          499.28194,
+          -27.69001,
+          102
+        ],
+        [
+          499.28194,
+          -127.02334,
+          102
+        ],
+        [
+          646.65532,
+          -127.02334,
+          102
+        ]
+      ],
+      "nominal_in": 1.25,
+      "size_status": "confirmed",
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "terminal": false,
+      "size_basis": "Explicit nominal size callout",
+      "role": "west continuation and south corridor main",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-unit-107-approach-CW",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "CW",
+      "points": [
+        [
+          646.65532,
+          -127.02334,
+          102
+        ],
+        [
+          646.65532,
+          -221.05889,
+          102
+        ]
+      ],
+      "nominal_in": 1.25,
+      "size_status": "confirmed",
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "terminal": true,
+      "size_basis": "Explicit nominal size callout",
+      "role": "Unit 107 service approach; internal routing governed by P4.01",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-south-corridor-HW",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "HW",
+      "points": [
+        [
+          -271.07895,
+          -35.63667,
+          100
+        ],
+        [
+          507.32048,
+          -35.63667,
+          100
+        ],
+        [
+          507.32048,
+          -134.97,
+          100
+        ],
+        [
+          646.65532,
+          -134.97,
+          100
+        ]
+      ],
+      "nominal_in": 1.0,
+      "size_status": "confirmed",
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "terminal": false,
+      "size_basis": "Explicit nominal size callout",
+      "role": "west continuation and south corridor main",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-unit-107-approach-HW",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "HW",
+      "points": [
+        [
+          646.65532,
+          -134.97,
+          100
+        ],
+        [
+          646.65532,
+          -221.05889,
+          100
+        ]
+      ],
+      "nominal_in": 1.0,
+      "size_status": "confirmed",
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "terminal": true,
+      "size_basis": "Explicit nominal size callout",
+      "role": "Unit 107 service approach; internal routing governed by P4.01",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-south-corridor-HWC",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "HWC",
+      "points": [
+        [
+          -271.07895,
+          -43.58334,
+          98
+        ],
+        [
+          515.35903,
+          -43.58334,
+          98
+        ],
+        [
+          515.35903,
+          -142.91667,
+          98
+        ],
+        [
+          646.65532,
+          -142.91667,
+          98
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "confirmed",
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "terminal": false,
+      "size_basis": "Explicit nominal size callout",
+      "role": "west continuation and south corridor main",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-unit-107-approach-HWC",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "HWC",
+      "points": [
+        [
+          646.65532,
+          -142.91667,
+          98
+        ],
+        [
+          646.65532,
+          -221.05889,
+          98
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "confirmed",
+      "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+      "terminal": true,
+      "size_basis": "Explicit nominal size callout",
+      "role": "Unit 107 service approach; internal routing governed by P4.01",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-6",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          -192.75117,
+          1310.56643,
+          0
+        ],
+        [
+          -192.75117,
+          -869.50244,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-6",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        -192.75117,
+        1344.10595,
+        0
+      ],
+      "text": "6",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-7",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          -1.87772,
+          1310.56643,
+          0
+        ],
+        [
+          -1.87772,
+          -869.50244,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-7",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        -1.87772,
+        1344.10595,
+        0
+      ],
+      "text": "7",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-8",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          332.81358,
+          1310.56643,
+          0
+        ],
+        [
+          332.81358,
+          -869.50244,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-8",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        332.81358,
+        1344.10595,
+        0
+      ],
+      "text": "8",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-9",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          664.19109,
+          1310.56643,
+          0
+        ],
+        [
+          664.19109,
+          -869.50244,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-9",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        664.19109,
+        1344.10595,
+        0
+      ],
+      "text": "9",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-10",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          1042.62421,
+          1310.56643,
+          0
+        ],
+        [
+          1042.62421,
+          -869.50244,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-10",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        1042.62421,
+        1344.10595,
+        0
+      ],
+      "text": "10",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-E",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          -278.90932,
+          1.18353,
+          0
+        ],
+        [
+          1311.70276,
+          1.18353,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-E",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        1344.84051,
+        1.18353,
+        0
+      ],
+      "text": "E",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-F",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          -278.90932,
+          -217.49415,
+          0
+        ],
+        [
+          1311.70276,
+          -217.49415,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-F",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        1344.84051,
+        -217.49415,
+        0
+      ],
+      "text": "F",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-G",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          -278.90932,
+          -510.62956,
+          0
+        ],
+        [
+          1311.70276,
+          -510.62956,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-G",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        1344.84051,
+        -510.62956,
+        0
+      ],
+      "text": "G",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-H",
+      "scene": "p1",
+      "kind": "pipe",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "system": "context",
+      "points": [
+        [
+          -278.90932,
+          -689.05982,
+          0
+        ],
+        [
+          1311.70276,
+          -689.05982,
+          0
+        ]
+      ],
+      "nominal_in": 0.5,
+      "size_status": "assumed",
+      "size_basis": "Grid reference line",
+      "source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-grid-label-H",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        1344.84051,
+        -689.05982,
+        0
+      ],
+      "text": "H",
+      "size": 12,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-scope",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        -179.49606,
+        -835.96292,
+        0
+      ],
+      "text": "P1 SOUTH CORRIDOR / UNIT 107 APPROACH",
+      "size": 16,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
+      "z_status": "assumed",
+      "envelope_status": "assumed"
+    },
+    {
+      "id": "p1-unit-107",
+      "scene": "p1",
+      "kind": "label",
+      "status": "assumed",
+      "basis": "XY derived from calibrated raster trace on the 2006 reference-only P1 sheet. Pipe elevations and context line weights remain assumed.",
+      "at": [
+        646.65532,
+        -254.17,
+        102
+      ],
+      "text": "UNIT 107 / P4.01 CONTINUES",
+      "size": 10,
+      "system": "context",
+      "xy_status": "provisional",
+      "xy_source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit \u2192 shared structural grid registration",
+      "xy_tolerance": "Grid-pick allowance \u00b15 in; local simplified trace allowance \u00b16 in; not field accuracy.",
       "z_status": "assumed",
       "envelope_status": "assumed"
     }

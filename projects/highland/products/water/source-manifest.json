@@ -86,6 +86,27 @@
       }
     ]
   },
+  "full_construction_set": {
+    "filename": "200 W. Highland Construction Plans - Complete.pdf",
+    "sha256": "63d0fa126979d7c94b1cd7fe838e4de638ca71a11caa0f52358b9f4ee8225238",
+    "page_count": 190,
+    "text_layer": false,
+    "p1_sheets": [
+      {
+        "page": 46,
+        "sheet": "A2.02",
+        "title": "Level P1 - Plan & RCP",
+        "date": "2007-04-02"
+      },
+      {
+        "page": 183,
+        "sheet": "P2.2",
+        "title": "Level P1 Plumbing Plan",
+        "date": "2006-09-28",
+        "note": "Drawings for reference only; separate permit"
+      }
+    ]
+  },
   "calibration_sources": [
     "A2.03 page 1",
     "A3.11 page 9",

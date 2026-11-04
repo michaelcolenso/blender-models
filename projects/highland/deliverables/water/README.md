@@ -8,8 +8,9 @@ This is the corrected starting point: modeled domestic-water pipes, fixtures and
 - [Model review PDF](Highland-pipe-model-review.pdf)
 - [Interactive 3D model](Highland-plumbing-3D.html) — use **Download raw file**, then open the downloaded HTML in a browser. GitHub shows HTML source rather than running it. All models and code are embedded.
 - [Drawing-overlay review](Unit-107-trace-review.html) — download and open in a browser; toggle the modeled routes over P4.01.
-- [Editable Blender model](Highland-domestic-water.blend) — contains building, plant and unit collections. Opens on the Unit 107 bathroom. Hide the unit collection and unhide building or plant to review the other studies.
+- [Editable Blender model](Highland-domestic-water.blend) — the published building, plant and unit collections. It opens on the Unit 107 bathroom.
 - GLB models: [Unit 107](unit.glb), [building distribution](building.glb), [boiler plant](plant.glb).
+- The current local build adds `Highland-domestic-water.blend`, `p1.glb` and `P1-trace-review.html` under `build/highland-water/`; these P1 outputs have not been published to this handoff folder.
 - [Source sheets P2.02, P3.02, P4.01, A2.03 and A3.11](Source-reference-sheets.pdf)
 - [Validation results](validation.json) and [full scope, assumptions and reproduction instructions](../../products/water/README.md).
 
@@ -19,6 +20,6 @@ This is the corrected starting point: modeled domestic-water pipes, fixtures and
 
 [Fixture connection close-up](Unit-107-connections-preview.png) · [Full-unit view](Unit-107-preview.png)
 
-**Unit 107 plan XY is provisional; building floor datums are documented. Pipe heights, building stack XY and fixture/equipment envelopes remain assumed.** Source pipe sizes and connection patterns are recorded separately from geometry assumptions. The viewer opens on the bathroom; use **Connections** for fixture stops and supply connectors, and **Fittings** to toggle hardware. Nine fixture supply ports and two mixed outlets are checked; hardware, wall-side offsets and heights remain representative. The model covers domestic water; sanitary, vent and gas are not included. It is a working model study, not an as-built or a dimensionally verified owner presentation. See the review PDF's final page for the next required dimensions and unresolved connections.
+**Unit 107 and P1 plan XY are provisional; building floor datums are documented. Pipe heights, building stack XY and fixture/equipment envelopes remain assumed.** Source pipe sizes and connection patterns are recorded separately from geometry assumptions. The viewer opens on the bathroom; use **Connections** for fixture stops and supply connectors, and **Fittings** to toggle hardware. Nine fixture supply ports and two mixed outlets are checked; hardware, wall-side offsets and heights remain representative. The separate P1 scene covers only the south corridor and Unit 107 approach from the 2006 reference-only P2.2 sheet; its exact P4.01 tie-in and other P1 services are unresolved. The model covers domestic water; sanitary, vent and gas are not included. It is a working model study, not an as-built or a dimensionally verified owner presentation. See the review PDF's final page for the next required dimensions and unresolved connections.
 
 The previous [sheet-stack tour](../owner-tour/) is superseded as the approach to this task. The new animation shows the modeled domestic-water geometry, with assumptions labeled throughout.

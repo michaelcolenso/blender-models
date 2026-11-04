@@ -23,5 +23,16 @@
   "unit_pipe_elevation_status": "assumed",
   "unit_overhead_pipe_in": 102,
   "unit_below_floor_pipe_in": -6,
-  "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. The new excerpt lacks the P1 unit plan, unit reflected-ceiling plan and explicit water-pipe elevations."
+  "ceiling_note": "Eleven feet is floor-to-floor, not clear ceiling height. A2.02 supplies the P1 architectural plan and RCP, but explicit water-pipe elevations remain unavailable.",
+  "p1": {
+    "source": "P2.2, Level P1 Plumbing Plan, full-set PDF page 183, 09-28-06, reference only / separate permit",
+    "architecture_source": "A2.02, Level P1 Plan & RCP, full-set PDF page 46, 04-02-07",
+    "registration_file": "source-review/registration-p1.json",
+    "status": "provisional",
+    "local_trace_tolerance_in": 6.0,
+    "grid_pick_tolerance_in": 5.0,
+    "scope": "South residential corridor CW/HW/HWC mains and Unit 107 service approach",
+    "z_status": "assumed",
+    "overhead_pipe_in": {"CW": 102, "HW": 100, "HWC": 98}
+  }
 }
