@@ -1,0 +1,37 @@
+{
+  "revision": "06 / native day and dusk refresh",
+  "basis": "Reuse the saved native cameras, materials and lighting. Reattach existing illustrative window dressing and apartment lights to corrected glazing. Architecture remains governed by reconciled.spec.json.",
+  "deferred_faces": [
+    "north"
+  ],
+  "window_dressing": "Map existing mesh/curve props by glazing center, width and height while retaining depth/orientation. Move apartment lights to the corresponding position and preserve their native rotation/shape. Furnishings and light behavior remain assumed.",
+  "day": {
+    "resolution": [
+      1995,
+      1323
+    ],
+    "samples": 32,
+    "frame": 1
+  },
+  "dusk": {
+    "resolution": [
+      1920,
+      1080
+    ],
+    "samples": 32,
+    "frame": 217
+  },
+  "dusk_review": {
+    "resolution": [
+      960,
+      540
+    ],
+    "samples": 12,
+    "frames": [
+      1,
+      432
+    ]
+  },
+  "notice": "Illustrative exterior study | Plan XY provisional; profiles, guards and site assumed.",
+  "film_note": "This revision refreshes native stills and camera review frames. The revision 03 movie remains a separate earlier delivery."
+}
