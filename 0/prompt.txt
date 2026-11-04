@@ -1,0 +1,35 @@
+we need to organize and optimizw  our workflow in this repo.
+
+---
+
+let the CI handle it
+
+---
+
+start PR 2 while CI runs
+
+---
+
+yes
+
+---
+
+add to pr
+
+---
+
+now what
+
+---
+
+whats next
+
+---
+
+<task-notification>
+<task-id>bxcwsuv4f</task-id>
+<tool-use-id>toolu_01DYQLWPHRjEoX5crZ7tHDFc</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/f830e2b3-fb4a-4403-b354-53f0854a8447/tasks/bxcwsuv4f.output</output-file>
+<status>failed</status>
+<summary>Background command "Wait for PR 31 CI" failed with exit code 1</summary>
+</task-notification>
