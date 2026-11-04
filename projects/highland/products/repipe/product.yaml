@@ -3,5 +3,10 @@ description: "Proposed parallel-install, unit-by-unit cutover sequence (interact
 deliverables: ../../deliverables/repipe
 steps:
   prepare: python $BM_PRODUCT_DIR/prepare.py
-  package: python $BM_PRODUCT_DIR/package.py
+  # needs build/highland-water/unit.glb (water build step) and the water product's npm install
+  package:
+    - cd $BM_PRODUCT_DIR && NODE_PATH=../water/node_modules ../water/node_modules/.bin/esbuild app.js --bundle --minify --format=iife --outfile=app.bundle.js
+    - python $BM_PRODUCT_DIR/package.py
+  # needs Playwright Chromium (installed by the script) and FFmpeg
+  video: bash $BM_PRODUCT_DIR/make_video.sh
   check: python $BM_PRODUCT_DIR/prepare.py && git diff --exit-code -- $BM_PRODUCT_DIR/repipe-strategy.json
