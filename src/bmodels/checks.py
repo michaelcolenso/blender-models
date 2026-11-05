@@ -33,6 +33,7 @@ def specs():
 
 def metadata():
     errors = []
+    refs = {p.ref for s in project.sites() for p in s.products}
     for s in project.sites():
         if not s.meta.get("name"):
             errors.append(f"{s.dir.relative_to(ROOT)}/project.yaml: needs 'name'")
@@ -46,6 +47,11 @@ def metadata():
             elif "check" not in steps and not p.meta.get("check_unavailable"):
                 errors.append(f"{where}: needs a `check` step (CPU, no source PDFs; CI runs it) "
                               "or `check_unavailable: <reason>`")
+            deps = p.meta.get("depends_on") or []
+            if not isinstance(deps, list) or not all(isinstance(d, str) for d in deps):
+                errors.append(f"{where}: 'depends_on' must be a list of <site>/<product> refs")
+            else:
+                errors += [f"{where}: depends_on '{d}' is not a product" for d in deps if d not in refs or d == p.ref]
             for name, cmd in (steps.items() if isinstance(steps, dict) else []):
                 if not (isinstance(cmd, str) or (isinstance(cmd, list) and all(isinstance(c, str) for c in cmd))):
                     errors.append(f"{where}: step '{name}' must be a command or list of commands")

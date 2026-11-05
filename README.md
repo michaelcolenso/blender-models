@@ -82,7 +82,7 @@ stay there and may be updated; nothing new goes to LFS.
 
 | Workflow | When | What |
 |---|---|---|
-| `build-models` | specs, takeoff, products, `src/`, lock change | `bm build --changed` (every spec when code or the lock changes) and `bm check-products`; reports in the job summary, `build/` as artifact |
+| `build-models` | specs, takeoff, products, `src/`, lock change | `bm build --changed` (every spec when code or the lock changes) and `bm check-products` (changed products and their `depends_on` dependents); reports in the job summary, `build/` as artifact |
 | `checks` | every PR and push to main | `bm check --base …` (provenance, metadata, large files, links, tests) and `bm audit-blends` |
 | `render-scenes` | `render/`, renderer or project changes | render each shot in `render/scenes.json` on CPU and validate the pixels |
 | `highland-*` | manual | Highland native film, archviz review and preview renders |

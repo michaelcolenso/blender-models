@@ -123,6 +123,24 @@ class NewSiteTests(unittest.TestCase):
         finally:
             project.PROJECTS, cli.PROJECTS = old
 
+    def test_changed_products_include_dependents(self):
+        site = project.Site("demo", ROOT / "projects/demo")
+        def prod(name, **meta):
+            return project.Product(site, name, site.dir / "products" / name, meta)
+        water, repipe, film = prod("water"), prod("repipe", depends_on=["demo/water"]), prod("film", depends_on=["demo/repipe"])
+        other = prod("other")
+        products = [water, repipe, film, other]
+        refs = lambda files: [p.ref for p in project.affected_products(products, files)]
+        self.assertEqual(refs(["projects/demo/products/water/spec.json"]), ["demo/water", "demo/repipe", "demo/film"])
+        self.assertEqual(refs(["projects/demo/deliverables/water/takeoff.json"]), ["demo/water", "demo/repipe", "demo/film"])
+        self.assertEqual(refs(["projects/demo/products/repipe/app.js"]), ["demo/repipe", "demo/film"])
+        self.assertEqual(refs(["projects/demo/products/other/x.py", "README.md"]), ["demo/other"])
+        self.assertEqual(refs(["projects/demo/products/waterworks/x.py"]), [])
+
+    def test_repo_product_dependencies_resolve(self):
+        self.assertEqual([e for e in checks.metadata() if "depends_on" in e], [])
+        self.assertIn("highland/water", project.product("highland/repipe").meta.get("depends_on", []))
+
     def test_paths_point_at_repo(self):
         self.assertTrue((ROOT / "pyproject.toml").exists())
 
