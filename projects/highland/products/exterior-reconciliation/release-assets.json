@@ -1,0 +1,28 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "highland-exterior-reconciliation-2026-11-05",
+  "storage": "release",
+  "note": "Revision 06 deliverables. Highland-drawing-reconciled.blend, Highland-drawing-reconciled.glb and element-provenance.csv are the files the CI product check rebuilt and validated (see ../../deliverables/exterior-reconciliation/delivery-validation.json). Highland-drawing-reconciliation-rev06-review.pdf is byte-identical to archive blob 5748aef2e98354c6eff57e1c17cb7f4078f5bcf3 (deliverables/highland-drawings/Highland-drawing-reconciliation.pdf at bddd5b8fb4085677028108754ef82a722bc0b17c). Illustrative, not a contract document.",
+  "assets": [
+    {
+      "name": "Highland-drawing-reconciled.blend",
+      "bytes": 24238929,
+      "sha256": "052d42d14122858c5759aadfcec89f7fa6905aeeb57654b10045dbb6df5b0432"
+    },
+    {
+      "name": "Highland-drawing-reconciled.glb",
+      "bytes": 19901452,
+      "sha256": "7f945bbd461a50c30ec48bec7e013fdb463a596cbb597700117b285e137024bd"
+    },
+    {
+      "name": "element-provenance.csv",
+      "bytes": 1813171,
+      "sha256": "fdd713f464d4a9a107e7391fd236eb4221312811911d55410c21ed56b07e35ff"
+    },
+    {
+      "name": "Highland-drawing-reconciliation-rev06-review.pdf",
+      "bytes": 33372088,
+      "sha256": "23fa592c6e582e71778079e3e3dfad2327f351f2ad7149bc6d57c047a7ae5a59"
+    }
+  ]
+}

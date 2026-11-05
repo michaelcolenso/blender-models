@@ -47,8 +47,12 @@ The check verifies archive integrity and planar/spec consistency.
 product. It patches the revision 03 base scene, which is restored as a
 checksum-verified release asset. The rebuild reproduces all 960 historical
 architecture mesh hashes, including the 97/815/99 controls, and 31 fields of the
-historical delivery validation. The product `check` reruns this in CI. The
-packaging slice remains: render the deliverable stills, package and publish.
+historical delivery validation. The product `check` reruns this in CI.
+
+**Slice 3 (packaging).** The CI-validated `.blend`, `.glb`, provenance CSV and the
+archived review PDF are recorded for release `highland-exterior-reconciliation-2026-11-05`.
+CPU stills and review views are committed as previews. See the
+[deliverable](../projects/highland/deliverables/exterior-reconciliation/README.md).
 
 Start the implementation branch from current main. The source snapshot is
 `archive/2026-11-03/continue/highland-roof-geometry` at
