@@ -581,7 +581,7 @@ The film SHOULD avoid persistent dashboard clutter. Information appears when it 
 
 ### 11.5 Clean master
 
-The pipeline SHALL retain a textless ProRes 4444 master (`<tag>-master.mov`, `yuv444p12le`, no editorial HUD) so text and annotations can be revised without GPU rerender where the underlying imagery is unchanged. The H.264 `yuv420p` file is a review proxy only and SHALL NOT be treated as the master.
+The pipeline SHALL retain a textless ProRes 4444 master (`<tag>-master.mov`, `yuv444p12le`, no editorial HUD) as a GitHub Release asset (`bm publish meydenbauer-b/underslab`), recorded in `projects/meydenbauer-b/products/underslab/release-assets.json`, so text and annotations can be revised without GPU rerender where the underlying imagery is unchanged. The master SHALL NOT be added to Git or Git LFS. The H.264 `yuv420p` file is a review proxy only and SHALL NOT be treated as the master.
 
 ---
 

@@ -252,7 +252,7 @@ Extract every decision-relevant number displayed in the film.
 
 ### Test I5 — Clean master
 
-**Pass:** a textless ProRes 4444 master (`yuv444p12le`, no HUD) exists so editorial copy/HUD changes do not require rerendering unchanged 3D imagery. The H.264 proxy is not that master.
+**Pass:** a textless ProRes 4444 master (`yuv444p12le`, no HUD) is a GitHub Release asset, not a Git or LFS file, so editorial copy/HUD changes do not require rerendering unchanged 3D imagery. The H.264 proxy is not that master.
 
 ---
 

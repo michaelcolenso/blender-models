@@ -82,12 +82,12 @@ Checks, run on every build (`animate.py` exits 1 on failure):
 PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh setup    # build + checks
 PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh bench    # prints the projected hours
 PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh render 2
-PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh finish   # HUD proxy, ProRes 4444 master
+PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh finish   # HUD proxy; publish the ProRes master
 ```
 
 The film is 3,045 frames at 30 fps, 3.2 times the 960-frame overview, so check `bench` before
-committing pod time. `FPS=24` cuts the frame count by a fifth. As with the overview, keep the
-ProRes 4444 master so HUD changes stay a CPU job (`hud` stage). The H.264 is the review proxy.
+committing pod time. `FPS=24` cuts the frame count by a fifth. The ProRes 4444 master is a
+GitHub Release asset, not a git file. `hud` pulls it and re-composites on CPU.
 
 ## Overview (all units at once)
 
@@ -108,10 +108,17 @@ For the full film (1920×1080, 30 fps, 960 frames, 128 samples), run
 `FPS=60` doubles the frames for the same 32 seconds. The 2026-10-25 RunPod film is in
 [../runpod](../runpod/).
 
-`finish` writes a textless ProRes 4444 master (`final-30-master.mov`, no HUD) and an H.264
-review proxy (`final-30.mp4`, HUD burned in). Commit the `.mov` before stopping the pod. After
-that, changing a phase note, the disclaimer or the progress bar is `runpod_animate.sh hud`, a
-CPU job of minutes that needs no re-render. Do not grade the proxy.
+`finish` writes a textless ProRes 4444 master (`<tag>-master.mov`, no HUD) and an H.264
+review proxy (`<tag>.mp4`, HUD burned in). The `.mov` is over 1 MB, so it does not go in Git
+or Git LFS. Publish it, then paste the printed URL here:
+
+```bash
+uv run bm publish meydenbauer-b/underslab build/meydenbauer-b/anim/<tag>-master.mov
+```
+
+Checksums land in [release-assets.json](../../../products/underslab/release-assets.json).
+A later HUD change is `runpod_animate.sh hud`: that pulls the published master and
+re-composites on CPU. Do not grade the proxy.
 
 Fixed after the 2026-10-25 render, and checked on every build:
 

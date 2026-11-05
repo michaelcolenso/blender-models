@@ -1,0 +1,7 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "meydenbauer-b-underslab-film",
+  "storage": "release",
+  "note": "Textless ProRes 4444 film masters. Not in git. finish publishes them; hud restores with: uv run bm assets pull projects/meydenbauer-b/products/underslab/release-assets.json",
+  "assets": []
+}
