@@ -7,6 +7,11 @@
 project: Living room + kitchen + hall stub (photo-derived massing + furnishings)
 tolerance_in: 0.25            # builder fidelity: built size vs size in this file (not accuracy to the real room)
 
+basis_of_record:
+  documents: "One ultra-wide photo P1 (user upload 2026-10-11). No drawings, no tape measurements."
+  kind: field_photo
+  field_verified: not_verified
+  note: "Scale from standard-size references in the photo; positions +/-6 in, room width/depth +/-12 in."
 sources:
   - id: P1
     ref: "Photo IMG (user upload 2026-10-11), ultra-wide, portrait 1500x2000, low light, TV on + one lamp"

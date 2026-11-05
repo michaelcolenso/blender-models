@@ -4,6 +4,10 @@
 project: "{{name}} — wall section"
 tolerance_in: 0.0625
 
+basis_of_record:   # what record this model reflects (required)
+  documents: "Sheet A-501 detail 1 (replace with the drawings/photos actually used)"
+  kind: design_intent      # design_intent | as_built | field_photo | field_survey | mixed | unknown
+  field_verified: not_verified   # verified | partial | not_verified | unknown
 sources:
   - {id: D1, ref: "Sheet A-501 detail 1 (replace)", type: drawing}
 

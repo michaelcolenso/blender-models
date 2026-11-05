@@ -47,6 +47,19 @@ All types share: provenance on every element, failing checks, CI rebuild.
 - Existing-conditions models (defect repair) and proposed-repair models are separate scenes or separate specs. Don't merge them.
 - Models are illustrative/coordination tools, not contract documents. Any render used in a scope, PCO, or resident notice gets that label.
 
+### Spec record fields (enforced by `bm check` and `bm build`)
+
+- `basis_of_record` (required): `documents` (what the model is built from), `kind` (`design_intent`,
+  `as_built`, `field_photo`, `field_survey`, `mixed`, `unknown`), `field_verified` (`verified`, `partial`,
+  `not_verified`, `unknown`), optional `note`. It goes at the top of every report and on every render.
+- `conflicts` (optional): `{topic, note, modeled_per: <source id>, sources: [...]}`, one per source
+  conflict. `modeled_per` must name the governing source. Listed under "Source conflicts" in the report.
+- `assumptions` (optional): `{id, basis}` for assumed parameters not tied to one element.
+- `review` (optional): `{date, by, views: [...], overlays: [{view, verdict: pass|fail|n/a, edge_pct, note}]}`.
+  Add it only after you have looked at the renders. Until then the report says "Visual review: NOT RECORDED".
+- Every render gets a strip appended below the image (never over the geometry): "ILLUSTRATIVE: coordination
+  model, not a contract document", the record kind, field-verification status and provenance counts.
+
 ## Occupied-building use cases
 
 Resident notices (what's happening at their unit), access and sequencing diagrams, protection/staging/egress layouts, and PCO backup showing concealed conditions. For these, include the relevant occupied-building elements (egress paths, protection, staging area, work zone) as their own collection, marked by source like everything else.
