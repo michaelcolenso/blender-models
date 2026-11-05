@@ -1,0 +1,170 @@
+{
+  "revision": "VDC-P2-002",
+  "source_file": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_4D_Construction_Sequence_VDC.blend",
+  "source_sha256": "f51076ba34d85365ceb306f98ee3596e2986875ec9255aa003bfecaafc8d8ea9",
+  "output_file": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase2.blend",
+  "output_sha256": "8bf202292a2938eabe6af7597a9963cd0e71503056ce333ad1c2d35a9222db73",
+  "issue_register_csv": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_VDC_Phase2_Issue_Register.csv",
+  "route_diagnostics_csv": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_VDC_Phase2_Route_Diagnostics.csv",
+  "quantity_refinements_csv": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_VDC_Phase2_Quantity_Refinements.csv",
+  "counts": {
+    "pipe_routes_checked": 66,
+    "new_dwv_routes_checked": 30,
+    "clearance_results": 2025,
+    "issues": 5,
+    "quantity_refinements": 444,
+    "quantity_warnings": 12,
+    "structural_bvh_targets": 46
+  },
+  "issue_counts_by_severity": {
+    "HIGH": 1,
+    "MEDIUM": 4
+  },
+  "issue_counts_by_category": {
+    "STRUCTURAL_CLEARANCE": 1,
+    "SLOPE_DEVIATION": 2,
+    "SLOPE_NOT_DOCUMENTED": 2
+  },
+  "issues": [
+    {
+      "issue_id": "VDC-P2-001",
+      "severity": "HIGH",
+      "category": "STRUCTURAL_CLEARANCE",
+      "status": "OPEN",
+      "unit": "B103",
+      "element_id": "PLM-B103-NEW-PIPE-0007",
+      "element_name": "NEW_ABS_B103_4in_RAISED_FLOOR",
+      "related_element": "BuildingB_SOG_5p5in",
+      "description": "Pipe is within -0.120 ft estimated surface clearance of BuildingB_SOG_5p5in.",
+      "recommended_action": "Confirm penetration, sleeve, underside clearance, or routing intent; coordinate with structural/architectural documents.",
+      "measured_value": -0.12037039796511331,
+      "threshold": 0.25
+    },
+    {
+      "issue_id": "VDC-P2-002",
+      "severity": "MEDIUM",
+      "category": "SLOPE_DEVIATION",
+      "status": "OPEN",
+      "unit": "B101",
+      "element_id": "PLM-B101-DEM-PIPE-0001",
+      "element_name": "EX_CI_B101_BR2_lav_n",
+      "related_element": "",
+      "description": "Computed slope 0.319 in/ft differs from documented 0.250 in/ft by 0.069 in/ft.",
+      "recommended_action": "Reconcile model centerline with design intent or update documented slope.",
+      "measured_value": 0.06874603717640926,
+      "threshold": 0.0625
+    },
+    {
+      "issue_id": "VDC-P2-003",
+      "severity": "MEDIUM",
+      "category": "SLOPE_NOT_DOCUMENTED",
+      "status": "OPEN",
+      "unit": "SITE",
+      "element_id": "CIV-SITE-EXG-PIPE-0001",
+      "element_name": "EX_Side_Sewer_Main_8in",
+      "related_element": "",
+      "description": "Slope is not documented for EX_Side_Sewer_Main_8in.",
+      "recommended_action": "Obtain design/field slope confirmation; do not infer slope from modeled centerline alone.",
+      "measured_value": null,
+      "threshold": null
+    },
+    {
+      "issue_id": "VDC-P2-004",
+      "severity": "MEDIUM",
+      "category": "SLOPE_DEVIATION",
+      "status": "OPEN",
+      "unit": "B101",
+      "element_id": "PLM-B101-NEW-PIPE-0001",
+      "element_name": "NEW_ABS_B101_2in_lav_n",
+      "related_element": "",
+      "description": "Computed slope 0.319 in/ft differs from documented 0.250 in/ft by 0.069 in/ft.",
+      "recommended_action": "Reconcile model centerline with design intent or update documented slope.",
+      "measured_value": 0.06874603717640926,
+      "threshold": 0.0625
+    },
+    {
+      "issue_id": "VDC-P2-005",
+      "severity": "MEDIUM",
+      "category": "SLOPE_NOT_DOCUMENTED",
+      "status": "OPEN",
+      "unit": "B103",
+      "element_id": "PLM-B103-NEW-PIPE-0007",
+      "element_name": "NEW_ABS_B103_4in_RAISED_FLOOR",
+      "related_element": "",
+      "description": "Slope is not documented for NEW_ABS_B103_4in_RAISED_FLOOR.",
+      "recommended_action": "Obtain design/field slope confirmation; do not infer slope from modeled centerline alone.",
+      "measured_value": null,
+      "threshold": null
+    }
+  ],
+  "quantity_warnings": [
+    {
+      "object": "B101_FireSeal_1",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B101_FireSeal_2",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B101_FireSeal_3",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B102_FireSeal_1",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B102_FireSeal_2",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B102_FireSeal_3",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B103_FireSeal_1",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B103_FireSeal_2",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B103_FireSeal_3",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B104_FireSeal_1",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B104_FireSeal_2",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    },
+    {
+      "object": "B104_FireSeal_3",
+      "reason": "Could not compute projected mesh area; retained prior basis."
+    }
+  ],
+  "validation_parameters": {
+    "sample_spacing_ft": 0.25,
+    "pipe_clearance_ft": 0.25,
+    "structure_clearance_ft": 0.25,
+    "radiant_clearance_ft": 0.5,
+    "documented_slope_tolerance_in_per_ft": 0.0625,
+    "review_slope_range_in_per_ft": [
+      0.125,
+      0.5
+    ]
+  },
+  "resolved_issues": {
+    "VDC-P2-001": "Designed penetration: 6in sleeve PLM-B103-NEW-SLEEVE-0001 installed at SOG penetration (123.39, 28.11); annular gap 1.35 in; sleeve extends +2in above slab top / -3in below soffit; resolved in revision VDC-P2-002"
+  },
+  "open_issue_ids": [
+    "VDC-P2-002",
+    "VDC-P2-003",
+    "VDC-P2-004",
+    "VDC-P2-005"
+  ]
+}

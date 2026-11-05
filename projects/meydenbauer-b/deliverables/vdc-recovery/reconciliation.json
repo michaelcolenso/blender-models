@@ -1,0 +1,738 @@
+{
+  "status": "RECOVERED_FOR_INSPECTION",
+  "scope": "VDC (4d-fixes) and B101 v4 data compared with canonical state; nothing imported",
+  "sources": {
+    "vdc": {
+      "tag": "archive/2026-11-03/meydenbauer/4d-fixes",
+      "commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "prefix": "deliverables/meydenbauer-b/vdc"
+    },
+    "b101": {
+      "tag": "archive/2026-11-03/meydenbauer/b101-v4-executed",
+      "commit": "70fc8d60ef50006c27222ad7fbd50bf519815cac",
+      "prefix": "deliverables/meydenbauer-b/b101-v4"
+    }
+  },
+  "recovered_files": 80,
+  "left_in_archive": {
+    "files": 50,
+    "megabytes": 484.5
+  },
+  "identifiers": {
+    "vdc_scheme": "DISCIPLINE-UNIT-STATUS-TYPE-NNNN (e.g. PLM-B101-NEW-PIPE-0001); one per Blender object",
+    "canonical_scheme": "meydenbauer-b:<kind>:<unit>:<node_a>:<node_b> from the P1.02 vector extraction",
+    "vdc_objects": 2980,
+    "vdc_ids_unique": true,
+    "vdc_ids_in_canonical": 0,
+    "crosswalk": "unit level only (B101 -> meydenbauer-b:unit:b-101). VDC new pipe is 30 schematic routes; canonical is 136 extracted segments. No 1:1 element mapping exists.",
+    "vdc_by_discipline_status": {
+      "ARCHITECTURE/EXISTING_CONTEXT": 1905,
+      "CARPENTRY/EXISTING_REMAIN": 24,
+      "CARPENTRY/NEW": 24,
+      "CIVIL/EXISTING_REMAIN": 5,
+      "CONCRETE/DEMOLITION": 41,
+      "CONCRETE/NEW": 44,
+      "DOCUMENTATION/RECORD": 5,
+      "EARTHWORK/EXISTING_REMAIN": 1,
+      "EARTHWORK/NEW": 123,
+      "FINISHES/NEW": 4,
+      "FINISHES/REINSTALLED": 28,
+      "FIRESTOPPING/NEW": 12,
+      "GENERAL/ANIMATION": 147,
+      "GENERAL_REQUIREMENTS/TEMPORARY": 9,
+      "HVAC/EXISTING_PROTECT": 2,
+      "INTERIORS/DEMOLITION": 12,
+      "INTERIORS/NEW": 28,
+      "LANDSCAPE/EXISTING_CONTEXT": 166,
+      "MOISTURE_PROTECTION/NEW": 45,
+      "PLUMBING/DEMOLITION": 33,
+      "PLUMBING/EXISTING_REMAIN": 2,
+      "PLUMBING/NEW": 182,
+      "PLUMBING/REINSTALLED": 60,
+      "PLUMBING/TEST": 47,
+      "STRUCTURE/EXISTING_REMAIN": 22,
+      "VISUALIZATION/ANIMATION": 9
+    }
+  },
+  "units_and_methods": {
+    "coordinates": "Both in feet in the same plan frame: VDC new-route endpoints lie a median 0.86 ft from canonical segments of the same unit.",
+    "vdc_quantities": "Blender final-state geometry at frame 672: curve centerline length, mesh areas/volumes (CF).",
+    "canonical_quantities": "P1.02 extraction: segment length (LF); slab cut and excavation by scenario footprint and depth field (SF, CY bank).",
+    "comparable": [
+      "new ABS length"
+    ],
+    "not_like_for_like": [
+      "VDC slab cut is one modeled cut set; canonical carries S1/S2/S3 scenarios",
+      "VDC bedding+backfill volume is not canonical bank excavation (different boundary)"
+    ]
+  },
+  "by_unit": [
+    {
+      "unit": "B101",
+      "canonical_id": "meydenbauer-b:unit:b-101",
+      "new_abs_lf": {
+        "vdc": 72.59,
+        "canonical": 66.21,
+        "delta": 6.38
+      },
+      "vdc_demolition_lf": 72.59,
+      "slab_cut_sf": {
+        "vdc": 166.17,
+        "canonical_s2": 152.09
+      },
+      "excavation_cy": {
+        "vdc_bedding_plus_backfill": 34.46,
+        "canonical_s2_bank": 18.7
+      }
+    },
+    {
+      "unit": "B102",
+      "canonical_id": "meydenbauer-b:unit:b-102",
+      "new_abs_lf": {
+        "vdc": 76.06,
+        "canonical": 85.21,
+        "delta": -9.15
+      },
+      "vdc_demolition_lf": 76.06,
+      "slab_cut_sf": {
+        "vdc": 172.88,
+        "canonical_s2": 174.41
+      },
+      "excavation_cy": {
+        "vdc_bedding_plus_backfill": 47.89,
+        "canonical_s2_bank": 20.92
+      }
+    },
+    {
+      "unit": "B103",
+      "canonical_id": "meydenbauer-b:unit:b-103",
+      "new_abs_lf": {
+        "vdc": 93.3,
+        "canonical": 64.81,
+        "delta": 28.49
+      },
+      "vdc_demolition_lf": 62.62,
+      "slab_cut_sf": {
+        "vdc": 137.42,
+        "canonical_s2": 144.91
+      },
+      "excavation_cy": {
+        "vdc_bedding_plus_backfill": 31.18,
+        "canonical_s2_bank": 18.13
+      }
+    },
+    {
+      "unit": "B104",
+      "canonical_id": "meydenbauer-b:unit:b-104",
+      "new_abs_lf": {
+        "vdc": 69.7,
+        "canonical": 96.51,
+        "delta": -26.81
+      },
+      "vdc_demolition_lf": 69.7,
+      "slab_cut_sf": {
+        "vdc": 158.41,
+        "canonical_s2": 214.7
+      },
+      "excavation_cy": {
+        "vdc_bedding_plus_backfill": 31.17,
+        "canonical_s2_bank": 24.61
+      }
+    }
+  ],
+  "totals": {
+    "new_abs_lf": {
+      "vdc": 311.65,
+      "canonical": 312.739,
+      "delta_pct": -0.35
+    },
+    "slab_cut_sf": {
+      "vdc": 634.88,
+      "canonical_s1": 590.07,
+      "canonical_s2": 686.12,
+      "canonical_s3": 990.96
+    },
+    "excavation_cy": {
+      "vdc_bedding_plus_backfill": 144.71,
+      "canonical_s1_bank": 71.62,
+      "canonical_s2_bank": 82.35,
+      "canonical_s3_bank": 157.82
+    }
+  },
+  "routes": {
+    "new_routes": 30,
+    "endpoint_offset_median_ft": 0.86,
+    "endpoint_offset_max_ft": 24.27,
+    "routes_over_5ft_from_canonical": [
+      "NEW_ABS_B101_4in_MAIN",
+      "NEW_ABS_B102_3in_kitchen",
+      "NEW_ABS_B102_4in_MAIN",
+      "NEW_ABS_B102_6in_LATERAL_18IN_LIMIT",
+      "NEW_ABS_B103_4in_RAISED_FLOOR",
+      "NEW_ABS_B103_6in_LATERAL_18IN_LIMIT",
+      "NEW_ABS_B104_3in_laundry"
+    ],
+    "detail": [
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0001",
+        "name": "NEW_ABS_B101_2in_lav_n",
+        "unit": "B101",
+        "length_ft": 11.9202,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          0.74,
+          0.1
+        ],
+        "slope_check": "DEVIATES_FROM_DOCUMENTED"
+      },
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0002",
+        "name": "NEW_ABS_B101_2in_lav_s",
+        "unit": "B101",
+        "length_ft": 3.4621,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          0.7,
+          0.1
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0003",
+        "name": "NEW_ABS_B101_3in_bath_n",
+        "unit": "B101",
+        "length_ft": 5.09,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          0.86,
+          0.1
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0004",
+        "name": "NEW_ABS_B101_3in_bath_s",
+        "unit": "B101",
+        "length_ft": 4.1614,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          1.12,
+          0.1
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0005",
+        "name": "NEW_ABS_B101_3in_laundry",
+        "unit": "B101",
+        "length_ft": 1.0196,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          1.37,
+          0.51
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0006",
+        "name": "NEW_ABS_B101_4in_MAIN",
+        "unit": "B101",
+        "length_ft": 45.4323,
+        "nominal_in": 4.0,
+        "endpoint_offsets_ft": [
+          17.95,
+          0.1
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B101-NEW-PIPE-0007",
+        "name": "NEW_ABS_B101_6in_LATERAL_18IN_LIMIT",
+        "unit": "B101",
+        "length_ft": 1.5003,
+        "nominal_in": 6.0,
+        "endpoint_offsets_ft": [
+          0.1,
+          0.16
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0001",
+        "name": "NEW_ABS_B102_2in_lav_n",
+        "unit": "B102",
+        "length_ft": 7.2655,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          3.51,
+          3.2
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0002",
+        "name": "NEW_ABS_B102_2in_lav_s",
+        "unit": "B102",
+        "length_ft": 6.4937,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          1.67,
+          1.46
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0003",
+        "name": "NEW_ABS_B102_3in_bath_n",
+        "unit": "B102",
+        "length_ft": 4.7565,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          1.2,
+          0.12
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0004",
+        "name": "NEW_ABS_B102_3in_bath_s",
+        "unit": "B102",
+        "length_ft": 5.1278,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          2.06,
+          1.46
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0005",
+        "name": "NEW_ABS_B102_3in_kitchen",
+        "unit": "B102",
+        "length_ft": 1.3333,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          19.82,
+          18.5
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0006",
+        "name": "NEW_ABS_B102_3in_laundry",
+        "unit": "B102",
+        "length_ft": 1.1511,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          1.11,
+          0.0
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0007",
+        "name": "NEW_ABS_B102_4in_MAIN",
+        "unit": "B102",
+        "length_ft": 48.4342,
+        "nominal_in": 4.0,
+        "endpoint_offsets_ft": [
+          18.5,
+          4.48
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B102-NEW-PIPE-0008",
+        "name": "NEW_ABS_B102_6in_LATERAL_18IN_LIMIT",
+        "unit": "B102",
+        "length_ft": 1.5003,
+        "nominal_in": 6.0,
+        "endpoint_offsets_ft": [
+          4.48,
+          5.97
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0001",
+        "name": "NEW_ABS_B103_2in_lav_n",
+        "unit": "B103",
+        "length_ft": 6.5059,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          4.25,
+          0.4
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0002",
+        "name": "NEW_ABS_B103_2in_lav_s",
+        "unit": "B103",
+        "length_ft": 9.131,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          0.69,
+          0.17
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0003",
+        "name": "NEW_ABS_B103_3in_bath_n",
+        "unit": "B103",
+        "length_ft": 5.7986,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          1.81,
+          0.49
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0004",
+        "name": "NEW_ABS_B103_3in_bath_s",
+        "unit": "B103",
+        "length_ft": 7.7541,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          2.28,
+          0.17
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0005",
+        "name": "NEW_ABS_B103_3in_laundry",
+        "unit": "B103",
+        "length_ft": 0.337,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          0.86,
+          0.54
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0006",
+        "name": "NEW_ABS_B103_4in_MAIN",
+        "unit": "B103",
+        "length_ft": 31.5901,
+        "nominal_in": 4.0,
+        "endpoint_offsets_ft": [
+          0.54,
+          4.45
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0007",
+        "name": "NEW_ABS_B103_4in_RAISED_FLOOR",
+        "unit": "B103",
+        "length_ft": 30.6833,
+        "nominal_in": 4.0,
+        "endpoint_offsets_ft": [
+          14.86,
+          24.27
+        ],
+        "slope_check": "NOT_DOCUMENTED"
+      },
+      {
+        "vdc_element_id": "PLM-B103-NEW-PIPE-0008",
+        "name": "NEW_ABS_B103_6in_LATERAL_18IN_LIMIT",
+        "unit": "B103",
+        "length_ft": 1.5003,
+        "nominal_in": 6.0,
+        "endpoint_offsets_ft": [
+          4.45,
+          5.95
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0001",
+        "name": "NEW_ABS_B104_2in_lav_n",
+        "unit": "B104",
+        "length_ft": 5.1846,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          0.33,
+          0.13
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0002",
+        "name": "NEW_ABS_B104_2in_lav_s",
+        "unit": "B104",
+        "length_ft": 3.6141,
+        "nominal_in": 2.0,
+        "endpoint_offsets_ft": [
+          3.01,
+          0.13
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0003",
+        "name": "NEW_ABS_B104_3in_bath_n",
+        "unit": "B104",
+        "length_ft": 3.4793,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          0.85,
+          0.13
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0004",
+        "name": "NEW_ABS_B104_3in_bath_s",
+        "unit": "B104",
+        "length_ft": 2.2787,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          2.33,
+          0.13
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0005",
+        "name": "NEW_ABS_B104_3in_laundry",
+        "unit": "B104",
+        "length_ft": 10.1314,
+        "nominal_in": 3.0,
+        "endpoint_offsets_ft": [
+          6.06,
+          0.13
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0006",
+        "name": "NEW_ABS_B104_4in_MAIN",
+        "unit": "B104",
+        "length_ft": 43.5132,
+        "nominal_in": 4.0,
+        "endpoint_offsets_ft": [
+          1.03,
+          0.13
+        ],
+        "slope_check": "PASS"
+      },
+      {
+        "vdc_element_id": "PLM-B104-NEW-PIPE-0007",
+        "name": "NEW_ABS_B104_6in_LATERAL_18IN_LIMIT",
+        "unit": "B104",
+        "length_ft": 1.5003,
+        "nominal_in": 6.0,
+        "endpoint_offsets_ft": [
+          0.13,
+          0.13
+        ],
+        "slope_check": "PASS"
+      }
+    ]
+  },
+  "b101_v4": {
+    "calibration_report_states_pass": true,
+    "new_main_plan_length_ft": 27.4,
+    "retained_prior_abs_plan_length_ft": 26.83,
+    "scope_correction": "Previously repaired kitchen/dining 4in ABS is retained, not new work (B101 v4).",
+    "vdc_b101_new_lf": 72.59,
+    "canonical_b101_lf": 66.21,
+    "control_points": 45,
+    "control_offset_ft_by_role": {
+      "bath_lower_common": {
+        "n": 4,
+        "median": 0.41,
+        "max": 0.48
+      },
+      "existing_to_side_sewer": {
+        "n": 2,
+        "median": 9.03,
+        "max": 17.89
+      },
+      "laundry": {
+        "n": 2,
+        "median": 0.46,
+        "max": 0.72
+      },
+      "lav_lower": {
+        "n": 2,
+        "median": 0.49,
+        "max": 0.59
+      },
+      "lav_top_common": {
+        "n": 4,
+        "median": 0.14,
+        "max": 0.18
+      },
+      "lav_top_left": {
+        "n": 3,
+        "median": 0.21,
+        "max": 0.21
+      },
+      "lav_top_right": {
+        "n": 3,
+        "median": 0.01,
+        "max": 0.18
+      },
+      "new_wet_core_main": {
+        "n": 6,
+        "median": 0.1,
+        "max": 0.2
+      },
+      "remain_kitchen_dining": {
+        "n": 4,
+        "median": 11.49,
+        "max": 19.59
+      },
+      "replacement_18in": {
+        "n": 2,
+        "median": 0.13,
+        "max": 0.16
+      },
+      "shower_lower": {
+        "n": 2,
+        "median": 0.86,
+        "max": 1.23
+      },
+      "shower_upper": {
+        "n": 3,
+        "median": 0.1,
+        "max": 0.63
+      },
+      "wc_common": {
+        "n": 3,
+        "median": 0.66,
+        "max": 0.69
+      },
+      "wc_lower": {
+        "n": 3,
+        "median": 0.08,
+        "max": 0.66
+      },
+      "wc_upper": {
+        "n": 2,
+        "median": 0.22,
+        "max": 0.43
+      }
+    }
+  },
+  "schedule": {
+    "vdc": {
+      "id": "MEYD-BL-001",
+      "activities": 8,
+      "working_days": 29.0,
+      "start": "2027-01-04",
+      "finish": "2027-02-11",
+      "structure": "eight serial project-wide phases; retimes the existing 672-frame animation"
+    },
+    "canonical": {
+      "activities": 32,
+      "working_days": 81.5,
+      "calendar_days_approx": 115,
+      "structure": "eight activities per unit, four units chained; S2 @ 3.5 ft strawman"
+    },
+    "comparable": false,
+    "why": "Different structure (project-wide phases vs unit-by-unit occupied sequence) and different scope, crew and occupancy assumptions. Neither duration is an alternative to the other until those assumptions are reconciled."
+  },
+  "issues": {
+    "vdc": [
+      {
+        "issue_id": "VDC-P2-001",
+        "severity": "HIGH",
+        "category": "STRUCTURAL_CLEARANCE",
+        "status": "RESOLVED",
+        "unit": "B103",
+        "element_name": "NEW_ABS_B103_4in_RAISED_FLOOR"
+      },
+      {
+        "issue_id": "VDC-P2-002",
+        "severity": "MEDIUM",
+        "category": "SLOPE_DEVIATION",
+        "status": "OPEN",
+        "unit": "B101",
+        "element_name": "EX_CI_B101_BR2_lav_n"
+      },
+      {
+        "issue_id": "VDC-P2-003",
+        "severity": "MEDIUM",
+        "category": "SLOPE_NOT_DOCUMENTED",
+        "status": "OPEN",
+        "unit": "SITE",
+        "element_name": "EX_Side_Sewer_Main_8in"
+      },
+      {
+        "issue_id": "VDC-P2-004",
+        "severity": "MEDIUM",
+        "category": "SLOPE_DEVIATION",
+        "status": "OPEN",
+        "unit": "B101",
+        "element_name": "NEW_ABS_B101_2in_lav_n"
+      },
+      {
+        "issue_id": "VDC-P2-005",
+        "severity": "MEDIUM",
+        "category": "SLOPE_NOT_DOCUMENTED",
+        "status": "OPEN",
+        "unit": "B103",
+        "element_name": "NEW_ABS_B103_4in_RAISED_FLOOR"
+      }
+    ],
+    "canonical": [
+      {
+        "id": "meydenbauer-b:issue:poc-depth",
+        "title": "POC inverts undocumented",
+        "severity": "critical",
+        "resolution_status": "open"
+      },
+      {
+        "id": "meydenbauer-b:issue:groundwater",
+        "title": "Groundwater basis unresolved",
+        "severity": "high",
+        "resolution_status": "open"
+      }
+    ]
+  },
+  "scope_coverage": {
+    "vdc_only": [
+      "CALLOUT",
+      "CASEWORK",
+      "CLEANOUT",
+      "COATING_AREA",
+      "FINISH",
+      "FIRESTOP",
+      "FITTING",
+      "FIXTURE",
+      "FOOTING",
+      "FRAMING_MEMBER",
+      "HYDRO_TEST_ROUTE",
+      "INSPECTION_PATH",
+      "INSTALLATION_SEGMENT",
+      "IN_SLAB_UTILITY",
+      "MEMBRANE_AREA",
+      "PATCH_AREA",
+      "PIPE_SLEEVE",
+      "POURBACK_AREA",
+      "PROTECTION_AREA",
+      "REINFORCEMENT",
+      "SLAB_AREA",
+      "SOIL_VOLUME",
+      "STAGING_AREA",
+      "TRACER_WIRE",
+      "VAPOR_BARRIER_AREA",
+      "WALL",
+      "WALL_OPENING_AREA"
+    ],
+    "canonical_only": [
+      "S1/S2/S3 trench scenarios",
+      "allowance decisions",
+      "logistics haul routes",
+      "unit-by-unit occupied sequence"
+    ]
+  },
+  "notice": "Illustrative, not a contract document. Recovered data is provisional or assumed as labelled in its sources; nothing here is field-verified."
+}

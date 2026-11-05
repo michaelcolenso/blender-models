@@ -1,0 +1,149 @@
+# Role & Objective
+You are an expert 3D Technical Artist, Architectural Visualizer, and Blender Python (`bpy`) Developer. Your task is to build a highly structured, dimensionally accurate, and modular 3D model in Blender of **Building B (Ground Floor Units B-101, B-102, B-103, and B-104)** at the **101 Meydenbauer Condominiums** for an **Underground Drain-Waste (DW) Pipe Replacement Project**.
+
+The primary goal of this model is **4D Construction Phasing Animation**. Every layer of the building—from sub-grade soil and under-slab piping up to concrete slabs, waterproofing membranes, drywall patches, custom tiles, and plumbing fixtures—must be modeled as separate, cleanly grouped, and animatable objects.
+
+---
+
+# 1. Scene Setup & Scene Hierarchy (Collections)
+Set Blender units to **Imperial (Feet / Inches)**. Organize the Outliner into the following strict Collection hierarchy so construction phases can be animated via visibility toggles, Boolean modifiers, and keyframed transforms:
+
+* `00_Site_&_Context`
+  * `Bldg_B_Shell_&_Upper_Stacks` (3-story building context, 12 vertical DWV stacks continuing to floors 2 & 3)
+  * `East_Garages_&_Planter_Strip` (Separate garages located ~10 ft East of Building B)
+  * `Side_Sewer_Main_6in` (Existing 6" main running South-to-North under the East garages to the Sewer Station)
+  * `Staging_Area` (1,000 sq. ft. fenced laydown/trailer area along SE 3rd St, East of garages)
+* `01_Structural_Base`
+  * `Subgrade_&_Soil` (Excavation base, 2.5 ft to 4.5 ft depth below slab)
+  * `Foundation_Footings` (Cast-in-place footings with 2.5" duct sleeves / pipe sleeves)
+  * `Precast_Concrete_Walls` (5" to 8" thick structural precast unit separation, corridor, elevator, and stair core walls)
+  * `Wood_Stud_Partitions` (Interior 2x4 studs @ 16" O.C.)
+  * `Concrete_Slab_Unmodified` (Main 5"–6" slab-on-grade outside of trench zones; Note: Unit B-103 includes a raised floor assembly over structural slab)
+* `02_Existing_Conditions_&_Demo`
+  * `Ex_Cast_Iron_Pipes_DEMO` (Corroded 3", 4", and 6" cast iron under-slab pipes, p-traps, and fittings to be removed)
+  * `Ex_Unit101_&_104_Prior_ABS_REMAIN` (Previously replaced 4" Sch 40 ABS in Unit B-101 and B-104 Kitchen/Dining that stays in place)
+  * `Concrete_Slab_Trench_Cuts_DEMO` (~700 sq. ft. total sawcut slab sections following pipe routing paths)
+  * `Drywall_Cutouts_DEMO` (Lower wall cutouts up to 10 pipe diameters above slab at vertical stacks)
+* `03_New_Plumbing_DWV`
+  * `New_ABS_UnderSlab_4in_6in` (Black Schedule 40 Solid Core ABS, sloped 1/4" per foot toward East side sewer connections 18" outside building footprint)
+  * `New_ABS_Branches_&_Traps` (2" and 3" ABS branch lines, P-traps, floor drains with 1/4" copper trap primer lines)
+  * `New_Stack_TieIns_&_Cleanouts` (Wyes, 1/8 bends, transition couplings, 4" base-of-stack cleanouts, 6" exterior ground cleanouts)
+  * `Firestop_&_Sleeves` (UL-listed firestop collars/sealant, 2mm circular steel escutcheon plates at wall/slab penetrations)
+* `04_Trench_Backfill_&_Slab_Pourback`
+  * `Pipe_Zone_Bedding` (4" gravel bedding below pipe to 12" compacted granular fill above pipe)
+  * `General_Trench_Backfill` (Compacted lifts to bottom of slab)
+  * `Vapor_Barrier_Stegowrap` (15-mil Class A Stegowrap lapped onto existing vapor barrier)
+  * `Rebar_Dowels_&_Grid` (#4 rebar grid @ 12" O.C. max, #4 dowels epoxied 4" min into existing slab edges)
+  * `Concrete_Pourback` (Min 5" thick or matching existing, 3000 psi concrete with Kryton KIM crystalline additive)
+* `05_Wall_&_Floor_Substrates`
+  * `Wall_Framing_Nailers` (New 2x4 vertical wood nailers inside wall cavities)
+  * `Gypsum_Board_Patches` (UL U305 single-layer 5/8" Type X and UL U334 double-layer staggered 5/8" Firecore patches, fire tape, and red acoustical/fire sealant at joints)
+  * `Vapor_Mitigating_Epoxy_Primer` (Applied over bare concrete slab-on-grade)
+  * `Radiant_Heating_Coils` (220V heated floor coil mats in Unit B-102 and B-104 bathrooms)
+  * `Waterproofing_Membrane` (TCNA crack isolation and waterproofing membrane in wet areas)
+* `06_Interior_Finishes_&_Fixtures`
+  * `Unit_B101_Finishes`, `Unit_B102_Finishes`, `Unit_B103_Finishes`, `Unit_B104_Finishes`
+  * `Cabinets_&_Countertops` (Vanities, kitchen cabinets, quartz countertops)
+  * `Plumbing_Fixtures` (Toilets, tubs, showers, lavatories, kitchen sinks, washer/dryers, water heaters)
+  * `Temporary_Protection` (Floor-to-ceiling dust partitions, walk-off mats, temporary bypass piping)
+
+---
+
+# 2. Structural & Spatial Layout Specifications
+1. **Building Footprint & Grid**:
+   * Building B is oriented North-to-South with 4 ground-floor units: **Unit B-101 (North)**, **Unit B-102**, **Unit B-103**, and **Unit B-104 (South)**.
+   * Longitudinal Grid Lines (North to South):
+     * Grid A to B: `31'-5"` | B to C: `3'-3"` | C to D: `8'-0"` | D to E: `3'-3"` (Stair/Elevator Core 1)
+     * Grid E to F: `27'-1"` | F to G: `7'-0"` | G to H: `7'-0"` (Center Demising Zone / Match Line)
+     * Grid H to J: `27'-1"` | J to K: `3'-3"` | K to L: `8'-0"` | L to M: `3'-3"` (Stair/Elevator Core 2)
+     * Grid M to N: `31'-5"`
+   * Transverse Grid Lines (East to West, Grid 6 to Grid 1): Spans `6'-5"`, `13'-8.5"`, `19'-10"`, `19'-5"`, `14'-5"`, `6'-4"` (Featuring angled bay windows/living room projections on the West lakeside facade).
+2. **Unit Room Layouts**:
+   * **East Side (Grid 1–3)**: Master Bathrooms, Guest Bathrooms, Bedrooms, Laundry Rooms, and Water Heater closets. Four 4" building drain lines exit the East foundation wall (18" beyond exterior wall face) to tie into the 6" building sewer / 8" side sewer main under the East garages.
+   * **Center/West Side (Grid 3–5)**: Kitchens (with sinks `KS-1` and dishwashers `DS-1`), Dining Rooms, Living Rooms, and Family Rooms facing West toward Lake Washington.
+
+---
+
+# 3. Detailed Component & Material Specifications
+Create distinct PBR materials in Blender so technical layers and finishes are visually clear:
+
+### A. Plumbing & Trench Assembly (Detail 10/P5.1 & 1/P5.0)
+* **Existing Cast Iron (`Ex_Cast_Iron_Pipes_DEMO`)**: Dark rusted metallic shader; 3", 4", and 6" diameters buried 2.5' to 4.5' deep.
+* **New ABS Piping (`New_ABS_UnderSlab_4in_6in`)**: Glossy black plastic shader (Schedule 40 Solid Core ABS; 4" OD = 4.5", wall = 0.237"; 6" OD = 6.625", wall = 0.28"). Include insulated copper tracer wire alongside underground nonmetallic pipe.
+* **Trench Cross-Section**:
+  * Neat-line trench cut through 5"–6" concrete slab.
+  * 4" compacted gravel bedding below pipe; granular pipe-zone backfill to 12" above top of pipe.
+  * **Stegowrap 15-mil Vapor Barrier**: High-visibility yellow/orange plastic sheet lapped onto existing slab vapor retarder.
+  * **Rebar**: #4 longitudinal bars and #4 transverse dowels @ 12" O.C. (every other bar embedded 4" min into existing slab face with Hilti HIT-HY 200 epoxy), 1.5" clearance.
+  * **Concrete Pourback**: 3000 psi concrete shader with subtle crystalline texture representing Kryton KIM additive.
+
+### B. Wall Patching & Firestopping (Figures 5, 6, 7 & Detail 6, 7/P5.1)
+* **Stack Connections**: Cut existing vertical stacks at least 10 pipe diameters above the slab base. Show no-hub transition couplings, wyes, and 4" cleanouts (`Zurn Z-1445-1` wall cleanouts / `Zurn Z-1400-2` scoriated nickel bronze floor cleanouts).
+* **Wall Patch Assemblies**:
+  * Show 2x4 vertical wood nailers added alongside existing 2x4 studs @ 16" O.C.
+  * Show **UL U 305 (1-Hr)** single-layer 5/8" Type X gypsum patch and **UL U 334 (1-Hr)** double-layer staggered 5/8" Firecore gypsum patch (seams overlapping 12" vertically and 24" horizontally) with bright red acoustical/fire sealant in the joints and fire tape.
+
+### C. Unit-Specific Custom Finishes & Fixtures (Per Addendum #1 & Site Photos)
+Model and texture the specific finishes for each unit's restoration phase:
+* **Plumbing Fixtures (Basis of Design)**:
+  * `WC-1`: Kohler Veil `K-6299-0` Wall-Hung Elongated Toilet with concealed wall carrier (Model **Alternate #1** as a toggleable variant: Floor-mounted toilets).
+  * `BT-1`: Kohler Villager `K-715-0` 60" Cast Iron Bathtub (Model **Alternate #2** as a toggleable new tub replacement).
+  * `LAV-1`: Kohler Caxton `K-2210` Undermount Lavatory (`1-1/4"` drain, `1-1/2"` trap).
+  * `SH-1`: Alcove shower with glass enclosure and Kohler Rite-Temp valve.
+  * `KS-1`: Grohe `31815SD0` Stainless Steel Kitchen Sink + Dishwasher (`DS-1`).
+  * `WB-1` & `WH-1`: LG `WM4000HWA` Front-Load Washer/Dryer + Rheem 40-Gal Electric Water Heater.
+* **Unit B-101 Finishes**:
+  * Guest Bath: `PT-6` Evolution Ivory Polished Porcelain (`12x24`) floor & `PT-7` (`2x2`) shower pan.
+  * Master Bath: `PT-8` Bernini Bianco Polished Porcelain (`12x24`) tub/shower surround & `C-1` Soft Sand/Tone Blue carpet (`60 SF`).
+* **Unit B-102 Finishes (Match Reference Photos)**:
+  * Guest Bath & Laundry Floor: `PT-10` Daltile Matte White Octagon tile with White/Gray Dot mosaic.
+  * Guest Bath Vanity & Walls: Light sage/seafoam green painted walls, floating dark gray 2-door vanity cabinet with white integrated-sink countertop, round wood-framed mirror flanked by cylindrical sconce lights, and `GT-1` Ocean Sparkle Sky Blue `2x12` subway glass tile backsplash/accent.
+  * Guest Bath Shower: Frameless hinged glass door, `PT-11` Cashmere Blue penny-round porcelain mosaic shower pan, `PT-12` Elegant Beige `12x24` surround.
+  * Master Bath: `NS-3` Daltile Marble Statuario Honed `12x24` floor and tub/shower surround (white marble with gray veining wrapping the drop-in tub apron and deck), `PT-9` Meta Light Gray `2x2` matte mosaic shower floor.
+  * Bedrooms & Hallway: `EHF-1` European White Oak engineered hardwood (`7.5" x 75"` planks) and `NS-2` Pental Pluvium `12x24` hallway tile.
+* **Unit B-103 Finishes**:
+  * Master & Guest Bath: `PT-1` Shen Series White Shades `12x24`, `PT-2` `2x2` shower mosaic, `PT-3` Marvel Series Black Atlantis Polished `12x24` wall/tub/toilet surrounds.
+  * Laundry: `PT-4` Nobleza Astorga Matte `12x12`.
+  * Hallway, Master Bedroom & Study: `PT-5` Emser Cabin Yosemite Matte `6x24` wood-look tile (Note: route 4" sanitary pipe in raised floor assembly above structural slab in B-103).
+* **Unit B-104 Finishes**:
+  * Living/Kitchen/Bedrooms/Hallway: `EHF-2` Engineered Hardwood (`1,529 SF` Brentwood Tan / Beechwood Oak).
+  * Kitchen: `CAB-1` DeWils Shaker Maple 'Just White' cabinets, `QCT-1` Pental Quartz Borghini Polished countertops (`82 SF`), `CT-1` Torrent White `4x16` ceramic backsplash.
+  * Master & Guest Bath: `CAB-2` DeWils Shadow Gray stained maple cabinets, `QCT-2` Statuario Polished quartz, `NS-2` Pental Pluvium Gesso `12x24` floors/walls, `NS-1` Rockwood Limestone `1x3` herringbone mosaic shower floor, `CT-2` Cotton Gloss `3x12` bevel subway tile tub surround.
+
+---
+
+# 4. Animation Rigging & 4D Phasing Requirements
+Set up the Blender timeline (or Scene View Layers / Geometry Nodes / Custom Properties) with **8 distinct animation phases** controlled by an Empty controller object named `PHASE_CONTROLLER` (with custom integer property `Construction_Phase` from 1 to 8):
+
+1. **Phase 1: Existing Conditions & Borescope Investigation**
+   * Semi-transparent X-ray shader on existing floors and slab showing corroded cast-iron under-slab piping (`Ex_Cast_Iron_Pipes_DEMO`), prior ABS repairs in B-101/B-104, and an animated borescope locator path moving West-to-East from unit toilets to the East side sewer main and South-to-North from Building C's cleanout.
+2. **Phase 2: Site Staging, Containment & Fixture Removal**
+   * Animate the exterior 1,000 sq. ft. fenced staging area along SE 3rd St, floor-to-ceiling dustproof partitions, and temporary bypass piping.
+   * Animate the disconnection and lifting/sliding out of toilets (`WC-1`), bathtubs (`BT-1`), vanities (`LAV-1`), washer/dryers (`WB-1`), and kitchen base cabinets (`KS-1`) to protected storage.
+3. **Phase 3: Selective Demolition, Slab Sawcutting & Excavation**
+   * Animate removal of existing floor tiles/hardwood along trench paths and lower drywall cutouts (up to 10 pipe diameters high at the 12 vertical stacks).
+   * Animate neat-line sawcutting of the 5"–6" concrete slab (`Concrete_Slab_Trench_Cuts_DEMO`), lifting out slab chunks, and excavating trenches 2.5' to 4.5' deep inside the units and 18" outside the East foundation wall.
+   * Animate removal of corroded cast iron pipes while keeping vertical stacks supported above cuts.
+4. **Phase 4: New Schedule 40 ABS Pipe Installation**
+   * Animate placement of 4" gravel bedding, followed by the assembly of black Schedule 40 Solid Core ABS under-slab piping (sloped 1/4" per foot), P-traps, floor drains with trap primers, base-of-stack wyes, 4" cleanouts, and exterior 6" cleanouts (`Zurn Z-1450-6` with 12"x12" concrete pad).
+   * Highlight UL-listed firestop sleeves and 2mm circular steel plates at wall/footing penetrations.
+5. **Phase 5: Water Leak Testing (WP #2)**
+   * Animate test plugs sealing system openings and a blue water shader filling the new ABS piping system (10-foot head of water / flood level test) to visually represent the City of Bellevue inspection prior to concealment.
+6. **Phase 6: Trench Backfill, Vapor Barrier & Concrete Pourback**
+   * Animate compacted granular pipe-zone fill (to 12" above pipe) and general backfill lifts.
+   * Animate laying the 15-mil Stegowrap Class A vapor barrier lapped over existing membrane, drilling/epoxying #4 rebar dowels 4" into existing slab edges, placing #4 longitudinal rebar @ 12" O.C., and pouring 3000 psi concrete with Kryton KIM crystalline additive flush with adjacent slab.
+7. **Phase 7: Wall Patching, Waterproofing & Custom Finish Restoration**
+   * Animate 2x4 wood nailers, single/double-layer 5/8" Type X gypsum patches (UL U305 / U334) with staggered seams, red fire/acoustical sealant, Level 5 drywall finish, and corner-to-corner floor-to-ceiling semigloss latex painting.
+   * Animate application of vapor-mitigating epoxy primer on the slab, 220V radiant heating coils (in B-102 and B-104), TCNA crack-isolation/waterproofing membranes, and the unit-specific porcelain, marble, and engineered hardwood flooring.
+8. **Phase 8: Fixture Reinstallation & Final As-Built State (WP #3)**
+   * Animate reinstallation of cabinets, quartz countertops, appliances, and plumbing fixtures (with toggleable options for Alternate #1 floor-mounted toilets and Alternate #2 new bathtubs).
+   * Include a final "As-Built Callout Overlay" layer showing dimension lines (+/- 2" accuracy) and fitting labels.
+
+---
+
+# 5. Deliverable Format Instructions
+1. Provide a clean, modular **Blender Python (`bpy`) script** (or step-by-step procedural script modules) that generates the collection hierarchy, materials, grid lines, architectural walls/slabs, trench boolean cutters, pipe curves/meshes, and keyframed phase visibility drivers.
+2. Use **non-destructive modeling**:
+   * Use `Bevel`-extruded Bezier/Poly Curves for all piping (`Ex_Cast_Iron`, `New_ABS`, `Side_Sewer`) with accurate outer diameters so slopes and routing can be adjusted easily.
+   * Use **Boolean Modifiers** on the concrete slab and drywall meshes driven by the `Trench_Volume` and `Wall_Cutout` meshes so cuts can be animated smoothly.
+   * Set up an **X-Ray / Cutaway Shader Node Group** on the structural walls and floors so the camera can see underground trenches and in-wall stacks clearly from an isometric or 3/4 perspective view.

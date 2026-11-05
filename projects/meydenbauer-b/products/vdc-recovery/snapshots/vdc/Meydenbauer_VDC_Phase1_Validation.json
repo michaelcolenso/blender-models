@@ -1,0 +1,113 @@
+{
+  "schema_version": "MEYD-VDC-001",
+  "revision": "VDC-P1-001",
+  "source_file": "/mnt/agents/output/meydenbauer_model/upgraded/Meydenbauer_4D_Construction_Sequence_Upgraded.blend",
+  "source_sha256": "1cb3a04f239e6f41acbe3d174f00b47c48df869d21f3e6196a12029f3263889e",
+  "output_file": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_4D_Construction_Sequence_VDC.blend",
+  "output_sha256": "f51076ba34d85365ceb306f98ee3596e2986875ec9255aa003bfecaafc8d8ea9",
+  "schema_file": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_VDC_Data_Spine_Schema.json",
+  "element_register_csv": "/mnt/agents/output/meydenbauer_model/vdc/Meydenbauer_VDC_Element_Register.csv",
+  "counts": {
+    "objects": 2980,
+    "collections": 50,
+    "managed_scope_objects": 753,
+    "context_or_visualization_objects": 2227,
+    "pipe_routes": 66,
+    "installation_segments": 145,
+    "hydro_test_routes": 47,
+    "field_verify_required_objects": 72
+  },
+  "objects_by_discipline": {
+    "PLUMBING": 324,
+    "GENERAL": 147,
+    "ARCHITECTURE": 1905,
+    "LANDSCAPE": 166,
+    "INTERIORS": 40,
+    "GENERAL_REQUIREMENTS": 9,
+    "FINISHES": 32,
+    "FIRESTOPPING": 12,
+    "CARPENTRY": 48,
+    "MOISTURE_PROTECTION": 45,
+    "STRUCTURE": 22,
+    "HVAC": 2,
+    "EARTHWORK": 124,
+    "DOCUMENTATION": 5,
+    "VISUALIZATION": 9,
+    "CIVIL": 5,
+    "CONCRETE": 85
+  },
+  "objects_by_phase": {
+    "04": 276,
+    "03": 231,
+    "01": 2134,
+    "08": 93,
+    "02": 13,
+    "07": 56,
+    "06": 130,
+    "05": 47
+  },
+  "objects_by_status": {
+    "NEW": 462,
+    "ANIMATION": 156,
+    "EXISTING_CONTEXT": 2071,
+    "REINSTALLED": 88,
+    "DEMOLITION": 86,
+    "TEMPORARY": 9,
+    "EXISTING_REMAIN": 54,
+    "EXISTING_PROTECT": 2,
+    "RECORD": 5,
+    "TEST": 47
+  },
+  "objects_by_component_type": {
+    "INSTALLATION_SEGMENT": 145,
+    "ANIMATION_CONTROL": 83,
+    "CONTEXT": 2071,
+    "FITTING": 37,
+    "FIXTURE": 60,
+    "CLEANOUT": 20,
+    "WALL_OPENING_AREA": 12,
+    "PROTECTION_AREA": 8,
+    "COATING_AREA": 4,
+    "PATCH_AREA": 28,
+    "FIRESTOP": 12,
+    "FINISH": 12,
+    "CASEWORK": 16,
+    "FRAMING_MEMBER": 48,
+    "PIPE_ROUTE": 66,
+    "MEMBRANE_AREA": 4,
+    "SLAB_AREA": 5,
+    "IN_SLAB_UTILITY": 2,
+    "BEDDING_VOLUME": 82,
+    "INSPECTION_PATH": 6,
+    "CALLOUT": 5,
+    "CAMERA_LIGHT": 9,
+    "WALL": 13,
+    "FOOTING": 4,
+    "BACKFILL_VOLUME": 41,
+    "HYDRO_TEST_ROUTE": 47,
+    "POURBACK_AREA": 41,
+    "REINFORCEMENT": 3,
+    "INSPECTION_MARKER": 8,
+    "STAGING_AREA": 1,
+    "VAPOR_BARRIER_AREA": 41,
+    "SOIL_VOLUME": 1,
+    "TRACER_WIRE": 4,
+    "SLAB_CUT_AREA": 41
+  },
+  "validation": {
+    "blocking_issues": {
+      "missing_required": [],
+      "duplicate_element_ids": [],
+      "managed_scope_missing_fields": [],
+      "pipe_routes_missing_diameter": [],
+      "unresolved_parent_routes": []
+    },
+    "open_data_items": {
+      "pipe_routes_with_slope_not_documented": [
+        "EX_Side_Sewer_Main_8in",
+        "NEW_ABS_B103_4in_RAISED_FLOOR"
+      ]
+    }
+  },
+  "pass": true
+}

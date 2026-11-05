@@ -1,0 +1,34 @@
+id,component,demo_status,x_ft,y_ft,modeled_basis,confidence_note
+J1,existing junction fitting,REMOVE,23.25,12.00,Wye/combination — field verify,Plan topology; exact existing type FIELD VERIFY
+J2,existing junction fitting,REMOVE,23.25,3.25,Wye/combination — field verify,Plan topology; exact existing type FIELD VERIFY
+J3,existing junction fitting,REMOVE,23.25,10.00,Wye/combination — field verify,Plan topology; exact existing type FIELD VERIFY
+J4,existing junction fitting,REMOVE,23.25,13.25,Wye/combination — field verify,Plan topology; exact existing type FIELD VERIFY
+J5,existing junction fitting,REMOVE,16.05,12.80,Wye/tee as applicable,Plan topology; exact existing type FIELD VERIFY
+J6,existing junction fitting,REMOVE,15.10,12.80,Wye/tee as applicable,Plan topology; exact existing type FIELD VERIFY
+J7,existing junction fitting,REMOVE,16.10,4.00,Wye/tee as applicable,Plan topology; exact existing type FIELD VERIFY
+J8,existing junction fitting,REMOVE,19.30,4.00,Wye/tee as applicable,Plan topology; exact existing type FIELD VERIFY
+J9,existing junction fitting,REMOVE,16.85,14.00,Wye/tee as applicable,Plan topology; exact existing type FIELD VERIFY
+J10,existing junction fitting,REMOVE,19.35,14.00,Wye/tee as applicable,Plan topology; exact existing type FIELD VERIFY
+B1,existing CI bend,REMOVE,22.45,12.80,wc_common 45°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+B2,existing CI bend,REMOVE,14.35,13.50,wc_lower 43°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+B3,existing CI bend,REMOVE,22.50,4.00,lav_top_common 45°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+B4,existing CI bend,REMOVE,22.45,10.80,shower_upper 45°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+B5,existing CI bend,REMOVE,22.45,14.00,bath_lower_common 43°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+B6,existing CI bend,REMOVE,15.30,3.20,lav_top_left 45°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+B7,existing CI bend,REMOVE,18.50,3.20,lav_top_right 45°,Angle from calibrated plan route; fitting radius/type FIELD VERIFY
+P1,first-floor P-trap,REMOVE,15.30,0.35,LAV top left,SOR scope; exact existing elevation/geometry FIELD VERIFY
+P2,first-floor P-trap,REMOVE,18.50,0.35,LAV top right,SOR scope; exact existing elevation/geometry FIELD VERIFY
+P3,first-floor P-trap,REMOVE,18.40,10.80,Upper shower,SOR scope; exact existing elevation/geometry FIELD VERIFY
+P4,first-floor P-trap,REMOVE,15.90,15.45,Lower tub/shower,SOR scope; exact existing elevation/geometry FIELD VERIFY
+P5,first-floor P-trap,REMOVE,19.35,15.35,Lower LAV,SOR scope; exact existing elevation/geometry FIELD VERIFY
+P6,first-floor P-trap,REMOVE,22.65,27.40,Laundry,SOR scope; exact existing elevation/geometry FIELD VERIFY
+P7,first-floor P-trap,CONDITIONAL,38.85,39.20,Kitchen — conditional,SOR scope; exact existing elevation/geometry FIELD VERIFY
+C1,wall-hung WC carrier + flange,REMOVE,14.90,11.65,WC North,SOR explicitly includes carriers/flanges; existing manufacturer varies
+C2,wall-hung WC carrier + flange,REMOVE,13.35,13.50,WC South,SOR explicitly includes carriers/flanges; existing manufacturer varies
+CUT1,pipe cut / disconnect,CUT,14.90,11.65,WC N 4in — model target +40in,Rule/scope-based model target; final as-found cut FIELD VERIFY
+CUT2,pipe cut / disconnect,CUT,13.35,13.50,WC S 4in — model target +40in,Rule/scope-based model target; final as-found cut FIELD VERIFY
+CUT3,pipe cut / disconnect,CUT,23.25,10.00,Upper wet-core 3in — +36in,Rule/scope-based model target; final as-found cut FIELD VERIFY
+CUT4,pipe cut / disconnect,CUT,23.25,13.25,Lower wet-core 3in — +36in,Rule/scope-based model target; final as-found cut FIELD VERIFY
+CUT5,pipe cut / disconnect,CUT,22.65,27.40,Laundry 3in — +36in,Rule/scope-based model target; final as-found cut FIELD VERIFY
+CUT6,pipe cut / disconnect,CUT,23.25,27.40,Prior ABS / CI tie — field verify,Rule/scope-based model target; final as-found cut FIELD VERIFY
+CUT7,6in exterior scope cut,CUT,23.25,-1.50,+18in exterior replacement limit,SOR scope limit; match existing invert FIELD VERIFY
