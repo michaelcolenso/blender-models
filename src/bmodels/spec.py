@@ -12,14 +12,54 @@ STATUS_COLORS = {  # review renders: color by provenance, not by material
 }
 VALID_STATUS = set(STATUS_COLORS)
 
+# What record a model reflects. Values avoid bare yes/no, which YAML 1.1 reads as booleans.
+RECORD_KINDS = {"design_intent", "as_built", "field_photo", "field_survey", "mixed", "unknown"}
+FIELD_VERIFIED = {"verified", "partial", "not_verified", "unknown"}
+REVIEW_VERDICTS = {"pass", "fail", "n/a"}
+
 
 def fail(msg, errors):
     errors.append(msg)
 
 
+def validate_record(spec, src_ids, errors):
+    """basis_of_record is required: a model reflects a record, not the building. The optional
+    assumptions, conflicts and review blocks must be well-formed when present."""
+    b = spec.get("basis_of_record")
+    if not isinstance(b, dict):
+        fail("basis_of_record: required; state what record this model reflects "
+             "(documents, kind, field_verified)", errors)
+    else:
+        docs = b.get("documents")
+        if not isinstance(docs, str) or not docs.strip():  # YAML `documents:` with no value loads as None
+            fail("basis_of_record.documents: required (the drawings/photos the model is built from)", errors)
+        if b.get("kind") not in RECORD_KINDS:
+            fail(f"basis_of_record.kind must be one of {sorted(RECORD_KINDS)}", errors)
+        if b.get("field_verified") not in FIELD_VERIFIED:
+            fail(f"basis_of_record.field_verified must be one of {sorted(FIELD_VERIFIED)}", errors)
+    for i, a in enumerate(spec.get("assumptions") or []):  # assumed parameters not tied to one element
+        if not isinstance(a, dict) or not a.get("id") or not a.get("basis"):
+            fail(f"assumptions[{i}]: needs 'id' and 'basis'", errors)
+    for i, c in enumerate(spec.get("conflicts") or []):
+        if not isinstance(c, dict) or not c.get("topic") or not c.get("note"):
+            fail(f"conflicts[{i}]: needs 'topic' and 'note'", errors)
+        elif c.get("modeled_per") not in src_ids:
+            fail(f"conflicts[{i}]: modeled_per must be a source id from 'sources' (the governing document)", errors)
+    r = spec.get("review")
+    if r is not None:
+        if not isinstance(r, dict) or not r.get("date") or not r.get("by") or not r.get("views"):
+            fail("review: needs 'date', 'by' and a non-empty 'views' list "
+                 "(omit the block until the visual review has actually been done)", errors)
+        else:
+            for i, o in enumerate(r.get("overlays") or []):
+                if not o.get("view") or o.get("verdict") not in REVIEW_VERDICTS:
+                    fail(f"review.overlays[{i}]: needs 'view' and a verdict in {sorted(REVIEW_VERDICTS)}", errors)
+
+
 def validate(spec):
     errors = []
     src_ids = {s["id"] for s in spec.get("sources", [])}
+    validate_record(spec, src_ids, errors)
     seen = set()
     for e in spec.get("elements", []):
         eid = e.get("id", "?")
@@ -70,6 +110,7 @@ def validate(spec):
 def validate_room(spec):
     errs = []
     src = {s["id"] for s in spec["sources"]}
+    validate_record(spec, src, errs)
     for gid, g in spec["groups"].items():
         if g.get("status") not in STATUS_COLORS:
             errs.append(f"group {gid}: bad status")

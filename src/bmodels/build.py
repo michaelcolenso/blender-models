@@ -16,6 +16,7 @@ import bpy
 import yaml
 
 from bmodels.spec import STATUS_COLORS, VALID_STATUS, fail, validate  # noqa: F401  (re-exported for animate_*)
+from bmodels import record
 from mathutils import Vector
 
 IN = 0.0254  # spec units are inches; Blender works in meters internally
@@ -393,17 +394,22 @@ def main():
     status_counts = {}
     for e, _ in built:
         status_counts[e["status"]] = status_counts.get(e["status"], 0) + 1
+    for r in renders:  # label every render, after the blank guard so the strip can't mask a blank frame
+        record.stamp_render(out / r, spec, status_counts, "realistic" if "_realistic_" in r else "review")
     failed = [r for r in results if not r["ok"]]
     report = {"spec": str(spec_path), "project": spec.get("project"), "blender": bpy.app.version_string,
+              **record.report_fields(spec),
               "overall_in": overall, "status_counts": status_counts, "checks": results,
               "renders": renders, "passed": not failed}
-    (out / "report.json").write_text(json.dumps(report, indent=2))
-    md = [f"# Model report — {name}", f"Blender {bpy.app.version_string} · overall extents (in): {overall}",
+    (out / "report.json").write_text(json.dumps(report, indent=2, default=str))  # default=str: YAML dates
+    md = [f"# Model report — {name}"] + record.record_md(spec) + [
+          "", f"Blender {bpy.app.version_string} · overall extents (in): {overall}",
           f"Elements by provenance: {status_counts}", "",
           f"**{'PASS' if not failed else 'FAIL'}** — {len(results)-len(failed)}/{len(results)} checks", "",
           "| check | expected | actual | ok | source |", "|---|---|---|---|---|"]
     md += [f"| {r['check']} | {r['expected']} | {r['actual']} | {'❌' if not r['ok'] else ('⚠️' if r.get('warn') else '✅')} | {r.get('source') or ''} |"
            for r in results if not r["check"].startswith(("dims ", "render ")) or not r["ok"]]
+    md += record.conflicts_md(spec, results) + record.review_md(spec)
     assumed, seen = [], set()
     for e, _ in built:
         if e.get("status") == "assumed" and e.get("basis") and (e.get("spec_id"), e["basis"]) not in seen:
@@ -413,8 +419,9 @@ def main():
         md += ["", "## Field-verify (upgrades assumed/provisional items)"] + [f"- [ ] {x}" for x in spec["field_verify"]]
     if spec.get("flags"):
         md += ["", "## Flags (not in stated scope — decide)"] + [f"- {x}" for x in spec["flags"]]
-    if assumed:
-        md += ["", "## Assumed (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed]
+    if assumed or spec.get("assumptions"):
+        md += ["", "## Assumed (not from documents)"] + [f"- `{e['id']}` — {e['basis']}" for e in assumed] \
+              + record.assumptions_md(spec)
     (out / "report.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
     sys.exit(1 if failed else 0)

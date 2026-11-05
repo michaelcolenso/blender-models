@@ -951,10 +951,14 @@ def render_all(spec, out, name, quality, only):
 
 def write_report(spec, out, name, results, files, glb, n_obj):
     from collections import Counter
+    from bmodels import record
     cnt = Counter(o["status"] for _, o, _, _ in Ctx.built)
+    for fn in files:  # renders already passed the blank check; label each one
+        if fn.endswith(".png"):
+            record.stamp_render(out / fn, spec, dict(cnt), "review" if "_review_" in fn else "realistic")
     lines = [f"# {spec['project']}", "",
-             "**Photo-derived model. Illustrative only — not a measured survey and not a contract document.**", "",
-             "## Provenance", f"- Objects: {n_obj}; by status: " + ", ".join(f"{k} {v}" for k, v in sorted(cnt.items())),
+             "**Photo-derived model. Illustrative only — not a measured survey and not a contract document.**"] \
+        + record.record_md(spec) + ["", "## Provenance", f"- Objects: {n_obj}; by status: " + ", ".join(f"{k} {v}" for k, v in sorted(cnt.items())),
              "- Confirmed: **0** (no drawings or measurements exist for this room)",
              f"- Source P1: {spec['sources'][0]['ref']}",
              f"- Scale references: {spec['sources'][0]['scale_refs']}",
@@ -965,9 +969,12 @@ def write_report(spec, out, name, results, files, glb, n_obj):
     lines += ["", "## Checks (internal consistency + builder fidelity; none are document-driven)", "| result | check | expected | actual |", "|---|---|---|---|"]
     for r in results:
         lines.append(f"| {'PASS' if r['ok'] else 'FAIL'} | {r['check']} | {r['expected']} | {r['actual']} |")
+    lines += record.conflicts_md(spec, results) + record.review_md(spec)
+    if spec.get("assumptions"):
+        lines += ["", "## Assumed parameters"] + record.assumptions_md(spec)
     lines += ["", "## Files", f"- {name}.blend (editable)", f"- {name}.glb ({'written' if glb else 'FAILED'})"] + [f"- {f}" for f in files]
     (out / "report.md").write_text("\n".join(lines) + "\n")
-    (out / "report.json").write_text(json.dumps({"project": spec["project"], "checks": results, "files": files, "status_counts": dict(cnt)}, indent=2, default=str))
+    (out / "report.json").write_text(json.dumps({"project": spec["project"], **record.report_fields(spec), "checks": results, "files": files, "status_counts": dict(cnt)}, indent=2, default=str))
 
 
 if __name__ == "__main__":

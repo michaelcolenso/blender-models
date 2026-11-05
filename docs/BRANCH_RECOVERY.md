@@ -137,9 +137,17 @@ large saved models through Releases only after inspecting their external assets.
 
 ## Remaining triage
 
-Keep the unique video work on `feat/render-scenes-actions`, packaging helper on
-`deliver/highland-archviz-film`, cutaway design, and old report improvements for
-focused review. Their old layouts make whole-branch merges inappropriate.
+Triaged 2026-11-05 (owner decision):
+
+- `improve-docs-and-reports`: **ported**. `basis_of_record` is required on every spec; `conflicts`,
+  `assumptions` and `review` blocks are validated and reported; every render is labelled. See
+  [METHOD.md](METHOD.md#spec-record-fields-enforced-by-bm-check-and-bm-build).
+- `feat/render-scenes-actions`: **retired**. Its recipe-driven video pipeline used the old layout; the
+  installation, immersive and agency films on main replaced it.
+- `deliver/highland-archviz-film`: **retired**. It specified a penthouse and terrace not in any drawing.
+- `docs/meydenbauer-cutaway-design`: **retired**. Unapproved, never built; it would need a new GPU master.
+
+All four stay recoverable from their `archive/2026-11-03/` tags.
 
 ## Validation and future branch practice
 
