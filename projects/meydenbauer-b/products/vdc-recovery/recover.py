@@ -6,6 +6,7 @@
 Only text data (CSV/JSON/Markdown/text/scripts/logs) is recovered. Saved .blend scenes,
 renders and .xlsx workbooks stay in the archive tags (sizes listed in recovery.json).
 Files over 1 MB are stored gzip-compressed; their recorded hashes are of the original bytes.
+The archived `sources/` folder is stored as `archived-sources/` (repo-wide `sources/` is git-ignored).
 `check.py` verifies every snapshot against recovery.json without network or the tags.
 """
 import gzip
@@ -43,6 +44,8 @@ def main():
                 left.append({'source': key, 'path': path, 'bytes': int(size), 'git_blob_sha': blob})
                 continue
             data = git('cat-file', 'blob', blob)
+            # `sources/` folders are git-ignored repo-wide (drawing PDFs); keep the archived one tracked.
+            rel = rel.replace('sources/', 'archived-sources/', 1) if rel.startswith('sources/') else rel
             target = HERE / 'snapshots' / key / rel
             stored = 'raw'
             if len(data) > LIMIT:

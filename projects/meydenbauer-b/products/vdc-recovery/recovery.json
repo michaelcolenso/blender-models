@@ -726,7 +726,7 @@
       "stored": "raw"
     },
     {
-      "file": "snapshots/b101/sources/modeling_brief.txt",
+      "file": "snapshots/b101/archived-sources/modeling_brief.txt",
       "source": "b101",
       "source_path": "deliverables/meydenbauer-b/b101-v4/sources/modeling_brief.txt",
       "git_blob_sha": "82af77dbb3da27a6cf1cea4214e2af894e613486",

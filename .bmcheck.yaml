@@ -4,4 +4,7 @@ large_file_allow:          # globs of files allowed above the limit
   # CI fixture: render/scenes.json (highland-water-overview) and tests/test_render_workflow.py open it;
   # identical copy (same sha256) is on release highland-water-2026-11-04.
   - projects/highland/deliverables/water/Highland-domestic-water.blend
-broken_link_allow: []
+broken_link_allow:         # markdown files whose broken links are expected; exact paths
+  # Recovered byte-identical from archive/2026-11-03/meydenbauer/b101-v4-executed; links to the .blend and
+  # renders that were deliberately left in the archive tag (listed in vdc-recovery/recovery.json).
+  - projects/meydenbauer-b/products/vdc-recovery/snapshots/b101/DELIVERY_README.md
