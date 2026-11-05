@@ -37,6 +37,8 @@ HISTORICAL_REPORT = {'name': 'Highland-drawing-reconciliation-rev06-review.pdf',
 STILLS = {'Highland-daylight-drawing-reconciled.png': 'native-render.json',
           'Highland-dusk-drawing-reconciled.png': 'dusk-render.json'}
 NOTICE = 'Illustrative, not a contract document.'
+REVIEW_VIEWS = ('north', 'south', 'plan', 'iso', 'p1-plan', 'p1-south', 'r5-return', 'west', 'east',
+                'r5-plan', 'r5-southwest', 'terrace-plan')  # render.py --review, all views
 
 
 def sha(path):
@@ -87,8 +89,16 @@ def main():
     made = {}
     for png in STILLS:
         made[png] = jpeg(renders / png, previews / png.replace('.png', '.jpg'))
-    for png in sorted((renders / 'geometry-review').glob('*.png')):
-        made['geometry-review/' + png.name] = jpeg(png, previews / f'review-{png.stem}.jpg')
+    # Exactly the hash-checked images of the review record, and all 12 views: a partial
+    # `render.py --review --views` run or stale PNGs in the folder must not be published.
+    review = sorted(records['review-render.json']['images'])
+    expected = sorted(f'geometry-review/{view}.png' for view in REVIEW_VIEWS)
+    assert review == expected, f'review record must cover exactly the 12 views; has {review}'
+    for image in review:
+        png = renders / image
+        made[image] = jpeg(png, previews / f'review-{png.stem}.jpg')
+    stale = {p.name for p in previews.glob('review-*.jpg')} - {f'review-{Path(i).stem}.jpg' for i in review}
+    assert not stale, f'unexpected previews: {sorted(stale)}'
 
     (DELIVER / 'delivery-validation.json').write_text(json.dumps(delivery, indent=2) + '\n')
     (DELIVER / 'render-records.json').write_text(json.dumps({
