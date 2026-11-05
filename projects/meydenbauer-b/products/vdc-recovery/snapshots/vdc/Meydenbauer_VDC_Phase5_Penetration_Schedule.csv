@@ -1,0 +1,2 @@
+element_id,name,unit,layout_x_ft,layout_y_ft,bore_dia_in,serves_element,ext_above_in,ext_below_in,activity,verification
+PLM-B103-NEW-SLEEVE-0001,SLEEVE_B103_SOG_Penetration_001,B103,0.0,0.0,7.2,PLM-B103-NEW-PIPE-0007,2.0,3.0,A1040,FIELD_VERIFY_REQUIRED

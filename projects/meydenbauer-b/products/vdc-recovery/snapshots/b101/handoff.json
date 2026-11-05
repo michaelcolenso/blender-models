@@ -1,0 +1,25 @@
+{
+  "project": "25-048 101 Meydenbauer Underground Drain-Waste Pipe Replacement",
+  "scope": "Building B / Unit B-101 calibration and detailed selective demolition",
+  "revision": "v4 demolition fittings/carriers/cut locations",
+  "primary_build_script": "scripts/build_meydenbauer_b101_v4.py",
+  "blender_runner": "scripts/run_build_and_verify.py",
+  "saved_blend_validator": "scripts/verify_saved_blend.py",
+  "preflight": "scripts/preflight.py",
+  "target_blender": "Blender 4.x/5.x; script contains compatibility fallbacks for 3.6-era APIs where practical",
+  "expected_output_blend": "output/Meydenbauer_B101_Demolition_v4.blend",
+  "phase_controller": "PHASE_CONTROLLER",
+  "phase_property": "Construction_Phase",
+  "demolition_subphase_property": "Demolition_Subphase",
+  "demolition_checkpoint_frames": [1, 38, 50, 61, 68, 76, 83, 89],
+  "status": "STATICALLY_VERIFIED_NOT_YET_EXECUTED_IN_BLENDER",
+  "acceptance_requires": [
+    "strict Blender build passes",
+    "saved blend reopens and validates",
+    "Boolean geometry visually reviewed",
+    "phase/demolition drivers visually reviewed",
+    "prior ABS no-demo zone confirmed",
+    "fitting/carrier/cut geometry reviewed against QA overlay",
+    "known field-verify items remain visibly non-surveyed"
+  ]
+}

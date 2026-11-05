@@ -1,0 +1,937 @@
+{
+  "frames": [
+    {
+      "frame": 1,
+      "phase": 1,
+      "demo": 0,
+      "boolean_viewport": false,
+      "boolean_render": false,
+      "render_visible_roles": {
+        "FIXTURE": 40,
+        "DEMO_CI": 88,
+        "FINISH": 12,
+        "CASEWORK": 16,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 38,
+      "phase": 2,
+      "demo": 1,
+      "boolean_viewport": false,
+      "boolean_render": false,
+      "render_visible_roles": {
+        "DEMO_CI": 88,
+        "DEMO_PROTECT": 6,
+        "DEMO_FIELD_VERIFY": 6,
+        "DEMO_FINISH": 25,
+        "DEMO_SALVAGE": 8,
+        "FINISH": 12,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 50,
+      "phase": 2,
+      "demo": 2,
+      "boolean_viewport": false,
+      "boolean_render": false,
+      "render_visible_roles": {
+        "DEMO_CI": 88,
+        "DEMO_PROTECT": 6,
+        "DEMO_FIELD_VERIFY": 6,
+        "DEMO_FINISH": 25,
+        "FINISH": 12,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 61,
+      "phase": 3,
+      "demo": 3,
+      "boolean_viewport": false,
+      "boolean_render": false,
+      "render_visible_roles": {
+        "DEMO_CI": 88,
+        "DEMO_PROTECT": 6,
+        "DEMO_FIELD_VERIFY": 6,
+        "DEMO_WALL": 4,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "DEMO_CUTOUT": 9,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 68,
+      "phase": 3,
+      "demo": 4,
+      "boolean_viewport": false,
+      "boolean_render": false,
+      "render_visible_roles": {
+        "DEMO_CI": 88,
+        "DEMO_PROTECT": 6,
+        "DEMO_FIELD_VERIFY": 6,
+        "DEMO_SAWCUT": 50,
+        "DEMO_SLAB_CHUNK": 25,
+        "DEMO_WALL": 4,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "DEMO_CUTOUT": 9,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 76,
+      "phase": 3,
+      "demo": 5,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "DEMO_CI": 88,
+        "DEMO_PROTECT": 6,
+        "DEMO_EXCAVATION": 26,
+        "DEMO_VAPOR_EXPOSE": 25,
+        "DEMO_FIELD_VERIFY": 6,
+        "DEMO_SAWCUT": 50,
+        "DEMO_SLAB_CHUNK": 25,
+        "DEMO_WALL": 4,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "DEMO_CUTOUT": 9,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 83,
+      "phase": 3,
+      "demo": 6,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "DEMO_CI": 88,
+        "DEMO_CI_MARKER": 17,
+        "DEMO_PROTECT": 6,
+        "DEMO_EXCAVATION": 26,
+        "DEMO_VAPOR_EXPOSE": 25,
+        "DEMO_FIELD_VERIFY": 6,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "DEMO_CUTOUT": 9,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 89,
+      "phase": 3,
+      "demo": 7,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "DEMO_PROTECT": 6,
+        "DEMO_EXCAVATION": 26,
+        "DEMO_VAPOR_EXPOSE": 25,
+        "DEMO_FIELD_VERIFY": 6,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 107,
+        "DEMO_CUTOUT": 9,
+        "TEMP": 7,
+        "INVESTIGATION": 4,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 91,
+      "phase": 4,
+      "demo": 7,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "NEW_ABS": 104,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 85,
+        "TEMP": 7,
+        "BEDDING": 55,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 121,
+      "phase": 5,
+      "demo": 7,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "NEW_ABS": 104,
+        "REMAIN": 7,
+        "WATER_TEST": 8,
+        "UNCLASSIFIED": 85,
+        "TEMP": 7,
+        "BEDDING": 55,
+        "PARTITION": 24
+      }
+    },
+    {
+      "frame": 151,
+      "phase": 6,
+      "demo": 7,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "NEW_ABS": 104,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 85,
+        "TEMP": 7,
+        "BEDDING": 55,
+        "BACKFILL": 168,
+        "PARTITION": 24,
+        "POURBACK": 55
+      }
+    },
+    {
+      "frame": 181,
+      "phase": 7,
+      "demo": 7,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "NEW_ABS": 104,
+        "SUBSTRATE": 62,
+        "FINISH": 12,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 85,
+        "TEMP": 7,
+        "BEDDING": 55,
+        "BACKFILL": 168,
+        "PARTITION": 24,
+        "POURBACK": 55
+      }
+    },
+    {
+      "frame": 211,
+      "phase": 8,
+      "demo": 7,
+      "boolean_viewport": true,
+      "boolean_render": true,
+      "render_visible_roles": {
+        "NEW_ABS": 104,
+        "FIXTURE": 40,
+        "SUBSTRATE": 62,
+        "FINISH": 12,
+        "CASEWORK": 16,
+        "REMAIN": 7,
+        "UNCLASSIFIED": 85,
+        "BEDDING": 55,
+        "ASBUILT": 5,
+        "BACKFILL": 168,
+        "PARTITION": 24,
+        "POURBACK": 55
+      }
+    }
+  ],
+  "invalid_drivers": [],
+  "nonfinite_objects": [],
+  "flagged_driver_errors": [],
+  "motion_checks": [
+    {
+      "role": "DEMO_SALVAGE",
+      "start_frame": 38,
+      "end_frame": 48,
+      "objects": [
+        {
+          "name": "B101_DEMO_RemoveReinstall_LAUNDRY",
+          "delta_ft": [
+            0.7999992370605469,
+            7.000001907348633,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_LAV_S",
+          "delta_ft": [
+            0.0,
+            7.799999237060547,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_LAV_TOP_L",
+          "delta_ft": [
+            0.8000001907348633,
+            7.799999713897705,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_LAV_TOP_R",
+          "delta_ft": [
+            -0.7999992370605469,
+            7.0,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_SH_N",
+          "delta_ft": [
+            -0.7999992370605469,
+            7.800000190734863,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_TUB_S",
+          "delta_ft": [
+            0.0,
+            7.000000953674316,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_WC_N",
+          "delta_ft": [
+            0.0,
+            7.799999237060547,
+            0.5
+          ]
+        },
+        {
+          "name": "B101_DEMO_RemoveReinstall_WC_S",
+          "delta_ft": [
+            0.8000001907348633,
+            7.0,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "role": "DEMO_SLAB_CHUNK",
+      "start_frame": 68,
+      "end_frame": 76,
+      "objects": [
+        {
+          "name": "B101_DEMO_SlabChunk_01_main",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_02_main",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_03_main",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_04_main",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_05_main",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_06_branch3",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_07_branch3",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_08_branch3",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_09_branch2",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_10_branch2",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_11_branch2",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_12_branch2",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_13_branch2",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_14_branch2",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_15_branch2",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_16_branch2",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_17_branch3",
+          "delta_ft": [
+            -0.4499998092651367,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_18_branch3",
+          "delta_ft": [
+            0.4499998092651367,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_19_branch3",
+          "delta_ft": [
+            -0.4499998092651367,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_20_branch2",
+          "delta_ft": [
+            0.4499998092651367,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_21_branch2",
+          "delta_ft": [
+            -0.4499998092651367,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_22_branch2",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_23_branch2",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.649999976158142
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_24_branch2",
+          "delta_ft": [
+            0.4500007629394531,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "B101_DEMO_SlabChunk_25_branch2",
+          "delta_ft": [
+            -0.4500007629394531,
+            0.0,
+            1.4499999284744263
+          ]
+        }
+      ]
+    }
+  ],
+  "slab": {
+    "vertices": 454,
+    "faces": 239,
+    "nonmanifold_edges": 0,
+    "z_min": -0.4583333134651184,
+    "z_max": 0.0
+  },
+  "boolean_grid": {
+    "spacing_model_units": 0.25,
+    "samples": 170130,
+    "open_samples": 7566,
+    "mismatch_count": 0,
+    "mismatch_examples": []
+  },
+  "prior_abs_envelope": {
+    "samples": 6400,
+    "opening_samples": 38,
+    "approx_open_area_square_model_units": 2.375,
+    "examples": [
+      {
+        "x": 21.875,
+        "y": 27.625,
+        "cutters": [
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 21.875,
+        "y": 27.875,
+        "cutters": [
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 21.875,
+        "y": 28.125,
+        "cutters": [
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.125,
+        "y": 27.625,
+        "cutters": [
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.125,
+        "y": 27.875,
+        "cutters": [
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.125,
+        "y": 28.125,
+        "cutters": [
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.375,
+        "y": 27.625,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.375,
+        "y": 27.875,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.375,
+        "y": 28.125,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.375,
+        "y": 28.375,
+        "cutters": [
+          "TrenchCutter_B101_001"
+        ]
+      },
+      {
+        "x": 22.625,
+        "y": 27.625,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.625,
+        "y": 27.875,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.625,
+        "y": 28.125,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.625,
+        "y": 28.375,
+        "cutters": [
+          "TrenchCutter_B101_001"
+        ]
+      },
+      {
+        "x": 22.875,
+        "y": 27.625,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.875,
+        "y": 27.875,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.875,
+        "y": 28.125,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 22.875,
+        "y": 28.375,
+        "cutters": [
+          "TrenchCutter_B101_001"
+        ]
+      },
+      {
+        "x": 23.125,
+        "y": 27.625,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      },
+      {
+        "x": 23.125,
+        "y": 27.875,
+        "cutters": [
+          "TrenchCutter_B101_001",
+          "TrenchCutter_B101_008"
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "junction_bodies": 10,
+    "ptraps": 7,
+    "plan_bend_objects": 7,
+    "temporary_supports": 10
+  },
+  "saved_route_checks": [
+    {
+      "object": "NEW_ABS_B101_4in_MAIN",
+      "actual_points": 6,
+      "expected_points": 6,
+      "max_error_ft": 0.0,
+      "passed": true
+    },
+    {
+      "object": "NEW_ABS_B101_6in_LATERAL_18IN_LIMIT",
+      "actual_points": 2,
+      "expected_points": 2,
+      "max_error_ft": 0.0,
+      "passed": true
+    },
+    {
+      "object": "B101_Prior_4in_ABS_REMAIN",
+      "actual_points": 4,
+      "expected_points": 4,
+      "max_error_ft": 0.0,
+      "passed": true
+    }
+  ],
+  "missing_external_assets": [],
+  "field_verify_count": 198,
+  "cut_objects": [
+    {
+      "name": "B101_DEMO_Cut_Exterior6in_18inLimit",
+      "location": [
+        23.248332977294922,
+        -1.5,
+        -3.6145832538604736
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_Laundry_3in_ExistingVerticalRemoval",
+      "location": [
+        22.649999618530273,
+        27.399999618530273,
+        1.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_Laundry_3in_TempSupport_Above",
+      "location": [
+        22.649999618530273,
+        27.399999618530273,
+        3.6666667461395264
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_Laundry_3in_TempSupport_Below",
+      "location": [
+        22.649999618530273,
+        27.399999618530273,
+        2.3333332538604736
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_Laundry_3in_TopCutPlane",
+      "location": [
+        22.649999618530273,
+        27.399999618530273,
+        3.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_LowerWetCore_3in_ExistingVerticalRemoval",
+      "location": [
+        23.248332977294922,
+        13.25,
+        1.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_LowerWetCore_3in_TempSupport_Above",
+      "location": [
+        23.248332977294922,
+        13.25,
+        3.6666667461395264
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_LowerWetCore_3in_TempSupport_Below",
+      "location": [
+        23.248332977294922,
+        13.25,
+        2.3333332538604736
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_LowerWetCore_3in_TopCutPlane",
+      "location": [
+        23.248332977294922,
+        13.25,
+        3.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_PriorABS_Tie",
+      "location": [
+        23.248332977294922,
+        27.399999618530273,
+        -3.012500047683716
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_UpperWetCore_3in_ExistingVerticalRemoval",
+      "location": [
+        23.248332977294922,
+        10.0,
+        1.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_UpperWetCore_3in_TempSupport_Above",
+      "location": [
+        23.248332977294922,
+        10.0,
+        3.6666667461395264
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_UpperWetCore_3in_TempSupport_Below",
+      "location": [
+        23.248332977294922,
+        10.0,
+        2.3333332538604736
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_UpperWetCore_3in_TopCutPlane",
+      "location": [
+        23.248332977294922,
+        10.0,
+        3.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_N_4in_ExistingVerticalRemoval",
+      "location": [
+        14.899999618530273,
+        11.649999618530273,
+        1.1666666269302368
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_N_4in_TempSupport_Above",
+      "location": [
+        14.899999618530273,
+        11.649999618530273,
+        4.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_N_4in_TempSupport_Below",
+      "location": [
+        14.899999618530273,
+        11.649999618530273,
+        2.6666667461395264
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_N_4in_TopCutPlane",
+      "location": [
+        14.899999618530273,
+        11.649999618530273,
+        3.3333332538604736
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_S_4in_ExistingVerticalRemoval",
+      "location": [
+        13.350000381469727,
+        13.5,
+        1.1666666269302368
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_S_4in_TempSupport_Above",
+      "location": [
+        13.350000381469727,
+        13.5,
+        4.0
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_S_4in_TempSupport_Below",
+      "location": [
+        13.350000381469727,
+        13.5,
+        2.6666667461395264
+      ],
+      "field_verify": true
+    },
+    {
+      "name": "B101_DEMO_Cut_WC_S_4in_TopCutPlane",
+      "location": [
+        13.350000381469727,
+        13.5,
+        3.3333332538604736
+      ],
+      "field_verify": true
+    }
+  ]
+}

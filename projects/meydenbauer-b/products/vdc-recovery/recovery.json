@@ -1,0 +1,1040 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "vdc": {
+      "tag": "archive/2026-11-03/meydenbauer/4d-fixes",
+      "commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "prefix": "deliverables/meydenbauer-b/vdc"
+    },
+    "b101": {
+      "tag": "archive/2026-11-03/meydenbauer/b101-v4-executed",
+      "commit": "70fc8d60ef50006c27222ad7fbd50bf519815cac",
+      "prefix": "deliverables/meydenbauer-b/b101-v4"
+    }
+  },
+  "note": "Byte-identical recovered text data. Hashes are of the original bytes (before gzip).",
+  "files": [
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Data_Spine_Schema.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Data_Spine_Schema.json",
+      "git_blob_sha": "3d8154877e2c81560b04a1200c645487f89d6b6b",
+      "sha256": "8ef313a7f53f9217317cdf7bc8ecbece8b0d5f2adbf43053e598901ab621e5fb",
+      "bytes": 24083,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Element_Register.csv.gz",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Element_Register.csv",
+      "git_blob_sha": "ef76dd64d347b2e85098e6fd33e5deaca65c5623",
+      "sha256": "58297eb2a57779de7780b14a9b814ba3313ccd4c63adb4a1cbc79ba7135e8197",
+      "bytes": 1279843,
+      "stored": "gzip"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Integrity_Check.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Integrity_Check.json",
+      "git_blob_sha": "335135466882799cf42a91e26c05395e3989ccd6",
+      "sha256": "a63e528e720130db213bcc007e772c60746933a61dc19805d663efdd2b28d8c0",
+      "bytes": 2692,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase1_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase1_SHA256.txt",
+      "git_blob_sha": "e62be1b89ca06084e649aced83c139e53c84b803",
+      "sha256": "ab6c5bfaa268dbef618271f0206975bc38b054a35555af13fb300a20a5375640",
+      "bytes": 636,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase1_Validation.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase1_Validation.json",
+      "git_blob_sha": "4be2f4b68b8598fafc87921e4a8cc939104baa7c",
+      "sha256": "3d5dfb68a10218f6e62eb5b9a8d3c45ae8ba1a1f9b89fdb00131030548ffcb9e",
+      "bytes": 3002,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase2_Constructability_Report.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Constructability_Report.json",
+      "git_blob_sha": "60f8da1926022951b728859344cd185111d7a19b",
+      "sha256": "50918be2172a693e42232e212fd458dfa0c52a45aab7331b0b0667f730a78525",
+      "bytes": 6237,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase2_Integrity_Check.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Integrity_Check.json",
+      "git_blob_sha": "7dafbdc65c17ce19af09383809e37c5bfc787d7b",
+      "sha256": "8c098c2c98f0132f5090ea0d74e13f17b56ebb9f4c78cd01edf8b56d92a7e3da",
+      "bytes": 1755,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase2_Issue_Register.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Issue_Register.csv",
+      "git_blob_sha": "a7fdf7cd601605bd8cd5d4185049b5ff38518371",
+      "sha256": "642dd9bd75ff1c8a9363b947fdb408b3c85abb9456c2ae1438e4ec844804fef9",
+      "bytes": 1755,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase2_Quantity_Refinements.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Quantity_Refinements.csv",
+      "git_blob_sha": "2f850cbf277b32f6c78c02657c68fc998a77d0b1",
+      "sha256": "c155c9d9e0e71773dcadb4acff3fb623f690a62bf6cd7571cf54c64074babb16",
+      "bytes": 60338,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase2_Route_Diagnostics.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Route_Diagnostics.csv",
+      "git_blob_sha": "68903af1308fa784b96bafa92a48628227ad2091",
+      "sha256": "abb2d2acf4697fe99c93f65b0a017db85698d6f39b80c4fc472d0247342e5aa8",
+      "bytes": 17782,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase2_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_SHA256.txt",
+      "git_blob_sha": "1fc7d293c6b77929347362349dc25795d4e44c8d",
+      "sha256": "e9661c4d86dc2010f2b58ce548b4903f550706cd8558b03d82f72aec1801838e",
+      "bytes": 690,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase3_Integrity_Check.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase3_Integrity_Check.json",
+      "git_blob_sha": "47bc3e506a218064361ee275cbdd94820863c593",
+      "sha256": "0e421b16e516d93d00c03a25103045cd0484573c0844455d7e23759609b102d7",
+      "bytes": 1106,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase3_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase3_SHA256.txt",
+      "git_blob_sha": "829d230179781e36f0ae0577c29492646dad108f",
+      "sha256": "b2f2c17c267e5a2376800c4e6973dc41d3f97d2238d386f2dad1cdcac05c1717",
+      "bytes": 436,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase4_Integrity_Check.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Integrity_Check.json",
+      "git_blob_sha": "f05ed73edba34dd533e1fec6cb8973609f85e49e",
+      "sha256": "c48675d2b5f2d2954de3ec0ea97fa85b7a842584c73a69650fac13e09c9b4298",
+      "bytes": 322,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase4_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_SHA256.txt",
+      "git_blob_sha": "88d181c20b14bba8d7685675a366174117777814",
+      "sha256": "3b2260c3463c83b3f4148886e8434e29a53e1ac6bc3353cb0d61b0bbde974dce",
+      "bytes": 550,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase4_Takeoff.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Takeoff.csv",
+      "git_blob_sha": "ace6402f67c70044a3e01b726d82b6bf14567426",
+      "sha256": "642762af612d7334b1c944d072f08d083d8072b3141d10e82e6fe64bc0aec436",
+      "bytes": 20609,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase4_Takeoff_Backing.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Takeoff_Backing.csv",
+      "git_blob_sha": "6b61ed464d11eb0f99fbade2b1ac6f4662f37706",
+      "sha256": "8f6bb62f0f065f9984d68327a31567a24c7c49435817f9a82803f399143db414",
+      "bytes": 74268,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase5_Field_Verification_Checklist.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Field_Verification_Checklist.csv",
+      "git_blob_sha": "c2ca3c211572674df79a14a2010c183c3c55e2e1",
+      "sha256": "d17b8690a6e7fefee347cea104b1262811d2131f642a7f017c1df5ecab28919b",
+      "bytes": 7889,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase5_Hydrotest_Package.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Hydrotest_Package.csv",
+      "git_blob_sha": "a0329327fe486eec18b9e17759c7d5bb22999665",
+      "sha256": "81feaf46f407dc333e7d7ea35c6142c31dd9f871f3c17e58d0e2dad006e4f742",
+      "bytes": 5183,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase5_Installation_Schedule.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Installation_Schedule.csv",
+      "git_blob_sha": "f07b38ab01d2b9ea242907df5373ef9af0f26691",
+      "sha256": "2bfc1238b626c0dce1b84c0b7877cdd54b0d127471a5376425e6ec6f16b1aec5",
+      "bytes": 5660,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase5_Integrity_Check.json",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Integrity_Check.json",
+      "git_blob_sha": "e49bf99bc267393a48bba8e5fe0fb1b2d28d3bb7",
+      "sha256": "672c6486a2eaf3f72197e4688c5ad6dc80c88df75777f3e01d93be7f1210ac2e",
+      "bytes": 236,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase5_Penetration_Schedule.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Penetration_Schedule.csv",
+      "git_blob_sha": "98e189c4fd5bf1e517f8ec282d97a9c258d665df",
+      "sha256": "48dcb156ec992aec1e38b965c306c88206d7e0bf27efc360a4699cad3ef86da6",
+      "bytes": 255,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase5_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_SHA256.txt",
+      "git_blob_sha": "e3c3083e19b0f1276c654f227c312d75e33032e8",
+      "sha256": "b9cf1f6378257aa8ca5e7d8b0fe210a507552595b36ee6340b15be01e1a214bb",
+      "bytes": 800,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase6_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase6_SHA256.txt",
+      "git_blob_sha": "755cd05d9b3de69f523d34a591e089b709d55175",
+      "sha256": "c535cfbc6d55af0ced5f2645be0bc944ee7182388f1a7187dd5ad485513718d3",
+      "bytes": 477,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Phase7_SHA256.txt",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase7_SHA256.txt",
+      "git_blob_sha": "0a61758c9e26bb0730769e41c5529df78ae80761",
+      "sha256": "bdb0e543fa4a91f910aa0834b81d7f32c185e0099f39f6ee3a0d561c5c7a27f8",
+      "bytes": 968,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/Meydenbauer_VDC_Schedule.csv",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Schedule.csv",
+      "git_blob_sha": "62b9061d38fda55973f853c9d7b07e0f5264a7f9",
+      "sha256": "08703c76acd6f883f294c3a816314d0639d642a00c67d3c5f3c4901fa32caf45",
+      "bytes": 743,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/vdc/README.md",
+      "source": "vdc",
+      "source_path": "deliverables/meydenbauer-b/vdc/README.md",
+      "git_blob_sha": "dca50ec68d27cdd1a7f283c404d270fe74247686",
+      "sha256": "1739cc008527a8a316bb85f468a4edaf01c37e820cde90749db29db2abc0d558",
+      "bytes": 2772,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/BLENDER_REVIEW_CHECKLIST.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/BLENDER_REVIEW_CHECKLIST.md",
+      "git_blob_sha": "b45c0cb63a8cc768cdf00142f35fd3cddd612390",
+      "sha256": "8a98308a291f54be7875aaefbcb58b40f0936a51490c9bb11d08b285a07d19a8",
+      "bytes": 3809,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/CODEX_HANDOFF_PROMPT.txt",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/CODEX_HANDOFF_PROMPT.txt",
+      "git_blob_sha": "c767195e43af49d103aa0f5fd26d9973382b49b1",
+      "sha256": "d963bc2151bcfedf0fe21a7ee1e4abb6229efe6131e5c48c2cde81233305447c",
+      "bytes": 2950,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/COMMANDS.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/COMMANDS.md",
+      "git_blob_sha": "5e2fafa7cf34fd9a58b0c01d1ce49acca520a6fa",
+      "sha256": "66c4b3be3cf7cfc7235e4826baf27d241e37fc9c014e3b0d5118d467b32ffb34",
+      "bytes": 1546,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/DELIVERY_MANIFEST.sha256",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/DELIVERY_MANIFEST.sha256",
+      "git_blob_sha": "b1bdab1d8d37f37faeca9ba7f3f521fe6d4da7ac",
+      "sha256": "13f37c5aea0ceca5d1d3bc492f04fe5d61686ddb717d635d5d96e13356ca1971",
+      "bytes": 7649,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/DELIVERY_README.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/DELIVERY_README.md",
+      "git_blob_sha": "c95e5fec0e5eef3477a4b4a83f202ceea3bf1839",
+      "sha256": "7e92667f23622038acd82ff01547205d7e19fcdfe2bf7b8dc9013d5755693829",
+      "bytes": 1863,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/HANDOFF_STATUS.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/HANDOFF_STATUS.md",
+      "git_blob_sha": "8178fe77dfff24e8c717d3a624331285686cf27c",
+      "sha256": "6f552eff54a3247f267357408bfec0483d9198973fa63e6be84114c9e85abaaf",
+      "bytes": 1455,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/KNOWN_UNCERTAINTIES.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/KNOWN_UNCERTAINTIES.md",
+      "git_blob_sha": "4784bc83a3e1170f52f04f8911b4f9bd6aac0c83",
+      "sha256": "560224b83b350afd348c1d989c63b608104551d95af94f3ddea22990b24293c5",
+      "bytes": 1977,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/MANIFEST.sha256",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/MANIFEST.sha256",
+      "git_blob_sha": "fc748ca306a1bcddc0137172f9a7fb0e7b562855",
+      "sha256": "64ae5e72327b2127c988808fa7fd46e759ed9d6613769dbdd25655092ca1500e",
+      "bytes": 3522,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/PACKAGE_CONTENTS.txt",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/PACKAGE_CONTENTS.txt",
+      "git_blob_sha": "973b0e8ed536dc817f4307553a29d0847a39649a",
+      "sha256": "9ca0a6f46bdb02ab72acb2efc142eee7ca01384383607f1954dd5b341ed8df95",
+      "bytes": 1524,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/README.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/README.md",
+      "git_blob_sha": "4ec1750e4a7b8e0b0430c00ddbd8aa67df1d5c90",
+      "sha256": "1722b2c94254b9d3c6fba65241ee7aae234271e6d49185ac35651219de3cd62e",
+      "bytes": 5263,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/SOURCE_FILES_NOT_INCLUDED.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/SOURCE_FILES_NOT_INCLUDED.md",
+      "git_blob_sha": "18319f1fcacef664ec5b67a54dccb275c42cc59f",
+      "sha256": "768c0f16a43c9f42c811a20708c0274a3ccc17726740ffb79ca458577ef49c20",
+      "bytes": 675,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/SOURCE_INDEX.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/SOURCE_INDEX.md",
+      "git_blob_sha": "2bbd20688071da2f9a91465ac5b7f517c8bdc1b7",
+      "sha256": "975ea0e89fd16a966ab1c3d48c80f673ec49cedd9c944d843abdef60f9d93d83",
+      "bytes": 3058,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/START_HERE.txt",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/START_HERE.txt",
+      "git_blob_sha": "4675d1549dc765927c680b50699e96226b49a32b",
+      "sha256": "d150253581de5ce34f953713e2f07a9df37566b00cffdd56be1b9724b16a7fa9",
+      "bytes": 739,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/data/B101_demolition_fitting_schedule_v4.csv",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/data/B101_demolition_fitting_schedule_v4.csv",
+      "git_blob_sha": "1f39674abd4e470b3e8b418beff288a518c7bfcf",
+      "sha256": "16e61dc10561cdd292c2b4920457ecb35ed83992781ab2e06834188e950751ac",
+      "bytes": 4191,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/data/b101_route_controls_calibrated_v2.csv",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/data/b101_route_controls_calibrated_v2.csv",
+      "git_blob_sha": "0bcba8f07656005a1521629b7d38e6cf159f4b54",
+      "sha256": "adff6d9ae572c84382efd47197f6eb40a250627bef287f528157e311f2fa00f3",
+      "bytes": 4795,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/data/meydenbauer_route_controls_v2_reference.csv",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/data/meydenbauer_route_controls_v2_reference.csv",
+      "git_blob_sha": "2096733eb51e5e71feb8e3adc875bf7c67c007d1",
+      "sha256": "a7a65c347bdaa659bcec76e6e6d7d99985e8d378658cf631cb492980a298b14c",
+      "bytes": 7032,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/docs/B101_demolition_fitting_notes_v4.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/docs/B101_demolition_fitting_notes_v4.md",
+      "git_blob_sha": "60de13244f93cb06a481b200c27820d8ddf8f8eb",
+      "sha256": "93cec92f210634a2cd4c54e0578e4b3d84733d6f1c84eb2835337daa7c0faae6",
+      "bytes": 3981,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/docs/B101_demolition_model_notes_v3.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/docs/B101_demolition_model_notes_v3.md",
+      "git_blob_sha": "44d5c30718d83af91e526233b191cf9832a72f66",
+      "sha256": "a77edca858e04218d5719348e1ad6388b838522a96ea3a0752440a93336eda55",
+      "bytes": 3122,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/docs/b101_calibration_report.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/docs/b101_calibration_report.md",
+      "git_blob_sha": "620de918698b31ce594e5e60aeb1b896cf17585d",
+      "sha256": "46c79fb71fa24688e213d188f24fa296088fb99b53d364901b660fabb97940d5",
+      "bytes": 1335,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/docs/meydenbauer_v2_audit.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/docs/meydenbauer_v2_audit.md",
+      "git_blob_sha": "f19877b04f7d8fc67a4122899a68dd188bb7d54c",
+      "sha256": "590f82206abcec84470bd649f70a771a87f58b64898aa3715c0ca9f2587305f6",
+      "bytes": 4354,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/handoff.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/handoff.json",
+      "git_blob_sha": "ab2526cdf603c206f41c9540d5db13d27906408a",
+      "sha256": "070cdf16262ac4f68cf9ba3c9a4fb8c4a62453e5a7f362ab95c1aa9ac7c44ff6",
+      "bytes": 1271,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/blender_version.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/blender_version.log",
+      "git_blob_sha": "867707ad8f9906e31af145658545c6982ad7eace",
+      "sha256": "e8c2acc53fbac585a6becc0dbed623c375ac68a570efb4dba6d1ddcc59593ecc",
+      "bytes": 14,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/build.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/build.log",
+      "git_blob_sha": "f1c54ecb9656573391ea2bbc6374f9a8af1d6099",
+      "sha256": "291232f1e529c3f3d7f6022e905a24748679a957b49215660cb6567c96dd5cdc",
+      "bytes": 5386,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/detail_renders.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/detail_renders.log",
+      "git_blob_sha": "d5b9877866d55224485347161a4aa72fd42bb7c4",
+      "sha256": "7a75111b2b24aa0e7b8185147ecb638e8cb8c7b6ce1fdb440e4133e2f7f78939",
+      "bytes": 1864,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/extended_runtime_qa.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/extended_runtime_qa.log",
+      "git_blob_sha": "2ca1f2297b58c1259ab469bf42ff9d0797a0caa5",
+      "sha256": "a94cd5ea1de709b274d97f77098ba77fad57f876afe69a6b119b0ba483bcf790",
+      "bytes": 167,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/isolated_detail_renders.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/isolated_detail_renders.log",
+      "git_blob_sha": "b0cae5bdcebc146ab43328293084adf96950147c",
+      "sha256": "092cc6602821131724a3100f9b3331096cb6d2d7d605048e6c8c2e016dd288ae",
+      "bytes": 906,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/launcher.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/launcher.log",
+      "git_blob_sha": "09547579597881500a8d45622efcb649e8aa8783",
+      "sha256": "f9e1122397c68081dedca19641fab1addfbd262ea986873622e4b3689cb4d90c",
+      "bytes": 7232,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/preflight.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/preflight.log",
+      "git_blob_sha": "9d7b281c466cdb5629c4266aa700329b7f0251e3",
+      "sha256": "527603f6e11f0603e7612c30a5ed4c5d402a51373d544fa6dbff2cb74b9c9ffa",
+      "bytes": 518,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/preflight_core.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/preflight_core.log",
+      "git_blob_sha": "e213c434c6e52f226581c0c3ae70f73cb3fc69d7",
+      "sha256": "a211ae7185c2efa1e4091bca22ebb3616b74594783f83ae93d6cd722e0b74b61",
+      "bytes": 497,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/protection_conflict_render.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/protection_conflict_render.log",
+      "git_blob_sha": "13aea3366a03b575cf0deffcf3e650bb8e1f31ec",
+      "sha256": "13fa82538ba84725d6692ec34bb56e1ea87075e15cb6cf2cf6b2c1fc73b3cabc",
+      "bytes": 592,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/logs/verify_saved_blend.log",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/logs/verify_saved_blend.log",
+      "git_blob_sha": "ba7595a96b0f7a257f8efd6e0cfe4fd830f3896e",
+      "sha256": "acf84a80ff528b5549bbcdec048165bcf78ff3954c3cdbd242517629f4213034",
+      "bytes": 926,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/acceptance_notes.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/acceptance_notes.md",
+      "git_blob_sha": "ffd6127f5f5f8df949894e2de12f6d19a85d36fb",
+      "sha256": "1827f87328ac1af7b92422a589cef407cefec25d935ad0edd82969916e06fabb",
+      "bytes": 7118,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/build_validation_report.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/build_validation_report.json",
+      "git_blob_sha": "634b57b6fd0bb882627386164b7cb16d4866a915",
+      "sha256": "cb1068509c947be8131dc928a23efade60332b9fc615db866d482ba31cc2426f",
+      "bytes": 7100,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/changes.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/changes.md",
+      "git_blob_sha": "1d71c89e173e4ed1d9b1f960416117db2fffca61",
+      "sha256": "002e676bbd7380609ab5d3085ae35a6bce29d2d85634520015e66702eaed52ba",
+      "bytes": 1492,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/checklist_review.md",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/checklist_review.md",
+      "git_blob_sha": "0e0393c56a67af41b43222406d3cacc12079f3ee",
+      "sha256": "781406328ee359ab93a22e87cb13975e101959d697915da894149935fd73f09c",
+      "bytes": 4364,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/execution_summary.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/execution_summary.json",
+      "git_blob_sha": "f1ed6363b3bffc52fd850a5846ea74b50215fcd0",
+      "sha256": "3defbcb4d0ca4257180ba614976e7e3bacd1935eb49b5e8be9bc4e1df4a91667",
+      "bytes": 876,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/extended_runtime_qa.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/extended_runtime_qa.json",
+      "git_blob_sha": "3d6bbc8d5daed6d5e09e41887dc0f72fb79c47cb",
+      "sha256": "7a151117a714255bd982d89659a488e47807bd76979f55675044571bc2b234a5",
+      "bytes": 20307,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/preflight_report.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/preflight_report.json",
+      "git_blob_sha": "fbee5dc8120da64b3ebd220130dcb1cff5017101",
+      "sha256": "3c83a66316ab54e5e6e8cfda812b27eacf8e4425f82f03bbfa4e7fd088bb6330",
+      "bytes": 6705,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/render_inventory.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/render_inventory.json",
+      "git_blob_sha": "58cbd40d860bb0b1184e2d9ae8e30b8b72f339aa",
+      "sha256": "747f5ae4b480f94a4a5e3cbe1617d6913921c386365e6cee288b71a7ec9f232f",
+      "bytes": 6697,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/saved_blend_verification.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/saved_blend_verification.json",
+      "git_blob_sha": "5256fcf1fdd344a45cc3de7f4b8e251559a73a30",
+      "sha256": "5ac03ed2f194808445d8ff42ece89dd4eeb8b952e09cf53a9ff5b87c1eafdde8",
+      "bytes": 1698,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/output/source_integrity.json",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/source_integrity.json",
+      "git_blob_sha": "d05a0487c3991768f276082754422f496617c1dc",
+      "sha256": "b569ed18647d47a85a7162598603ff489aa743bbc32ccfc30e78c1f93f917659",
+      "bytes": 634,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/run_blender.bat",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/run_blender.bat",
+      "git_blob_sha": "1f729798655dea26fdef334dfa1fc9ec5e5acc5b",
+      "sha256": "0dacd408709db5e0df5811c31a4d9a8b657f04a306e6d8f4ea6f727b8953553f",
+      "bytes": 118,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/run_blender.ps1",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/run_blender.ps1",
+      "git_blob_sha": "4864567a0029b98eb9580d6307f464467d5e32d6",
+      "sha256": "58c9bb46f6687ff45a346d070afed4d79e7941d482610b4b40cd67b60e4d163d",
+      "bytes": 2296,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/run_blender.sh",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/run_blender.sh",
+      "git_blob_sha": "c5fb37dee9da1d07d23614943b489abf7ad58a8f",
+      "sha256": "b8b283285162e8fd437b42c222be516029400ffa9e050f6368cb757f0077f2ee",
+      "bytes": 1775,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/build_meydenbauer_b101_v4.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/build_meydenbauer_b101_v4.py",
+      "git_blob_sha": "f6604269e9c6e4c45a0f0c0aaf08f916e265ca3a",
+      "sha256": "0f28e165976e2cd7e82680caa9b5092bfb3b69e4c0836721c4dc72ab83e1a5b9",
+      "bytes": 152108,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/extended_runtime_qa.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/extended_runtime_qa.py",
+      "git_blob_sha": "bce1e9336b697a79e4bd6171554a1d027aab11d5",
+      "sha256": "10c32f088569308cf92e5040de0a268e3b3f0ebab4f1f90219eec2b1fe1a4cb1",
+      "bytes": 6568,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/package_delivery.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/package_delivery.py",
+      "git_blob_sha": "6052ea6cd7987e5abf824f3f4986015599e4a58a",
+      "sha256": "9fd86e2e5a2dc1b631f5519a097962c01462ba435b6245dca76b75d21f493cd5",
+      "bytes": 2888,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/preflight.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/preflight.py",
+      "git_blob_sha": "664b80e80b9fdce6ea410290bc05607f16150aba",
+      "sha256": "1843a39509fd66177debce16af9828ff5e3056508e9346131cf3007f2179005e",
+      "bytes": 3291,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/render_detail_qa.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/render_detail_qa.py",
+      "git_blob_sha": "5d728e6fcbbb12099b1c58225ca88a8f23fc75ea",
+      "sha256": "7c67dbd8a7120df2bfd63dd50a4ce2f1e44a6cdba2666eaa645fdfb31d08f33c",
+      "bytes": 3091,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/render_protection_conflict.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/render_protection_conflict.py",
+      "git_blob_sha": "1091261436a610d36d1d35fb676c6aa52f78d24a",
+      "sha256": "8adabc9cc26ccbed10c4f2a7f03a6f06c4579a82296179b8103a7b37bdf12727",
+      "bytes": 1921,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/run_build_and_verify.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/run_build_and_verify.py",
+      "git_blob_sha": "5881e1bdbd1c3a6175219fa2e43a86d9d6f4792c",
+      "sha256": "2ed60699cd2ecc51fbb0394fd3ec0513a1acb69c4d4c6566d7b43959315e7700",
+      "bytes": 7674,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/scripts/verify_saved_blend.py",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/scripts/verify_saved_blend.py",
+      "git_blob_sha": "a2e614a936fe6eb723a075ab0bce051ae6bde3df",
+      "sha256": "a79b91fbb5a92aa83ce115ab17d2d5aec8eb7cb56ee119facca6aa2b2da7d2ec",
+      "bytes": 2427,
+      "stored": "raw"
+    },
+    {
+      "file": "snapshots/b101/sources/modeling_brief.txt",
+      "source": "b101",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/sources/modeling_brief.txt",
+      "git_blob_sha": "82af77dbb3da27a6cf1cea4214e2af894e613486",
+      "sha256": "34e45913cce171042fa28a3f838f62410db6a780fa10d3a3a8648e5a147b8d45",
+      "bytes": 15589,
+      "stored": "raw"
+    }
+  ],
+  "left_in_archive": [
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC.blend",
+      "bytes": 68398894,
+      "git_blob_sha": "063bc785da3f80a80e156be0b5a31fa09db77a3a"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase2.blend",
+      "bytes": 69031410,
+      "git_blob_sha": "d59769169fb7f17662c74060b23bddd44477adab"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase3.blend",
+      "bytes": 72345494,
+      "git_blob_sha": "6f5f60e2b6b74505240cee248f63e79cf6c9593d"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase4.blend",
+      "bytes": 73045936,
+      "git_blob_sha": "8549bb93f6e06c2439c5987ad0e34777bf0fb5de"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase5.blend",
+      "bytes": 73047800,
+      "git_blob_sha": "72d7e48686a723513578b9ca99fc932bb7d856e3"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase7.blend",
+      "bytes": 73150039,
+      "git_blob_sha": "ee02ba8b289b9657705923c356d8bd95b1f88646"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase1_Data_Package.xlsx",
+      "bytes": 366159,
+      "git_blob_sha": "ac52abb6e1e13ef64aa229b57e5b068cbb68c1e5"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase2_Constructability_Package.xlsx",
+      "bytes": 31215,
+      "git_blob_sha": "57421ddf27e14a48d989f526b5c51acf5dfd4ad8"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase3_Schedule_Package.xlsx",
+      "bytes": 9789,
+      "git_blob_sha": "78ae5b22020f861d73f5c2ce51e6f3c13cda5497"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase4_Takeoff_Package.xlsx",
+      "bytes": 51385,
+      "git_blob_sha": "8596e7df90181742a29de02624ea4a0589040b82"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/Meydenbauer_VDC_Phase5_Field_Package.xlsx",
+      "bytes": 19206,
+      "git_blob_sha": "5ab0ceaa63ead118f6671d47163bfb549ad262b5"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_01_Existing_Conditions.png",
+      "bytes": 2514124,
+      "git_blob_sha": "e5e937d18b453caf6378c8d1323f6c9fbe706b28"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_02_ABS_Installation.png",
+      "bytes": 1791595,
+      "git_blob_sha": "118116f3e75c19ce5b234a9026f12033af5c37ad"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_03_Hydro_Test.png",
+      "bytes": 1836334,
+      "git_blob_sha": "92234aff45efbb59341d49f227ce72736701fa54"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase6_renders/Meydenbauer_Hero_04_As_Built.png",
+      "bytes": 2514738,
+      "git_blob_sha": "3c87811deba9d430ebe719abc78c8a5100bb2131"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7_f180_trench.png",
+      "bytes": 240165,
+      "git_blob_sha": "a7ae331c759e744e6b0ae5d766b65d2b860c0e10"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7_f30_garage.png",
+      "bytes": 341249,
+      "git_blob_sha": "bed28fbc5bdc4ffd53337023aa1069e237b1cd6d"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7_f650_final.png",
+      "bytes": 331975,
+      "git_blob_sha": "073d85589aa41b6758ea8d23b131e6a716831d3f"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f440_hydro.png",
+      "bytes": 231775,
+      "git_blob_sha": "d8999649d8f80b0bd4737ae57bdea6c5c89470a3"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f455_hydro_full.png",
+      "bytes": 233541,
+      "git_blob_sha": "3f33ace4f5996b7fee23522c188bb8df863d3e86"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f500_backfill.png",
+      "bytes": 240558,
+      "git_blob_sha": "19c20e51825a17c35bee063856b3c465945e87a0"
+    },
+    {
+      "source": "vdc",
+      "path": "deliverables/meydenbauer-b/vdc/phase7_validation/p7b_f530_backfill.png",
+      "bytes": 240942,
+      "git_blob_sha": "6dc7bb6ae7ca08ff92746e2cf5d033dbb9ace9eb"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/logs/.gitkeep",
+      "bytes": 0,
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/output/.gitkeep",
+      "bytes": 0,
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/output/Meydenbauer_B101_Demolition_v4.blend",
+      "bytes": 14451352,
+      "git_blob_sha": "31907be46deb099d6afdc57b47e9e417e2529442"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/qa/B101_calibrated_QA_board.png",
+      "bytes": 111240,
+      "git_blob_sha": "47ab9e80830b9a967480521c0600ec4376d601dd"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/qa/B101_demolition_plan_overlay_v3.png",
+      "bytes": 522650,
+      "git_blob_sha": "0337012dd2d281190fa0a413e397b204eb1db8d9"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/qa/B101_fitting_cut_QA_overlay_v4.png",
+      "bytes": 84595,
+      "git_blob_sha": "f0ef8b34ae37c5d1afeaffdecd25c971657ab6db"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/qa/b101_P3_1_calibrated_overlay.png",
+      "bytes": 45059,
+      "git_blob_sha": "e64062ad4532d5d56853f80df79e8aa367de6f39"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/.gitkeep",
+      "bytes": 0,
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_001_existing.png",
+      "bytes": 1502750,
+      "git_blob_sha": "58e380931005ad0cb33f60a73978806a59e94821"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_038_remove_reinstall_access_items.png",
+      "bytes": 896141,
+      "git_blob_sha": "64bba4d003972508b03f2f951c7a5d7c94d9391f"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_050_finish_stripout.png",
+      "bytes": 896141,
+      "git_blob_sha": "588d7bdfbb3f0680d8d1ca7ad9388d291418aac9"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_061_wall_stack_exposure.png",
+      "bytes": 894174,
+      "git_blob_sha": "e1df1778c654f0bc08561a3cc93ed70c95b49fe1"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_068_slab_sawcut.png",
+      "bytes": 894174,
+      "git_blob_sha": "9042a1c1af2dd2815d621969d1619156eb3241bf"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_076_slab_lift_vapor_exposure.png",
+      "bytes": 894255,
+      "git_blob_sha": "560de55278f1be1d08e9f74fb23321d99849df3f"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_083_excavation_expose_ci.png",
+      "bytes": 894255,
+      "git_blob_sha": "5f9c22819b6b2250fac2f9845df266124fb70aae"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/B101_demo_089_ci_removed_clean_trench.png",
+      "bytes": 894255,
+      "git_blob_sha": "21891e7ac87825d510ff3e07672d97d2cee3c999"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_001.png",
+      "bytes": 2012338,
+      "git_blob_sha": "db4d36a22c834acb9b5c447ec8a19c7eac17057e"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_038.png",
+      "bytes": 2027798,
+      "git_blob_sha": "fed4398263d529df796e4b1e0e3187e9cc39153a"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_050.png",
+      "bytes": 2027320,
+      "git_blob_sha": "fdece333e3d361e66a592aa31cb334c36ebe2d51"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_061.png",
+      "bytes": 2015922,
+      "git_blob_sha": "4f2f39002cd22ed732537771931f72d657bfaf86"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_068.png",
+      "bytes": 2023106,
+      "git_blob_sha": "062bb4aa91310c0b11d9977765f27e8b438434cd"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_076.png",
+      "bytes": 2042361,
+      "git_blob_sha": "f910d2d0b1caa6732698a81a7e843432c651669d"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_083.png",
+      "bytes": 2037659,
+      "git_blob_sha": "39fcd2671c9281d0ac49072bddba2eed89299d69"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_close_089.png",
+      "bytes": 2021837,
+      "git_blob_sha": "e63acc60ac88719e4ef389e323fdaf06a94ce309"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_fittings_cuts_supports_083.png",
+      "bytes": 1197655,
+      "git_blob_sha": "aa0b4d139a44f411775f6168b25491877916dbad"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_new_ABS_route_091.png",
+      "bytes": 1170136,
+      "git_blob_sha": "88100609d3b24cf452cb94d28b4654d60c8aecf2"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_prior_ABS_envelope_conflict_089.png",
+      "bytes": 1237151,
+      "git_blob_sha": "b3952e5e5a648f7ae1c6946b57a0550bef3146c3"
+    },
+    {
+      "source": "b101",
+      "path": "deliverables/meydenbauer-b/b101-v4/renders/detail/B101_slab_boolean_top_089.png",
+      "bytes": 1698297,
+      "git_blob_sha": "b1ee77ddd91434790fc98987997a13bef4356780"
+    }
+  ]
+}

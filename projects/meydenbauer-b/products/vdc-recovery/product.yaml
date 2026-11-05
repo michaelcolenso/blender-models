@@ -1,0 +1,10 @@
+kind: source-recovery
+description: "Recovered Meydenbauer VDC (4d-fixes) and B101 v4 data, reconciled against canonical state; CPU only, nothing imported"
+deliverables: ../../deliverables/vdc-recovery
+depends_on: [meydenbauer-b/underslab]
+steps:
+  # one-off; needs the two archive tags fetched (see recover.py)
+  recover: python $BM_PRODUCT_DIR/recover.py
+  reconcile: python $BM_PRODUCT_DIR/reconcile.py
+  # verify every snapshot hash, then regenerate the report and require no diff
+  check: python $BM_PRODUCT_DIR/reconcile.py --check

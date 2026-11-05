@@ -101,6 +101,11 @@ durations can be treated as alternatives. S1/S3 durations remain not calculated
 in the merged Explorer; do not restore the superseded excavation-only duration
 sensitivity from closed PR #38.
 
+**Slice 1 (recover data for inspection) is done:** see
+[vdc-recovery](../projects/meydenbauer-b/products/vdc-recovery/README.md), with findings in its
+[report](../projects/meydenbauer-b/deliverables/vdc-recovery/README.md). 80 text files are byte-identical
+to the archive. The scenes and renders stay in the tags. Nothing was imported into the canonical state.
+
 First recover the small schedule, element, issue, takeoff and route-control data
 for inspection. Reconcile identifiers (`vdc_element_id` versus `cie_id`), units,
 final-frame quantity methods, evidence and scope coverage against canonical CIE

@@ -1,0 +1,262 @@
+[
+  {
+    "file": "renders/B101_demo_001_existing.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 1502750,
+    "channel_mean": [
+      123.49158637152777,
+      123.70391059027777,
+      124.07292534722222
+    ],
+    "sha256": "83397deb4e1d03b85ba363f27c5439d863c2448bebb3844a61755f244a6d1911",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_038_remove_reinstall_access_items.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 896141,
+    "channel_mean": [
+      142.60079318576388,
+      144.08096462673612,
+      145.33807400173612
+    ],
+    "sha256": "de684ffa4a3befca3bb532b126a1e5e3c99d95f36bc3dd60ab837961f63095d7",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_050_finish_stripout.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 896141,
+    "channel_mean": [
+      142.60079318576388,
+      144.08096462673612,
+      145.33807400173612
+    ],
+    "sha256": "3592358ae353d6c3b5c2ba15ecd27de18d84713ba34637d5bd4c8c38279864b5",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_061_wall_stack_exposure.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 894174,
+    "channel_mean": [
+      142.5674880642361,
+      144.0497580295139,
+      145.31030598958333
+    ],
+    "sha256": "050da29e032e40c083bd49fe169f56d33d8ca533747254c896e02d072faf3b04",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_068_slab_sawcut.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 894174,
+    "channel_mean": [
+      142.5674880642361,
+      144.0497580295139,
+      145.31030598958333
+    ],
+    "sha256": "dbd8f7be4dba1cd6c8b9c189437466746fc22baf676afb552f46f0bc2ffb22d5",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_076_slab_lift_vapor_exposure.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 894255,
+    "channel_mean": [
+      142.56530381944444,
+      144.04645833333333,
+      145.306298828125
+    ],
+    "sha256": "dfcb61acf3e402a24ed33b9142897f5f46bae676eb9244c7c595221bf3b28236",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_083_excavation_expose_ci.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 894255,
+    "channel_mean": [
+      142.56530381944444,
+      144.04645833333333,
+      145.306298828125
+    ],
+    "sha256": "aa29415e54d8fea0f27385064e0aa0fb5dbdfb681d037b1ab3efeddaa10bfc89",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/B101_demo_089_ci_removed_clean_trench.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 894255,
+    "channel_mean": [
+      142.56530381944444,
+      144.04645833333333,
+      145.306298828125
+    ],
+    "sha256": "1308ddd00f7b67ddd83b6f0fcacb32297cfc6caaa5f48039a90046ee5af1a962",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_001.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2012338,
+    "channel_mean": [
+      103.07745208333333,
+      105.20315885416667,
+      106.37340677083333
+    ],
+    "sha256": "df231d66cb45fd0c10e88b1f9bf2cff632c322e2c27292ff8998fd23ef40b5c5",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_038.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2027798,
+    "channel_mean": [
+      97.74900364583333,
+      99.6669875,
+      101.1801421875
+    ],
+    "sha256": "43be6184410d61f89f7b4d5a7fb8d67b3dc33320023eeed1a91ed4b358dfb344",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_050.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2027320,
+    "channel_mean": [
+      97.91569739583333,
+      100.1846140625,
+      102.52574635416667
+    ],
+    "sha256": "7d99ff948d64b54399afecddd9984904dd94f319e7d6cf140a7e4b1bc4fb81a8",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_061.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2015922,
+    "channel_mean": [
+      92.8857921875,
+      96.50065572916667,
+      99.643334375
+    ],
+    "sha256": "948a6e76cefdb1cebd6ea972625c5f1434a9cc018ffec8bbf149a0f6d1202e17",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_068.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2023106,
+    "channel_mean": [
+      92.85865677083333,
+      96.4706015625,
+      99.6104109375
+    ],
+    "sha256": "c92a08828e93e0f4ff6d9f9b66ef45f7cf2e0c7e04825f6024734a9a3cdedaf7",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_076.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2042361,
+    "channel_mean": [
+      92.463053125,
+      95.79725625,
+      98.52999427083333
+    ],
+    "sha256": "c0372876e33530234d211b58dd22f632d115b58d4af7fb1c082e4bd9d164dcca",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_083.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2037659,
+    "channel_mean": [
+      92.42919583333334,
+      95.61978802083334,
+      97.82162864583333
+    ],
+    "sha256": "598d43edd9189ee49f58d3459df2c5ab65e018c257539ccee6271fa2617dc656",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_close_089.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 2021837,
+    "channel_mean": [
+      92.64808177083333,
+      95.85371666666667,
+      98.04301875
+    ],
+    "sha256": "809cb765c3f0e9c4fc52b23f0bce622975abc9e7f3ce4f458572265cacb75c1d",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_fittings_cuts_supports_083.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 1197655,
+    "channel_mean": [
+      99.55399322916666,
+      99.32959322916666,
+      99.21951927083333
+    ],
+    "sha256": "b66d93b5763a4d32776148facd15080f813fa87d24e6bf3ff5ed938607ece5c2",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_new_ABS_route_091.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 1170136,
+    "channel_mean": [
+      99.37918854166666,
+      99.38878125,
+      99.41455625
+    ],
+    "sha256": "90ad5797760be49de63a85e00cacf2ac0a17e9d7bc77a82aabcf4555295bc32b",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_prior_ABS_envelope_conflict_089.png",
+    "width": 1400,
+    "height": 1000,
+    "bytes": 1237151,
+    "channel_mean": [
+      123.37105357142858,
+      124.92953571428572,
+      126.55999428571428
+    ],
+    "sha256": "35eedc0fbcbbca60b00c7baf004c480eb65cfd37914bc764300cd11d6ba947b5",
+    "decode_passed": true
+  },
+  {
+    "file": "renders/detail/B101_slab_boolean_top_089.png",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 1698297,
+    "channel_mean": [
+      112.41510677083333,
+      114.82370625,
+      116.31258541666666
+    ],
+    "sha256": "11718c83fe3a0bac12ea36ffd2f7110b3f50dfbb96ca33ecf738665da6af17aa",
+    "decode_passed": true
+  }
+]
