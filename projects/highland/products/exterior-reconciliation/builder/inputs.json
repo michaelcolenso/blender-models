@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "source_tag": "archive/2026-11-03/continue/highland-roof-geometry",
+  "source_commit": "bddd5b8fb4085677028108754ef82a722bc0b17c",
+  "note": "Inputs and code of the revision 06 native builder. \"verbatim\" files are byte-identical to the archived blob and must stay so (the native check verifies them). \"ported\" files changed only where they read or write paths; the archived blob is recorded for diffing (git diff <blob> -- <file> after fetching the archive tag). Geometry logic is unchanged.",
+  "files": [
+    {
+      "file": "inputs/change-ledger.json",
+      "source_path": "deliverables/highland-drawings/change-ledger.json",
+      "git_blob_sha": "c00cd1bc7cbc268d16b114d037376800b0692d0f",
+      "sha256": "7d99d303770bae8985d14e283e8b24e48a86956cac53803c4f394d361fa681af",
+      "bytes": 188845,
+      "state": "verbatim"
+    },
+    {
+      "file": "inputs/opening-audit.json",
+      "source_path": "deliverables/highland-drawings/opening-audit.json",
+      "git_blob_sha": "ae6654eb884791f8dc552071adca01ab1bdffdaa",
+      "sha256": "264b2e7b26db85ae4ef0c16908a6141c298b539a1c8a8ea8ef98e96c97007c05",
+      "bytes": 12374,
+      "state": "verbatim"
+    },
+    {
+      "file": "inputs/highland-exterior/build.py",
+      "source_path": "projects/highland-exterior/build.py",
+      "git_blob_sha": "10e581640ab7992fd104d691c4e44d6539806201",
+      "sha256": "cb2f0f2490a2d54fb51b94e7dde0d5f0cd4276964cbe1300a5f08cf07a723b5b",
+      "bytes": 22150,
+      "state": "verbatim"
+    },
+    {
+      "file": "inputs/historical-geometry-validation.json",
+      "source_path": "deliverables/highland-drawings/geometry-validation.json",
+      "git_blob_sha": "ff99153a297a867cf6b81337f5ab3097e3ec0939",
+      "sha256": "3f672bfecc0479e0d155609f44a55ae2348a86f061859ed2867449acc2673597",
+      "bytes": 204140,
+      "state": "verbatim"
+    },
+    {
+      "file": "inputs/historical-delivery-validation.json",
+      "source_path": "deliverables/highland-drawings/delivery-validation.json",
+      "git_blob_sha": "72acc35b98003dabdc466e60fdcba61ee257a91a",
+      "sha256": "bcc72e0dfbe093aecbaace26e52a1f8b677ff10eb49343320251cefaeb3166e0",
+      "bytes": 2971,
+      "state": "verbatim"
+    },
+    {
+      "file": "build.py",
+      "source_path": "projects/highland-drawings/build.py",
+      "git_blob_sha": "043c60df56092b28e877eb14fe4b7819e684287b",
+      "sha256": "b080610e59e636e84cd110f7e06d122382f049dc9ede366a8cba5ca857092f6d",
+      "bytes": 11498,
+      "state": "ported"
+    },
+    {
+      "file": "shell_mesh.py",
+      "source_path": "projects/highland-drawings/shell_mesh.py",
+      "git_blob_sha": "6597598b52df8bd1d87db751227dc88033559435",
+      "sha256": "b68ad91a4dfb6f79698dfeb45fd57c1ff2f3f3bdf726743797f985125a76cd04",
+      "bytes": 3810,
+      "state": "verbatim"
+    },
+    {
+      "file": "terrace_mesh.py",
+      "source_path": "projects/highland-drawings/terrace_mesh.py",
+      "git_blob_sha": "86edd52827295646467b4083e330af5c069538e5",
+      "sha256": "cc5f718fae5890e0e1fffd94574b712a4d0ae8ce41ab28e1d87c7239327b7c2f",
+      "bytes": 6415,
+      "state": "verbatim"
+    },
+    {
+      "file": "presentation_sync.py",
+      "source_path": "projects/highland-drawings/presentation_sync.py",
+      "git_blob_sha": "e4cd3d67f2030ff3c56089fe5a1e905ec5dc8e48",
+      "sha256": "0f3e8a5e22edcc3e8e803faad6c2ad5685b7bab00f9be0de6e35b92740ac169e",
+      "bytes": 4017,
+      "state": "verbatim"
+    },
+    {
+      "file": "validate.py",
+      "source_path": "projects/highland-drawings/validate.py",
+      "git_blob_sha": "cdea5ef20bbfcf9cc5cbd3b23ed43ec3aab39dba",
+      "sha256": "f2ca67349ee1e96d16ecf4ac508523cf89b724143e61f9f4af2cfa481229a489",
+      "bytes": 14490,
+      "state": "ported"
+    },
+    {
+      "file": "check_terraces.py",
+      "source_path": "projects/highland-drawings/check_terraces.py",
+      "git_blob_sha": "6144fa84a24747e3d99f38ad69ea7a011bb72d59",
+      "sha256": "265721ede661deeca5fe083796eee6eaa8b4c3a2c85bd085ca1fdf55f487e438",
+      "bytes": 4453,
+      "state": "ported"
+    },
+    {
+      "file": "render.py",
+      "source_path": "projects/highland-drawings/render.py",
+      "git_blob_sha": "c285e8d04548588a333297ab391fbd96061d6646",
+      "sha256": "967f6a1d09598efa412516163d551bd3d6c2157323667c54fc8272304ce3b248",
+      "bytes": 5657,
+      "state": "ported"
+    }
+  ]
+}

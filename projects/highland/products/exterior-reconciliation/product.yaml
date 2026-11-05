@@ -1,6 +1,19 @@
-kind: source-recovery
-description: "Archived Highland reconciliation spec, evidence locators and protected controls; CPU checks only"
+kind: source-recovery+native-build
+description: "Archived Highland revision 06 reconciliation: source controls (CPU) and the native Blender rebuild compared with the historical delivery records"
 deliverables: ../../deliverables/exterior-reconciliation
 steps:
-  check: python $BM_PRODUCT_DIR/check.py
+  # bpy, ~30 s plus a 24 MB release download on first run; outputs go to $BM_BUILD
+  build:
+    - bm assets pull $BM_PRODUCT_DIR/builder/release-assets.json
+    - python $BM_PRODUCT_DIR/builder/build.py
+  validate: python $BM_PRODUCT_DIR/builder/validate.py
+  verify: python $BM_PRODUCT_DIR/builder/verify.py
   check-sources: python $BM_PRODUCT_DIR/check.py --require-sources
+  # CPU source/control contract, then rebuild, read back and compare with the historical records; no tracked drift
+  check:
+    - python $BM_PRODUCT_DIR/check.py
+    - bm assets pull $BM_PRODUCT_DIR/builder/release-assets.json
+    - python $BM_PRODUCT_DIR/builder/build.py
+    - python $BM_PRODUCT_DIR/builder/validate.py
+    - python $BM_PRODUCT_DIR/builder/verify.py
+    - git diff --exit-code -- $BM_DELIVERABLES/native-check.json
