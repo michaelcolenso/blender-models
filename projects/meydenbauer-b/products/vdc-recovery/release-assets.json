@@ -1,0 +1,64 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "meydenbauer-b-vdc-archive-2026-11-05",
+  "storage": "release",
+  "note": "Archived VDC 4D scenes (phases 1-5, 7) and the B101 demolition v4 scene, byte-identical to the archive blobs listed. Historical review copies only: canonical state does not depend on them. Illustrative, not a contract document.",
+  "assets": [
+    {
+      "name": "Meydenbauer_4D_Construction_Sequence_VDC.blend",
+      "bytes": 68398894,
+      "sha256": "f51076ba34d85365ceb306f98ee3596e2986875ec9255aa003bfecaafc8d8ea9",
+      "source_commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC.blend",
+      "git_blob_sha": "063bc785da3f80a80e156be0b5a31fa09db77a3a"
+    },
+    {
+      "name": "Meydenbauer_4D_Construction_Sequence_VDC_Phase2.blend",
+      "bytes": 69031410,
+      "sha256": "e4aca599ec21f3c92f91dca07118bee5318764b4bb7bafd80ecb624f14ef3d9d",
+      "source_commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase2.blend",
+      "git_blob_sha": "d59769169fb7f17662c74060b23bddd44477adab"
+    },
+    {
+      "name": "Meydenbauer_4D_Construction_Sequence_VDC_Phase3.blend",
+      "bytes": 72345494,
+      "sha256": "1ab4131515402c868ce947f902f04952fb66815a720cc8df5230eefb4210f362",
+      "source_commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase3.blend",
+      "git_blob_sha": "6f5f60e2b6b74505240cee248f63e79cf6c9593d"
+    },
+    {
+      "name": "Meydenbauer_4D_Construction_Sequence_VDC_Phase4.blend",
+      "bytes": 73045936,
+      "sha256": "48361982d8f30a56381e699a97eb7071d4e1d28a0a70353ffce48e5eb9372666",
+      "source_commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase4.blend",
+      "git_blob_sha": "8549bb93f6e06c2439c5987ad0e34777bf0fb5de"
+    },
+    {
+      "name": "Meydenbauer_4D_Construction_Sequence_VDC_Phase5.blend",
+      "bytes": 73047800,
+      "sha256": "fb17e598f293d78c563466f380e533ac8ab3f95ef910b7cbfdf3f96eb842f004",
+      "source_commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase5.blend",
+      "git_blob_sha": "72d7e48686a723513578b9ca99fc932bb7d856e3"
+    },
+    {
+      "name": "Meydenbauer_4D_Construction_Sequence_VDC_Phase7.blend",
+      "bytes": 73150039,
+      "sha256": "8e06f7d313b16667d9d4076a8c4171e603ee9f6a0e495ec0c8cd8dff1af7e3de",
+      "source_commit": "87d21bf145100fe7d95f3aeba7db95b822aa5764",
+      "source_path": "deliverables/meydenbauer-b/vdc/Meydenbauer_4D_Construction_Sequence_VDC_Phase7.blend",
+      "git_blob_sha": "ee02ba8b289b9657705923c356d8bd95b1f88646"
+    },
+    {
+      "name": "Meydenbauer_B101_Demolition_v4.blend",
+      "bytes": 14451352,
+      "sha256": "2087f3053451adc7abb6c1077815c5dc525468799f1eda754dbe05ac0938f283",
+      "source_commit": "70fc8d60ef50006c27222ad7fbd50bf519815cac",
+      "source_path": "deliverables/meydenbauer-b/b101-v4/output/Meydenbauer_B101_Demolition_v4.blend",
+      "git_blob_sha": "31907be46deb099d6afdc57b47e9e417e2529442"
+    }
+  ]
+}
