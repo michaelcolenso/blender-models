@@ -10,7 +10,7 @@ A working model of the domestic-water pipes, fixtures and equipment, with Unit 1
 
 ## Downloads
 
-Rebuilt 2026-11-04. Files over 1 MB are on the [`highland-water-2026-11-04` release](https://github.com/michaelcolenso/blender-models/releases/tag/highland-water-2026-11-04); checksums are in [`release-assets.json`](../../products/water/release-assets.json).
+Rebuilt 2026-11-04; the interactive viewer was updated 2026-11-05 to add the P1 corridor view. Files over 1 MB are on the [`highland-water-2026-11-04` release](https://github.com/michaelcolenso/blender-models/releases/tag/highland-water-2026-11-04); checksums are in [`release-assets.json`](../../products/water/release-assets.json).
 
 - [Animated plumbing view — 24-second MP4](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/Unit-107-plumbing-animation.mp4) — bathroom orbit, fixture connections, then full-unit context. A [10-second preview GIF](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/Unit-107-plumbing-preview.gif) covers the bathroom orbit.
 - [Model review PDF](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/Highland-pipe-model-review.pdf) — ten pages; the last lists what is checked and what is still needed.
@@ -18,12 +18,12 @@ Rebuilt 2026-11-04. Files over 1 MB are on the [`highland-water-2026-11-04` rele
 - [Interactive 3D model](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/Highland-plumbing-3D.html) — download, then open the HTML in a browser. All models and code are embedded.
 - [Drawing-overlay review](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/Unit-107-trace-review.html) — download and open in a browser; toggle the modeled routes over P4.01.
 - [Editable Blender model](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/Highland-domestic-water.blend) — building, plant and unit collections; opens on the Unit 107 bathroom.
-- GLB models: [Unit 107](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/unit.glb), [building distribution](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/building.glb), [boiler plant](plant.glb).
+- GLB models: [Unit 107](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/unit.glb), [building distribution](https://github.com/michaelcolenso/blender-models/releases/download/highland-water-2026-11-04/building.glb), [boiler plant](plant.glb), [P1 corridor approach](p1.glb).
 - [Source sheets P2.02, P3.02, P4.01, A2.03 and A3.11](Source-reference-sheets.pdf) (unchanged from the October issue).
 - [Validation results](validation.json), [video validation](video-validation.json), [calibration and ceiling derivation](calibration.json), [provenance contact sheet](provenance-review-contact.jpg).
 - [Proposed repipe strategy — installation and unit-by-unit cutover](../repipe/)
 
-The P1 corridor scene (`p1.glb`, `P1-trace-review.html`) is built by the product but not handed over here.
+The P1 corridor scene is handed over as `p1.glb` and as the fourth view in the interactive model. It comes from P2.2 (September 28, 2006, reference only / separate permit); plan XY is provisional and pipe heights are assumed. `P1-trace-review.html` is built by the product but not handed over here.
 
 ## Sources
 
