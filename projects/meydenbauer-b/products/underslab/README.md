@@ -43,7 +43,7 @@ PLAN=sequence bash projects/meydenbauer-b/products/underslab/runpod_animate.sh s
 | `schedule.py` | takeoff | `meydenbauer-b.schedule.json` (days per unit and phase, haul quantities) |
 | `logistics.py` | shell, takeoff, schedule | `meydenbauer-b.logistics.json` (entries, site massing, routes, bins) |
 | `animate.py` | realism scene + the two above | `Meydenbauer-B-4D.blend` (overview) or `Meydenbauer-B-4D-sequence.blend`, frames |
-| `anim_finish.py` | frames or a clean master | MP4 with HUD, clean master, poster |
+| `anim_finish.py` | frames, or a published ProRes 4444 master | H.264 review proxy with HUD, textless `.mov` on a GitHub Release, poster |
 
 ## Method
 

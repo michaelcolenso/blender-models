@@ -12,9 +12,10 @@ Usage:
   python projects/meydenbauer-b/products/underslab/anim_finish.py --tag proxy-60 --fps 60
   python projects/meydenbauer-b/products/underslab/anim_finish.py --plan sequence --tag seqproxy-30 --fps 30 --upscale 540
   python projects/meydenbauer-b/products/underslab/anim_finish.py --tag final-30 --fps 30 --crf 16
-  python projects/meydenbauer-b/products/underslab/anim_finish.py --tag final-30 --fps 30 --from-video final-30-clean.mp4
-Writes build/meydenbauer-b/anim/<tag>.mp4, <tag>-poster.png and, from rendered frames, <tag>-clean.mp4
-(no HUD, CRF 10). Keep the clean master: a HUD or note change is then a CPU re-composite, not a re-render.
+  python projects/meydenbauer-b/products/underslab/anim_finish.py --tag final-30 --fps 30 --from-video final-30-master.mov
+Writes build/meydenbauer-b/anim/<tag>.mp4 (H.264 yuv420p review proxy, HUD burned in), <tag>-poster.png
+and, from rendered frames, <tag>-master.mov (ProRes 4444, yuv444p12le, no HUD). The .mov is the master. A HUD or
+note change re-composites from it on CPU; do not grade or re-type the proxy.
 """
 import argparse, json, math, subprocess, sys
 from fractions import Fraction
@@ -220,13 +221,13 @@ def main():
     ap.add_argument("--tag", required=True)
     ap.add_argument("--fps", type=int, default=60, help="timeline fps the frames were rendered on")
     ap.add_argument("--crf", type=int, default=18)
-    ap.add_argument("--from-video", default="", help="clean master MP4 to re-apply the HUD to (no re-render)")
+    ap.add_argument("--from-video", default="", help="textless master (ProRes 4444 .mov) to re-apply the HUD to")
     ap.add_argument("--plan", default="overview", choices=["overview", "sequence"])
     ap.add_argument("--upscale", type=int, default=0, help="scale frames to this height before the HUD (proxies)")
     a = ap.parse_args()
     anim = ROOT / "build/meydenbauer-b/anim"
     if a.from_video:
-        # Re-apply the HUD to a clean master: no GPU, minutes on CPU.
+        # Re-apply the HUD to the textless master: no GPU, minutes on CPU.
         src = anim / "frames" / f"{a.tag}-from-clean"; src.mkdir(parents=True, exist_ok=True)
         for old in src.glob("*.png"):
             old.unlink()
@@ -250,18 +251,32 @@ def main():
         sys.exit(f"{len(missing)} frames missing, first {missing[:5]}")
     rate = a.fps / step
 
-    def encode(pattern, out, crf):
+    def encode_proxy(pattern, out, crf):
+        """Review proxy only. 4:2:0 H.264 is not a master and must not be graded."""
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", f"{rate:g}", "-i", pattern,
                         "-c:v", "libx264", "-preset", "slow", "-crf", str(crf), "-pix_fmt", "yuv420p",
                         "-movflags", "+faststart", str(out)], check=True)
+
+    def probe_video(path):
+        raw = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                              "stream=codec_name,profile,pix_fmt,width,height,nb_frames,r_frame_rate",
+                              "-of", "json", str(path)], capture_output=True, text=True, check=True).stdout
+        return json.loads(raw)["streams"][0]
+
     if not a.from_video:
-        # Clean master (no HUD), near-lossless: keep it, and HUD fixes never need the GPU again.
-        lst = anim / f"{a.tag}-clean.txt"
+        # Textless master. HUD fixes re-composite this file; they do not re-render.
+        master = anim / f"{a.tag}-master.mov"
+        lst = anim / f"{a.tag}-master.txt"
         lst.write_text("".join(f"file '{p}'\nduration {1 / rate:.6f}\n" for p in frames))
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
-                        "-r", f"{rate:g}", "-c:v", "libx264", "-preset", "slow", "-crf", "10", "-pix_fmt", "yuv420p",
-                        "-movflags", "+faststart", str(anim / f"{a.tag}-clean.mp4")], check=True)
+                        "-r", f"{rate:g}", "-c:v", "prores_ks", "-profile:v", "4", "-pix_fmt", "yuv444p12le",
+                        "-vendor", "apl0", str(master)], check=True)
         lst.unlink()
+        info = probe_video(master)
+        if info.get("codec_name") != "prores" or info.get("pix_fmt") != "yuv444p12le" or info.get("profile") != "4444":
+            sys.exit(f"master is not ProRes 4444: {info}")
+        print("MASTER", master, info["codec_name"], info["profile"], info["pix_fmt"],
+              f"{info['width']}x{info['height']}")
     if a.plan == "sequence":
         plan = SCHED.build(); W, total_s = SCHED.windows(plan)
         L = json.loads((HERE / "meydenbauer-b.logistics.json").read_text())
@@ -281,12 +296,14 @@ def main():
             im = im.resize((round(im.width * a.upscale / im.height / 2) * 2, a.upscale), Image.LANCZOS)
         draw(im, (int(p.stem) - 1) / a.fps).save(tmp / f"{j:05d}.png")
     out = anim / f"{a.tag}.mp4"
-    encode(str(tmp / "%05d.png"), out, a.crf)
+    encode_proxy(str(tmp / "%05d.png"), out, a.crf)
     poster = min(range(len(frames)), key=lambda j: abs((int(frames[j].stem) - 1) / a.fps - t_poster))
     Image.open(tmp / f"{poster:05d}.png").save(out.with_name(f"{a.tag}-poster.png"))
-    probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=width,height,r_frame_rate,nb_frames",
-                            "-of", "default=nw=1", str(out)], capture_output=True, text=True).stdout.split()
-    print("WROTE", out, " ".join(probe))
+    proxy = probe_video(out)
+    if proxy.get("codec_name") != "h264" or proxy.get("pix_fmt") != "yuv420p":
+        sys.exit(f"review proxy is not H.264 yuv420p: {proxy}")
+    print("PROXY", out, proxy["codec_name"], proxy["pix_fmt"], f"{proxy['width']}x{proxy['height']}",
+          proxy.get("nb_frames"), proxy.get("r_frame_rate"))
 
 
 if __name__ == "__main__":

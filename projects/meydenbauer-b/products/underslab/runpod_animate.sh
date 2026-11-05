@@ -5,8 +5,8 @@
 #   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh setup            # deps, CC0 assets, build + 14 sequence checks
 #   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh bench            # 3 frames at full settings, projected hours
 #   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh render [workers] # all frames, resumable (default 2 workers)
-#   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh finish           # HUD + MP4 + clean master into deliverables/
-#   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh hud              # later HUD/text fixes from the clean master (CPU)
+#   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh finish           # HUD proxy into deliverables/; ProRes master to a GitHub Release
+#   bash projects/meydenbauer-b/products/underslab/runpod_animate.sh hud              # later HUD/text fixes from the published ProRes master (CPU)
 # Env: PLAN (overview | sequence), FPS (30 default, as rendered on 2026-10-25; 60 doubles the frames), SAMPLES (128),
 #      RES (1.0 = 1920x1080), DEVICE (OPTIX | CUDA)
 set -euo pipefail
@@ -56,15 +56,21 @@ render() {
 finish() {
   "${BPY[@]}" projects/meydenbauer-b/products/underslab/anim_finish.py --plan "$PLAN" --tag "$TAG-$FPS" --fps "$FPS" --crf 16
   mkdir -p projects/meydenbauer-b/deliverables/underslab/anim
-  cp "$OUT/$TAG-$FPS.mp4" "$OUT/$TAG-$FPS-poster.png" "$OUT/$TAG-$FPS-clean.mp4" projects/meydenbauer-b/deliverables/underslab/anim/
-  ls -la projects/meydenbauer-b/deliverables/underslab/anim
-  echo "Commit projects/meydenbauer-b/deliverables/underslab/anim (MP4s go to Git LFS) before stopping the pod: the clean master"
-  echo "is what makes later HUD fixes a CPU job (stage: hud) instead of a re-render."
+  cp "$OUT/$TAG-$FPS.mp4" "$OUT/$TAG-$FPS-poster.png" projects/meydenbauer-b/deliverables/underslab/anim/
+  # New files over 1 MB go to Releases, not Git LFS (AGENTS.md). The .mov stays out of git.
+  uv run --frozen --no-sync bm publish meydenbauer-b/underslab "$OUT/$TAG-$FPS-master.mov"
+  echo "Commit the updated release-assets.json and paste the printed URL into the deliverable README."
+  echo "Do not commit the .mov. The MP4 in deliverables/ is the review proxy. hud pulls the published master."
 }
 
-hud() {   # no GPU needed: re-apply the HUD to the saved clean master
+hud() {   # no GPU: pull the published textless master and re-apply the HUD
+  MANIFEST=projects/meydenbauer-b/products/underslab/release-assets.json
+  uv run --frozen --no-sync bm assets pull "$MANIFEST"
+  REL_TAG=$(uv run --frozen --no-sync python -c "import json; print(json.load(open('$MANIFEST'))['tag'])")
+  MASTER="build/assets/$REL_TAG/$TAG-$FPS-master.mov"
+  [ -f "$MASTER" ] || { echo "Published master not found: $MASTER"; exit 1; }
   "${BPY[@]}" projects/meydenbauer-b/products/underslab/anim_finish.py --plan "$PLAN" --tag "$TAG-$FPS" --fps "$FPS" --crf 16 \
-    --from-video "projects/meydenbauer-b/deliverables/underslab/anim/$TAG-$FPS-clean.mp4"
+    --from-video "$MASTER"
   cp "$OUT/$TAG-$FPS.mp4" "$OUT/$TAG-$FPS-poster.png" projects/meydenbauer-b/deliverables/underslab/anim/
 }
 
