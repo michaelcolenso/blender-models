@@ -84,6 +84,33 @@ def verify(manifest, extra_dirs=()):
     return not missing
 
 
+def _download(m, record):
+    """Fetch one release asset into the cache: `gh` first, then the public download URL.
+
+    The fallback lets CI jobs and machines without `gh` auth restore assets of a public
+    repository. The caller verifies the checksum either way.
+    """
+    repo = ["-R", m.repo] if m.repo else []
+    if shutil.which("gh"):
+        done = subprocess.run(["gh", "release", "download", m.tag, *repo, "-p", record["name"],
+                               "-D", str(m.cache), "--clobber"], check=False)
+        if done.returncode == 0:
+            return
+    if not m.repo:
+        raise SystemExit(f"`gh release download` failed and the manifest names no repository: {m.path}")
+    from urllib.parse import quote
+    from urllib.request import urlopen
+    url = f"https://github.com/{m.repo}/releases/download/{quote(m.tag)}/{quote(record['name'])}"
+    print(f"gh unavailable or failed; downloading {url}")
+    tmp = m.cache / (record["name"] + ".part")
+    try:
+        with urlopen(url, timeout=120) as response, tmp.open("wb") as out:
+            shutil.copyfileobj(response, out, 1 << 20)
+        tmp.replace(m.cache / record["name"])
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
 def pull(manifest, names=None, extra_dirs=()):
     m = Manifest(manifest, extra_dirs)
     wanted = [a for a in m.assets if not names or a["name"] in names]
@@ -99,8 +126,7 @@ def pull(manifest, names=None, extra_dirs=()):
             continue
         if m.data.get("storage") == "git-lfs":
             raise ValueError(f"LFS checksum mismatch: {a['name']}")
-        repo = ["-R", m.repo] if m.repo else []
-        _gh("release", "download", m.tag, *repo, "-p", a["name"], "-D", str(m.cache), "--clobber")
+        _download(m, a)
         if not matches(m.cache / a["name"], a):
             raise ValueError(f"Release checksum mismatch: {a['name']}")
     sources = {a["name"]: m.local(a) for a in wanted}

@@ -66,3 +66,40 @@ def test_sources_are_optional_but_wrong_present_source_and_strict_missing_source
     (tmp_path / name).write_bytes(b"wrong PDF")
     with pytest.raises(ValueError, match="does not match recorded source"):
         check.verify_sources(tmp_path)
+
+
+BUILDER = PRODUCT / "builder"
+
+
+def test_builder_inputs_are_recorded_and_verbatim_files_are_unchanged():
+    import hashlib
+
+    inputs = json.loads((BUILDER / "inputs.json").read_text())
+    rows = {row["file"]: row for row in inputs["files"]}
+    assert {path.relative_to(BUILDER).as_posix() for path in BUILDER.rglob("*")
+            if path.is_file() and path.name not in {"inputs.json", "release-assets.json", "paths.py", "verify.py"}
+            and "__pycache__" not in path.parts} == set(rows)
+    for name, row in rows.items():
+        if row["state"] == "verbatim":
+            data = (BUILDER / name).read_bytes()
+            assert (len(data), hashlib.sha256(data).hexdigest()) == (row["bytes"], row["sha256"]), name
+    # Only path handling was ported; the geometry modules stay byte-identical.
+    assert {n for n, r in rows.items() if r["state"] == "ported"} == {
+        "build.py", "validate.py", "check_terraces.py", "render.py"}
+
+
+def test_builder_reads_only_current_layout_paths():
+    # paths.py names the old locations in comments only; the ported modules must not.
+    for name in ("build.py", "validate.py", "check_terraces.py", "render.py"):
+        text = (BUILDER / name).read_text()
+        assert "parents[2]" not in text and "deliverables/highland-drawings" not in text, name
+        assert "projects/highland-drawings" not in text and "/home/" not in text, name
+
+
+def test_base_scene_release_record_matches_the_historical_base_hash():
+    manifest = json.loads((BUILDER / "release-assets.json").read_text())
+    historical = json.loads((BUILDER / "inputs/historical-geometry-validation.json").read_text())
+    assert [a["sha256"] for a in manifest["assets"]] == [historical["base_native_sha256"]]
+    native = json.loads((ROOT / "projects/highland/deliverables/exterior-reconciliation/native-check.json").read_text())
+    assert native["status"] == "PASS" and native["base_scene_sha256"] == historical["base_native_sha256"]
+    assert native["architecture_mesh_hashes_identical_to_historical"] == len(historical["after"]) == 960

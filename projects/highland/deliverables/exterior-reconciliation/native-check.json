@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "native rebuild of revision 06 from recovered inputs, compared with the historical delivery records",
+  "base_scene_sha256": "343e60bf671856fa93f191bafb6120efe6ece6e6414271a4713940fdc2e8a2a1",
+  "revised_spec_sha256": "1cf80e055f28065a647d124cf0623a33af5c4cc96067afd93c8c9069d559ae8f",
+  "architecture_meshes_rebuilt": 960,
+  "architecture_mesh_hashes_identical_to_historical": 960,
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "protected_controls_identical": {
+    "revision04_north": 97,
+    "revision05": 815,
+    "stage1_r5_core": 99
+  },
+  "delivery_validation_fields_reproduced": 31,
+  "delivery_validation_fields_not_compared": [
+    "glb_sha256",
+    "native_sha256"
+  ],
+  "source_pdf_hashes": "compared when the git-ignored PDFs are present in projects/highland/sources/",
+  "verbatim_builder_files_checked": 8,
+  "not_established": [
+    "dimensional accuracy (source XY provisional; complete openings, guards and sections assumed)",
+    "north stair/MU alignment and R1 north entries (owner-deferred)",
+    "visual review of this rebuild (see README for what was inspected and when)"
+  ],
+  "notice": "Illustrative, not a contract document."
+}

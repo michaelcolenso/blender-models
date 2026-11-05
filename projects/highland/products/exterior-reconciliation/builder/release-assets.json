@@ -1,0 +1,13 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "highland-exterior-reconciliation-2026-11-05",
+  "storage": "release",
+  "note": "Revision 03 roof-and-terrace scene that the revision 06 builder patches. Byte-identical to archive blob 005f73d2913f1a6a82106d3f8116b0e7a5ef9de2 (deliverables/highland-roof/Highland-roof-and-terrace-revised.blend at bddd5b8fb4085677028108754ef82a722bc0b17c). Restore: uv run bm assets pull projects/highland/products/exterior-reconciliation/builder/release-assets.json",
+  "assets": [
+    {
+      "name": "Highland-roof-and-terrace-revised.blend",
+      "bytes": 23953075,
+      "sha256": "343e60bf671856fa93f191bafb6120efe6ece6e6414271a4713940fdc2e8a2a1"
+    }
+  ]
+}
