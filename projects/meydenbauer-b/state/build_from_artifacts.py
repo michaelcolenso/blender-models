@@ -450,7 +450,8 @@ def build() -> ProjectState:
                 kind="owner_decision",
                 source="Owner direction on the VDC/B101 reconciliation, 2026-11-05",
                 locator="docs/BRANCH_RECOVERY.md#recovery-2-meydenbauer-vdc-and-b101",
-                description="B103 raised-floor route not in scope; VDC scope items adopted; canonical schedule governs.",
+                description="B103 raised-floor route not in scope; VDC scope items adopted; canonical schedule governs; "
+                "VDC open issues not imported.",
             ),
             Evidence(
                 id=vdc_takeoff,
@@ -496,6 +497,18 @@ def build() -> ProjectState:
                 evidence_ids=(owner_decision,),
                 status=Status.CONFIRMED,
                 confidence=Confidence.HIGH,
+            ),
+            Claim(
+                id=semantic_id(PROJECT, "claim", "vdc-open-issues"),
+                subject_id=system_id,
+                predicate="vdc_open_issues_imported",
+                value=False,
+                evidence_ids=(owner_decision,),
+                status=Status.CONFIRMED,
+                confidence=Confidence.HIGH,
+                rationale="VDC P2-002/P2-004 (B101 lav slope 0.319 vs 0.250 in/ft), P2-003 (side-sewer slope "
+                "undocumented) and P2-005 (B103 raised-floor slope, route out of scope) stay in the recovery "
+                "report only. They describe VDC's schematic routes, not canonical geometry.",
             ),
         ]
     )
