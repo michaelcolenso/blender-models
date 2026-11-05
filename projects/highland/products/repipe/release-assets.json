@@ -1,0 +1,25 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "highland-repipe-2026-11-04",
+  "storage": "release",
+  "assets": [
+    {
+      "name": "Highland-repipe-strategy.mp4",
+      "bytes": 6399816,
+      "sha256": "4abe2bca894589c129f500d019d6768de978ca28fcbfb14f3e5c417d935c5641",
+      "dest": "../../deliverables/repipe/Highland-repipe-strategy.mp4"
+    },
+    {
+      "name": "Highland-repipe-preview.gif",
+      "bytes": 9083554,
+      "sha256": "8806157f3efca850742d69b0cb2b71ae5a389e835165318f6fa2f6b3f4226515",
+      "dest": "../../deliverables/repipe/Highland-repipe-preview.gif"
+    },
+    {
+      "name": "Highland-repipe-sequence.html",
+      "bytes": 3258670,
+      "sha256": "cbedb1e8d6245c1cbe8dcd63db69637f3459022047c747a0d477efa817da09c9",
+      "dest": "../../deliverables/repipe/Highland-repipe-sequence.html"
+    }
+  ]
+}

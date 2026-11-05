@@ -1,0 +1,61 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "highland-water-2026-11-04",
+  "storage": "release",
+  "assets": [
+    {
+      "name": "Highland-domestic-water.blend",
+      "bytes": 1534523,
+      "sha256": "fde2533494214d393b45dadcb993ea3a27f751cf82aa2bc305e7b706c5cae35d",
+      "dest": "../../deliverables/water/Highland-domestic-water.blend"
+    },
+    {
+      "name": "Highland-pipe-model-review.pdf",
+      "bytes": 7172192,
+      "sha256": "f7c07211a64eb28e220d6800426291e0303727c1f23792671a8793e6c4b7aeb1",
+      "dest": "../../deliverables/water/Highland-pipe-model-review.pdf"
+    },
+    {
+      "name": "Highland-plumbing-3D.html",
+      "bytes": 7247596,
+      "sha256": "a1d725ad52a3ca8bbfe8530d112ffc04631261022754e143fab8cb2ca1057d06",
+      "dest": "../../deliverables/water/Highland-plumbing-3D.html"
+    },
+    {
+      "name": "Unit-107-bathroom-pilot.pdf",
+      "bytes": 1837683,
+      "sha256": "ffe03a7883e3228db4e5d066f1ae32930ee053b2309a421e36b0c23b21a10204",
+      "dest": "../../deliverables/water/Unit-107-bathroom-pilot.pdf"
+    },
+    {
+      "name": "Unit-107-trace-review.html",
+      "bytes": 1431441,
+      "sha256": "806bdd67119f5835d123cdd6ed03f8f464240fd1d7fe0849352c14e88d2dcae5",
+      "dest": "../../deliverables/water/Unit-107-trace-review.html"
+    },
+    {
+      "name": "building.glb",
+      "bytes": 2293288,
+      "sha256": "b8febd0b64bec9f769e5d5e7de452bc507cd72105bcdc6cb2dda0fa9ffe607b7",
+      "dest": "../../deliverables/water/building.glb"
+    },
+    {
+      "name": "unit.glb",
+      "bytes": 1699696,
+      "sha256": "fe62aa91a0e811f77a4432991dab9ad7b153e87c0df795cd1e9a2ca9febfef6d",
+      "dest": "../../deliverables/water/unit.glb"
+    },
+    {
+      "name": "Unit-107-plumbing-animation.mp4",
+      "bytes": 4149051,
+      "sha256": "fae8fb8b534486569c7fc7bbd57f28fff4cddd210adbd0f3ee967f6db3e7fba8",
+      "dest": "../../deliverables/water/Unit-107-plumbing-animation.mp4"
+    },
+    {
+      "name": "Unit-107-plumbing-preview.gif",
+      "bytes": 4754357,
+      "sha256": "28de6f287d504ef2fe2bd3108b788a436689e3777eba63fa3f63676a9d5b2aba",
+      "dest": "../../deliverables/water/Unit-107-plumbing-preview.gif"
+    }
+  ]
+}

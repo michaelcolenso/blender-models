@@ -1,1 +1,1 @@
-{"private":true,"type":"module","scripts":{"bundle":"esbuild viewer.js --bundle --minify --format=iife --outfile=viewer.bundle.js"},"dependencies":{"three":"0.180.0","esbuild":"0.25.10"}}
+{"private":true,"type":"module","scripts":{"bundle":"esbuild viewer.js --bundle --minify --format=iife --outfile=viewer.bundle.js"},"dependencies":{"esbuild":"0.25.10","three":"0.180.0"},"devDependencies":{"playwright":"1.64.1"}}

@@ -23,11 +23,5 @@
   ],
   "ffmpeg_full_decode": "passed",
   "decoded_frames": 576,
-  "preview_gif_frames": 100,
-  "inspected_shots": [
-    1,
-    2,
-    3
-  ],
-  "decoded_frame_inspected_seconds": 14
+  "preview_gif_frames": 100
 }

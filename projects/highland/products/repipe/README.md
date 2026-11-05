@@ -24,19 +24,17 @@ P4.01 supplies the underlying Unit A/107 reference. A2.03 and A3.11 support the 
 
 ## Reproduce
 
-Use the Three.js/esbuild versions pinned in `../highland-water/package.json`; Playwright, Chromium and FFmpeg are also required. The existing `build/highland-water/unit.glb` must be present.
+The water product supplies the Node dependencies (`projects/highland/products/water/package.json`: Three.js, esbuild, Playwright) and `build/highland-water/unit.glb`. Run its `build` and `viewer` steps first; the video step also needs FFmpeg. From the repo root:
 
 ```bash
-python projects/highland/products/repipe/prepare.py
-# Run with the pinned esbuild and Three.js dependencies available:
-esbuild projects/highland/products/repipe/app.js --bundle --minify --format=iife --outfile=projects/highland/products/repipe/app.bundle.js
-python projects/highland/products/repipe/package.py
-python -m http.server 8881 --bind 127.0.0.1 --directory build/highland-repipe
-# In another shell:
-node projects/highland/products/repipe/render.cjs http://127.0.0.1:8881/Highland-repipe-sequence.html build/highland-repipe
+uv run bm run highland/repipe prepare   # repipe-strategy.json
+uv run bm run highland/repipe package   # bundle app.js, then build/highland-repipe/Highland-repipe-sequence.html
+uv run bm run highland/repipe video     # browser checks, MP4, preview GIF, cutover still, validation.json
 ```
 
-The standalone HTML offers Play/Pause, a time slider, and seven phase buttons. The 32-second video is 1280×720 at 24 fps. Add `--review-only` to run the checks and capture review stills without encoding a video.
+`make_video.sh` serves `build/highland-repipe/`, runs `render.cjs`, cuts the preview GIF from the full 32 s at 6 fps and 800 px, copies the phase-5 capture to `Cutover-preview.png`, fully decodes the MP4 and fails if the decoded frame count differs. To run only the browser checks and review stills, serve the folder and run `node projects/highland/products/repipe/render.cjs <url> build/highland-repipe --review-only` with `NODE_PATH` set to the water product's `node_modules`.
+
+The standalone HTML offers Play/Pause, a time slider, and seven phase buttons. The 32-second video is 1280×720 at 24 fps.
 
 ## Checks and limits
 
