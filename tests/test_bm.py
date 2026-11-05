@@ -131,17 +131,46 @@ class NewSiteTests(unittest.TestCase):
     def test_doctor_finds_browser_in_configured_cache(self):
         from bmodels import doctor
         with tempfile.TemporaryDirectory() as tmp:
-            cache = Path(tmp) / "ms-playwright"
-            for revision in (999, 1000):
-                binary = cache / f"chromium_headless_shell-{revision}/chrome-headless-shell-linux64/chrome-headless-shell"
-                binary.parent.mkdir(parents=True)
-                binary.touch()
-            # A partial installation must not hide a usable browser.
-            (cache / "chromium_headless_shell-1001/chrome-headless-shell-linux64/chrome-headless-shell").mkdir(parents=True)
-            expected = cache / "chromium_headless_shell-1000/chrome-headless-shell-linux64/chrome-headless-shell"
-            for env in ({"XDG_CACHE_HOME": tmp}, {"PLAYWRIGHT_BROWSERS_PATH": str(cache)}):
-                with self.subTest(env=env), patch.dict(os.environ, env, clear=True):
+            core = Path(tmp) / doctor.PLAYWRIGHT_PRODUCT / "node_modules/playwright-core"
+            core.mkdir(parents=True)
+            (core / "browsers.json").write_text(json.dumps({"browsers": [
+                {"name": "chromium", "revision": "1000"},
+                {"name": "chromium-headless-shell", "revision": "999"},
+            ]}))
+            shared = Path(tmp) / "ms-playwright"
+            for cache, env in (
+                (shared, {"XDG_CACHE_HOME": tmp}),
+                (shared, {"PLAYWRIGHT_BROWSERS_PATH": str(shared)}),
+                (shared, {"PLAYWRIGHT_BROWSERS_PATH": "ms-playwright", "INIT_CWD": tmp}),
+                (core / ".local-browsers", {"PLAYWRIGHT_BROWSERS_PATH": "0"}),
+            ):
+                for revision in (999, 1000):
+                    binary = cache / f"chromium_headless_shell-{revision}/chrome-headless-shell-linux64/chrome-headless-shell"
+                    binary.parent.mkdir(parents=True, exist_ok=True)
+                    binary.touch()
+                expected = cache / "chromium_headless_shell-999/chrome-headless-shell-linux64/chrome-headless-shell"
+                with self.subTest(env=env), patch.dict(os.environ, env, clear=True), \
+                        patch.object(doctor, "ROOT", Path(tmp)):
                     self.assertEqual(doctor.playwright_chromium(), expected)
+
+    def test_doctor_does_not_substitute_an_unrelated_browser_revision(self):
+        from bmodels import doctor
+        with tempfile.TemporaryDirectory() as tmp:
+            core = Path(tmp) / doctor.PLAYWRIGHT_PRODUCT / "node_modules/playwright-core"
+            core.mkdir(parents=True)
+            metadata = core / "browsers.json"
+            binary = Path(tmp) / "chromium_headless_shell-1000/chrome-headless-shell-linux64/chrome-headless-shell"
+            binary.parent.mkdir(parents=True)
+            binary.touch()
+            records = (None, "invalid JSON", '{"browsers": []}', json.dumps({"browsers": [
+                {"name": "chromium-headless-shell", "revision": "999"},
+            ]}))
+            for record in records:
+                if record is not None:
+                    metadata.write_text(record)
+                with self.subTest(metadata=record), patch.object(doctor, "ROOT", Path(tmp)), \
+                        patch.dict(os.environ, {"PLAYWRIGHT_BROWSERS_PATH": tmp}, clear=True):
+                    self.assertIsNone(doctor.playwright_chromium())
 
     def test_doctor_reports_chromium_library_failures_with_matching_fixes(self):
         from bmodels import doctor

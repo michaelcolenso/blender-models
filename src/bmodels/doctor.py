@@ -4,6 +4,7 @@ Agents should run it first: it explains failures that otherwise surface as deep 
 (bpy missing X11 libraries, LFS pointers instead of files, absent source PDFs, no gh auth).
 No bpy import in this process; bpy is probed in a subprocess.
 """
+import json
 import os
 import re
 import shutil
@@ -34,20 +35,26 @@ def _run(*cmd):
 
 
 def playwright_chromium():
-    """Film's explicit Chromium override, or newest cached headless shell (libraries only)."""
+    """Film's explicit override, or the headless shell required by its installed Playwright."""
     if binary := os.environ.get("CHROMIUM_PATH"):
         return ROOT / binary
+    core = ROOT / PLAYWRIGHT_PRODUCT / "node_modules/playwright-core"
+    try:
+        browsers = json.loads((core / "browsers.json").read_text())["browsers"]
+        revision = next(b["revision"] for b in browsers if b["name"] == "chromium-headless-shell")
+    except (OSError, UnicodeError, ValueError, KeyError, TypeError, StopIteration):
+        return None
+    if not re.fullmatch(r"\d+", str(revision)):
+        return None
     configured = os.environ.get("PLAYWRIGHT_BROWSERS_PATH")
     if configured == "0":
-        cache = ROOT / PLAYWRIGHT_PRODUCT / "node_modules/playwright-core/.local-browsers"
+        cache = core / ".local-browsers"
     elif configured:
         cache = Path(os.environ.get("INIT_CWD") or ROOT) / configured
     else:
         cache = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "ms-playwright"
-    shells = sorted((p for p in cache.glob("chromium_headless_shell-*/chrome-headless-shell-*/chrome-headless-shell")
-                     if p.is_file()),
-                    key=lambda b: int(re.sub(r"\D", "", b.parents[1].name.rsplit("-", 1)[-1]) or 0))
-    return shells[-1] if shells else None
+    shells = cache.glob(f"chromium_headless_shell-{revision}/chrome-headless-shell-*/chrome-headless-shell")
+    return next((p for p in shells if p.is_file()), None)
 
 
 def missing_libs(ldd_output):
@@ -71,7 +78,7 @@ def chromium_check():
     shell = playwright_chromium()
     install = ("unset CHROMIUM_PATH && " if os.environ.get("CHROMIUM_PATH") else "") + PLAYWRIGHT_INSTALL
     if shell is None:
-        return name, False, "no Playwright Chromium installed", install, blocks
+        return name, False, "no Playwright Chromium matching the product metadata; run the install step", install, blocks
     if shutil.which("ldd") is None:
         return name, False, "ldd is not on PATH", "sudo apt-get install -y libc-bin", blocks
     code, msg = _run("ldd", str(shell))
@@ -152,7 +159,6 @@ def checks():
 def main(json_out=False):
     results = checks()
     if json_out:
-        import json
         print(json.dumps([{"check": n, "ok": ok, "detail": d, "fix": f, "without_it": b}
                           for n, ok, d, f, b in results], indent=2))
     else:
