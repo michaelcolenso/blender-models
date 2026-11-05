@@ -37,8 +37,20 @@ DELIVERABLE = ROOT / "deliverables" / "underslab"
 OUT = Path(__file__).with_name("project-state.json")
 
 
+VDC_RECOVERY = ROOT / "products" / "vdc-recovery"
+VDC_BACKING = "snapshots/vdc/Meydenbauer_VDC_Phase4_Takeoff_Backing.csv"
+
+
 def _load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text())
+
+
+def _vdc_scope():
+    spec = importlib.util.spec_from_file_location("meydenbauer_vdc_scope", VDC_RECOVERY / "scope_import.py")
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def build() -> ProjectState:
@@ -426,6 +438,78 @@ def build() -> ProjectState:
             claim_ids=(depth_claim.id,),
         ),
     ]
+
+    # Owner decisions on the recovered VDC data (Recovery 2, 2026-11-05) and the adopted VDC scope quantities.
+    vdc_rows, vdc_checksums = _vdc_scope().scope_quantities()
+    owner_decision = semantic_id(PROJECT, "evidence", "owner-decision-2026-11-05")
+    vdc_takeoff = semantic_id(PROJECT, "evidence", "vdc-phase4-takeoff")
+    evidence.extend(
+        [
+            Evidence(
+                id=owner_decision,
+                kind="owner_decision",
+                source="Owner direction on the VDC/B101 reconciliation, 2026-11-05",
+                locator="docs/BRANCH_RECOVERY.md#recovery-2-meydenbauer-vdc-and-b101",
+                description="B103 raised-floor route not in scope; VDC scope items adopted; canonical schedule governs.",
+            ),
+            Evidence(
+                id=vdc_takeoff,
+                kind="recovered_model",
+                source="VDC phase 4 takeoff backing + element register (archive/2026-11-03/meydenbauer/4d-fixes)",
+                locator="products/vdc-recovery/" + VDC_BACKING,
+                description="Final-state (frame 672) quantities of the VDC 4D model; recovered byte-identical.",
+                checksum=vdc_checksums["deliverables/meydenbauer-b/vdc/" + VDC_BACKING.split("/")[-1]],
+            ),
+        ]
+    )
+    b103_id = semantic_id(PROJECT, "unit", "B-103")
+    vdc_claim = Claim(
+        id=semantic_id(PROJECT, "claim", "vdc-scope-quantities"),
+        subject_id=system_id,
+        predicate="vdc_scope_quantities_adopted",
+        value=sorted({measure for _, measure, _, _ in vdc_rows}),
+        evidence_ids=(vdc_takeoff, owner_decision),
+        status=Status.ASSUMED,
+        confidence=Confidence.LOW,
+        rationale="Typical-unit VDC model: most counts are identical in all four units. Work items only; "
+        "route-geometry and context quantities stay with canonical geometry. Field verify before pricing.",
+    )
+    claims.extend(
+        [
+            vdc_claim,
+            Claim(
+                id=semantic_id(PROJECT, "claim", "b103-raised-floor-route-scope"),
+                subject_id=b103_id,
+                predicate="in_scope",
+                value=False,
+                evidence_ids=(owner_decision,),
+                status=Status.CONFIRMED,
+                confidence=Confidence.HIGH,
+                rationale="VDC NEW_ABS_B103_4in_RAISED_FLOOR (30.7 LF) and its sleeve are excluded; not in the P1.02 extraction.",
+            ),
+            Claim(
+                id=semantic_id(PROJECT, "claim", "schedule-basis"),
+                subject_id=system_id,
+                predicate="schedule_basis",
+                value="canonical unit-by-unit S2 schedule; VDC MEYD-BL-001 (29 wd) is reference only",
+                evidence_ids=(owner_decision,),
+                status=Status.CONFIRMED,
+                confidence=Confidence.HIGH,
+            ),
+        ]
+    )
+    for unit_key, measure, value, uom in vdc_rows:
+        unit_name = f"{unit_key[0]}-{unit_key[1:]}"
+        quantities.append(
+            Quantity(
+                id=semantic_id(PROJECT, "quantity", unit_name, measure),
+                element_id=semantic_id(PROJECT, "unit", unit_name),
+                measure=measure,
+                value=value,
+                unit=uom,
+                source_claim_ids=(vdc_claim.id,),
+            )
+        )
 
     quantities.append(
         Quantity(

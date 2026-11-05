@@ -15,6 +15,10 @@ activities, inherited evidence/claims/issues, and canonical time/decision metada
 - `metadata.geometry_bindings`: deterministic GLB-node names → semantic IDs and presentation roles, including older
   GLBs without semantic extras. No geometry is created or changed by this adapter.
 
+It also adds 40 assumed, low-confidence unit-level scope quantities from the recovered VDC takeoff
+([vdc-recovery](../products/vdc-recovery/README.md)), and owner-decision claims on the B103 raised-floor route
+and the schedule basis. Their values are verified against the recovery hashes on every build.
+
 Case selection is explicit: S1@3.5, S2@3.5, S3@4.5. Values retain takeoff precision. Compared with the retired bootstrap,
 pipe length is 312.738611 LF rather than 312.75 LF; S2 slab is 686.115257 SF rather than 686 SF; S3 is 990.957845 SF
 rather than 991 SF. These are precision/source corrections, not geometry changes.

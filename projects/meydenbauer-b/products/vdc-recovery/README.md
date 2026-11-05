@@ -2,8 +2,7 @@
 
 Recovery 2, first slice, from [docs/BRANCH_RECOVERY.md](../../../../docs/BRANCH_RECOVERY.md). It brings the
 small data from two archived branches back into the current layout for inspection, and compares that data
-with the canonical state in [state/project-state.json](../../state/project-state.json). **Nothing is
-imported into the canonical state.** The findings are in the
+with the canonical state in [state/project-state.json](../../state/project-state.json). Only the owner-approved scope quantities are imported into the canonical state (below). The findings are in the
 [deliverable report](../../deliverables/vdc-recovery/README.md).
 
 | Source | Archive tag | Commit |
@@ -25,7 +24,23 @@ Left in the archive (50 files, 485 MB) and listed in `recovery.json`:
 - renders and QA images;
 - the `.xlsx` workbooks, which package the same CSV data.
 
-They are needed only if a later slice adopts that geometry; publish them through Releases then.
+The `.blend` scenes are listed for Releases (below). The renders and workbooks stay in the archive.
+
+## Adopted into canonical state
+
+Following the owner decisions recorded in the
+[report](../../deliverables/vdc-recovery/README.md#owner-decisions-2026-11-05),
+[scope_import.py](scope_import.py) supplies 40 unit-level scope quantities to
+[state/build_from_artifacts.py](../../state/build_from_artifacts.py). All are assumed, low confidence. No VDC
+element IDs, geometry or schedule enter the canonical state.
+
+## Archived scenes
+
+[release-assets.json](release-assets.json) lists the seven `.blend` scenes (443 MB) by archive blob and sha256,
+for release `meydenbauer-b-vdc-archive-2026-11-05`. To publish them, run
+`bash projects/meydenbauer-b/products/vdc-recovery/publish_scenes.sh` from a clone with `gh` logged in; cloud
+sessions can't write releases. Then restore them with
+`uv run bm assets pull projects/meydenbauer-b/products/vdc-recovery/release-assets.json`.
 
 ## Commands
 

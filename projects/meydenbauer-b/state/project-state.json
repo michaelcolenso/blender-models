@@ -50,6 +50,22 @@
       "locator": "BF-A1",
       "description": "Allowance 7 = 700 SF slab cut/excavate/backfill/patch",
       "checksum": null
+    },
+    {
+      "id": "meydenbauer-b:evidence:owner-decision-2026-11-05",
+      "kind": "owner_decision",
+      "source": "Owner direction on the VDC/B101 reconciliation, 2026-11-05",
+      "locator": "docs/BRANCH_RECOVERY.md#recovery-2-meydenbauer-vdc-and-b101",
+      "description": "B103 raised-floor route not in scope; VDC scope items adopted; canonical schedule governs.",
+      "checksum": null
+    },
+    {
+      "id": "meydenbauer-b:evidence:vdc-phase4-takeoff",
+      "kind": "recovered_model",
+      "source": "VDC phase 4 takeoff backing + element register (archive/2026-11-03/meydenbauer/4d-fixes)",
+      "locator": "products/vdc-recovery/snapshots/vdc/Meydenbauer_VDC_Phase4_Takeoff_Backing.csv",
+      "description": "Final-state (frame 672) quantities of the VDC 4D model; recovered byte-identical.",
+      "checksum": "8f6bb62f0f065f9984d68327a31567a24c7c49435817f9a82803f399143db414"
     }
   ],
   "claims": [
@@ -97,6 +113,54 @@
       "value": 700.0,
       "evidence_ids": [
         "meydenbauer-b:evidence:bf-a1"
+      ],
+      "status": "confirmed",
+      "confidence": "high",
+      "rationale": null
+    },
+    {
+      "id": "meydenbauer-b:claim:vdc-scope-quantities",
+      "subject_id": "meydenbauer-b:system:underslab-waste",
+      "predicate": "vdc_scope_quantities_adopted",
+      "value": [
+        "casework_reinstalled",
+        "cleanouts_new",
+        "finishes_reinstalled",
+        "firestops_new",
+        "fittings_new",
+        "fixtures_reinstalled",
+        "framing_members_new",
+        "patch_area_new",
+        "protection_area_temporary",
+        "wall_opening_demolition"
+      ],
+      "evidence_ids": [
+        "meydenbauer-b:evidence:vdc-phase4-takeoff",
+        "meydenbauer-b:evidence:owner-decision-2026-11-05"
+      ],
+      "status": "assumed",
+      "confidence": "low",
+      "rationale": "Typical-unit VDC model: most counts are identical in all four units. Work items only; route-geometry and context quantities stay with canonical geometry. Field verify before pricing."
+    },
+    {
+      "id": "meydenbauer-b:claim:b103-raised-floor-route-scope",
+      "subject_id": "meydenbauer-b:unit:b-103",
+      "predicate": "in_scope",
+      "value": false,
+      "evidence_ids": [
+        "meydenbauer-b:evidence:owner-decision-2026-11-05"
+      ],
+      "status": "confirmed",
+      "confidence": "high",
+      "rationale": "VDC NEW_ABS_B103_4in_RAISED_FLOOR (30.7 LF) and its sleeve are excluded; not in the P1.02 extraction."
+    },
+    {
+      "id": "meydenbauer-b:claim:schedule-basis",
+      "subject_id": "meydenbauer-b:system:underslab-waste",
+      "predicate": "schedule_basis",
+      "value": "canonical unit-by-unit S2 schedule; VDC MEYD-BL-001 (29 wd) is reference only",
+      "evidence_ids": [
+        "meydenbauer-b:evidence:owner-decision-2026-11-05"
       ],
       "status": "confirmed",
       "confidence": "high",
@@ -6221,6 +6285,446 @@
         "meydenbauer-b:claim:route-basis",
         "meydenbauer-b:claim:typical-trench-width",
         "meydenbauer-b:claim:poc-invert-depth"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:casework-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "casework_reinstalled",
+      "value": 4.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:cleanouts-new",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "cleanouts_new",
+      "value": 5.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:finishes-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "finishes_reinstalled",
+      "value": 3.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:firestops-new",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "firestops_new",
+      "value": 3.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:fittings-new",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "fittings_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:fixtures-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "fixtures_reinstalled",
+      "value": 15.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:framing-members-new",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "framing_members_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:patch-area-new",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "patch_area_new",
+      "value": 26.9208,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:protection-area-temporary",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "protection_area_temporary",
+      "value": 18.3785,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-101:wall-opening-demolition",
+      "element_id": "meydenbauer-b:unit:b-101",
+      "measure": "wall_opening_demolition",
+      "value": 30.0,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:casework-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "casework_reinstalled",
+      "value": 4.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:cleanouts-new",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "cleanouts_new",
+      "value": 5.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:finishes-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "finishes_reinstalled",
+      "value": 4.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:firestops-new",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "firestops_new",
+      "value": 3.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:fittings-new",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "fittings_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:fixtures-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "fixtures_reinstalled",
+      "value": 15.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:framing-members-new",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "framing_members_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:patch-area-new",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "patch_area_new",
+      "value": 26.9208,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:protection-area-temporary",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "protection_area_temporary",
+      "value": 18.3382,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-102:wall-opening-demolition",
+      "element_id": "meydenbauer-b:unit:b-102",
+      "measure": "wall_opening_demolition",
+      "value": 30.0,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:casework-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "casework_reinstalled",
+      "value": 4.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:cleanouts-new",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "cleanouts_new",
+      "value": 5.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:finishes-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "finishes_reinstalled",
+      "value": 3.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:firestops-new",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "firestops_new",
+      "value": 3.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:fittings-new",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "fittings_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:fixtures-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "fixtures_reinstalled",
+      "value": 15.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:framing-members-new",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "framing_members_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:patch-area-new",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "patch_area_new",
+      "value": 26.9208,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:protection-area-temporary",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "protection_area_temporary",
+      "value": 18.3462,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-103:wall-opening-demolition",
+      "element_id": "meydenbauer-b:unit:b-103",
+      "measure": "wall_opening_demolition",
+      "value": 30.0,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:casework-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "casework_reinstalled",
+      "value": 4.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:cleanouts-new",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "cleanouts_new",
+      "value": 5.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:finishes-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "finishes_reinstalled",
+      "value": 2.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:firestops-new",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "firestops_new",
+      "value": 3.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:fittings-new",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "fittings_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:fixtures-reinstalled",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "fixtures_reinstalled",
+      "value": 15.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:framing-members-new",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "framing_members_new",
+      "value": 6.0,
+      "unit": "EA",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:patch-area-new",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "patch_area_new",
+      "value": 26.9208,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:protection-area-temporary",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "protection_area_temporary",
+      "value": 18.2576,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
+      ]
+    },
+    {
+      "id": "meydenbauer-b:quantity:b-104:wall-opening-demolition",
+      "element_id": "meydenbauer-b:unit:b-104",
+      "measure": "wall_opening_demolition",
+      "value": 30.0,
+      "unit": "SF",
+      "scenario_id": null,
+      "source_claim_ids": [
+        "meydenbauer-b:claim:vdc-scope-quantities"
       ]
     },
     {

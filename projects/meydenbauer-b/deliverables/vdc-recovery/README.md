@@ -57,11 +57,24 @@ canonical values are takeoff S2 @ 3.5 ft unless stated otherwise.
    routes, and more. Canonical carries what VDC lacks: the S1/S2/S3 trench scenarios, allowance decisions,
    haul logistics and the occupied unit-by-unit sequence.
 
-## Decisions for the next slice
+## Owner decisions (2026-11-05)
 
-- **B103 raised-floor route:** is it in scope (finding 2)? This needs a source document.
-- **VDC's extra scope items:** should any of them become canonical elements and quantities, and if so, how
-  are they measured?
-- **Schedule basis:** which governs the project duration? That needs the crew and occupancy assumptions
-  first.
-- **Large scenes:** should the archived VDC/B101 scenes be published to Releases for geometry review?
+These are recorded as claims in the canonical state, with owner-decision evidence.
+
+1. **The B103 raised-floor route is not in scope.** `NEW_ABS_B103_4in_RAISED_FLOOR` and its sleeve stay out
+   of canonical state.
+2. **VDC's extra scope items are adopted** as canonical unit-level quantities: 40 in all, 10 measures × 4 units.
+   - **Counts:** fixtures, casework and finishes to reinstall; new cleanouts, firestops, fittings and framing.
+   - **Areas:** new patch, wall-opening demolition and temporary protection.
+   - **Status:** they are **assumed, low confidence**. VDC modeled a typical unit, so most values are
+     identical in all four units. Field-verify them before pricing.
+   - **Kept on canonical geometry:** quantities VDC measured from its own routes (pipe, slab cut, bedding,
+     backfill, pourback, vapor barrier, test routes), plus context objects and existing-to-remain items. The
+     reasons are in [scope_import.py](../../products/vdc-recovery/scope_import.py).
+3. **The canonical schedule governs:** 81.5 working days, unit by unit. VDC MEYD-BL-001 (29 working days)
+   is reference only.
+4. **The archived scenes are to be published to Releases for geometry review.** The seven `.blend` files
+   (443 MB) are listed in [release-assets.json](../../products/vdc-recovery/release-assets.json), and the
+   owner uploads them with `publish_scenes.sh`. Canonical state does not depend on them.
+
+Not decided: whether VDC's 4 open issues (slopes, undocumented inverts) become canonical issues.

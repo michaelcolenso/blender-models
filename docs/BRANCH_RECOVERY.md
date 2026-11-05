@@ -106,6 +106,14 @@ sensitivity from closed PR #38.
 [report](../projects/meydenbauer-b/deliverables/vdc-recovery/README.md). 80 text files are byte-identical
 to the archive. The scenes and renders stay in the tags. Nothing was imported into the canonical state.
 
+**Slice 2 (owner decisions, 2026-11-05) is done:**
+- the B103 raised-floor route is out of scope;
+- 40 VDC scope quantities are adopted as assumed;
+- the canonical 81.5-working-day schedule governs;
+- the seven archived scenes are listed for Releases.
+
+See the report's decisions section. The archive tags stay until the scenes are published.
+
 First recover the small schedule, element, issue, takeoff and route-control data
 for inspection. Reconcile identifiers (`vdc_element_id` versus `cie_id`), units,
 final-frame quantity methods, evidence and scope coverage against canonical CIE
