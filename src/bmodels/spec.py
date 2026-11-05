@@ -30,7 +30,8 @@ def validate_record(spec, src_ids, errors):
         fail("basis_of_record: required; state what record this model reflects "
              "(documents, kind, field_verified)", errors)
     else:
-        if not str(b.get("documents", "")).strip():
+        docs = b.get("documents")
+        if not isinstance(docs, str) or not docs.strip():  # YAML `documents:` with no value loads as None
             fail("basis_of_record.documents: required (the drawings/photos the model is built from)", errors)
         if b.get("kind") not in RECORD_KINDS:
             fail(f"basis_of_record.kind must be one of {sorted(RECORD_KINDS)}", errors)

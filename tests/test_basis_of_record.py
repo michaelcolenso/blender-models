@@ -35,7 +35,7 @@ def test_basis_of_record_is_required():
     assert any("basis_of_record: required" in e for e in errors(basis_of_record=None))
 
 
-@pytest.mark.parametrize("field,value", [("kind", "drawing"), ("field_verified", True), ("documents", " ")])
+@pytest.mark.parametrize("field,value", [("kind", "drawing"), ("field_verified", True), ("documents", " "), ("documents", None)])
 def test_basis_of_record_fields_are_checked(field, value):
     b = dict(BASE["basis_of_record"], **{field: value})
     assert any(f"basis_of_record.{field}" in e for e in errors(basis_of_record=b))
