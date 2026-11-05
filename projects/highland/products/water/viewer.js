@@ -21,6 +21,7 @@ const selectionDialog=document.createElement('dialog');selectionDialog.innerHTML
 const info={
  unit:{title:'Inside Unit 107',subtitle:'Fixture connections • P4.01',body:'Follow the overhead supplies into the bathrooms, washer and kitchen. The kitchen sink drops below the floor; the green line returns circulating hot water.',stats:'14 fixtures · one detailed dwelling',target:[0,1,2.18],position:[19.3,23.1,29.6],top:[0,40,2.19],scale:'Pipes shown at 1.5× nominal diameter. Unit XY calibrated through A2.03 / P2.02; allowance ±1% scale, ±6 in local trace. Ceilings provisional; pipe heights and fixture envelopes remain assumed.'},
  building:{title:'The shared water network',subtitle:'Five stack groups • P3.02',body:'Blue supplies cold water. Orange delivers hot water. Green returns water for circulation. Each short branch marks a continuation to a dwelling plan.',stats:'5 stack groups · 23 visible branch groups',target:[0,11,0],position:[29,23,36],top:[0,52,.01],scale:'Pipes shown at 2.5× nominal diameter. Floor datums follow A3.11. Stack positions remain illustrative; the ’04 stack’s R1 dwelling connection remains unresolved.'},
+ p1:{title:'P1 corridor approach',subtitle:'South corridor mains • P2.2 (reference only)',body:'Cold, hot and return mains run west along the P1 south corridor and turn into Unit 107. This comes from a 2006 reference-only, separate-permit sheet, so it is a separate study, not a continuation of the Unit 107 model.',stats:'3 corridor mains · 3 Unit 107 approaches',target:[0,1,0],position:[30,24,36],top:[0,55,.01],scale:'Pipes shown at 2× nominal diameter. Plan XY provisional through shared-grid fits on A2.02 / P2.2 (grid ±5 in, trace ±6 in); pipe heights assumed. The exact P4.01 tie-in is unresolved.'},
  plant:{title:'Where the hot water starts',subtitle:'Boilers & storage • P3.02 / detail 1',body:'Two boilers connect with two storage tanks. The return line brings circulating water back to the plant. Pump WAC2 is a loose spare, so only one circulation pump is installed in this view.',stats:'2 boilers · 2 storage tanks · 3 installed pumps',target:[0,1.4,0],position:[9,9,12],top:[0,17,.01],scale:'Nominal pipe diameters shown at 1×. Equipment envelopes and arrangement are illustrative; relief piping, flues, controls and balancing bypasses are not fully modeled.'}
 };
 function showModel(name){
@@ -42,7 +43,7 @@ function pick(event){
  let obj=hits[0].object;while(obj.parent&&!obj.userData.kind)obj=obj.parent;
  const d=obj.userData;if(!d.kind||d.kind==='label')return;resetSelection();selected=obj;
  obj.traverse(o=>{if(o.isMesh){o.userData.oldMaterial=o.material;const material=o.material.clone();material.emissive=new THREE.Color('#f4dd76');material.emissiveIntensity=.65;o.material=material;}});
- $('detail').innerHTML=`<span class="eyebrow">${escape(d.system)} / ${escape(d.kind)}</span><h3>${escape(d.tag||d.id||obj.name)}</h3>${d.nominal_in?`<p><strong>${d.nominal_in}″ nominal</strong> · ${escape(d.size_status||d.hardware_status||"assumed")} size</p>`:''}<p>${escape(d.source||'Presentation context')}</p>${d.role?`<p>${escape(d.role)}</p>`:''}${d.hardware_status?'<small>Representative hardware; exact product and arrangement unverified.</small>':''}<small>${d.xy_status==='provisional'?'Plan XY: provisional (A2.03 / P2.02); height & envelope: assumed.':d.xy_status==='assumed'?'Local position and hardware: assumed; fixture anchors derive from the calibrated plan.':d.datum_status?'Floor datum: confirmed (A3.11); XY: assumed.':'Position & envelope: assumed.'} ${escape(d.size_status==='assumed'?d.size_basis||'':'')}</small>`;
+ $('detail').innerHTML=`<span class="eyebrow">${escape(d.system)} / ${escape(d.kind)}</span><h3>${escape(d.tag||d.id||obj.name)}</h3>${d.nominal_in?`<p><strong>${d.nominal_in}″ nominal</strong> · ${escape(d.size_status||d.hardware_status||"assumed")} size</p>`:''}<p>${escape(d.source||'Presentation context')}</p>${d.role?`<p>${escape(d.role)}</p>`:''}${d.hardware_status?'<small>Representative hardware; exact product and arrangement unverified.</small>':''}<small>${d.xy_status==='provisional'&&d.scene==='p1'?'Plan XY: provisional (A2.02 / P2.2 grid fit, reference-only 2006 sheet); height & envelope: assumed.':d.xy_status==='provisional'?'Plan XY: provisional (A2.03 / P2.02); height & envelope: assumed.':d.xy_status==='assumed'?'Local position and hardware: assumed; fixture anchors derive from the calibrated plan.':d.datum_status?'Floor datum: confirmed (A3.11); XY: assumed.':'Position & envelope: assumed.'} ${escape(d.size_status==='assumed'?d.size_basis||'':'')}</small>`;
  if(innerWidth<=800){$('selection-content').innerHTML=$('detail').innerHTML;selectionDialog.showModal();}
 }
 let down=null;renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',pick);
@@ -59,12 +60,19 @@ $('rotate').onclick=()=>{auto=!auto;controls.autoRotate=auto;$('rotate').setAttr
 $('notes').onclick=()=>$('notes-dialog').showModal();$('close-notes').onclick=()=>$('notes-dialog').close();
 $('limitations').innerHTML=window.MODEL_SPEC.limitations.map(s=>`<li>${escape(s)}</li>`).join('');
 const observer=new ResizeObserver(()=>{const w=$('canvas').clientWidth,h=$('canvas').clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();if(window.ready){if(bathroomFocus)$('bath').click();else showModel(current);}});observer.observe($('canvas'));
+// P1 coordinates come from a separate sheet registration, so frame its camera from the loaded geometry.
+function frameFromBounds(name){
+ // Frame the water pipes only; the context grid lines extend far beyond them.
+ const box=new THREE.Box3();models[name].traverse(o=>{if(['CW','HW','HWC'].includes(o.userData.system))box.expandByObject(o);});
+ const c=box.getCenter(new THREE.Vector3()),r=Math.max(4,box.getSize(new THREE.Vector3()).length()/2);
+ info[name].target=c.toArray();info[name].position=[c.x+r*1.35,c.y+r*1.6,c.z+r*1.95];info[name].top=[c.x,c.y+r*2.6,c.z+.01];
+}
 async function load(){
- for(const name of ['unit','building','plant']){
+ for(const name of ['unit','building','plant','p1']){
   const bytes=Uint8Array.from(atob(window.MODELS[name]),c=>c.charCodeAt(0));
   const gltf=await loader.parseAsync(bytes.buffer,'');models[name]=gltf.scene;scene.add(gltf.scene);gltf.scene.visible=false;
  }
- showModel('unit');$('bath').click();$('loading').hidden=true;window.ready=true;
+ frameFromBounds('p1');showModel('unit');$('bath').click();$('loading').hidden=true;window.ready=true;
 }
 load().catch(error=>{$('loading').textContent='The 3D viewer could not start: '+error.message;console.error(error);});
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});

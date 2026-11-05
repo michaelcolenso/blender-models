@@ -34,7 +34,7 @@ The P1 corridor scene (`p1.glb`, `P1-trace-review.html`) is built by the product
 ## What is documented, provisional and assumed
 
 - **Documented:** building floor datums (A3.11: P1 342.00 ft, R1 353.00 ft); pipe sizes and connection patterns from P3.02/P4.01.
-- **Provisional:** Unit 107 and P1 plan XY (structural-grid calibration, ±1% scale, ±6 in local trace). Unit 107 ceilings: band-beam soffit 351.21 ft less the A7.63 drops gives living/dining 102.5 in, hallway 98.5 in, laundry 92.5 in above the P1 floor. RFI 99, ASI 54, RFI 245, RFI 344, RFI 201 and RFI 366 revised these conditions; their responses were not supplied and govern.
+- **Provisional:** Unit 107 and P1 plan XY (structural-grid calibration, ±1% scale, ±6 in local trace). Unit 107 ceilings: band-beam soffit 351.21 ft less the A7.63 drops gives living/dining 102.5 in, hallway 98.5 in, laundry 92.5 in above the P1 floor. RFI 99, ASI 54, RFI 245, RFI 344, RFI 201 and RFI 366 revised these conditions; their responses will not be supplied, so these derived heights are the working basis and remain provisional.
 - **Assumed:** overhead pipe heights CW 108 / HW 106 / HWC 104 in, held inside the 102.5–109.56 in ceiling-to-soffit band (a constraint, not a measurement; no drawing gives pipe elevations); building stack XY; fixture and equipment envelopes; fittings, stops and wall-side offsets.
 - **Unresolved:** the dishwasher supply connection (omitted), the 04 stack R1 continuation, and the exact P1-to-P4.01 tie-in.
 - Domestic water only; sanitary, vent and gas are not modeled.
