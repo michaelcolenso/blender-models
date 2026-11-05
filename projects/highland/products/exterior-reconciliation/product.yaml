@@ -8,6 +8,12 @@ steps:
     - python $BM_PRODUCT_DIR/builder/build.py
   validate: python $BM_PRODUCT_DIR/builder/validate.py
   verify: python $BM_PRODUCT_DIR/builder/verify.py
+  # CPU Cycles stills and review views (~10 min), then previews, records and the release manifest
+  render:
+    - python $BM_PRODUCT_DIR/builder/render.py
+    - python $BM_PRODUCT_DIR/builder/render.py --dusk
+    - python $BM_PRODUCT_DIR/builder/render.py --review
+  package: python $BM_PRODUCT_DIR/package.py
   check-sources: python $BM_PRODUCT_DIR/check.py --require-sources
   # CPU source/control contract, then rebuild, read back and compare with the historical records; no tracked drift
   check:
