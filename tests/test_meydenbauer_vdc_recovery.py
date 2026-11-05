@@ -49,7 +49,9 @@ def test_only_the_decided_vdc_data_enters_canonical_state():
     adopted = [q for q in state["quantities"] if q["source_claim_ids"] == [vdc["id"]]]
     assert len(adopted) == 40 and {q["element_id"].split(":")[1] for q in adopted} == {"unit"}
     assert not {q["measure"] for q in adopted} & {"pipe_length", "slab_cut", "excavation_bank", "new_abs_length"}
-    assert claims["b103-raised-floor-route-scope"]["value"] is False
+    raised = claims["b103-raised-floor-route-scope"]
+    assert raised["value"] is False and raised["predicate"] == "vdc_raised_floor_route_in_scope"
+    assert not any(c["predicate"] == "in_scope" for c in state["claims"])  # never excludes a whole unit
     assert claims["schedule-basis"]["value"].startswith("canonical")
     assert state["metadata"]["working_days"] == 81.5  # schedule unchanged by the VDC data
 

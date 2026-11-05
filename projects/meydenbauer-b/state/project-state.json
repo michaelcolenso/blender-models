@@ -145,7 +145,7 @@
     {
       "id": "meydenbauer-b:claim:b103-raised-floor-route-scope",
       "subject_id": "meydenbauer-b:unit:b-103",
-      "predicate": "in_scope",
+      "predicate": "vdc_raised_floor_route_in_scope",
       "value": false,
       "evidence_ids": [
         "meydenbauer-b:evidence:owner-decision-2026-11-05"

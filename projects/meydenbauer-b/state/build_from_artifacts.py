@@ -480,7 +480,8 @@ def build() -> ProjectState:
             Claim(
                 id=semantic_id(PROJECT, "claim", "b103-raised-floor-route-scope"),
                 subject_id=b103_id,
-                predicate="in_scope",
+                # Route-specific: claims are inherited by B-103's pipes in the explorer, which stay in scope.
+                predicate="vdc_raised_floor_route_in_scope",
                 value=False,
                 evidence_ids=(owner_decision,),
                 status=Status.CONFIRMED,
