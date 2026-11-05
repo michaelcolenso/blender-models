@@ -5,6 +5,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 from bmodels import assets, checks, cli, project, spec
 from bmodels.paths import BUILD, ROOT, TEMPLATES
@@ -108,6 +109,102 @@ class NewSiteTests(unittest.TestCase):
         for name, ok, detail, fix, blocks in doctor.checks():
             self.assertIsInstance(ok, bool, name)
             self.assertTrue(fix and blocks, name)
+
+    def test_doctor_maps_missing_chromium_libs_to_packages(self):
+        from bmodels import doctor
+        ldd = ("\tlibnspr4.so => not found\n\tlibnss3.so => not found\n\tlibnssutil3.so => not found\n"
+               "\tlibasound.so.2 => not found\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x7f)\n")
+        libs = doctor.missing_libs(ldd)
+        self.assertEqual(libs, ["libasound.so.2", "libnspr4.so", "libnss3.so", "libnssutil3.so"])
+        self.assertEqual(doctor.chromium_fix(libs[1:]), "sudo apt-get install -y libnspr4 libnss3")
+        self.assertIn("playwright install-deps chromium", doctor.chromium_fix(libs))
+        self.assertNotIn("libasound2t64", doctor.chromium_fix(libs))
+        self.assertIn("install-deps", doctor.chromium_fix(["libgbm.so.1"]))
+        self.assertEqual(doctor.missing_libs("\tlibc.so.6 => /lib/libc.so.6 (0x7f)\n"), [])
+        self.assertEqual(doctor.missing_libs("ldd: command not found\n"), [])
+
+    def test_doctor_honours_chromium_path_override(self):
+        from bmodels import doctor
+        with patch.dict(os.environ, {"CHROMIUM_PATH": "custom/chromium"}):
+            self.assertEqual(doctor.playwright_chromium(), ROOT / "custom/chromium")
+
+    def test_doctor_finds_browser_in_configured_cache(self):
+        from bmodels import doctor
+        with tempfile.TemporaryDirectory() as tmp:
+            core = Path(tmp) / doctor.PLAYWRIGHT_PRODUCT / "node_modules/playwright-core"
+            core.mkdir(parents=True)
+            (core / "browsers.json").write_text(json.dumps({"browsers": [
+                {"name": "chromium", "revision": "1000"},
+                {"name": "chromium-headless-shell", "revision": "999"},
+            ]}))
+            shared = Path(tmp) / "ms-playwright"
+            for cache, env in (
+                (shared, {"XDG_CACHE_HOME": tmp}),
+                (shared, {"PLAYWRIGHT_BROWSERS_PATH": str(shared)}),
+                (shared, {"PLAYWRIGHT_BROWSERS_PATH": "ms-playwright", "INIT_CWD": tmp}),
+                (core / ".local-browsers", {"PLAYWRIGHT_BROWSERS_PATH": "0"}),
+            ):
+                for revision in (999, 1000):
+                    binary = cache / f"chromium_headless_shell-{revision}/chrome-headless-shell-linux64/chrome-headless-shell"
+                    binary.parent.mkdir(parents=True, exist_ok=True)
+                    binary.touch()
+                expected = cache / "chromium_headless_shell-999/chrome-headless-shell-linux64/chrome-headless-shell"
+                with self.subTest(env=env), patch.dict(os.environ, env, clear=True), \
+                        patch.object(doctor, "ROOT", Path(tmp)):
+                    self.assertEqual(doctor.playwright_chromium(), expected)
+
+    def test_doctor_does_not_substitute_an_unrelated_browser_revision(self):
+        from bmodels import doctor
+        with tempfile.TemporaryDirectory() as tmp:
+            core = Path(tmp) / doctor.PLAYWRIGHT_PRODUCT / "node_modules/playwright-core"
+            core.mkdir(parents=True)
+            metadata = core / "browsers.json"
+            binary = Path(tmp) / "chromium_headless_shell-1000/chrome-headless-shell-linux64/chrome-headless-shell"
+            binary.parent.mkdir(parents=True)
+            binary.touch()
+            records = (None, "invalid JSON", '{"browsers": []}', json.dumps({"browsers": [
+                {"name": "chromium-headless-shell", "revision": "999"},
+            ]}))
+            for record in records:
+                if record is not None:
+                    metadata.write_text(record)
+                with self.subTest(metadata=record), patch.object(doctor, "ROOT", Path(tmp)), \
+                        patch.dict(os.environ, {"PLAYWRIGHT_BROWSERS_PATH": tmp}, clear=True):
+                    self.assertIsNone(doctor.playwright_chromium())
+
+    def test_doctor_reports_chromium_library_failures_with_matching_fixes(self):
+        from bmodels import doctor
+        cases = [
+            (None, True, (0, ""), False, "no Playwright Chromium", "playwright install chromium"),
+            (Path("/browser/chromium"), False, (0, ""), False, "ldd", "libc-bin"),
+            (Path("/browser/chromium"), True, (0, "libnss3.so => not found"), False, "libnss3.so", "libnss3"),
+            (Path("/browser/chromium"), True, (1, "libnss3.so => not found"), False, "libnss3.so", "libnss3"),
+            (Path("/browser/chromium"), True, (1, "ldd: not a dynamic executable"), False,
+             "not a dynamic executable", "playwright install chromium"),
+            (Path("/browser/chromium"), True, (0, "libc.so.6 => /lib/libc.so.6"), True,
+             "libraries resolved", "playwright install chromium"),
+        ]
+        for binary, ldd, result, ok, detail, fix in cases:
+            with self.subTest(binary=binary, ldd=ldd, result=result), \
+                    patch.object(doctor.sys, "platform", "linux"), \
+                    patch.object(doctor, "playwright_chromium", return_value=binary), \
+                    patch.object(doctor.shutil, "which", return_value="ldd" if ldd else None), \
+                    patch.object(doctor, "_run", return_value=result):
+                name, actual_ok, actual_detail, actual_fix, blocks = doctor.chromium_check()
+                self.assertEqual(name, "Playwright Chromium libraries")
+                self.assertEqual(actual_ok, ok)
+                self.assertIn(detail, actual_detail)
+                self.assertIn(fix, actual_fix)
+                self.assertTrue(blocks)
+
+    def test_doctor_skips_linux_library_check_on_other_platforms(self):
+        from bmodels import doctor
+        with patch.object(doctor.sys, "platform", "darwin"), patch.object(doctor, "_run") as run:
+            _, ok, detail, fix, blocks = doctor.chromium_check()
+            self.assertTrue(ok)
+            self.assertIn("skipped", detail)
+            self.assertTrue(fix and blocks)
+            run.assert_not_called()
 
     def test_add_product_scaffolds_a_runnable_check(self):
         tmp = Path(tempfile.mkdtemp())
