@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "skills": {
+    "scenario-blender-animation": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-animation/SKILL.md",
+      "computedHash": "e18a80a8b5604e05a0179a95b9899b50741c887f197a18101a1dab49e282b37c",
+      "installMode": "copy"
+    },
+    "scenario-blender-blockout": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-blockout/SKILL.md",
+      "computedHash": "70da68bd120cad1027be4af7dfa5d8a2ad9a43bc7e54bea0e7295141202db7f7",
+      "installMode": "copy"
+    },
+    "scenario-blender-expert": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-expert/SKILL.md",
+      "computedHash": "2c5f39e78d97e7b22d7d4d36bb2a182e690198a3925fda0e71fc4b72ebbb9bd0",
+      "installMode": "copy"
+    },
+    "scenario-blender-export": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-export/SKILL.md",
+      "computedHash": "1dd6831d05078d117f719bc2c578ab35955b18b56e9836afd2db7db499efb71e",
+      "installMode": "copy"
+    },
+    "scenario-blender-geometry-nodes": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-geometry-nodes/SKILL.md",
+      "computedHash": "95850f8388e975d9db20fee9df22f5ed319f9906b752b2b9863d449199de809f",
+      "installMode": "copy"
+    },
+    "scenario-blender-grease-pencil": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-grease-pencil/SKILL.md",
+      "computedHash": "c94d33bcda9118e55c278f4c9fcc9075ba1a850991b8a43a870f4d290f7d37ae",
+      "installMode": "copy"
+    },
+    "scenario-blender-hair": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-hair/SKILL.md",
+      "computedHash": "a8ed9536475c00967085a047c0c7f877f921649efc01cbe63283370574bf1f6d",
+      "installMode": "copy"
+    },
+    "scenario-blender-hard-surface": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-hard-surface/SKILL.md",
+      "computedHash": "1a7845f001a48ac3e64064c6f14f0faee744dd0f17ad80b651421441d52a4ac5",
+      "installMode": "copy"
+    },
+    "scenario-blender-lighting-rendering": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-lighting-rendering/SKILL.md",
+      "computedHash": "6ca8fcfe3ad70c4833d724235afc0a9a11ee5a6aadfca75d5b24787e5df07188",
+      "installMode": "copy"
+    },
+    "scenario-blender-previs-storyboard": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-previs-storyboard/SKILL.md",
+      "computedHash": "ee49ac8bb6275d21e16c4b46585d09ca9cf46f90e63806cceafd3fe75c8a3634",
+      "installMode": "copy"
+    },
+    "scenario-blender-retopology": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-retopology/SKILL.md",
+      "computedHash": "0a4f97e8d4c8067f6bd8904a49860b279cc762ab199bdd434ba9b7b5972a2768",
+      "installMode": "copy"
+    },
+    "scenario-blender-rigging": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-rigging/SKILL.md",
+      "computedHash": "624a12ae572dc57dd76e1e1c08f08f76b96a10ae878c44ed310448790678163f",
+      "installMode": "copy"
+    },
+    "scenario-blender-sculpting": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-sculpting/SKILL.md",
+      "computedHash": "bf5d6227264276210df07079e381ebfcec3d49c21a2f956f6fad878194799422",
+      "installMode": "copy"
+    },
+    "scenario-blender-texturing-shading": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-texturing-shading/SKILL.md",
+      "computedHash": "ee4437262431cd98dcee1f61849dc34599fbf8361ddcb44f81730919a28ca637",
+      "installMode": "copy"
+    },
+    "scenario-blender-uv-baking": {
+      "source": "scenario-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dcc/blender/scenario-blender-uv-baking/SKILL.md",
+      "computedHash": "1fb42f73b8d521de805e7c033e1ebdbd5a9d16388aedcd4bf4c6260171abf5df",
+      "installMode": "copy"
+    }
+  }
+}
