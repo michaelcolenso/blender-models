@@ -1,0 +1,61 @@
+{
+  "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+  "note": "CPU Cycles renders of the verified revision 06 geometry; previews are JPEG copies of these PNGs.",
+  "renders": {
+    "native-render.json": {
+      "scene": "Daylight / drawing reconciliation 06",
+      "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+      "elapsed_seconds": 140.22,
+      "samples": 32,
+      "images": {
+        "Highland-daylight-drawing-reconciled.png": "ccf33c28e059b88934d34112ba398bda65a12dfdd0d0ab6e9244126ca99dc5fb"
+      }
+    },
+    "dusk-render.json": {
+      "scene": "Dusk / drawing reconciliation 06",
+      "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+      "elapsed_seconds": 121.21,
+      "samples": 32,
+      "images": {
+        "Highland-dusk-drawing-reconciled.png": "4681fdc2234114b6b2705038a9bbd2b2cb059dc3d3c9578eb9f7f9dc65d0ff87"
+      }
+    },
+    "review-render.json": {
+      "scene": "Daylight / drawing reconciliation 06",
+      "architecture_inventory_sha256": "69e546b6efe9859c8752443b7411deaf0e5d847e0826e75dc497bb8e18e80913",
+      "elapsed_seconds": 132.64,
+      "samples": 12,
+      "images": {
+        "geometry-review/north.png": "fb263eab9f6cd7e330738a76a5c077f643dd7dd8456760511bc6e90128f55f96",
+        "geometry-review/south.png": "93287541a81f005a889b4c50af6d4b8c1f1c3e5fad685996623ff4b771a97c5b",
+        "geometry-review/plan.png": "2202408a8dbb0d4b036a92025684ab9bd07b447dd6ea40e00a0648732e9e02df",
+        "geometry-review/iso.png": "1a82842087efc82dd447ba2a5ac394c9058834d69445283806630c0e189b9eba",
+        "geometry-review/p1-plan.png": "f52e435d9a2aaa7457465ef86e1bf3bca6f387218600d4157e9f8198a7d90be5",
+        "geometry-review/p1-south.png": "3428888aefa1b5ddb2a0d9813521c6b8d50257a24115938d2bc2191cc487def7",
+        "geometry-review/r5-return.png": "f66c844889ab1da42111f498c062d18454930e3f552a7bedc0f9f3cd9390d44b",
+        "geometry-review/west.png": "df539e077e95afdaae9eedc53698edb7a38627b7e35fe02885854e533474a38f",
+        "geometry-review/east.png": "e09280d59cc1aa36804c6ccfee8e600123df702eb40377ee1c20a3dc883e51ca",
+        "geometry-review/r5-plan.png": "e0853face0c1e776d5f8d2ca41c980d51d0f3ffbdff6ec77458a6648b3ba008b",
+        "geometry-review/r5-southwest.png": "f57548f28743e7fc8dc2363479be8b3596119b9fdb42d05057e26f35c2653ec5",
+        "geometry-review/terrace-plan.png": "fa23efe4490d96c1e1fe9cbe077f504b84b13245a705bef53cf0f90f88bf98af"
+      }
+    }
+  },
+  "preview_jpeg_quality": {
+    "Highland-daylight-drawing-reconciled.png": 92,
+    "Highland-dusk-drawing-reconciled.png": 92,
+    "geometry-review/east.png": 92,
+    "geometry-review/iso.png": 92,
+    "geometry-review/north.png": 92,
+    "geometry-review/p1-plan.png": 92,
+    "geometry-review/p1-south.png": 92,
+    "geometry-review/plan.png": 92,
+    "geometry-review/r5-plan.png": 92,
+    "geometry-review/r5-return.png": 92,
+    "geometry-review/r5-southwest.png": 92,
+    "geometry-review/south.png": 92,
+    "geometry-review/terrace-plan.png": 92,
+    "geometry-review/west.png": 92
+  },
+  "notice": "Illustrative, not a contract document."
+}

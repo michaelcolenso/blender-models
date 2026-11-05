@@ -103,3 +103,17 @@ def test_base_scene_release_record_matches_the_historical_base_hash():
     native = json.loads((ROOT / "projects/highland/deliverables/exterior-reconciliation/native-check.json").read_text())
     assert native["status"] == "PASS" and native["base_scene_sha256"] == historical["base_native_sha256"]
     assert native["architecture_mesh_hashes_identical_to_historical"] == len(historical["after"]) == 960
+
+
+def test_published_files_are_the_validated_ones():
+    deliver = ROOT / "projects/highland/deliverables/exterior-reconciliation"
+    manifest = json.loads((PRODUCT / "release-assets.json").read_text())
+    by_name = {a["name"]: a["sha256"] for a in manifest["assets"]}
+    delivery = json.loads((deliver / "delivery-validation.json").read_text())
+    assert delivery["status"] == "PASS"
+    assert by_name["Highland-drawing-reconciled.blend"] == delivery["native_sha256"]
+    assert by_name["Highland-drawing-reconciled.glb"] == delivery["glb_sha256"]
+    native = json.loads((deliver / "native-check.json").read_text())
+    renders = json.loads((deliver / "render-records.json").read_text())
+    assert renders["architecture_inventory_sha256"] == native["architecture_inventory_sha256"]
+    assert all(p.stat().st_size < 1_000_000 for p in (deliver / "previews").iterdir())

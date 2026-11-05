@@ -9,9 +9,10 @@ current Highland layout:
    the scene from those inputs. [verify.py](builder/verify.py) shows that it
    reproduces the historical delivery records.
 
-It does not replace the earlier [exterior study](../exterior/README.md). It
-publishes no new film, render set or editable model as a deliverable; packaging is
-the next slice.
+It does not replace the earlier [exterior study](../exterior/README.md). The
+packaged model, stills and review views are in the
+[deliverable](../../deliverables/exterior-reconciliation/README.md). No new film is
+rendered.
 
 The current recovered geometry input is
 [snapshots/reconciled.spec.json](snapshots/reconciled.spec.json): 192 openings,
@@ -104,8 +105,9 @@ design:
   of the two pure functions it imported from the prepare-stage `terraces.py`.
 - **Not ported:** the prepare stage (`prepare.py`, `shell.py`, `r5.py`,
   `terraces.py`). It generated the reconciled spec from the PDFs, and that spec
-  is now the recovered snapshot. The packaging, report and film scripts are left
-  for the packaging slice.
+  is now the recovered snapshot. The historical report and film scripts are not
+  ported either. The archived revision 06 review PDF is published unchanged, and
+  `package.py` replaces the old packaging script.
 
 **What `verify` requires:**
 
