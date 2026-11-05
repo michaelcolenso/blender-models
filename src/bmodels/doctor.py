@@ -4,15 +4,25 @@ Agents should run it first: it explains failures that otherwise surface as deep 
 (bpy missing X11 libraries, LFS pointers instead of files, absent source PDFs, no gh auth).
 No bpy import in this process; bpy is probed in a subprocess.
 """
+import os
+import re
 import shutil
 import subprocess
 import sys
+from pathlib import Path
 
 from bmodels import project
 from bmodels.paths import ROOT
 
 LFS_POINTER = b"version https://git-lfs.github.com/spec/v1"
 X11 = "libx11-6 libxrender1 libxfixes3 libxi6 libxext6 libxkbcommon0 libsm6 libice6 libgl1"
+# Stable Ubuntu/Debian package names; Playwright resolves release-specific names such as libasound2[t64].
+CHROMIUM_LIBS = {"libnss3.so": "libnss3", "libnssutil3.so": "libnss3", "libsmime3.so": "libnss3",
+                 "libnspr4.so": "libnspr4", "libplc4.so": "libnspr4", "libplds4.so": "libnspr4"}
+PLAYWRIGHT_PRODUCT = Path("projects/highland/products/water")
+PLAYWRIGHT_SETUP = f"cd {PLAYWRIGHT_PRODUCT} && npm ci"
+PLAYWRIGHT_INSTALL = f"{PLAYWRIGHT_SETUP} && npx playwright install chromium"
+PLAYWRIGHT_DEPS = f"{PLAYWRIGHT_SETUP} && npx playwright install-deps chromium"
 
 
 def _run(*cmd):
@@ -21,6 +31,56 @@ def _run(*cmd):
     except (OSError, subprocess.TimeoutExpired) as e:
         return 1, str(e)
     return p.returncode, (p.stdout + p.stderr).strip()
+
+
+def playwright_chromium():
+    """Film's explicit Chromium override, or newest cached headless shell (libraries only)."""
+    if binary := os.environ.get("CHROMIUM_PATH"):
+        return ROOT / binary
+    configured = os.environ.get("PLAYWRIGHT_BROWSERS_PATH")
+    if configured == "0":
+        cache = ROOT / PLAYWRIGHT_PRODUCT / "node_modules/playwright-core/.local-browsers"
+    elif configured:
+        cache = Path(os.environ.get("INIT_CWD") or ROOT) / configured
+    else:
+        cache = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "ms-playwright"
+    shells = sorted((p for p in cache.glob("chromium_headless_shell-*/chrome-headless-shell-*/chrome-headless-shell")
+                     if p.is_file()),
+                    key=lambda b: int(re.sub(r"\D", "", b.parents[1].name.rsplit("-", 1)[-1]) or 0))
+    return shells[-1] if shells else None
+
+
+def missing_libs(ldd_output):
+    """Library names `ldd` reports as 'not found'."""
+    return sorted(set(re.findall(r"^\s*(\S+)\s+=>\s+not found\s*$", ldd_output, re.MULTILINE)))
+
+
+def chromium_fix(libs):
+    if any(lib not in CHROMIUM_LIBS for lib in libs):
+        return PLAYWRIGHT_DEPS
+    pkgs = sorted({CHROMIUM_LIBS[lib] for lib in libs if lib in CHROMIUM_LIBS})
+    return f"sudo apt-get install -y {' '.join(pkgs)}" if pkgs else ""
+
+
+def chromium_check():
+    """Check shared libraries without launching a browser or importing bpy."""
+    name = "Playwright Chromium libraries"
+    blocks = "Playwright films, viewer previews and browser checks (bm run highland/water video; highland/repipe video)"
+    if not sys.platform.startswith("linux"):
+        return name, True, "not Linux; library check skipped", PLAYWRIGHT_INSTALL, blocks
+    shell = playwright_chromium()
+    install = ("unset CHROMIUM_PATH && " if os.environ.get("CHROMIUM_PATH") else "") + PLAYWRIGHT_INSTALL
+    if shell is None:
+        return name, False, "no Playwright Chromium installed", install, blocks
+    if shutil.which("ldd") is None:
+        return name, False, "ldd is not on PATH", "sudo apt-get install -y libc-bin", blocks
+    code, msg = _run("ldd", str(shell))
+    libs = missing_libs(msg)
+    if libs:
+        return name, False, f"{shell.name}: missing {', '.join(libs)}", chromium_fix(libs), blocks
+    if code:
+        return name, False, f"ldd failed for {shell}: {msg}", install, blocks
+    return name, True, f"{shell}: shared libraries resolved (launch not tested)", install, blocks
 
 
 def checks():
@@ -69,6 +129,8 @@ def checks():
     for tool, blocks in [("ffmpeg", "film encodes and video checks"), ("node", "browser viewers and Playwright films"),
                          ("npm", "viewer bundles")]:
         out.append((f"{tool} on PATH", shutil.which(tool) is not None, "", f"install {tool}", blocks))
+
+    out.append(chromium_check())
 
     code, _ = _run("nvidia-smi")
     out.append(("NVIDIA GPU", code == 0, "", "use RunPod: products/*/runpod_*.sh",
