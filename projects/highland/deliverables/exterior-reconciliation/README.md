@@ -8,6 +8,9 @@ verified as-built or construction model:
 - the north stair/MU alignment and R1 north entries remain deferred at the
   owner's request.
 
+**Accepted by the owner on 2026-11-05** as the revision 06 coordination model. Acceptance
+does not change any element's `confirmed` / `provisional` / `assumed` status.
+
 ![Daylight, revision 06](previews/Highland-daylight-drawing-reconciled.jpg)
 
 ![Dusk, revision 06](previews/Highland-dusk-drawing-reconciled.jpg)

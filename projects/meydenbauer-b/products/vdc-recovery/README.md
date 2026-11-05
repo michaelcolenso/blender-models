@@ -24,7 +24,7 @@ Left in the archive (50 files, 485 MB) and listed in `recovery.json`:
 - renders and QA images;
 - the `.xlsx` workbooks, which package the same CSV data.
 
-The `.blend` scenes are listed for Releases (below). The renders and workbooks stay in the archive.
+The `.blend` scenes are published to Releases (below). The renders and workbooks stay in the archive.
 
 ## Adopted into canonical state
 
@@ -37,9 +37,9 @@ element IDs, geometry or schedule enter the canonical state.
 ## Archived scenes
 
 [release-assets.json](release-assets.json) lists the seven `.blend` scenes (443 MB) by archive blob and sha256,
-for release `meydenbauer-b-vdc-archive-2026-11-05`. To publish them, run
-`bash projects/meydenbauer-b/products/vdc-recovery/publish_scenes.sh` from a clone with `gh` logged in; cloud
-sessions can't write releases. Then restore them with
+for release [`meydenbauer-b-vdc-archive-2026-11-05`](https://github.com/michaelcolenso/blender-models/releases/tag/meydenbauer-b-vdc-archive-2026-11-05).
+They were published on 2026-11-05 with `publish_scenes.sh`; all seven match the manifest by size and sha256.
+Restore them with
 `uv run bm assets pull projects/meydenbauer-b/products/vdc-recovery/release-assets.json`.
 
 ## Commands

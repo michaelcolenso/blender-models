@@ -73,8 +73,10 @@ These are recorded as claims in the canonical state, with owner-decision evidenc
      reasons are in [scope_import.py](../../products/vdc-recovery/scope_import.py).
 3. **The canonical schedule governs:** 81.5 working days, unit by unit. VDC MEYD-BL-001 (29 working days)
    is reference only.
-4. **The archived scenes are to be published to Releases for geometry review.** The seven `.blend` files
-   (443 MB) are listed in [release-assets.json](../../products/vdc-recovery/release-assets.json), and the
-   owner uploads them with `publish_scenes.sh`. Canonical state does not depend on them.
-
-Not decided: whether VDC's 4 open issues (slopes, undocumented inverts) become canonical issues.
+4. **The archived scenes are published to Releases for geometry review:**
+   [meydenbauer-b-vdc-archive-2026-11-05](https://github.com/michaelcolenso/blender-models/releases/tag/meydenbauer-b-vdc-archive-2026-11-05).
+   All seven `.blend` files (443 MB) match [release-assets.json](../../products/vdc-recovery/release-assets.json)
+   by size and sha256. Canonical state does not depend on them.
+5. **VDC's 4 open issues are not imported** as canonical issues. P2-002, P2-003, P2-004 and P2-005 describe
+   VDC's schematic routes, and P2-005 is on the out-of-scope raised-floor route. They remain in finding 8
+   for reference. Canonical's own critical issue (POC inverts undocumented) still stands.

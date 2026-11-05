@@ -54,6 +54,10 @@ archived review PDF are recorded for release `highland-exterior-reconciliation-2
 CPU stills and review views are committed as previews. See the
 [deliverable](../projects/highland/deliverables/exterior-reconciliation/README.md).
 
+**Accepted by the owner on 2026-11-05.** The release holds the `.blend`, `.glb`, provenance CSV and
+review PDF. The preserved handoff, daylight, drawing and roof branches can now be retired; their
+archive tags remain.
+
 Start the implementation branch from current main. The source snapshot is
 `archive/2026-11-03/continue/highland-roof-geometry` at
 `bddd5b8fb4085677028108754ef82a722bc0b17c`. It already contains
@@ -110,9 +114,15 @@ to the archive. The scenes and renders stay in the tags. Nothing was imported in
 - the B103 raised-floor route is out of scope;
 - 40 VDC scope quantities are adopted as assumed;
 - the canonical 81.5-working-day schedule governs;
-- the seven archived scenes are listed for Releases.
+- the seven archived scenes are listed for Releases;
+- VDC's 4 open issues are not imported as canonical issues.
 
-See the report's decisions section. The archive tags stay until the scenes are published.
+See the report's decisions section.
+
+**Slice 3 (close-out, 2026-11-05) is done.** The seven scenes are in release
+`meydenbauer-b-vdc-archive-2026-11-05`, and each matches `release-assets.json` by size and sha256.
+The archive tags are kept as Git history; the source branches `meydenbauer/4d-fixes` and
+`meydenbauer/b101-v4-executed` can be retired.
 
 First recover the small schedule, element, issue, takeoff and route-control data
 for inspection. Reconcile identifiers (`vdc_element_id` versus `cie_id`), units,
