@@ -92,10 +92,22 @@ def main():
         "saved_routes_pass": all(r["passed"] for r in qa["saved_route_checks"]),
         "renders": sorted(p.name for p in (PKG / "renders").glob("*.png")),
     }
+    # extended_runtime_qa.py always exits 0, so enforce its results here.
+    failures = [name for name, ok in {
+        "a step exited non-zero": not any(results.values()),
+        "slab opened inside the prior-repair no-demo envelope": summary["prior_abs_envelope_open_samples"] == 0,
+        "slab Boolean differs from the cutter union": summary["boolean_grid_mismatches"] == 0,
+        "slab has non-manifold edges": summary["slab_nonmanifold_edges"] == 0,
+        "a saved route differs from its controls": summary["saved_routes_pass"],
+        "invalid or flagged drivers": not (qa["invalid_drivers"] or qa["flagged_driver_errors"]),
+        "missing keyframe renders": len(summary["renders"]) == 8,
+    }.items() if not ok]
+    summary["failures"] = failures
     (BUILD / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
-    make_deliverables()
     print(json.dumps(summary, indent=2))
-    sys.exit(0 if not any(results.values()) and summary["prior_abs_envelope_open_samples"] == 0 else 1)
+    if failures:
+        sys.exit("B-101 v4.1 review FAILED: " + "; ".join(failures))
+    make_deliverables()
 
 
 if __name__ == "__main__":
