@@ -19,7 +19,7 @@
 - PASS HWC network components (new): expected 1, got 1 (graph check of the proposed PEX-A network)
 
 ## Source conflicts
-- **Units 106/107 drop HW size**: modeled per `P2.03` (sources: P2.03 R1 plan: 1-1/2 in HW, P3.02 riser diagram: 1-1/4 in HW). Same issue (10-29-07). Modeled per the plan label at the riser; the engineer should confirm.
+- **Units 106/107 drop HW size**: modeled per `P2.03` (sources: P2.03 R1 plan: 1-1/2 in HW, P3.02 riser diagram: 1-1/4 in HW). Same issue (10-29-07). Resolved by owner decision 2026-11-06: 1-1/2 in governs (P2.03), as modeled.
 - **P3.02 stack numbers vs plan locations**: modeled per `P2.03-P2.07` (sources: P3.02 riser diagram (NTS), P2.03-P2.07 riser markups). Plan stacks are named A-F by location. F is matched to P3.02 '03' because both stop one floor short of R5. A, B, C and E are not matched to 01, 02, 04 and 05.
 - **04 stack R1 branch**: modeled per `P3.02` (sources: P3.02: 04 stack has four branch groups, highland/water spec: R1 continuation unresolved). This model gives A, B, C and E an R1 branch each (20 groups). P3.02 implies 19: one of the four has no R1 branch, and which one is unresolved.
 
