@@ -1,0 +1,695 @@
+{
+ "source": "RL- REVISED Highland Condos Plumbing 10-29-07.pdf",
+ "sha256_expected": "93c5426cc8604ec33abd0b13ece1f5c6b76fe0417a2efcd9aca84701d294586a",
+ "units": "inches; x east of grid 7, y north of grid E",
+ "grid_source": "A2.03 Level R1 plan, full set page 47, 04-02-07, grid dimension strings",
+ "sheets": {
+  "P2.01": {
+   "page": 4,
+   "level": "P2",
+   "pt_per_in": [
+    0.7497,
+    0.75
+   ],
+   "origin_pt": [
+    1551.31,
+    1214.25
+   ],
+   "grid_residual_in": 0.28,
+   "riser_boxes": []
+  },
+  "P2.02": {
+   "page": 5,
+   "level": "P1",
+   "pt_per_in": [
+    0.7497,
+    0.75
+   ],
+   "origin_pt": [
+    1551.31,
+    1214.25
+   ],
+   "grid_residual_in": 0.28,
+   "riser_boxes": [
+    {
+     "kind": "UP",
+     "center_in": [
+      638.5,
+      818.7
+     ],
+     "size_in": [
+      43,
+      41
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      763.2,
+      718.5
+     ],
+     "size_in": [
+      69,
+      74
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      610.0,
+      639.8
+     ],
+     "size_in": [
+      58,
+      65
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      686.3,
+      601.8
+     ],
+     "size_in": [
+      43,
+      41
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      682.3,
+      333.4
+     ],
+     "size_in": [
+      37,
+      37
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      761.5,
+      286.0
+     ],
+     "size_in": [
+      67,
+      41
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      795.3,
+      -35.9
+     ],
+     "size_in": [
+      86,
+      65
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      660.4,
+      -109.1
+     ],
+     "size_in": [
+      43,
+      41
+     ]
+    }
+   ]
+  },
+  "P2.03": {
+   "page": 6,
+   "level": "R1",
+   "pt_per_in": [
+    0.7497,
+    0.75
+   ],
+   "origin_pt": [
+    1551.31,
+    1214.25
+   ],
+   "grid_residual_in": 0.28,
+   "riser_boxes": [
+    {
+     "kind": "UP",
+     "center_in": [
+      641.5,
+      917.9
+     ],
+     "size_in": [
+      85,
+      52
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      641.2,
+      819.0
+     ],
+     "size_in": [
+      52,
+      28
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      559.0,
+      807.7
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      616.1,
+      769.0
+     ],
+     "size_in": [
+      98,
+      62
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      782.2,
+      762.9
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      841.8,
+      715.1
+     ],
+     "size_in": [
+      93,
+      53
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      681.2,
+      357.0
+     ],
+     "size_in": [
+      29,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      838.5,
+      335.5
+     ],
+     "size_in": [
+      80,
+      57
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      683.7,
+      330.2
+     ],
+     "size_in": [
+      30,
+      28
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      682.5,
+      277.1
+     ],
+     "size_in": [
+      29,
+      36
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      576.1,
+      266.0
+     ],
+     "size_in": [
+      32,
+      28
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      600.4,
+      234.4
+     ],
+     "size_in": [
+      78,
+      28
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      624.3,
+      215.4
+     ],
+     "size_in": [
+      66,
+      29
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      1091.2,
+      159.1
+     ],
+     "size_in": [
+      69,
+      55
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      1027.7,
+      116.8
+     ],
+     "size_in": [
+      21,
+      29
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      662.0,
+      -112.7
+     ],
+     "size_in": [
+      37,
+      23
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      811.8,
+      -114.4
+     ],
+     "size_in": [
+      42,
+      36
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      726.5,
+      -160.8
+     ],
+     "size_in": [
+      89,
+      61
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      588.8,
+      -226.7
+     ],
+     "size_in": [
+      43,
+      57
+     ]
+    }
+   ]
+  },
+  "P2.04": {
+   "page": 7,
+   "level": "R2",
+   "pt_per_in": [
+    0.74998,
+    0.75
+   ],
+   "origin_pt": [
+    1551.11,
+    1214.25
+   ],
+   "grid_residual_in": 0.21,
+   "riser_boxes": [
+    {
+     "kind": "UP",
+     "center_in": [
+      558.8,
+      803.7
+     ],
+     "size_in": [
+      29,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      780.2,
+      760.4
+     ],
+     "size_in": [
+      47,
+      43
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      682.7,
+      358.6
+     ],
+     "size_in": [
+      29,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      677.6,
+      281.6
+     ],
+     "size_in": [
+      31,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      813.2,
+      -112.7
+     ],
+     "size_in": [
+      42,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      595.0,
+      -232.3
+     ],
+     "size_in": [
+      43,
+      57
+     ]
+    }
+   ]
+  },
+  "P2.05": {
+   "page": 8,
+   "level": "R3",
+   "pt_per_in": [
+    0.74998,
+    0.75
+   ],
+   "origin_pt": [
+    1551.11,
+    1214.25
+   ],
+   "grid_residual_in": 0.21,
+   "riser_boxes": [
+    {
+     "kind": "UP",
+     "center_in": [
+      559.5,
+      804.3
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      783.1,
+      758.9
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      682.7,
+      361.3
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      676.5,
+      280.5
+     ],
+     "size_in": [
+      31,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      810.3,
+      -111.3
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      595.5,
+      -230.1
+     ],
+     "size_in": [
+      43,
+      57
+     ]
+    }
+   ]
+  },
+  "P2.06": {
+   "page": 9,
+   "level": "R4",
+   "pt_per_in": [
+    0.74998,
+    0.75
+   ],
+   "origin_pt": [
+    1551.11,
+    1214.25
+   ],
+   "grid_residual_in": 0.21,
+   "riser_boxes": [
+    {
+     "kind": "DN",
+     "center_in": [
+      559.1,
+      803.1
+     ],
+     "size_in": [
+      29,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      784.2,
+      761.3
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      556.0,
+      745.8
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      680.5,
+      474.1
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      681.1,
+      359.0
+     ],
+     "size_in": [
+      29,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      681.6,
+      281.3
+     ],
+     "size_in": [
+      33,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      789.9,
+      192.7
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    },
+    {
+     "kind": "DN",
+     "center_in": [
+      811.7,
+      -112.4
+     ],
+     "size_in": [
+      42,
+      36
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      596.7,
+      -219.0
+     ],
+     "size_in": [
+      43,
+      57
+     ]
+    }
+   ]
+  },
+  "P2.07": {
+   "page": 10,
+   "level": "R5",
+   "pt_per_in": [
+    0.74998,
+    0.75
+   ],
+   "origin_pt": [
+    1551.11,
+    1214.25
+   ],
+   "grid_residual_in": 0.21,
+   "riser_boxes": [
+    {
+     "kind": "UP",
+     "center_in": [
+      782.5,
+      764.0
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      554.3,
+      748.4
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      678.8,
+      476.8
+     ],
+     "size_in": [
+      30,
+      43
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      676.9,
+      279.2
+     ],
+     "size_in": [
+      35,
+      30
+     ]
+    },
+    {
+     "kind": "UP",
+     "center_in": [
+      788.1,
+      195.4
+     ],
+     "size_in": [
+      43,
+      30
+     ]
+    }
+   ]
+  }
+ }
+}

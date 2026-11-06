@@ -1,0 +1,25 @@
+{
+ "note": "Source PDFs stay outside Git (projects/highland/sources/). The site manifest is frozen by the exterior-reconciliation snapshot check, so this product registers its own sources here.",
+ "documents": [
+  {
+   "file": "RL- REVISED Highland Condos Plumbing 10-29-07.pdf",
+   "sha256": "93c5426cc8604ec33abd0b13ece1f5c6b76fe0417a2efcd9aca84701d294586a",
+   "bytes": 12759545,
+   "pages": 19,
+   "issue": "2007-10-29 (RL-REVISED; colored markups are later, undated vector annotations)",
+   "restore": "Highland-original.pdf in Highland-installation-model.zip, release highland-repipe-2026-10-17 (uv run bm assets pull projects/highland/products/installation/release-assets.json), copied under this name",
+   "used": {
+    "P2.01-P2.07 (pages 4-10)": "riser markups and linework, 1/8 in = 1 ft (confirmed by grid registration)",
+    "P3.02 (page 13)": "domestic water riser diagram: topology and sizes only (NTS)"
+   }
+  },
+  {
+   "file": "200 W. Highland Construction Plans - Complete.pdf",
+   "sha256": "63d0fa126979d7c94b1cd7fe838e4de638ca71a11caa0f52358b9f4ee8225238",
+   "used": {
+    "A2.03 (page 47, 04-02-07)": "grid dimension strings A-H and 6-10",
+    "A3.11 (04-02-07)": "floor elevations (via highland/water calibration.json)"
+   }
+  }
+ ]
+}

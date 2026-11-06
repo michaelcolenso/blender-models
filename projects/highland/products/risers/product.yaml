@@ -1,0 +1,16 @@
+# Steps run from the repo root: uv run bm run highland/risers <step> [extra args for the last command]
+# Env in every step: $BM_PRODUCT_DIR (this folder), $BM_BUILD (build/<site>/<product>), $BM_DELIVERABLES.
+kind: "model+film"
+description: "Building domestic-water risers and mains (existing, drawing-traced) and a proposed PEX-A replacement, with review renders"
+deliverables: ../../deliverables/risers
+steps:
+  # needs the governing plumbing PDF in projects/highland/sources/ (see README)
+  extract: python $BM_PRODUCT_DIR/extract.py
+  takeoff: python $BM_PRODUCT_DIR/takeoff.py
+  # bpy, CPU Cycles: .blend/.glb and provenance review renders in build/highland/risers/
+  build: python $BM_PRODUCT_DIR/build.py
+  # CPU preview stills of the Corridor 108 work sequence (about 15 min); full quality: runpod_photoreal.sh
+  photoreal: python $BM_PRODUCT_DIR/photoreal.py
+  package: python $BM_PRODUCT_DIR/package.py
+  # regenerate both committed specs from the committed markups and require no diff
+  check: python $BM_PRODUCT_DIR/takeoff.py && git diff --exit-code -- $BM_PRODUCT_DIR/risers-existing.spec.json $BM_PRODUCT_DIR/risers-proposed.spec.json
