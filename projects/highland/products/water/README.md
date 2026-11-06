@@ -64,7 +64,7 @@ Outputs go to `build/highland-water/`. `prepare_spec.py` is the manual takeoff /
 - All vertices and terminal routes in the building, unit and P1 distribution graphs reach their own system root. Tees on straight segments are recognized. Separate-system reachability does not validate hydraulic sizing, plant internals, cross-system return flow or source interpretation.
 - Cycles CPU renders inspected in plan, front, side and isometric views. Orange provenance renders identify the assumed spatial geometry. Owner-color views identify systems, not provenance. Review PNGs were checked for blank output.
 - Unit A and P1 model-projected overlays visually reviewed against their source crops. The P1 overlay caught and corrected a corridor-band placement error before delivery. Grid calibration, registration residuals and seven floor datums are checked automatically. Pipe routes remain simplified traces, not field-verified alignment. A bathroom close-up was also inspected.
-- The standalone HTML embeds all four GLBs (Unit 107, building, plant, P1). P1 is a fourth view framed on its water mains. It was tested in headless Chromium at desktop and phone widths: all four views load with no console errors, and selecting a P1 main shows its P2.2 source and provisional/assumed status.
+- The standalone HTML built by the `viewer` step embeds all four GLBs (Unit 107, building, plant, P1); the copy on the `highland-water-2026-11-04` release predates P1 and has only the first three. P1 is a fourth view framed on its water mains. It was tested in headless Chromium at desktop and phone widths: all four views load with no console errors, and selecting a P1 main shows its P2.2 source and provisional/assumed status.
 
 ## Next inputs needed
 
