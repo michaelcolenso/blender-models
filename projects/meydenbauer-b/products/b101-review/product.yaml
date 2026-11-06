@@ -1,0 +1,10 @@
+# Steps run from the repo root: uv run bm run meydenbauer-b/b101-review <step>
+kind: "review"
+description: "B-101 v4 acceptance review and v4.1 revision (envelope clip, review camera) applied as a patch to the recovered snapshot"
+deliverables: ../../deliverables/b101-review
+depends_on: [meydenbauer-b/vdc-recovery]
+steps:
+  # bpy, CPU Cycles, ~4 min: strict build, reopen check, extended QA, eight keyframe renders
+  build: python $BM_PRODUCT_DIR/build.py
+  # no bpy: the patch applies cleanly to the snapshot and the patched scripts compile
+  check: python $BM_PRODUCT_DIR/build.py --check
