@@ -1,0 +1,68 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6S96QX15WP5B0K3WS13SBS1",
+  "strategy": "manual-commit",
+  "branch": "feat/highland-risers",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "projects/highland/deliverables/risers/01-before-detail.jpg",
+    "projects/highland/deliverables/risers/01-before-wide.jpg",
+    "projects/highland/deliverables/risers/02-open-detail.jpg",
+    "projects/highland/deliverables/risers/02-open-wide.jpg",
+    "projects/highland/deliverables/risers/03-install-detail.jpg",
+    "projects/highland/deliverables/risers/03-install-wide.jpg",
+    "projects/highland/deliverables/risers/04-cutover-detail.jpg",
+    "projects/highland/deliverables/risers/04-cutover-wide.jpg",
+    "projects/highland/deliverables/risers/05-restore-detail.jpg",
+    "projects/highland/deliverables/risers/05-restore-wide.jpg",
+    "projects/highland/deliverables/risers/README.md",
+    "projects/highland/deliverables/risers/existing-east.jpg",
+    "projects/highland/deliverables/risers/existing-iso.jpg",
+    "projects/highland/deliverables/risers/existing-plan.jpg",
+    "projects/highland/deliverables/risers/existing-report.md",
+    "projects/highland/deliverables/risers/existing-south.jpg",
+    "projects/highland/deliverables/risers/proposed-east.jpg",
+    "projects/highland/deliverables/risers/proposed-iso.jpg",
+    "projects/highland/deliverables/risers/proposed-plan.jpg",
+    "projects/highland/deliverables/risers/proposed-report.md",
+    "projects/highland/deliverables/risers/proposed-south.jpg",
+    "projects/highland/products/risers/README.md",
+    "projects/highland/products/risers/package.py",
+    "projects/highland/products/risers/photoreal.py",
+    "projects/highland/products/risers/product.yaml",
+    "projects/highland/products/risers/risers-existing.spec.json",
+    "projects/highland/products/risers/risers-proposed.spec.json",
+    "projects/highland/products/risers/runpod_photoreal.sh",
+    "projects/highland/products/risers/takeoff.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 255,
+    "cache_creation_tokens": 303011,
+    "cache_read_tokens": 25499477,
+    "output_tokens": 135776,
+    "api_call_count": 123
+  },
+  "redaction": {
+    "replacements": 4,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 4,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
