@@ -1,0 +1,85 @@
+diff --git a/scripts/build_meydenbauer_b101_v4.py b/scripts/build_meydenbauer_b101_v4.py
+index f660426..6fe64b1 100644
+--- a/scripts/build_meydenbauer_b101_v4.py
++++ b/scripts/build_meydenbauer_b101_v4.py
+@@ -1222,6 +1222,37 @@ def build_upper_stack_context(mats):
+             obj["NOMINAL_DIAMETER_IN"] = dia
+ 
+ 
++# v4.1: plan extent of B101_DEMO_PriorRepair_NoDemo_Envelope (same centre/size as its create_box in pass 3).
++NO_DEMO_ENVELOPE_XY = ((ft(32.0) - ft(12.5), ft(32.0) + ft(12.5)), (ft(35.5) - ft(8.0), ft(35.5) + ft(8.0)))
++
++
++def clip_cutter_to_no_demo_envelope(obj):
++    """v4.1: trim a trench cutter so it never opens slab inside the prior-repair no-demo envelope.
++
++    v4 cutter end extensions (0.55 x width) pushed TrenchCutter_B101_001/008 about 0.9 ft past the
++    prior-ABS tie (23.25, 27.4) into the envelope. The envelope stays FIELD_VERIFY; this only stops the
++    model from cutting slab the contract says not to demolish. Clips along the envelope's south edge,
++    which is the only edge the B101 route approaches."""
++    import bmesh
++    (x0, x1), (y0, y1) = NO_DEMO_ENVELOPE_XY
++    bpy.context.view_layer.update()
++    corners = [obj.matrix_world @ Vector(c) for c in obj.bound_box]
++    if max(c.x for c in corners) <= x0 or min(c.x for c in corners) >= x1:
++        return False
++    if max(c.y for c in corners) <= y0 or min(c.y for c in corners) >= y1:
++        return False
++    inv = obj.matrix_world.inverted()
++    co = inv @ Vector((0.0, y0, 0.0))
++    no = (obj.matrix_world.to_3x3().transposed() @ Vector((0.0, 1.0, 0.0))).normalized()  # world->local normal
++    bm = bmesh.new(); bm.from_mesh(obj.data)
++    geom = bm.verts[:] + bm.edges[:] + bm.faces[:]
++    bmesh.ops.bisect_plane(bm, geom=geom, plane_co=co, plane_no=no, clear_outer=True)
++    bmesh.ops.holes_fill(bm, edges=bm.edges[:], sides=0)
++    bm.to_mesh(obj.data); bm.free(); obj.data.update()
++    obj["V41_CLIPPED_AT_NO_DEMO_ENVELOPE"] = True
++    return True
++
++
+ def build_trench_cutters(mats):
+     coll = get_coll("Concrete_Slab_Trench_Cuts_DEMO")
+     total_plan_area = 0.0
+@@ -1242,6 +1273,8 @@ def build_trench_cutters(mats):
+             obj.display_type = 'WIRE'
+             obj.hide_render = True
+             obj["TRENCH_ROLE"] = seg["role"]
++            if clip_cutter_to_no_demo_envelope(obj):
++                print(f"v4.1 clipped {obj.name} at prior-repair no-demo envelope (y = {NO_DEMO_ENVELOPE_XY[1][0]:.2f} ft)")
+ 
+     # Non-destructive Boolean collection operand.
+     slab = bpy.data.objects.get("BuildingB_SOG_5p5in")
+@@ -2655,7 +2688,19 @@ def build_camera_and_lights(mats):
+     direction=target-cam.location
+     cam.rotation_euler=direction.to_track_quat('-Z','Y').to_euler()
+     cam.data.lens=50
+-    bpy.context.scene.camera=cam
++
++    # v4.1: B-101 review camera. MEYD_ISO_CAMERA looks through the upper floors, which go opaque after
++    # Phase 1, so the demolition sequence was not visible. Frame B-101 orthographically and hide the
++    # obstructing context from renders only (viewport unchanged).
++    bpy.ops.object.camera_add(location=(ft(22),-ft(32),ft(65)))
++    rcam=bpy.context.object; rcam.name="MEYD_B101_REVIEW_CAMERA"; relink_object(rcam,coll)
++    tag(rcam,3,"v4.1 B-101 demolition review camera (orthographic cutaway)")
++    rcam.rotation_euler=(Vector((ft(22),ft(20),0))-rcam.location).to_track_quat('-Z','Y').to_euler()
++    rcam.data.type='ORTHO'; rcam.data.ortho_scale=ft(62)
++    for o in bpy.data.objects:
++        if o.name.startswith(('BldgB_UpperFloor_','East_Garage_Block_','CTX_')) or o.name in ('East_Exterior_Wall','North_Exterior_Wall','Subgrade_Soil_Mass'):
++            o.hide_render=True; o["V41_RENDER_CUTAWAY"]=True
++    bpy.context.scene.camera=rcam
+ 
+     bpy.ops.object.light_add(type='SUN',location=(BUILDING_LENGTH/2,-ft(20),ft(70)))
+     sun=bpy.context.object; sun.name="MEYD_SUN"; relink_object(sun,coll); tag(sun,3,"Visualization light")
+diff --git a/scripts/run_build_and_verify.py b/scripts/run_build_and_verify.py
+index 5881e1b..bc8cd46 100644
+--- a/scripts/run_build_and_verify.py
++++ b/scripts/run_build_and_verify.py
+@@ -57,7 +57,7 @@ def parse_args():
+ 
+ def choose_render_engine(scene):
+     # Blender 4.x/5.x Eevee identifier, then older 3.x fallback, then Cycles.
+-    for engine in ("BLENDER_EEVEE_NEXT", "BLENDER_EEVEE", "CYCLES"):
++    for engine in ("CYCLES",):
+         try:
+             scene.render.engine = engine
+             return engine
