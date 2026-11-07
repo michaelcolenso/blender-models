@@ -91,7 +91,7 @@
     "P2.03 R1 plan: 1-1/2 in HW",
     "P3.02 riser diagram: 1-1/4 in HW"
    ],
-   "note": "Same issue (10-29-07). Modeled per the plan label at the riser; the engineer should confirm."
+   "note": "Same issue (10-29-07). Resolved by owner decision 2026-11-06: 1-1/2 in governs (P2.03), as modeled."
   },
   {
    "topic": "P3.02 stack numbers vs plan locations",
@@ -226,7 +226,7 @@
    "nominal_in": 4,
    "size_status": "assumed",
    "size_basis": "Same nominal size as existing, pending engineer resizing: PEX-A (ASTM F876, CTS SDR 9) has a smaller bore than CPVC or copper of the same nominal size",
-   "material": "TBD (PEX-A is not made above 3 in nominal)",
+   "material": "copper (owner decision 2026-11-06; type not specified)",
    "material_status": "assumed",
    "xy_status": "assumed",
    "xy_basis": "Parallel to the existing route, offset (10, 10) in; chase and ceiling space not verified",
@@ -259,7 +259,7 @@
    "nominal_in": 4,
    "size_status": "assumed",
    "size_basis": "Same nominal size as existing, pending engineer resizing: PEX-A (ASTM F876, CTS SDR 9) has a smaller bore than CPVC or copper of the same nominal size",
-   "material": "TBD (PEX-A is not made above 3 in nominal)",
+   "material": "copper (owner decision 2026-11-06; type not specified)",
    "material_status": "assumed",
    "xy_status": "assumed",
    "xy_basis": "Parallel to the existing route, offset (10, 10) in; chase and ceiling space not verified",

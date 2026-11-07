@@ -83,7 +83,7 @@ DROP_SIZE = ((1.5, 1.5, 0.75), "confirmed", 'P2.03 R1 riser label "1-1/2"CW, 1-1
 FLAGS = [
     {"topic": "Units 106/107 drop HW size", "modeled_per": "P2.03",
      "sources": ["P2.03 R1 plan: 1-1/2 in HW", "P3.02 riser diagram: 1-1/4 in HW"],
-     "note": "Same issue (10-29-07). Modeled per the plan label at the riser; the engineer should confirm."},
+     "note": "Same issue (10-29-07). Resolved by owner decision 2026-11-06: 1-1/2 in governs (P2.03), as modeled."},
     {"topic": "P3.02 stack numbers vs plan locations", "modeled_per": "P2.03-P2.07",
      "sources": ["P3.02 riser diagram (NTS)", "P2.03-P2.07 riser markups"],
      "note": "Plan stacks are named A-F by location. F is matched to P3.02 '03' because both stop one floor "
@@ -331,7 +331,7 @@ def build_proposed(existing, stacks):
                nominal_in=nominal, size_status="assumed",
                size_basis="Same nominal size as existing, pending engineer resizing: PEX-A (ASTM F876, CTS SDR 9) has a "
                           "smaller bore than CPVC or copper of the same nominal size",
-               material="PEX-A" if pex else "TBD (PEX-A is not made above 3 in nominal)", material_status="assumed",
+               material="PEX-A" if pex else "copper (owner decision 2026-11-06; type not specified)", material_status="assumed",
                xy_status="assumed", xy_basis=f"Parallel to the existing route, offset {d[:2]} in; chase and ceiling space "
                                               "not verified", z_status="assumed", z_basis="as existing",
                basis=new_basis, terminal=e.get("terminal", False), stack=sid,

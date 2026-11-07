@@ -59,14 +59,16 @@ How the trace works:
 - **Context.** The slab outlines are the grid extents, not the real slab edges.
 - **Proposed design.** The PEX-A routes are offset 10 in from the existing ones; chase and ceiling space is not
   verified. Sizes are the same nominal as existing, pending engineer resizing, because PEX-A has a smaller
-  bore. The 4" CW main is "material TBD", because PEX-A is not made above 3".
+  bore. The 4" CW main is **copper** (owner decision 2026-11-06, type not specified), because PEX-A is not
+  made above 3".
 - **Proposed work items.** Openings (one 24 × 96 in chase opening per stack per floor, plus a 24 in corridor
   ceiling strip), firestops, riser clamps, cutover ties, new floor isolation valves and the stack order are
   illustrative.
 
 ## Flags (unresolved)
 
-1. **Units 106/107 drop HW:** P2.03 labels 1½", P3.02 shows 1¼" (same issue date). Modeled per the plan label.
+1. **Units 106/107 drop HW:** P2.03 labels 1½", P3.02 shows 1¼" (same issue date). **Resolved** (owner,
+   2026-11-06): 1½" governs, as modeled.
 2. **Stack numbers:** P3.02's 01–05 are not tied to plan locations. Only F ↔ 03 is matched (both stop at R4).
 3. **04 stack R1 branch:** P3.02 implies 23 branch groups. The model has 24 because which of A/B/C/E lacks an R1
    branch is unknown.
@@ -87,9 +89,9 @@ Everything else in the scene is **assumed** and illustrative:
   ProPEX-style tees, a firestop at the corridor wall, floor protection, the ladder and the work light.
 - **Not shown:** ceiling framing above the board.
 
-The finishes are procedural, so no textures are downloaded. When site photos are in
-`projects/highland/sources/`, match the carpet, wall paint, doors and lighting to them and record the photo
-IDs here. Each still carries a phase caption and the "illustrative, not a contract document" strip.
+The finishes are procedural, so no textures are downloaded. No site photos will be used (owner, 2026-11-06),
+so the carpet, wall paint, doors, lighting and ceiling type stay assumed and generic. Each still carries a
+phase caption and the "illustrative, not a contract document" strip.
 
 - CPU preview (this laptop or CI runner): `uv run bm run highland/risers photoreal`, 1280 × 720, 64 samples.
 - Full quality on RunPod: `bash projects/highland/products/risers/runpod_photoreal.sh all`, 3840 × 2160 at
