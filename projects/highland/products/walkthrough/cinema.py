@@ -299,6 +299,14 @@ def interior(scene):
     wash.energy = 5; wash.size = .9
 
 
+def light_hygiene(scene):
+    """Filler lights light the scene but never show up as specular hotspots on glass, doors or wet paving
+    (archviz skill Rule 4). Fixtures still reflect through their own emissive meshes."""
+    for o in scene.objects:
+        if o.type == 'LIGHT' and o.data.type in ('AREA', 'POINT', 'SPOT'):
+            o.visible_camera = False; o.visible_glossy = False
+
+
 def slat_wall(scene, col, M):
     """Illustrative walnut slat feature wall on the Lobby 110 south wall, grazed from a cove."""
     verts, faces = [], []
@@ -438,7 +446,7 @@ def prepare(base, output):
     M = {'wood': bpy.data.materials['Satin walnut doors'], 'trim': bpy.data.materials['Dark walnut frames'], 'led': bpy.data.materials['Warm LED diffuser']}
     slat_wall(scene, bpy.data.collections['Native interior / Lobby 110 and Corridors 108–208'], M)
     dress(scene, A.fetch())
-    dusk(scene); interior(scene); xray(scene)
+    dusk(scene); interior(scene); xray(scene); light_hygiene(scene)
     cams = {s['id']: camera(scene, rig, s) for s in SPEC['shots']}
     c = scene.cycles
     c.use_adaptive_sampling = True; c.adaptive_threshold = .02; c.use_denoising = True
@@ -446,6 +454,8 @@ def prepare(base, output):
     c.sample_clamp_indirect = 8; c.blur_glossy = .5; c.caustics_reflective = False; c.caustics_refractive = False
     c.film_exposure = 1.0
     scene.render.use_motion_blur = True; scene.render.motion_blur_shutter = .5
+    # Keep BVH and textures between frames of one process: -25% per frame on the CPU proof profile.
+    scene.render.use_persistent_data = True
     scene.render.image_settings.color_depth = '16'
     scene.view_settings.look = 'AgX - Base Contrast'
     scene['cinema_spec_sha256'] = hashlib.sha256(SPEC_FILE.read_bytes()).hexdigest()
@@ -507,6 +517,7 @@ def validate(scene, path):
             report['failures'].append({'shot': shot['id'], 'rotation_step_deg': step})
     report['blender'] = bpy.app.version_string
     report['cinema_spec_sha256'] = hashlib.sha256(SPEC_FILE.read_bytes()).hexdigest()
+    report['cinema_source_sha256'] = scene['cinema_source_sha256']
     path.write_text(json.dumps(report, indent=2)+'\n')
     if report['failures']:
         raise RuntimeError('Cinema camera validation failed: '+json.dumps(report['failures'][:5]))
@@ -644,8 +655,15 @@ def main():
         scene = prepare(a.base, a.output)
     if a.threads:
         scene.render.threads_mode = 'FIXED'; scene.render.threads = a.threads
+    report = a.output.with_name('cinema-validation.json')
     if a.validate:
-        validate(scene, a.output.with_name('cinema-validation.json'))
+        validate(scene, report)
+    elif a.reuse:
+        # A prepared scene is saved before its cameras are validated, so --reuse must not
+        # render one whose validation failed or belongs to other cameras or scene code.
+        r = json.loads(report.read_text()) if report.exists() else {}
+        if r.get('failures') or r.get('cinema_source_sha256') != scene['cinema_source_sha256']:
+            raise SystemExit(f'{a.output.name} has no passing camera validation for this scene; run cinema.py --validate')
     configure_device(scene, a.device)
     settings(scene, a.profile, a.samples)
     if a.bench:

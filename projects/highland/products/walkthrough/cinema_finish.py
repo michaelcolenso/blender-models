@@ -75,7 +75,7 @@ def build_titles():
     x, y = z(1262), TOP+z(96)
     tracked(d, (x, y), 'OWNER PRESENTATION', font('NotoSans-Regular.ttf', 17), GOLD+(255,), z(5.5))
     d.text((x-z(3), y+z(26)), '200 W. Highland', font=font('NotoSerifDisplay-Regular.ttf', 76), fill=(246, 242, 234, 255))
-    d.text((x, y+z(122)), 'From the street to Corridor 208', font=font('NotoSerifDisplay-Italic.ttf', 28), fill=(232, 226, 214, 235))
+    d.text((x, y+z(122)), 'From the street to Corridor 208, and back out', font=font('NotoSerifDisplay-Italic.ttf', 28), fill=(232, 226, 214, 235))
     t['title'] = shadowed(im)
     for shot in SPEC['shots']:
         if not shot.get('label'):
@@ -244,7 +244,7 @@ def main():
             img = grade(np.clip(img, 0, 1), shot.get('exposure', 0), rng, upscaled)
             if shot['id'] == '07-section':
                 img = section_gauge(img, t-starts[shot['id']], shot)
-            # Fade in from black on the arrival, out at the end of the corridor.
+            # Fade in from black on the arrival, out at the end of the release pull-back.
             fade = min(ramp(t, 0, 1.5), 1-ramp(t, picture-1.0, picture))
             canvas[TOP:TOP+PH] = img*fade
             stats.append(float(img.std()))
@@ -280,7 +280,7 @@ def main():
                         '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-movflags', '+faststart', '-t', f'{count/FPS:.4f}', str(out)], check=True)
     # Stills, a timed shot sheet and a silent phone-gallery preview of the section.
     stills_dir = a.output/'stills'; stills_dir.mkdir(exist_ok=True)
-    for name, at in (('01-title', 3.0), ('02-entry', 6.4), ('03-lobby', 9.0), ('04-slats', 11.6), ('06-elevator', 17.6), ('07-section', 20.3), ('08-corridor-208', 23.6)):
+    for name, at in (('01-title', 3.0), ('02-entry', 6.4), ('03-lobby', 9.0), ('04-slats', 11.6), ('06-elevator', 17.6), ('07-section', 20.3), ('08-corridor-208', 23.2), ('09-release', 27.5)):
         subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', str(at), '-i', str(lossless), '-frames:v', '1', '-q:v', '2', str(stills_dir/f'{name}.jpg')], check=True)
     tiles = []
     for s in SPEC['shots']:
