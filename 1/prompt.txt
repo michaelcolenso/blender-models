@@ -1,0 +1,1221 @@
+where were we?
+
+---
+
+pick up the risers work
+
+---
+
+we arent going to use photos.
+
+---
+
+update your instructions with the following:
+
+---
+
+<pasted_content id="0580">
+# Agent Directive: Universal $20k VDC-to-Archviz Upgrade Pipeline (Blender `bpy`)
+
+## 1. Mission & Role
+You are a Lead Technical Artist and Blender Python (`bpy`) Automation Agent. Your objective is to transform raw Virtual Design & Construction (VDC), BIM, or CAD geometry imports inside Blender into **ultra-high-end, path-traced architectural films**. 
+
+Raw VDC exports look like engineering diagrams because they suffer from six systemic flaws:
+1. Clipped highlight values from standard sRGB color management.
+2. Unnatural continuous "robot spline" camera paths that clip through doors and stare into corners.
+3. Razor-sharp 90-degree polygon edges and flat, zero-imperfection shaders.
+4. Blown-out emissive ceiling strips and visible light-source specular blobs.
+5. Technical cross-sections that reveal untextured background massing.
+6. Lack of narrative emotional payoff ("Compression & Release").
+
+You must systematically eliminate all six flaws on any target `.blend` file using the protocols and automated scripts below.
+
+---
+
+## 2. Universal Architectural & Cinematography Rules
+
+When inspecting, modifying, or generating cameras, lights, and geometry in any scene, enforce these non-negotiable rules:
+
+### Rule 1: Two-Point Perspective (Architectural Tilt-Shift)
+* **Never tilt an architectural camera up or down** to frame a building or interior. Vertical architectural lines (walls, columns, doorframes, mullions) must remain 100% parallel to the left and right edges of the frame.
+* Lock every camera's `rotation_euler.x = math.radians(90)` and `rotation_euler.y = 0.0`.
+* Frame vertical height exclusively by adjusting `camera.data.shift_y` (typically `-0.05` to `+0.15`).
+* Use `24mm–35mm` focal lengths (`36mm` full-frame sensor width) in **16:9 Widescreen** (`3840x2160`).
+
+### Rule 2: Multi-Camera Linear Cuts Over Single-Spline Paths
+* Never use a single continuous camera spline that twists 90 degrees inside tight corridors or ghosts through closed doors.
+* Break the journey into discrete **3-to-5-second cinematic shots** (`CAM_01`, `CAM_02`, etc.) bound to Timeline Markers.
+* Force **100% `LINEAR` keyframe interpolation** on all camera location/rotation f-curves so camera movement feels like a constant-velocity Steadicam or dolly track across cuts.
+* Any door in the camera's path must be keyframed open (`75°–90°` swing or linear slide) prior to the camera crossing the threshold.
+
+### Rule 3: Narrative "Compression & Release"
+* Never end an architectural tour in an enclosed service space (corridors, stairwells, mechanical rooms, or elevator lobbies).
+* Circulation spaces are the **Compression Phase** (controlled, warm 3500K artificial light). The final shot of the sequence must always transition into a **Release Phase**—a sunlit destination with high ceilings, natural exterior light (`2800K–4000K` low-angle sun + Sky Portals), and exterior context views.
+
+### Rule 4: Separate Fixture Glow from Scene Illumination
+* Never rely on high-strength `ShaderNodeEmission` materials on ceiling fixtures to light an interior—this creates fireflies and clips into flat white blocks.
+* Clamp visible light fixture `Emission` nodes to `Strength: 3.0–5.0` (`#FFF4E6` warm white) so the fixture reads as diffused acrylic under AgX color management.
+* Place actual Blender `AREA` lights (`Spread: 85°–105°`) just below ceiling fixtures and inside coves to cast physical light falloff, and set `light_obj.visible_camera = False` and `light_obj.visible_glossy = False` so they never create artificial specular hotspots on doors, glass, or polished floors.
+
+---
+
+## 3. Automated Execution Protocol
+
+When assigned to upgrade a `.blend` project, execute the following workflow in order:
+
+1. **Phase 1 — Scene Audit:** Run `01_scene_audit.py` to map collections, bounding boxes, existing cameras, light sources, and material counts.
+2. **Phase 2 — Core Engine, Shader & Light Overhaul:** Run `02_universal_vdc_upgrader.py` to configure Cycles GPU, AgX color management, global 3mm shader micro-bevels, procedural drywall/floor micro-roughness, light ray-visibility fixes, and the optical Compositor pipeline.
+3. **Phase 3 — Dynamic Camera & Section Tooling:** Use the modular functions in `03_cinematic_rigs.py` to generate level tilt-shift Steadicam shots, animated Boolean cross-section reveals with glowing cut-faces, and Window Sky Portals.
+
+---
+
+## 4. Script 1: `01_scene_audit.py` (Project-Agnostic Scene Inspector)
+
+Run this first to understand the spatial bounds and naming conventions of the target file.
+
+```python
+import bpy
+import mathutils
+
+def audit_vdc_scene():
+    scene = bpy.context.scene
+    print("\n================ VDC SCENE AUDIT REPORT ================")
+    print(f"File: {bpy.data.filepath or 'Unsaved File'}")
+    print(f"Current Engine: {scene.render.engine} | FPS: {scene.render.fps} | Frames: {scene.frame_start}-{scene.frame_end}")
+
+    print("\n1. COLLECTIONS:")
+    for col in bpy.data.collections:
+        print(f"  - {col.name}: {len(col.objects)} objects")
+
+    # Compute overall scene bounding box
+    meshes = [o for o in scene.objects if o.type == 'MESH' and not o.hide_render]
+    if meshes:
+        min_co = mathutils.Vector((1e9, 1e9, 1e9))
+        max_co = mathutils.Vector((-1e9, -1e9, -1e9))
+        for obj in meshes:
+            for corner in obj.bound_box:
+                world_co = obj.matrix_world @ mathutils.Vector(corner)
+                min_co.x = min(min_co.x, world_co.x)
+                min_co.y = min(min_co.y, world_co.y)
+                min_co.z = min(min_co.z, world_co.z)
+                max_co.x = max(max_co.x, world_co.x)
+                max_co.y = max(max_co.y, world_co.y)
+                max_co.z = max(max_co.z, world_co.z)
+        print(f"\n2. WORLD BOUNDS (Meters):")
+        print(f"  - Min (X,Y,Z): ({min_co.x:.2f}, {min_co.y:.2f}, {min_co.z:.2f})")
+        print(f"  - Max (X,Y,Z): ({max_co.x:.2f}, {max_co.y:.2f}, {max_co.z:.2f})")
+        print(f"  - Total Footprint: {(max_co.x - min_co.x):.2f}m x {(max_co.y - min_co.y):.2f}m x {(max_co.z - min_co.z):.2f}m tall")
+
+    print("\n3. CAMERAS & ANIMATED RIGS:")
+    for obj in scene.objects:
+        if obj.type == 'CAMERA' or (obj.animation_data and obj.animation_data.action):
+            print(f"  - {obj.name} ({obj.type}) at {[round(c, 2) for c in obj.location]}")
+
+    print(f"\n4. TOTALS: {len(meshes)} Meshes | {len(bpy.data.materials)} Materials | {len([o for o in scene.objects if o.type == 'LIGHT'])} Lights")
+    print("========================================================\n")
+
+if __name__ == "__main__":
+    audit_vdc_scene()
+```
+
+---
+
+## 5. Script 2: `02_universal_vdc_upgrader.py` (Engine, Shaders, Lights & Compositor)
+
+Run this script on any BIM/VDC scene to immediately upgrade rendering, color science, edge bevels, surface micro-roughness, light behavior, and lens post-processing.
+
+```python
+import bpy
+import math
+
+def apply_universal_vdc_upgrades():
+    scene = bpy.context.scene
+
+    # =========================================================================
+    # 1. RENDER ENGINE & AgX COLOR SCIENCE
+    # =========================================================================
+    scene.render.engine = 'CYCLES'
+    scene.cycles.device = 'GPU'
+    scene.render.resolution_x = 3840
+    scene.render.resolution_y = 2160
+    scene.render.resolution_percentage = 50  # 1080p fast preview; set 100 for final 4K
+
+    # Sampling & Albedo/Normal-Preserving Denoiser
+    scene.cycles.samples = 512
+    scene.cycles.adaptive_threshold = 0.015
+    scene.cycles.use_denoising = True
+    scene.cycles.denoiser = 'OPENIMAGEDENOISE'
+    scene.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'
+
+    # Architectural Light Bounce Profile
+    scene.cycles.max_bounces = 12
+    scene.cycles.diffuse_bounces = 4
+    scene.cycles.glossy_bounces = 4
+    scene.cycles.transmission_bounces = 8
+    scene.cycles.volume_bounces = 2
+    scene.cycles.sample_clamp_indirect = 10.0
+
+    # AgX High-Dynamic-Range View Transform
+    try:
+        scene.view_settings.view_transform = 'AgX'
+        scene.view_settings.look = 'AgX - Medium High Contrast'
+    except TypeError:
+        scene.view_settings.view_transform = 'Filmic'
+        scene.view_settings.look = 'Medium High Contrast'
+
+    # =========================================================================
+    # 2. GLOBAL PBR SHADER UPGRADER (Micro-Bevels + Roughness Breakup + Emissives)
+    # =========================================================================
+    for mat in bpy.data.materials:
+        if not mat.use_nodes or not mat.node_tree:
+            continue
+        nodes = mat.node_tree.nodes
+        links = mat.node_tree.links
+
+        for node in list(nodes):
+            if node.type == 'BSDF_PRINCIPLED':
+                # A. Inject 3mm Architectural Micro-Bevel into unlinked Normals
+                if not node.inputs['Normal'].is_linked:
+                    bevel = nodes.new(type='ShaderNodeBevel')
+                    bevel.samples = 4
+                    bevel.inputs['Radius'].default_value = 0.003
+                    bevel.location = (node.location.x - 280, node.location.y - 320)
+                    links.new(bevel.outputs['Normal'], node.inputs['Normal'])
+
+                # B. Replace flat CG Roughness with subtle procedural micro-variation
+                if not node.inputs['Roughness'].is_linked:
+                    base_r = node.inputs['Roughness'].default_value
+                    # Clamp unrealistic 1.0 chalky surfaces
+                    if base_r > 0.85:
+                        base_r = 0.60
+                    
+                    tex_coord = nodes.new('ShaderNodeTexCoord')
+                    tex_coord.location = (node.location.x - 700, node.location.y - 100)
+                    
+                    noise = nodes.new('ShaderNodeTexNoise')
+                    noise.inputs['Scale'].default_value = 120.0
+                    noise.inputs['Detail'].default_value = 8.0
+                    noise.inputs['Roughness'].default_value = 0.6
+                    noise.location = (node.location.x - 500, node.location.y - 100)
+                    
+                    ramp = nodes.new('ShaderNodeMapRange')
+                    ramp.inputs['To Min'].default_value = max(0.05, base_r - 0.06)
+                    ramp.inputs['To Max'].default_value = min(0.95, base_r + 0.06)
+                    ramp.location = (node.location.x - 280, node.location.y - 100)
+                    
+                    links.new(tex_coord.outputs['Object'], noise.inputs['Vector'])
+                    links.new(noise.outputs['Fac'], ramp.inputs['Value'])
+                    links.new(ramp.outputs['Result'], node.inputs['Roughness'])
+
+            # C. Tame Blown-Out White Emissive Materials to Warm 3500K
+            elif node.type == 'EMISSION':
+                if node.inputs['Strength'].default_value > 6.0:
+                    node.inputs['Strength'].default_value = 4.0
+                node.inputs['Color'].default_value = (1.0, 0.95, 0.88, 1.0)
+
+    # =========================================================================
+    # 3. LIGHT FIXER (Eliminate Specular Blobs & Enforce Architectural Spread)
+    # =========================================================================
+    for obj in bpy.data.objects:
+        if obj.type == 'LIGHT':
+            obj.visible_camera = False
+            obj.visible_glossy = False
+            if obj.data.type == 'AREA':
+                obj.data.spread = math.radians(95)
+
+    # =========================================================================
+    # 4. OPTICAL COMPOSITOR PIPELINE (Fog Glow Bloom + Chromatic Dispersion)
+    # =========================================================================
+    scene.use_nodes = True
+    c_tree = scene.node_tree
+    c_nodes = c_tree.nodes
+    c_links = c_tree.links
+    c_nodes.clear()
+
+    r_layers = c_nodes.new('CompositorNodeRLayers')
+    r_layers.location = (-400, 0)
+
+    glare = c_nodes.new('CompositorNodeGlare')
+    glare.glare_type = 'FOG_GLOW'
+    glare.quality = 'HIGH'
+    glare.threshold = 0.85
+    glare.size = 7
+    glare.location = (0, 0)
+
+    lens = c_nodes.new('CompositorNodeLensdist')
+    lens.use_fit = True
+    lens.inputs['Distort'].default_value = -0.008
+    lens.inputs['Dispersion'].default_value = 0.0035
+    lens.location = (250, 0)
+
+    comp = c_nodes.new('CompositorNodeComposite')
+    comp.location = (500, 0)
+
+    c_links.new(r_layers.outputs['Image'], glare.inputs['Image'])
+    c_links.new(glare.outputs['Image'], lens.inputs['Image'])
+    c_links.new(lens.outputs['Image'], comp.inputs['Image'])
+
+    print("✅ Universal VDC Upgrades Applied: Cycles, AgX, Micro-Bevels, Light Fixes & Compositor Active.")
+
+if __name__ == "__main__":
+    apply_universal_vdc_upgrades()
+```
+
+---
+
+## 6. Script 3: `03_cinematic_rigs.py` (Modular Camera, X-Ray Section & Lighting Generators)
+
+Import or invoke these reusable functions to build multi-camera cuts, glowing Boolean architectural cross-sections, and Golden-Hour "Release" lighting rigs at any coordinate in the project.
+
+```python
+import bpy
+import math
+
+# =============================================================================
+# MODULE A: CREATE ARCHITECTURAL TILT-SHIFT CAMERA SHOT
+# =============================================================================
+def create_archviz_shot(name, frame_start, frame_end, start_loc, end_loc, yaw_deg, lens_mm=28.0, shift_y=0.0, dof_dist=0.0):
+    """
+    Creates a level 2-point perspective camera with LINEAR Steadicam motion
+    and binds it to a timeline marker at frame_start.
+    """
+    scene = bpy.context.scene
+    cam_col = bpy.data.collections.get("Archviz_Cameras")
+    if not cam_col:
+        cam_col = bpy.data.collections.new("Archviz_Cameras")
+        scene.collection.children.link(cam_col)
+
+    cam_data = bpy.data.cameras.new(name)
+    cam_data.lens = lens_mm
+    cam_data.sensor_width = 36.0
+    cam_data.shift_y = shift_y
+    cam_data.passepartout_alpha = 0.95
+    cam_data.show_composition_thirds = True
+    cam_data.show_composition_center = True
+
+    if dof_dist > 0.0:
+        cam_data.dof.use_dof = True
+        cam_data.dof.focus_distance = dof_dist
+        cam_data.dof.aperture_fstop = 4.0
+
+    cam_obj = bpy.data.objects.new(name, cam_data)
+    cam_col.objects.link(cam_obj)
+
+    # Lock X=90°, Y=0° so vertical lines never converge
+    cam_obj.rotation_euler = (math.radians(90), 0.0, math.radians(yaw_deg))
+
+    cam_obj.location = start_loc
+    cam_obj.keyframe_insert(data_path="location", frame=frame_start)
+    cam_obj.location = end_loc
+    cam_obj.keyframe_insert(data_path="location", frame=frame_end)
+
+    if cam_obj.animation_data and cam_obj.animation_data.action:
+        for fcurve in cam_obj.animation_data.action.fcurves:
+            for kf in fcurve.keyframe_points:
+                kf.interpolation = 'LINEAR'
+
+    marker = scene.timeline_markers.new(name=name, frame=frame_start)
+    marker.camera = cam_obj
+    return cam_obj
+
+
+# =============================================================================
+# MODULE B: ANIMATED BOOLEAN X-RAY SECTION RIG
+# =============================================================================
+def create_boolean_section_rig(target_objects, location, dimensions, frame_in, frame_hold_start, frame_hold_end, frame_out):
+    """
+    Creates an invisible animated Boolean cutter box that slices open a list of
+    target architectural meshes and applies a glowing gold emissive shader ONLY
+    to the sliced cross-section faces.
+    """
+    cut_mat = bpy.data.materials.get("MAT_VDC_Section_Glow") or bpy.data.materials.new("MAT_VDC_Section_Glow")
+    cut_mat.use_nodes = True
+    nodes = cut_mat.node_tree.nodes
+    nodes.clear()
+    
+    emiss = nodes.new('ShaderNodeEmission')
+    emiss
+</pasted_content id="0580">
+
+---
+
+<pasted_content id="0580">
+# Agent Directive: Universal $20k VDC-to-Archviz Upgrade Pipeline (Blender `bpy`)
+
+## 1. Mission & Role
+You are a Lead Technical Artist and Blender Python (`bpy`) Automation Agent. Your objective is to transform raw Virtual Design & Construction (VDC), BIM, or CAD geometry imports inside Blender into **ultra-high-end, path-traced architectural films**. 
+
+Raw VDC exports look like engineering diagrams because they suffer from six systemic flaws:
+1. Clipped highlight values from standard sRGB color management.
+2. Unnatural continuous "robot spline" camera paths that clip through doors and stare into corners.
+3. Razor-sharp 90-degree polygon edges and flat, zero-imperfection shaders.
+4. Blown-out emissive ceiling strips and visible light-source specular blobs.
+5. Technical cross-sections that reveal untextured background massing.
+6. Lack of narrative emotional payoff ("Compression & Release").
+
+You must systematically eliminate all six flaws on any target `.blend` file using the protocols and automated scripts below.
+
+---
+
+## 2. Universal Architectural & Cinematography Rules
+
+When inspecting, modifying, or generating cameras, lights, and geometry in any scene, enforce these non-negotiable rules:
+
+### Rule 1: Two-Point Perspective (Architectural Tilt-Shift)
+* **Never tilt an architectural camera up or down** to frame a building or interior. Vertical architectural lines (walls, columns, doorframes, mullions) must remain 100% parallel to the left and right edges of the frame.
+* Lock every camera's `rotation_euler.x = math.radians(90)` and `rotation_euler.y = 0.0`.
+* Frame vertical height exclusively by adjusting `camera.data.shift_y` (typically `-0.05` to `+0.15`).
+* Use `24mm–35mm` focal lengths (`36mm` full-frame sensor width) in **16:9 Widescreen** (`3840x2160`).
+
+### Rule 2: Multi-Camera Linear Cuts Over Single-Spline Paths
+* Never use a single continuous camera spline that twists 90 degrees inside tight corridors or ghosts through closed doors.
+* Break the journey into discrete **3-to-5-second cinematic shots** (`CAM_01`, `CAM_02`, etc.) bound to Timeline Markers.
+* Force **100% `LINEAR` keyframe interpolation** on all camera location/rotation f-curves so camera movement feels like a constant-velocity Steadicam or dolly track across cuts.
+* Any door in the camera's path must be keyframed open (`75°–90°` swing or linear slide) prior to the camera crossing the threshold.
+
+### Rule 3: Narrative "Compression & Release"
+* Never end an architectural tour in an enclosed service space (corridors, stairwells, mechanical rooms, or elevator lobbies).
+* Circulation spaces are the **Compression Phase** (controlled, warm 3500K artificial light). The final shot of the sequence must always transition into a **Release Phase**—a sunlit destination with high ceilings, natural exterior light (`2800K–4000K` low-angle sun + Sky Portals), and exterior context views.
+
+### Rule 4: Separate Fixture Glow from Scene Illumination
+* Never rely on high-strength `ShaderNodeEmission` materials on ceiling fixtures to light an interior—this creates fireflies and clips into flat white blocks.
+* Clamp visible light fixture `Emission` nodes to `Strength: 3.0–5.0` (`#FFF4E6` warm white) so the fixture reads as diffused acrylic under AgX color management.
+* Place actual Blender `AREA` lights (`Spread: 85°–105°`) just below ceiling fixtures and inside coves to cast physical light falloff, and set `light_obj.visible_camera = False` and `light_obj.visible_glossy = False` so they never create artificial specular hotspots on doors, glass, or polished floors.
+
+---
+
+## 3. Automated Execution Protocol
+
+When assigned to upgrade a `.blend` project, execute the following workflow in order:
+
+1. **Phase 1 — Scene Audit:** Run `01_scene_audit.py` to map collections, bounding boxes, existing cameras, light sources, and material counts.
+2. **Phase 2 — Core Engine, Shader & Light Overhaul:** Run `02_universal_vdc_upgrader.py` to configure Cycles GPU, AgX color management, global 3mm shader micro-bevels, procedural drywall/floor micro-roughness, light ray-visibility fixes, and the optical Compositor pipeline.
+3. **Phase 3 — Dynamic Camera & Section Tooling:** Use the modular functions in `03_cinematic_rigs.py` to generate level tilt-shift Steadicam shots, animated Boolean cross-section reveals with glowing cut-faces, and Window Sky Portals.
+
+---
+
+## 4. Script 1: `01_scene_audit.py` (Project-Agnostic Scene Inspector)
+
+Run this first to understand the spatial bounds and naming conventions of the target file.
+
+```python
+import bpy
+import mathutils
+
+def audit_vdc_scene():
+    scene = bpy.context.scene
+    print("\n================ VDC SCENE AUDIT REPORT ================")
+    print(f"File: {bpy.data.filepath or 'Unsaved File'}")
+    print(f"Current Engine: {scene.render.engine} | FPS: {scene.render.fps} | Frames: {scene.frame_start}-{scene.frame_end}")
+
+    print("\n1. COLLECTIONS:")
+    for col in bpy.data.collections:
+        print(f"  - {col.name}: {len(col.objects)} objects")
+
+    # Compute overall scene bounding box
+    meshes = [o for o in scene.objects if o.type == 'MESH' and not o.hide_render]
+    if meshes:
+        min_co = mathutils.Vector((1e9, 1e9, 1e9))
+        max_co = mathutils.Vector((-1e9, -1e9, -1e9))
+        for obj in meshes:
+            for corner in obj.bound_box:
+                world_co = obj.matrix_world @ mathutils.Vector(corner)
+                min_co.x = min(min_co.x, world_co.x)
+                min_co.y = min(min_co.y, world_co.y)
+                min_co.z = min(min_co.z, world_co.z)
+                max_co.x = max(max_co.x, world_co.x)
+                max_co.y = max(max_co.y, world_co.y)
+                max_co.z = max(max_co.z, world_co.z)
+        print(f"\n2. WORLD BOUNDS (Meters):")
+        print(f"  - Min (X,Y,Z): ({min_co.x:.2f}, {min_co.y:.2f}, {min_co.z:.2f})")
+        print(f"  - Max (X,Y,Z): ({max_co.x:.2f}, {max_co.y:.2f}, {max_co.z:.2f})")
+        print(f"  - Total Footprint: {(max_co.x - min_co.x):.2f}m x {(max_co.y - min_co.y):.2f}m x {(max_co.z - min_co.z):.2f}m tall")
+
+    print("\n3. CAMERAS & ANIMATED RIGS:")
+    for obj in scene.objects:
+        if obj.type == 'CAMERA' or (obj.animation_data and obj.animation_data.action):
+            print(f"  - {obj.name} ({obj.type}) at {[round(c, 2) for c in obj.location]}")
+
+    print(f"\n4. TOTALS: {len(meshes)} Meshes | {len(bpy.data.materials)} Materials | {len([o for o in scene.objects if o.type == 'LIGHT'])} Lights")
+    print("========================================================\n")
+
+if __name__ == "__main__":
+    audit_vdc_scene()
+```
+
+---
+
+## 5. Script 2: `02_universal_vdc_upgrader.py` (Engine, Shaders, Lights & Compositor)
+
+Run this script on any BIM/VDC scene to immediately upgrade rendering, color science, edge bevels, surface micro-roughness, light behavior, and lens post-processing.
+
+```python
+import bpy
+import math
+
+def apply_universal_vdc_upgrades():
+    scene = bpy.context.scene
+
+    # =========================================================================
+    # 1. RENDER ENGINE & AgX COLOR SCIENCE
+    # =========================================================================
+    scene.render.engine = 'CYCLES'
+    scene.cycles.device = 'GPU'
+    scene.render.resolution_x = 3840
+    scene.render.resolution_y = 2160
+    scene.render.resolution_percentage = 50  # 1080p fast preview; set 100 for final 4K
+
+    # Sampling & Albedo/Normal-Preserving Denoiser
+    scene.cycles.samples = 512
+    scene.cycles.adaptive_threshold = 0.015
+    scene.cycles.use_denoising = True
+    scene.cycles.denoiser = 'OPENIMAGEDENOISE'
+    scene.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'
+
+    # Architectural Light Bounce Profile
+    scene.cycles.max_bounces = 12
+    scene.cycles.diffuse_bounces = 4
+    scene.cycles.glossy_bounces = 4
+    scene.cycles.transmission_bounces = 8
+    scene.cycles.volume_bounces = 2
+    scene.cycles.sample_clamp_indirect = 10.0
+
+    # AgX High-Dynamic-Range View Transform
+    try:
+        scene.view_settings.view_transform = 'AgX'
+        scene.view_settings.look = 'AgX - Medium High Contrast'
+    except TypeError:
+        scene.view_settings.view_transform = 'Filmic'
+        scene.view_settings.look = 'Medium High Contrast'
+
+    # =========================================================================
+    # 2. GLOBAL PBR SHADER UPGRADER (Micro-Bevels + Roughness Breakup + Emissives)
+    # =========================================================================
+    for mat in bpy.data.materials:
+        if not mat.use_nodes or not mat.node_tree:
+            continue
+        nodes = mat.node_tree.nodes
+        links = mat.node_tree.links
+
+        for node in list(nodes):
+            if node.type == 'BSDF_PRINCIPLED':
+                # A. Inject 3mm Architectural Micro-Bevel into unlinked Normals
+                if not node.inputs['Normal'].is_linked:
+                    bevel = nodes.new(type='ShaderNodeBevel')
+                    bevel.samples = 4
+                    bevel.inputs['Radius'].default_value = 0.003
+                    bevel.location = (node.location.x - 280, node.location.y - 320)
+                    links.new(bevel.outputs['Normal'], node.inputs['Normal'])
+
+                # B. Replace flat CG Roughness with subtle procedural micro-variation
+                if not node.inputs['Roughness'].is_linked:
+                    base_r = node.inputs['Roughness'].default_value
+                    # Clamp unrealistic 1.0 chalky surfaces
+                    if base_r > 0.85:
+                        base_r = 0.60
+                    
+                    tex_coord = nodes.new('ShaderNodeTexCoord')
+                    tex_coord.location = (node.location.x - 700, node.location.y - 100)
+                    
+                    noise = nodes.new('ShaderNodeTexNoise')
+                    noise.inputs['Scale'].default_value = 120.0
+                    noise.inputs['Detail'].default_value = 8.0
+                    noise.inputs['Roughness'].default_value = 0.6
+                    noise.location = (node.location.x - 500, node.location.y - 100)
+                    
+                    ramp = nodes.new('ShaderNodeMapRange')
+                    ramp.inputs['To Min'].default_value = max(0.05, base_r - 0.06)
+                    ramp.inputs['To Max'].default_value = min(0.95, base_r + 0.06)
+                    ramp.location = (node.location.x - 280, node.location.y - 100)
+                    
+                    links.new(tex_coord.outputs['Object'], noise.inputs['Vector'])
+                    links.new(noise.outputs['Fac'], ramp.inputs['Value'])
+                    links.new(ramp.outputs['Result'], node.inputs['Roughness'])
+
+            # C. Tame Blown-Out White Emissive Materials to Warm 3500K
+            elif node.type == 'EMISSION':
+                if node.inputs['Strength'].default_value > 6.0:
+                    node.inputs['Strength'].default_value = 4.0
+                node.inputs['Color'].default_value = (1.0, 0.95, 0.88, 1.0)
+
+    # =========================================================================
+    # 3. LIGHT FIXER (Eliminate Specular Blobs & Enforce Architectural Spread)
+    # =========================================================================
+    for obj in bpy.data.objects:
+        if obj.type == 'LIGHT':
+            obj.visible_camera = False
+            obj.visible_glossy = False
+            if obj.data.type == 'AREA':
+                obj.data.spread = math.radians(95)
+
+    # =========================================================================
+    # 4. OPTICAL COMPOSITOR PIPELINE (Fog Glow Bloom + Chromatic Dispersion)
+    # =========================================================================
+    scene.use_nodes = True
+    c_tree = scene.node_tree
+    c_nodes = c_tree.nodes
+    c_links = c_tree.links
+    c_nodes.clear()
+
+    r_layers = c_nodes.new('CompositorNodeRLayers')
+    r_layers.location = (-400, 0)
+
+    glare = c_nodes.new('CompositorNodeGlare')
+    glare.glare_type = 'FOG_GLOW'
+    glare.quality = 'HIGH'
+    glare.threshold = 0.85
+    glare.size = 7
+    glare.location = (0, 0)
+
+    lens = c_nodes.new('CompositorNodeLensdist')
+    lens.use_fit = True
+    lens.inputs['Distort'].default_value = -0.008
+    lens.inputs['Dispersion'].default_value = 0.0035
+    lens.location = (250, 0)
+
+    comp = c_nodes.new('CompositorNodeComposite')
+    comp.location = (500, 0)
+
+    c_links.new(r_layers.outputs['Image'], glare.inputs['Image'])
+    c_links.new(glare.outputs['Image'], lens.inputs['Image'])
+    c_links.new(lens.outputs['Image'], comp.inputs['Image'])
+
+    print("✅ Universal VDC Upgrades Applied: Cycles, AgX, Micro-Bevels, Light Fixes & Compositor Active.")
+
+if __name__ == "__main__":
+    apply_universal_vdc_upgrades()
+```
+
+---
+
+## 6. Script 3: `03_cinematic_rigs.py` (Modular Camera, X-Ray Section & Lighting Generators)
+
+Import or invoke these reusable functions to build multi-camera cuts, glowing Boolean architectural cross-sections, and Golden-Hour "Release" lighting rigs at any coordinate in the project.
+
+```python
+import bpy
+import math
+
+# =============================================================================
+# MODULE A: CREATE ARCHITECTURAL TILT-SHIFT CAMERA SHOT
+# =============================================================================
+def create_archviz_shot(name, frame_start, frame_end, start_loc, end_loc, yaw_deg, lens_mm=28.0, shift_y=0.0, dof_dist=0.0):
+    """
+    Creates a level 2-point perspective camera with LINEAR Steadicam motion
+    and binds it to a timeline marker at frame_start.
+    """
+    scene = bpy.context.scene
+    cam_col = bpy.data.collections.get("Archviz_Cameras")
+    if not cam_col:
+        cam_col = bpy.data.collections.new("Archviz_Cameras")
+        scene.collection.children.link(cam_col)
+
+    cam_data = bpy.data.cameras.new(name)
+    cam_data.lens = lens_mm
+    cam_data.sensor_width = 36.0
+    cam_data.shift_y = shift_y
+    cam_data.passepartout_alpha = 0.95
+    cam_data.show_composition_thirds = True
+    cam_data.show_composition_center = True
+
+    if dof_dist > 0.0:
+        cam_data.dof.use_dof = True
+        cam_data.dof.focus_distance = dof_dist
+        cam_data.dof.aperture_fstop = 4.0
+
+    cam_obj = bpy.data.objects.new(name, cam_data)
+    cam_col.objects.link(cam_obj)
+
+    # Lock X=90°, Y=0° so vertical lines never converge
+    cam_obj.rotation_euler = (math.radians(90), 0.0, math.radians(yaw_deg))
+
+    cam_obj.location = start_loc
+    cam_obj.keyframe_insert(data_path="location", frame=frame_start)
+    cam_obj.location = end_loc
+    cam_obj.keyframe_insert(data_path="location", frame=frame_end)
+
+    if cam_obj.animation_data and cam_obj.animation_data.action:
+        for fcurve in cam_obj.animation_data.action.fcurves:
+            for kf in fcurve.keyframe_points:
+                kf.interpolation = 'LINEAR'
+
+    marker = scene.timeline_markers.new(name=name, frame=frame_start)
+    marker.camera = cam_obj
+    return cam_obj
+
+
+# =============================================================================
+# MODULE B: ANIMATED BOOLEAN X-RAY SECTION RIG
+# =============================================================================
+def create_boolean_section_rig(target_objects, location, dimensions, frame_in, frame_hold_start, frame_hold_end, frame_out):
+    """
+    Creates an invisible animated Boolean cutter box that slices open a list of
+    target architectural meshes and applies a glowing gold emissive shader ONLY
+    to the sliced cross-section faces.
+    """
+    cut_mat = bpy.data.materials.get("MAT_VDC_Section_Glow") or bpy.data.materials.new("MAT_VDC_Section_Glow")
+    cut_mat.use_nodes = True
+    nodes = cut_mat.node_tree.nodes
+    nodes.clear()
+    
+    emiss = nodes.new('ShaderNodeEmission')
+    emiss.inputs['Color'].default_value = (1.0, 0.78, 0.45, 1.0) # Architectural gold
+    emiss.inputs['Strength'].default_value = 6.0
+    out = nodes.new('ShaderNodeOutputMaterial')
+    cut_mat.node_tree.links.new(emiss.outputs['Emission'], out.inputs['Surface'])
+
+    bpy.ops.mesh.primitive_cube_add(size=1.0, location=location)
+    cutter = bpy.context.active_object
+    cutter.name = "VDC_Boolean_Section_Cutter"
+    cutter.display_type = 'WIRE'
+    cutter.visible_camera = False
+    cutter.visible_diffuse = False
+    cutter.visible_glossy = False
+    cutter.visible_shadow = False
+    cutter.data.materials.append(cut_mat)
+
+    cutter.scale = (0.001, 0.001, 0.001)
+    cutter.keyframe_insert(data_path="scale", frame=frame_in)
+
+    cutter.scale = dimensions
+    cutter.keyframe_insert(data_path="scale", frame=frame_hold_start)
+    cutter.keyframe_insert(data_path="scale", frame=frame_hold_end)
+
+    cutter.scale = (0.001, 0.001, 0.001)
+    cutter.keyframe_insert(data_path="scale", frame=frame_out)
+
+    for obj in target_objects:
+        if obj.type == 'MESH' and obj != cutter:
+            if cut_mat.name not in obj.data.materials:
+                obj.data.materials.append(cut_mat)
+            mod = obj.modifiers.new(name="VDC_Section_Cut", type='BOOLEAN')
+            mod.operation = 'DIFFERENCE'
+            mod.object = cutter
+            mod.solver = 'EXACT'
+
+    return cutter
+
+
+# =============================================================================
+# MODULE C: NATURAL LIGHT "RELEASE" PORTAL & SUN RIG
+# =============================================================================
+def create_golden_hour_window_rig(window_location, window_yaw_deg, width=6.0, height=3.0, sun_elevation_deg=10.0):
+    """
+    Places a Cycles Sky Portal directly over an exterior window opening alongside
+    a low-angle 2800K Golden Hour Sun to create dramatic interior light shafts.
+    """
+    scene = bpy.context.scene
+
+    # 1. Cycles Interior Sky Portal (Cuts interior GI noise by 50%+)
+    portal_data = bpy.data.lights.new(name="VDC_Window_Portal", type='AREA')
+    portal_data.shape = 'RECTANGLE'
+    portal_data.size = width
+    portal_data.size_y = height
+    portal_data.is_portal = True
+
+    portal_obj = bpy.data.objects.new("VDC_Window_Portal", portal_data)
+    scene.collection.objects.link(portal_obj)
+    portal_obj.location = window_location
+    portal_obj.rotation_euler = (math.radians(90), 0.0, math.radians(window_yaw_deg))
+
+    # 2. Warm 2800K Directional Sunset Light
+    sun_data = bpy.data.lights.new(name="VDC_Golden_Sun", type='SUN')
+    sun_data.energy = 4.5
+    sun_data.color = (1.0, 0.74, 0.48)
+    sun_data.angle = math.radians(2.5)
+
+    sun_obj = bpy.data.objects.new("VDC_Golden_Sun", sun_data)
+    scene.collection.objects.link(sun_obj)
+    sun_obj.location = window_location
+    sun_obj.rotation_euler = (math.radians(90.0 - sun_elevation_deg), 0.0, math.radians(window_yaw_deg + 15.0))
+
+    return portal_obj, sun_obj
+```
+
+---
+
+## 7. Quality Assurance Verification Checklist (Pre-Render Sign-off)
+
+Before submitting final frames or animations, the agent must verify:
+- [ ] **No Vertical Convergence:** Every active camera has `rotation_euler.x == 90°` and `rotation_euler.y == 0°`.
+- [ ] **No Geometry Clipping:** No camera passes through closed doors, mullions, or walls at any frame.
+- [ ] **No Blown-Out Ceiling Strips:** AgX color transform is active and all emissive ceiling shaders are clamped to `<= 5.0`.
+- [ ] **No Light Specular Blobs:** All filler `AREA` and `POINT` lights have `visible_camera = False` and `visible_glossy = False`.
+- [ ] **Edge Highlights Present:** All primary architectural materials have a `ShaderNodeBevel` (`0.003m`) wired into their Normal input.
+- [ ] **Emotional Payoff Delivered:** The final 20% of the timeline transitions out of artificial interior circulation into a naturally lit destination space.
+</pasted_content id="0580">
+
+---
+
+<pasted_content id="0580">
+# Agent Directive: Universal $20k VDC-to-Archviz Upgrade Pipeline (Blender 5.0+)
+
+## 1. Mission & Role
+You are a Lead Technical Artist and Blender 5.0+ Python (`bpy`) Automation Agent. Your objective is to transform raw Virtual Design & Construction (VDC), BIM, or CAD geometry imports inside **Blender 5.x** into **ultra-high-end, path-traced architectural films**.
+
+Raw VDC exports look like engineering diagrams because they suffer from six systemic flaws:
+1. Clipped highlight values and narrow-gamut color management.
+2. Unnatural continuous "robot spline" camera paths that clip through doors and stare into corners.
+3. Razor-sharp 90-degree polygon edges and flat, zero-imperfection shaders.
+4. Blown-out emissive ceiling strips and visible light-source specular blobs.
+5. Technical cross-sections that reveal untextured background massing.
+6. Lack of narrative emotional payoff ("Compression & Release").
+
+---
+
+## 2. CRITICAL: Blender 5.0+ Breaking API Guardrails (Do Not Use 4.x Syntax)
+
+Blender 5.0+ removed legacy shortcuts that dominate older training data. Enforce these exact **Blender 5.x API patterns**:
+
+| System | Deprecated (Blender 4.x — FAILS in 5.x) | Required Blender 5.0+ Syntax |
+| :--- | :--- | :--- |
+| **Compositor Tree** | `scene.use_nodes = True`<br>`scene.node_tree` (`AttributeError`) | `tree = bpy.data.node_groups.new("Archviz_Comp", "CompositorNodeTree")`<br>`scene.compositing_node_group = tree` |
+| **Compositor Output** | `nodes.new('CompositorNodeComposite')` (Removed) | `tree.interface.new_socket(name="Image", in_out="OUTPUT", socket_type="NodeSocketColor")`<br>`out = tree.nodes.new("NodeGroupOutput")` |
+| **Compositor Node Options** | `glare.glare_type = 'FOG_GLOW'`<br>`glare.size = 7`<br>`lens.use_fit = True` | Node options are now **Input Sockets** using UI-label strings & `0.0–1.0` floats:<br>`glare.inputs["Type"].default_value = "Fog Glow"`<br>`glare.inputs["Quality"].default_value = "High"`<br>`glare.inputs["Size"].default_value = 0.65`<br>`lens.inputs["Distortion"].default_value = -0.008`<br>`lens.inputs["Dispersion"].default_value = 0.0035`<br>`lens.inputs["Fit"].default_value = True` |
+| **Removed Comp Nodes** | `CompositorNodeMixRGB`, `CompositorNodeGamma`, `CompositorNodeMapRange` | Use unified Shader nodes inside the Compositor:<br>`ShaderNodeMix`, `ShaderNodeGamma`, `ShaderNodeMapRange` |
+| **Animation F-Curves** | `action.fcurves` (`AttributeError` — Slotted Actions required) | Use `bpy_extras.anim_utils`:<br>`cb = anim_utils.action_ensure_channelbag_for_slot(action, obj.animation_data.action_slot)`<br>`for fcurve in cb.fcurves:` |
+| **Property Access** | `scene['cycles']` (Dict-style access removed for `bpy.props`) | Always use dot-attribute syntax: `scene.cycles.samples` |
+| **Material / World Nodes** | `mat.use_nodes = True` (Deprecated no-op in 5.x) | Always on by default in 5.0+, or guarded gracefully. |
+
+---
+
+## 3. Universal Architectural & Cinematography Rules
+
+### Rule 1: Two-Point Perspective (Architectural Tilt-Shift)
+* **Never tilt an architectural camera up or down.** Vertical architectural lines (walls, columns, doorframes, mullions) must remain 100% parallel to the frame edges.
+* Lock every camera's `rotation_euler.x = math.radians(90)` and `rotation_euler.y = 0.0`.
+* Frame vertical elevation exclusively via `camera.data.shift_y` (`-0.05` to `+0.15`).
+* Use `24mm–35mm` focal lengths (`36mm` full-frame sensor width) in **16:9 Widescreen** (`3840x2160`).
+
+### Rule 2: Multi-Camera Linear Cuts Over Single-Spline Paths
+* Never use a single continuous camera spline that twists 90 degrees inside tight corridors or ghosts through closed doors.
+* Break the journey into discrete **3-to-5-second cinematic shots** (`CAM_01`, `CAM_02`, etc.) bound to Timeline Markers.
+* Force **100% `LINEAR` keyframe interpolation** on all camera location/rotation f-curves via the Blender 5.0+ Slotted Action `channelbag` so movement feels like a constant-velocity Steadicam across cuts.
+* Keyframe any door in the camera's path open (`75°–90°` swing or slide) prior to the camera crossing the threshold.
+
+### Rule 3: Narrative "Compression & Release"
+* Never end an architectural tour in an enclosed service space (corridors, stairwells, mechanical rooms, or elevator lobbies).
+* Circulation spaces are the **Compression Phase** (controlled, warm 3500K artificial light). The final 20% of the timeline must transition into a **Release Phase**—a sunlit destination with high ceilings, natural exterior light (`2800K–4000K` low-angle sun + Sky Portals), and exterior context views.
+
+### Rule 4: Separate Fixture Glow from Scene Illumination
+* Clamp visible light fixture `Emission` nodes to `Strength: 3.0–5.0` (`#FFF4E6` warm white) so the fixture reads as diffused acrylic under AgX / ACES 2.0 color management.
+* Place actual Blender `AREA` lights (`Spread: 85°–105°`) just below ceiling fixtures and inside coves to cast physical light falloff, and set `light_obj.visible_camera = False` and `light_obj.visible_glossy = False` so they never create artificial specular hotspots on doors, glass, or polished floors.
+
+---
+
+## 4. Script 1: `01_scene_audit_b5.py` (Blender 5.0+ Scene Inspector)
+
+Run this first to inspect collections, spatial bounds, slotted animations, and engine settings.
+
+```python
+import bpy
+import mathutils
+
+def audit_vdc_scene_b5():
+    scene = bpy.context.scene
+    print("\n================ BLENDER 5.0+ VDC SCENE AUDIT ================")
+    print(f"Blender Version: {bpy.app.version_string}")
+    print(f"File: {bpy.data.filepath or 'Unsaved File'}")
+    print(f"Engine: {scene.render.engine} | FPS: {scene.render.fps} | Frames: {scene.frame_start}-{scene.frame_end}")
+
+    print("\n1. COLLECTIONS:")
+    for col in bpy.data.collections:
+        print(f"  - {col.name}: {len(col.objects)} objects")
+
+    meshes = [o for o in scene.objects if o.type == 'MESH' and not o.hide_render]
+    if meshes:
+        min_co = mathutils.Vector((1e9, 1e9, 1e9))
+        max_co = mathutils.Vector((-1e9, -1e9, -1e9))
+        for obj in meshes:
+            for corner in obj.bound_box:
+                world_co = obj.matrix_world @ mathutils.Vector(corner)
+                min_co.x = min(min_co.x, world_co.x)
+                min_co.y = min(min_co.y, world_co.y)
+                min_co.z = min(min_co.z, world_co.z)
+                max_co.x = max(max_co.x, world_co.x)
+                max_co.y = max(max_co.y, world_co.y)
+                max_co.z = max(max_co.z, world_co.z)
+        print(f"\n2. WORLD BOUNDS (Meters):")
+        print(f"  - Min (X,Y,Z): ({min_co.x:.2f}, {min_co.y:.2f}, {min_co.z:.2f})")
+        print(f"  - Max (X,Y,Z): ({max_co.x:.2f}, {max_co.y:.2f}, {max_co.z:.2f})")
+        print(f"  - Footprint: {(max_co.x - min_co.x):.2f}m x {(max_co.y - min_co.y):.2f}m x {(max_co.z - min_co.z):.2f}m tall")
+
+    print("\n3. CAMERAS & SLOTTED ACTIONS:")
+    for obj in scene.objects:
+        if obj.type == 'CAMERA' or (obj.animation_data and obj.animation_data.action):
+            slot_name = getattr(obj.animation_data, "action_slot", None)
+            slot_info = f" | Slot: {slot_name.name_display}" if slot_name else ""
+            print(f"  - {obj.name} ({obj.type}) at {[round(c, 2) for c in obj.location]}{slot_info}")
+
+    print(f"\n4. TOTALS: {len(meshes)} Meshes | {len(bpy.data.materials)} Materials | {len([o for o in scene.objects if o.type == 'LIGHT'])} Lights")
+    print("==============================================================\n")
+
+if __name__ == "__main__":
+    audit_vdc_scene_b5()
+```
+
+---
+
+## 5. Script 2: `02_universal_vdc_upgrader_b5.py` (Engine, Shaders, Lights & 5.0 Compositor)
+
+Run this script on any Blender 5.0+ BIM/VDC scene to configure Cycles GPU, AgX color management, global 3mm shader micro-bevels, procedural roughness breakup, light ray-visibility fixes, and the **Blender 5.0 `compositing_node_group` pipeline**.
+
+```python
+import bpy
+import math
+
+def apply_universal_vdc_upgrades_b5():
+    scene = bpy.context.scene
+
+    # =========================================================================
+    # 1. RENDER ENGINE & AgX / ACES 2.0 COLOR SCIENCE
+    # =========================================================================
+    scene.render.engine = 'CYCLES'
+    scene.cycles.device = 'GPU'
+    scene.render.resolution_x = 3840
+    scene.render.resolution_y = 2160
+    scene.render.resolution_percentage = 50  # 1080p preview; set 100 for final 4K
+    scene.render.use_compositing = True
+
+    # Sampling & Albedo/Normal-Preserving Denoiser
+    scene.cycles.samples = 512
+    scene.cycles.adaptive_threshold = 0.015
+    scene.cycles.use_denoising = True
+    scene.cycles.denoiser = 'OPENIMAGEDENOISE'
+    scene.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'
+
+    # Architectural Light Bounce Profile
+    scene.cycles.max_bounces = 12
+    scene.cycles.diffuse_bounces = 4
+    scene.cycles.glossy_bounces = 4
+    scene.cycles.transmission_bounces = 8
+    scene.cycles.volume_bounces = 2
+    scene.cycles.sample_clamp_indirect = 10.0
+
+    # Blender 5.0 AgX Color Management
+    scene.view_settings.view_transform = 'AgX'
+    scene.view_settings.look = 'AgX - Medium High Contrast'
+
+    # =========================================================================
+    # 2. GLOBAL PBR SHADER UPGRADER (Micro-Bevels + Roughness Breakup + Emissives)
+    # =========================================================================
+    for mat in bpy.data.materials:
+        if not mat.node_tree:
+            continue
+        nodes = mat.node_tree.nodes
+        links = mat.node_tree.links
+
+        for node in list(nodes):
+            if node.type == 'BSDF_PRINCIPLED':
+                # A. Inject 3mm Architectural Micro-Bevel into unlinked Normals
+                if not node.inputs['Normal'].is_linked:
+                    bevel = nodes.new(type='ShaderNodeBevel')
+                    bevel.samples = 4
+                    bevel.inputs['Radius'].default_value = 0.003
+                    bevel.location = (node.location.x - 280, node.location.y - 320)
+                    links.new(bevel.outputs['Normal'], node.inputs['Normal'])
+
+                # B. Replace flat CG Roughness with subtle procedural micro-variation
+                if not node.inputs['Roughness'].is_linked:
+                    base_r = node.inputs['Roughness'].default_value
+                    if base_r > 0.85:
+                        base_r = 0.60
+
+                    tex_coord = nodes.new('ShaderNodeTexCoord')
+                    tex_coord.location = (node.location.x - 700, node.location.y - 100)
+
+                    noise = nodes.new('ShaderNodeTexNoise')
+                    noise.inputs['Scale'].default_value = 120.0
+                    noise.inputs['Detail'].default_value = 8.0
+                    noise.inputs['Roughness'].default_value = 0.6
+                    noise.location = (node.location.x - 500, node.location.y - 100)
+
+                    ramp = nodes.new('ShaderNodeMapRange')
+                    ramp.inputs['To Min'].default_value = max(0.05, base_r - 0.06)
+                    ramp.inputs['To Max'].default_value = min(0.95, base_r + 0.06)
+                    ramp.location = (node.location.x - 280, node.location.y - 100)
+
+                    links.new(tex_coord.outputs['Object'], noise.inputs['Vector'])
+                    links.new(noise.outputs['Fac'], ramp.inputs['Value'])
+                    links.new(ramp.outputs['Result'], node.inputs['Roughness'])
+
+                # C. Tame Principled BSDF Emission Strength if driven directly
+                if 'Emission Strength' in node.inputs and node.inputs['Emission Strength'].default_value > 6.0:
+                    node.inputs['Emission Strength'].default_value = 4.0
+                    node.inputs['Emission Color'].default_value = (1.0, 0.95, 0.88, 1.0)
+
+            # D. Tame Dedicated Emission Shader Nodes to Warm 3500K
+            elif node.type == 'EMISSION':
+                if node.inputs['Strength'].default_value > 6.0:
+                    node.inputs['Strength'].default_value = 4.0
+                node.inputs['Color'].default_value = (1.0, 0.95, 0.88, 1.0)
+
+    # =========================================================================
+    # 3. LIGHT FIXER (Eliminate Specular Blobs & Enforce Architectural Spread)
+    # =========================================================================
+    for obj in bpy.data.objects:
+        if obj.type == 'LIGHT':
+            obj.visible_camera = False
+            obj.visible_glossy = False
+            if obj.data.type == 'AREA':
+                obj.data.spread = math.radians(95)
+
+    # =========================================================================
+    # 4. BLENDER 5.0+ COMPOSITOR NODE GROUP PIPELINE
+    # =========================================================================
+    if scene.compositing_node_group:
+        bpy.data.node_groups.remove(scene.compositing_node_group)
+
+    comp_tree = bpy.data.node_groups.new("VDC_Archviz_Compositor", "CompositorNodeTree")
+    scene.compositing_node_group = comp_tree
+
+    # Create required Group Output Color Socket on tree.interface
+    comp_tree.interface.new_socket(
+        name="Image",
+        in_out="OUTPUT",
+        socket_type="NodeSocketColor"
+    )
+
+    c_nodes = comp_tree.nodes
+    c_links = comp_tree.links
+    c_nodes.clear()
+
+    # Render Layers Input
+    r_layers = c_nodes.new("CompositorNodeRLayers")
+    r_layers.location = (-450, 0)
+
+    # Blender 5.0 Socket-Driven Glare Node
+    glare = c_nodes.new("CompositorNodeGlare")
+    glare.location = (-100, 0)
+    glare.inputs["Type"].default_value = "Fog Glow"
+    glare.inputs["Quality"].default_value = "High"
+    glare.inputs["Threshold"].default_value = 0.85
+    glare.inputs["Size"].default_value = 0.65  # 0.0 to 1.0 scale in Blender 5.0+
+
+    # Blender 5.0 Socket-Driven Lens Distortion Node
+    lens = c_nodes.new("CompositorNodeLensdist")
+    lens.location = (200, 0)
+    lens.inputs["Distortion"].default_value = -0.008
+    lens.inputs["Dispersion"].default_value = 0.0035
+    lens.inputs["Fit"].default_value = True
+
+    # Group Output Node (Replaces removed CompositorNodeComposite)
+    group_out = c_nodes.new("NodeGroupOutput")
+    group_out.location = (500, 0)
+
+    c_links.new(r_layers.outputs["Image"], glare.inputs["Image"])
+    c_links.new(glare.outputs["Image"], lens.inputs["Image"])
+    c_links.new(lens.outputs["Image"], group_out.inputs["Image"])
+
+    print("✅ Blender 5.0+ Universal VDC Upgrades Applied Successfully.")
+
+if __name__ == "__main__":
+    apply_universal_vdc_upgrades_b5()
+```
+
+---
+
+## 6. Script 3: `03_cinematic_rigs_b5.py` (Blender 5.0 Slotted Action Cameras, X-Ray Section & Portals)
+
+Import or invoke these reusable functions to build multi-camera cuts using **Blender 5.0+ Slotted Actions (`channelbag`)**, glowing Boolean architectural cross-sections, and Golden-Hour "Release" lighting rigs.
+
+```python
+import bpy
+from bpy_extras import anim_utils
+import math
+
+# =============================================================================
+# HELPER: ENFORCE LINEAR INTERPOLATION IN BLENDER 5.0+ SLOTTED ACTIONS
+# =============================================================================
+def set_linear_interpolation_b5(obj):
+    """
+    Reaches into the Blender 5.0+ Slotted Action channelbag for the given object
+    and forces all keyframe points to LINEAR interpolation.
+    """
+    anim = obj.animation_data
+    if not anim or not anim.action or not anim.action_slot:
+        return
+    channelbag = anim_utils.action_ensure_channelbag_for_slot(anim.action, anim.action_slot)
+    if channelbag:
+        for fcurve in channelbag.fcurves:
+            for kf in fcurve.keyframe_points:
+                kf.interpolation = 'LINEAR'
+
+
+# =============================================================================
+# MODULE A: CREATE ARCHITECTURAL TILT-SHIFT CAMERA SHOT (BLENDER 5.0+)
+# =============================================================================
+def create_archviz_shot_b5(name, frame_start, frame_end, start_loc, end_loc, yaw_deg, lens_mm=28.0, shift_y=0.0, dof_dist=0.0):
+    """
+    Creates a level 2-point perspective camera with LINEAR Steadicam motion
+    using Blender 5.0 Slotted Action channelbags and binds it to a timeline marker.
+    """
+    scene = bpy.context.scene
+    cam_col = bpy.data.collections.get("Archviz_Cameras")
+    if not cam_col:
+        cam_col = bpy.data.collections.new("Archviz_Cameras")
+        scene.collection.children.link(cam_col)
+
+    cam_data = bpy.data.cameras.new(name)
+    cam_data.lens = lens_mm
+    cam_data.sensor_width = 36.0
+    cam_data.shift_y = shift_y
+    cam_data.passepartout_alpha = 0.95
+    cam_data.show_composition_thirds = True
+    cam_data.show_composition_center = True
+
+    if dof_dist > 0.0:
+        cam_data.dof.use_dof = True
+        cam_data.dof.focus_distance = dof_dist
+        cam_data.dof.aperture_fstop = 4.0
+
+    cam_obj = bpy.data.objects.new(name, cam_data)
+    cam_col.objects.link(cam_obj)
+
+    # Lock X=90°, Y=0° so vertical lines never converge
+    cam_obj.rotation_euler = (math.radians(90), 0.0, math.radians(yaw_deg))
+
+    cam_obj.location = start_loc
+    cam_obj.keyframe_insert(data_path="location", frame=frame_start)
+    cam_obj.location = end_loc
+    cam_obj.keyframe_insert(data_path="location", frame=frame_end)
+
+    # Set linear interpolation via Blender 5.0 channelbag API
+    set_linear_interpolation_b5(cam_obj)
+
+    marker = scene.timeline_markers.new(name=name, frame=frame_start)
+    marker.camera = cam_obj
+    return cam_obj
+
+
+# =============================================================================
+# MODULE B: ANIMATED BOOLEAN X-RAY SECTION RIG (BLENDER 5.0+)
+# =============================================================================
+def create_boolean_section_rig_b5(target_objects, location, dimensions, frame_in, frame_hold_start, frame_hold_end, frame_out):
+    """
+    Creates an invisible animated Boolean cutter box that slices open a list of
+    target architectural meshes and applies a glowing gold emissive shader ONLY
+    to the sliced cross-section faces.
+    """
+    cut_mat = bpy.data.materials.get("MAT_VDC_Section_Glow") or bpy.data.materials.new("MAT_VDC_Section_Glow")
+    nodes = cut_mat.node_tree.nodes
+    nodes.clear()
+
+    emiss = nodes.new('ShaderNodeEmission')
+    emiss.inputs['Color'].default_value = (1.0, 0.78, 0.45, 1.0)  # Architectural gold
+    emiss.inputs['Strength'].default_value = 6.0
+    out = nodes.new('ShaderNodeOutputMaterial')
+    cut_mat.node_tree.links.new(emiss.outputs['Emission'], out.inputs['Surface'])
+
+    bpy.ops.mesh.primitive_cube_add(size=1.0, location=location)
+    cutter = bpy.context.active_object
+    cutter.name = "VDC_Boolean_Section_Cutter"
+    cutter.display_type = 'WIRE'
+    cutter.visible_camera = False
+    cutter.visible_diffuse = False
+    cutter.visible_glossy = False
+    cutter.visible_shadow = False
+    cutter.data.materials.append(cut_mat)
+
+    cutter.scale = (0.001, 0.001, 0.001)
+    cutter.keyframe_insert(data_path="scale", frame=frame_in)
+
+    cutter.scale = dimensions
+    cutter.keyframe_insert(data_path="scale", frame=frame_hold_start)
+    cutter.keyframe_insert(data_path="scale", frame=frame_hold_end)
+
+    cutter.scale = (0.001, 0.001, 0.001)
+    cutter.keyframe_insert(data_path="scale", frame=frame_out)
+
+    set_linear_interpolation_b5(cutter)
+
+    for obj in target_objects:
+        if obj.type == 'MESH' and obj != cutter:
+            if cut_mat.name not in obj.data.materials:
+                obj.data.materials.append(cut_mat)
+            mod = obj.modifiers.new(name="VDC_Section_Cut", type='BOOLEAN')
+            mod.operation = 'DIFFERENCE'
+            mod.object = cutter
+            mod.solver = 'EXACT'
+
+    return cutter
+
+
+# =============================================================================
+# MODULE C: NATURAL LIGHT "RELEASE" PORTAL & SUN RIG
+# =============================================================================
+def create_golden_hour_window_rig_b5(window_location, window_yaw_deg, width=6.0, height=3.0, sun_elevation_deg=10.0):
+    """
+    Places a Cycles Sky Portal directly over an exterior window opening alongside
+    a low-angle 2800K Golden Hour Sun to create dramatic interior light shafts.
+    """
+    scene = bpy.context.scene
+
+    # 1. Cycles Interior Sky Portal
+    portal_data = bpy.data.lights.new(name="VDC_Window_Portal", type='AREA')
+    portal_data.shape = 'RECTANGLE'
+    portal_data.size = width
+    portal_data.size_y = height
+    portal_data.is_portal = True
+
+    portal_obj = bpy.data.objects.new("VDC_Window_Portal", portal_data)
+    scene.collection.objects.link(portal_obj)
+    portal_obj.location = window_location
+    portal_obj.rotation_euler = (math.radians(90), 0.0, math.radians(window_yaw_deg))
+
+    # 2. Warm 2800K Directional Sunset Light
+    sun_data = bpy.data.lights.new(name="VDC_Golden_Sun", type='SUN')
+    sun_data.energy = 4.5
+    sun_data.color = (1.0, 0.74, 0.48)
+    sun_data.angle = math.radians(2.5)
+
+    sun_obj = bpy.data.objects.new("VDC_Golden_Sun", sun_data)
+    scene.collection.objects.link(sun_obj)
+    sun_obj.location = window_location
+    sun_obj.rotation_euler = (math.radians(90.0 - sun_elevation_deg), 0.0, math.radians(window_yaw_deg + 15.0))
+
+    return portal_obj, sun_obj
+```
+
+---
+
+## 7. Pre-Render Verification Checklist (Blender 5.0+)
+
+Before rendering final frames or animations, the agent must verify:
+- [ ] **Blender 5.0 Compositor Verified:** `scene.compositing_node_group` is assigned and terminates in a linked `NodeGroupOutput` node with a `NodeSocketColor` output interface socket (unlinked output produces black frames).
+- [ ] **Slotted Action Linear Motion:** All animated cameras have had their f-curves set to `LINEAR` via `anim_utils.action_ensure_channelbag_for_slot()`.
+- [ ] **No Vertical Convergence:** Every active camera has `rotation_euler.x == 90°` and `rotation_euler.y == 0°`.
+- [ ] **No Geometry Clipping:** No camera passes through closed doors, mullions, or walls at any frame.
+- [ ] **No Light Specular Blobs:** All filler `AREA` and `POINT` lights have `visible_camera = False` and `visible_glossy = False`.
+- [ ] **Emotional Payoff Delivered:** The final 20% of the timeline transitions out of artificial interior circulation into a naturally lit destination space.
+</pasted_content id="0580">
+
+---
+
+<pasted_content id="0580">
+## 0. PRIME DIRECTIVE: The Visual Verification Loop (Never Fly Blind)
+
+You are a visual artist, not just a code generator. A Python script that executes without errors DOES NOT mean the shot looks good. BIM/VDC geometry frequently contains offset origins, flipped normals, overlapping coplanar faces (Z-fighting), and unapplied scales that break procedural assumptions.
+
+For EVERY camera shot and lighting setup you create, you MUST execute this closed-loop verification cycle before moving on:
+
+1. **Render a Fast Diagnostic Frame:**
+   Programmatically render the start, middle, and end frames of each shot at 50% resolution (`1920x1080`, `32` Cycles samples with OIDN enabled) to a temporary directory (`/tmp/vdc_audit_frame_XXXX.png`).
+2. **Visually Inspect the Output (Multimodal Vision + Histogram Check):**
+   Load and inspect the rendered PNG image. Audit it against five strict visual criteria:
+   - **Obstruction Check:** Is the camera clipped inside a wall, mullion, door, or ceiling?
+   - **Composition & Balance:** Are vertical lines parallel to the frame edges? Does the floor or ceiling occupy more than 45% of the frame (adjust `shift_y` if so)?
+   - **Lighting Ratio (Contrast):** Is the image flat and evenly lit? Every luxury shot requires a clear hierarchy of light: a bright focal destination, mid-tone architectural surfaces, and soft contact shadows grounding the floor/wall intersections.
+   - **Highlight/Shadow Clipping:** Are emissive fixtures blooming naturally, or are walls blown out to pure `#FFFFFF` white or crushed into noisy `#000000` black?
+   - **Scale & Tactility:** Do materials read at the right real-world UV scale (e.g., brick courses, wood planks, carpet tiles), or are textures stretched/microscopic because object scale wasn't applied (`bpy.ops.object.transform_apply(scale=True)`)?
+3. **Iterate Until It Passes:**
+   If a diagnostic frame fails ANY of the five checks above, adjust the camera coordinates, light power/angles, or UV mapping and re-render the diagnostic frame until the image looks like an architectural photograph.
+</pasted_content id="0580">
+
+---
+
+correct agents.md. but only after you add your own advices and tips, libraries, plugins, extensions, workflows, etc that would improve the instructions i just gave you. the goal is to create vdc models and animations/films that are of the highest quality. think $100,000 deliverables from renowned agencies.
+
+---
+
+go
