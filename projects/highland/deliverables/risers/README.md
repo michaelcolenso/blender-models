@@ -24,7 +24,8 @@ These are 1280 × 720 CPU previews at 64 samples. The full-quality 4K set render
 
 - **From the model:** pipe routes, sizes and the C and D branch takeoffs.
 - **Illustrative:** the corridor finishes, doors, lights, hangers, protection and equipment.
-- **Pending:** the finishes will be matched to site photos once they are added.
+- **Generic by decision:** no site photos will be used (owner, 2026-11-06), so the finishes are not matched
+  to the building.
 
 ## Coordination model
 
@@ -51,7 +52,8 @@ diameter.
   - Copper type and sizing for the 4" CW main (owner chose copper on 2026-11-06; PEX-A is not made above 3").
   - A listed firestop system at every rated penetration.
   - Expansion compensation on the HW risers.
-- **Site photos (forthcoming):** finishes, ceiling type and existing pipe material.
+- **Existing pipe material:** CPVC per the owner's report. No site photos will be used, so the existing
+  material and ceiling type stay unverified unless someone checks them on site.
 
 Resolved 2026-11-06 (owner): the Units 106/107 HW drop is 1½" (P2.03 governs over P3.02), as modeled.
 

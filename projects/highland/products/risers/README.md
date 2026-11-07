@@ -89,9 +89,9 @@ Everything else in the scene is **assumed** and illustrative:
   ProPEX-style tees, a firestop at the corridor wall, floor protection, the ladder and the work light.
 - **Not shown:** ceiling framing above the board.
 
-The finishes are procedural, so no textures are downloaded. When site photos are in
-`projects/highland/sources/`, match the carpet, wall paint, doors and lighting to them and record the photo
-IDs here. Each still carries a phase caption and the "illustrative, not a contract document" strip.
+The finishes are procedural, so no textures are downloaded. No site photos will be used (owner, 2026-11-06),
+so the carpet, wall paint, doors, lighting and ceiling type stay assumed and generic. Each still carries a
+phase caption and the "illustrative, not a contract document" strip.
 
 - CPU preview (this laptop or CI runner): `uv run bm run highland/risers photoreal`, 1280 × 720, 64 samples.
 - Full quality on RunPod: `bash projects/highland/products/risers/runpod_photoreal.sh all`, 3840 × 2160 at
