@@ -63,8 +63,9 @@ render() {
   echo "Rendering with $WORKERS workers; follow progress with: tail -f $LOG/render-$PROFILE-*.log | grep SHOT"
   status=0; for p in "${pids[@]}"; do wait "$p" || status=1; done
   total=$(find "build/highland-cinema/frames/$PROFILE" -name '[0-9]*.png' ! -name '*.tmp.png' | wc -l)
-  echo "Frames on disk: $total / 630"
-  [ "$status" = 0 ] && [ "$total" = 630 ]
+  expected=$("${BPY[@]}" -c "import json; print(sum(s['frames'] for s in json.load(open('projects/highland/products/walkthrough/cinema.shots.json'))['shots']))")
+  echo "Frames on disk: $total / $expected"
+  [ "$status" = 0 ] && [ "$total" = "$expected" ]
 }
 
 finish() {

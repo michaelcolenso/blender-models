@@ -1,25 +1,43 @@
 # Highland cinematic film
 
-A 30-second, 2.39:1 owner film cut from the native Blender walkthrough. It
-replaces the single continuous drone flight with eight composed shots, a dusk
-exterior, an x-ray elevator section, graded picture, typography and an original
-score. The doors, elevator rise and section are the same native keyframes that
-`build_blender.py` validates; the edit only chooses where each camera looks.
+A 29-second (plus end card), 2.39:1 owner film cut from the native Blender
+walkthrough. It replaces the single continuous drone flight with nine composed
+shots, a dusk exterior, an x-ray elevator section, graded picture, typography and
+an original score. The doors, elevator rise and section are the same native
+keyframes that `build_blender.py` validates; the edit only chooses where each
+camera looks. The edit follows the archviz film skill
+(`.claude/skills/archviz-film-upgrade/SKILL.md`).
 
 | # | Shot | Film time | Native frames | Lens | Purpose |
 |---|---|---|---|---|---|
-| 01 | Arrival | 0.00–4.50 s | 1–108 | 20 mm, shifted | Dusk establishing view of the east frontage with title |
+| 01 | Arrival | 0.00–4.50 s | 1–108 | 24 mm, shifted | Dusk establishing view of the east frontage with title |
 | 02 | Entry | 4.50–7.50 s | 66–137 | 28 mm | Push to the east glazing as the entry doors open |
-| 03 | Lobby | 7.50–10.50 s | 150–221 | 20 mm | Lobby 110 toward the connector |
-| 04 | Slats | 10.50–12.75 s | 222–275 | 50 mm f/2 | Insert along the walnut feature wall |
+| 03 | Lobby | 7.50–10.50 s | 150–221 | 24 mm | Lobby 110 toward the connector |
+| 04 | Slats | 10.50–12.75 s | 222–275 | 50 mm f/2.8 | Insert along the walnut feature wall, focused at frame centre |
 | 05 | Corridor 108 | 12.75–15.75 s | 200–271 | 24 mm | Slider past residence doors toward Elevator M1 |
 | 06 | Elevator | 15.75–18.75 s | 280–351 | 26 mm | Symmetrical landing-door reveal |
 | 07 | Section | 18.75–21.75 s | 378–449 | 35 mm | X-ray R1 to R2 rise with live datum readout |
-| 08 | Corridor 208 | 21.75–26.25 s | 470–577 | 20 mm | Push toward Stair M1, fade to the end card |
+| 08 | Corridor 208 | 21.75–24.75 s | 470–541 | 24 mm | Push toward Stair M1 |
+| 09 | Release | 24.75–29.25 s | 1–108 | 24 mm, shifted | Back outside: slow pull-back from the entry to the lit dusk facade, fade to the end card |
 
 Every camera is level and lens-shifted, so verticals stay vertical. The
-exception is the section shot, which looks down at the cut building. Shot
-lengths are whole beats at 80 BPM, and the score's chord changes land on the cuts.
+exception is the section shot, which looks down at the cut building. Lenses stay
+at 24–35 mm, except the 50 mm detail insert. Shot lengths are whole beats at
+80 BPM, and the score's chord changes land on the cuts. The film no longer ends in
+a corridor: shot 09 returns outside (compression and release). Native frames 1–146
+are the only ones with the exterior shown, so shot 09 reuses the arrival's frames;
+the entry doors begin to swing open from its frame 66, small in the wide view.
+The skill asks for a sunlit release; this film is set at dusk, so the release is open
+sky and the warmly lit facade, not sun. The street in front of the east facade is
+only about 25 m wide (OSM massing across it starts at x = 2456 in), so the 24 mm
+exterior cameras gain distance along the street, not across it: shot 01 arrives from
+the south, shot 09 leaves to the north-east. `cinema.py --reuse` refuses to render a
+prepared scene whose camera validation failed or is out of date.
+
+Filler area, point and spot lights are hidden from camera and glossy rays
+(`light_hygiene`), so they light surfaces without leaving hotspots on glass, doors
+or wet paving; the fixtures still reflect through their emissive meshes. The scene
+keeps persistent data between frames of one render process.
 
 ## Files
 
@@ -58,7 +76,7 @@ uv sync --group vision
 
 uv run python projects/highland/products/walkthrough/cinema_assets.py           # CC0 assets, checksum-verified
 uv run python projects/highland/products/walkthrough/cinema.py --validate --profile proof --step 12   # quick look
-uv run python projects/highland/products/walkthrough/cinema.py --reuse --profile local                # all 630 frames
+uv run python projects/highland/products/walkthrough/cinema.py --reuse --profile local                # all 702 frames
 uv run python projects/highland/products/walkthrough/cinema_finish.py --profile local
 ```
 

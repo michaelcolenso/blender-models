@@ -623,13 +623,76 @@ API named below was checked against bpy 5.0.1 on 2026-11-06.
   over-denoised animation smears and flickers frame to frame. Keep `use_animated_seed = False` for stills; for
   animation, test both on a 2 s clip and look at the flicker.
 - **`render.use_persistent_data = True`** for sequences (it keeps the BVH and textures between frames).
-- **Render to EXR, grade later:** multilayer EXR, half float, `DWAA` or `ZIP` codec, with Denoising Data
-  (`view_layer.cycles.denoising_store_passes`), light groups, Cryptomatte object and material
-  (`use_pass_cryptomatte_*`) and Mist. Grade and comp from those. Never bake a look into 8-bit PNGs you can't
-  re-grade.
+- **Render to EXR, grade later:** see 8.6a. Never bake a look into PNGs you can't re-grade.
 - **Parallel GPUs:** one frame per worker with a claim file, like `claim_frames`/`check_claim` in `cinema.py`. The
   same Blender (5.0.1) and the same `uv.lock` on every worker, with the source scene hash recorded per frame.
 - **Committed scenes stay self-contained:** pack textures, HDRIs and sounds before saving (`bm audit-blends`).
+
+### 8.6a Studio EXR and AOV pipeline (tested on bpy 5.0.1, 2026-11-06)
+
+Why it matters: when a client asks for "the oak floor 15% lighter, the brick warmer", Cryptomatte plus light
+groups in a multilayer EXR sequence turn that into a compositor re-grade instead of a full Cycles re-render.
+Depth, mist and normals give depth haze and relighting tricks in post.
+
+What the tests on this repo's bpy 5.0.1 showed:
+
+| Claim | Result |
+|---|---|
+| `file_format = 'OPEN_EXR_MULTILAYER'` | Fails on its own (`enum not found`). Set `image_settings.media_type = 'MULTI_LAYER_IMAGE'` first. |
+| Half float corrupts Cryptomatte and depth | No. With `color_depth = '16'`, Blender 5 writes Combined and albedo as half, and Depth, Vector, Cryptomatte and the denoising normal and depth as 32-bit float on its own. |
+| `DWAA` is safe for every pass | Not assumed. DWAA is lossy, and Blender applies it to every part of the file, Cryptomatte included. Use a lossless codec (`PIZ` or `ZIP`) whenever Cryptomatte, depth or vectors are in the file. Keep DWAA for beauty-only proxies. |
+| Temporal denoising | `bpy.ops.cycles.denoise_animation` exists, but in 5.0.1 it needs Denoising Data, the Vector pass and `use_exr_interleave = True` (it can't read the default multi-part layout). With OIDN on CPU it is **not** temporal: a frame's result didn't change when its neighbour changed. Whether it is temporal with OptiX on an NVIDIA GPU is untested. Until it's shown, fight flicker with samples (noise threshold ≤ 0.01) and a light denoise, and check flicker in QC (8.8). |
+| Vector pass with Cycles motion blur on | Cycles still writes a Vector pass. Its usefulness wasn't checked. Keep render-time motion blur for this repo's films: post vector blur smears transparency (x-ray sections, glass) and depth of field. |
+| Persistent data saves 25–40% | Measured on the Highland cinema scene (lobby, CPU, 640 × 268, 8 samples): frames 2–5 took 33.6 s with it vs 44.7 s without (−25%); the first frame was slower (12.1 vs 9.4 s). The saving is the fixed per-frame sync and BVH cost, so it shrinks as a share at final sample counts. Only frames rendered in one process benefit. |
+| `use_pass_cryptomatte_accurate`, `pass_cryptomatte_depth`, mist `falloff = 'QUADRATIC'` | All exist and work. |
+
+The function, corrected for 5.0.1 and this repo:
+
+```python
+import bpy
+
+def configure_studio_exr_pipeline_b5(scene=None, light_groups=None, mist=(2.0, 35.0)):
+    scene = scene or bpy.context.scene
+    vl = scene.view_layers[0]
+
+    # Passes for grading, relighting and the (optional) animation denoiser
+    for p in ("use_pass_combined", "use_pass_z", "use_pass_mist", "use_pass_normal", "use_pass_vector",
+              "use_pass_diffuse_color", "use_pass_glossy_direct", "use_pass_emit", "use_pass_ambient_occlusion"):
+        setattr(vl, p, True)
+    vl.cycles.denoising_store_passes = True       # albedo, normal, depth for denoise_animation
+
+    # Cryptomatte: per-object/material/asset mattes for revisions without re-rendering
+    vl.use_pass_cryptomatte_object = True
+    vl.use_pass_cryptomatte_material = True
+    vl.use_pass_cryptomatte_asset = True
+    vl.pass_cryptomatte_depth = 6
+    vl.use_pass_cryptomatte_accurate = True
+
+    # Light groups: re-balance sun/sky/interior/fixtures in post (the snippet's title promised them)
+    for name, objects in (light_groups or {}).items():
+        if name not in vl.lightgroups:
+            vl.lightgroups.add(name=name)
+        for o in objects:
+            o.lightgroup = name
+
+    # Mist for depth haze
+    ms = scene.world.mist_settings
+    ms.use_mist = True; ms.start, ms.depth = mist; ms.falloff = 'QUADRATIC'
+
+    # Multilayer EXR, Blender 5 style
+    ims = scene.render.image_settings
+    ims.media_type = 'MULTI_LAYER_IMAGE'          # required before OPEN_EXR_MULTILAYER is accepted
+    ims.file_format = 'OPEN_EXR_MULTILAYER'
+    ims.color_depth = '16'                        # beauty half; data passes are float automatically
+    ims.exr_codec = 'PIZ'                         # lossless: Cryptomatte, depth and vectors survive
+    ims.use_exr_interleave = True                 # single-part layout that denoise_animation can read
+
+    scene.render.use_persistent_data = True       # keep BVH and textures between frames
+```
+
+Use it in the final and uhd profiles only. Proof and animatic frames stay PNG. EXR sizes: a 4K multilayer frame
+with these passes runs tens of MB, so budget the disk before a 600+ frame run (the Highland 4K PNGs were already
+≈ 16 GB).
 
 ### 8.7 Post, sound and delivery
 

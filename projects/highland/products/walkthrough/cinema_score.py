@@ -125,7 +125,8 @@ CHORDS = {
 }
 # Shot ID -> chord; the end card resolves home.
 HARMONY = {'01-arrival': 'Dmaj9', '02-entry': 'Bm9', '03-lobby': 'Bm9', '04-slats': 'Gmaj7#11',
-           '05-corridor-108': 'Gmaj7#11', '06-elevator': 'Asus', '07-section': 'D/F#', '08-corridor-208': 'Gmaj9'}
+           '05-corridor-108': 'Gmaj7#11', '06-elevator': 'Asus', '07-section': 'D/F#', '08-corridor-208': 'Gmaj9',
+           '09-release': 'Dmaj9'}  # back outside: home chord, then A and the end-card resolution
 # Eighth-note arpeggio pattern (index into the chord, or None) and velocity.
 PATTERN = [(0, .55), (None, 0), (2, .38), (1, .32), (None, 0), (3, .36), (2, .3), (None, 0)]
 

@@ -1,6 +1,6 @@
 # Render the cinematic film on a RunPod GPU
 
-One RTX 4090 is enough. The whole film is 630 rendered frames: the end card is 2D.
+One RTX 4090 is enough. The whole film is 702 rendered frames (nine shots, from `cinema.shots.json`): the end card is 2D.
 `runpod_render.sh` installs the pinned stack, rebuilds and validates the scenes,
 benchmarks the GPU, renders with parallel processes, then grades, scores and
 encodes. It can resume after an interruption.
@@ -37,7 +37,7 @@ scanned CC0 materials and models in `cinema_assets.py`, which `setup` downloads.
 
 | Profile | Picture | Frames on disk | Plus lossless master and venvs | Volume |
 |---|---|---|---|---|
-| `uhd` (4K master + 1080p cut, default) | 3840 × 1608 | ≈ 16 GB | ≈ 7 GB | 50 GB |
+| `uhd` (4K master + 1080p cut, default) | 3840 × 1608 | ≈ 18 GB | ≈ 7 GB | 50 GB |
 | `final` (1080p master only) | 1920 × 804 | ≈ 4 GB | ≈ 3 GB | 20 GB |
 
 ## Steps
