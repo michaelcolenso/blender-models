@@ -17,10 +17,10 @@ has a `README.md` next to its `product.yaml`.
 
 ## What runs where
 
-| Work | This laptop (WSL, no GPU) | CI (GitHub Actions) | RunPod GPU |
+| Work | This laptop (WSL, 8 CPU threads, no GPU) | CI (GitHub Actions) | RunPod GPU |
 |---|---|---|---|
 | `bm check`, specs, links, metadata, tests without bpy | yes | `checks` | — |
-| bpy builds/renders (`bm build`, `bm render`, `audit-blends`) | only after `bm doctor`'s apt fix | `build-models`, `checks`, `render-scenes` | yes |
+| bpy builds/renders (`bm build`, `bm render`, `audit-blends`), bpy tests | yes, CPU Cycles (`bm doctor`: bpy 5.0.1 imports) | `build-models`, `checks`, `render-scenes` | yes |
 | product `check` steps | bpy-free ones | `build-models` | — |
 | prepare/extract from source PDFs | only if PDFs are in `projects/<site>/sources/` | never (not committed) | if copied |
 | GPU Cycles films | no | no | `products/*/runpod_*.sh` |
@@ -58,9 +58,16 @@ If something can only be verified in CI, say so, push a branch, and read the run
   In scripts and parallel workers: `uv sync --frozen` once, then `uv run --no-sync …`.
 - Build outputs go to `build/` (git-ignored): specs to `build/<site>/<spec>/` (`report.md`, `report.json`,
   `.blend`, `.glb`, review PNGs). Read `report.json` for machine-readable check results.
-- Headless Blender has no GPU: Cycles on CPU only (Workbench/EEVEE render blank). Cameras need explicit
-  rotation. This laptop (WSL, Iris Xe) cannot import bpy without the X11 libs and has no GPU or Unreal:
-  bpy builds are verified by CI; GPU renders run on RunPod (`products/*/runpod_*.sh`).
+- Headless Blender without a GPU renders with Cycles on CPU only (Workbench/EEVEE render blank). Cameras need
+  explicit rotation. This laptop (WSL, Iris Xe) has the X11 libs, and bpy 5.0.1 imports (checked 2026-11-06),
+  so bpy builds, renders and bpy tests run here on CPU. There is no GPU or Unreal: GPU renders run on RunPod
+  (`products/*/runpod_*.sh`), and CI is still the reference run for every spec. On another machine,
+  `bm doctor` prints the apt line if bpy can't import. `cycles.device = 'GPU'` alone falls back to CPU silently
+  in headless Blender; enable devices explicitly (`configure_device()` in
+  `projects/highland/products/walkthrough/cinema.py`).
+- Presentation films (archviz, owner and marketing walkthroughs): follow
+  `.claude/skills/archviz-film-upgrade/SKILL.md` (Blender 5 APIs, cinematography rules, the visual verification
+  loop, agency-grade pipeline). It doesn't apply to review renders or coordination/work-sequence films.
 
 ## Where work goes
 
