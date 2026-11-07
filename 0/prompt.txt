@@ -1,0 +1,161 @@
+follow them.
+
+---
+
+merge the prs
+
+---
+
+now what
+
+---
+
+1
+
+---
+
+<task-notification>
+<task-id>b0blsp1mm</task-id>
+<tool-use-id>toolu_012d1GqaqJVkFAp9LMEKbLwN</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/b0blsp1mm.output</output-file>
+<status>completed</status>
+<summary>Background command "Fetch assets, build, validate cinema scene, render one proof frame" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<pasted_content id="0580">
+The one thing you haven't asked for—and what separates a $2,000 freelancer from a $20,000 studio—is **Multi-Layer EXR Render Passes (AOVs) with Cryptomatte and Temporal Denoising**.
+
+Right now, our scripts tell Blender to render straight to a finished image with the single-frame `OpenImageDenoise` (OIDN) filter baked in. If you hand that to an agent for a 780-frame animation, three things will happen that immediately ruin a $20,000 deliverable:
+
+1. **The "Boiling Wall" Artifact (Temporal Flicker):** When OIDN denoises each frame independently at 512 samples, the shadow patterns on your plaster walls and dark carpet will "swim" and shimmer from frame to frame like moving oatmeal. An expert uses **Temporal Denoising** (feeding Motion Vector, Albedo, and Normal passes across sequential frames) so the walls stay rock-solid.
+2. **Client Revision Paralysis (Cryptomatte):** When a real estate developer pays $20,000, they *always* ask for last-minute tweaks: *"Can we make the wide-plank oak floor 15% lighter and warm up the brick facade?"* Without **Cryptomatte Material/Object ID passes**, your agent has to spend 18 hours re-rendering all 780 frames in Cycles. With Cryptomatte saved into a Multi-Layer `.exr` sequence, your agent can isolate the floor or brick in the compositor and re-grade all 780 frames in **12 seconds** without re-rendering a single ray.
+3. **Motion Blur & Z-Depth Separation:** Rendering 3D camera motion blur directly inside Cycles slows render times and can smear your X-Ray Boolean transition. Rendering a **Vector Pass** and **Mist/Z-Depth Pass** lets you dial in exact 180-degree shutter cinema motion blur and atmospheric depth haze in post.
+
+---
+
+### The Expert Upgrade: Add This "Studio EXR & AOV Pipeline" to Your Agent's Toolkit
+
+Give this function to your Blender 5.0+ agent so it enables **Cryptomatte, Light Group AOVs, and Vector/Mist passes** before hitting render:
+
+```python
+import bpy
+
+def configure_expert_exr_pipeline_b5():
+    scene = bpy.context.scene
+    view_layer = bpy.context.view_layer
+
+    # 1. Enable Essential AOV Passes for Temporal Denoising & Post-Grading
+    view_layer.use_pass_combined = True
+    view_layer.use_pass_z = True
+    view_layer.use_pass_mist = True
+    view_layer.use_pass_normal = True
+    view_layer.use_pass_vector = True          # Required for Temporal Denoising & Vector Blur
+    view_layer.use_pass_diffuse_color = True   # Albedo pass
+    view_layer.use_pass_glossy_direct = True   # Isolate reflections
+    view_layer.use_pass_emit = True            # Isolate ceiling strips & X-ray glow
+    view_layer.use_pass_ambient_occlusion = True
+
+    # 2. Enable Cryptomatte (Instant 0-second client material/object revisions)
+    view_layer.use_pass_cryptomatte_object = True
+    view_layer.use_pass_cryptomatte_material = True
+    view_layer.use_pass_cryptomatte_asset = True
+    view_layer.pass_cryptomatte_depth = 6
+    view_layer.use_pass_cryptomatte_accurate = True
+
+    # 3. Configure Mist Pass for Architectural Depth Separation
+    scene.world.mist_settings.use_mist = True
+    scene.world.mist_settings.start = 2.0
+    scene.world.mist_settings.depth = 35.0
+    scene.world.mist_settings.falloff = 'QUADRATIC'
+
+    # 4. Set Output to 16-bit Multi-Layer OpenEXR (DWAA Lossless-Visual Compression)
+    scene.render.image_settings.file_format = 'OPEN_EXR_MULTILAYER'
+    scene.render.image_settings.color_depth = '16' # Half-float (32-bit is overkill except for Z)
+    scene.render.image_settings.exr_codec = 'DWAA' # Cuts EXR file sizes by 70% with zero visible loss
+
+    # 5. Enable Persistent Data (Keeps BVH & textures in GPU VRAM between frames — 30% faster animation renders)
+    scene.render.use_persistent_data = True
+
+    print("✅ Expert Multi-Layer EXR, Cryptomatte & Persistent Data Pipeline Active.")
+
+if __name__ == "__main__":
+    configure_expert_exr_pipeline_b5()
+
+```
+
+### Why `scene.render.use_persistent_data = True` Alone Saves You Hours
+
+Notice line 34 in that snippet (`scene.render.use_persistent_data = True`). In an architectural walkthrough where the building geometry doesn't change from frame to frame, Blender normally rebuilds the entire BVH spatial tree and reloads 4K textures into GPU memory **780 times** (once per frame). Turning on **Persistent Data** locks the geometry and textures in GPU VRAM after Frame 1, cutting total animation render time by **25% to 40%** immediately.
+</pasted_content id="0580">
+
+---
+
+<task-notification>
+<task-id>b6448hed0</task-id>
+<tool-use-id>toolu_01PUATgW8vtHHeqsprBwEd16</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/b6448hed0.output</output-file>
+<status>completed</status>
+<summary>Background command "Render start, middle and end proof frames for all eight shots" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bd90kgip5</task-id>
+<tool-use-id>toolu_01LZdqVRevoc9h9kRJJfQnpK</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/bd90kgip5.output</output-file>
+<status>completed</status>
+<summary>Background command "Time five lobby frames with and without persistent data" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bxud1pv85</task-id>
+<tool-use-id>toolu_017q4Ex7Ggdy8ixYZRGNVBdm</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/bxud1pv85.output</output-file>
+<status>completed</status>
+<summary>Background command "Re-prepare, validate, and render diagnostic frames for changed shots" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bc6vyk9hb</task-id>
+<tool-use-id>toolu_01BjFHmFBh5vGXVeZBKQWahi</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/bc6vyk9hb.output</output-file>
+<status>completed</status>
+<summary>Background command "Adjust shots 01, 04, 09 and re-render their diagnostic frames" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bucxrl0xp</task-id>
+<tool-use-id>toolu_019QDtMEzdhJEDJNp7PiwLr7</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/bucxrl0xp.output</output-file>
+<status>completed</status>
+<summary>Background command "Pull cameras 01 and 09 back and re-render their frames" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bfpv17nv8</task-id>
+<tool-use-id>toolu_0167H9RvWfzC9rAFhxofKi9p</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/bfpv17nv8.output</output-file>
+<status>completed</status>
+<summary>Background command "Move shots 01 and 09 along the street, validate and re-render" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>brn9taxlg</task-id>
+<tool-use-id>toolu_014U3viqPq9tkXcXmL3SqCg9</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/b384d988-51ba-4ef2-8c04-afb3886563ee/tasks/brn9taxlg.output</output-file>
+<status>completed</status>
+<summary>Background command "Re-prepare, validate, render shots 01 and 09, build the sheet" completed (exit code 0)</summary>
+</task-notification>

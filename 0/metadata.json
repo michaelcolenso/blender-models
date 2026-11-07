@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6T6BW6X6T73KA4Y8HJPXVVD",
+  "session_id": "b384d988-51ba-4ef2-8c04-afb3886563ee",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-07T05:05:43.998221924Z",
+  "branch": "highland/cinema-archviz-pass",
+  "checkpoints_count": 12,
+  "save_step_count": 5,
+  "files_touched": [
+    "projects/highland/products/walkthrough/CINEMA.md",
+    "projects/highland/products/walkthrough/cinema.py",
+    "projects/highland/products/walkthrough/cinema.shots.json",
+    "projects/highland/products/walkthrough/cinema_finish.py",
+    "projects/highland/products/walkthrough/cinema_score.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "983e4e6ff469",
+  "checkpoint_transcript_start": 690,
+  "transcript_lines_at_start": 690,
+  "compact_transcript_start": 77,
+  "token_usage": {
+    "input_tokens": 215,
+    "cache_creation_tokens": 148440,
+    "cache_read_tokens": 26000627,
+    "output_tokens": 71219,
+    "api_call_count": 97
+  },
+  "redaction": {
+    "replacements": 0,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 0,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 20
+  }
+}
