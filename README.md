@@ -94,3 +94,9 @@ stay there and may be updated; nothing new goes to LFS.
 Every workflow sets up through `.github/actions/setup-blender-env` (apt libraries, setup-uv cached on
 `uv.lock`, `uv sync --frozen`). Pushes from a local clone can change workflow files; cloud agent tokens
 without the `workflow` scope cannot.
+
+## License
+
+[MIT](LICENSE), covering the code in this repo. The shared HDRI in `assets/hdri/` is CC0 (see its README). Skills vendored
+under `.claude/skills/` come from third-party sources (`skills-lock.json`) and keep their own terms, which have not been
+audited here. Project drawings, photos and client-site material are not licensed by this file; see each project.

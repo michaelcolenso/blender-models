@@ -20,9 +20,9 @@ was changed for it. Written 2026-11-08 from the repo as it stands on `main` (`db
    two declared modules, so it is probably not packaged. Not tested.
 2. **Heavy, pinned runtime.** `bpy==5.0.1` (large wheel, Python 3.11 only) with NumPy and OpenCV pins
    ([BLENDER_VERSION.md](BLENDER_VERSION.md)). It would restrict who can install it and how.
-3. **No license file.** The repo has no `LICENSE*` and `pyproject.toml` has no license field. Redistribution rights
-   are unstated. Bundled assets ("shared CC0 assets" in `assets/`) and the vendored skill content under `.claude/skills/`
-   have their own provenance that has not been audited here.
+3. **License scope.** MIT was added on 2026-11-08 (`LICENSE`, `pyproject.toml`). It covers the code only. The vendored
+   skill content under `.claude/skills/` (from `skills-lock.json` sources) has not had its license audited, and
+   client-site drawings, photos and deliverables under `projects/` are not covered by it.
 4. **Real-project data in the same repo.** `projects/` holds client-site specs, takeoffs and deliverables.
    A public package or hosted service must not include or expose them; splitting sample/template from real projects
    would be required. This needs an owner decision.

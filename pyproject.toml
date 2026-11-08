@@ -3,6 +3,8 @@ name = "blender-models"
 version = "0.1.0"
 description = "Dimensionally accurate, provenance-tracked Blender models of construction projects, built from specs."
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 # bpy 5.0.x wheels are cp311 only.
 requires-python = "==3.11.*"
 dependencies = [
