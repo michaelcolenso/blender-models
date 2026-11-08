@@ -1,0 +1,115 @@
+<pasted_content id="937c">
+You are an expert Technical Director specializing in Blender (4.x+ Cycles), Python (`bpy`) automation, architectural visualization, and FFmpeg post-production. 
+
+I have an existing architectural visualization animation in Blender Cycles for "200 W. Highland" (an exterior-to-interior walkthrough showing the street facade at night, entry lobby 110, corridor 108, elevator M1, a wireframe vertical section from R1 to R2, and corridor 208). 
+
+I want to upgrade the visual and audio quality of this animation by 200%. Please write modular, well-commented, non-destructive **Blender Python (`bpy`) scripts** (and FFmpeg commands where applicable) to implement the following 6 upgrades. 
+
+Before writing the final scripts, if you have access to my project directory or Blender MCP, inspect the scene collection names, material names, and world shader setup first. If you do not have direct file access, write the `bpy` scripts using safe lookup patterns (e.g., matching material names by substring like `"Window"`, `"Glass"`, `"Wall"`, `"Brick"`, or iterating over selected/collection objects) with clear configuration variables at the top of each script so I can run them directly in Blender's Scripting workspace.
+
+---
+
+### TASK 1: Color Management & Compositor Pipeline (`bpy`)
+Write a Python script that configures the scene's render and compositor settings:
+1. **Color Management:** Set `scene.view_settings.view_transform = 'AgX'` and `look = 'AgX - Medium High Contrast'` (with a fallback to `'Filmic'` if AgX is unavailable in the Blender version). Set exposure and gamma to balanced architectural defaults.
+2. **Compositor Setup:** Enable `use_nodes = True` in the scene compositor and build a clean post-processing node chain:
+   - Add a **Glare** node set to `'FOG_GLOW'` (Threshold: `0.85`, Size: `7`, Mix: `-0.8` for subtle photographic halation on cove lights, streetlamps, and elevator strips).
+   - Add a subtle **Lens Distortion** node (`Dispersion: 0.005`, `Distort: -0.005` with `use_projector = False` and `use_fit = True`) for optical realism.
+   - Add a subtle film grain overlay or noise mix (around `0.02`–`0.03` factor) to prevent 8-bit banding in the dark night sky and corridor walls.
+
+---
+
+### TASK 2: Exterior Blue-Hour Environment & Streetlamps (`bpy`)
+Write a Python script to upgrade the exterior night environment:
+1. **World Shader:** Replace the flat dark-blue background with a node setup that supports a **16-bit Blue-Hour HDRI** (`ShaderNodeTexEnvironment`) plugged into a `Mapping` node (for Z-rotation control) and `Background` node. Include a **Light Path (`Is Camera Ray`)** mix switch so I can independently control the visible sky background intensity/tint vs. the environment lighting bounce intensity.
+2. **Volumetric Atmosphere:** Create a domain cube covering the exterior streetscape with a `Principled Volume` shader (`Density: 0.0015`, `Anisotropy: 0.6`) so streetlamps and building entry glazing cast soft volumetric light cones without choking Cycles render times.
+3. **Streetlamp Realism:** Find point/spot lights associated with streetlamps and set their color temperature to `2700K`–`3000K` using a `Blackbody` node, increase radius for soft shadows, and add downward spot cones to pool warm light onto the pavement.
+
+---
+
+### TASK 3: Procedural Apartment Window Variation & Parallax (`bpy`)
+The exterior apartment windows currently look like flat, identical glowing rectangles. Write a Python script that creates/updates the exterior lit window material (`ArchViz_Window_Randomized`) using shader nodes:
+1. **Per-Window Randomization:** Use `Object Info (Random)` AND `Geometry (Parametric / Position)` Voronoi cells so even if multiple windows are a single joined mesh, each window pane gets a unique random seed (`0.0` to `1.0`).
+2. **Kelvin & Intensity Variation:** Use that random seed to drive:
+   - A `ColorRamp` / `Blackbody` variation ranging from `2500K` (warm cozy tungsten) to `3800K` (neutral warm white).
+   - Emission strength variation (e.g., 30% of windows dark/off, 50% medium warm glow, 20% brighter).
+3. **Depth & Blinds Illusion:** Add a procedural horizontal blinds/curtain mask using a `Wave Texture` (scaled on Z, modulated per window so blinds stop at different heights) and mix a true glass reflection layer (`Fresnel` IOR `1.52` + low roughness `0.05`) over the emission so the windows reflect the blue-hour sky at grazing angles.
+
+---
+
+### TASK 4: Interior Material Micro-Roughness & Bevels (`bpy`)
+The interior lobby, corridors, and entry steps look slightly sterile and overly sharp. Write a Python script that iterates through specified architectural materials (drywall, wood doors, millwork slats, floor tiles, leather chairs, concrete steps) and:
+1. **Bevel Shader Injection:** Adds a `ShaderNodeBevel` (`Samples: 4`, `Radius: 0.003m` for millwork/doors, `0.008m` for concrete steps/planters) plugged into the `Principled BSDF` Normal input (chaining neatly with any existing `Normal Map` node).
+2. **Micro-Roughness Imperfection:** Inserts a subtle multi-scale procedural smudge/variation node group (`Noise Texture` mixed with `Musgrave/Voronoi` via a narrow `ColorRamp`, e.g., `±0.06` roughness variation) into the `Roughness` input of `Principled BSDF` nodes so corridor walls, doors, and floors break up specular highlights naturally.
+3. **Entry Glazing Upgrade:** Ensures the lobby glass doors use a physical glass / architectural glass setup with `IOR 1.52`, high specular reflection on the exterior face, and visible edge tinting.
+
+---
+
+### TASK 5: Wireframe Section Hierarchy Upgrade (0:19–0:21) (`bpy`)
+For the vertical circulation wireframe section shot (R1 to R2 elevator rise):
+1. Write a shader/geometry script that upgrades the uniform gold wireframe into a **two-tier architectural graphic shader**:
+   - **Primary Structural Lines (Slabs & Shafts):** Bright warm gold emission (`#E6B87A`, Strength `2.5`).
+   - **Secondary Partition Lines:** Thinner or lower-opacity warm bronze (`#A67C52`, Opacity `0.35`).
+   - **Ghosted Floor Slabs:** Add a subtle translucent Fresnel fill (`Alpha: 0.08` to `0.15`) on horizontal floor slab faces so the viewer immediately reads the spatial volume of R1 and R2 while keeping the textured doors and elevator cab clearly visible inside.
+
+---
+
+### TASK 6: Audio Replacement & Spatial Foley Mix (FFmpeg / Python)
+The current synthesized arpeggio music feels dated. Write a Python or shell script using `ffmpeg` (or suggest a generative audio/foley timing sheet synced to my exact timecodes) that mixes a replacement audio track with spatial sound design matching these exact timestamps:
+- `00:00 – 00:05` (Exterior Street): Subtle evening urban room tone, distant traffic hum, soft wind in trees.
+- `00:05 – 00:07` (Entry Glazing): Mechanical glass door pivot/latch release + transition from outdoor air to warm, quiet interior acoustics.
+- `00:08 – 00:15` (Lobby 110 & Corridor 108): Warm low-frequency interior room tone, very faint soft footsteps on tile transitioning to carpet at `00:13`.
+- `00:16 – 00:18` (Elevator M1 Landing): Soft luxury architectural elevator arrival chime + smooth brushed-metal door slide.
+- `00:19 – 00:21` (Section R1 to R2 Rise): Subtle, clean low-end electric traction hoist hum rising in pitch/elevation.
+- `00:22 – 00:24` (Corridor 208): Quiet upper-floor corridor acoustics.
+- `00:25 – 00:33` (Exterior Pullback & End Card): Smooth crossfade back to evening breeze and a warm felt-piano resolving chord with a clean fade-out at `00:32`.
+
+---
+
+### Output Format Requirements
+1. Please organize your response into **modular scripts** (Task 1 through Task 6) so I can test and run them one by one.
+2. Put all customizable names (Collection names, Material substrings, HDRI file paths) in a `CONFIG` dictionary at the very top of each script.
+3. Include an `undo_safe` wrapper or backup instruction so none of my existing shaders are destructively overwritten without a backup node group.
+</pasted_content id="937c">
+
+---
+
+where are we
+
+---
+
+<task-notification>
+<task-id>bg7ibwnz5</task-id>
+<tool-use-id>toolu_01SBdHbXMkiF4e5efT3B6YeY</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/3d466ff5-c737-43e3-9b70-a1fdb8cdc26b/tasks/bg7ibwnz5.output</output-file>
+<status>completed</status>
+<summary>Background command "Render 06 and 02 at 64 samples with and without bevel" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b0dmzc155</task-id>
+<tool-use-id>toolu_013niZge1K1eBg4HZfSRVmDP</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/3d466ff5-c737-43e3-9b70-a1fdb8cdc26b/tasks/b0dmzc155.output</output-file>
+<status>completed</status>
+<summary>Background command "Retune roughness and sky, rebuild, render check frames" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+are we following the releases protocol?
+
+---
+
+<task-notification>
+<task-id>bhj3m8mmv</task-id>
+<tool-use-id>toolu_01NHoirg63z5ybvpD3YSRgxk</tool-use-id>
+<output-file>/tmp/claude-1000/-home-kato-Projects-blender-models/3d466ff5-c737-43e3-9b70-a1fdb8cdc26b/tasks/bhj3m8mmv.output</output-file>
+<status>completed</status>
+<summary>Background command "Run repo checks and product checks" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+ok
