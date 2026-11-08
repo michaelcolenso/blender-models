@@ -288,7 +288,8 @@ def main():
         tile = build/f'tile-{s["id"]}.png'
         subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{at:.3f}', '-i', str(lossless), '-frames:v', '1', '-vf', f'crop={PW}:{PH}:0:{TOP},scale=640:-2', str(tile)], check=True)
         tiles.append((s, at, Image.open(tile).convert('RGB')))
-    sheet = Image.new('RGB', (1280, 4*(268+34)), (8, 8, 8)); d = ImageDraw.Draw(sheet)
+    rows = (len(tiles)+1)//2  # two tiles per row; sized from the shot list, not a fixed edit
+    sheet = Image.new('RGB', (1280, rows*(268+34)), (8, 8, 8)); d = ImageDraw.Draw(sheet)
     for k, (s, at, im) in enumerate(tiles):
         x, y = (k % 2)*640, (k//2)*(268+34)
         sheet.paste(im, (x, y+34)); tracked(d, (x+10, y+9), f'{s["id"].upper()}   {at:05.2f} S', font('NotoSans-Regular.ttf', 15), GOLD, 2)
