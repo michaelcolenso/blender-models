@@ -104,6 +104,39 @@ def emission(mat, strength, color=None):
         b.inputs['Emission Color'].default_value = (*color, 1)
 
 
+def lit_windows(mat, strength, kelvin):
+    """Each lit apartment gets its own lamp colour and brightness (Object Info random -> blackbody),
+    brighter toward the ceiling, instead of one flat peach panel repeated across the facade."""
+    n, l = mat.node_tree.nodes, mat.node_tree.links
+    b = n.get('Principled BSDF')
+    info = n.new('ShaderNodeObjectInfo')
+    temp = n.new('ShaderNodeMapRange'); temp.inputs['To Min'].default_value, temp.inputs['To Max'].default_value = kelvin
+    l.new(info.outputs['Random'], temp.inputs['Value'])
+    body = n.new('ShaderNodeBlackbody'); l.new(temp.outputs['Result'], body.inputs['Temperature'])
+    l.new(body.outputs['Color'], b.inputs['Emission Color'])
+    # Brightness: 0.45-1.55x per unit, times a soft vertical falloff inside the recess.
+    level = n.new('ShaderNodeMapRange'); level.inputs['To Min'].default_value, level.inputs['To Max'].default_value = .45*strength, 1.55*strength
+    hue = n.new('ShaderNodeMath'); hue.operation = 'FRACT'
+    scaled = n.new('ShaderNodeMath'); scaled.operation = 'MULTIPLY'; scaled.inputs[1].default_value = 7.31
+    l.new(info.outputs['Random'], scaled.inputs[0]); l.new(scaled.outputs[0], hue.inputs[0]); l.new(hue.outputs[0], level.inputs['Value'])
+    coord = n.new('ShaderNodeTexCoord'); sep = n.new('ShaderNodeSeparateXYZ'); l.new(coord.outputs['Generated'], sep.inputs[0])
+    fall = n.new('ShaderNodeMapRange'); fall.inputs['To Min'].default_value, fall.inputs['To Max'].default_value = .6, 1.15
+    l.new(sep.outputs['Z'], fall.inputs['Value'])
+    gain = n.new('ShaderNodeMath'); gain.operation = 'MULTIPLY'
+    l.new(level.outputs['Result'], gain.inputs[0]); l.new(fall.outputs['Result'], gain.inputs[1])
+    l.new(gain.outputs[0], b.inputs['Emission Strength'])
+
+
+def soften_puddles(mat, coverage=.66, gloss=.14):
+    """Damp street, not black ice: fewer puddles (polyhaven.pbr's mask starts at .57) and
+    puddle roughness .14 instead of a .03 mirror."""
+    for node in mat.node_tree.nodes:
+        if node.type == 'MAP_RANGE' and abs(node.inputs['From Min'].default_value-.57) < 1e-6:
+            node.inputs['From Min'].default_value = coverage; node.inputs['From Max'].default_value = coverage+.05
+        if node.type == 'MIX' and node.data_type == 'FLOAT' and abs(node.inputs['B'].default_value-.03) < 1e-6:
+            node.inputs['B'].default_value = gloss
+
+
 def dusk(scene):
     """Blue-hour exterior: deep sky, lit apartments, wet street reflections."""
     world = scene.world.node_tree
@@ -114,12 +147,13 @@ def dusk(scene):
     tint.inputs['Factor'].default_value = 1
     tint.inputs['B'].default_value = (.28, .42, .95, 1)
     l.new(env.outputs['Color'], tint.inputs['A']); l.new(tint.outputs['Result'], bg.inputs['Color'])
-    bg.inputs['Strength'].default_value = .55
+    # Brighter blue hour (was .55) so the brick and mullions keep detail instead of crushing.
+    bg.inputs['Strength'].default_value = .85
     for o in scene.objects:
         if o.type == 'LIGHT' and o.data.type == 'SUN':
             o.data.energy = .06; o.data.color = (.55, .65, 1)
-    emission(bpy.data.materials['Apartment warm interior'], 1.5, (1, .5, .2))
-    emission(bpy.data.materials['Apartment linen'], .4, (1, .7, .45))
+    lit_windows(bpy.data.materials['Apartment warm interior'], 1.5, (2600, 4000))
+    lit_windows(bpy.data.materials['Apartment linen'], .4, (3000, 4000))
     # Neighborhood massing gets a sparse grid of warm and cool windows so the
     # street reads as inhabited. Massing heights and windows remain illustrative.
     mat = bpy.data.materials['Neighborhood massing']
@@ -148,11 +182,23 @@ def dusk(scene):
     rnd = n.new('ShaderNodeTexWhiteNoise'); rnd.noise_dimensions = '3D'; l.new(cells.outputs[0], rnd.inputs['Vector'])
     lit = n.new('ShaderNodeMath'); lit.operation = 'GREATER_THAN'; lit.inputs[1].default_value = .72; l.new(rnd.outputs['Value'], lit.inputs[0])
     on = n.new('ShaderNodeMath'); on.operation = 'MULTIPLY'; l.new(lit.outputs[0], on.inputs[0]); l.new(mask, on.inputs[1])
-    gain = n.new('ShaderNodeMath'); gain.operation = 'MULTIPLY'; gain.inputs[1].default_value = .3; l.new(on.outputs[0], gain.inputs[0])
+    gain = n.new('ShaderNodeMath'); gain.operation = 'MULTIPLY'; gain.inputs[1].default_value = .12; l.new(on.outputs[0], gain.inputs[0])
     hue = n.new('ShaderNodeMix'); hue.data_type = 'RGBA'; hue.inputs['A'].default_value = (1, .55, .24, 1); hue.inputs['B'].default_value = (.75, .85, 1, 1)
     l.new(rnd.outputs['Color'], hue.inputs['Factor'])
     l.new(hue.outputs['Result'], b.inputs['Emission Color']); l.new(gain.outputs[0], b.inputs['Emission Strength'])
-    # Wet pavement: low roughness broken up by puddle noise.
+    # Atmospheric perspective: the approximate OSM massing fades into the dusk haze with
+    # camera distance, so it reads as a soft skyline rather than hard dark boxes.
+    out = n.get('Material Output')
+    view = n.new('ShaderNodeCameraData')
+    fade = n.new('ShaderNodeMapRange'); fade.clamp = True
+    fade.inputs['From Min'].default_value = 25; fade.inputs['From Max'].default_value = 220
+    fade.inputs['To Min'].default_value = .15; fade.inputs['To Max'].default_value = .8
+    l.new(view.outputs['View Distance'], fade.inputs['Value'])
+    haze = n.new('ShaderNodeEmission'); haze.inputs['Color'].default_value = (.05, .075, .16, 1)
+    mix = n.new('ShaderNodeMixShader')
+    l.new(fade.outputs['Result'], mix.inputs[0]); l.new(b.outputs[0], mix.inputs[1]); l.new(haze.outputs[0], mix.inputs[2])
+    l.new(mix.outputs[0], out.inputs['Surface'])
+    # Damp pavement: satin roughness with a few puddles from low-frequency noise.
     for name in ('road', 'paving', 'Damp pavement', 'ground', 'concrete'):
         mat = bpy.data.materials.get(name)
         if not mat or mat.get('texture'):  # scanned surfaces carry their own puddles
@@ -164,9 +210,10 @@ def dusk(scene):
         noise.inputs['Detail'].default_value = 4
         l.new(coord.outputs['Object'], noise.inputs['Vector'])
         ramp = n.new('ShaderNodeMapRange')
-        ramp.inputs['From Min'].default_value = .46; ramp.inputs['From Max'].default_value = .56
-        ramp.inputs['To Min'].default_value = .5 if name != 'road' else .32
-        ramp.inputs['To Max'].default_value = .06
+        # Puddles in the low spots only (noise above .62, roughly a tenth of the surface), satin not mirror.
+        ramp.inputs['From Min'].default_value = .6; ramp.inputs['From Max'].default_value = .66
+        ramp.inputs['To Min'].default_value = .55 if name != 'road' else .4
+        ramp.inputs['To Max'].default_value = .16
         l.new(noise.outputs['Fac'], ramp.inputs['Value']); l.new(ramp.outputs['Result'], b.inputs['Roughness'])
         dark = n.new('ShaderNodeMix'); dark.data_type = 'RGBA'; dark.blend_type = 'MULTIPLY'
         dark.inputs['Factor'].default_value = 1; dark.inputs['B'].default_value = (.55, .58, .62, 1)
@@ -213,6 +260,12 @@ def dress(scene, data):
     A.pbr(T('road'), data, 'clean_asphalt', tint=(.55, .57, .6), rough=(.5, .75), bump=.25, wet=True)
     A.pbr(T('Damp pavement'), data, 'clean_asphalt', tint=(.5, .52, .56), rough=(.5, .75), bump=.25, wet=True)
     A.pbr(T('paving'), data, 'concrete_pavement', tint=(.8, .8, .8), rough=(.55, .8), bump=.3, wet=True)
+    for name in ('road', 'Damp pavement', 'paving'):
+        soften_puddles(T(name))
+    # Floor-projected wayfinding labels duplicate the film's chapter titles; hide them in the film only.
+    for o in scene.objects:
+        if o.name.endswith('floor wayfinding'):
+            o.hide_render = True
     lib = A.library(scene, data)
     col = bpy.data.collections.new('Cinema / illustrative dressing (Poly Haven CC0)'); scene.collection.children.link(col)
     # The photo-informed street trees keep their positions; scanned trees replace the
@@ -353,6 +406,7 @@ def xray(scene):
         for m in o.modifiers:
             if m.type == 'WIREFRAME':
                 m.thickness = .0035 if 'section edges' in o.name else m.thickness
+    ghost_doors(scene, bpy.data.materials['Gallery plaster'])
     edge = bpy.data.materials['Section brass edges']
     emission(edge, 2.2, (1, .62, .25))
     # Neighborhood, pavement and the open-air world are hidden only while the
@@ -387,6 +441,40 @@ def xray(scene):
             if 895 < x < 1700:
                 for f, v in [(1, False), (366, False), (367, True), (458, True), (459, False)]:
                     o.hide_render = v; o.keyframe_insert('hide_render', frame=f)
+
+
+def ghost_doors(scene, walls):
+    """Residence and stair doors (leaf, jambs, head) ghost with the walls during the x-ray instead of
+    floating as solid panels in the void; their hardware hides for the same frames."""
+    src = next(fc for fc in fcurves(walls.node_tree) if 'Elevator architectural section' in fc.data_path)
+    ghosts = {}
+    def ghost(mat):
+        if mat.name in ghosts:
+            return ghosts[mat.name]
+        g = mat.copy(); g.name = mat.name+' / x-ray ghost'
+        n, l = g.node_tree.nodes, g.node_tree.links
+        b, out = n.get('Principled BSDF'), n.get('Material Output')
+        transparent = n.new('ShaderNodeBsdfTransparent')
+        glow = n.new('ShaderNodeEmission'); glow.inputs['Color'].default_value = (.62, .78, 1, 1); glow.inputs['Strength'].default_value = .35
+        facing = n.new('ShaderNodeLayerWeight'); facing.inputs['Blend'].default_value = .08
+        edge = n.new('ShaderNodeMixShader')
+        l.new(facing.outputs['Facing'], edge.inputs[0]); l.new(transparent.outputs[0], edge.inputs[1]); l.new(glow.outputs[0], edge.inputs[2])
+        mix = n.new('ShaderNodeMixShader'); mix.name = 'Elevator architectural section'
+        l.new(b.outputs[0], mix.inputs[1]); l.new(edge.outputs[0], mix.inputs[2]); l.new(mix.outputs[0], out.inputs['Surface'])
+        for k in src.keyframe_points:
+            mix.inputs[0].default_value = k.co[1]; mix.inputs[0].keyframe_insert('default_value', frame=k.co[0])
+        ghosts[mat.name] = g
+        return g
+    for o in scene.objects:
+        if o.type != 'MESH' or not ('residence door' in o.name or 'stair door' in o.name):
+            continue
+        mats = [s.material for s in o.material_slots]
+        if mats and all(m and m.name in ('Satin walnut doors', 'Dark walnut frames') for m in mats):
+            for s in o.material_slots:
+                s.material = ghost(s.material)
+        elif not o.animation_data:
+            for f, v in [(1, False), (366, False), (367, True), (458, True), (459, False)]:
+                o.hide_render = v; o.keyframe_insert('hide_render', frame=f)
 
 
 def camera(scene, rig, shot):
