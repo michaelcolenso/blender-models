@@ -563,6 +563,16 @@ API named below was checked against bpy 5.0.1 on 2026-11-06.
   moves strobe.
 - **Handheld life (optional):** an `FModifierNoise` on the location f-curves only (0.5–2 mm amplitude, slow).
   Never put it on rotation, because Rule 1 locks the camera level.
+- **Unwrap yaw when keying cameras from `atan2`** (found on the Highland film, 2026-11-08). A camera looking
+  along −x sits on the ±π seam, so a few mm of drift flips the key from +90° to −270°. That's the same
+  direction, but Blender interpolates Euler keys, so inside the motion-blur shutter the camera spins 360°.
+  The result is two washed-out, ghosted frames that a quaternion-based "rotation step" check reports as 0°.
+  Keep yaw continuous (`yaw += 2π·round((prev−yaw)/2π)`), and validate the Euler key steps themselves, not
+  only the quaternion difference. Wider lesson: run the automated flicker check (8.8) on the finished film;
+  the 3-frames-per-shot diagnostics missed this.
+- **Exterior camera distance is limited by the site.** At 2.39:1 a 24 mm lens frames less height than at 16:9.
+  On a narrow street you can't back up across it (the Highland camera ended up inside the OSM massing
+  opposite, which validation caught), so gain distance along the street with an oblique view instead.
 - **Aspect ratio:** 16:9 per the directive. For marketing films, 2.39:1 is a valid option
   (the house film uses it); render 16:9 and crop, or set the resolution directly.
 

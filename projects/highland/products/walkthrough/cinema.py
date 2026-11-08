@@ -400,6 +400,7 @@ def camera(scene, rig, shot):
     a, b = shot.get('ease', [0, 0])
     n = shot['frames']
     focus = Vector(shot['focus'])*I
+    prev_yaw = None
     for j in range(n):
         f = shot['src_start']+j
         u = profile(j/(n-1), a, b)
@@ -410,6 +411,11 @@ def camera(scene, rig, shot):
         pos += Vector((math.sin(t*1.3+n)*.002, math.sin(t*.9+2*n)*.002, math.sin(t*1.7)*.0015))
         direction = look-pos
         yaw = math.atan2(direction.y, direction.x)
+        # atan2 wraps at +-pi; a camera looking along -x flips between +pi and -pi with the drift, and
+        # Euler interpolation then spins a full turn inside the motion-blur shutter. Keep yaw continuous.
+        if prev_yaw is not None:
+            yaw += 2*math.pi*round((prev_yaw-yaw)/(2*math.pi))
+        prev_yaw = yaw
         pitch = math.atan2(direction.z, math.hypot(direction.x, direction.y)) if shot.get('pitch') else 0
         cam.location = pos
         cam.rotation_euler = (math.pi/2+pitch, 0, yaw-math.pi/2)
@@ -490,7 +496,7 @@ def validate(scene, path):
     report = {'shots': [], 'failures': []}
     for shot in SPEC['shots']:
         cam = bpy.data.objects['Cinema / '+shot['id']]
-        prev, step, clearance = None, 0., 1e9
+        prev, step, clearance, prev_euler, euler_step = None, 0., 1e9, None, 0.
         for j in range(shot['frames']):
             f = shot['src_start']+j
             scene.frame_set(f)
@@ -498,6 +504,12 @@ def validate(scene, path):
             if prev is not None:
                 angle = math.degrees(prev.rotation_difference(rot).angle); step = max(step, min(angle, 360-angle))
             prev = rot
+            # The quaternion step can't see Euler wraps (+90 -> -270 deg is no rotation), but the keys
+            # are interpolated as Euler angles, so motion blur would spin through the wrap.
+            euler = cam.rotation_euler.copy()
+            if prev_euler is not None:
+                euler_step = max(euler_step, max(abs(math.degrees(euler[k]-prev_euler[k])) for k in range(3)))
+            prev_euler = euler
             for o in interior:
                 if o.hide_render:
                     continue
@@ -512,9 +524,12 @@ def validate(scene, path):
                 if pos.z < b['height_m'] and inside(pos.x, pos.y, b['footprint_m']):
                     report['failures'].append({'shot': shot['id'], 'frame': f, 'object': 'OSM building '+str(b['osm_id'])})
         report['shots'].append({'id': shot['id'], 'native_frames': [shot['src_start'], shot['src_start']+shot['frames']-1],
-                                'min_clearance_m': round(clearance, 4), 'max_rotation_step_deg': round(step, 4)})
+                                'min_clearance_m': round(clearance, 4), 'max_rotation_step_deg': round(step, 4),
+                                'max_euler_key_step_deg': round(euler_step, 4)})
         if step > 1.5:
             report['failures'].append({'shot': shot['id'], 'rotation_step_deg': step})
+        if euler_step > 1.5:
+            report['failures'].append({'shot': shot['id'], 'euler_key_step_deg': euler_step})
     report['blender'] = bpy.app.version_string
     report['cinema_spec_sha256'] = hashlib.sha256(SPEC_FILE.read_bytes()).hexdigest()
     report['cinema_source_sha256'] = scene['cinema_source_sha256']
