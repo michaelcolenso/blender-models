@@ -1,5 +1,9 @@
 # Blender version deltas: what makes 2.8x to 4.x tutorials misleading in 5.2.1 LTS
 
+> **Scope in this repo:** exploratory reference only. This repo's supported runtime is Blender 5.0.1 on Python 3.11
+> (`bpy==5.0.1`); see [docs/BLENDER_VERSION.md](../../../../docs/BLENDER_VERSION.md). Nothing below was re-tested against
+> this repo's code or CI, and it is not a reason to change a pin.
+
 Reference for condensing expert Blender tutorials (recorded on 2.80 to 4.2) into agent skills that
 drive **Blender 5.2.1 LTS** headless through `bpy`. Organized by domain. Each point reads "old
 tutorial says X -> in 5.2 do Y (bpy: ...)".
