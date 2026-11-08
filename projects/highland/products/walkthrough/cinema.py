@@ -23,6 +23,7 @@ ROOT = HERE.parents[3]
 sys.path.insert(0, str(HERE))
 import build_blender as B  # noqa: E402
 import cinema_assets as A  # noqa: E402
+import cinema_look as L  # noqa: E402
 
 SPEC_FILE = HERE / 'cinema.shots.json'
 SPEC = json.loads(SPEC_FILE.read_text())
@@ -50,7 +51,7 @@ def camera_hash():
 def source_hash():
     """Everything that shapes the prepared scene: builders, look code, flight spec and cameras."""
     parts = [camera_hash()]+[hashlib.sha256((HERE/f).read_bytes()).hexdigest()
-                             for f in ('cinema.py', 'cinema_assets.py', 'build_blender.py', 'archviz.py', 'flight.spec.json',
+                             for f in ('cinema.py', 'cinema_assets.py', 'cinema_look.py', 'build_blender.py', 'archviz.py', 'flight.spec.json',
                                        'assets/polyhaven-cinema.lock.json', '../../../../src/bmodels/polyhaven.py')]
     return hashlib.sha256('|'.join(parts).encode()).hexdigest()
 
@@ -104,29 +105,6 @@ def emission(mat, strength, color=None):
         b.inputs['Emission Color'].default_value = (*color, 1)
 
 
-def lit_windows(mat, strength, kelvin):
-    """Each lit apartment gets its own lamp colour and brightness (Object Info random -> blackbody),
-    brighter toward the ceiling, instead of one flat peach panel repeated across the facade."""
-    n, l = mat.node_tree.nodes, mat.node_tree.links
-    b = n.get('Principled BSDF')
-    info = n.new('ShaderNodeObjectInfo')
-    temp = n.new('ShaderNodeMapRange'); temp.inputs['To Min'].default_value, temp.inputs['To Max'].default_value = kelvin
-    l.new(info.outputs['Random'], temp.inputs['Value'])
-    body = n.new('ShaderNodeBlackbody'); l.new(temp.outputs['Result'], body.inputs['Temperature'])
-    l.new(body.outputs['Color'], b.inputs['Emission Color'])
-    # Brightness: 0.45-1.55x per unit, times a soft vertical falloff inside the recess.
-    level = n.new('ShaderNodeMapRange'); level.inputs['To Min'].default_value, level.inputs['To Max'].default_value = .45*strength, 1.55*strength
-    hue = n.new('ShaderNodeMath'); hue.operation = 'FRACT'
-    scaled = n.new('ShaderNodeMath'); scaled.operation = 'MULTIPLY'; scaled.inputs[1].default_value = 7.31
-    l.new(info.outputs['Random'], scaled.inputs[0]); l.new(scaled.outputs[0], hue.inputs[0]); l.new(hue.outputs[0], level.inputs['Value'])
-    coord = n.new('ShaderNodeTexCoord'); sep = n.new('ShaderNodeSeparateXYZ'); l.new(coord.outputs['Generated'], sep.inputs[0])
-    fall = n.new('ShaderNodeMapRange'); fall.inputs['To Min'].default_value, fall.inputs['To Max'].default_value = .6, 1.15
-    l.new(sep.outputs['Z'], fall.inputs['Value'])
-    gain = n.new('ShaderNodeMath'); gain.operation = 'MULTIPLY'
-    l.new(level.outputs['Result'], gain.inputs[0]); l.new(fall.outputs['Result'], gain.inputs[1])
-    l.new(gain.outputs[0], b.inputs['Emission Strength'])
-
-
 def soften_puddles(mat, coverage=.66, gloss=.14):
     """Damp street, not black ice: fewer puddles (polyhaven.pbr's mask starts at .57) and
     puddle roughness .14 instead of a .03 mirror."""
@@ -152,8 +130,7 @@ def dusk(scene):
     for o in scene.objects:
         if o.type == 'LIGHT' and o.data.type == 'SUN':
             o.data.energy = .06; o.data.color = (.55, .65, 1)
-    lit_windows(bpy.data.materials['Apartment warm interior'], 1.5, (2600, 4000))
-    lit_windows(bpy.data.materials['Apartment linen'], .4, (3000, 4000))
+    # Lit apartment colour, occupancy and blinds: cinema_look.windows().
     # Neighborhood massing gets a sparse grid of warm and cool windows so the
     # street reads as inhabited. Massing heights and windows remain illustrative.
     mat = bpy.data.materials['Neighborhood massing']
@@ -540,7 +517,9 @@ def prepare(base, output):
     M = {'wood': bpy.data.materials['Satin walnut doors'], 'trim': bpy.data.materials['Dark walnut frames'], 'led': bpy.data.materials['Warm LED diffuser']}
     slat_wall(scene, bpy.data.collections['Native interior / Lobby 110 and Corridors 108–208'], M)
     dress(scene, A.fetch())
-    dusk(scene); interior(scene); xray(scene); light_hygiene(scene)
+    dusk(scene); interior(scene); xray(scene)
+    L.apply(scene)  # film v2: blue hour, windows, bevels, section tiers (cinema_look.py)
+    light_hygiene(scene)
     cams = {s['id']: camera(scene, rig, s) for s in SPEC['shots']}
     c = scene.cycles
     c.use_adaptive_sampling = True; c.adaptive_threshold = .02; c.use_denoising = True
@@ -551,7 +530,6 @@ def prepare(base, output):
     # Keep BVH and textures between frames of one process: -25% per frame on the CPU proof profile.
     scene.render.use_persistent_data = True
     scene.render.image_settings.color_depth = '16'
-    scene.view_settings.look = 'AgX - Base Contrast'
     scene['cinema_spec_sha256'] = hashlib.sha256(SPEC_FILE.read_bytes()).hexdigest()
     scene['cinema_camera_sha256'] = camera_hash()
     scene['cinema_source_sha256'] = source_hash()
