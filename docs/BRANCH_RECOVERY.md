@@ -149,6 +149,11 @@ Triaged 2026-11-05 (owner decision):
 
 All four stay recoverable from their `archive/2026-11-03/` tags.
 
+## Later inventory
+
+[Branch and issue triage, 2026-11-08](branch-recovery/2026-11-08/branch-triage.md): inventory of all 33 non-main
+branches, the open PR and issues, with proposed (not executed) dispositions.
+
 ## Validation and future branch practice
 
 At the cleanup baseline, `uv run --no-sync bm check` passed all repository checks,
