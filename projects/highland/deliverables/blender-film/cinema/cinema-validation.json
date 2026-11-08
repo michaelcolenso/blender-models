@@ -1,0 +1,89 @@
+{
+  "shots": [
+    {
+      "id": "01-arrival",
+      "native_frames": [
+        1,
+        108
+      ],
+      "min_clearance_m": 25.2727,
+      "max_rotation_step_deg": 0.0
+    },
+    {
+      "id": "02-entry",
+      "native_frames": [
+        66,
+        137
+      ],
+      "min_clearance_m": 5.3477,
+      "max_rotation_step_deg": 0.0396
+    },
+    {
+      "id": "03-lobby",
+      "native_frames": [
+        150,
+        221
+      ],
+      "min_clearance_m": 0.4074,
+      "max_rotation_step_deg": 0.0
+    },
+    {
+      "id": "04-slats",
+      "native_frames": [
+        222,
+        275
+      ],
+      "min_clearance_m": 0.5822,
+      "max_rotation_step_deg": 0.0
+    },
+    {
+      "id": "05-corridor-108",
+      "native_frames": [
+        200,
+        271
+      ],
+      "min_clearance_m": 0.1816,
+      "max_rotation_step_deg": 0.0
+    },
+    {
+      "id": "06-elevator",
+      "native_frames": [
+        280,
+        351
+      ],
+      "min_clearance_m": 0.0776,
+      "max_rotation_step_deg": 0.0
+    },
+    {
+      "id": "07-section",
+      "native_frames": [
+        378,
+        449
+      ],
+      "min_clearance_m": 3.2953,
+      "max_rotation_step_deg": 0.2624
+    },
+    {
+      "id": "08-corridor-208",
+      "native_frames": [
+        470,
+        541
+      ],
+      "min_clearance_m": 0.7352,
+      "max_rotation_step_deg": 0.0
+    },
+    {
+      "id": "09-release",
+      "native_frames": [
+        1,
+        108
+      ],
+      "min_clearance_m": 16.7826,
+      "max_rotation_step_deg": 0.0685
+    }
+  ],
+  "failures": [],
+  "blender": "5.0.1",
+  "cinema_spec_sha256": "1d4230549d846964d0a5a3b2077e7d377489e90f375ff8ea4b3617e520a304be",
+  "cinema_source_sha256": "55d9878baf2aa10b93bdcf79f29aadb5212c78ee7e3882a251959738ff0c3365"
+}

@@ -1,0 +1,19 @@
+{
+  "repository": "michaelcolenso/blender-models",
+  "tag": "highland-cinema-1080p-2026-11-08",
+  "storage": "release",
+  "assets": [
+    {
+      "name": "Highland-cinema-1080p.mp4",
+      "bytes": 42859798,
+      "sha256": "61c0d5f131a855b8e22ff1e7a8b796d62109c39084a278dcc40895815895d594",
+      "dest": "../../deliverables/blender-film/cinema/Highland-cinema-1080p.mp4"
+    },
+    {
+      "name": "Highland-cinema-section.gif",
+      "bytes": 4837264,
+      "sha256": "f94573c8712586bcd1a52afdacc4f642a4872d7f14d2dda27c6e6b1a9b0dd4f2",
+      "dest": "../../deliverables/blender-film/cinema/Highland-cinema-section.gif"
+    }
+  ]
+}
