@@ -18,7 +18,7 @@ camera looks. The edit follows the archviz film skill
 | 06 | Elevator | 15.75–18.75 s | 280–351 | 26 mm | Symmetrical landing-door reveal |
 | 07 | Section | 18.75–21.75 s | 378–449 | 35 mm | X-ray R1 to R2 rise with live datum readout |
 | 08 | Corridor 208 | 21.75–24.75 s | 470–541 | 24 mm | Push toward Stair M1 |
-| 09 | Release | 24.75–29.25 s | 1–108 | 24 mm, shifted | Back outside: slow pull-back from the entry to the lit dusk facade, fade to the end card |
+| 09 | Release | 24.75–29.25 s | 1–108 | 24 mm, shifted | Back outside from the roof: a level descent from just above the roof, down the lit east facade to the street-level wide, fade to the end card |
 
 Every camera is level and lens-shifted, so verticals stay vertical. The
 exception is the section shot, which looks down at the cut building. Lenses stay
@@ -26,7 +26,7 @@ at 24–35 mm, except the 50 mm detail insert. Shot lengths are whole beats at
 80 BPM, and the score's chord changes land on the cuts. The film no longer ends in
 a corridor: shot 09 returns outside (compression and release). Native frames 1–146
 are the only ones with the exterior shown, so shot 09 reuses the arrival's frames;
-the entry doors begin to swing open from its frame 66, small in the wide view.
+the entry doors begin to swing open from its frame 66, small in the wide view. Shot 09 starts about 5 ft above the roof plate, east of the street facade, and descends 55 ft to eye height while pulling back. The camera stays level and lens-shifted the whole way (no pitch-down dive), and it shows only modelled geometry: the roof, penthouses and facade from the exterior study, with no terrace staging. It is a drone-speed move, about 4 m/s on average with eased start and landing, faster than the interior sliders by design.
 The skill asks for a sunlit release; this film is set at dusk, so the release is open
 sky and the warmly lit facade, not sun. The street in front of the east facade is
 only about 25 m wide (OSM massing across it starts at x = 2456 in), so the 24 mm
