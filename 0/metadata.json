@@ -1,0 +1,107 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6YNDRM2BWDA5YAX7V16FCMX",
+  "session_id": "3d466ff5-c737-43e3-9b70-a1fdb8cdc26b",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-08T22:45:53.097483015Z",
+  "branch": "highland/cinema-preview-release",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "projects/highland/deliverables/blender-film/cinema/README.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "dec2a825c78e",
+  "checkpoint_transcript_start": 633,
+  "transcript_lines_at_start": 633,
+  "compact_transcript_start": 66,
+  "token_usage": {
+    "input_tokens": 34,
+    "cache_creation_tokens": 225341,
+    "cache_read_tokens": 3328445,
+    "output_tokens": 10155,
+    "api_call_count": 15
+  },
+  "redaction": {
+    "replacements": 0,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 0,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01MXYP6Jg9dd8kpp7cWCdhQq",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "archviz-film-upgrade"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "a0e2ecded160",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 40,
+        "end": 41,
+        "entry_ids": [
+          "f28bc8e0-a06a-41f4-b749-0d6e258765f7"
+        ],
+        "tool_use_id": "toolu_01MXYP6Jg9dd8kpp7cWCdhQq"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01MXYP6Jg9dd8kpp7cWCdhQq"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: archviz-film-upgrade",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "claude-skill-toolu_01Lihr2zmsYT7gkczLpGZgkP",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "ship-deliverable"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "dec2a825c78e",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 646,
+        "end": 647,
+        "entry_ids": [
+          "48609bd0-9c30-47d6-9a53-9ba021c9a5e7"
+        ],
+        "tool_use_id": "toolu_01Lihr2zmsYT7gkczLpGZgkP"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01Lihr2zmsYT7gkczLpGZgkP"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: ship-deliverable",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 5
+  }
+}
