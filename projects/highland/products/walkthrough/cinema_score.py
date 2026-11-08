@@ -1,8 +1,10 @@
 """Original score and sound design for the Highland cinematic film.
 
 Everything is synthesized here with NumPy, so no licensed music or sample
-library is involved. Chords change on the picture cuts and effects land on the
-native door, chime and elevator events, all derived from cinema.shots.json.
+library is involved. Felt-piano chords and a pad change on the picture cuts (film v2
+dropped the arpeggio). Ambience follows the story: street air and wind outside, a warm
+room tone inside, faint footsteps on stone then carpet, and effects land on the native
+door, chime and elevator events, all derived from cinema.shots.json.
 """
 import json
 import wave
@@ -113,7 +115,7 @@ def reverb(x, seconds=2.8, wet=.32):
     return x*(1-wet)+out*wet*2.2
 
 
-# Chord voicings in MIDI: bass, pad, arpeggio.
+# Chord voicings in MIDI: bass, pad, top voice (melody note).
 CHORDS = {
     'Dmaj9': (38, (50, 57, 61, 64, 66), (62, 66, 69, 73, 76)),
     'Bm9': (35, (47, 54, 57, 62, 64), (59, 62, 66, 69, 73)),
@@ -127,88 +129,116 @@ CHORDS = {
 HARMONY = {'01-arrival': 'Dmaj9', '02-entry': 'Bm9', '03-lobby': 'Bm9', '04-slats': 'Gmaj7#11',
            '05-corridor-108': 'Gmaj7#11', '06-elevator': 'Asus', '07-section': 'D/F#', '08-corridor-208': 'Gmaj9',
            '09-release': 'Dmaj9'}  # back outside: home chord, then A and the end-card resolution
-# Eighth-note arpeggio pattern (index into the chord, or None) and velocity.
-PATTERN = [(0, .55), (None, 0), (2, .38), (1, .32), (None, 0), (3, .36), (2, .3), (None, 0)]
+def gusts(dur, rate=.35, depth=.6):
+    """Slow random amplitude envelope (wind gusts), 0..1."""
+    n = int(dur*SR); k = max(4, int(dur*rate)+3)
+    pts = RNG.uniform(1-depth, 1, k)
+    return np.interp(np.linspace(0, k-1, n), np.arange(k), pts)
+
+
+def step(tile=True, vel=1.):
+    """One soft footstep: heel thump plus, on tile, a short bright scuff."""
+    d = .16; t = np.arange(int(d*SR))/SR
+    body = shape(noise(d), 60, 260)*np.exp(-t/.025)*.5
+    if tile:
+        body += shape(noise(d), 1500, 5000)*np.exp(-t/.008)*.25
+    else:  # carpet: duller and quieter
+        body = shape(body, None, 500)*.6
+    return body*vel
 
 
 def synthesize(path):
     cuts, picture = timeline()
     total = picture+END_CARD+TAIL
+    start_of = {sid: start for sid, start, _ in cuts}
     music = np.zeros((int(total*SR), 2)); fx = np.zeros_like(music); bed = np.zeros_like(music)
-    beat = 60/SPEC['tempo_bpm']
     sections = [(start, HARMONY[sid]) for sid, start, _ in cuts]
-    # Last bars of the corridor turn to A, resolving to D on the end card.
+    # Last bars of the release turn to A, resolving to D on the end card.
     sections.append((picture-1.5, 'A')); sections.append((picture, 'Dmaj9'))
+    # Music: felt-piano chords rolled once per cut over a soft pad. No arpeggio.
     for j, (start, name) in enumerate(sections):
         end = sections[j+1][0] if j+1 < len(sections) else total-TAIL
-        bass, voicing, arp = CHORDS[name]
+        bass, voicing, top = CHORDS[name]
         hero = name == 'D/F#'
-        bed_pad = pad(voicing, end-start+1.8, .045 if hero else .032)
-        air = pad([n+24 for n in voicing[2:]], end-start+1.8, .012 if hero else .007)
+        bed_pad = pad(voicing, end-start+1.8, .036 if hero else .026)
+        air = pad([n+24 for n in voicing[2:]], end-start+1.8, .009 if hero else .005)
         for ch, side in ((0, 0), (1, 1)):
             place(music, max(0, start-.6), bed_pad[:, ch]+air[:, ch], side)
         t = np.arange(int((end-start+2.5)*SR))/SR
-        sub = np.sin(2*np.pi*midi(bass+12)*t)*.055+np.sin(2*np.pi*midi(bass+24)*t)*.015
-        sub *= np.minimum(np.minimum(t/.5, 1), np.clip((end-start+1.2-t)/1.2, 0, 1))
-        place(music, start, sub*(1.4 if hero else 1), .5)
-        # Felt-piano arpeggio; the opening and end card stay sparse.
-        step, k = beat/2, 0
-        while start+k*step < end-.1:
-            idx, vel = PATTERN[k % len(PATTERN)]
-            when = start+k*step
-            if idx is not None and not (start == 0 and when < 1.5) and when < picture+1.5:
-                note = arp[idx]+(12 if hero and idx > 2 else 0)
-                place(music, when+RNG.normal(0, .006), felt_piano(midi(note), vel=vel*(1.15 if hero else 1)), .3+.1*idx, 1)
-            k += 1
-        # A melody note marks each chord change.
-        place(music, start+.02, felt_piano(midi(arp[-1]), 6., .62), .62)
-    # Final resolution: low D and a high shimmer on the end card.
-    place(music, picture, felt_piano(midi(50), 7., .7), .45); place(music, picture+.37, felt_piano(midi(74), 7., .45), .6)
-    place(music, picture+.75, felt_piano(midi(81), 7., .35), .7)
+        sub = np.sin(2*np.pi*midi(bass+12)*t)*.045
+        sub *= np.minimum(np.minimum(t/.8, 1), np.clip((end-start+1.2-t)/1.2, 0, 1))
+        place(music, start, sub, .5)
+        if start < picture-1.6:  # the turn to A and the end card get their own resolution below
+            for k, note in enumerate((bass+12,)+voicing[1:4]):
+                place(music, start+.05+k*.045+RNG.normal(0, .004), felt_piano(midi(note), 5.5, .34), .35+.1*k)
+            # One melody note per cut, an octave up for the section reveal.
+            place(music, start+.6, felt_piano(midi(top[-1]+(12 if hero else 0)), 5., .4), .62)
+    # Final resolution on the end card: low D, the chord and a high shimmer, fading out cleanly.
+    res = picture
+    for k, note in enumerate((38, 50, 57, 62, 66, 69)):
+        place(music, res+k*.06, felt_piano(midi(note), 7., .55 if k < 2 else .4), .4+.05*k)
+    place(music, res+.9, felt_piano(midi(81), 6., .3), .7)
     music = reverb(music, 3.2, .38)
     # Decorrelated reverb tails differ slightly in level; recentre the music bus.
     music *= np.sqrt(np.mean(music**2))/np.sqrt(np.mean(music**2, 0))
 
-    exterior_end = next(start for sid, start, _ in cuts if sid == '03-lobby')
-    # Dusk street air: distant traffic rumble and two passing cars.
-    t = np.arange(int((exterior_end+1)*SR))/SR
-    rumble = shape(noise(exterior_end+1), 40, 400)*np.minimum(t/1.5, 1)*np.clip((exterior_end+.6-t)/.6, 0, 1)*.05
-    place(bed, 0, rumble, .45)
-    for when, pan in ((1.2, .2), (3.4, .85)):
-        tt = np.arange(int(2.6*SR))/SR
-        place(bed, when, shape(noise(2.6), 300, 2500)*np.sin(np.pi*tt/2.6)**3*.035, pan)
-    # Interior air handling: a quiet room tone with a faint 120 Hz component.
-    t = np.arange(int((picture-exterior_end+1)*SR))/SR
-    room = (shape(noise(len(t)/SR), 60, 800)*.014+np.sin(2*np.pi*120*t)*.0035)*np.minimum(t/.4, 1)
-    place(bed, exterior_end, room, .5)
-
-    # Entry door swing, landing chime, door slide, elevator run and arrival ding.
+    # Ambience beds, cross-faded on the story beats (times come from the cut list).
+    lobby = start_of['03-lobby']; corridor = start_of['05-corridor-108']
+    elevator = start_of['06-elevator']; section = start_of['07-section']; upper = start_of['08-corridor-208']
+    release = start_of['09-release']
     door = film_time(97, '02-entry')
+
+    def env(t, pts):
+        return np.interp(t, [p[0] for p in pts], [p[1] for p in pts])
+    t = np.arange(len(bed))/SR
+    # Exterior: urban room tone, distant traffic hum and wind in the trees (wide, decorrelated).
+    street = np.stack([shape(noise(total), 70, 900)*.020+shape(noise(total), 35, 160)*.030 for _ in range(2)], 1)
+    wind = np.stack([shape(noise(total), 900, 5200)*gusts(total)*.012 for _ in range(2)], 1)
+    outside = street+wind
+    # As the door opens the outside air dulls (low-passed copy) before the cut to the lobby.
+    muffled = shape(outside, None, 450)
+    out_gain = env(t, [(0, 0), (1.5, 1), (door, 1), (lobby, .25), (lobby+1, 0), (release-1, 0), (release+1.2, 1),
+                       (picture+1, 1), (total, 0)])
+    dull = env(t, [(0, 0), (door, 0), (lobby, 1), (release, 0)])[:, None]
+    bed += (outside*(1-dull)+muffled*dull)*out_gain[:, None]
+    for when, pan in ((1.2, .2), (3.4, .85), (release+1.5, .7)):
+        tt = np.arange(int(2.6*SR))/SR
+        place(bed, when, shape(noise(2.6), 300, 2500)*np.sin(np.pi*tt/2.6)**3*.03, pan)
+    # Interior: warm, low air-handling tone; corridor 208 is quieter and slightly darker.
+    room = np.stack([shape(noise(total), 45, 420)*.016 for _ in range(2)], 1)
+    room += (np.sin(2*np.pi*118*t)*.0025)[:, None]
+    in_gain = env(t, [(0, 0), (door, 0), (lobby, 1), (section-.4, 1), (section, .35), (upper, .35), (upper+.4, .75),
+                      (release-.6, .75), (release+.8, 0)])
+    bed += room*in_gain[:, None]
+
+    # Entry: latch release, then the glass door's pivot swing.
+    place(fx, door-.18, shape(noise(.05), 1800, 7000)*np.exp(-np.arange(int(.05*SR))/SR/.006)*.10, .5)
     tt = np.arange(int(1.4*SR))/SR
-    place(fx, door, shape(noise(1.4), 200, 1800)*np.sin(np.pi*np.minimum(tt/1.4, 1))**2*.05, .5)
-    place(fx, door+1.25, shape(noise(.08), 1500, 6000)*np.exp(-np.arange(int(.08*SR))/SR/.01)*.12, .5)
+    place(fx, door, shape(noise(1.4), 200, 1800)*np.sin(np.pi*np.minimum(tt/1.4, 1))**2*.045, .5)
+    place(fx, door+1.25, shape(noise(.08), 1500, 6000)*np.exp(-np.arange(int(.08*SR))/SR/.01)*.10, .5)
+    # Very faint footsteps: stone in the lobby, carpet from Corridor 108 to the elevator landing.
+    when, k = lobby+.4, 0
+    while when < elevator-.3:
+        place(fx, when+RNG.normal(0, .015), step(when < corridor, .5 if when < corridor else .4), .44 if k % 2 else .56)
+        when += .62; k += 1
+    # Elevator M1: arrival chime, then the brushed-metal door slide.
     chime = film_time(289, '06-elevator')
-    place(fx, chime-.25, bell(midi(88), vel=.55), .45); place(fx, chime+.12, bell(midi(84), vel=.5), .55)
+    place(fx, chime-.25, bell(midi(88), vel=.5), .45); place(fx, chime+.12, bell(midi(84), vel=.45), .55)
     tt = np.arange(int(1.2*SR))/SR
-    place(fx, chime+.05, shape(noise(1.2), 80, 700)*np.sin(np.pi*tt/1.2)*.06, .5)
-    section = next(start for sid, start, _ in cuts if sid == '07-section')
+    slide = shape(noise(1.2), 80, 700)*.05+shape(noise(1.2), 2500, 7000)*.008
+    place(fx, chime+.05, slide*np.sin(np.pi*tt/1.2), .5)
+    # Section rise: a clean low traction hum whose pitch climbs with the cab, R1 to R2.
     rise = film_time(385, '07-section'); stop = film_time(428, '07-section')
-    tt = np.arange(int((stop-rise+.6)*SR))/SR
-    hum = (np.sin(2*np.pi*55*tt)*.03+shape(noise(len(tt)/SR), 40, 300)*.03)*np.minimum(tt/.4, 1)*np.clip((stop-rise+.6-tt)/.5, 0, 1)
+    d = stop-rise+.6; tt = np.arange(int(d*SR))/SR
+    f = 46+20*np.clip(tt/(stop-rise), 0, 1)**1.3
+    phase = 2*np.pi*np.cumsum(f)/SR
+    hum = np.sin(phase)*.028+np.sin(2*phase)*.008+shape(noise(d), 40, 260)*.012
+    hum *= np.minimum(tt/.4, 1)*np.clip((d-tt)/.5, 0, 1)
     place(fx, rise, hum, .5)
-    place(fx, film_time(426, '07-section'), bell(midi(88), vel=.42), .55)
-    # Riser into the section cut and a soft low impact on it.
-    rlen = 2.2; tt = np.arange(int(rlen*SR))/SR
-    swell = np.zeros_like(tt)
-    for j in range(8):
-        a, b = j/8*rlen, (j+1)/8*rlen
-        seg = (tt >= a) & (tt < b)
-        swell[seg] = shape(noise(rlen), 300+j*500, 900+j*1100)[seg]
-    swell *= (tt/rlen)**2.5*.11
-    place(fx, section-rlen, swell, .5)
-    tt = np.arange(int(3.5*SR))/SR
-    boom = np.sin(2*np.pi*(42+18*np.exp(-tt*8))*tt)*np.exp(-tt*1.4)*.22+shape(noise(3.5), 30, 220)*np.exp(-tt*3)*.08
-    place(fx, section, boom, .5)
+    place(fx, film_time(426, '07-section'), bell(midi(88), vel=.38), .55)
+    # A soft swell into the section cut; no impact hit.
+    rlen = 1.6; tt = np.arange(int(rlen*SR))/SR
+    place(fx, section-rlen, shape(noise(rlen), 300, 3000)*(tt/rlen)**2.5*np.clip((rlen-tt)/.15, 0, 1)*.05, .5)
     fx = reverb(fx, 2.2, .25)
 
     mix = music+fx+bed
@@ -222,7 +252,8 @@ def synthesize(path):
     with wave.open(str(path), 'wb') as out:
         out.setnchannels(2); out.setsampwidth(2); out.setframerate(SR); out.writeframes(pcm.tobytes())
     return {'duration_s': round(len(mix)/SR, 3), 'sample_rate': SR, 'cuts_s': [(sid, round(s, 3)) for sid, s, _ in cuts],
-            'events_s': {'entry_door': round(door, 3), 'landing_chime': round(chime, 3), 'cab_rise': [round(rise, 3), round(stop, 3)], 'section_impact': round(section, 3)}}
+            'events_s': {'entry_door': round(door, 3), 'landing_chime': round(chime, 3), 'cab_rise': [round(rise, 3), round(stop, 3)], 'section': round(section, 3),
+                          'footsteps_carpet_from': round(corridor, 3), 'release': round(release, 3)}}
 
 
 if __name__ == '__main__':

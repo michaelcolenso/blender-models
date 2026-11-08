@@ -47,8 +47,8 @@ Review pass (2026-11-08), each change checked on proof frames before and after:
   0.06 → 0.16 on about a tenth of the surface instead of half), so the street reads damp, not iced.
 - OSM massing: dimmer window grid (gain 0.3 → 0.12) and a distance haze (`Camera Data` view distance,
   25–220 m), so the approximate neighbors read as a soft skyline instead of dark boxes.
-- Lit apartments: each recess gets its own lamp colour (blackbody 2600–4000 K) and brightness (0.45–1.55×),
-  brighter toward the ceiling, instead of one flat peach panel repeated.
+- Lit apartments: each recess gets its own lamp colour and brightness, brighter toward the ceiling, instead of one
+  flat peach panel repeated. Film v2 (`cinema_look.windows`) carries this further: 2500–3800 K, occupancy and blinds.
 - Floor-projected wayfinding labels ("CORRIDOR 108", "LOBBY 110") are hidden in the film; the chapter
   titles carry the room names. They stay in the native walkthrough.
 - X-ray section: the residence and stair doors and their jambs ghost with the walls, and their levers hide,
@@ -66,6 +66,16 @@ Review pass (2026-11-08), each change checked on proof frames before and after:
 
   It saves `Highland-cinema.blend`, renders frames per shot (resumable) and validates
   camera clearance and smoothness at every film frame.
+- `cinema_look.py`: the film v2 look, called from `cinema.py` after its dusk, interior and x-ray passes. Each part
+  has a CONFIG dict and copies a material to `<name> / v1 backup` before changing it:
+  - blue hour: the camera sees a graded blue-hour sky, while the tinted HDRI keeps lighting the scene
+    (Light Path > Is Camera Ray); 2900 K street lamps with downward pools; a thin atmosphere over the street;
+  - lit windows: per-window colour (2500–3800 K), occupancy (about 28% off) and lowered blinds, with matching curtains;
+  - interior: micro-bevels (under the bump, so wood grain survives) and slight roughness variation (not on metals,
+    where it smeared reflections); entry glass at IOR 1.52 with a green-blue edge tint;
+  - section: gold slab and shaft lines, faint bronze partition lines, a light fill on ghosted floors and ceilings.
+
+  AgX glow, lens fringing and grain stay in `cinema_finish.py`, so they run once.
 - `cinema_assets.py` and `assets/polyhaven-cinema.lock.json`: Poly Haven CC0 assets, locked
   by URL, size and MD5 and downloaded into `build/assets/polyhaven` (about 190 MB, not committed):
   - walnut veneer (doors, frames, slats, cab), plaster relief (walls, ceilings);
@@ -73,7 +83,9 @@ Review pass (2026-11-08), each change checked on proof frames before and after:
   - street trees, lobby plants, two lounge chairs and a side table, post-top street lamps, a hydrant.
 
   Textures are box-projected at their real-world size, so the procedural boxes need no UVs.
-- `cinema_score.py`: original NumPy score and sound design. The chords follow the cuts.
+- `cinema_score.py`: original NumPy score and sound design. Felt-piano chords and a pad follow the cuts (no arpeggio
+  since film v2); street air and wind outside, a warm room tone inside, faint footsteps on stone then carpet, a hum
+  that rises in pitch with the cab, and a resolving chord on the end card.
   The door swing, landing chime, cab run and arrival ding come from native scene frames.
 - `cinema_finish.py`: Lanczos upscale (when needed), halation, S-curve, split-tone,
   lens aberration, vignette, grain, scope letterbox, titles, chapter labels,
@@ -117,7 +129,7 @@ The floor datums (R1 353.00 / R2 363.25 ft) and the circulation rectangles come
 from the sources listed in `README.md`. Everything else seen in this film is a
 presentation treatment and must not be read as documented:
 
-- the dusk lighting, wet pavement, street lights and lit windows (including their lamp colours);
+- the dusk lighting, wet pavement, street lights, street atmosphere and lit windows (including their lamp colours, occupancy and blinds);
 - the walnut slat wall and all other finishes, furnishings, hardware and planting;
 - the street trees, street lamps and hydrant, which keep the study's tree positions but not its species;
 - the elevator car, its door timing and the x-ray section;
