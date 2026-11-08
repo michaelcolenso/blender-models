@@ -39,6 +39,21 @@ Filler area, point and spot lights are hidden from camera and glossy rays
 or wet paving; the fixtures still reflect through their emissive meshes. The scene
 keeps persistent data between frames of one render process.
 
+Review pass (2026-11-08), each change checked on proof frames before and after:
+
+- Exterior: a brighter blue-hour sky (world strength 0.55 → 0.85) so the brick and mullions keep detail.
+  Fewer, rougher puddles on the street, paving and site (`soften_puddles` for the scanned surfaces: mask
+  threshold 0.57 → 0.66, puddle roughness 0.03 → 0.14; `dusk` for the plain ones: puddle roughness
+  0.06 → 0.16 on about a tenth of the surface instead of half), so the street reads damp, not iced.
+- OSM massing: dimmer window grid (gain 0.3 → 0.12) and a distance haze (`Camera Data` view distance,
+  25–220 m), so the approximate neighbors read as a soft skyline instead of dark boxes.
+- Lit apartments: each recess gets its own lamp colour (blackbody 2600–4000 K) and brightness (0.45–1.55×),
+  brighter toward the ceiling, instead of one flat peach panel repeated.
+- Floor-projected wayfinding labels ("CORRIDOR 108", "LOBBY 110") are hidden in the film; the chapter
+  titles carry the room names. They stay in the native walkthrough.
+- X-ray section: the residence and stair doors and their jambs ghost with the walls, and their levers hide,
+  instead of floating as solid walnut panels in the void.
+
 ## Files
 
 - `cinema.shots.json`: the edit. Camera keys use plan inches in the exterior study's
@@ -102,7 +117,7 @@ The floor datums (R1 353.00 / R2 363.25 ft) and the circulation rectangles come
 from the sources listed in `README.md`. Everything else seen in this film is a
 presentation treatment and must not be read as documented:
 
-- the dusk lighting, wet pavement, street lights and lit windows;
+- the dusk lighting, wet pavement, street lights and lit windows (including their lamp colours);
 - the walnut slat wall and all other finishes, furnishings, hardware and planting;
 - the street trees, street lamps and hydrant, which keep the study's tree positions but not its species;
 - the elevator car, its door timing and the x-ray section;
