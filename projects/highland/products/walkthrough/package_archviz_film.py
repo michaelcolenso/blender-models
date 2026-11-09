@@ -58,7 +58,7 @@ def main():
 
 ![Full upgraded walkthrough preview](Highland-Blender-preview.gif)
 
-[Watch the full MP4](Highland-Blender-walkthrough.mp4?raw=true) · [Download the matching Blender scene](Highland-walkthrough.blend?raw=true) · [Phone gallery and comparisons](../archviz/README.md)
+[Watch the full MP4](Highland-Blender-walkthrough.mp4?raw=true) · [Download the matching Blender scene](Highland-walkthrough.blend?raw=true) · [Phone gallery and comparisons](../archviz/README.md) · [Cinematic owner film](cinema/README.md)
 
 The complete 26-second walkthrough is rendered in native Blender Cycles at **540 × 960, 24 fps**, with denoising, AgX, subtle bloom, captions, location map and stereo AAC sound. The GIF above previews the entire tour at 8 fps without audio; use the MP4 for full motion and sound.
 

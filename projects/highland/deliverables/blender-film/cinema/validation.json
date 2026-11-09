@@ -1,0 +1,175 @@
+{
+  "film": "200 W. Highland / cinematic owner film",
+  "videos": [
+    {
+      "video": "Highland-cinema-1080p.mp4",
+      "size": [
+        1920,
+        1080
+      ],
+      "bytes": 42859798,
+      "sha256": "61c0d5f131a855b8e22ff1e7a8b796d62109c39084a278dcc40895815895d594",
+      "loudness_lufs": -15.9,
+      "true_peak_dbfs": -4.8
+    }
+  ],
+  "frames": 792,
+  "fps": 24,
+  "duration_s": 33.0,
+  "master": "1920x1080",
+  "picture": "1920x804 (2.39:1)",
+  "render_profile": "final",
+  "native_render_size": [
+    1920,
+    804
+  ],
+  "upscaled_to_picture": false,
+  "rendered_frames": 702,
+  "shots": [
+    {
+      "id": "01-arrival",
+      "film_start_s": 0.0,
+      "frames": 108,
+      "native_scene_frames": [
+        1,
+        108
+      ]
+    },
+    {
+      "id": "02-entry",
+      "film_start_s": 4.5,
+      "frames": 72,
+      "native_scene_frames": [
+        66,
+        137
+      ]
+    },
+    {
+      "id": "03-lobby",
+      "film_start_s": 7.5,
+      "frames": 72,
+      "native_scene_frames": [
+        150,
+        221
+      ]
+    },
+    {
+      "id": "04-slats",
+      "film_start_s": 10.5,
+      "frames": 54,
+      "native_scene_frames": [
+        222,
+        275
+      ]
+    },
+    {
+      "id": "05-corridor-108",
+      "film_start_s": 12.75,
+      "frames": 72,
+      "native_scene_frames": [
+        200,
+        271
+      ]
+    },
+    {
+      "id": "06-elevator",
+      "film_start_s": 15.75,
+      "frames": 72,
+      "native_scene_frames": [
+        280,
+        351
+      ]
+    },
+    {
+      "id": "07-section",
+      "film_start_s": 18.75,
+      "frames": 72,
+      "native_scene_frames": [
+        378,
+        449
+      ]
+    },
+    {
+      "id": "08-corridor-208",
+      "film_start_s": 21.75,
+      "frames": 72,
+      "native_scene_frames": [
+        470,
+        541
+      ]
+    },
+    {
+      "id": "09-release",
+      "film_start_s": 24.75,
+      "frames": 108,
+      "native_scene_frames": [
+        1,
+        108
+      ]
+    }
+  ],
+  "score": {
+    "duration_s": 33.0,
+    "sample_rate": 48000,
+    "cuts_s": [
+      [
+        "01-arrival",
+        0.0
+      ],
+      [
+        "02-entry",
+        4.5
+      ],
+      [
+        "03-lobby",
+        7.5
+      ],
+      [
+        "04-slats",
+        10.5
+      ],
+      [
+        "05-corridor-108",
+        12.75
+      ],
+      [
+        "06-elevator",
+        15.75
+      ],
+      [
+        "07-section",
+        18.75
+      ],
+      [
+        "08-corridor-208",
+        21.75
+      ],
+      [
+        "09-release",
+        24.75
+      ]
+    ],
+    "events_s": {
+      "entry_door": 5.792,
+      "landing_chime": 16.125,
+      "cab_rise": [
+        19.042,
+        20.833
+      ],
+      "section_impact": 18.75
+    }
+  },
+  "checks": {
+    "Highland-cinema-1080p:frames": true,
+    "Highland-cinema-1080p:size": true,
+    "Highland-cinema-1080p:codec": true,
+    "Highland-cinema-1080p:fps": true,
+    "Highland-cinema-1080p:audio": true,
+    "Highland-cinema-1080p:duration": true,
+    "Highland-cinema-1080p:loudness": true,
+    "Highland-cinema-1080p:true_peak": true,
+    "no_blank_shots": true
+  },
+  "shots_spec_sha256": "1d4230549d846964d0a5a3b2077e7d377489e90f375ff8ea4b3617e520a304be",
+  "finish_sha256": "e0c1b1bc3f0aa6fc9200434e61cb23c2a921df6bfcf16ec40e01b3d8bc26bec4"
+}
