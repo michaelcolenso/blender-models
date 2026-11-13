@@ -72,6 +72,7 @@ Meydenbauer [bid model, realism views and 4D films](projects/meydenbauer-b/deliv
 | `bm check [--staged \| --base REF]` · `bm check-products` | repo checks · every product's `check` step |
 | `bm publish <site>/<product> <files…>` · `bm assets pull\|verify <manifest>` | large outputs to/from GitHub Releases |
 | `bm calibrate`, `extract`, `overlay`, `detail-overlay` | drawing intake (see the runbook) |
+| `bm route-qa <routes.csv> [--fittings …] [--pdf …]` | check a pipe-route table and draw the sign-off board over its plan sheet |
 | `bm render`, `render-plan`, `animate-house`, `animate-sequence`, `room`, `skp`, `usdz`, `audit-blends` | renders, sequences, exports, scene audit |
 
 ## Large files
