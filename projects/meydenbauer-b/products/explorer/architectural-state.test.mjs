@@ -45,7 +45,7 @@ test('walls, window panes and closed doors block navigation',()=>{
 });
 
 test('swept movement does not tunnel through walls; movement slides along walls',()=>{
-  const thick={ring_ft:[[1,-2],[2,-2],[2,2],[1,2]],holes_ft:[]};
+  const thick={ring_ft:[[1,-10],[2,-10],[2,10],[1,10]],holes_ft:[]};
   const wallset={walls:[thick],openings:[]}, bounds={minX:-10,maxX:10,minZ:-10,maxZ:10};
   const stopped=resolveShellMovement({x:0,z:0},{x:3,z:0},bounds,wallset);
   assert.ok(stopped.x<FT_M,JSON.stringify(stopped));
