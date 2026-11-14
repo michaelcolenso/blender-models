@@ -10,8 +10,8 @@
     bm assets pull|verify|push <manifest> ...  release assets with checksums
     bm publish <site>/<product> <file ...>     upload outputs to the product's GitHub Release
     bm check [--staged | --base REF]           specs, metadata, large files, links, tests
-    bm <tool> [args]                           calibrate, extract, overlay, detail-overlay, render,
-                                               render-plan, animate-house, animate-sequence,
+    bm <tool> [args]                           calibrate, extract, overlay, detail-overlay, route-qa,
+                                               render, render-plan, animate-house, animate-sequence,
                                                room, skp, usdz, audit-blends
 
 Run through uv: `uv run bm …`. Nothing here imports bpy; Blender work runs in a subprocess.
@@ -33,6 +33,7 @@ TOOLS = {  # bm <name> -> python -m bmodels.<module>
     "extract": "extract_plan",
     "overlay": "overlay",
     "detail-overlay": "detail_overlay",
+    "route-qa": "route_qa",
     "render": "render_scene",
     "render-plan": "render_plan",
     "animate-house": "animate_house",

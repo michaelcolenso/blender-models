@@ -187,6 +187,29 @@ The Trimble SketchUp connector is available to Claude in chat, **not in CI**, an
    layers; the scene tabs switch Existing/Proposed.
 Limits: solid colors only (no textures), no booleans (openings by construction), 30-min idle session timeout.
 
+## Route QA board (pipe routes, before any 3D or film work)
+
+For route-driven models (repipes, under-slab waste): check the route-control table and draw it over its plan
+sheet so the routes can be reviewed and signed off before a model or film is built from them.
+
+```bash
+uv run bm route-qa <routes.csv> --fittings <fittings.csv> --out build/<site>/route-qa/<name> \
+  --pdf $PDF --page <plan page> --control "<x_ft>,<y_ft>=<page_x_pt>,<page_y_pt>" ...   # 4 or more controls
+uv run bm route-qa <routes.csv> --x-dir down --y-dir left --focus x0,y0,x1,y1 --out ...   # no sheet: blank grid
+```
+Routes CSV: `system, role, point_seq`, an `x_ft*` and a `y_ft*` column, optionally `unit, parent_role, nominal_in,
+scope_status`. Fittings CSV: `id`, `x_ft*`, `y_ft*`, optionally `component, demo_status`. Control points pair a plan
+coordinate with its position on the sheet in PDF points (grid intersections or dimension-string ticks from
+`bm calibrate`), never the title-block scale.
+
+**Expected:** `**PASS** — n/n checks` and `<name>.png` / `<name>.json`. Checks: sequence, status, connectivity
+(a route with a `parent_role` ends on its parent), duplicates (no pipe modelled twice), fittings on a route,
+registration residual. **Then look at the board:** every route should sit on the sheet's linework. The ink-agreement
+percentage is evidence, not proof.
+**If it fails:** fix the table, not the tolerance. Three controls fit exactly and prove nothing (WARN): add a
+fourth. Without `--pdf` the board says the table was not compared with any sheet; that is a consistency check only.
+The board is a review aid: illustrative, not a contract document.
+
 ## Sequence animation (existing → proposed, captioned)
 
 Add a `sequence:` block to the proposed spec (steps with caption / remove / install / seconds; `weave` for
