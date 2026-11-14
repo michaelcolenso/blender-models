@@ -42,8 +42,9 @@ export function buildArchitecturalView(shell,floorY){
 
   const doors=[];
   for(let i=0;i<shell.openings.length;i++){
-    const o=shell.openings[i], axis=openingAxis(o,i);
+    const o=shell.openings[i];
     if(o.kind==='door'){
+      const axis=openingAxis(o,i);
       const hinge=new THREE.Group();
       hinge.name='P2.1 door gap '+i+' · assumed swing';
       hinge.position.set(axis.start.x,floorY,axis.start.z);
@@ -57,11 +58,16 @@ export function buildArchitecturalView(shell,floorY){
       group.add(hinge);
       doors.push({...axis,root:hinge,open:true,targetYaw:axis.yaw+Math.PI*0.42});
     } else {
-      const pane=new THREE.Mesh(new THREE.BoxGeometry(axis.length,1.35,0.04),glassMaterial);
-      pane.position.set((axis.start.x+axis.end.x)/2,floorY+GLASS_SILL_M+0.675,
-        (axis.start.z+axis.end.z)/2);
-      pane.rotation.y=axis.yaw;
-      pane.name='P2.1 window gap '+i+' · provisional';
+      // Glazing includes long curved facade gaps; extrude each *original plan footprint*
+      // rather than reducing the gap to an invented axis-aligned rectangle.
+      const shape=new THREE.Shape(makeLoop(o.ring_ft));
+      const geometry=new THREE.ExtrudeGeometry(shape,{
+        depth:1.35,bevelEnabled:false,steps:1,curveSegments:1,
+      });
+      geometry.rotateX(-Math.PI/2);
+      const pane=new THREE.Mesh(geometry,glassMaterial);
+      pane.position.y=floorY+GLASS_SILL_M;
+      pane.name='P2.1 glazing footprint '+i+' · provisional';
       group.add(pane);
     }
   }
