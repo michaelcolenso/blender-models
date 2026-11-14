@@ -34,3 +34,14 @@ body.walking #canvas canvas{cursor:crosshair}
 @media(hover:none),(pointer:coarse){body.walking #walk-pad{display:flex}body.walking #walk-hud{bottom:112px;right:10px;max-width:calc(100% - 20px);left:10px;padding:8px;font-size:9px}body.walking #walk-hud span:nth-child(2){display:none}}
 @media(max-width:1000px){body.walking main{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(340px,1fr)}body.walking .rail,body.walking #inspector{display:none}body.walking #viewport{grid-column:1/-1;min-height:340px}}
 @media(max-width:650px){body.walking main{grid-template-rows:380px}body.walking #walk-status{max-width:230px}body.walking .decision{top:80px;right:10px;padding:6px 8px;min-width:150px}body.walking .decision strong{font-size:16px}body.walking #walk-hud{bottom:95px}}
+
+/* Architectural inspector remains reachable in walk mode on touch layouts. */
+.close-walk-details{display:none;border:1px solid #737e6e;background:#253326;color:#f3f3e6;cursor:pointer;padding:9px 10px;font:600 10px ui-monospace,monospace;margin-bottom:10px}
+@media(max-width:1000px){
+  body.walking.inspecting #inspector{
+    display:block;position:fixed;z-index:8;right:8px;top:80px;bottom:10px;
+    width:min(390px,calc(100vw - 16px));max-height:none;overflow:auto;
+    box-shadow:0 0 0 100vw #0008,-12px 0 35px #0008;
+  }
+  body.walking.inspecting .close-walk-details{display:block;position:sticky;top:0;z-index:9}
+}
