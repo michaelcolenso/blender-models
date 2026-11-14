@@ -70,12 +70,9 @@ export function openingAxis(opening, index=0) {
 export function shellBlocks(position, shell, closedDoors=[], radiusM=0.22) {
   if(wallCollision(position,shell.walls,radiusM)) return true;
   const r2=radiusM**2;
+  // Facade glazing can be curving buffered strips, not four-point rectangles.
   const windows=shell.openings.filter(o=>o.kind==='window');
-  for (const w of windows) {
-    const axis=openingAxis(w);
-    if(distanceToSegmentSq([position.x,position.z],
-      [axis.start.x,axis.start.z],[axis.end.x,axis.end.z])<r2) return true;
-  }
+  if(wallCollision(position,windows.map(o=>({ring_ft:o.ring_ft,holes_ft:[]})),radiusM)) return true;
   for(const door of closedDoors){
     if(distanceToSegmentSq([position.x,position.z],
        [door.start.x,door.start.z],[door.end.x,door.end.z])<r2) return true;
