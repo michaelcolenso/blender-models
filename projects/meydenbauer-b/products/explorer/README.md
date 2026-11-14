@@ -24,6 +24,8 @@ This is an additive mode over the same checked-in GLB and canonical state:
   On touch devices, drag the model to look and hold the on-screen directional arrows to move.
 - **E** or **INSPECT** raycasts toward the crosshair (within 4 m) to select a B-103
   semantic pipe/trench, using the existing element → evidence → claim/quantity/activity/issue inspector.
+- **F** opens/closes the nearest visible P2.1 provisional door gap (within reach).
+  Closed doors obstruct movement; hinge/swing are illustrative.
 - **X** toggles X-ray: the slab becomes translucent and B-103 pipes are emphasized,
   regardless of their schematic time style. This is an inspection overlay, **not**
   a claim that those pipes have already been installed.
@@ -33,14 +35,30 @@ This is an additive mode over the same checked-in GLB and canonical state:
 - Walking begins in the canonical B-103 interval at day 0; timeline, scenarios,
   model/evidence/risk inspection and orbit mode remain available and unchanged.
 
-**Geometry limits:** The GLB is an under-slab bid model with an assumed slab
-massing and a plan underlay, *not* a validated architectural interior. To avoid
-fabricating walls, doors, stairs or a true apartment footprint, this slice
-uses a visible, axis-aligned navigation **guard** derived from B-103 tagged
-mesh extents, padded and clamped inside the modeled slab. The camera stays
-1.65 m above the slab top with no gravity, openings collision, or doorway
-simulation. No geometric measurements or takeoff/schedule calculations are
-modified. Full room/wall collision requires authoritative architectural geometry.
+**Architectural shell (P2.1):** In walk mode, a separate Three.js layer renders
+the checked-in `../underslab/meydenbauer-b.shell.json`: 51 traced wall
+footprints, 79 inferred door gaps, 29 glazing gaps, and 45 detected room
+regions for the building. Walls are provisional, from the bid-set P2.1
+architectural base (Matterport/field dimensions). Window gaps block movement;
+the collision code respects polygon holes. Move along walls without passing
+through them; a 6 cm swept movement step avoids tunneling.
+
+**Doors:** Press **F** or **OPEN / CLOSE DOOR** while looking toward a nearby
+opening to swing the visible panel. A closed door blocks movement; an open door
+permits passage. The opening itself is source-derived but the leaf, hinge side,
+swing direction, panel height and hardware are **illustrative**. Curved facade
+glazing retains its traced plan outline, not an invented straight opening.
+
+**Geometry limits:** The plumbing GLB remains an under-slab bid model with an
+assumed slab and plan underlay. A visible axis-aligned B-103 navigation guard
+is still inferred from the tagged plumbing/trench model and clamped inside the
+slab massing; it is **not** an as-built apartment boundary. The camera stays
+1.65 m above the slab top: no gravity, stairs, variable floor elevation or
+collision with uncovered trench openings. Shell wall height is represented
+uniformly at an illustrative 2.7 m, not room-specific measured height.
+No authoritative construction state, quantities, scenarios or schedule logic
+are changed. If the P2.1 shell cannot be loaded, the viewer retains the old
+schematic walk mode and displays that limitation.
 
 The B-103 phase visuals remain canonical S2 **schematic overlays**, not
 verified stage-specific physical meshes.
@@ -72,7 +90,7 @@ uv run --no-sync python projects/meydenbauer-b/state/build_from_artifacts.py
 uv run --no-sync python projects/meydenbauer-b/products/explorer/time_model.py
 uv run --no-sync bm run meydenbauer-b/explorer check
 uv run --no-sync pytest -q tests/test_meydenbauer_time.py
-node --test projects/meydenbauer-b/products/explorer/walk-state.test.mjs
+node --test projects/meydenbauer-b/products/explorer/view-state.test.mjs projects/meydenbauer-b/products/explorer/walk-state.test.mjs projects/meydenbauer-b/products/explorer/architectural-state.test.mjs
 ```
 
 `check` is CPU-only and read-only. It verifies canonical snapshot/projection drift, the exact schedule against
