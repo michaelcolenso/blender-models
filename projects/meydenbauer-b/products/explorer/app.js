@@ -332,7 +332,8 @@ async function boot() {
   renderer.domElement.onclick = e => {
     if (walking) {
       if (matchMedia('(pointer:fine)').matches && document.pointerLockElement !== renderer.domElement) {
-        renderer.domElement.requestPointerLock?.().catch(() => {});
+        const capture = renderer.domElement.requestPointerLock?.();
+        capture?.catch?.(() => {});
       } else {
         inspectAhead();
       }
