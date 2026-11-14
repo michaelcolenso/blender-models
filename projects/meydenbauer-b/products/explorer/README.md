@@ -14,6 +14,37 @@ The GLB is the existing checked-in under-slab schematic. Its older export lacks 
 the canonical adapter maps its deterministic pipe/trench node names to semantic element IDs. Newer
 exports with `cie_id` extras also work. Material instances are isolated so one unit's state cannot recolor another.
 
+## B-103 first-person walkthrough (experimental)
+
+Open the Explorer as above and select **ENTER B-103 · WALK** (or press **V**).
+This is an additive mode over the same checked-in GLB and canonical state:
+
+- **W/A/S/D** (or arrow keys) move at walking speed; mouse moves the view when
+  pointer capture is active. Click inside the view if capture was released.
+  On touch devices, drag the model to look and hold the on-screen directional arrows to move.
+- **E** or **INSPECT** raycasts toward the crosshair (within 4 m) to select a B-103
+  semantic pipe/trench, using the existing element → evidence → claim/quantity/activity/issue inspector.
+- **X** toggles X-ray: the slab becomes translucent and B-103 pipes are emphasized,
+  regardless of their schematic time style. This is an inspection overlay, **not**
+  a claim that those pipes have already been installed.
+- **T** or **TIMELINE** releases the pointer and focuses the existing S2 slider.
+  Change days or select phases while remaining in walk mode, then click the view
+  to resume mouse look. **Tab**, **Esc**, **V** or **EXIT WALK** return to orbit mode.
+- Walking begins in the canonical B-103 interval at day 0; timeline, scenarios,
+  model/evidence/risk inspection and orbit mode remain available and unchanged.
+
+**Geometry limits:** The GLB is an under-slab bid model with an assumed slab
+massing and a plan underlay, *not* a validated architectural interior. To avoid
+fabricating walls, doors, stairs or a true apartment footprint, this slice
+uses a visible, axis-aligned navigation **guard** derived from B-103 tagged
+mesh extents, padded and clamped inside the modeled slab. The camera stays
+1.65 m above the slab top with no gravity, openings collision, or doorway
+simulation. No geometric measurements or takeoff/schedule calculations are
+modified. Full room/wall collision requires authoritative architectural geometry.
+
+The B-103 phase visuals remain canonical S2 **schematic overlays**, not
+verified stage-specific physical meshes.
+
 ## Time and decision behavior
 
 - Scrub or play 0–81.5 **working days**, B-103 → B-102 → B-101 → B-104, eight phases per unit.
@@ -41,6 +72,7 @@ uv run --no-sync python projects/meydenbauer-b/state/build_from_artifacts.py
 uv run --no-sync python projects/meydenbauer-b/products/explorer/time_model.py
 uv run --no-sync bm run meydenbauer-b/explorer check
 uv run --no-sync pytest -q tests/test_meydenbauer_time.py
+node --test projects/meydenbauer-b/products/explorer/walk-state.test.mjs
 ```
 
 `check` is CPU-only and read-only. It verifies canonical snapshot/projection drift, the exact schedule against
