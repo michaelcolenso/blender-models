@@ -3,15 +3,18 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {activeAt, unitAt, lineage, related, decisionAt, semanticForObject} from './view-state.mjs';
 import {B103_UNIT_ID, EYE_HEIGHT_M, findB103, walkBoundsFromExtents, spawnInBounds, moveWalk} from './walk-state.mjs';
+import {findFreeSpawn, resolveShellMovement} from './architectural-state.mjs';
+import {buildArchitecturalView} from './architectural-view.mjs';
 
 const STATE = '../../state/project-state.json';
 const GLB = '../../deliverables/underslab/Meydenbauer-B-underslab.glb';
+const SHELL = '../underslab/meydenbauer-b.shell.json';
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const esc = v => String(v ?? '—').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = (v, digits=1) => v == null ? '—' : Number(v).toLocaleString(undefined, {maximumFractionDigits: digits});
 let state, timeline, scenario, selectedId, mode = 'time', model, currentDay = 0, playing = false, lastFrame = 0;
 const index = new Map(), meshes = [];
-let walking = false, xray = false;
+let walking = false, xray = false, architectural = null;
 
 function inspect(id) {
   const el = index.get(id);
@@ -19,6 +22,7 @@ function inspect(id) {
   selectedId = id;
   const r = related(state, id, scenario);
   $('#inspector').innerHTML = `
+    ${walking ? '<button type="button" id="close-walk-details" class="close-walk-details">CLOSE INSPECTOR ×</button>' : ''}
     <div class="card"><span class="eyebrow">${esc(el.kind)}</span><h2>${esc(el.name)}</h2>
     <div class="id">${esc(el.id)}</div><span class="status">${esc(el.status)}</span></div>
     <div class="card"><span class="label">QUANTITIES · ${esc(index.get(scenario).name)}</span>
@@ -31,6 +35,10 @@ function inspect(id) {
     ${r.activities.map(a => `<div class="source"><b>${esc(a.name)}</b>${number(a.duration_working_days)} working days<div class="id">${esc(a.id)}</div></div>`).join('')}</div>
     <div class="card"><span class="label">OPEN ISSUES</span>
     ${r.issues.map(i => `<div class="source"><b>${esc(i.severity)} · ${esc(i.title)}</b>${esc(i.description)}<div class="id">${esc(i.id)}</div></div>`).join('') || 'None directly linked.'}</div>`;
+  if (walking) {
+    document.body.classList.add('inspecting');
+    $('#close-walk-details')?.addEventListener('click', () => document.body.classList.remove('inspecting'));
+  }
 }
 
 function decisionUI() {
@@ -114,12 +122,23 @@ function applyMode() {
       mat.needsUpdate = true;
     });
   }
+  architectural?.display(walking, xray);
 }
 
 async function boot() {
   const response = await fetch(STATE);
   if (!response.ok) throw Error(`state ${response.status}`);
   state = await response.json();
+  // Architecture is optional for the old orbit viewer, but required for wall collision.
+  let shell = null;
+  try {
+    const responseShell = await fetch(SHELL);
+    if (!responseShell.ok) throw Error('P2.1 shell HTTP ' + responseShell.status);
+    shell = await responseShell.json();
+    if (!shell.walls?.length || !shell.openings?.length) throw Error('P2.1 shell geometry empty');
+  } catch (error) {
+    console.warn('Architectural layer unavailable:', error);
+  }
   timeline = state.metadata.timeline;
   scenario = timeline.baseline_scenario_id;
   for (const group of ['evidence','claims','elements','quantities','activities','issues','scenarios']) for (const x of state[group]) index.set(x.id, x);
@@ -171,6 +190,10 @@ async function boot() {
         {minX:slabBox.min.x, maxX:slabBox.max.x, minZ:slabBox.min.z, maxZ:slabBox.max.z},
       );
       floorY = slabBox.max.y; // glTF converts Blender Z-up to Three.js Y-up
+      if (shell) {
+        architectural = buildArchitecturalView(shell, floorY);
+        scene.add(architectural.group);
+      }
       const {minX,maxX,minZ,maxZ} = walkBounds;
       const guideGeometry = new THREE.BufferGeometry().setFromPoints([
         new THREE.Vector3(minX, floorY+0.035, minZ),
@@ -182,7 +205,9 @@ async function boot() {
       walkGuide.visible = false;
       scene.add(walkGuide);
       walkButton.disabled = false;
-      hudMessage.textContent = 'B-103 walk area ready · schematic boundary';
+      hudMessage.textContent = architectural
+        ? 'B-103 · P2.1 architectural shell · provisional door gaps'
+        : 'B-103 · schematic movement guard only (shell unavailable)';
     } catch (error) {
       hudMessage.textContent = 'Walk unavailable: ' + error.message;
     }
@@ -199,6 +224,7 @@ async function boot() {
     walkButton.setAttribute('aria-pressed', String(walking));
     document.body.classList.toggle('walking', walking);
     if (walkGuide) walkGuide.visible = walking;
+    architectural?.display(walking,xray);
     $('#walk-xray').setAttribute('aria-pressed', String(xray));
     $('#walk-xray').textContent = xray ? 'X-RAY ON [X]' : 'X-RAY [X]';
   }
@@ -206,7 +232,7 @@ async function boot() {
     if (!walkBounds || walking) return;
     if (playing) {playing = false; $('#play').textContent = 'PLAY';}
     savedOrbit = {position:camera.position.clone(), target:controls.target.clone()};
-    const spawn = spawnInBounds(walkBounds);
+    const spawn = shell ? findFreeSpawn(walkBounds, shell) : spawnInBounds(walkBounds);
     walking = true; xray = false;
     controls.enabled = false;
     camera.position.set(spawn.x, floorY + EYE_HEIGHT_M, spawn.z);
@@ -214,7 +240,10 @@ async function boot() {
     yaw = spawn.yaw; pitch = -0.12; look();
     held.clear(); touchHeld.clear();
     setDay(b103.start_day); inspect(B103_UNIT_ID);
-    hudMessage.textContent = 'B-103 · click viewport to capture mouse · schematic guard';
+    document.body.classList.remove('inspecting');
+    hudMessage.textContent = architectural
+      ? 'B-103 · P2.1 provisional walls · F nearby door · click viewport for mouse'
+      : 'B-103 · shell unavailable, schematic boundary only';
     updateWalkLabel();
     // Requesting capture is optional; touch and keyboard movement still work without it.
     if (matchMedia('(pointer:fine)').matches) {
@@ -225,6 +254,7 @@ async function boot() {
   function exitWalk() {
     if (!walking) return;
     walking = false; xray = false;
+    document.body.classList.remove('inspecting');
     held.clear(); touchHeld.clear();
     if (document.pointerLockElement === renderer.domElement) document.exitPointerLock?.();
     camera.position.copy(savedOrbit.position);
@@ -233,7 +263,9 @@ async function boot() {
     controls.enabled = true;
     controls.update();
     applyMode();
-    hudMessage.textContent = 'B-103 walk area ready · schematic boundary';
+    hudMessage.textContent = architectural
+      ? 'B-103 walk area ready · P2.1 provisional walls and openings'
+      : 'B-103 walk area ready · schematic boundary';
     updateWalkLabel();
   }
   function toggleXray() {
@@ -253,6 +285,20 @@ async function boot() {
     }
     hudMessage.textContent = 'Aim at a B-103 pipe or trench, then press E';
   }
+  function toggleNearbyDoor() {
+    if (!walking || !architectural) return;
+    const forward = new THREE.Vector3();
+    camera.getWorldDirection(forward);
+    const door = architectural.nearestDoor(camera.position,forward);
+    if (!door) {
+      hudMessage.textContent = 'No P2.1 door opening nearby · approach an opening and press F';
+      return;
+    }
+    const open = architectural.toggleDoor(door);
+    hudMessage.textContent = 'P2.1 door gap ' + door.id + (open ? ' · OPEN' : ' · CLOSED')
+      + ' · leaf swing is illustrative';
+  }
+
   function openTimeline() {
     if (!walking) return;
     if (document.pointerLockElement === renderer.domElement) {
@@ -268,16 +314,18 @@ async function boot() {
   $('#walk-inspect').addEventListener('click', inspectAhead);
   $('#walk-xray').addEventListener('click', toggleXray);
   $('#walk-time').addEventListener('click', openTimeline);
+  $('#walk-door').addEventListener('click', toggleNearbyDoor);
   const codes = {KeyW:'forward',ArrowUp:'forward',KeyS:'backward',ArrowDown:'backward',
     KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right'};
   document.addEventListener('keydown', e => {
-    if (e.repeat && ['KeyV','Tab','KeyE','KeyX','KeyT','Escape'].includes(e.code)) return;
+    if (e.repeat && ['KeyV','Tab','KeyE','KeyF','KeyX','KeyT','Escape'].includes(e.code)) return;
     if (e.code === 'KeyV' && !/input|textarea|select/i.test(e.target.tagName)) {
       e.preventDefault(); walking ? exitWalk() : enterWalk(); return;
     }
     if (!walking) return;
     if (e.code === 'Tab' || e.code === 'Escape') {e.preventDefault(); exitWalk(); return;}
     if (e.code === 'KeyE') {e.preventDefault(); inspectAhead(); return;}
+    if (e.code === 'KeyF') {e.preventDefault(); toggleNearbyDoor(); return;}
     if (e.code === 'KeyX') {e.preventDefault(); toggleXray(); return;}
     if (e.code === 'KeyT') {e.preventDefault(); openTimeline(); return;}
     // Preserve arrow-key slider editing while the timeline control has focus.
@@ -355,12 +403,18 @@ async function boot() {
         {forward:command('forward'),backward:command('backward'),left:command('left'),right:command('right')},
         yaw, (t-lastFrame)/1000, walkBounds,
       );
-      camera.position.set(moved.x, floorY + EYE_HEIGHT_M, moved.z);
+      const closedDoors = architectural?.doors.filter(d => !d.open) || [];
+      const next = shell
+        ? resolveShellMovement({x:camera.position.x,z:camera.position.z},
+            moved,walkBounds,shell,closedDoors)
+        : moved;
+      camera.position.set(next.x, floorY + EYE_HEIGHT_M, next.z);
     }
     if (playing && lastFrame) {
       setDay(currentDay + Math.min((t-lastFrame)/1000, 0.1)*2);
       if (currentDay === timeline.working_days) {playing=false; $('#play').textContent='PLAY';}
     }
+    architectural?.animate(lastFrame ? (t-lastFrame)/1000 : 0);
     lastFrame=t;
     if (!walking) controls.update();
     renderer.render(scene,camera);
