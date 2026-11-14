@@ -16,6 +16,34 @@ VALID_STATUS = set(STATUS_COLORS)
 RECORD_KINDS = {"design_intent", "as_built", "field_photo", "field_survey", "mixed", "unknown"}
 FIELD_VERIFIED = {"verified", "partial", "not_verified", "unknown"}
 REVIEW_VERDICTS = {"pass", "fail", "n/a"}
+ELEMENT_TYPES = {None, "detail", "house"}  # None = a plain box element
+# Checks build.verify() acts on, and the modifier keys they read. Anything else is a typo that would
+# otherwise be skipped silently and let the spec pass with fewer checks.
+CHECK_KINDS = {"count", "overall", "extents_trade", "ridge", "between", "drawn", "gap"}
+CHECK_MODIFIERS = {"element", "expect", "tol", "label", "source", "from", "to", "axis", "min", "warn_tol", "note"}
+
+
+def _triple(v):
+    return (isinstance(v, (list, tuple)) and len(v) == 3
+            and all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v))
+
+
+def validate_checks(spec, errors):
+    """Every element spec needs at least one document-driven check, and every check must be one verify() runs."""
+    checks = spec.get("checks") or []
+    if not isinstance(checks, list):
+        fail("checks: must be a list", errors)
+        return
+    if not checks and not spec.get("qto_checks"):
+        fail("checks: required; a spec with no document-driven check verifies only that the builder "
+             "reproduced the spec", errors)
+    for i, c in enumerate(checks):
+        if not isinstance(c, dict) or not CHECK_KINDS & set(c):
+            fail(f"checks[{i}]: needs one of {sorted(CHECK_KINDS)}", errors)
+            continue
+        unknown = set(c) - CHECK_KINDS - CHECK_MODIFIERS
+        if unknown:
+            fail(f"checks[{i}]: unknown key(s) {sorted(unknown)}", errors)
 
 
 def fail(msg, errors):
@@ -58,11 +86,20 @@ def validate_record(spec, src_ids, errors):
 
 def validate(spec):
     errors = []
-    src_ids = {s["id"] for s in spec.get("sources", [])}
+    src_list = [s["id"] for s in spec.get("sources", [])]
+    src_ids = set(src_list)
+    for dup in sorted({s for s in src_list if src_list.count(s) > 1}, key=str):
+        fail(f"sources: duplicate id '{dup}'", errors)
     validate_record(spec, src_ids, errors)
+    validate_checks(spec, errors)
+    if not spec.get("elements"):
+        fail("elements: required and non-empty", errors)
     seen = set()
-    for e in spec.get("elements", []):
+    for e in spec.get("elements") or []:
         eid = e.get("id", "?")
+        if e.get("type") not in ELEMENT_TYPES:
+            fail(f"{eid}: unknown type '{e.get('type')}' (use 'detail', 'house', or omit for a box element)", errors)
+            continue
         if eid in seen:
             fail(f"{eid}: duplicate id", errors)
         seen.add(eid)
@@ -83,6 +120,8 @@ def validate(spec):
                 if k not in e:
                     fail(f"{eid}: missing '{k}'", errors)
             for o in e.get("openings", []):
+                if o.get("status", "provisional") not in VALID_STATUS:
+                    fail(f"{eid}/{o.get('id')}: status must be one of {sorted(VALID_STATUS)}", errors)
                 if o.get("status", "provisional") in ("confirmed", "provisional") and o.get("source", e.get("walls_source")) not in src_ids:
                     fail(f"{eid}/{o.get('id')}: source not in 'sources'", errors)
                 if o.get("status") == "assumed" and not o.get("basis"):
@@ -102,7 +141,10 @@ def validate(spec):
             fail(f"{eid}: status '{e.get('status')}' requires a source id from 'sources'", errors)
         if e.get("status") == "assumed" and not e.get("basis"):
             fail(f"{eid}: assumed elements need a 'basis' explaining the assumption", errors)
-        if any(v <= 0 for v in e.get("size", [1, 1, 1])):
+        for k in ("size", "at"):
+            if k in e and not _triple(e[k]):
+                fail(f"{eid}: '{k}' must be three numbers [x, y, z] in inches", errors)
+        if _triple(e.get("size")) and any(v <= 0 for v in e["size"]):
             fail(f"{eid}: size values must be > 0", errors)
     return errors
 

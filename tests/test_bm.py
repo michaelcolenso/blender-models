@@ -23,6 +23,37 @@ class SpecTests(unittest.TestCase):
         s = {"sources": [], "elements": [{"id": "a", "size": [1, 1, 1], "at": [0, 0, 0], "trade": "t", "status": "confirmed"}]}
         self.assertTrue(any("source" in e for e in spec.check(s)))
 
+    def _sample(self):
+        return spec.load(ROOT / "projects/sample/specs/sample-bay.yaml")
+
+    def _errors(self, mutate):
+        s = self._sample()
+        mutate(s)
+        return spec.check(s)
+
+    def test_misspelled_or_unknown_check_fails(self):
+        self.assertTrue(any("checks[3]" in e for e in self._errors(lambda s: s["checks"].append({"cout": 3, "element": "joist"}))))
+        self.assertTrue(any("unknown key" in e for e in self._errors(lambda s: s["checks"][0].update(tolerance=1))))
+
+    def test_spec_without_checks_or_elements_fails(self):
+        self.assertTrue(any(e.startswith("checks: required") for e in self._errors(lambda s: s.pop("checks"))))
+        self.assertTrue(any(e.startswith("elements:") for e in self._errors(lambda s: s.update(elements=[]))))
+
+    def test_malformed_geometry_and_type_fail(self):
+        for bad in ("3x4x5", [1, 2], [1, 2, "3"]):
+            with self.subTest(size=bad):
+                self.assertTrue(any("three numbers" in e for e in self._errors(lambda s, bad=bad: s["elements"][0].update(size=bad))))
+        self.assertTrue(any("unknown type" in e for e in self._errors(lambda s: s["elements"][0].update(type="hose"))))
+
+    def test_duplicate_source_id_fails(self):
+        self.assertTrue(any("duplicate id" in e for e in self._errors(lambda s: s["sources"].append(dict(s["sources"][0])))))
+
+    def test_house_opening_status_is_validated(self):
+        s = spec.load(ROOT / "projects/qp-cottage-a/specs/qp-cottage-a.yaml")
+        house = next(e for e in s["elements"] if e.get("type") == "house")
+        house["openings"][0].update(status="confirmd", source="nope")
+        self.assertTrue(any("status must be one of" in e for e in spec.check(s)))
+
     def test_assumed_needs_basis(self):
         s = {"sources": [], "elements": [{"id": "a", "size": [1, 1, 1], "at": [0, 0, 0], "trade": "t", "status": "assumed"}]}
         self.assertTrue(any("basis" in e for e in spec.check(s)))

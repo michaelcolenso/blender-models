@@ -5,6 +5,7 @@ multifamily buildings, built headless in Blender from construction drawings, det
 Accuracy first, realism second: every dimension traces to a source or is labeled assumed, automated checks
 must pass, and the renders get looked at. Agents: **[AGENTS.md](AGENTS.md)**. How models are made: **[docs/METHOD.md](docs/METHOD.md)** ·
 step-by-step commands: **[docs/RUNBOOK.md](docs/RUNBOOK.md)**.
+What to do next: **[docs/NEXT_ACTIONS.md](docs/NEXT_ACTIONS.md)** (experiment log and cold-run protocol linked from there).
 New here: **[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)** builds the fictional sample in about 15 minutes with no real
 project data. Versions: **[docs/BLENDER_VERSION.md](docs/BLENDER_VERSION.md)** (Blender 5.0.1 / Python 3.11, deliberately pinned).
 

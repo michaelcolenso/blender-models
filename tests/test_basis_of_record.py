@@ -14,6 +14,7 @@ BASE = {
     "sources": [{"id": "S1", "ref": "Sheet S1", "type": "drawing"}],
     "elements": [{"id": "a", "trade": "framing", "size": [1, 1, 1], "at": [0, 0, 0],
                   "status": "confirmed", "source": "S1"}],
+    "checks": [{"element": "a", "count": 1, "source": "S1"}],
 }
 
 

@@ -30,7 +30,6 @@ MATERIALS = {  # base color RGB, roughness — edit per project
     "galv_steel": ((0.70, 0.72, 0.74), 0.35),
     "gyp_board": ((0.92, 0.92, 0.90), 0.9),
     "membrane": ((0.15, 0.15, 0.16), 0.6),
-    "siding": ((0.80, 0.78, 0.72), 0.7),
     "glass": ((0.60, 0.75, 0.80), 0.05),
     "osb": ((0.72, 0.58, 0.38), 0.85),
     "rigid": ((0.55, 0.70, 0.85), 0.7),     # color assumed (product not specified)
