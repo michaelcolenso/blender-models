@@ -34,9 +34,14 @@ def main():
         assert forbidden not in app, f"browser duplicates construction state: {forbidden}"
     subprocess.run(["node", "--input-type=module", "--check"], input=app, text=True, check=True)
     subprocess.run(["node", "--check", str(HERE / "walk-state.mjs")], check=True)
-    subprocess.run(["node", "--test", str(HERE / "view-state.test.mjs"), str(HERE / "walk-state.test.mjs")], check=True)
+    subprocess.run(["node", "--check", str(HERE / "architectural-state.mjs")], check=True)
+    subprocess.run(["node", "--input-type=module", "--check"],
+                   input=(HERE / "architectural-view.mjs").read_text(), text=True, check=True)
+    subprocess.run(["node", "--test", str(HERE / "view-state.test.mjs"),
+                    str(HERE / "walk-state.test.mjs"),
+                    str(HERE / "architectural-state.test.mjs")], check=True)
     print(
-        "EXPLORER CHECK PASS — canonical state, S2 schedule, scenario decisions, semantic bindings, time projection and B-103 walkthrough"
+        "EXPLORER CHECK PASS — canonical state, S2 schedule, scenario decisions, semantic bindings, time projection, B-103 walkthrough and P2.1 wall/door collision"
     )
 
 
