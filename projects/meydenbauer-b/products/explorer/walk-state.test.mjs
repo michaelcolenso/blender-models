@@ -39,7 +39,8 @@ test('eye position spawns inside guard and faces its center', () => {
 
 test('WASD movement is yaw-relative, normalized on diagonals and capped per frame', () => {
   const bounds={minX:-50,maxX:50,minZ:-50,maxZ:50}, origin={x:0,z:0};
-  assert.deepEqual(moveWalk(origin, {forward:true}, 0, 0.1, bounds), {x:0,z:-0.22000000000000003});
+  const forward=moveWalk(origin, {forward:true}, 0, 0.1, bounds);
+  assert.ok(Math.abs(forward.x)<1e-9 && Math.abs(forward.z+0.22)<1e-9);
   const right=moveWalk(origin,{right:true},0,0.1,bounds);
   assert.ok(Math.abs(right.x-0.22)<1e-9 && Math.abs(right.z)<1e-9);
   const turn=moveWalk(origin,{forward:true},Math.PI/2,0.1,bounds);
