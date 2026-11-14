@@ -4,7 +4,27 @@
 <header><div><span class="eyebrow">101 MEYDENBAUER · BUILDING B</span><h1>Construction Intelligence</h1></div><div id="health" class="health">loading state…</div></header>
 <main>
 <aside class="rail"><button class="mode" data-mode="model">Model</button><button class="mode" data-mode="evidence">Evidence</button><button class="mode" data-mode="risk">Risk</button><button class="mode active" data-mode="time">Time</button><div class="rule"></div><span class="label">SCENARIO</span><div id="scenarios"></div><p id="scenario-description" class="source"></p></aside>
-<section id="viewport"><div id="canvas"></div><div class="viewport-note">SELECT PIPEWORK TO TRACE EVIDENCE → DECISION</div><div id="decision" class="decision"></div></section>
+<section id="viewport"><div id="canvas"></div>
+<div class="walk-toolbar">
+  <button id="walk-toggle" type="button" aria-pressed="false" disabled>ENTER B-103 · WALK</button>
+  <span id="walk-status" role="status">Loading walk geometry…</span>
+</div>
+<div id="walk-crosshair" aria-hidden="true">+</div>
+<div id="walk-hud">
+  <strong>B-103 / FIRST PERSON</strong>
+  <span>WASD move · mouse/drag look · E inspect · X X-ray · T timeline · Tab exit</span>
+  <span>Navigation boundary inferred from schematic pipework; not verified walls or doors.</span>
+  <div class="walk-actions">
+    <button id="walk-inspect" type="button">INSPECT [E]</button>
+    <button id="walk-xray" type="button" aria-pressed="false">X-RAY [X]</button>
+    <button id="walk-time" type="button">TIMELINE [T]</button>
+  </div>
+</div>
+<div id="walk-pad" aria-label="Touch movement controls">
+  <button type="button" data-walk-move="forward" aria-label="Move forward">▲</button>
+  <div><button type="button" data-walk-move="left" aria-label="Move left">◀</button><button type="button" data-walk-move="backward" aria-label="Move backward">▼</button><button type="button" data-walk-move="right" aria-label="Move right">▶</button></div>
+</div>
+<div class="viewport-note">SELECT PIPEWORK TO TRACE EVIDENCE → DECISION</div><div id="decision" class="decision"></div></section>
 <aside id="inspector"><div class="empty"><span class="eyebrow">INSPECTOR</span><h2>Select an element</h2><p>Click semantic geometry to trace what it is, where it came from, how certain it is, and what it affects.</p></div></aside>
 </main>
 <section id="timeline" class="timeline"><div class="timeline-head"><div><span class="label">CONSTRUCTION TIME</span><strong id="time-readout">DAY 0.0 / 81.5</strong></div><div id="active-phase">Preconstruction</div><button id="play" type="button" disabled>PLAY</button></div><input id="time-slider" type="range" min="0" max="81.5" value="0" step="0.1" aria-label="S2 baseline working day" disabled><div id="unit-track" class="unit-track"></div><div id="phase-track"></div>
