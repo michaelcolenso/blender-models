@@ -107,7 +107,7 @@ function applyMode() {
       if (xray && unitId === B103_UNIT_ID && binding?.role === 'pipe') {
         mat.opacity = Math.max(mat.opacity, 0.85);
       }
-      mat.transparent = mat.transparent || mat.opacity < 1 || xray;
+      mat.transparent = mat.transparent || mat.opacity < 1;
 
       mat.depthWrite = mat.opacity >= 0.5 && base[i].depthWrite
         && !(xray && /slab-on-grade/i.test(mesh.name + ' ' + (mesh.parent?.name || '')));
@@ -157,7 +157,7 @@ async function boot() {
   const b103Meshes = meshes.filter(item => item.unitId === B103_UNIT_ID);
   b103Meshes.forEach(item => b103Box.expandByObject(item.mesh));
   const slabMesh = meshes.find(item => /slab-on-grade/i.test(item.mesh.name + ' ' + (item.mesh.parent?.name || '')))?.mesh;
-  let walkBounds = null, floorY = 0, walkGuide = null, savedOrbit = null;
+  let walkBounds = null, floorY = 0, walkGuide = null, savedOrbit = null, releasingForTimeline = false;
   let yaw = 0, pitch = 0, touchLook = null;
   const held = new Set(), touchHeld = new Set();
   const walkButton = $('#walk-toggle');
@@ -218,7 +218,8 @@ async function boot() {
     updateWalkLabel();
     // Requesting capture is optional; touch and keyboard movement still work without it.
     if (matchMedia('(pointer:fine)').matches) {
-      renderer.domElement.requestPointerLock?.().catch(() => {});
+      const capture = renderer.domElement.requestPointerLock?.();
+      capture?.catch?.(() => {});
     }
   }
   function exitWalk() {
@@ -254,7 +255,10 @@ async function boot() {
   }
   function openTimeline() {
     if (!walking) return;
-    if (document.pointerLockElement === renderer.domElement) document.exitPointerLock?.();
+    if (document.pointerLockElement === renderer.domElement) {
+      releasingForTimeline = true;
+      document.exitPointerLock?.();
+    }
     $('#timeline').scrollIntoView({behavior:'smooth',block:'nearest'});
     $('#time-slider').focus();
     hudMessage.textContent = 'S2 timeline selected · move slider, then click viewport to look';
@@ -284,7 +288,11 @@ async function boot() {
   document.addEventListener('keyup', e => {if (codes[e.code]) held.delete(codes[e.code]);});
   window.addEventListener('blur', () => {held.clear(); touchHeld.clear();});
   document.addEventListener('pointerlockchange', () => {
-    if (walking && document.pointerLockElement !== renderer.domElement) held.clear();
+    if (!walking || document.pointerLockElement === renderer.domElement) return;
+    held.clear();
+    if (releasingForTimeline) {releasingForTimeline = false; return;}
+    // Browser Escape may not dispatch keydown while pointer-locked.
+    exitWalk();
   });
   document.addEventListener('mousemove', e => {
     if (!walking || document.pointerLockElement !== renderer.domElement) return;
