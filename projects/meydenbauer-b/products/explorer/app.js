@@ -153,7 +153,9 @@ async function boot() {
   scene.add(new THREE.HemisphereLight(0xf4f1e7, 0x31342c, 2.3));
   const sun = new THREE.DirectionalLight(0xffffff, 2); sun.position.set(8,-10,15); scene.add(sun);
   const resize = () => {const r=host.getBoundingClientRect(); renderer.setSize(r.width,r.height); camera.aspect=r.width/r.height; camera.updateProjectionMatrix();};
-  addEventListener('resize', resize); resize();
+  // Walk mode changes the grid without a window resize, especially on mobile.
+  new ResizeObserver(resize).observe(host);
+  resize();
   model = (await new GLTFLoader().loadAsync(GLB)).scene;
   model.traverse(mesh => {
     if (!mesh.isMesh) return;
@@ -231,12 +233,13 @@ async function boot() {
   function enterWalk() {
     if (!walkBounds || walking) return;
     if (playing) {playing = false; $('#play').textContent = 'PLAY';}
-    savedOrbit = {position:camera.position.clone(), target:controls.target.clone()};
-    const spawn = shell ? findFreeSpawn(walkBounds, shell) : spawnInBounds(walkBounds);
+    savedOrbit = {position:camera.position.clone(), target:controls.target.clone(), fov:camera.fov};
+    const closedDoors = architectural?.doors.filter(d => !d.open) || [];
+    const spawn = shell ? findFreeSpawn(walkBounds, shell, undefined, closedDoors) : spawnInBounds(walkBounds);
     walking = true; xray = false;
     controls.enabled = false;
     camera.position.set(spawn.x, floorY + EYE_HEIGHT_M, spawn.z);
-    camera.near = 0.025; camera.updateProjectionMatrix();
+    camera.near = 0.025; camera.fov = 65; camera.updateProjectionMatrix();
     yaw = spawn.yaw; pitch = -0.12; look();
     held.clear(); touchHeld.clear();
     setDay(b103.start_day); inspect(B103_UNIT_ID);
@@ -259,7 +262,7 @@ async function boot() {
     if (document.pointerLockElement === renderer.domElement) document.exitPointerLock?.();
     camera.position.copy(savedOrbit.position);
     controls.target.copy(savedOrbit.target);
-    camera.near = size/1000; camera.updateProjectionMatrix();
+    camera.near = size/1000; camera.fov = savedOrbit.fov; camera.updateProjectionMatrix();
     controls.enabled = true;
     controls.update();
     applyMode();

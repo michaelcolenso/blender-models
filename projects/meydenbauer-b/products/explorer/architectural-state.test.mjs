@@ -60,3 +60,27 @@ test('source geometry provides a valid collision-free B-103 candidate spawn',()=
   assert.ok(p.z>=bounds.minZ&&p.z<=bounds.maxZ);
   assert.equal(shellBlocks(p,shell),false);
 });
+
+test('spawn faces a clear path instead of a nearby wall at the guard center',()=>{
+  const bounds={minX:0,maxX:6,minZ:0,maxZ:6};
+  const wall={ring_ft:[[9,-1],[10,-1],[10,21],[9,21]]};
+  const scene={walls:[wall],openings:[]};
+  const p=findFreeSpawn(bounds,scene);
+  for(let step=0;step<=60;step++){
+    const distance=step*0.05;
+    const q={x:p.x-Math.sin(p.yaw)*distance,z:p.z-Math.cos(p.yaw)*distance};
+    assert.equal(shellBlocks(q,scene),false,JSON.stringify(q));
+    assert.ok(q.x>=0&&q.x<=6&&q.z>=0&&q.z<=6);
+  }
+});
+
+test('reentry spawn respects doors left closed, and small spaces retain a safe fallback',()=>{
+  const empty={walls:[],openings:[]};
+  const bounds={minX:0,maxX:0.8,minZ:0,maxZ:0.8};
+  const door={start:{x:0.4,z:0},end:{x:0.4,z:0.8}};
+  const p=findFreeSpawn(bounds,empty,0.22,[door]);
+  assert.equal(shellBlocks(p,empty,[door]),false);
+  assert.ok(p.x>=0&&p.x<=0.8&&p.z>=0&&p.z<=0.8);
+  assert.throws(()=>findFreeSpawn({minX:0.3,maxX:0.5,minZ:0,maxZ:0.8},empty,0.22,[door]),
+    /No collision-free spawn/);
+});

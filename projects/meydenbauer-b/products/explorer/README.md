@@ -63,6 +63,20 @@ schematic walk mode and displays that limitation.
 The B-103 phase visuals remain canonical S2 **schematic overlays**, not
 verified stage-specific physical meshes.
 
+## Walkthrough entry and viewport
+
+Entry searches for a collision-free position facing a clear 3 m walking path
+inside the schematic navigation guard, including doors left closed on a prior
+visit. Confined spaces fall back to a safe position when no such path fits.
+The starting location and direction remain navigation assumptions, not a
+verified apartment entrance. Open illustrative door leaves may still cross the
+view; their swings are not physical collision geometry.
+
+Walk mode uses a 65° field of view and restores the orbit field of view on exit.
+The canvas follows its container size, including mobile layout changes when
+entering and leaving walk mode. See [HANDOFF.md](HANDOFF.md) for the latest
+continuation status.
+
 ## Time and decision behavior
 
 - Scrub or play 0–81.5 **working days**, B-103 → B-102 → B-101 → B-104, eight phases per unit.

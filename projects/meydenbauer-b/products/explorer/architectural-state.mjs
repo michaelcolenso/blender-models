@@ -99,7 +99,7 @@ export function resolveShellMovement(from, desired, bounds, shell, closedDoors=[
   return {x,z};
 }
 
-export function findFreeSpawn(bounds,shell,radiusM=0.22) {
+export function findFreeSpawn(bounds,shell,radiusM=0.22,closedDoors=[]) {
   const cx=(bounds.minX+bounds.maxX)/2,cz=(bounds.minZ+bounds.maxZ)/2;
   const candidates=[];
   for(let i=0;i<=16;i++) for(let j=0;j<=16;j++){
@@ -108,7 +108,28 @@ export function findFreeSpawn(bounds,shell,radiusM=0.22) {
     candidates.push({x,z,d:(x-cx)**2+(z-cz)**2});
   }
   candidates.sort((a,b)=>a.d-b.d);
-  const free=candidates.find(p=>!shellBlocks(p,shell,[],radiusM));
-  if(!free) throw Error('No collision-free spawn for B-103');
-  return {x:free.x,z:free.z,yaw:Math.atan2(-(cx-free.x),-(cz-free.z))};
+  const safe=p=>p.x>=bounds.minX&&p.x<=bounds.maxX&&p.z>=bounds.minZ&&p.z<=bounds.maxZ&&
+    !shellBlocks(p,shell,closedDoors,radiusM);
+  let fallback=null;
+  for(const p of candidates){
+    if(!safe(p)) continue;
+    const towardCenter=Math.atan2(-(cx-p.x),-(cz-p.z));
+    fallback ??= {x:p.x,z:p.z,yaw:towardCenter};
+    // Start looking along an open walking path, rather than at the nearest wall.
+    // This is a navigation preference, not a source-derived room or entry location.
+    for(let turn=0;turn<8;turn++){
+      const yaw=towardCenter+turn*Math.PI/4;
+      let clear=true;
+      for(let step=1;step<=30;step++){
+        const distance=step*0.1;
+        if(!safe({x:p.x-Math.sin(yaw)*distance,z:p.z-Math.cos(yaw)*distance})){
+          clear=false;break;
+        }
+      }
+      if(clear) return {x:p.x,z:p.z,yaw};
+    }
+  }
+  if(!fallback) throw Error('No collision-free spawn for B-103');
+  // Very small spaces may not admit a 3 m path; keep a safe spawn available.
+  return fallback;
 }
