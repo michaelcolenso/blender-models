@@ -21,8 +21,10 @@ if a movement's title or description names the site or a sheet. The massing itse
 building's, so treat the film as public only with that accepted. Mirroring or re-cladding the facade is the
 next step if it must not be recognizable at all.
 
-Renders carry no provenance claims to a client; the provenance colours in movement 6 are a demonstration of the
-method.
+The provenance colours in movement 6 follow each element's own `status`, as the exterior builder's provenance
+pass does. On this model every element is `assumed`: 165 window positions are provisional and 3 roof datums
+are confirmed, but those are attribute-level facts, so they don't turn the whole element yellow or green. Showing
+them needs their own treatment (for example a marker at the confirmed datum), never a recoloured element.
 
 ## Blender 5.3, in its own environment
 

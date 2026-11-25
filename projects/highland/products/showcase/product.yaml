@@ -3,6 +3,8 @@
 kind: "film"
 description: "One Model: a Blender 5.3 showcase film on the generalized Highland massing (shot list and proof renders)"
 deliverables: ../../deliverables/showcase
+# proto.py reads the exterior study (deliverables/exterior/Highland-exterior.blend)
+depends_on: [highland/exterior]
 steps:
   # Blender 5.3 lives in its own uv project (env/, Python 3.13); see README.md. Grease Pencil needs EGL.
   proof: uv run --project $BM_PRODUCT_DIR/env --frozen python $BM_PRODUCT_DIR/proto.py $BM_BUILD/proof

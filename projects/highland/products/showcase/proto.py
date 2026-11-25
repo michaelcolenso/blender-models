@@ -14,7 +14,17 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 
-ROOT = Path(__file__).resolve().parents[4]
+
+def repo_root():
+    """bmodels.paths.ROOT can't be imported here (the root project is Python 3.11, this env 3.13), so find
+    the repository by its markers instead of counting parents."""
+    for p in Path(__file__).resolve().parents:
+        if (p/'uv.lock').is_file() and (p/'src/bmodels/paths.py').is_file():
+            return p
+    raise SystemExit('repository root not found above '+__file__)
+
+
+ROOT = repo_root()
 SOURCE = ROOT/'projects/highland/deliverables/exterior/Highland-exterior.blend'
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT/'build/highland/showcase/proof'
 OUT.mkdir(parents=True, exist_ok=True)
@@ -126,7 +136,9 @@ def main():
     scene.render.use_freestyle = False
     mats = {k: flat('Status '+k, v) for k, v in STATUS.items()}
     for o in originals:
-        st = 'provisional' if o.get('xy_status') == 'provisional' else 'confirmed' if o.get('datum_status') == 'confirmed' else o.get('status', 'assumed')
+        # Element status only, as the exterior builder's provenance pass does: a confirmed datum or a
+        # provisional position does not make the element's geometry documented.
+        st = o.get('status', 'assumed')
         for s in o.material_slots:
             s.material = mats.get(st, mats['assumed'])
     render(scene, '6d-provenance')
